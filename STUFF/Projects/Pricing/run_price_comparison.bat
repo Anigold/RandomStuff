@@ -1,2 +1,0 @@
-python ./PriceComparison.py
-pause
