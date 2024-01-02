@@ -23,12 +23,6 @@ preferences = {
 options.add_experimental_option("prefs", preferences)
 driver = uc.Chrome(options=options, use_subprocess=True)
 
-params = {
-    "behavior": "allow",
-    "downloadPath": download_path
-}
-driver.execute_cdp_cmd("Page.setDownloadBehavior", params)
-print(download_path)
 stores = [
 #     'DOWNTOWN',
 #     'EASTHILL',
