@@ -2,7 +2,11 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains 
 import time
-import keyboard
+from pynput.keyboard import Key, Controller
+from os import rename
+from os.path import join
+
+SAVE_FILE_PATH = '/home/anigold/Downloads/'
 
 '''
 Craftable Bot utlizes Selenium to interact with the Craftable website. 
@@ -10,9 +14,10 @@ Craftable Bot utlizes Selenium to interact with the Craftable website.
 class CraftableBot:
 
     def __init__(self, driver, username, password):
-        self.driver    = driver
-        self.username  = username
-        self.password  = password
+        self.driver        = driver
+        self.username      = username
+        self.password      = password
+       # self.order_manager = order_manager
 
         self.is_logged_in = False
         self.stores = {
@@ -120,31 +125,33 @@ class CraftableBot:
             row = table_rows[pos]
             row_data = row.find_elements(By.XPATH, './td')
             row_date = row_data[2]
+            row_date_text = row_data[2].text
             row_vendor_name = row_data[3].text
          
-            if date == row_date.text and pos not in completed_orders:
+            if date == row_date_text and pos not in completed_orders:
                 
                 row_date.click()
                 time.sleep(4)
 
                 download_button = self.driver.find_element(By.CLASS_NAME, 'fa-download')
                 ActionChains(self.driver).key_down(Keys.CONTROL).click(download_button).perform()
-                time.sleep(5)
+                time.sleep(10)
 
-                open_tabs = self.driver.window_handles
-                self.driver.switch_to.window(open_tabs[1])
+                # open_tabs = self.driver.window_handles
+                # time.sleep(2)
+
+                # self._run_save_protocol()
+                # time.sleep(1)
+
+                self._rename_new_order_file(SAVE_FILE_PATH, f'{row_vendor_name} - {store} {row_date_text.replace("/", "")}.pdf')
+                
+                # keyboard.type(f'{row_vendor_name} - {store} {row_date_text.replace("/", "")}.pdf')
+                # time.sleep(2)
+
+
                 time.sleep(2)
 
-                keyboard.press_and_release('ctrl+s')
-                time.sleep(3)
-                keyboard.write(f'{row_vendor_name} - {store} {date.replace("/", "")}.pdf')
-                time.sleep(2)
-                keyboard.press('enter')
-                time.sleep(2)
-                keyboard.press_and_release('ctrl+w')
-                time.sleep(2)
-
-                self.driver.switch_to.window(open_tabs[0])
+                #self.driver.switch_to.window(open_tabs[0])
                 self.driver.back()
                 time.sleep(3)
 
@@ -158,7 +165,8 @@ class CraftableBot:
         None
     '''
     def get_all_orders(self, store: str) -> None:
-                 # Go to the orders page
+
+        # Go to the orders page
         self.driver.get(f'https://app.craftable.com/buyer/2/{self.stores[store]}/orders/list')
         time.sleep(6)
 
@@ -174,10 +182,13 @@ class CraftableBot:
             row = table_rows[pos]
             row_data = row.find_elements(By.XPATH, './td')
             row_date = row_data[2]
+            row_date_text = row_data[2].text
             row_vendor_name = row_data[3].text
          
             if pos not in completed_orders:
                 
+                keyboard = Controller()
+
                 row_date.click()
                 time.sleep(4)
 
@@ -189,15 +200,38 @@ class CraftableBot:
                 self.driver.switch_to.window(open_tabs[1])
                 time.sleep(2)
 
-                keyboard.press_and_release('ctrl+s')
                 time.sleep(3)
-                keyboard.write(f'{row_vendor_name} - {store} {date.replace("/", "")}.pdf')
+                keyboard.type(f'{row_vendor_name} - {store} {row_date_text.replace("/", "")}.pdf')
                 time.sleep(2)
-                keyboard.press('enter')
+                keyboard.press(Key.enter)
+                keyboard.release(Key.enter)
                 time.sleep(2)
-                keyboard.press_and_release('ctrl+w')
+                keyboard.press(Key.ctrl)
+                keyboard.press('w')
+                keyboard.release(Key.ctrl)
+                keyboard.release('w')
+
                 time.sleep(2)
 
                 self.driver.switch_to.window(open_tabs[0])
                 self.driver.back()
                 time.sleep(3)
+
+    def _rename_new_order_file(self, path:str, file_name:str) -> None:
+        rename('/home/anigold/Downloads/Order.pdf', f'/home/anigold/Downloads/{file_name}')
+        return
+    
+    def _run_save_protocol() -> None:
+        keyboard = Controller()
+
+        keyboard.press(Key.ctrl)
+        keyboard.press('s')
+        keyboard.release(Key.ctrl)
+        keyboard.release('s')
+
+        time.sleep(2)
+              
+        keyboard.press(Key.enter)
+        keyboard.release(Key.enter)
+
+        return

@@ -1,10 +1,22 @@
-from main.craftable_bot.CraftableBot import CraftableBot
+from craftable_bot.CraftableBot import CraftableBot
 import undetected_chromedriver as uc
 import time
 from dotenv import load_dotenv
 from os import getenv
+from selenium import webdriver
 
-driver = uc.Chrome(use_subprocess=True)
+download_folder_path = '~/Downloads/'
+options = uc.ChromeOptions()
+preferences = {
+    "plugins.plugins_list": [{"enabled": False, "name": "Chrome PDF Viewer"}],
+    "download.default_directory": f'{download_folder_path}',
+    "download.prompt_for_download": False,
+    "download.directory_upgrade": True,
+    "safebrowsing.enabled": True,
+    "plugins.always_open_pdf_externally": True
+}
+options.add_experimental_option("prefs", preferences)
+driver = uc.Chrome(options=options, use_subprocess=False)
 
 dotenv = load_dotenv()
 
