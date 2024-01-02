@@ -6,7 +6,7 @@ from pynput.keyboard import Key, Controller
 from os import rename
 from os.path import join
 
-SAVE_FILE_PATH = '/home/anigold/Downloads/'
+SAVE_FILE_PATH = 'C:/Users/Will/Desktop/Andrew/Projects/RandomStuff/Ordering/main/orders/OrderFiles/'
 
 '''
 Craftable Bot utlizes Selenium to interact with the Craftable website. 
@@ -218,7 +218,8 @@ class CraftableBot:
                 time.sleep(3)
 
     def _rename_new_order_file(self, path:str, file_name:str) -> None:
-        rename('/home/anigold/Downloads/Order.pdf', f'/home/anigold/Downloads/{file_name}')
+     
+        rename(f'{SAVE_FILE_PATH}Order.pdf', f'{SAVE_FILE_PATH}{file_name}')
         return
     
     def _run_save_protocol() -> None:
