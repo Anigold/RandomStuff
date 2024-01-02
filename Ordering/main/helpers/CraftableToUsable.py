@@ -21,7 +21,7 @@ from io import StringIO
 from pdfminer.high_level import extract_text_to_fp
 from pdfminer.layout import LAParams
 
-base_path = 'C:/Users/Will/Desktop/Andrew/Projects/Ordering/'
+base_path = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\Ordering\\main\\orders\\OrderFiles\\'
 
 '''
 Parses HTML for table with supplied column data.
@@ -103,8 +103,8 @@ def get_files(path: str) -> list:
 
 if __name__ == '__main__':
 
-	order_sheets_path = join(base_path, 'OrderSheets')
-	order_sheets 	  = get_files(order_sheets_path)
+	order_sheets_path = join(base_path, 'Hill & Markes\\')
+	order_sheets 	  = get_files(f'{order_sheets_path}')
 	
 	for order_sheet in order_sheets:
 
@@ -114,11 +114,11 @@ if __name__ == '__main__':
 		convert_to_html(join(order_sheets_path, order_sheet), output)
 
 		# Convert PDF text to HTML page
-		with open(f'temp{order_sheet.split(".")[0]}.html', 'w') as html_file:
+		with open(f'{order_sheets_path}temp{order_sheet.split(".")[0]}.html', 'w') as html_file:
 			html_file.write(output.getvalue())
 
 		# Parse HTML page
-		with open(f'temp{order_sheet.split(".")[0]}.html') as fp:
+		with open(f'{order_sheets_path}temp{order_sheet.split(".")[0]}.html') as fp:
 			column_info = extract_table_column_data(fp, {'item_skus': {'styles': 'left:52px'}, 'item_quantities': {'styles': 'left:352px'}})
 			
 		items = retrieve_item_ordering_information(column_info)
@@ -134,4 +134,4 @@ if __name__ == '__main__':
 
 		workbook.save(filename=f'{order_sheet.split(".")[0]}_order_list.xlsx')
 
-		remove(join(base_path, f'temp{order_sheet.split(".")[0]}.html'))
+		remove(join(base_path, 'Hill & Markes', f'temp{order_sheet.split(".")[0]}.html'))

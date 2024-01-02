@@ -187,33 +187,28 @@ class CraftableBot:
          
             if pos not in completed_orders:
                 
-                keyboard = Controller()
-
                 row_date.click()
                 time.sleep(4)
 
                 download_button = self.driver.find_element(By.CLASS_NAME, 'fa-download')
                 ActionChains(self.driver).key_down(Keys.CONTROL).click(download_button).perform()
-                time.sleep(5)
+                time.sleep(10)
 
-                open_tabs = self.driver.window_handles
-                self.driver.switch_to.window(open_tabs[1])
-                time.sleep(2)
+                # open_tabs = self.driver.window_handles
+                # time.sleep(2)
 
-                time.sleep(3)
-                keyboard.type(f'{row_vendor_name} - {store} {row_date_text.replace("/", "")}.pdf')
-                time.sleep(2)
-                keyboard.press(Key.enter)
-                keyboard.release(Key.enter)
-                time.sleep(2)
-                keyboard.press(Key.ctrl)
-                keyboard.press('w')
-                keyboard.release(Key.ctrl)
-                keyboard.release('w')
+                # self._run_save_protocol()
+                # time.sleep(1)
+
+                self._rename_new_order_file(SAVE_FILE_PATH, f'{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.pdf')
+                
+                # keyboard.type(f'{row_vendor_name} - {store} {row_date_text.replace("/", "")}.pdf')
+                # time.sleep(2)
+
 
                 time.sleep(2)
 
-                self.driver.switch_to.window(open_tabs[0])
+                #self.driver.switch_to.window(open_tabs[0])
                 self.driver.back()
                 time.sleep(3)
 
