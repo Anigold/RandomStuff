@@ -101,28 +101,26 @@ Returns:
 def get_files(path: str) -> list:
 	return [file for file in listdir(path) if isfile(join(path, file))]
 
-if __name__ == '__main__':
-
-	order_sheets_path = join(base_path, 'Hill & Markes\\')
-	order_sheets 	  = get_files(f'{order_sheets_path}')
+def craftable_pdf_to_excel(path: str):
+	order_sheets 	  = get_files(f'{path}')
 	
 	for order_sheet in order_sheets:
 
 		output = StringIO()
 		
 		# Extract PDF text to string builder
-		convert_to_html(join(order_sheets_path, order_sheet), output)
+		convert_to_html(join(path, order_sheet), output)
 
 		# Convert PDF text to HTML page
-		with open(f'{order_sheets_path}temp{order_sheet.split(".")[0]}.html', 'w') as html_file:
+		with open(f'{path}temp{order_sheet.split(".")[0]}.html', 'w') as html_file:
 			html_file.write(output.getvalue())
 
 		# Parse HTML page
-		with open(f'{order_sheets_path}temp{order_sheet.split(".")[0]}.html') as fp:
+		with open(f'{path}temp{order_sheet.split(".")[0]}.html') as fp:
 			column_info = extract_table_column_data(fp, {'item_skus': {'styles': 'left:52px'}, 'item_quantities': {'styles': 'left:352px'}})
 			
 		items = retrieve_item_ordering_information(column_info)
-		pprint.pprint(items)
+
 		workbook = Workbook()
 		sheet = workbook.active
 
@@ -132,6 +130,6 @@ if __name__ == '__main__':
 			sheet.cell(row=pos+1, column=1).value = sku
 			sheet.cell(row=pos+1, column=2).value = quantity
 
-		workbook.save(filename=f'{order_sheet.split(".")[0]}_order_list.xlsx')
+		workbook.save(filename=f'{path}{order_sheet.split(".")[0]}_order_list.xlsx')
 
-		remove(join(base_path, 'Hill & Markes', f'temp{order_sheet.split(".")[0]}.html'))
+		remove(join(path, 'Hill & Markes', f'temp{order_sheet.split(".")[0]}.html'))

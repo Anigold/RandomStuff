@@ -6,6 +6,7 @@ from os import getenv
 from selenium import webdriver
 from os import listdir, remove, mkdir, rename
 from os.path import isfile, join, isdir
+from helpers import CraftableToUsable
 
 dotenv = load_dotenv()
 
@@ -36,26 +37,30 @@ stores = [
 def get_files(path: str) -> list:
 	return [file for file in listdir(path) if isfile(join(path, file))]
 
-if __name__ == '__main__':
-    craft_bot = CraftableBot(driver, username, password)
-
-    craft_bot.login()
-
-    for store in stores:
-        craft_bot.get_all_orders(store)
-
+def sort_orders(path: str) -> None:
     # Sort and group orders
-    files = get_files(download_path)
+    files = get_files(path)
     for file in files:
         
         vendor_name = file.split('_')[0].strip()
-        print(vendor_name)
 
-        if not isdir(f'{download_path}{vendor_name}'):
-            mkdir(f'{download_path}{vendor_name}')
+        if not isdir(f'{path}{vendor_name}'):
+            mkdir(f'{path}{vendor_name}')
         
-        rename(f'{download_path}{file}', f'{download_path}{vendor_name}\\{file}')
+        rename(f'{path}{file}', f'{path}{vendor_name}\\{file}')
+    return
 
+if __name__ == '__main__':
+    # craft_bot = CraftableBot(driver, username, password)
+
+    # craft_bot.login()
+
+    # for store in stores:
+    #     craft_bot.get_all_orders(store)
+
+    # sort_orders(download_path)
+
+    CraftableToUsable.craftable_pdf_to_excel(f'{download_path}')
 
     time.sleep(20)
-    craft_bot.close_session()
+    #craft_bot.close_session()
