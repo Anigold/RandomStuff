@@ -21,7 +21,6 @@ from io import StringIO
 from pdfminer.high_level import extract_text_to_fp
 from pdfminer.layout import LAParams
 
-base_path = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\Ordering\\main\\orders\\OrderFiles\\'
 
 '''
 Parses HTML for table with supplied column data.
@@ -132,4 +131,4 @@ def craftable_pdf_to_excel(path: str):
 
 		workbook.save(filename=f'{path}{order_sheet.split(".")[0]}_order_list.xlsx')
 
-		remove(join(path, 'Hill & Markes', f'temp{order_sheet.split(".")[0]}.html'))
+		remove(join(path, f'temp{order_sheet.split(".")[0]}.html'))

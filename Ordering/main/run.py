@@ -7,6 +7,7 @@ from selenium import webdriver
 from os import listdir, remove, mkdir, rename
 from os.path import isfile, join, isdir
 from helpers import CraftableToUsable
+from vendor_bots.HillNMarkes import HillNMarkes
 
 dotenv = load_dotenv()
 
@@ -60,7 +61,11 @@ if __name__ == '__main__':
 
     # sort_orders(download_path)
 
-    CraftableToUsable.craftable_pdf_to_excel(f'{download_path}')
+    CraftableToUsable.craftable_pdf_to_excel(f'{download_path}UNFI\\')
 
-    time.sleep(20)
+    # HillNMarkes_bot = HillNMarkes(driver, getenv('HILLNMARKES_USERNAME'), getenv('HILLNMARKES_PASSWORD'))
+    # HillNMarkes_bot.login()
+    # HillNMarkes_bot.switch_store('DOWNTOWN')
+    # HillNMarkes_bot.upload_quick_cart_file(f'{download_path}Hill & Markes\\Hill & Markes _ DOWNTOWN 12302023.xlsx')
+    # time.sleep(20)
     #craft_bot.close_session()
