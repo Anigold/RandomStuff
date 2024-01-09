@@ -8,6 +8,7 @@ from os import listdir, remove, mkdir, rename
 from os.path import isfile, join, isdir
 from helpers import CraftableToUsable
 from vendor_bots.HillNMarkes import HillNMarkes
+from orders import OrderManager
 
 dotenv = load_dotenv()
 
@@ -28,11 +29,11 @@ options.add_experimental_option("prefs", preferences)
 driver = uc.Chrome(options=options, use_subprocess=True)
 
 stores = [
-    'DOWNTOWN',
-    'EASTHILL',
+     'DOWNTOWN',
+     'EASTHILL',
     #'TRIPHAMMER',
     #'BAKERY',
-    'COLLEGETOWN'
+     'COLLEGETOWN'
 ]
 
 def get_files(path: str) -> list:
@@ -52,7 +53,8 @@ def sort_orders(path: str) -> None:
     return
 
 if __name__ == '__main__':
-    # craft_bot = CraftableBot(driver, username, password)
+    order_manager = OrderManager('Easthill', 'HillNMarkes')
+    # craft_bot = CraftableBot(driver, username, password, order_manager)
 
     # craft_bot.login()
 
@@ -61,11 +63,11 @@ if __name__ == '__main__':
 
     # sort_orders(download_path)
 
-    CraftableToUsable.craftable_pdf_to_excel(f'{download_path}UNFI\\')
+    #CraftableToUsable.craftable_pdf_to_excel(f'{download_path}Performance Food\\')
 
-    # HillNMarkes_bot = HillNMarkes(driver, getenv('HILLNMARKES_USERNAME'), getenv('HILLNMARKES_PASSWORD'))
-    # HillNMarkes_bot.login()
-    # HillNMarkes_bot.switch_store('DOWNTOWN')
-    # HillNMarkes_bot.upload_quick_cart_file(f'{download_path}Hill & Markes\\Hill & Markes _ DOWNTOWN 12302023.xlsx')
-    # time.sleep(20)
+    HillNMarkes_bot = HillNMarkes(driver, getenv('HILLNMARKES_USERNAME'), getenv('HILLNMARKES_PASSWORD'))
+    HillNMarkes_bot.login()
+    HillNMarkes_bot.switch_store('DOWNTOWN')
+    HillNMarkes_bot.upload_quick_cart_file(f'{download_path}Hill & Markes\\Hill & Markes _ DOWNTOWN 01062024_order_list.xlsx')
+    time.sleep(20)
     #craft_bot.close_session()

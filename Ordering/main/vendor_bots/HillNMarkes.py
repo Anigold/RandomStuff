@@ -1,13 +1,15 @@
 from .VendorBot import VendorBot
 from selenium.webdriver.common.by import By
 import time
+from pprint import pprint
 
 class HillNMarkes(VendorBot):
 
-    def __init__(self, driver, username, password):
+    def __init__(self, driver, username, password, order_manager):
         self.driver    = driver
         self.username  = username
         self.password  = password
+        self.order_manager = order_manager
         self.store_ids = {
             'BAKERY': 0,
             'COLLEGETOWN': 1,
@@ -81,10 +83,12 @@ class HillNMarkes(VendorBot):
         file_upload_form  = self.driver.find_element(By.ID, 'uploadForm')
         file_upload_input = self.driver.find_element(By.ID, 'datafile')
         file_upload_input.send_keys(file_to_upload)
-
-        file_submit = file_upload_form.find_element(By.XPATH, './input[@value="Upload"]')
-        file_submit.click()
         time.sleep(5)
+        file_submit = file_upload_form.find_element(By.XPATH, './input[@value="Upload"]')
+        attrs = self.driver.execute_script('var items = {}; for (index = 0; index < arguments[0].attributes.length; ++index) { items[arguments[0].attributes[index].name] = arguments[0].attributes[index].value }; return items;', file_submit)
+        pprint(attrs)
+        file_submit.click()
+        time.sleep(30)
         return
 
     def switch_store(self, store: str) -> None:
