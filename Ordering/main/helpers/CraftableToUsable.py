@@ -20,7 +20,7 @@ from openpyxl import load_workbook, Workbook
 from io import StringIO
 from pdfminer.high_level import extract_text_to_fp
 from pdfminer.layout import LAParams
-
+from vendor_bots.VendorBot import VendorBot
 
 '''
 Parses HTML for table with supplied column data.
@@ -100,8 +100,8 @@ Returns:
 def get_files(path: str) -> list:
 	return [file for file in listdir(path) if isfile(join(path, file))]
 
-def craftable_pdf_to_excel(path: str):
-	order_sheets 	  = get_files(f'{path}')
+def craftable_pdf_to_excel(path: str, vendor: VendorBot):
+	order_sheets = get_files(f'{path}')
 	
 	for order_sheet in order_sheets:
 
@@ -120,15 +120,8 @@ def craftable_pdf_to_excel(path: str):
 			
 		items = retrieve_item_ordering_information(column_info)
 
-		workbook = Workbook()
-		sheet = workbook.active
-
-		for pos, sku in enumerate(items):
-			quantity = items[sku]
-
-			sheet.cell(row=pos+1, column=1).value = sku
-			sheet.cell(row=pos+1, column=2).value = quantity
-
-		workbook.save(filename=f'{path}{order_sheet.split(".")[0]}_order_list.xlsx')
+		workbook = vendor.format_for_file_upload(items, f'{path}{order_sheet.split(".")[0]}')
+		
+		
 
 		remove(join(path, f'temp{order_sheet.split(".")[0]}.html'))

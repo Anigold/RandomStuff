@@ -21,10 +21,10 @@ class CraftableBot:
 
         self.is_logged_in = False
         self.stores = {
-            'BAKERY': '14376',
-            'DOWNTOWN': '14373',
-            'EASTHILL': '14374',
-            'TRIPHAMMER': '14375',
+            'BAKERY':      '14376',
+            'DOWNTOWN':    '14373',
+            'EASTHILL':    '14374',
+            'TRIPHAMMER':  '14375',
             'COLLEGETOWN': '14372',
         }
 
@@ -192,23 +192,18 @@ class CraftableBot:
 
                 download_button = self.driver.find_element(By.CLASS_NAME, 'fa-download')
                 ActionChains(self.driver).key_down(Keys.CONTROL).click(download_button).perform()
-                time.sleep(10)
+                time.sleep(7)
 
-                # open_tabs = self.driver.window_handles
-                # time.sleep(2)
-
-                # self._run_save_protocol()
-                # time.sleep(1)
+      
 
                 self._rename_new_order_file(SAVE_FILE_PATH, f'{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.pdf')
                 
-                # keyboard.type(f'{row_vendor_name} - {store} {row_date_text.replace("/", "")}.pdf')
-                # time.sleep(2)
+
 
 
                 time.sleep(2)
 
-                #self.driver.switch_to.window(open_tabs[0])
+
                 self.driver.back()
                 time.sleep(3)
 

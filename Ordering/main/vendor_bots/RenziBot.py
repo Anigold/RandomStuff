@@ -1,12 +1,15 @@
-import main.vendor_bots.VendorBot as VendorBot
+from .VendorBot import VendorBot
 import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from selenium import webdriver
+from openpyxl import Workbook
 
 class RenziBot(VendorBot):
 
     def __init__(self, driver: webdriver, username, password) -> None:
+        super().__init__()
+        self.name = "Renzi"
         self.driver = driver
         self.username = username
         self.password = password
@@ -47,5 +50,21 @@ class RenziBot(VendorBot):
         store_option.select_by_value(store_id)
 
         time.sleep(3)
+
+        return
+
+    def format_for_file_upload(self, item_data: dict, path_to_save: str) -> None:
+        # CSV-style Excel file with "Item Code, Quantity, and Broken Case"
+        workbook = Workbook()
+        sheet = workbook.active
+
+        for pos, sku in enumerate(item_data):
+            quantity = item_data[sku]
+
+            sheet.cell(row=pos+1, column=1).value = int(sku)
+            sheet.cell(row=pos+1, column=2).value = int(quantity)
+            sheet.cell(row=pos+1, column=3).value = int(1)
+        
+        workbook.save(filename=f'{path_to_save}.xlsx')
 
         return

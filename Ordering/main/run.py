@@ -7,7 +7,8 @@ from selenium import webdriver
 from os import listdir, remove, mkdir, rename
 from os.path import isfile, join, isdir
 from helpers import CraftableToUsable
-from vendor_bots.HillNMarkes import HillNMarkes
+from vendor_bots.HillNMarkesBot import HillNMarkesBot
+from vendor_bots.RenziBot import RenziBot
 from orders import OrderManager
 
 dotenv = load_dotenv()
@@ -31,7 +32,7 @@ driver = uc.Chrome(options=options, use_subprocess=True)
 stores = [
      'DOWNTOWN',
      'EASTHILL',
-    #'TRIPHAMMER',
+     'TRIPHAMMER',
     #'BAKERY',
      'COLLEGETOWN'
 ]
@@ -53,8 +54,16 @@ def sort_orders(path: str) -> None:
     return
 
 if __name__ == '__main__':
-    order_manager = OrderManager('Easthill', 'HillNMarkes')
-    # craft_bot = CraftableBot(driver, username, password, order_manager)
+    #order_manager = OrderManager('Easthill', 'HillNMarkes')
+    HnM_Bot   = HillNMarkesBot(driver, getenv('HILLNMARKES_USERNAME'), getenv('HILLNMARKES_PASSWORD'))
+    renzi_bot = RenziBot(driver, getenv('RENZI_USERNAME'), getenv('RENZI_PASSWORD'))
+
+    vendor_bots = [
+         HnM_Bot,
+         renzi_bot,
+    ]
+
+    # craft_bot = CraftableBot(driver, username, password)
 
     # craft_bot.login()
 
@@ -62,12 +71,12 @@ if __name__ == '__main__':
     #     craft_bot.get_all_orders(store)
 
     # sort_orders(download_path)
+    # for vendor_bot in vendor_bots:
+    #     CraftableToUsable.craftable_pdf_to_excel(f'{download_path}{vendor_bot.name}\\', vendor_bot)    
 
-    #CraftableToUsable.craftable_pdf_to_excel(f'{download_path}Performance Food\\')
 
-    HillNMarkes_bot = HillNMarkes(driver, getenv('HILLNMARKES_USERNAME'), getenv('HILLNMARKES_PASSWORD'))
-    HillNMarkes_bot.login()
-    HillNMarkes_bot.switch_store('DOWNTOWN')
-    HillNMarkes_bot.upload_quick_cart_file(f'{download_path}Hill & Markes\\Hill & Markes _ DOWNTOWN 01062024_order_list.xlsx')
-    time.sleep(20)
+    HnM_Bot.login()
+    HnM_Bot.switch_store('DOWNTOWN')
+    HnM_Bot.upload_quick_cart_file(f'{download_path}{HnM_Bot.name}\\Hill & Markes _ DOWNTOWN 01062024.xlsx')
+    time.sleep(5)
     #craft_bot.close_session()
