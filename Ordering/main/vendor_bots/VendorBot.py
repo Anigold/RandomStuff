@@ -9,3 +9,7 @@ class VendorBot(ABC):
     @abstractmethod
     def format_for_file_upload(self, item_data: dict, path_to_save: str):
         pass
+
+    @abstractmethod
+    def end_session(self) -> None:
+        pass

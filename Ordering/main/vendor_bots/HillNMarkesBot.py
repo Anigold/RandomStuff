@@ -141,3 +141,6 @@ class HillNMarkesBot(VendorBot):
         workbook.save(filename=f'{path_to_save}.xlsx')
 
         return
+
+    def retrieve_pricing_sheet(self) -> None:
+        pass

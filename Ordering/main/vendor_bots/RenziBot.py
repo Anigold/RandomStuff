@@ -4,6 +4,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from selenium import webdriver
 from openpyxl import Workbook
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 class RenziBot(VendorBot):
 
@@ -34,10 +36,36 @@ class RenziBot(VendorBot):
 
         submit_button = self.driver.find_element(By.NAME, 'SubmitBtn')
         submit_button.click()
+
+        try:
+            WebDriverWait(self.driver, 10).until(EC.alert_is_present())
+            self.driver.switch_to.alert.accept()
+        except:
+            pass
+
         time.sleep(5)
 
         return
 
+    def logout(self) -> None:
+        logout_button = self.driver.find_element(By.XPATH, '//span[@title="Sign Off"]')
+        logout_button.click()
+        time.sleep(2)
+
+        try:
+            WebDriverWait(self.driver, 10).until(EC.alert_is_present())
+            self.driver.switch_to.alert.accept()
+        except:
+            pass
+
+        try:
+            WebDriverWait(self.driver, 10).until(EC.alert_is_present())
+            self.driver.switch_to.alert.accept()
+        except:
+            pass
+        
+        return
+    
     def switch_store(self, store_id: str) -> None:
 
         store_dropdown = self.driver.find_element(By.NAME, 'selectedCustomer')
@@ -67,4 +95,48 @@ class RenziBot(VendorBot):
         
         workbook.save(filename=f'{path_to_save}.xlsx')
 
+        return
+    
+    def retrieve_pricing_sheet(self, guide_name: str) -> None:
+        self.login()
+
+        create_order_button = self.driver.find_element(By.ID, 'mainmenu-order')
+        create_order_button.click()
+        time.sleep(10)
+
+        WebDriverWait(self.driver, 10).until(EC.frame_to_be_available_and_switch_to_it(self.driver.find_element(By.XPATH, '//iframe[@class="bigrounded"]')))
+        WebDriverWait(self.driver, 10).until(EC.frame_to_be_available_and_switch_to_it(self.driver.find_element(By.XPATH, '//iframe[@id="Custom-iFrame0"]')))
+        custom_guide_select = Select(self.driver.find_element(By.NAME, 'previousOrders'))
+        custom_guide_select.select_by_visible_text(guide_name)
+        time.sleep(5)
+
+        submit_button = self.driver.find_element(By.ID, 'startOrderButton')
+        submit_button.click()
+        self.driver.switch_to.default_content()
+        
+        
+        WebDriverWait(self.driver, 10).until(EC.frame_to_be_available_and_switch_to_it(self.driver.find_element(By.XPATH, '//iframe[@id="ContentFrame"]')))
+        time.sleep(10)
+        advanced_dropdown = self.driver.find_element(By.ID, 'pagemenuli-adv')
+        advanced_dropdown.click()
+        time.sleep(5)
+
+        export_dropdown = self.driver.find_element(By.ID, 'pagemenuli-exp')
+        export_dropdown.click()
+        time.sleep(5)
+
+        standard_dropdown = self.driver.find_element(By.ID, 'pagemenuli-standExp')
+        standard_dropdown.click()
+        time.sleep(5)
+
+        excel_button = self.driver.find_element(By.ID, 'pagemenu-exp2')
+        excel_button.click()
+        time.sleep(5)
+
+        self.logout()
+
+        return
+
+    def end_session(self) -> None:
+        self.driver.close()
         return

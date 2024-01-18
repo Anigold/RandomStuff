@@ -5,7 +5,7 @@ STORE_VENDOR_MAPPINGS = './OrderManagerMappings.json'
 class OrderManager:
 
     def __init__(self, store: str, vendor: str):
-        self.store = store
+        self.store  = store
         self.vendor = vendor
 
     '''
