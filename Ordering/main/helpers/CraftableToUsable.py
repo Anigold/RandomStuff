@@ -33,16 +33,16 @@ Returns:
 	output_data: dictionary mapping column names to row data
 '''
 def extract_table_column_data(html: str, column_data: dict) -> dict:
-
+	
 	output_data = {}
 	soup 		= BeautifulSoup(html, 'html.parser')
 
 	for key in column_data:
-
+		
 		column_info = [div.extract() for div in soup.select(f'[style*="{column_data[key]["styles"]}"]')]
-
+		
 		if key not in output_data: output_data[key] = column_info
-
+	
 	return output_data
 
 '''
@@ -86,6 +86,7 @@ def retrieve_item_ordering_information(column_info: dict) -> dict:
 	for quantity in column_info['item_quantities']:
 		if quantity.text.strip().isnumeric(): quantities.append(quantity.text.strip())
 
+
 	return {skus[i]: quantities[i] for i in range(len(skus))}
 
 '''
@@ -116,12 +117,27 @@ def craftable_pdf_to_excel(path: str, vendor: VendorBot):
 
 		# Parse HTML page
 		with open(f'{path}temp{order_sheet.split(".")[0]}.html') as fp:
-			column_info = extract_table_column_data(fp, {'item_skus': {'styles': 'left:52px'}, 'item_quantities': {'styles': 'left:352px'}})
-			
-		items = retrieve_item_ordering_information(column_info)
+			column_info_single_digit = extract_table_column_data(fp, {'item_skus': {'styles': 'left:52px'}, 'item_quantities': {'styles': 'left:352px'}})
+			#column_info_double_digit = extract_table_column_data(fp, {'item_skus': {'styles': 'left:52px'}, 'item_quantities': {'styles': 'left:346px'}})
+			#column_info = {**column_info_single_digit, **column_info_double_digit}
+			#pprint.pprint(column_info_double_digit)
+		items = retrieve_item_ordering_information(column_info_single_digit)
 
-		workbook = vendor.format_for_file_upload(items, f'{path}{order_sheet.split(".")[0]}')
-		
-		
+		if not vendor:
+			# CSV-style Excel file with "Item Code, Quantity, and Broken Case"
+			workbook = Workbook()
+			sheet = workbook.active
+			sheet.cell(row=1, column=1).value = 'Item Code'
+			sheet.cell(row=1, column=2).value = 'Quantity'
+			for pos, sku in enumerate(items):
+				quantity = items[sku]
+				sheet.cell(row=pos+2, column=3).value = sku
+				sheet.cell(row=pos+2, column=4).value = int(quantity)
+
+
+			workbook.save(filename=f'{path}{order_sheet.split(".")[0]}.xlsx')
+
+		else:
+			workbook = vendor.format_for_file_upload(items, f'{path}{order_sheet.split(".")[0]}')
 
 		remove(join(path, f'temp{order_sheet.split(".")[0]}.html'))
