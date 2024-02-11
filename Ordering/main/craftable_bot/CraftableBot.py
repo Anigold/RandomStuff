@@ -8,9 +8,11 @@ from os.path import join
 from pprint import pprint
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
+from dotenv import load_dotenv
+from os import getenv
 
 SAVE_FILE_PATH = 'C:/Users/Will/Desktop/Andrew/Projects/RandomStuff/Ordering/main/orders/OrderFiles/'
-DOWNLOAD_PATH = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\Ordering\\main\\downloads\\'
+DOWNLOAD_PATH = getenv('DOWNLOAD_PATH') or 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\Ordering\\main\\downloads\\'
 
 '''
 Craftable Bot utlizes Selenium to interact with the Craftable website. 

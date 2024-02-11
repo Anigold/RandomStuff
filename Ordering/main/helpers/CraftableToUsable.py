@@ -127,13 +127,17 @@ def craftable_pdf_to_excel(path: str, vendor: VendorBot):
 			# CSV-style Excel file with "Item Code, Quantity, and Broken Case"
 			workbook = Workbook()
 			sheet = workbook.active
+
 			sheet.cell(row=1, column=1).value = 'Item Code'
 			sheet.cell(row=1, column=2).value = 'Quantity'
+
 			for pos, sku in enumerate(items):
 				quantity = items[sku]
-				sheet.cell(row=pos+2, column=3).value = sku
-				sheet.cell(row=pos+2, column=4).value = int(quantity)
 
+				
+				sheet.cell(row=pos+2, column=1).value = sku
+				sheet.cell(row=pos+2, column=2).value = int(quantity)
+				
 
 			workbook.save(filename=f'{path}{order_sheet.split(".")[0]}.xlsx')
 
