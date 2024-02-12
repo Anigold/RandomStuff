@@ -84,23 +84,25 @@ def get_bot(name) -> VendorBot:
      
 if __name__ == '__main__':
 
-    options = create_options()
-    driver  = uc.Chrome(options=options, use_subprocess=True)
+    # options = create_options()
+    # driver  = uc.Chrome(options=options, use_subprocess=True)
 
-    craft_bot = CraftableBot(driver, username, password)
+    # craft_bot = CraftableBot(driver, username, password)
 
-    craft_bot.login()
+    # craft_bot.login()
 
-    for store in stores:
-        craft_bot.get_all_orders(store)
+    # for store in stores:
+    #     craft_bot.get_all_orders(store)
 
-    sort_orders('C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\Ordering\\main\\orders\\OrderFiles\\')
+    # sort_orders('C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\Ordering\\main\\orders\\OrderFiles\\')
 
     # for vendor_bot in vendor_bots:
     #     CraftableToUsable.craftable_pdf_to_excel(f'{download_path}{vendor_bot.name}\\', vendor_bot)    
 
     # craft_bot.close_session()
 
-    CraftableToUsable.craftable_pdf_to_excel('C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\Ordering\\main\\orders\\OrderFiles\\UNFI\\', None)
+    sysco_bot = SyscoBot(None, None, None)
+    performancefood_bot = PerformanceFoodBot(None, None, None)
+    CraftableToUsable.craftable_pdf_to_excel('C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\Ordering\\main\\orders\\OrderFiles\\Sysco\\', sysco_bot)
     # copperhorse_bot.combine_orders('C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\Ordering\\main\\orders\\OrderFiles\\Copper Horse Coffee\\')
  
