@@ -176,7 +176,7 @@ class CraftableBot:
 
     I don't want to hardcode every integer pair, so we will scrape the webpage instead.
     '''
-    def get_orders_from_webpage(self, store: str) -> None:
+    def get_all_orders_from_webpage(self, store: str) -> None:
          # Go to the orders page
         self.driver.get(f'https://app.craftable.com/buyer/2/{self.stores[store]}/orders/list')
         time.sleep(6)
@@ -199,12 +199,13 @@ class CraftableBot:
             if pos not in completed_orders:
                 
                 row_date.click()
-                WebDriverWait(self.driver, 25).until(EC.element_to_be_clickable((By.TAG_NAME, 'table')))
+                WebDriverWait(self.driver, 45).until(EC.element_to_be_clickable((By.TAG_NAME, 'table')))
                 order_table = self.driver.find_element(By.TAG_NAME, 'tbody')
                 item_rows = order_table.find_elements(By.TAG_NAME, './tr')
 
                 for item in item_rows:
                     item_info = item.find_elements(By.TAG_NAME, 'td')
+                    print('found')
                     pprint.pprint(item_info)
 
                 time.sleep(7)
@@ -221,6 +222,7 @@ class CraftableBot:
 
                 self.driver.back()
                 time.sleep(3)
+        return
 
     '''
     Go to the store's order page and download all the order invoices.

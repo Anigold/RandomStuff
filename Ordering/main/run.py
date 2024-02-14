@@ -1,19 +1,25 @@
 from craftable_bot.CraftableBot import CraftableBot
 import undetected_chromedriver as uc
+from selenium import webdriver
+
 import time
 from dotenv import load_dotenv
 from os import getenv
-from selenium import webdriver
 from os import listdir, remove, mkdir, rename
 from os.path import isfile, join, isdir
+
 from helpers import CraftableToUsable
+
 from vendor_bots.VendorBot import VendorBot
 from vendor_bots.HillNMarkesBot import HillNMarkesBot
 from vendor_bots.RenziBot import RenziBot
 from vendor_bots.CopperHorseBot import CopperHorseBot
 from vendor_bots.PerformanceFoodBot import PerformanceFoodBot
 from vendor_bots.SyscoBot import SyscoBot
+
 from orders import OrderManager
+
+#from emailer import Emailer
 
 dotenv = load_dotenv()
 
@@ -22,11 +28,11 @@ password      = getenv('CRAFTABLE_PASSWORD')
 download_path = getenv('ORDER_DOWNLOAD_PATH')
 
 stores = [
-    'DOWNTOWN',
-    'EASTHILL',
-    'TRIPHAMMER',
+    # 'DOWNTOWN',
+    # 'EASTHILL',
+    # 'TRIPHAMMER',
     'BAKERY',
-    'COLLEGETOWN'
+    # 'COLLEGETOWN'
 ]
 
 def get_files(path: str) -> list:
@@ -49,12 +55,12 @@ def create_options() -> uc.ChromeOptions:
 
     options = uc.ChromeOptions()
     preferences = {
-        "plugins.plugins_list": [{"enabled": False, "name": "Chrome PDF Viewer"}],
-        "download.default_directory": f'{download_path}',
-        "download.prompt_for_download": False,
-        "safebrowsing.enabled": True,
+        "plugins.plugins_list":               [{"enabled": False, "name": "Chrome PDF Viewer"}],
+        "download.default_directory":         f'{download_path}',
+        "download.prompt_for_download":       False,
+        "safebrowsing.enabled":               True,
         "plugins.always_open_pdf_externally": True,
-        "download.directory_upgrade": True,
+        "download.directory_upgrade":         True,
     }
     options.add_experimental_option("prefs", preferences)
     
@@ -74,7 +80,7 @@ def get_bot(name) -> VendorBot:
         'HillNMarkes': HillNMarkesBot,
         'Sysco': SyscoBot,
         'Performance Food': PerformanceFoodBot,
-        'Copper Horse Coffee': CopperHorseBot
+        'Copper Horse Coffee': CopperHorseBot,
     }
 
     if name not in bots:
@@ -92,17 +98,21 @@ if __name__ == '__main__':
     # craft_bot.login()
 
     # for store in stores:
-    #     craft_bot.get_all_orders(store)
+    #     craft_bot.get_all_orders_from_webpage(store)
 
     # sort_orders('C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\Ordering\\main\\orders\\OrderFiles\\')
 
-    # for vendor_bot in vendor_bots:
-    #     CraftableToUsable.craftable_pdf_to_excel(f'{download_path}{vendor_bot.name}\\', vendor_bot)    
+    # # for vendor_bot in vendor_bots:
+    # #     CraftableToUsable.craftable_pdf_to_excel(f'{download_path}{vendor_bot.name}\\', vendor_bot)    
 
     # craft_bot.close_session()
 
     sysco_bot = SyscoBot(None, None, None)
     performancefood_bot = PerformanceFoodBot(None, None, None)
-    CraftableToUsable.craftable_pdf_to_excel('C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\Ordering\\main\\orders\\OrderFiles\\Sysco\\', sysco_bot)
+    renzi_bot = RenziBot(None, None, None)
+    # hillnmarkes_bot = HillNMarkesBot(None, None, None)
+    CraftableToUsable.craftable_pdf_to_excel('C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\Ordering\\main\\orders\\OrderFiles\\Performance Food\\', performancefood_bot)
     # copperhorse_bot.combine_orders('C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\Ordering\\main\\orders\\OrderFiles\\Copper Horse Coffee\\')
  
+
+    
