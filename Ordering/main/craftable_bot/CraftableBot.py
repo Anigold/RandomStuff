@@ -10,9 +10,12 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from dotenv import load_dotenv
 from os import getenv
+import pprint
+
+from openpyxl import Workbook
 
 SAVE_FILE_PATH = 'C:/Users/Will/Desktop/Andrew/Projects/RandomStuff/Ordering/main/orders/OrderFiles/'
-DOWNLOAD_PATH = getenv('DOWNLOAD_PATH') or 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\Ordering\\main\\downloads\\'
+DOWNLOAD_PATH = getenv('DOWNLOAD_PATH') or 'C:\\Users\\Will\\Downloads\\'
 
 '''
 Craftable Bot utlizes Selenium to interact with the Craftable website. 
@@ -176,8 +179,8 @@ class CraftableBot:
 
     I don't want to hardcode every integer pair, so we will scrape the webpage instead.
     '''
-    def get_all_orders_from_webpage(self, store: str) -> None:
-         # Go to the orders page
+    def get_all_orders_from_webpage(self, store: str, download_pdf=False) -> None:
+        # Go to the orders page
         self.driver.get(f'https://app.craftable.com/buyer/2/{self.stores[store]}/orders/list')
         time.sleep(6)
 
@@ -201,25 +204,46 @@ class CraftableBot:
                 row_date.click()
                 WebDriverWait(self.driver, 45).until(EC.element_to_be_clickable((By.TAG_NAME, 'table')))
                 order_table = self.driver.find_element(By.TAG_NAME, 'tbody')
-                item_rows = order_table.find_elements(By.TAG_NAME, './tr')
+                item_rows = order_table.find_elements(By.TAG_NAME, 'tr')
 
+                items = []
                 for item in item_rows:
                     item_info = item.find_elements(By.TAG_NAME, 'td')
-                    print('found')
-                    pprint.pprint(item_info)
-
-                time.sleep(7)
-
-      
-
-                #self._rename_new_order_file(SAVE_FILE_PATH, f'{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.pdf')
                 
+                    item_sku   = item_info[2].text
+                    item_name  = item_info[3].text
+                    print(item_name)
+                    quantity   = item_info[5].text
+                    cost_per   = item_info[6].text
+                    total_cost = item_info[7].text
 
+                    items.append([item_sku, item_name, quantity, cost_per, total_cost])
+                pprint.pprint(items)
+                workbook = Workbook()
+                sheet = workbook.active
 
+                sheet.cell(row=1, column=1).value = 'SKU'
+                sheet.cell(row=1, column=2).value = 'Item'
+                sheet.cell(row=1, column=3).value = 'Quantity'
+                sheet.cell(row=1, column=4).value = 'Cost Per'
+                sheet.cell(row=1, column=5).value = 'Total Cost'
 
+                for pos, item in enumerate(items):
+                    sheet.cell(row=pos+2, column=1).value = item[0]
+                    sheet.cell(row=pos+2, column=2).value = item[1]
+                    sheet.cell(row=pos+2, column=3).value = item[2]
+                    sheet.cell(row=pos+2, column=4).value = item[3]
+                    sheet.cell(row=pos+2, column=5).value = item[4]
+                
+                workbook.save(f'{SAVE_FILE_PATH}\\{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.xlsx')
                 time.sleep(2)
 
-
+                if download_pdf:
+                    download_button = self.driver.find_element(By.CLASS_NAME, 'fa-download')
+                    ActionChains(self.driver).key_down(Keys.CONTROL).click(download_button).perform()
+                    time.sleep(3)
+                    self._rename_new_order_file(DOWNLOAD_PATH, f'{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.pdf')
+                
                 self.driver.back()
                 time.sleep(3)
         return

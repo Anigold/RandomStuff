@@ -91,7 +91,7 @@ class RenziBot(VendorBot):
 
             sheet.cell(row=pos+1, column=1).value = int(sku)
             sheet.cell(row=pos+1, column=2).value = int(quantity)
-            sheet.cell(row=pos+1, column=3).value = int(1)
+            sheet.cell(row=pos+1, column=3).value = int(0)
         
         workbook.save(filename=f'{path_to_save}.xlsx')
 

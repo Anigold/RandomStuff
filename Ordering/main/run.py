@@ -19,7 +19,9 @@ from vendor_bots.SyscoBot import SyscoBot
 
 from orders import OrderManager
 
-#from emailer import Emailer
+from emailer.Emailer import Emailer
+from emailer.Services.Service import Email
+from emailer.Services.Outlook import Outlook
 
 dotenv = load_dotenv()
 
@@ -27,12 +29,14 @@ username      = getenv('CRAFTABLE_USERNAME')
 password      = getenv('CRAFTABLE_PASSWORD')
 download_path = getenv('ORDER_DOWNLOAD_PATH')
 
+ORDER_FILES_PATH = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\Ordering\\main\\orders\\OrderFiles\\'
+
 stores = [
-    # 'DOWNTOWN',
-    # 'EASTHILL',
+    'DOWNTOWN',
+    'EASTHILL',
     # 'TRIPHAMMER',
     'BAKERY',
-    # 'COLLEGETOWN'
+    'COLLEGETOWN'
 ]
 
 def get_files(path: str) -> list:
@@ -88,31 +92,42 @@ def get_bot(name) -> VendorBot:
     
     return bots[name]
      
+
 if __name__ == '__main__':
 
-    # options = create_options()
-    # driver  = uc.Chrome(options=options, use_subprocess=True)
+    options = create_options()
+    driver  = uc.Chrome(options=options, use_subprocess=True, version_main = 120)
 
-    # craft_bot = CraftableBot(driver, username, password)
+    craft_bot = CraftableBot(driver, username, password)
 
-    # craft_bot.login()
+    craft_bot.login()
 
-    # for store in stores:
-    #     craft_bot.get_all_orders_from_webpage(store)
+    for store in stores:
+        craft_bot.get_all_orders_from_webpage(store, download_pdf=True)
 
-    # sort_orders('C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\Ordering\\main\\orders\\OrderFiles\\')
+    sort_orders('C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\Ordering\\main\\orders\\OrderFiles\\')
 
-    # # for vendor_bot in vendor_bots:
-    # #     CraftableToUsable.craftable_pdf_to_excel(f'{download_path}{vendor_bot.name}\\', vendor_bot)    
+    # for vendor_bot in vendor_bots:
+    #     CraftableToUsable.craftable_pdf_to_excel(f'{download_path}{vendor_bot.name}\\', vendor_bot)    
 
-    # craft_bot.close_session()
+    craft_bot.close_session()
 
-    sysco_bot = SyscoBot(None, None, None)
+    sysco_bot           = get_bot("Sysco")(None, 'ewioughwoe', None)
     performancefood_bot = PerformanceFoodBot(None, None, None)
-    renzi_bot = RenziBot(None, None, None)
+    renzi_bot           = RenziBot(None, None, None)
+
     # hillnmarkes_bot = HillNMarkesBot(None, None, None)
-    CraftableToUsable.craftable_pdf_to_excel('C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\Ordering\\main\\orders\\OrderFiles\\Performance Food\\', performancefood_bot)
+    # CraftableToUsable.craftable_pdf_to_excel('C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\Ordering\\main\\orders\\OrderFiles\\Performance Food\\', performancefood_bot)
     # copperhorse_bot.combine_orders('C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\Ordering\\main\\orders\\OrderFiles\\Copper Horse Coffee\\')
  
-
+    # emailer = Emailer(service=Outlook)
+    # new_email = Email(
+    #     to='goldsmithnandrew@gmail.com', 
+    #     subject='Test Email #6',
+    #     body='auehbgoiugeh.',
+    #     )
+    # emailer.create_email(new_email)
+    # copy_of_email = emailer.get_email(new_email)
+    # emailer.send_email(new_email)
+    
     

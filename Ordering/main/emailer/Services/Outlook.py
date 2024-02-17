@@ -1,16 +1,12 @@
-import Service
+from .Service import Service, Email
 import win32com.client
 from win32com.client import Dispatch
-
-class OutlookEmail(Service.Email):
-
-    def __init__(self, to: str, subject: str, body: str, cc=None, attachments=None):
-        super().__init__(to, subject, body, cc, attachments)
+from dataclasses import dataclass
 
 
 class Outlook(Service):
     
-    def create_email(email: OutlookEmail):
+    def create_email(email: Email):
         obj = win32com.client.Dispatch("Outlook.Application")
         new_email = obj.CreateItem(0x0)
 
@@ -25,8 +21,8 @@ class Outlook(Service):
 
         return new_email
     
-    def send_email(email: OutlookEmail):
+    def send_email(email: Email):
         return email.Send()
     
-    def discard_email(email: OutlookEmail):
+    def discard_email(email: Email):
         return email.Delete()

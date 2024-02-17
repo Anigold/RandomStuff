@@ -1,10 +1,13 @@
+from dataclasses import dataclass
+
+@dataclass(unsafe_hash=True)
 class Email:
-    def __init__(self, to: str, subject: str, body: str, cc=None, attachments=None):
-        self.to          = to
-        self.subject     = subject
-        self.body        = body
-        self.cc          = cc
-        self.attachments = attachments
+    to:          str
+    subject:     str
+    body:        str        
+    cc:          str = None
+    attachments: str = None
+    
 
 class Service:
     
