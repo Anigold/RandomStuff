@@ -1,0 +1,2 @@
+python ./PriceComparison.py
+pause
