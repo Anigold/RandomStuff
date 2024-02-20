@@ -6,7 +6,7 @@ class Email:
     subject:     str
     body:        str        
     cc:          str = None
-    attachments: str = None
+    attachments: str = None # May need to be a list of strings pointing to path of attachments
     
 
 class Service:
@@ -17,3 +17,5 @@ class Service:
     def discard_email():
         pass
 
+    def send_email():
+        pass

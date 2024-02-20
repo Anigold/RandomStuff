@@ -14,7 +14,7 @@ import pprint
 
 from openpyxl import Workbook
 
-SAVE_FILE_PATH = 'C:/Users/Will/Desktop/Andrew/Projects/RandomStuff/Ordering/main/orders/OrderFiles/'
+SAVE_FILE_PATH = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\orders\\OrderFiles\\'
 DOWNLOAD_PATH = getenv('DOWNLOAD_PATH') or 'C:\\Users\\Will\\Downloads\\'
 
 '''
@@ -189,58 +189,29 @@ class CraftableBot:
         table_rows = table_body.find_elements(By.XPATH, './tr')
 
         completed_orders = [] # Store the index of the rows here
-        completed_orders_names = [] # Store the name of the vendor here
         for pos, row in enumerate(table_rows):
-            table_body = self.driver.find_element(By.XPATH, './/tbody')
-            table_rows = table_body.find_elements(By.XPATH, './tr')
-            row = table_rows[pos]
-            row_data = row.find_elements(By.XPATH, './td')
-            row_date = row_data[2]
-            row_date_text = row_data[2].text
+            table_body      = self.driver.find_element(By.XPATH, './/tbody')
+            table_rows      = table_body.find_elements(By.XPATH, './tr')
+            row             = table_rows[pos]
+            row_data        = row.find_elements(By.XPATH, './td')
+            row_date        = row_data[2]
+            row_date_text   = row_data[2].text
             row_vendor_name = row_data[3].text
          
             if pos not in completed_orders:
                 
                 row_date.click()
                 WebDriverWait(self.driver, 45).until(EC.element_to_be_clickable((By.TAG_NAME, 'table')))
-                order_table = self.driver.find_element(By.TAG_NAME, 'tbody')
-                item_rows = order_table.find_elements(By.TAG_NAME, 'tr')
 
-                items = []
-                for item in item_rows:
-                    item_info = item.find_elements(By.TAG_NAME, 'td')
+                items = self._scrape_order()
+
+                self._save_order_as_excel(self, items, f'{SAVE_FILE_PATH}{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.xlsx')
                 
-                    item_sku   = item_info[2].text
-                    item_name  = item_info[3].text
-                    print(item_name)
-                    quantity   = item_info[5].text
-                    cost_per   = item_info[6].text
-                    total_cost = item_info[7].text
-
-                    items.append([item_sku, item_name, quantity, cost_per, total_cost])
-                pprint.pprint(items)
-                workbook = Workbook()
-                sheet = workbook.active
-
-                sheet.cell(row=1, column=1).value = 'SKU'
-                sheet.cell(row=1, column=2).value = 'Item'
-                sheet.cell(row=1, column=3).value = 'Quantity'
-                sheet.cell(row=1, column=4).value = 'Cost Per'
-                sheet.cell(row=1, column=5).value = 'Total Cost'
-
-                for pos, item in enumerate(items):
-                    sheet.cell(row=pos+2, column=1).value = item[0]
-                    sheet.cell(row=pos+2, column=2).value = item[1]
-                    sheet.cell(row=pos+2, column=3).value = item[2]
-                    sheet.cell(row=pos+2, column=4).value = item[3]
-                    sheet.cell(row=pos+2, column=5).value = item[4]
-                
-                workbook.save(f'{SAVE_FILE_PATH}\\{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.xlsx')
                 time.sleep(2)
 
                 if download_pdf:
-                    download_button = self.driver.find_element(By.CLASS_NAME, 'fa-download')
-                    ActionChains(self.driver).key_down(Keys.CONTROL).click(download_button).perform()
+                    
+                    self._download_order_pdf()
                     time.sleep(3)
                     self._rename_new_order_file(DOWNLOAD_PATH, f'{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.pdf')
                 
@@ -300,8 +271,47 @@ class CraftableBot:
                 self.driver.back()
                 time.sleep(3)
 
-    def get_orders_from_vendor(self, store: str) -> None:
-        pass
+    '''
+    '''
+    def get_order_from_vendor(self, store: str, vendor: str, download_pdf=False) -> None:
+     # Go to the orders page
+        self.driver.get(f'https://app.craftable.com/buyer/2/{self.stores[store]}/orders/list')
+        time.sleep(6)
+
+        # Find all the orders with the right date
+        table_body = self.driver.find_element(By.XPATH, './/tbody')
+        table_rows = table_body.find_elements(By.XPATH, './tr')
+
+        completed_orders = [] # Store the index of the rows here
+        for pos, row in enumerate(table_rows):
+            table_body      = self.driver.find_element(By.XPATH, './/tbody')
+            table_rows      = table_body.find_elements(By.XPATH, './tr')
+            row             = table_rows[pos]
+            row_data        = row.find_elements(By.XPATH, './td')
+            row_date        = row_data[2]
+            row_date_text   = row_data[2].text
+            row_vendor_name = row_data[3].text
+         
+            if pos not in completed_orders and row_vendor_name == vendor:
+                
+                row_date.click()
+                WebDriverWait(self.driver, 45).until(EC.element_to_be_clickable((By.TAG_NAME, 'table')))
+
+                items = self._scrape_order()
+
+                self._save_order_as_excel(items, f'{SAVE_FILE_PATH}{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.xlsx')
+                
+                time.sleep(2)
+
+                if download_pdf:
+                    
+                    self._download_order_pdf()
+                    time.sleep(3)
+                    self._rename_new_order_file(DOWNLOAD_PATH, f'{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.pdf')
+                
+                self.driver.back()
+                time.sleep(3)
+        return
     
     def _rename_new_order_file(self, path:str, file_name:str) -> None:
      
@@ -321,4 +331,69 @@ class CraftableBot:
         keyboard.press(Key.enter)
         keyboard.release(Key.enter)
 
+        return
+    
+    '''
+    Assumes the current driver is 'looking at' an order page.
+
+    Scrapes the current page for order data and returns the data 
+    as a 2-D list.
+    '''
+    def _scrape_order(self) -> list:
+        order_table = self.driver.find_element(By.TAG_NAME, 'tbody')
+        item_rows = order_table.find_elements(By.TAG_NAME, 'tr')
+
+        items = []
+        for item in item_rows:
+            item_info = item.find_elements(By.TAG_NAME, 'td')
+        
+            item_sku   = item_info[2].text
+            item_name  = item_info[3].text
+            quantity   = item_info[5].text
+            cost_per   = item_info[6].text
+            total_cost = item_info[7].text
+
+            items.append([
+                item_sku, 
+                item_name, 
+                quantity, 
+                cost_per, 
+                total_cost
+                ])
+            
+        return items
+    
+    '''
+    Assumes the current driver is 'looking at' an order page.
+
+    Clicks the download button on the order page.
+    '''
+    def _download_order_pdf(self) -> None:
+        download_button = self.driver.find_element(By.CLASS_NAME, 'fa-download')
+        ActionChains(self.driver).key_down(Keys.CONTROL).click(download_button).perform()
+        return
+    
+    '''
+    Takes in a 2-D list of item data assuming the following 
+    column formatting:
+
+    SKU | Item Name | Quantity | Cost Per | Total Cost
+
+    Saves to an Excel file with the supplied file name/path.
+    '''
+    def _save_order_as_excel(self, item_data, file_name) -> None:
+        workbook = Workbook()
+        sheet = workbook.active
+        
+        col_headers = ['SKU', 'Item', 'Quantity', 'Cost Per', 'Total Cost']
+        # Insert headers
+        for pos, header in enumerate(col_headers):
+            sheet.cell(row=1, column=pos+1).value = header
+
+        # Insert item data
+        for pos, item in enumerate(item_data):
+            for info_pos, item_info in enumerate(item):
+                sheet.cell(row=pos+2, column=info_pos+1).value = item_info
+        
+        workbook.save(file_name)
         return

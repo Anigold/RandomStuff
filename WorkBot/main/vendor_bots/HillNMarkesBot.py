@@ -19,7 +19,7 @@ class HillNMarkesBot(VendorBot):
             'BAKERY': 0,
             'COLLEGETOWN': 1,
             'TRIPHAMMER': 4,
-            'EASTHILL': 5,
+            'EASTHILL': 6,
             'DOWNTOWN': 9
         }
 
@@ -93,8 +93,9 @@ class HillNMarkesBot(VendorBot):
 
         file_submit.click()
 
-        # We have to wait for items to show beneatch the upload
-        WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.ID, "itemsInCart")))
+        # We have to wait for items to show beneatch the upload.
+        # Sometimes takes up to a minute.
+        WebDriverWait(self.driver, 300).until(EC.element_to_be_clickable((By.ID, "itemsInCart")))
  
         return
 
@@ -105,7 +106,7 @@ class HillNMarkesBot(VendorBot):
         
         my_account_button = self.driver.find_element(By.XPATH, './/a[@data-target="myAccountMenu"]')
         my_account_button.click()
-        time.sleep(1)
+        time.sleep(3)
 
         my_account_menu       = self.driver.find_element(By.CLASS_NAME, 'myAccountMenu')
         account_menu_choices  = my_account_menu.find_elements(By.TAG_NAME, 'li')

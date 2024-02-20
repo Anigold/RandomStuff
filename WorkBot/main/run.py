@@ -31,13 +31,13 @@ username      = getenv('CRAFTABLE_USERNAME')
 password      = getenv('CRAFTABLE_PASSWORD')
 download_path = getenv('ORDER_DOWNLOAD_PATH')
 
-ORDER_FILES_PATH = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\Ordering\\main\\orders\\OrderFiles\\'
+ORDER_FILES_PATH = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\orders\\OrderFiles\\'
 
 stores = [
     # 'DOWNTOWN',
     # 'EASTHILL',
-    'TRIPHAMMER',
-    # 'BAKERY',
+    # 'TRIPHAMMER',
+    'BAKERY',
     # 'COLLEGETOWN'
 ]
 
@@ -74,6 +74,8 @@ def create_options() -> uc.ChromeOptions:
 
 def get_credentials(name) -> dict:
      
+    if ' & ' in name: name.replace(' & ', 'N') # Special Case for Hill & Markes --> HILLNMARKES
+    print(name)
     username = getenv(f'{name.upper()}_USERNAME') or 'No Username Found'
     password = getenv(f'{name.upper()}_PASSWORD') or 'No Password Found'
 
@@ -115,29 +117,30 @@ if __name__ == '__main__':
     # craft_bot.login()
 
     # for store in stores:
-    #     craft_bot.get_all_orders_from_webpage(store, download_pdf=True)
+    #     craft_bot.get_order_from_vendor(store, 'Hill & Markes', download_pdf=True)
 
-    # sort_orders('C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\Ordering\\main\\orders\\OrderFiles\\')
+    # sort_orders('C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\orders\\OrderFiles\\')
 
-    # for vendor_bot in vendor_bots:
-    #     CraftableToUsable.craftable_pdf_to_excel(f'{download_path}{vendor_bot.name}\\', vendor_bot)    
+    # # for vendor_bot in vendor_bots:
+    # #     CraftableToUsable.craftable_pdf_to_excel(f'{download_path}{vendor_bot.name}\\', vendor_bot)    
 
     # craft_bot.close_session()
 
-    sysco_bot           = get_bot("Sysco")(None, 'ewioughwoe', None)
-    performancefood_bot = PerformanceFoodBot(None, None, None)
-
-    renzi_credential    = get_credentials('Renzi')
-    renzi_bot           = get_bot("Renzi")(driver, renzi_credential['username'], renzi_credential['password'])
-    renzi_bot.retrieve_pricing_sheet('IBProduce')
-    # hillnmarkes_bot = HillNMarkesBot(None, None, None)
-    # CraftableToUsable.craftable_pdf_to_excel('C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\Ordering\\main\\orders\\OrderFiles\\Performance Food\\', performancefood_bot)
-    # vendor = 'HillNMarkes'
+   # bot           = get_bot("HillNMarkes")(None, 'ewioughwoe', None)
+    
+    
     # order_manager = OrderManager()
     # format_orders(vendor, ORDER_FILES_PATH)
-    
-    # copperhorse_bot.combine_orders('C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\Ordering\\main\\orders\\OrderFiles\\Copper Horse Coffee\\')
- 
+
+    vendor          = 'HillNMarkes'
+    creds           = get_credentials(vendor)
+    pprint.pprint(creds)
+    hillnmarkes_bot = get_bot(vendor)(driver, creds['username'], creds['password'])
+    hillnmarkes_bot.login()
+    time.sleep(3)
+    #hillnmarkes_bot.switch_store('BAKERY')
+    time.sleep(3)
+    hillnmarkes_bot.upload_quick_cart_file('C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\orders\\OrderFiles\\Hill & Markes\\Formatted _ Hill & Markes _ BAKERY 02162024.xlsx')
     # emailer = Emailer(service=Outlook)
     # new_email = Email(
     #     to='goldsmithnandrew@gmail.com', 
