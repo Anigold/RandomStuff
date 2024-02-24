@@ -1,4 +1,4 @@
-from craftable_bot.CraftableBot import CraftableBot
+from backend.craftable_bot.CraftableBot import CraftableBot
 import undetected_chromedriver as uc
 from selenium import webdriver
 
@@ -9,20 +9,21 @@ from os import getenv
 from os import listdir, remove, mkdir, rename
 from os.path import isfile, join, isdir
 
-from helpers import CraftableToUsable, FormatItemData
+from backend.helpers import  FormatItemData
 
-from vendor_bots.VendorBot import VendorBot
-from vendor_bots.HillNMarkesBot import HillNMarkesBot
-from vendor_bots.RenziBot import RenziBot
-from vendor_bots.CopperHorseBot import CopperHorseBot
-from vendor_bots.PerformanceFoodBot import PerformanceFoodBot
-from vendor_bots.SyscoBot import SyscoBot
+from backend.vendor_bots.VendorBot import VendorBot
+from backend.vendor_bots.HillNMarkesBot import HillNMarkesBot
+from backend.vendor_bots.RenziBot import RenziBot
+from backend.vendor_bots.CopperHorseBot import CopperHorseBot
+from backend.vendor_bots.PerformanceFoodBot import PerformanceFoodBot
+from backend.vendor_bots.SyscoBot import SyscoBot
+from backend.vendor_bots.UNFI import UNFIBot
 
-from orders import OrderManager
+from backend.orders import OrderManager
 
-from emailer.Emailer import Emailer
-from emailer.Services.Service import Email
-from emailer.Services.Outlook import Outlook
+from backend.emailer.Emailer import Emailer
+from backend.emailer.Services.Service import Email
+from backend.emailer.Services.Outlook import Outlook
 
 
 dotenv = load_dotenv()
@@ -31,13 +32,13 @@ username      = getenv('CRAFTABLE_USERNAME')
 password      = getenv('CRAFTABLE_PASSWORD')
 download_path = getenv('ORDER_DOWNLOAD_PATH')
 
-ORDER_FILES_PATH = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\orders\\OrderFiles\\'
+ORDER_FILES_PATH = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\'
 
 stores = [
     # 'DOWNTOWN',
     # 'EASTHILL',
-    # 'TRIPHAMMER',
-    'BAKERY',
+    'TRIPHAMMER',
+    # 'BAKERY',
     # 'COLLEGETOWN'
 ]
 
@@ -92,6 +93,7 @@ def get_bot(name) -> VendorBot:
         'Sysco': SyscoBot,
         'Performance Food': PerformanceFoodBot,
         'Copper Horse Coffee': CopperHorseBot,
+        'UNFI': UNFIBot
     }
 
     if name not in bots:
@@ -103,23 +105,30 @@ def format_orders(vendor: str, path_to_folder: str) -> None:
     vendor_bot = get_bot(vendor)(None, None, None)
     excel_files = get_excel_files(f'{path_to_folder}{vendor_bot.name}\\')
     for file in excel_files:
+        file_name_no_extension = file.split('.')[0]
         item_data = FormatItemData.extract_item_data_from_excel_file(f'{path_to_folder}{vendor_bot.name}\\{file}')
-        vendor_bot.format_for_file_upload(item_data, f'{path_to_folder}{vendor_bot.name}\\Formatted _ {file}')
+        vendor_bot.format_for_file_upload(item_data, f'{path_to_folder}{vendor_bot.name}\\Formatted _ {file_name_no_extension}')
     return
 
 if __name__ == '__main__':
 
-    options = create_options()
-    driver  = uc.Chrome(options=options, use_subprocess=True, version_main = 120)
+    vendors = [
+        'Renzi', 
+        # 'Sysco', 
+        # 'Performance Food'
+    ]
+
+    # options = create_options()
+    # driver  = uc.Chrome(options=options, use_subprocess=True)
 
     # craft_bot = CraftableBot(driver, username, password)
 
     # craft_bot.login()
 
     # for store in stores:
-    #     craft_bot.get_order_from_vendor(store, 'Hill & Markes', download_pdf=True)
-
-    # sort_orders('C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\orders\\OrderFiles\\')
+    #     craft_bot.get_all_orders_from_webpage(store, download_pdf=True)
+       
+    # sort_orders(ORDER_FILES_PATH)
 
     # # for vendor_bot in vendor_bots:
     # #     CraftableToUsable.craftable_pdf_to_excel(f'{download_path}{vendor_bot.name}\\', vendor_bot)    
@@ -130,17 +139,15 @@ if __name__ == '__main__':
     
     
     # order_manager = OrderManager()
-    # format_orders(vendor, ORDER_FILES_PATH)
+    format_orders('UNFI', ORDER_FILES_PATH)
 
-    vendor          = 'HillNMarkes'
-    creds           = get_credentials(vendor)
-    pprint.pprint(creds)
-    hillnmarkes_bot = get_bot(vendor)(driver, creds['username'], creds['password'])
-    hillnmarkes_bot.login()
-    time.sleep(3)
-    #hillnmarkes_bot.switch_store('BAKERY')
-    time.sleep(3)
-    hillnmarkes_bot.upload_quick_cart_file('C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\orders\\OrderFiles\\Hill & Markes\\Formatted _ Hill & Markes _ BAKERY 02162024.xlsx')
+    #format_orders('Renzi', ORDER_FILES_PATH)
+    # for vendor in vendors:
+    #     format_orders(vendor, ORDER_FILES_PATH)
+    
+   
+
+    
     # emailer = Emailer(service=Outlook)
     # new_email = Email(
     #     to='goldsmithnandrew@gmail.com', 
