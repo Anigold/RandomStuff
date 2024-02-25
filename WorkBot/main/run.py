@@ -25,7 +25,6 @@ from backend.emailer.Emailer import Emailer
 from backend.emailer.Services.Service import Email
 from backend.emailer.Services.Outlook import Outlook
 
-
 dotenv = load_dotenv()
 
 username      = getenv('CRAFTABLE_USERNAME')
@@ -33,14 +32,6 @@ password      = getenv('CRAFTABLE_PASSWORD')
 download_path = getenv('ORDER_DOWNLOAD_PATH')
 
 ORDER_FILES_PATH = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\'
-
-stores = [
-    # 'DOWNTOWN',
-    # 'EASTHILL',
-    'TRIPHAMMER',
-    # 'BAKERY',
-    # 'COLLEGETOWN'
-]
 
 def get_files(path: str) -> list:
 	return [file for file in listdir(path) if isfile(join(path, file))]
@@ -75,8 +66,6 @@ def create_options() -> uc.ChromeOptions:
 
 def get_credentials(name) -> dict:
      
-    if ' & ' in name: name.replace(' & ', 'N') # Special Case for Hill & Markes --> HILLNMARKES
-    print(name)
     username = getenv(f'{name.upper()}_USERNAME') or 'No Username Found'
     password = getenv(f'{name.upper()}_PASSWORD') or 'No Password Found'
 
@@ -110,12 +99,53 @@ def format_orders(vendor: str, path_to_folder: str) -> None:
         vendor_bot.format_for_file_upload(item_data, f'{path_to_folder}{vendor_bot.name}\\Formatted _ {file_name_no_extension}')
     return
 
+def setup_emails_for_sunday() -> None:
+    sunday_emailer = Emailer(service=Outlook)
+    emails = [
+        {
+        'subject': 'Equal Exchange Order',
+        'to': 'orders@equalexchange.com',
+        'body': 'Please see attached for orders, thank you!'
+        },
+        {
+        'subject': 'Euro Cafe Order',
+        'to': 'sales@eurocafeimports.com',
+        'body': 'Please see attached for orders, thank you!',
+        'cc': 'scott.tota@eurocafeimports.com'
+        },
+        {
+        'subject': 'Fingerlakes Farms Order',
+        'to': 'orders@ilovenyfarms.com',
+        'body': 'Please see attached for orders, thank you!'
+        },
+        {
+        'subject': 'Macro Mama Order',
+        'to': 'macromamas@gmail.com',
+        'body': 'Please see attached for orders, thank you!'
+        },
+        {
+        'subject': 'Copper Horse Order',
+        'to': 'copperhorsecoffee@gmail.com',
+        'body': 'Please see attached for orders, thank you!'
+        }
+    ]
+
+    for email in emails:
+        email_object = Email(email['to'], email['subject'], email['body'])
+        sunday_emailer.create_email(email_object)
+        sunday_emailer.display_email(email_object)
+
+    return
+
 if __name__ == '__main__':
 
     vendors = [
         'Renzi', 
-        # 'Sysco', 
-        # 'Performance Food'
+        'Sysco', 
+        'Performance Food',
+        'UNFI',
+        'HillNMarkes',
+        'Copper Horse Coffee'
     ]
 
     # options = create_options()
@@ -125,37 +155,28 @@ if __name__ == '__main__':
 
     # craft_bot.login()
 
+
     # for store in stores:
-    #     craft_bot.get_all_orders_from_webpage(store, download_pdf=True)
+    #     for vendor in vendors:
+    #         craft_bot.get_order_from_vendor(store, vendor, download_pdf=True)
        
     # sort_orders(ORDER_FILES_PATH)
-
-    # # for vendor_bot in vendor_bots:
-    # #     CraftableToUsable.craftable_pdf_to_excel(f'{download_path}{vendor_bot.name}\\', vendor_bot)    
 
     # craft_bot.close_session()
 
    # bot           = get_bot("HillNMarkes")(None, 'ewioughwoe', None)
     
-    
-    # order_manager = OrderManager()
-    format_orders('UNFI', ORDER_FILES_PATH)
+    format_orders('Performance Food', ORDER_FILES_PATH)
+    #setup_emails_for_sunday()
+    # copper_path = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\Copper Horse Coffee\\'
+    # stores = [
+    #      'BAKERY',
+    #      'TRIPHAMMER',
+    #      'COLLEGETOWN',
+    #     #  'EASTHILL',
+    #      'DOWNTOWN'
+    # ]
+    # copper_store_string = f'Copper Horse Coffee _ % 02242024.xlsx'
 
-    #format_orders('Renzi', ORDER_FILES_PATH)
-    # for vendor in vendors:
-    #     format_orders(vendor, ORDER_FILES_PATH)
-    
-   
-
-    
-    # emailer = Emailer(service=Outlook)
-    # new_email = Email(
-    #     to='goldsmithnandrew@gmail.com', 
-    #     subject='Test Email #6',
-    #     body='auehbgoiugeh.',
-    #     )
-    # emailer.create_email(new_email)
-    # copy_of_email = emailer.get_email(new_email)
-    # emailer.send_email(new_email)
-    
-    
+    # copper_bot = CopperHorseBot()
+    # copper_bot.combine_orders([f'{copper_path}{copper_store_string.replace('%', store)}' for store in stores], copper_path)

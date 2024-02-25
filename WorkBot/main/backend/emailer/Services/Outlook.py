@@ -6,7 +6,7 @@ from dataclasses import dataclass
 
 class Outlook(Service):
     
-    def create_email(email: Email):
+    def create_email(self, email: Email):
         obj = win32com.client.Dispatch("Outlook.Application")
         new_email = obj.CreateItem(0x0)
 
@@ -21,8 +21,12 @@ class Outlook(Service):
 
         return new_email
     
-    def send_email(email: Email):
+    def send_email(self, email: Email):
         return email.Send()
     
-    def discard_email(email: Email):
+    def discard_email(self, email: Email):
         return email.Delete()
+
+    def display_email(self, email: Email):
+        email_to_display = self.create_email(email)
+        return email_to_display.display()

@@ -6,6 +6,7 @@ from selenium import webdriver
 from openpyxl import Workbook
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from csv import writer
 
 class SyscoBot(VendorBot):
 
@@ -29,18 +30,13 @@ class SyscoBot(VendorBot):
 
     def format_for_file_upload(self, item_data: dict, path_to_save: str) -> None:
 
-        workbook = Workbook()
-        sheet = workbook.active
+        with open(f'{path_to_save}.csv', 'w', newline='') as csv_file:
 
-        for pos, sku in enumerate(item_data):
-            quantity = item_data[sku]['quantity']
+            csv_writer = writer(csv_file)
 
-            sheet.cell(row=pos+1, column=1).value = 'P'
-            sheet.cell(row=pos+1, column=2).value = int(sku)
-            sheet.cell(row=pos+1, column=3).value = int(quantity)
-            sheet.cell(row=pos+1, column=4).value = int(0)
-        
-        workbook.save(filename=f'{path_to_save}.xlsx')
+            for sku in item_data:
+                quantity = item_data[sku]['quantity']
+                csv_writer.writerow(['P', sku, int(quantity), 0])
 
         return
     

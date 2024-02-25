@@ -28,16 +28,30 @@ class CopperHorseBot(VendorBot):
     Args:
         path_to_orders: string representation of the path to the folder containing all the orders
     '''
-    def combine_orders(self, path_to_orders: str) -> None:
-        orders = []
-        for file in os.listdir(path_to_orders):
-            if file.endswith('.xlsx'):
-                orders.append(file)
+    def combine_orders(self, path_to_orders: list, path_to_save: str) -> None:
+        
+        combined_orders = {}
 
-        workbook = Workbook()
-        sheet = workbook.active
-        for pos, order in enumerate(orders):
-            current_workbook = load_workbook(f'{path_to_orders}\\{order}')
-            current_sheet = current_workbook.active
-            order_info = current_sheet.values
-            pprint(list(order_info))
+        for order_file in path_to_orders:
+            order_book = load_workbook(order_file)
+            order_sheet = order_book.active
+
+            for row in order_sheet.iter_rows(min_row=2):
+                name = row[1].value.split('\n')[0]
+                quantity = int(row[2].value)
+
+                if name not in combined_orders:
+                    combined_orders[name] = quantity
+                else:
+                    combined_orders[name] += quantity
+
+        combined_orders_book = Workbook()
+        combined_orders_sheet = combined_orders_book.active
+
+        for pos, item in enumerate(combined_orders):
+            combined_orders_sheet.cell(row=pos+1, column=1).value = item
+            combined_orders_sheet.cell(row=pos+1, column=2).value = combined_orders[item]
+
+        combined_orders_book.save(f'{path_to_save}\\combined_order.xlsx')
+
+        return

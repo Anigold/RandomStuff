@@ -325,31 +325,37 @@ class CraftableBot:
         table_body = self.driver.find_element(By.XPATH, './/tbody')
         table_rows = table_body.find_elements(By.XPATH, './tr')
 
-        completed_orders = [] # Store the index of the rows here
-        for pos, row in enumerate(table_rows):
+        order_counter = len(table_rows)
+        while order_counter > 0:
             table_body      = self.driver.find_element(By.XPATH, './/tbody')
             table_rows      = table_body.find_elements(By.XPATH, './tr')
-            row             = table_rows[pos]
+            row             = table_rows[order_counter-1]
             row_data        = row.find_elements(By.XPATH, './td')
             row_date        = row_data[2]
             row_date_text   = row_data[2].text
             row_vendor_name = row_data[3].text
-         
-            if pos not in completed_orders:
-                
-                row_date.click()
-                WebDriverWait(self.driver, 45).until(EC.element_to_be_clickable((By.TAG_NAME, 'table')))
-          
-                delete_button = self.driver.find_element(By.CLASS_NAME, '//span[@class="fa.fa-trash"]')
-                delete_button.click()
-                WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.ID, 'confirmOrderDeleteModal')))
-                confirm_delete_modal = self.driver.find_element(By.ID, 'confirmOrderDeleteModal')
-                modal_footer = confirm_delete_modal.find_element(By.CLASS_NAME, 'modal-footer')
-                footer_buttons = modal_footer.find_elements(By.TAG_NAME, 'button')
-                delete_button = footer_buttons[1]
-                delete_button.click()
 
-                time.sleep(3)
+            row_date.click()
+        
+            try:
+                WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[5]/div[2]/div/div/div[1]/div[2]/div/div[3]/div/div[2]/span[1]/a')))
+            except:
+                #ActionChains(self.driver).scroll_to_element(iframe).perform()
+                js_code = 'arguments[0].scrollIntoView();'
+                self.driver.execute_script(js_code, self.driver.find_element(By.XPATH, '/html/body/div[5]/div[2]/div/div/div[1]/div[2]/div/div[3]/div/div[2]/span[1]/a'))
+
+            delete_button = self.driver.find_element(By.XPATH, '/html/body/div[5]/div[2]/div/div/div[1]/div[2]/div/div[3]/div/div[2]/span[1]/a')
+            delete_button.click()
+            
+            WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.ID, 'confirmOrderDeleteModal')))
+            confirm_delete_modal = self.driver.find_element(By.ID, 'confirmOrderDeleteModal')
+            modal_footer = confirm_delete_modal.find_element(By.CLASS_NAME, 'modal-footer')
+            footer_buttons = modal_footer.find_elements(By.TAG_NAME, 'button')
+            delete_button = footer_buttons[1]
+            delete_button.click()
+            order_counter -= 1
+            time.sleep(4)
+
         return
 
     def _rename_new_order_file(self, path:str, file_name:str) -> None:
