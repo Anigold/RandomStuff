@@ -25,11 +25,13 @@ from backend.emailer.Emailer import Emailer
 from backend.emailer.Services.Service import Email
 from backend.emailer.Services.Outlook import Outlook
 
+from backend.printing.Printer import Printer
+
 dotenv = load_dotenv()
 
 username      = getenv('CRAFTABLE_USERNAME')
 password      = getenv('CRAFTABLE_PASSWORD')
-download_path = getenv('ORDER_DOWNLOAD_PATH')
+download_path = getenv('DOWNLOAD_PATH') or 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\'
 
 ORDER_FILES_PATH = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\'
 
@@ -78,7 +80,7 @@ def get_bot(name) -> VendorBot:
      
     bots = {
         'Renzi': RenziBot,
-        'HillNMarkes': HillNMarkesBot,
+        'Hill & Markes': HillNMarkesBot,
         'Sysco': SyscoBot,
         'Performance Food': PerformanceFoodBot,
         'Copper Horse Coffee': CopperHorseBot,
@@ -137,45 +139,82 @@ def setup_emails_for_sunday() -> None:
 
     return
 
+def print_schedule_daily(day: int) -> None:
+
+    schedule = {
+        0: 'Sunday',
+        1: 'Monday',
+        2: 'Tuesday',
+        3: 'Wednesday',
+        4: 'Thursday',
+        5: 'Friday',
+        6: 'Saturday'
+    }
+
+    if day not in schedule:
+        return None
+    
+    path_to_schedules = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\Schedules\\'
+    printer_object = Printer()
+
+    return printer_object.print_file(f'{path_to_schedules}{schedule[day]}.pdf')
+
+
 if __name__ == '__main__':
 
     vendors = [
-        'Renzi', 
+        # 'Renzi', 
         'Sysco', 
-        'Performance Food',
-        'UNFI',
-        'HillNMarkes',
-        'Copper Horse Coffee'
+        # 'Performance Food',
+        # 'UNFI',
+        # 'Hill & Markes',
+        # 'Copper Horse Coffee',
+        # 'Johnston Paper',
+        # 'Regional Paper'
     ]
 
-    # options = create_options()
-    # driver  = uc.Chrome(options=options, use_subprocess=True)
+    stores = [
+         'BAKERY',
+        #  'TRIPHAMMER',
+         'COLLEGETOWN',
+        #  'EASTHILL',
+        #  'DOWNTOWN'
+    ]
 
-    # craft_bot = CraftableBot(driver, username, password)
+    options = create_options()
+    driver  = uc.Chrome(options=options, use_subprocess=True)
 
-    # craft_bot.login()
+    craft_bot = CraftableBot(driver, username, password)
+
+    craft_bot.login()
+
+    for store in stores:
+        for vendor in vendors:
+            craft_bot.get_order_from_vendor(store, vendor, download_pdf=True)
+
+    sort_orders(ORDER_FILES_PATH)
+    format_orders('Sysco', ORDER_FILES_PATH)
 
 
-    # for store in stores:
-    #     for vendor in vendors:
-    #         craft_bot.get_order_from_vendor(store, vendor, download_pdf=True)
-       
-    # sort_orders(ORDER_FILES_PATH)
+    
+    # printer = Printer()    
+    # for file in get_files(f'{ORDER_FILES_PATH}Copper Horse Coffee'):
+    #     if not file.endswith('pdf'):
+    #         continue
 
-    # craft_bot.close_session()
 
+    #     printer.print_file(f'{ORDER_FILES_PATH}Copper Horse Coffee\\{file}')
+    #     time.sleep(6)
+        
+    craft_bot.close_session()
+
+    # print_schedule_daily(3)
    # bot           = get_bot("HillNMarkes")(None, 'ewioughwoe', None)
     
-    format_orders('Performance Food', ORDER_FILES_PATH)
+   
     #setup_emails_for_sunday()
     # copper_path = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\Copper Horse Coffee\\'
-    # stores = [
-    #      'BAKERY',
-    #      'TRIPHAMMER',
-    #      'COLLEGETOWN',
-    #     #  'EASTHILL',
-    #      'DOWNTOWN'
-    # ]
+
     # copper_store_string = f'Copper Horse Coffee _ % 02242024.xlsx'
 
     # copper_bot = CopperHorseBot()

@@ -15,8 +15,7 @@ import pprint
 from openpyxl import Workbook
 
 SAVE_FILE_PATH = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\'
-DOWNLOAD_PATH = getenv('DOWNLOAD_PATH') or 'C:\\Users\\Will\\Downloads\\'
-
+DOWNLOAD_PATH = getenv('DOWNLOAD_PATH') or 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\'
 '''
 Craftable Bot utlizes Selenium to interact with the Craftable website. 
 '''
@@ -274,43 +273,61 @@ class CraftableBot:
     '''
     '''
     def get_order_from_vendor(self, store: str, vendor: str, download_pdf=False) -> None:
-     # Go to the orders page
+        # Go to the orders page
         self.driver.get(f'https://app.craftable.com/buyer/2/{self.stores[store]}/orders/list')
         time.sleep(6)
 
-        # Find all the orders with the right date
-        table_body = self.driver.find_element(By.XPATH, './/tbody')
-        table_rows = table_body.find_elements(By.XPATH, './tr')
+        
+        # Iterate through the table rows. If the vendor isn't found, try to scoll to bottom of page. If vendor still isn't found, return None.
+        vendor_found = False
+        vendor_not_in_list = False
+        counter = 0
+        while not vendor_found and not vendor_not_in_list:
+       
+            table_body = self.driver.find_element(By.XPATH, './/tbody')
+            table_rows = table_body.find_elements(By.XPATH, './tr')
+            for pos, row in enumerate(table_rows):
+            
+                table_body      = self.driver.find_element(By.XPATH, './/tbody')
+                table_rows      = table_body.find_elements(By.XPATH, './tr')
+                row             = table_rows[pos]
+                row_data        = row.find_elements(By.XPATH, './td')
+                row_date        = row_data[2]
+                row_date_text   = row_data[2].text
+                row_vendor_name = row_data[3].text
+          
+                if pos == (len(table_rows) - 1) and row_vendor_name != vendor:
+              
+                    elem = self.driver.find_element(By.TAG_NAME, "html")
+             
+                    elem.send_keys(Keys.END)
+                    continue
 
-        completed_orders = [] # Store the index of the rows here
-        for pos, row in enumerate(table_rows):
-            table_body      = self.driver.find_element(By.XPATH, './/tbody')
-            table_rows      = table_body.find_elements(By.XPATH, './tr')
-            row             = table_rows[pos]
-            row_data        = row.find_elements(By.XPATH, './td')
-            row_date        = row_data[2]
-            row_date_text   = row_data[2].text
-            row_vendor_name = row_data[3].text
-         
-            if pos not in completed_orders and row_vendor_name == vendor:
-                
-                row_date.click()
-                WebDriverWait(self.driver, 45).until(EC.element_to_be_clickable((By.TAG_NAME, 'table')))
+                if row_vendor_name == vendor:
+                    vendor_found = True
+                    row_date.click()
+                    WebDriverWait(self.driver, 45).until(EC.element_to_be_clickable((By.TAG_NAME, 'table')))
 
-                items = self._scrape_order()
+                    items = self._scrape_order()
 
-                self._save_order_as_excel(items, f'{SAVE_FILE_PATH}{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.xlsx')
-                
-                time.sleep(2)
-
-                if download_pdf:
+                    self._save_order_as_excel(items, f'{SAVE_FILE_PATH}{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.xlsx')
                     
-                    self._download_order_pdf()
+                    time.sleep(2)
+
+                    if download_pdf:
+                        
+                        self._download_order_pdf()
+                        time.sleep(3)
+                        self._rename_new_order_file(DOWNLOAD_PATH, f'{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.pdf')
+                    
+                    self.driver.back()
                     time.sleep(3)
-                    self._rename_new_order_file(DOWNLOAD_PATH, f'{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.pdf')
-                
-                self.driver.back()
-                time.sleep(3)
+              
+            
+            if counter == 1:
+                vendor_not_in_list = True
+
+            counter +=1
         return
 
     def delete_order(self, store: str, vendor: str) -> None:
