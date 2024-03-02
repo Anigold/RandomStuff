@@ -27,6 +27,8 @@ from backend.emailer.Services.Outlook import Outlook
 
 from backend.printing.Printer import Printer
 
+from datetime import date
+
 dotenv = load_dotenv()
 
 username      = getenv('CRAFTABLE_USERNAME')
@@ -34,6 +36,7 @@ password      = getenv('CRAFTABLE_PASSWORD')
 download_path = getenv('DOWNLOAD_PATH') or 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\'
 
 ORDER_FILES_PATH = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\'
+PRICING_FILES_PATH = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\pricing\\VendorSheets\\'
 
 def get_files(path: str) -> list:
 	return [file for file in listdir(path) if isfile(join(path, file))]
@@ -68,8 +71,8 @@ def create_options() -> uc.ChromeOptions:
 
 def get_credentials(name) -> dict:
      
-    username = getenv(f'{name.upper()}_USERNAME') or 'No Username Found'
-    password = getenv(f'{name.upper()}_PASSWORD') or 'No Password Found'
+    username = getenv(f'{name.upper().replace(' ', '_')}_USERNAME') or 'No Username Found'
+    password = getenv(f'{name.upper().replace(' ', '_')}_PASSWORD') or 'No Password Found'
 
     return {'username': username, 'password': password}
 
@@ -163,9 +166,9 @@ def print_schedule_daily(day: int) -> None:
 if __name__ == '__main__':
 
     vendors = [
-        # 'Renzi', 
+        'Renzi', 
         'Sysco', 
-        # 'Performance Food',
+        'Performance Food',
         # 'UNFI',
         # 'Hill & Markes',
         # 'Copper Horse Coffee',
@@ -176,7 +179,7 @@ if __name__ == '__main__':
     stores = [
          'BAKERY',
         #  'TRIPHAMMER',
-         'COLLEGETOWN',
+        #  'COLLEGETOWN',
         #  'EASTHILL',
         #  'DOWNTOWN'
     ]
@@ -184,16 +187,15 @@ if __name__ == '__main__':
     options = create_options()
     driver  = uc.Chrome(options=options, use_subprocess=True)
 
-    craft_bot = CraftableBot(driver, username, password)
+    # craft_bot = CraftableBot(driver, username, password)
 
-    craft_bot.login()
+    # craft_bot.login()
 
-    for store in stores:
-        for vendor in vendors:
-            craft_bot.get_order_from_vendor(store, vendor, download_pdf=True)
+    # for store in stores:
+    #     craft_bot.delete_all_orders(store)
 
-    sort_orders(ORDER_FILES_PATH)
-    format_orders('Sysco', ORDER_FILES_PATH)
+    # sort_orders(ORDER_FILES_PATH)
+    # format_orders('Sysco', ORDER_FILES_PATH)
 
 
     
@@ -206,9 +208,9 @@ if __name__ == '__main__':
     #     printer.print_file(f'{ORDER_FILES_PATH}Copper Horse Coffee\\{file}')
     #     time.sleep(6)
         
-    craft_bot.close_session()
+    # craft_bot.close_session()
 
-    # print_schedule_daily(3)
+    # print_schedule_daily(6)
    # bot           = get_bot("HillNMarkes")(None, 'ewioughwoe', None)
     
    
@@ -219,3 +221,19 @@ if __name__ == '__main__':
 
     # copper_bot = CopperHorseBot()
     # copper_bot.combine_orders([f'{copper_path}{copper_store_string.replace('%', store)}' for store in stores], copper_path)
+    guide_names = ['IBProduce', 'Favorites']
+    for vendor in vendors:
+        
+        credentials   = get_credentials(vendor)
+        bot           = get_bot(vendor)(driver, credentials['username'], credentials['password'])
+
+        for pricing_guide in guide_names:
+            file_name     = bot.retrieve_pricing_sheet(pricing_guide)
+
+            new_file_name = f'{PRICING_FILES_PATH}{bot.name} {pricing_guide} {date.today()}.{file_name.split('.')[1]}'
+
+            rename(f'{download_path}{file_name}', new_file_name)
+
+ 
+
+   

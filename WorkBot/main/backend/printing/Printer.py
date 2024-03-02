@@ -1,10 +1,4 @@
-
 from win32 import win32print, win32api, win32console
-
-
-
-
-
 
 class Printer:
 

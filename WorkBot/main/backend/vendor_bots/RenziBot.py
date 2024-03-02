@@ -15,7 +15,7 @@ class RenziBot(VendorBot):
         self.driver = driver
         self.username = username
         self.password = password
-
+        self.is_logged_in = False
         self.store_ids = {
             'Bakery': "11104",
             'Collegetown': "11106",
@@ -45,6 +45,7 @@ class RenziBot(VendorBot):
 
         time.sleep(5)
 
+        self.is_logged_in = True
         return
 
     def logout(self) -> None:
@@ -64,6 +65,7 @@ class RenziBot(VendorBot):
         except:
             pass
         
+        self.is_logged_in = False
         return
     
     def switch_store(self, store_id: str) -> None:
@@ -97,7 +99,8 @@ class RenziBot(VendorBot):
 
         return
     
-    def retrieve_pricing_sheet(self, guide_name: str) -> None:
+    def retrieve_pricing_sheet(self, guide_name: str) -> str:
+
         self.login()
 
         create_order_button = self.driver.find_element(By.ID, 'mainmenu-order')
@@ -133,9 +136,12 @@ class RenziBot(VendorBot):
         excel_button.click()
         time.sleep(5)
 
-        self.logout()
+        # We go back to the home page to avoid force logouts
+        # home_button = self.driver.find_element(By.CLASS_NAME, 'sprite-Home')
+        # home_button.click()
+        # time.sleep(10)
 
-        return
+        return 'export.xls'
 
     def end_session(self) -> None:
         self.driver.close()
