@@ -31,4 +31,4 @@ class Emailer:
         return {email: self.emails[email]} if email in self.emails else None
         
     def display_email(self, email: Email) -> None:
-        return self.service.display_email(email) if email in self.email else None
+        return self.service.display_email(email) if email in self.emails else None

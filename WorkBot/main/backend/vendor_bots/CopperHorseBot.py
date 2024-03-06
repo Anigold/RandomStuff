@@ -45,7 +45,7 @@ class CopperHorseBot(VendorBot):
                 else:
                     combined_orders[name] += quantity
 
-        combined_orders_book = Workbook()
+        combined_orders_book  = Workbook()
         combined_orders_sheet = combined_orders_book.active
 
         for pos, item in enumerate(combined_orders):

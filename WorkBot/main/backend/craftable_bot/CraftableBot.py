@@ -8,11 +8,15 @@ from os.path import join
 from pprint import pprint
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support.ui import Select
 from dotenv import load_dotenv
 from os import getenv
 import pprint
 
 from openpyxl import Workbook
+
+from backend.transferring import Transfer
+import calendar
 
 SAVE_FILE_PATH = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\'
 DOWNLOAD_PATH = getenv('DOWNLOAD_PATH') or 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\'
@@ -51,7 +55,7 @@ class CraftableBot:
 
         self.driver.get('https://app.craftable.com/signin')
 
-        time.sleep(4)
+        WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, './/form')))
         
         login_form = self.driver.find_element(By.XPATH, './/form')
         
@@ -59,8 +63,8 @@ class CraftableBot:
         email_fieldset = fieldsets[0]
         password_fieldset = fieldsets[1]
 
-        email_input = email_fieldset.find_element(By.TAG_NAME, 'input')
-        password_input = password_fieldset.find_element(By.TAG_NAME, 'input')
+        email_input = email_fieldset.find_element(By.XPATH, './/input')
+        password_input = password_fieldset.find_element(By.XPATH, './/input')
 
         submit_button_div = login_form.find_elements(By.XPATH, './/button')[0]
         
@@ -372,6 +376,54 @@ class CraftableBot:
             delete_button.click()
             order_counter -= 1
             time.sleep(4)
+
+        return
+
+    def input_transfer(self, transfer: Transfer) -> None:
+        
+        if not self.is_logged_in: self.login()
+
+        time.sleep(3)
+
+        self.driver.get('https://app.craftable.com/buyer/2/14376/transfers/list')
+
+        time.sleep(5)
+
+        new_transfer_button = self.driver.find_element(By.XPATH, '//a[text()="New Transfer"]')
+        new_transfer_button.click()
+
+        time.sleep(4)
+
+        transfer_modal = self.driver.find_element(By.ID, 'transferNewModal')
+
+        transfer_form = transfer_modal.find_element(By.XPATH, './/form')
+        transfer_form_inputs = transfer_form.find_elements(By.XPATH, './div')
+
+        date_input = transfer_form_inputs[0].find_element(By.XPATH, './/input')
+        toggle_out = transfer_form_inputs[1].find_element(By.XPATH, './/input') # We can do this because we only want the first input.
+        
+        date_input.click()
+        WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CLASS_NAME, 'flatpickr-calendar')))
+        date_input_current_month = self.driver.find_element(By.CLASS_NAME, 'cur-month')
+        
+        # NEED TO UPDATE SO IT CAN CHOOSE THE CORRECT MONTH!!!!!
+
+        calendar = self.driver.find_element(By.CLASS_NAME, 'dayContainer')
+    
+
+        today = calendar.find_element(By.XPATH, f'.//span[@class="flatpickr-day "][text()="{transfer.date.day}"]')
+        today.click()
+        time.sleep(2)
+        toggle_out.click()
+        time.sleep(4)
+
+        #WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//select[@class="select2-hidden-accessible"]')))
+
+        select_dropdown = Select(self.driver.find_element(By.XPATH, '//select[@class="form-control select2-hidden-accessible"]'))
+        options = [x.get_attribute('value') for x in select_dropdown.options]
+        pprint.pprint(options)
+        select_dropdown.select_by_value(self.stores[transfer.store_to])
+        time.sleep(4)
 
         return
 

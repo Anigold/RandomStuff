@@ -18,6 +18,8 @@ from backend.vendor_bots.CopperHorseBot import CopperHorseBot
 from backend.vendor_bots.PerformanceFoodBot import PerformanceFoodBot
 from backend.vendor_bots.SyscoBot import SyscoBot
 from backend.vendor_bots.UNFI import UNFIBot
+from backend.vendor_bots.IthacaBakeryBot import IthacaBakeryBot
+from backend.vendor_bots.DutchValleyBot import DutchValleyBot
 
 from backend.orders import OrderManager
 
@@ -26,8 +28,10 @@ from backend.emailer.Services.Service import Email
 from backend.emailer.Services.Outlook import Outlook
 
 from backend.printing.Printer import Printer
+from backend.transferring.Transfer import Transfer
 
-from datetime import date
+
+from datetime import date, datetime
 
 dotenv = load_dotenv()
 
@@ -87,7 +91,9 @@ def get_bot(name) -> VendorBot:
         'Sysco': SyscoBot,
         'Performance Food': PerformanceFoodBot,
         'Copper Horse Coffee': CopperHorseBot,
-        'UNFI': UNFIBot
+        'UNFI': UNFIBot,
+        'Ithaca Bakery': IthacaBakeryBot,
+        'Dutch Valley': DutchValleyBot
     }
 
     if name not in bots:
@@ -101,6 +107,15 @@ def format_orders(vendor: str, path_to_folder: str) -> None:
     for file in excel_files:
         file_name_no_extension = file.split('.')[0]
         item_data = FormatItemData.extract_item_data_from_excel_file(f'{path_to_folder}{vendor_bot.name}\\{file}')
+        vendor_bot.format_for_file_upload(item_data, f'{path_to_folder}{vendor_bot.name}\\Formatted _ {file_name_no_extension}')
+    return
+
+def format_orders_for_transfer(vendor: str, path_to_folder: str) -> None:
+    vendor_bot = get_bot(vendor)(None, None, None)
+    excel_files = get_excel_files(f'{path_to_folder}{vendor_bot.name}\\')
+    for file in excel_files:
+        file_name_no_extension = file.split('.')[0]
+        item_data = FormatItemData.extract_item_data_from_excel_file_for_transfer(f'{path_to_folder}{vendor_bot.name}\\{file}')
         vendor_bot.format_for_file_upload(item_data, f'{path_to_folder}{vendor_bot.name}\\Formatted _ {file_name_no_extension}')
     return
 
@@ -136,7 +151,8 @@ def setup_emails_for_sunday() -> None:
     ]
 
     for email in emails:
-        email_object = Email(email['to'], email['subject'], email['body'])
+        cc = email['cc'] if 'cc' in email else None
+        email_object = Email(email['to'], email['subject'], email['body'], cc=cc)
         sunday_emailer.create_email(email_object)
         sunday_emailer.display_email(email_object)
 
@@ -173,12 +189,13 @@ if __name__ == '__main__':
         # 'Hill & Markes',
         # 'Copper Horse Coffee',
         # 'Johnston Paper',
-        # 'Regional Paper'
+        # 'Regional Distributors, Inc.',
+        # 'Ithaca Bakery',
     ]
 
     stores = [
-         'BAKERY',
-        #  'TRIPHAMMER',
+        #  'BAKERY',
+         'TRIPHAMMER',
         #  'COLLEGETOWN',
         #  'EASTHILL',
         #  'DOWNTOWN'
@@ -187,53 +204,62 @@ if __name__ == '__main__':
     options = create_options()
     driver  = uc.Chrome(options=options, use_subprocess=True)
 
-    # craft_bot = CraftableBot(driver, username, password)
+    craft_bot = CraftableBot(driver, username, password)
 
-    # craft_bot.login()
+    craft_bot.login()
 
+    test_transfer = Transfer('BAKERY', 'COLLEGETOWN', [{'name': 'Kilogram', 'quantity': 4}], datetime(2024, 3, 2))
+    craft_bot.input_transfer(test_transfer)
     # for store in stores:
-    #     craft_bot.delete_all_orders(store)
-
+    #     for vendor in vendors:
+    #         craft_bot.get_order_from_vendor(store, vendor, download_pdf=True)
     # sort_orders(ORDER_FILES_PATH)
-    # format_orders('Sysco', ORDER_FILES_PATH)
+  
 
-
-    
+    # vendor_to_print = [
+        # 'BakeMark',
+        # 'Lentz',
+        # "Regional Distributors, Inc.",
+        # 'Johnston Paper',
+        # 'DUTCH VALLEY FOOD DIST'
+    # ]
     # printer = Printer()    
-    # for file in get_files(f'{ORDER_FILES_PATH}Copper Horse Coffee'):
-    #     if not file.endswith('pdf'):
-    #         continue
-
-
-    #     printer.print_file(f'{ORDER_FILES_PATH}Copper Horse Coffee\\{file}')
-    #     time.sleep(6)
+    # for vendor in vendor_to_print:
+    #     for file in get_files(f'{ORDER_FILES_PATH}{vendor}'):
+    #         if not file.endswith('pdf'): continue
+    #         printer.print_file(f'{ORDER_FILES_PATH}{vendor}\\{file}')
+    #         time.sleep(6)
         
-    # craft_bot.close_session()
+    craft_bot.close_session()
 
-    # print_schedule_daily(6)
-   # bot           = get_bot("HillNMarkes")(None, 'ewioughwoe', None)
-    
-   
-    #setup_emails_for_sunday()
-    # copper_path = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\Copper Horse Coffee\\'
+    # print_schedule_daily(3)
+ 
+    # setup_emails_for_sunday()
+    # copper_path = f'{ORDER_FILES_PATH}Copper Horse Coffee\\'
 
-    # copper_store_string = f'Copper Horse Coffee _ % 02242024.xlsx'
+    # copper_store_string = f'Copper Horse Coffee _ % 03022024.xlsx'
 
     # copper_bot = CopperHorseBot()
     # copper_bot.combine_orders([f'{copper_path}{copper_store_string.replace('%', store)}' for store in stores], copper_path)
-    guide_names = ['IBProduce', 'Favorites']
-    for vendor in vendors:
+    # guide_names = ['IBProduce', 'IBFavorite']
+    # for vendor in vendors:
         
-        credentials   = get_credentials(vendor)
-        bot           = get_bot(vendor)(driver, credentials['username'], credentials['password'])
+    #     credentials   = get_credentials(vendor)
+    #     bot           = get_bot(vendor)(driver, credentials['username'], credentials['password'])
 
-        for pricing_guide in guide_names:
-            file_name     = bot.retrieve_pricing_sheet(pricing_guide)
+    #     for pricing_guide in guide_names:
+    #         file_name     = bot.retrieve_pricing_sheet(pricing_guide)
 
-            new_file_name = f'{PRICING_FILES_PATH}{bot.name} {pricing_guide} {date.today()}.{file_name.split('.')[1]}'
+    #         new_file_name = f'{PRICING_FILES_PATH}{bot.name} {pricing_guide} {date.today()}.{file_name.split('.')[1]}'
 
-            rename(f'{download_path}{file_name}', new_file_name)
+    #         rename(f'{download_path}{file_name}', new_file_name)
 
- 
+    # ithaca_bot = get_bot('Ithaca Bakery')()
+    # ithaca_path = f'{ORDER_FILES_PATH}Ithaca Bakery\\'
 
-   
+    # ithaca_store_string = f'Ithaca Bakery _ % 03022024.xlsx'
+
+    # ithaca_bot.combine_orders([f'{ithaca_path}{ithaca_store_string.replace('%', store)}' for store in stores], ithaca_path)
+
+    
+    # format_orders_for_transfer('Ithaca Bakery', ORDER_FILES_PATH)

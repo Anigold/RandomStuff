@@ -27,6 +27,12 @@ class RenziBot(VendorBot):
     def login(self) -> None:
 	
         self.driver.get('https://connect.renzifoodservice.com/pnet/eOrder')
+
+        try:
+            WebDriverWait(self.driver, 10).until(EC.alert_is_present())
+            self.driver.switch_to.alert.accept()
+        except:
+            pass
         
         username_input = self.driver.find_element(By.NAME, 'UserName')
         password_input = self.driver.find_element(By.NAME, 'Password')
