@@ -28,19 +28,21 @@ from backend.emailer.Services.Service import Email
 from backend.emailer.Services.Outlook import Outlook
 
 from backend.printing.Printer import Printer
-from backend.transferring.Transfer import Transfer
+from backend.transferring.Transfer import Transfer, TransferItem
 
 
 from datetime import date, datetime
+
+from openpyxl import load_workbook
 
 dotenv = load_dotenv()
 
 username      = getenv('CRAFTABLE_USERNAME')
 password      = getenv('CRAFTABLE_PASSWORD')
-download_path = getenv('DOWNLOAD_PATH') or 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\'
+download_path = getenv('DOWNLOAD_PATH') or 'C:\\Users\\golds\\projects\\WorkBot\\RandomStuff\\WorkBot\\main\\backend\\downloads\\'
 
-ORDER_FILES_PATH = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\'
-PRICING_FILES_PATH = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\pricing\\VendorSheets\\'
+ORDER_FILES_PATH = 'C:\\Users\\golds\\projects\\WorkBot\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\'
+PRICING_FILES_PATH = 'C:\\Users\\golds\\projects\\WorkBot\\RandomStuff\\WorkBot\\main\\backend\\pricing\\VendorSheets\\'
 
 def get_files(path: str) -> list:
 	return [file for file in listdir(path) if isfile(join(path, file))]
@@ -178,27 +180,30 @@ def print_schedule_daily(day: int) -> None:
 
     return printer_object.print_file(f'{path_to_schedules}{schedule[day]}.pdf')
 
+def get_transfers() -> list:
+    path = ORDER_FILES_PATH + 'Ithaca Bakery'
+    return [file for file in listdir(path) if isfile(join(path, file)) and file.endswith('.xlsx') and file.split(' _ ')[0] == 'Formatted']
 
 if __name__ == '__main__':
 
     vendors = [
-        'Renzi', 
-        'Sysco', 
-        'Performance Food',
+        # 'Renzi', 
+        # 'Sysco', 
+        # 'Performance Food',
         # 'UNFI',
         # 'Hill & Markes',
         # 'Copper Horse Coffee',
         # 'Johnston Paper',
         # 'Regional Distributors, Inc.',
-        # 'Ithaca Bakery',
+        'Ithaca Bakery',
     ]
 
     stores = [
         #  'BAKERY',
          'TRIPHAMMER',
         #  'COLLEGETOWN',
-        #  'EASTHILL',
-        #  'DOWNTOWN'
+         'EASTHILL',
+         'DOWNTOWN'
     ]
 
     options = create_options()
@@ -208,13 +213,37 @@ if __name__ == '__main__':
 
     craft_bot.login()
 
-    test_transfer = Transfer('BAKERY', 'COLLEGETOWN', [{'name': 'Kilogram', 'quantity': 4}], datetime(2024, 3, 2))
-    craft_bot.input_transfer(test_transfer)
     # for store in stores:
     #     for vendor in vendors:
     #         craft_bot.get_order_from_vendor(store, vendor, download_pdf=True)
     # sort_orders(ORDER_FILES_PATH)
-  
+    # format_orders_for_transfer('Ithaca Bakery', ORDER_FILES_PATH)
+
+    # test_transfer = Transfer('BAKERY', 'COLLEGETOWN', [{'name': 'Kilogram', 'quantity': 4}], datetime(2024, 3, 2))
+    for transfer_file in get_transfers():
+
+        store_to            = transfer_file.split(' _ ')[2].split(' ')[0]
+        store_from          = 'BAKERY'
+        items               = []
+        date_from_file_name = transfer_file.split(' _ ')[2].split(' ')[1].split('.')[0]
+        day                 = int(date_from_file_name[0:2])
+        month               = int(date_from_file_name[2:4])
+        year                = int(date_from_file_name[4:])
+
+        workbook = load_workbook(f'{ORDER_FILES_PATH}Ithaca Bakery\\{transfer_file}')
+        sheet = workbook.active
+
+        for item_row in sheet.iter_rows():
+            to_transfer, name, quantity = item_row
+
+            if not to_transfer:
+                continue
+            
+            items.append(TransferItem(name.value, quantity.value))
+        
+        transfer = Transfer(store_from, store_to, items, datetime(year, month, day))
+        craft_bot.input_transfer(transfer)
+    #
 
     # vendor_to_print = [
         # 'BakeMark',
@@ -231,7 +260,8 @@ if __name__ == '__main__':
     #         time.sleep(6)
         
     craft_bot.close_session()
-
+    # format_orders('Performance Food', ORDER_FILES_PATH)
+    # format_orders('Sysco', ORDER_FILES_PATH)
     # print_schedule_daily(3)
  
     # setup_emails_for_sunday()
@@ -261,5 +291,4 @@ if __name__ == '__main__':
 
     # ithaca_bot.combine_orders([f'{ithaca_path}{ithaca_store_string.replace('%', store)}' for store in stores], ithaca_path)
 
-    
-    # format_orders_for_transfer('Ithaca Bakery', ORDER_FILES_PATH)
+   

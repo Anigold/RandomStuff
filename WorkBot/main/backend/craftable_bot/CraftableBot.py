@@ -18,8 +18,8 @@ from openpyxl import Workbook
 from backend.transferring import Transfer
 import calendar
 
-SAVE_FILE_PATH = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\'
-DOWNLOAD_PATH = getenv('DOWNLOAD_PATH') or 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\'
+SAVE_FILE_PATH = 'C:\\Users\\golds\\projects\\WorkBot\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\'
+DOWNLOAD_PATH = getenv('DOWNLOAD_PATH') or 'C:\\Users\\golds\\projects\\WorkBot\\RandomStuff\\WorkBot\\main\\backend\\downloads\\'
 '''
 Craftable Bot utlizes Selenium to interact with the Craftable website. 
 '''
@@ -381,6 +381,7 @@ class CraftableBot:
 
     def input_transfer(self, transfer: Transfer) -> None:
         
+        
         if not self.is_logged_in: self.login()
 
         time.sleep(3)
@@ -415,16 +416,77 @@ class CraftableBot:
         today.click()
         time.sleep(2)
         toggle_out.click()
+        time.sleep(2)
+
+        '''Have to search these again to avoid stale references...'''
+        transfer_modal = self.driver.find_element(By.ID, 'transferNewModal')
+
+        transfer_form = transfer_modal.find_element(By.XPATH, './/form')
+        transfer_form_inputs = transfer_form.find_elements(By.XPATH, './div')
+
+        store_to_select = transfer_form_inputs[2].find_element(By.XPATH, './/div[@class="search ember-view input-select-searchable"]')
+        store_to_select.click()
+
+        time.sleep(2)
+
+        options = self.driver.find_elements(By.XPATH, './/li[@class="select2-results__option"]')
+        for option in options:
+            choice_id_full = option.get_attribute('data-select2-id')
+            choice_id = choice_id_full.split('-')[-1]
+            if choice_id == self.stores[transfer.store_to]:
+                choice = self.driver.find_element(By.XPATH, f'//li[@data-select2-id="{choice_id_full}"]')
+                choice.click()
+                break
+
         time.sleep(4)
 
-        #WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//select[@class="select2-hidden-accessible"]')))
+        transfer_modal = self.driver.find_element(By.ID, 'transferNewModal')
+        transfer_modal_footer = transfer_modal.find_element(By.XPATH, './/div[@class="modal-footer "]')
+        submit_button = transfer_modal_footer.find_elements(By.TAG_NAME, 'button')[1]
 
-        select_dropdown = Select(self.driver.find_element(By.XPATH, '//select[@class="form-control select2-hidden-accessible"]'))
-        options = [x.get_attribute('value') for x in select_dropdown.options]
-        pprint.pprint(options)
-        select_dropdown.select_by_value(self.stores[transfer.store_to])
+        submit_button.click()
+
         time.sleep(4)
 
+        for item in transfer.items:
+
+            # Click the add-item button
+            page_body = self.driver.find_element(By.XPATH, './/div[@class="card-body"]')
+            WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[5]/div[2]/div/div/div[1]/div[2]/div/div/div[3]/div[1]/span/a')))
+            add_item_button = page_body.find_element(By.XPATH, '/html/body/div[5]/div[2]/div/div/div[1]/div[2]/div/div/div[3]/div[1]/span/a')
+            
+            add_item_button.click()
+
+            time.sleep(4)
+
+            # Enter the item name
+            item_input = self.driver.find_element(By.ID, 'typeahead')
+            item_input.send_keys(item.name)
+            time.sleep(4)
+
+            # Select the item from the dropdown
+            item_choice_container = self.driver.find_element(By.XPATH, './/div[@class="input-group input-typeahead-container input-group-merge"]')
+            item_choice = item_choice_container.find_elements(By.XPATH, './following-sibling::div/div[@class="input-type-ahead "]/div[@class="input-type-ahead-row"]')[0]
+            item_choice.click()
+            
+
+            transfer_modal = self.driver.find_element(By.ID, 'transferItemModal')
+            transfer_form = transfer_modal.find_element(By.XPATH, './/form')
+            quantity_input_container = transfer_form.find_elements(By.XPATH, './div')[2]
+            quantity_input = quantity_input_container.find_element(By.XPATH, './/input')
+            quantity_input.send_keys(Keys.BACKSPACE)
+            quantity_input.send_keys(item.quantity)
+
+            time.sleep(2)
+
+            add_transfer_item_button = self.driver.find_element(By.XPATH, './/button[text()="Add Transfer Line"]')
+            add_transfer_item_button.click()
+
+            WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, './/div[@class="_c-notification__content"][text()="Successfully added a Transfer Line"]')))
+            
+            # time.sleep(5)
+        
+        submit_transfer_button = self.driver.find_element(By.XPATH, './/a[text()="Request"]')
         return
 
     def _rename_new_order_file(self, path:str, file_name:str) -> None:
@@ -455,14 +517,14 @@ class CraftableBot:
     '''
     def _scrape_order(self) -> list:
         order_table = self.driver.find_element(By.TAG_NAME, 'tbody')
-        item_rows = order_table.find_elements(By.TAG_NAME, 'tr')
+        item_rows   = order_table.find_elements(By.TAG_NAME, 'tr')
 
         items = []
         for item in item_rows:
             item_info = item.find_elements(By.TAG_NAME, 'td')
         
             item_sku   = item_info[2].text
-            item_name  = item_info[3].text
+            item_name  = item_info[3].find_element(By.XPATH, './/a').text
             quantity   = item_info[5].text
             cost_per   = item_info[6].text
             total_cost = item_info[7].text
