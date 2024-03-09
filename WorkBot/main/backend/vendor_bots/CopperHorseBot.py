@@ -5,9 +5,12 @@ from openpyxl import Workbook, load_workbook
 
 class CopperHorseBot(VendorBot):
 
-    def __init__(self) -> None:
-        super().__init__()
-        self.name = 'Copper Horse Coffee'
+    def __init__(self, driver, username, password) -> None:
+        super().__init__(driver, username, password)
+        
+        self.name                 = 'Copper Horse Coffee'
+        self.minimum_order_amount = 500_00 # $500 in cents
+
 
     def format_for_file_upload(self, item_data: dict, path_to_save: str) -> None:
         # CSV-style Excel file with "Item Code, Quantity"

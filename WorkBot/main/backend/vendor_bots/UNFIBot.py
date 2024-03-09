@@ -3,11 +3,11 @@ from csv import writer
 class UNFIBot(VendorBot):
 
     def __init__(self, driver, username, password):
-        super().__init__()
-        self.name     = 'UNFI'
-        self.driver   = driver
-        self.username = username
-        self.password = password
+        super().__init__(driver, username, password)
+
+        self.name                 = 'UNFI'
+        self.minimum_order_amount = 1_500_00 # $1500 in cents
+
 
     def format_for_file_upload(self, item_data: dict, path_to_save: str) -> None:
         
@@ -18,8 +18,11 @@ class UNFIBot(VendorBot):
 
             csv_writer.writerow(fields)
 
-            for sku in item_data:
-                quantity = item_data[sku]['quantity']
+            for name in item_data:
+    
+                sku = item_data[name]['sku']
+                quantity = item_data[name]['quantity']
+                
                 csv_writer.writerow([sku, int(quantity)])
 
         return

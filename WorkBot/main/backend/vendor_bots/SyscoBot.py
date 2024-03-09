@@ -12,12 +12,11 @@ from csv import writer
 class SyscoBot(VendorBot):
 
     def __init__(self, driver: webdriver, username, password) -> None:
-        super().__init__()
-        self.name = "Sysco"
-        self.driver = driver
-        self.username = username
-        self.password = password
-        self.is_logged_in = False
+        super().__init__(driver, username, password)
+
+        self.name                 = "Sysco"
+        self.minimum_order_amount = 500_00
+
         self.store_ids = {
             'BAKERY': 'ITHACA BAKERY',
             'COLLEGETOWN': 'COLLEGETOWN BAGELS',

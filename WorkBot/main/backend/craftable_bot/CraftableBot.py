@@ -18,8 +18,10 @@ from openpyxl import Workbook
 from backend.transferring import Transfer
 import calendar
 
-SAVE_FILE_PATH = 'C:\\Users\\golds\\projects\\WorkBot\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\'
-DOWNLOAD_PATH = getenv('DOWNLOAD_PATH') or 'C:\\Users\\golds\\projects\\WorkBot\\RandomStuff\\WorkBot\\main\\backend\\downloads\\'
+ORDER_FILES_PATH = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\'
+PRICING_FILES_PATH = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\pricing\\VendorSheets\\'
+DOWNLOAD_PATH = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\'
+
 '''
 Craftable Bot utlizes Selenium to interact with the Craftable website. 
 '''
@@ -314,7 +316,7 @@ class CraftableBot:
 
                     items = self._scrape_order()
 
-                    self._save_order_as_excel(items, f'{SAVE_FILE_PATH}{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.xlsx')
+                    self._save_order_as_excel(items, f'{ORDER_FILES_PATH}{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.xlsx')
                     
                     time.sleep(2)
 
@@ -491,7 +493,7 @@ class CraftableBot:
 
     def _rename_new_order_file(self, path:str, file_name:str) -> None:
      
-        rename(f'{path}Order.pdf', f'{SAVE_FILE_PATH}{file_name}')
+        rename(f'{path}Order.pdf', f'{ORDER_FILES_PATH}{file_name}')
         return
     
     def _run_save_protocol() -> None:

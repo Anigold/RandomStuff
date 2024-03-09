@@ -9,12 +9,12 @@ from selenium.webdriver.support.wait import WebDriverWait
 class HillNMarkesBot(VendorBot):
 
     def __init__(self, driver, username, password):
-        super().__init__()
-        self.name = "Hill & Markes"
-        self.driver    = driver
-        self.username  = username
-        self.password  = password
-        #self.order_manager = order_manager
+        super().__init__(driver, username, password)
+        
+        self.name                 = "Hill & Markes"
+        #self.order_manager       = order_manager
+        self.minimum_order_amount = 300_00 # $300 in cents
+
         self.store_ids = {
             'BAKERY': 0,
             'COLLEGETOWN': 1,

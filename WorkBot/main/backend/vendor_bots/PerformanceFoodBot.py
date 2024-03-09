@@ -13,13 +13,14 @@ from datetime import date
 class PerformanceFoodBot(VendorBot):
 
     def __init__(self, driver: webdriver, username, password) -> None:
-        super().__init__()
-        self.name = "Performance Food"
-        self.driver = driver
-        self.username = username
-        self.password = password
-        self.is_logged_in = False
+        super().__init__(driver, username, password)
+        
+        self.name               = "Performance Food"
+        self.minimum_order_case = 20
+
         self.store_ids = {}
+
+        
 
     def login(self) -> None:
         self.driver.get('https://www.customerfirstsolutions.com')

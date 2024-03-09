@@ -7,8 +7,10 @@ import ntpath
 class IthacaBakeryBot(VendorBot):
 
     def __init__(self, driver, username, password) -> None:
-        super().__init__()
+        super().__init__(driver, username, password)
+        
         self.name = 'Ithaca Bakery'
+
 
     def format_for_file_upload(self, item_data: dict, path_to_save: str) -> None:
         # CSV-style Excel file with "Item Code, Quantity"

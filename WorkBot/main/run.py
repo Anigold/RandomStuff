@@ -17,7 +17,7 @@ from backend.vendor_bots.RenziBot import RenziBot
 from backend.vendor_bots.CopperHorseBot import CopperHorseBot
 from backend.vendor_bots.PerformanceFoodBot import PerformanceFoodBot
 from backend.vendor_bots.SyscoBot import SyscoBot
-from backend.vendor_bots.UNFI import UNFIBot
+from backend.vendor_bots.UNFIBot import UNFIBot
 from backend.vendor_bots.IthacaBakeryBot import IthacaBakeryBot
 from backend.vendor_bots.DutchValleyBot import DutchValleyBot
 
@@ -37,12 +37,13 @@ from openpyxl import load_workbook
 
 dotenv = load_dotenv()
 
-username      = getenv('CRAFTABLE_USERNAME')
+CRAFTABLE_USERNAME      = getenv('CRAFTABLE_USERNAME')
 password      = getenv('CRAFTABLE_PASSWORD')
-download_path = getenv('DOWNLOAD_PATH') or 'C:\\Users\\golds\\projects\\WorkBot\\RandomStuff\\WorkBot\\main\\backend\\downloads\\'
+DOWNLOAD_PATH = getenv('DOWNLOAD_PATH') or 'C:\\Users\\golds\\projects\\WorkBot\\RandomStuff\\WorkBot\\main\\backend\\downloads\\'
 
-ORDER_FILES_PATH = 'C:\\Users\\golds\\projects\\WorkBot\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\'
-PRICING_FILES_PATH = 'C:\\Users\\golds\\projects\\WorkBot\\RandomStuff\\WorkBot\\main\\backend\\pricing\\VendorSheets\\'
+ORDER_FILES_PATH = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\'
+PRICING_FILES_PATH = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\pricing\\VendorSheets\\'
+DOWNLOAD_PATH = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\'
 
 def get_files(path: str) -> list:
 	return [file for file in listdir(path) if isfile(join(path, file))]
@@ -65,7 +66,7 @@ def create_options() -> uc.ChromeOptions:
     options = uc.ChromeOptions()
     preferences = {
         "plugins.plugins_list":               [{"enabled": False, "name": "Chrome PDF Viewer"}],
-        "download.default_directory":         f'{download_path}',
+        "download.default_directory":         f'{DOWNLOAD_PATH}',
         "download.prompt_for_download":       False,
         "safebrowsing.enabled":               True,
         "plugins.always_open_pdf_externally": True,
@@ -190,59 +191,60 @@ if __name__ == '__main__':
         # 'Renzi', 
         # 'Sysco', 
         # 'Performance Food',
-        # 'UNFI',
+        'UNFI',
         # 'Hill & Markes',
         # 'Copper Horse Coffee',
         # 'Johnston Paper',
         # 'Regional Distributors, Inc.',
-        'Ithaca Bakery',
+        # 'Ithaca Bakery',
     ]
 
     stores = [
         #  'BAKERY',
          'TRIPHAMMER',
-        #  'COLLEGETOWN',
+         'COLLEGETOWN',
          'EASTHILL',
          'DOWNTOWN'
     ]
 
-    options = create_options()
-    driver  = uc.Chrome(options=options, use_subprocess=True)
+    # options = create_options()
+    # driver  = uc.Chrome(options=options, use_subprocess=True)
 
-    craft_bot = CraftableBot(driver, username, password)
+    # craft_bot = CraftableBot(driver, CRAFTABLE_USERNAME, password)
 
-    craft_bot.login()
+    # craft_bot.login()
 
     # for store in stores:
     #     for vendor in vendors:
     #         craft_bot.get_order_from_vendor(store, vendor, download_pdf=True)
+
     # sort_orders(ORDER_FILES_PATH)
-    # format_orders_for_transfer('Ithaca Bakery', ORDER_FILES_PATH)
+    format_orders_for_transfer('UNFI', ORDER_FILES_PATH)
 
     # test_transfer = Transfer('BAKERY', 'COLLEGETOWN', [{'name': 'Kilogram', 'quantity': 4}], datetime(2024, 3, 2))
-    for transfer_file in get_transfers():
+    # for transfer_file in get_transfers():
 
-        store_to            = transfer_file.split(' _ ')[2].split(' ')[0]
-        store_from          = 'BAKERY'
-        items               = []
-        date_from_file_name = transfer_file.split(' _ ')[2].split(' ')[1].split('.')[0]
-        day                 = int(date_from_file_name[0:2])
-        month               = int(date_from_file_name[2:4])
-        year                = int(date_from_file_name[4:])
+    #     store_to            = transfer_file.split(' _ ')[2].split(' ')[0]
+    #     store_from          = 'BAKERY'
+    #     items               = []
+    #     date_from_file_name = transfer_file.split(' _ ')[2].split(' ')[1].split('.')[0]
+    #     day                 = int(date_from_file_name[0:2])
+    #     month               = int(date_from_file_name[2:4])
+    #     year                = int(date_from_file_name[4:])
 
-        workbook = load_workbook(f'{ORDER_FILES_PATH}Ithaca Bakery\\{transfer_file}')
-        sheet = workbook.active
+    #     workbook = load_workbook(f'{ORDER_FILES_PATH}Ithaca Bakery\\{transfer_file}')
+    #     sheet = workbook.active
 
-        for item_row in sheet.iter_rows():
-            to_transfer, name, quantity = item_row
+    #     for item_row in sheet.iter_rows():
+    #         to_transfer, name, quantity = item_row
 
-            if not to_transfer:
-                continue
+    #         if not to_transfer:
+    #             continue
             
-            items.append(TransferItem(name.value, quantity.value))
+    #         items.append(TransferItem(name.value, quantity.value))
         
-        transfer = Transfer(store_from, store_to, items, datetime(year, month, day))
-        craft_bot.input_transfer(transfer)
+    #     transfer = Transfer(store_from, store_to, items, datetime(year, month, day))
+    #     craft_bot.input_transfer(transfer)
     #
 
     # vendor_to_print = [
@@ -259,7 +261,7 @@ if __name__ == '__main__':
     #         printer.print_file(f'{ORDER_FILES_PATH}{vendor}\\{file}')
     #         time.sleep(6)
         
-    craft_bot.close_session()
+    # craft_bot.close_session()
     # format_orders('Performance Food', ORDER_FILES_PATH)
     # format_orders('Sysco', ORDER_FILES_PATH)
     # print_schedule_daily(3)
