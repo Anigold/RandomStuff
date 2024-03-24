@@ -1,4 +1,4 @@
-from .VendorBot import VendorBot
+from .VendorBot import VendorBot, SeleniumBotMixin
 import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
@@ -7,11 +7,11 @@ from openpyxl import Workbook
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-class RenziBot(VendorBot):
+class RenziBot(VendorBot, SeleniumBotMixin):
 
     def __init__(self, driver: webdriver, username, password) -> None:
-        super().__init__(driver, username, password)
-
+        VendorBot.__init__(self)
+        SeleniumBotMixin.__init__(self, driver, username, password)
         self.name                 = "Renzi"
         self.minimum_order_amount = 500_00
 
@@ -22,6 +22,7 @@ class RenziBot(VendorBot):
             'Easthill': "11108",
             'Downtown': "11107"
         }
+
 
     def login(self) -> None:
 	
@@ -95,6 +96,7 @@ class RenziBot(VendorBot):
 
         for pos, sku in enumerate(item_data):
             quantity = item_data[sku]['quantity']
+            #sku = item_data[name]['sku']
 
             sheet.cell(row=pos+1, column=1).value = int(sku)
             sheet.cell(row=pos+1, column=2).value = int(quantity)
@@ -147,7 +149,3 @@ class RenziBot(VendorBot):
         # time.sleep(10)
 
         return 'export.xls'
-
-    def end_session(self) -> None:
-        self.driver.close()
-        return

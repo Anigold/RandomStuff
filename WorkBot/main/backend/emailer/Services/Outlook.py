@@ -7,11 +7,12 @@ from dataclasses import dataclass
 class Outlook(Service):
     
     def create_email(self, email: Email):
+     
         obj = win32com.client.Dispatch("Outlook.Application")
         new_email = obj.CreateItem(0x0)
 
         new_email.Subject = email.subject
-        new_email.To      = email.to
+        new_email.To      = ';'.join(email.to)
         new_email.Body    = email.body
 
         if email.cc: new_email.CC = email.cc

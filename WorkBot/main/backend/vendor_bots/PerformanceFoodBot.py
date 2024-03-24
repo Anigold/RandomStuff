@@ -1,24 +1,30 @@
-from .VendorBot import VendorBot
+from .VendorBot import VendorBot, SeleniumBotMixin, PricingBotMixin
 import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium import webdriver
-from openpyxl import Workbook
+from openpyxl import Workbook, load_workbook
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from csv import writer
 from datetime import date
+from pprint import pprint
 
-class PerformanceFoodBot(VendorBot):
+class PerformanceFoodBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
 
     def __init__(self, driver: webdriver, username, password) -> None:
-        super().__init__(driver, username, password)
-        
+        VendorBot.__init__(self)
+        SeleniumBotMixin.__init__(self, driver, username, password)
         self.name               = "Performance Food"
         self.minimum_order_case = 20
 
         self.store_ids = {}
+
+        self.special_cases = {
+            '75104': {'unit': 'EA', 'pack': 13.5},
+            '16146': {'unit': 'EA', 'pack': 42}
+        }
 
         
 
@@ -51,8 +57,9 @@ class PerformanceFoodBot(VendorBot):
         with open(f'{path_to_save}.txt', 'w', newline='') as csv_file:
 
             csv_writer = writer(csv_file, delimiter='\t')
-
+            pprint(item_data)
             for sku in item_data:
+                
                 quantity = item_data[sku]['quantity']
                 
                 csv_writer.writerow([sku, int(quantity), 'CS'])
@@ -114,6 +121,42 @@ class PerformanceFoodBot(VendorBot):
 
         return f'{guide_name}_RFS Eastern PA-07110_{today_mm_dd_yyyy}.xlsx'
     
-    def end_session(self) -> None:
-        self.driver.close()
-        return
+    def get_pricing_info_from_sheet(self, path_sheet: str) -> dict:
+        workbook = load_workbook(path_sheet)
+        sheet    = workbook.active
+
+        row_info  = list(PricingBotMixin.helper_iter_rows(sheet))[9:-3] # We remove the "metadata" from the top and the ancillary information from the bottom of the sheet. 
+        item_info = {}
+        for row in row_info:
+            item_sku  = row[4]
+            item_name = row[1]
+
+
+            '''
+            This is the ugliest hack ever
+            '''
+            pack_size_info = row[5].split('/')
+            pack_info      = pack_size_info[1].split(' ')
+            
+            if len(pack_info) == 2 and pack_info[1] == 'Bu':
+                quantity = .9
+                units = 'Bu'
+            else:
+                if item_sku in self.special_cases:
+                    quantity, units = PricingBotMixin.helper_format_size_units(self.special_cases[item_sku]['pack'], self.special_cases[item_sku]['unit'])
+                else:
+                    quantity, units = PricingBotMixin.helper_format_size_units(pack_size_info[0], pack_size_info[1])
+
+            cost = float(row[7].replace('$', ''))
+
+            if item_name not in item_info:
+                item_info[item_name] = {
+                    'SKU': item_sku,
+                    'quantity': quantity,
+                    'units': PricingBotMixin.normalize_units(units),
+                    'cost': cost,
+                    'case_size': row[5]
+
+                }
+
+        return item_info

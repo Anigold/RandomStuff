@@ -2,11 +2,11 @@ from dataclasses import dataclass
 
 @dataclass(unsafe_hash=True, frozen=True)
 class Email:
-    to:          str
+    to:          tuple
     subject:     str
     body:        str        
-    cc:          str = None # May need to be a list of strings of emails
-    attachments: str = None # May need to be a list of strings pointing to path of attachments
+    cc:          tuple = None # We use a tuple to remain hashable
+    attachments: tuple = None # We use a tuple to remain hashable
     
 
 class Service:

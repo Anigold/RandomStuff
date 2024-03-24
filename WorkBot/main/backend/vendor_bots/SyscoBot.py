@@ -1,4 +1,4 @@
-from .VendorBot import VendorBot
+from .VendorBot import VendorBot, SeleniumBotMixin
 import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -9,10 +9,11 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from csv import writer
 
-class SyscoBot(VendorBot):
+class SyscoBot(VendorBot, SeleniumBotMixin):
 
     def __init__(self, driver: webdriver, username, password) -> None:
-        super().__init__(driver, username, password)
+        VendorBot.__init__(self)
+        SeleniumBotMixin.__init__(self, driver, username, password)
 
         self.name                 = "Sysco"
         self.minimum_order_amount = 500_00
@@ -83,6 +84,7 @@ class SyscoBot(VendorBot):
 
             for sku in item_data:
                 quantity = item_data[sku]['quantity']
+                #sku = item_data[sku]['sku']
                 csv_writer.writerow(['P', sku, int(quantity), 0])
 
         return
@@ -111,17 +113,22 @@ class SyscoBot(VendorBot):
         time.sleep(4)
 
         # Export the list
-        more_actions_button = self.driver.find_element(By.XPATH, '/html/body/div[1]/div/div[2]/div[5]/div/div/div/div[2]/div[3]/div[2]/div/div[3]/div/button/div/div')
-        more_actions_button.click()
+        content_area = self.driver.find_element(By.XPATH, './/div[@class="myProducts-content myProducts-content-list-nav"]')
 
-        export_button = self.driver.find_element(By.XPATH, '/html/body/div[1]/div/div[2]/div[5]/div/div/div/div[2]/div[3]/div[2]/div/div[3]/div/div/li[2]')
+        more_actions_button_container = content_area.find_element(By.XPATH, './/div[@class="list-action-container"]')
+        more_actions = more_actions_button_container.find_element(By.XPATH, './/div[@class="fd more-actions-wrapper"]')
+        more_actions.click()                  
+
+        time.sleep(2)
+        
+        export_button = self.driver.find_element(By.XPATH, './/li[@data-id="export-list-btn"]')
         export_button.click()
 
         time.sleep(2)
 
         # The export modal seemingly gets reloaded after every interaction leading to stale references. I've skipped it entirely.
         # export_modal = self.driver.find_element(By.CLASS_NAME, 'modal-body')
-        file_name = self.driver.find_element(By.XPATH, '/html/body/div[1]/div/div[10]/div[1]/div/div/div[2]/div[1]/div[1]/div/input')
+        file_name = self.driver.find_element(By.XPATH, './/input[@data-id="export-list-modal-file-name-input"]')
         file_name.send_keys(Keys.BACKSPACE * 40)
         filename = f'Sysco {guide_name}'
         file_name.send_keys(filename)
@@ -133,13 +140,10 @@ class SyscoBot(VendorBot):
 
         time.sleep(1)
 
-        submit_export = self.driver.find_element(By.XPATH, '/html/body/div[1]/div/div[10]/div[1]/div/div/div[3]/button[2]')
+        submit_export = self.driver.find_element(By.XPATH, './/button[@data-id="export-list-modal-export-btn"]')
         submit_export.click()
 
         time.sleep(3)
 
         return f'{filename}.csv'
     
-    def end_session(self) -> None:
-        self.driver.close()
-        return

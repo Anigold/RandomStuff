@@ -262,7 +262,9 @@ class Hoffmire(Vendor):
 	skus_col = 14
 
 	special_cases = {
-		'Kiwi - Fresh 1case': {'unit': 'EA', 'pack': 120}
+		'Kiwi - Fresh 1case': {'unit': 'EA', 'pack': 120},
+		'Herb - Parsley (Fresh Curly) 1lb': {'unit': 'EA', 'pack': 60},
+		'Cilantro - Fresh 1lb': {'unit': 'EA', 'pack': 60},
 	}
 
 	def get_units_from_pack_size(self, pack_size: str) -> str:

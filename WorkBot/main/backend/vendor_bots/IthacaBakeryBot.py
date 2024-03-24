@@ -6,8 +6,8 @@ import ntpath
 
 class IthacaBakeryBot(VendorBot):
 
-    def __init__(self, driver, username, password) -> None:
-        super().__init__(driver, username, password)
+    def __init__(self) -> None:
+        super().__init__()
         
         self.name = 'Ithaca Bakery'
 
@@ -59,8 +59,9 @@ class IthacaBakeryBot(VendorBot):
         '''
 
         for order_file in path_to_orders:
+            
             store_name = self.get_store_from_file_name(order_file)
-
+            print(store_name)
             order_book = load_workbook(order_file)
             order_sheet = order_book.active
 
@@ -85,7 +86,7 @@ class IthacaBakeryBot(VendorBot):
         combined_orders_sheet.cell(row=1, column=5).value = 'DOWNTOWN'
 
         for pos, item in enumerate(combined_orders):
-            print(combined_orders[item])
+  
             combined_orders_sheet.cell(row=pos+2, column=1).value = item
             combined_orders_sheet.cell(row=pos+2, column=2).value = combined_orders[item]['COLLEGETOWN'] if 'COLLEGETOWN' in combined_orders[item] else ''
             combined_orders_sheet.cell(row=pos+2, column=3).value = combined_orders[item]['TRIPHAMMER'] if 'TRIPHAMMER' in combined_orders[item] else ''

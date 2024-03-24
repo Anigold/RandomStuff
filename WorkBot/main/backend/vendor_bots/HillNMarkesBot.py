@@ -1,4 +1,4 @@
-from .VendorBot import VendorBot
+from .VendorBot import VendorBot, SeleniumBotMixin
 from selenium.webdriver.common.by import By
 import time
 from pprint import pprint
@@ -6,7 +6,7 @@ from openpyxl import load_workbook, Workbook
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-class HillNMarkesBot(VendorBot):
+class HillNMarkesBot(VendorBot, SeleniumBotMixin):
 
     def __init__(self, driver, username, password):
         super().__init__(driver, username, password)

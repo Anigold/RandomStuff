@@ -1,9 +1,9 @@
-from .VendorBot import VendorBot
+from .VendorBot import VendorBot, SeleniumBotMixin
 from csv import writer
-class UNFIBot(VendorBot):
+class UNFIBot(VendorBot, SeleniumBotMixin):
 
     def __init__(self, driver, username, password):
-        super().__init__(driver, username, password)
+        super().__init__()
 
         self.name                 = 'UNFI'
         self.minimum_order_amount = 1_500_00 # $1500 in cents
@@ -18,10 +18,10 @@ class UNFIBot(VendorBot):
 
             csv_writer.writerow(fields)
 
-            for name in item_data:
+            for sku in item_data:
     
-                sku = item_data[name]['sku']
-                quantity = item_data[name]['quantity']
+                # sku = item_data[name]['sku']
+                quantity = item_data[sku]['quantity']
                 
                 csv_writer.writerow([sku, int(quantity)])
 

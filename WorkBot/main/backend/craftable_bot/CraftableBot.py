@@ -18,9 +18,9 @@ from openpyxl import Workbook
 from backend.transferring import Transfer
 import calendar
 
-ORDER_FILES_PATH = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\'
-PRICING_FILES_PATH = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\pricing\\VendorSheets\\'
-DOWNLOAD_PATH = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\'
+ORDER_FILES_PATH    = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\'
+PRICING_FILES_PATH  = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\pricing\\VendorSheets\\'
+DOWNLOAD_PATH       = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\'
 
 '''
 Craftable Bot utlizes Selenium to interact with the Craftable website. 
@@ -42,6 +42,15 @@ class CraftableBot:
             'COLLEGETOWN': '14372',
         }
 
+    def __enter__(self):
+        self.login()
+        return self
+    
+    def __exit__(self, type, value, traceback):
+        print(value)
+        self.close_session()
+        return True
+    
     '''
     Login to the Craftable website using the standard landing page.
 
@@ -103,71 +112,17 @@ class CraftableBot:
     '''
     def switch_store(self, store: str) -> None:
 
-        if store not in self.stores: return None
+        if store not in self.stores: return
 
         if store == 'DIRECTOR':
             self.driver.get('https://app.craftable.com/director/2/583')
             return
         
         self.driver.get(f'https://app.craftable.com/buyer/2/{self.stores[store]}')
+
+        #WebDriverWait(self.driver, 45).until(EC.element_to_be_clickable((By.CLASS_NAME, 'row home-cards-orders-invoices')))
+        time.sleep(5)
         return
-
-    '''
-    Go to the store's order page and download the order invoices.
-
-    Args:
-        store: string name of the store
-
-    Returns:
-        None
-    '''
-    def get_orders(self, store: str, date: str) -> None:
-        
-        # Go to the orders page
-        self.driver.get(f'https://app.craftable.com/buyer/2/{self.stores[store]}/orders/list')
-        time.sleep(6)
-
-        # Find all the orders with the right date
-        table_body = self.driver.find_element(By.XPATH, './/tbody')
-        table_rows = table_body.find_elements(By.XPATH, './tr')
-
-        completed_orders = [] # Store the index of the rows here
-        completed_orders_names = [] # Store the name of the vendor here
-        for pos, row in enumerate(table_rows):
-            table_body = self.driver.find_element(By.XPATH, './/tbody')
-            table_rows = table_body.find_elements(By.XPATH, './tr')
-            row = table_rows[pos]
-            row_data = row.find_elements(By.XPATH, './td')
-            row_date = row_data[2]
-            row_date_text = row_data[2].text
-            row_vendor_name = row_data[3].text
-         
-            if date == row_date_text and pos not in completed_orders:
-                
-                row_date.click()
-                time.sleep(4)
-
-                download_button = self.driver.find_element(By.CLASS_NAME, 'fa-download')
-                ActionChains(self.driver).key_down(Keys.CONTROL).click(download_button).perform()
-                time.sleep(10)
-
-                # open_tabs = self.driver.window_handles
-                # time.sleep(2)
-
-                # self._run_save_protocol()
-                # time.sleep(1)
-
-                self._rename_new_order_file(SAVE_FILE_PATH, f'{row_vendor_name} - {store} {row_date_text.replace("/", "")}.pdf')
-                
-                # keyboard.type(f'{row_vendor_name} - {store} {row_date_text.replace("/", "")}.pdf')
-                # time.sleep(2)
-
-
-                time.sleep(2)
-
-                #self.driver.switch_to.window(open_tabs[0])
-                self.driver.back()
-                time.sleep(3)
 
     '''
     Scrapes the order webpage of each order and saves to file.
@@ -210,7 +165,7 @@ class CraftableBot:
 
                 items = self._scrape_order()
 
-                self._save_order_as_excel(items, f'{SAVE_FILE_PATH}{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.xlsx')
+                self._save_order_as_excel(items, f'{ORDER_FILES_PATH}{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.xlsx')
                 
                 time.sleep(2)
 
@@ -484,7 +439,7 @@ class CraftableBot:
             add_transfer_item_button = self.driver.find_element(By.XPATH, './/button[text()="Add Transfer Line"]')
             add_transfer_item_button.click()
 
-            WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, './/div[@class="_c-notification__content"][text()="Successfully added a Transfer Line"]')))
+            WebDriverWait(self.driver, 60).until(EC.element_to_be_clickable((By.XPATH, './/div[@class="_c-notification__content"][text()="Successfully added a Transfer Line"]')))
             
             # time.sleep(5)
         

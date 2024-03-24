@@ -5,8 +5,8 @@ from openpyxl import Workbook, load_workbook
 
 class CopperHorseBot(VendorBot):
 
-    def __init__(self, driver, username, password) -> None:
-        super().__init__(driver, username, password)
+    def __init__(self) -> None:
+        super().__init__()
         
         self.name                 = 'Copper Horse Coffee'
         self.minimum_order_amount = 500_00 # $500 in cents
@@ -16,12 +16,12 @@ class CopperHorseBot(VendorBot):
         # CSV-style Excel file with "Item Code, Quantity"
         workbook = Workbook()
         sheet = workbook.active
-        pprint(item_data)
-        for pos, sku in enumerate(item_data):
-            quantity = item_data[sku]
-
-            sheet.cell(row=pos+1, column=1).value = int(sku)
-            sheet.cell(row=pos+1, column=2).value = int(quantity)
+         
+        for pos, name in enumerate(item_data):
+            quantity = item_data[name]['quantity']
+            sheet.cell(row=pos+1, column=1).value = True
+            sheet.cell(row=pos+1, column=2).value = name
+            sheet.cell(row=pos+1, column=3).value = int(quantity)
         
         workbook.save(filename=f'{path_to_save}.xlsx')
 
