@@ -8,8 +8,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 class HillNMarkesBot(VendorBot, SeleniumBotMixin):
 
-    def __init__(self, driver, username, password):
-        super().__init__(driver, username, password)
+    def __init__(self):
+        super().__init__()
         
         self.name                 = "Hill & Markes"
         #self.order_manager       = order_manager

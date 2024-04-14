@@ -1,4 +1,4 @@
-from .VendorBot import VendorBot, SeleniumBotMixin
+from .VendorBot import VendorBot, SeleniumBotMixin, PricingBotMixin
 import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
@@ -7,9 +7,9 @@ from openpyxl import Workbook
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-class RenziBot(VendorBot, SeleniumBotMixin):
+class RenziBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
 
-    def __init__(self, driver: webdriver, username, password) -> None:
+    def __init__(self, driver: webdriver = None, username = None, password = None) -> None:
         VendorBot.__init__(self)
         SeleniumBotMixin.__init__(self, driver, username, password)
         self.name                 = "Renzi"
@@ -23,6 +23,10 @@ class RenziBot(VendorBot, SeleniumBotMixin):
             'Downtown': "11107"
         }
 
+        self.special_cases = {
+		    '88076': {'unit': 'EA', 'pack': 1},
+		    '88055': {'unit': 'EA', 'pack': 36},
+	    }
 
     def login(self) -> None:
 	
@@ -149,3 +153,33 @@ class RenziBot(VendorBot, SeleniumBotMixin):
         # time.sleep(10)
 
         return 'export.xls'
+
+    def get_pricing_info_from_sheet(self, path_to_pricing_sheet: str) -> dict:
+        item_info = {}
+        with open(path_to_pricing_sheet) as file:
+            for pos, row in enumerate(file):
+
+                if pos == 0: continue
+
+                row_info = row.split('\t')
+
+                item_sku  		= row_info[0].split('"')[1]
+                item_name 		= row_info[7]
+                cost   	  		= float(row_info[8])
+                
+                if item_sku in self.special_cases:
+                    quantity, units = PricingBotMixin.helper_format_size_units(self.special_cases[item_sku]['pack'], self.special_cases[item_sku]['unit'])
+                else:
+                    quantity, units = PricingBotMixin.helper_format_size_units(row_info[4], row_info[5])
+
+            
+                if item_name not in item_info:
+                    item_info[item_name] = {
+                        'SKU': item_sku,
+                        'quantity': quantity,
+                        'units': PricingBotMixin.normalize_units(units),
+                        'cost': cost,
+                        'case_size': f'{row_info[4]} / {row_info[5]}'
+                    }
+
+        return item_info

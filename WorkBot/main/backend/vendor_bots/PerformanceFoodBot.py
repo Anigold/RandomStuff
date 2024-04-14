@@ -13,10 +13,11 @@ from pprint import pprint
 
 class PerformanceFoodBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
 
-    def __init__(self, driver: webdriver, username, password) -> None:
+    def __init__(self, driver: webdriver = None, username: str = None, password: str = None) -> None:
         VendorBot.__init__(self)
+        PricingBotMixin.__init__(self)
         SeleniumBotMixin.__init__(self, driver, username, password)
-        self.name               = "Performance Food"
+        self.name = "Performance Food"
         self.minimum_order_case = 20
 
         self.store_ids = {}
@@ -121,8 +122,8 @@ class PerformanceFoodBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
 
         return f'{guide_name}_RFS Eastern PA-07110_{today_mm_dd_yyyy}.xlsx'
     
-    def get_pricing_info_from_sheet(self, path_sheet: str) -> dict:
-        workbook = load_workbook(path_sheet)
+    def get_pricing_info_from_sheet(self, path_to_pricing_sheet: str) -> dict:
+        workbook = load_workbook(path_to_pricing_sheet)
         sheet    = workbook.active
 
         row_info  = list(PricingBotMixin.helper_iter_rows(sheet))[9:-3] # We remove the "metadata" from the top and the ancillary information from the bottom of the sheet. 
@@ -135,6 +136,7 @@ class PerformanceFoodBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
             '''
             This is the ugliest hack ever
             '''
+            if not row[5]: continue
             pack_size_info = row[5].split('/')
             pack_info      = pack_size_info[1].split(' ')
             

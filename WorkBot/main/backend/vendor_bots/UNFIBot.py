@@ -2,7 +2,7 @@ from .VendorBot import VendorBot, SeleniumBotMixin
 from csv import writer
 class UNFIBot(VendorBot, SeleniumBotMixin):
 
-    def __init__(self, driver, username, password):
+    def __init__(self):
         super().__init__()
 
         self.name                 = 'UNFI'

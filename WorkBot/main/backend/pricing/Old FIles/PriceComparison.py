@@ -40,7 +40,7 @@ class Vendor:
 		workbook = load_workbook(self.path_to_skus)
 		sheet = workbook.active
 
-		skus = self.get_skus_from_file()
+		skus   = self.get_skus_from_file()
 		prices = self.get_info()
 		
 		for item in prices:
@@ -55,7 +55,7 @@ class Vendor:
 				cost 	 	  = float(item_info['cost'])
 				cost_per_unit = f'{round(cost/quantity, 2)} per {unit}'
 				case_size     = item_info['case_size']
-
+				
 				sheet.cell(row=skus[item_info['SKU']], column=self.skus_col+2).value = cost_per_unit
 				sheet.cell(row=skus[item_info['SKU']], column=self.skus_col+3).value = cost
 				sheet.cell(row=skus[item_info['SKU']], column=self.skus_col+4).value = case_size
@@ -145,7 +145,8 @@ class Performance(Vendor):
 
 	special_cases = {
 		'75104': {'unit': 'EA', 'pack': 13.5},
-		'16146': {'unit': 'EA', 'pack': 42}
+		'16146': {'unit': 'EA', 'pack': 42},
+		'AN780': {'unit': 'PT', 'pack': 26.66}
 	}
 
 	def get_info(self):
@@ -175,7 +176,7 @@ class Performance(Vendor):
 					quantity, units = Vendor.helper_format_size_units(pack_size_info[0], pack_size_info[1])
 
 			cost = float(row[7].replace('$', ''))
-
+			
 			if item_name not in item_info:
 				item_info[item_name] = {
 					'SKU': item_sku,
@@ -193,10 +194,7 @@ class Renzi(Vendor):
 
 	skus_col = 10
 
-	special_cases = {
-		'88076': {'unit': 'EA', 'pack': 1},
-		'88055': {'unit': 'EA', 'pack': 36}
-	}
+	
 
 	def get_info(self):
 		item_info = {}
@@ -437,8 +435,7 @@ def vendor_factory(name: str, path_to_pricing_sheet: str, path_to_skus: str):
 		'Hoffmire': Hoffmire,
 		'Cortland': CortlandProduce
 	}
-	if vendor_name not in vendors: return
-	return vendors[vendor_name](path_to_pricing_sheet, path_to_skus)
+	return None if vendor_name not in vendors else vendors[vendor_name](path_to_pricing_sheet, path_to_skus)
 
 def get_files(path: str) -> list:
 	return [file for file in listdir(path) if isfile(join(path, file))]
@@ -466,7 +463,7 @@ def price_compare(path_to_pricing_sheet: str) -> None:
 		#unit_in_question = '' # Eventually make corrections based on differing units
 		for i in range(3, 4*(len(vendors)), 4):
 			price_string = sheet.cell(row=pos, column=i+1).value
-			price = price_string.split(' per ')[0] if price_string else 100000
+			price 		 = price_string.split(' per ')[0] if price_string else 100000
 			prices.append(float(price))
 	
 		if prices: 

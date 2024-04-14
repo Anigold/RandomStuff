@@ -1,4 +1,4 @@
-from .VendorBot import VendorBot, SeleniumBotMixin
+from .VendorBot import VendorBot, SeleniumBotMixin, PricingBotMixin
 import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -7,11 +7,11 @@ from selenium import webdriver
 from openpyxl import Workbook
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from csv import writer
+from csv import writer, reader as csv_reader
 
-class SyscoBot(VendorBot, SeleniumBotMixin):
+class SyscoBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
 
-    def __init__(self, driver: webdriver, username, password) -> None:
+    def __init__(self, driver: webdriver = None, username = None, password = None) -> None:
         VendorBot.__init__(self)
         SeleniumBotMixin.__init__(self, driver, username, password)
 
@@ -147,3 +147,26 @@ class SyscoBot(VendorBot, SeleniumBotMixin):
 
         return f'{filename}.csv'
     
+    def get_pricing_info_from_sheet(self, path_to_pricing_sheet: str) -> dict:
+        item_info = {}
+        with open(path_to_pricing_sheet) as sysco_info:
+            reader = csv_reader(sysco_info, delimiter=',')
+            for pos, row in enumerate(reader):
+
+                if pos < 2: continue
+
+                item_sku 		= row[1]
+                item_name 		= row[12]
+                quantity, units = PricingBotMixin.helper_format_size_units(row[7], row[8])
+                cost 			= float(row[14]) if row[14] != '' else float(row[15])
+
+                if item_name not in item_info:
+                    item_info[item_name] = {
+                        'SKU': item_sku,
+                        'quantity': quantity,
+                        'units': PricingBotMixin.normalize_units(units),
+                        'cost': cost,
+                        'case_size': f'{row[7]} / {row[8]}'
+                    }
+
+        return item_info
