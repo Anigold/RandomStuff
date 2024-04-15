@@ -194,7 +194,10 @@ class Renzi(Vendor):
 
 	skus_col = 10
 
-	
+	special_cases = {
+		    '88076': {'unit': 'EA', 'pack': 1},
+		    '88055': {'unit': 'EA', 'pack': 36},
+	    }
 
 	def get_info(self):
 		item_info = {}

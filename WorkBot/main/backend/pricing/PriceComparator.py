@@ -1,6 +1,7 @@
 from ..vendor_bots.VendorBot import PricingBotMixin
 from openpyxl import load_workbook, Workbook
 import shutil
+import pprint
 
 class PriceSheetTemplate:
     
@@ -13,31 +14,40 @@ class PriceComparator:
     def __init__(self) -> None:
         self.item_skus_file_path = './ItemSkus.xlsx'
     
-    # def get_skus_from_template(self, vendor: PricingBotMixin) -> dict:
-    #     vendor_name = vendor.name
-    #     workbook = load_workbook(self.item_skus_file_path)
-    #     sheet = workbook.active
+    def get_skus_from_vendor_sheet(self, vendor_sheet_path) -> dict:
+        vendor_workbook = load_workbook(vendor_sheet_path)
+        sheet = vendor_workbook.active
 
-    #     # Find column
-    #     top_row = list(sheet.rows)[0]
+        item_info = {}
+        for row in sheet.iter_rows():
+            name, sku, cost_per, case_cost, case_size = row
 
-    #     vendor_column = None
-    #     for pos, val in enumerate(top_row):
-    #         if val.value == vendor_name:
-    #             vendor_column = pos + 1
-
-    #     if not vendor_column: return None
-
-    #     # Find skus
-    #     item_info = {}
-    #     for pos, row in enumerate(sheet.iter_rows(min_row=2)):
-    #         item_name = sheet.cell(row=pos+1, column=1).value
-    #         item_sku  = sheet.cell(row=pos+1, column=vendor_column).value
-    #         if item_sku and item_name:
-    #             if item_name not in item_info:
-    #                 item_info[item_name] = item_sku
+            if sku.value not in item_info:
+                item_info[sku.value] = {
+                    'name': name.value,
+                    'cost_per': cost_per.value,
+                    'case_cost': case_cost.value,
+                    'case_size': case_size.value
+                }
+        return item_info
+    
+        # first_row = list(sheet.rows)[0]
+        # ignore_list = ['Item', 'Preferred', 'Buy From', None]
+        # vendors = []
+        # skus = {}
+        # template_offset = lambda col, offset : (offset*col)+offset 
+        # for column in first_row:
+        #     if column.value not in ignore_list:
+        #         vendors.append(column.value)
+        #         skus[column.value] = []
+   
+        # for row in sheet.iter_rows(min_row=3):
+      
+        #     for vendor_pos, vendor in enumerate(vendors):
+        #         sku = row[template_offset(vendor_pos, 4)].value
+        #         if sku: skus[vendor].append(row[template_offset(vendor_pos, 4)].value)
         
-    #     return item_info
+        # return skus
     
     def get_all_skus(self) -> dict:
 
@@ -66,31 +76,45 @@ class PriceComparator:
 
         return sku_info
  
-    
     def generate_pricing_sheet(self, pricing_sheet_template_path: str, vendor_sheets_paths: list[str], output_file_path: str) -> None:
 
-        # Make copy of template
-        #shutil.copyfile(pricing_sheet_template_path, output_file_path)
+        # Make copy of template and open
+        shutil.copyfile(pricing_sheet_template_path, output_file_path)
 
-        # Get skus from copy of template
-        template_copy_workbook = load_workbook(pricing_sheet_template_path)
-        sheet = template_copy_workbook.active
+        template_workbook = load_workbook(output_file_path)
+        template_sheet    = template_workbook.active
 
-        first_row = list(sheet.rows)[0]
-        ignore_list = ['Item', 'Buy From']
-        skus = {}
+        vendor_skus = {}
+        vendors = []
+        for vendor_path in vendor_sheets_paths:
+            vendor_name = vendor_path.split('\\')[-1].split('_')[0]
+            item_info = self.get_skus_from_vendor_sheet(vendor_path)
+            if vendor_name not in vendor_skus:
+                vendor_skus[vendor_name] = item_info
+                vendors.append(vendor_name)
+        
+    
+    
+        first_row = list(template_sheet.rows)[0]
+        ignore_list = ['Item', 'Preferred', 'Buy From', None]
+        template_vendors = []
+        template_offset = lambda col, offset : (offset*col)+offset
         for column in first_row:
             if column.value not in ignore_list:
-                skus[column.value] = []
+                template_vendors.append(column.value)
 
-        offset = 3
-        for row in sheet.iter_rows(min_row=3):
-            pass
-        #template_copy_workbook.save(self.path_to_skus)
-        
-        # Iterate through vender sheets pulling data for each sku found in copy of template
-        #   Add info to the copy of template
+        for pos, row in enumerate(template_sheet.iter_rows(min_row=3)):
+            for vendor_pos, vendor in enumerate(template_vendors):
+                # print(vendor, vendor in vendor_skus)
+                sku = row[template_offset(vendor_pos, 4)].value
+                if vendor in vendor_skus: 
+                    print(vendor, vendor in vendor_skus, sku)
 
+                    if sku in vendor_skus[vendor]:
+                        if sku in vendor_skus[vendor]: print(vendor, row[0].value, sku)
+                        template_sheet.cell(row=pos+3, column=template_offset(vendor_pos, 4)+2).value = 'yep'
+       
+        template_workbook.save(output_file_path)
         # Save copy of template
         pass
 

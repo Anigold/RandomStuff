@@ -260,17 +260,17 @@ if __name__ == '__main__':
     vendors = [
         # 'Renzi', 
         # 'Sysco', 
-        'Performance Food',
+        # 'Performance Food',
         # 'UNFI',
         # 'Hill & Markes',
         # 'Copper Horse Coffee',
         # 'Johnston Paper',
         # 'Regional Distributors, Inc.',
         # 'Ithaca Bakery',
-        # 'Hillcrest Foods',
-        # 'BakeMark',
-        # 'Lentz',
-        # 'Keck\'s Food Service',
+        'Hillcrest Foods',
+        'BakeMark',
+        'Lentz',
+        'Keck\'s Food Service',
         # 'Cortland Produce Inc.',
         # 'Eurocafe Imports',
         # 'Hillcrest Dairy',
@@ -282,10 +282,10 @@ if __name__ == '__main__':
 
     stores = [
          'BAKERY',
-         'TRIPHAMMER',
-         'COLLEGETOWN',
-         'EASTHILL',
-         'DOWNTOWN'
+        #  'TRIPHAMMER',
+        #  'COLLEGETOWN',
+        #  'EASTHILL',
+        #  'DOWNTOWN'
     ]
 
     # options = create_options()
@@ -340,14 +340,14 @@ if __name__ == '__main__':
         # 'DUTCH VALLEY FOOD DIST',
         # 'Eurocafe Imports',
         # 'Coca-Cola',
-        # 'Ithaca Bakery',
+        'Ithaca Bakery',
         # 'Copper Horse Coffee',
         # 'Hill & Markes',
         # 'Johnston Paper',
         # 'FingerLakes Farms',
-        'Renzi',
-        'Sysco',
-        'Performance Food',
+        # 'Renzi',
+        # 'Sysco',
+        # 'Performance Food',
         # 'BJ\'s',
         # 'Copper Horse Coffee',
         # 'Webstaurant'
@@ -391,7 +391,7 @@ if __name__ == '__main__':
     # ithaca_bot = get_bot('Ithaca Bakery')()
     # ithaca_path = f'{ORDER_FILES_PATH}\\Ithaca Bakery\\'
 
-    # ithaca_store_string = f'Ithaca Bakery _ % 03292024.xlsx'
+    # ithaca_store_string = f'Ithaca Bakery _ % 04122024.xlsx'
 
     # ithaca_bot.combine_orders([f'{ithaca_path}{ithaca_store_string.replace('%', store)}' for store in stores], ithaca_path)
     # milk_orders = tuple([join(f'{ORDER_FILES_PATH}\\Hillcrest Dairy\\', file) for file in listdir(f'{ORDER_FILES_PATH}\\Hillcrest Dairy\\') if isfile(join(f'{ORDER_FILES_PATH}\\Hillcrest Dairy\\', file)) and file.endswith('.pdf')])
@@ -414,11 +414,11 @@ if __name__ == '__main__':
     
     pricer                     = PriceComparator()
     pricer.item_skus_file_path = f'{PRICING_FILES_PATH}\\ItemSkus.xlsx'
-    pricer.generate_pricing_sheet(f'{PRICING_FILES_PATH}\\Templates\\Produce.xlsx', [
+    pricer.generate_pricing_sheet(f'{PRICING_FILES_PATH}\\Templates\\IBProduce.xlsx', [
         f'{PRICING_FILES_PATH}\\Renzi_IBProduce_2024-04-14.xlsx',
         f'{PRICING_FILES_PATH}\\Sysco_IBProduce_2024-04-14.xlsx',
         f'{PRICING_FILES_PATH}\\Performance Food_IBProduce_2024-04-14.xlsx'
-    ], None)
+    ], f'{PRICING_FILES_PATH}\\IBPRODUCE_ACTUAL.xlsx')
     # all_skus                   = pricer.get_all_skus()
     # run_date = '2024-04-10'
     # for guide in guide_names:
@@ -426,5 +426,5 @@ if __name__ == '__main__':
     #         creds      = get_credentials(vendor)
     #         vendor_bot = get_bot(vendor)()
     #         guide_file_path = f'{PRICING_FILES_PATH}\\VendorSheets\\{vendor_bot.name}_{guide} {run_date}.'
-    #         vendor_bot.format
-    #         pricer.get_skus()
+           
+        
