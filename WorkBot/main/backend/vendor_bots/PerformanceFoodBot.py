@@ -67,7 +67,7 @@ class PerformanceFoodBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
 
         return
     
-    def retrieve_pricing_sheet(self, guide_name: str) -> None:
+    def retrieve_pricing_sheet(self, guide_name: str) -> str:
 
         if not self.is_logged_in:
             self.login()

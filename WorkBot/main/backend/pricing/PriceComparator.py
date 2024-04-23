@@ -8,7 +8,6 @@ class PriceSheetTemplate:
     def __init__(self) -> None:
         self.skus = []
 
-
 class PriceComparator:
 
     def __init__(self) -> None:
@@ -29,25 +28,8 @@ class PriceComparator:
                     'case_cost': case_cost.value,
                     'case_size': case_size.value
                 }
+
         return item_info
-    
-        # first_row = list(sheet.rows)[0]
-        # ignore_list = ['Item', 'Preferred', 'Buy From', None]
-        # vendors = []
-        # skus = {}
-        # template_offset = lambda col, offset : (offset*col)+offset 
-        # for column in first_row:
-        #     if column.value not in ignore_list:
-        #         vendors.append(column.value)
-        #         skus[column.value] = []
-   
-        # for row in sheet.iter_rows(min_row=3):
-      
-        #     for vendor_pos, vendor in enumerate(vendors):
-        #         sku = row[template_offset(vendor_pos, 4)].value
-        #         if sku: skus[vendor].append(row[template_offset(vendor_pos, 4)].value)
-        
-        # return skus
     
     def get_all_skus(self) -> dict:
 
@@ -88,37 +70,72 @@ class PriceComparator:
         vendors = []
         for vendor_path in vendor_sheets_paths:
             vendor_name = vendor_path.split('\\')[-1].split('_')[0]
+            print(vendor_name)
             item_info = self.get_skus_from_vendor_sheet(vendor_path)
             if vendor_name not in vendor_skus:
                 vendor_skus[vendor_name] = item_info
                 vendors.append(vendor_name)
         
+
     
-    
-        first_row = list(template_sheet.rows)[0]
-        ignore_list = ['Item', 'Preferred', 'Buy From', None]
+        first_row        = list(template_sheet.rows)[0]
+        ignore_list      = ['Item', 'Preferred', 'Buy From', None]
         template_vendors = []
-        template_offset = lambda col, offset : (offset*col)+offset
+        template_offset  = lambda col, offset : (offset*col)+offset
         for column in first_row:
             if column.value not in ignore_list:
-                template_vendors.append(column.value)
+                template_vendors.append(column.value.strip())
 
         for pos, row in enumerate(template_sheet.iter_rows(min_row=3)):
             for vendor_pos, vendor in enumerate(template_vendors):
-                # print(vendor, vendor in vendor_skus)
-                sku = row[template_offset(vendor_pos, 4)].value
-                if vendor in vendor_skus: 
-                    print(vendor, vendor in vendor_skus, sku)
-
-                    if sku in vendor_skus[vendor]:
-                        if sku in vendor_skus[vendor]: print(vendor, row[0].value, sku)
-                        template_sheet.cell(row=pos+3, column=template_offset(vendor_pos, 4)+2).value = 'yep'
-       
+                sku = str(row[template_offset(vendor_pos, 4)].value)
+                if (vendor in vendor_skus) and (sku in vendor_skus[vendor]): 
+                    template_sheet.cell(row=pos+3, column=template_offset(vendor_pos, 4)+2).value = vendor_skus[vendor][sku]['cost_per']
+                    template_sheet.cell(row=pos+3, column=template_offset(vendor_pos, 4)+3).value = vendor_skus[vendor][sku]['case_cost']
+                    template_sheet.cell(row=pos+3, column=template_offset(vendor_pos, 4)+4).value = vendor_skus[vendor][sku]['case_size']
+        
+        
         template_workbook.save(output_file_path)
-        # Save copy of template
-        pass
 
-    def compare_prices(self, pricing_sheets_paths: list[str], output_file_path: str) -> None:
-        for sheet_path in pricing_sheets_paths:
+        return self.compare_prices(output_file_path)
 
-            pass
+    def compare_prices(self, path_to_pricing_sheet: str) -> None:
+        workbook = load_workbook(path_to_pricing_sheet)
+        sheet = workbook.active
+
+        vendors = []
+        for pos, row in enumerate(sheet.iter_rows()):
+
+            if pos == 0:
+                excluded_values = ['Item', 'Buy From', 'Preferred', None]
+                for col in row:
+                    if col.value not in excluded_values and col.value:
+                        vendors.append(col.value)
+                print(vendors)
+                continue
+            
+            if pos in [1, 2]: continue			
+            
+            prices = []
+            #unit_in_question = '' # Eventually make corrections based on differing units
+            for i in range(5, 4*(len(vendors)+1), 4):
+                price_string = sheet.cell(row=pos, column=i+1).value
+                price 		 = price_string.split(' per ')[0] if price_string else 100000
+                prices.append(float(price))
+            print(pos, prices)
+            if prices: 
+                min_price = min(prices)
+                if min_price == 100000: continue
+                indices = [i for i, x in enumerate(prices) if x == min_price]
+
+                # Refactor into string builder factory
+                # ---------------------------------------- #
+                for index in indices:
+                    if sheet.cell(row=pos, column=4).value:
+                        sheet.cell(row=pos, column=4).value = f'{sheet.cell(row=pos, column=4).value} or {vendors[index]} '
+                    else:
+                        sheet.cell(row=pos, column=4).value = f'{vendors[index]} '
+                # ---------------------------------------- #
+
+        workbook.save(path_to_pricing_sheet)
+        return
