@@ -293,8 +293,8 @@ if __name__ == '__main__':
         # 'Renzi', 
         # 'Sysco', 
         # 'Performance Food',
-        # 'UNFI',
-        'Hill & Markes',
+        'UNFI',
+        # 'Hill & Markes',
         # 'Copper Horse Coffee',
         # 'Johnston Paper',
         # 'Regional Distributors, Inc.',
@@ -316,7 +316,7 @@ if __name__ == '__main__':
     stores = [
         #  'BAKERY',
          'TRIPHAMMER',
-        #  'COLLEGETOWN',
+         'COLLEGETOWN',
         #  'EASTHILL',
         #  'DOWNTOWN'
     ]
@@ -330,8 +330,8 @@ if __name__ == '__main__':
     #             craft_bot.get_order_from_vendor(store, vendor, download_pdf=True)
     #     sort_orders(ORDER_FILES_PATH)
 
-    for vendor in vendors:
-        format_orders(vendor, ORDER_FILES_PATH)
+    # for vendor in vendors:
+    #     format_orders(vendor, ORDER_FILES_PATH)
     
     def get_all_orders_from_vendor(driver) -> None:
         stores = [
@@ -350,11 +350,11 @@ if __name__ == '__main__':
 
     def get_all_orders_from_all_stores(driver) -> None:
         stores = [
-            'BAKERY',
-            #  'TRIPHAMMER',
-            #  'COLLEGETOWN',
-            #  'EASTHILL',
-            #  'DOWNTOWN'
+            # 'BAKERY',
+            'TRIPHAMMER',
+            'COLLEGETOWN',
+            'EASTHILL',
+            'DOWNTOWN'
         ]
 
         with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
@@ -363,6 +363,7 @@ if __name__ == '__main__':
             sort_orders(ORDER_FILES_PATH)
         return
     
+    # get_all_orders_from_all_stores(driver)
 
     
     transfer_vendor = 'Ithaca Bakery'
@@ -396,13 +397,13 @@ if __name__ == '__main__':
     vendor_to_print = [
         # 'BakeMark',
         # 'Lentz',
-        "Regional Distributors, Inc.",
+        # "Regional Distributors, Inc.",
         # 'Johnston Paper',
         # 'DUTCH VALLEY FOOD DIST',
         # 'Eurocafe Imports',
         # 'Coca-Cola',
         # 'Ithaca Bakery',
-        # 'Copper Horse Coffee',
+        'Copper Horse Coffee',
         # 'Hill & Markes',
         # 'Johnston Paper',
         # 'FingerLakes Farms',
@@ -422,7 +423,7 @@ if __name__ == '__main__':
         
 
 
-    # print_schedule_daily(get_day('Tuesday'))
+    # print_schedule_daily(get_day('Friday'))
     # print_schedule_daily(get_day('Monday'))
     
     # copper_path = f'{ORDER_FILES_PATH}\\Copper Horse Coffee'
@@ -451,10 +452,10 @@ if __name__ == '__main__':
 
     
     '''Pricing Sheet Protocol'''
-    # options = create_options()
-    # driver  = uc.Chrome(options=options, use_subprocess=True)
-    # download_pricing_sheets(driver)
-    # delete_all_files_without_extension(f'{PRICING_FILES_PATH}\\VendorSheets', '.xlsx')
-    # generate_pricing_sheets()
+    options = create_options()
+    driver  = uc.Chrome(options=options, use_subprocess=True)
+    download_pricing_sheets(driver)
+    delete_all_files_without_extension(f'{PRICING_FILES_PATH}\\VendorSheets', '.xlsx')
+    generate_pricing_sheets()
     
 

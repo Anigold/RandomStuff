@@ -101,8 +101,19 @@ class SyscoBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
             time.sleep(5)
 
         # Go to lists
-        self.driver.get('https://shop.sysco.com/app/lists')
-        time.sleep(5)
+        self.driver.get('https://shop.sysco.com/app/lists/purchase-history')
+        time.sleep(7)
+
+        try:
+            redirect_popup = self.driver.find_element(By.CLASS_NAME, 'dashboard-redirect-modal')
+            close_modal = redirect_popup.find_element(By.CLASS_NAME, 'marketing-modal-close-btn ')
+            close_modal.click()
+            time.sleep(6)
+            self.driver.get('https://shop.sysco.com/app/lists/purchase-history')
+            time.sleep(5)
+        except:
+            pass
+        
 
         # Choose the correct list
         list_container = self.driver.find_element(By.CLASS_NAME, 'list-navigation-sidebar')
