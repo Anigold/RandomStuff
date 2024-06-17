@@ -21,6 +21,8 @@ from backend.vendor_bots.UNFIBot import UNFIBot
 from backend.vendor_bots.IthacaBakeryBot import IthacaBakeryBot
 from backend.vendor_bots.DutchValleyBot import DutchValleyBot
 from backend.vendor_bots.CortlandProduceBot import CortlandProduceBot
+from backend.vendor_bots.BehlogProduceBot import BehlogProduceBot
+from backend.vendor_bots.RussoProduceBot import RussoProduceBot
 
 from backend.orders import OrderManager
 
@@ -99,7 +101,9 @@ def get_bot(name) -> VendorBot:
         'UNFI': UNFIBot,
         'Ithaca Bakery': IthacaBakeryBot,
         'Dutch Valley': DutchValleyBot,
-        'Cortland Produce Inc.': CortlandProduceBot
+        'Cortland Produce Inc.': CortlandProduceBot,
+        'Behlog Produce': BehlogProduceBot,
+        'Russo Produce': RussoProduceBot,
     }
 
     if name not in bots:
@@ -146,6 +150,7 @@ def setup_emails_for_sunday() -> None:
     equal_exchange_order_attachments        = tuple([join(f'{ORDER_FILES_PATH}\\Equal Exchange\\', file) for file in listdir(f'{ORDER_FILES_PATH}\\Equal Exchange\\') if isfile(join(f'{ORDER_FILES_PATH}\\Equal Exchange\\', file)) and file.endswith('.pdf')])
     finger_lakes_farms_order_attachments    = tuple([join(f'{ORDER_FILES_PATH}\\FingerLakes Farms\\', file) for file in listdir(f'{ORDER_FILES_PATH}\\FingerLakes Farms\\') if isfile(join(f'{ORDER_FILES_PATH}\\FingerLakes Farms\\', file)) and file.endswith('.pdf')])
     euro_cafe_order_attachments             = tuple([join(f'{ORDER_FILES_PATH}\\Eurocafe Imports\\', file) for file in listdir(f'{ORDER_FILES_PATH}\\Eurocafe Imports\\') if isfile(join(f'{ORDER_FILES_PATH}\\Eurocafe Imports\\', file)) and file.endswith('.pdf')])
+    macro_mamas_order_attachments           = tuple([join(f'{ORDER_FILES_PATH}\\Macro Mamas\\', file) for file in listdir(f'{ORDER_FILES_PATH}\\Macro Mamas\\') if isfile(join(f'{ORDER_FILES_PATH}\\Macro Mamas\\', file)) and file.endswith('.pdf')])
     
     sunday_emailer = Emailer(service=Outlook)
 
@@ -169,11 +174,12 @@ def setup_emails_for_sunday() -> None:
         'body': 'Please see attached for orders, thank you!',
         'attachments': finger_lakes_farms_order_attachments
         },
-        # {
-        # 'subject': 'Macro Mama Order',
-        # 'to': ['macromamas@gmail.com'],
-        # 'body': 'Please see attached for orders, thank you!'
-        # },
+        {
+        'subject': 'Macro Mama Order',
+        'to': ['macromamas@gmail.com'],
+        'body': 'Please see attached for orders, thank you!',
+        'attachements': macro_mamas_order_attachments
+        },
         {
         'subject': 'Copper Horse Order',
         'to': ['copperhorsecoffee@gmail.com'],
@@ -257,7 +263,7 @@ def produce_pricing_and_email(driver) -> None:
     emailer.display_email(email)
     return
 
-def download_pricing_sheets(driver, vendors=[ 'Performance Food', 'Sysco', 'Renzi', 'Cortland Produce Inc.'], guides=['IBProduce', 'IBFavorite']) -> None:
+def download_pricing_sheets(driver, vendors=['Renzi', 'Sysco', 'Performance Food', 'Cortland Produce Inc.'], guides=['IBProduce', 'IBFavorite']) -> None:
 
     for vendor in vendors:
         creds = get_credentials(vendor)
@@ -272,13 +278,13 @@ def download_pricing_sheets(driver, vendors=[ 'Performance Food', 'Sysco', 'Renz
         
     return
 
-def generate_pricing_sheets(vendors=['Renzi', 'Sysco', 'Performance Food', 'Cortland Produce Inc.'], guides=['IBProduce', 'IBFavorite']):
+def generate_pricing_sheets(vendors=['Renzi', 'Sysco', 'Performance Food', 'Cortland Produce Inc.', 'Russo Produce', 'Behlog Produce'], guides=['IBProduce']):
         pricer = PriceComparator()
-        pricer.item_skus_file_path = f'{PRICING_FILES_PATH}\\ItemSkus.xlsx'
+        # pricer.item_skus_file_path = f'{PRICING_FILES_PATH}\\ItemSkus.xlsx'
         for guide in guides:
             pricer.generate_pricing_sheet(f'{PRICING_FILES_PATH}\\Templates\\{guide}.xlsx', 
                                           [f'{PRICING_FILES_PATH}\\VendorSheets\\{vendor}_{guide}_{date.today()}.xlsx' for vendor in vendors], 
-                                          f'{PRICING_FILES_PATH}\\{guide} {date.today()}.xlsx')
+                                          f'{PRICING_FILES_PATH}\\Pricing Guides\\{guide}\\{guide} {date.today()}.xlsx')
         return
 
 def delete_all_files_without_extension(directory: str, extension: str) -> None:
@@ -290,10 +296,11 @@ def delete_all_files_without_extension(directory: str, extension: str) -> None:
 if __name__ == '__main__':
 
     vendors = [
-        # 'Renzi', 
-        # 'Sysco', 
-        # 'Performance Food',
-        'UNFI',
+        'Renzi', 
+        'Sysco', 
+        'Performance Food',
+        # 'US Foods',
+        # 'UNFI',
         # 'Hill & Markes',
         # 'Copper Horse Coffee',
         # 'Johnston Paper',
@@ -310,15 +317,21 @@ if __name__ == '__main__':
         # 'BALKAN BEVERAGE LLC',
         # 'Casa',
         # 'Palmer',
-        # 'Equal Exchange'
+        # 'Equal Exchange',
+        # 'Macro Mamas',
+        # 'SANICO',
+        # 'Coca-Cola',
+        # 'FingerLakes Farms',
+        # 'ACE ENDICO',
+        # 'Dawn'
     ]
 
     stores = [
         #  'BAKERY',
          'TRIPHAMMER',
          'COLLEGETOWN',
-        #  'EASTHILL',
-        #  'DOWNTOWN'
+         'EASTHILL',
+         'DOWNTOWN'
     ]
 
     # options = create_options()
@@ -326,14 +339,20 @@ if __name__ == '__main__':
 
     # with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
     #     for store in stores: 
-    #         for vendor in vendors:
-    #             craft_bot.get_order_from_vendor(store, vendor, download_pdf=True)
+    #         # for vendor in vendors:
+    #         #     craft_bot.get_order_from_vendor(store, vendor, download_pdf=True)
+    #         craft_bot.get_all_orders_from_webpage(store, download_pdf=True)
     #     sort_orders(ORDER_FILES_PATH)
 
+    # sort_orders(ORDER_FILES_PATH)
     # for vendor in vendors:
     #     format_orders(vendor, ORDER_FILES_PATH)
     
-    def get_all_orders_from_vendor(driver) -> None:
+    # with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
+    #     for store in stores:
+    #         craft_bot.delete_all_orders(store)
+
+    def get_all_orders_from_vendor(driver, vendor) -> None:
         stores = [
             'BAKERY',
             'TRIPHAMMER',
@@ -343,18 +362,17 @@ if __name__ == '__main__':
         ]
         with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
             for store in stores: 
-                for vendor in vendors:
-                    craft_bot.get_order_from_vendor(store, vendor, download_pdf=True)
+                craft_bot.get_order_from_vendor(store, vendor, download_pdf=True)
             sort_orders(ORDER_FILES_PATH)
         return
 
     def get_all_orders_from_all_stores(driver) -> None:
         stores = [
-            # 'BAKERY',
-            'TRIPHAMMER',
-            'COLLEGETOWN',
-            'EASTHILL',
-            'DOWNTOWN'
+            'BAKERY',
+            # 'TRIPHAMMER',
+            # 'COLLEGETOWN',
+            # 'EASTHILL',
+            # 'DOWNTOWN'
         ]
 
         with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
@@ -363,6 +381,8 @@ if __name__ == '__main__':
             sort_orders(ORDER_FILES_PATH)
         return
     
+    # for vendor in vendors: get_all_orders_from_vendor(driver, vendor)
+
     # get_all_orders_from_all_stores(driver)
 
     
@@ -383,7 +403,7 @@ if __name__ == '__main__':
     #         sheet = workbook.active
 
     #         for item_row in sheet.iter_rows():
-    #             print(item_row)
+    #             # print(item_row)
     #             to_transfer, name, quantity = item_row
 
     #             if not to_transfer: continue
@@ -395,6 +415,10 @@ if __name__ == '__main__':
 
 
     vendor_to_print = [
+        'Renzi',
+        'Sysco',
+        'Performance Food',
+        'US Foods',
         # 'BakeMark',
         # 'Lentz',
         # "Regional Distributors, Inc.",
@@ -403,7 +427,7 @@ if __name__ == '__main__':
         # 'Eurocafe Imports',
         # 'Coca-Cola',
         # 'Ithaca Bakery',
-        'Copper Horse Coffee',
+        # 'Copper Horse Coffee',
         # 'Hill & Markes',
         # 'Johnston Paper',
         # 'FingerLakes Farms',
@@ -412,7 +436,8 @@ if __name__ == '__main__':
         # 'Performance Food',
         # 'BJ\'s',
         # 'Copper Horse Coffee',
-        # 'Webstaurant'
+        # 'Webstaurant',
+        # 'UNFI',
     ]
     # printer = Printer()    
     # for vendor in vendor_to_print:
@@ -421,18 +446,22 @@ if __name__ == '__main__':
     #         printer.print_file(f'{ORDER_FILES_PATH}\\{vendor}\\{file}')
     #         time.sleep(6)
         
-
-
-    # print_schedule_daily(get_day('Friday'))
+    # print_schedule_daily(get_day('Saturday'))
+    # print_schedule_daily(get_day('Sunday'))
     # print_schedule_daily(get_day('Monday'))
+    # print_schedule_daily(get_day('Tuesday'))
+    # print_schedule_daily(get_day('Wednesday'))
+    # print_schedule_daily(get_day('Thursday'))
+    # print_schedule_daily(get_day('Friday'))
     
     # copper_path = f'{ORDER_FILES_PATH}\\Copper Horse Coffee'
 
-    # copper_store_string = f'Copper Horse Coffee _ % 04192024.xlsx'
+    # copper_store_string = f'Copper Horse Coffee _ % 06142024.xlsx'
+    
 
     # copper_bot = CopperHorseBot()
     # copper_bot.combine_orders([f'{copper_path}\\{copper_store_string.replace('%', store)}' for store in stores], copper_path)
-
+    # input('click enter when ready')
     # setup_emails_for_sunday()
 
    
@@ -440,7 +469,7 @@ if __name__ == '__main__':
     # ithaca_bot = get_bot('Ithaca Bakery')()
     # ithaca_path = f'{ORDER_FILES_PATH}\\Ithaca Bakery\\'
 
-    # ithaca_store_string = f'Ithaca Bakery _ % 04192024.xlsx'
+    # ithaca_store_string = f'Ithaca Bakery _ % 06142024.xlsx'
 
     # ithaca_bot.combine_orders([f'{ithaca_path}{ithaca_store_string.replace('%', store)}' for store in stores], ithaca_path)
     # milk_orders = tuple([join(f'{ORDER_FILES_PATH}\\Hillcrest Dairy\\', file) for file in listdir(f'{ORDER_FILES_PATH}\\Hillcrest Dairy\\') if isfile(join(f'{ORDER_FILES_PATH}\\Hillcrest Dairy\\', file)) and file.endswith('.pdf')])
@@ -452,10 +481,28 @@ if __name__ == '__main__':
 
     
     '''Pricing Sheet Protocol'''
-    options = create_options()
-    driver  = uc.Chrome(options=options, use_subprocess=True)
-    download_pricing_sheets(driver)
-    delete_all_files_without_extension(f'{PRICING_FILES_PATH}\\VendorSheets', '.xlsx')
+    # options = create_options()
+    # driver  = uc.Chrome(options=options, use_subprocess=True)
+    # download_pricing_sheets(driver)
+    # delete_all_files_without_extension(f'{PRICING_FILES_PATH}\\VendorSheets', '.xlsx')
     generate_pricing_sheets()
     
+    vendors = [
+        # 'Sysco',
+        # 'Performance Food',
+        # 'Renzi',
+        # 'Cortland Produce Inc.',
+        'Russo Produce',
+        'Behlog Produce',
+    ]
+    # options = create_options()
+    # driver  = uc.Chrome(options=options, use_subprocess=True)
+    # for vendor in vendors:
+    #     creds = get_credentials(vendor)
+    #     bot = get_bot(vendor)()
+    #     # file_name = bot.retrieve_pricing_sheet('IBProduce')
+    #     bot.format_vendor_pricing_sheet(f'{PRICING_FILES_PATH}\\VendorSheets\\{bot.name}_IBProduce_2024-06-15.xlsx', f'{PRICING_FILES_PATH}\\{bot.name}_IBProduce_{date.today()}.xlsx', )
 
+    # pricer = PriceComparator()
+    # pricer.item_skus_file_path = f'{PRICING_FILES_PATH}\\ItemSkus.xlsx'
+    # pricer.compare_prices(f'{PRICING_FILES_PATH}\\Pricing Guides\\IBProduce\\IBProduce 2024-06-15.xlsx')

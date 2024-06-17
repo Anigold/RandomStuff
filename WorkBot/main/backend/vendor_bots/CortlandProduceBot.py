@@ -23,9 +23,9 @@ class CortlandProduceBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
         self.store_ids = {}
 
         self.special_cases = {
-            '8203': {'unit': 'LB', 'pack': 30}, # This is a place holder until we get the real measurement
+            '8203': {'unit': 'LB', 'pack': 20}, # This is a place holder until we get the real measurement
             '4060': {'unit': 'LB', 'pack': 30}, # This is a place holder until we get the real measurement
-            '4193': {'unit': 'LB', 'pack': 30}, # This is a place holder until we get the real measurement
+            '4193': {'unit': 'LB', 'pack': 8}, # This is a place holder until we get the real measurement
             '8275': {'unit': 'LB', 'pack': 10},
             '4219': {'unit': 'EA', 'pack': 1},
             '4166': {'unit': 'EA', 'pack': 80},

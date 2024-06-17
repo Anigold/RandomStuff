@@ -87,6 +87,7 @@ class PricingBotMixin:
         for row_pos, item_name in enumerate(price_info):
 
             item_info     = price_info[item_name]
+            pprint.pprint(item_info)
             sku           = item_info['SKU']
             cost          = item_info['cost']
             case_size     = item_info['case_size']
@@ -156,3 +157,7 @@ class PricingBotMixin:
             size_string = float(size_string)
 
         return [size_string * float(pack), unit_string]
+
+
+    def _special_case_info(self, unit: str, pack: float) -> dict:
+        return {'unit': unit, 'pack': pack}

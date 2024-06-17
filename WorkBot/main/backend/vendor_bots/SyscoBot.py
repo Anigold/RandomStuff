@@ -26,6 +26,10 @@ class SyscoBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
             'TRIPHAMMER': 'TRIPHAMMER ITHACA BAKERY'
         }
 
+        self.special_cases = {
+            '2700171': {'unit': 'EA', 'pack': 66}, # Croissant - Butter
+        }
+
     def login(self) -> None:
         self.driver.get('https://shop.sysco.com/auth/login')
 
@@ -102,7 +106,7 @@ class SyscoBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
 
         # Go to lists
         self.driver.get('https://shop.sysco.com/app/lists/purchase-history')
-        time.sleep(7)
+        time.sleep(15)
 
         try:
             redirect_popup = self.driver.find_element(By.CLASS_NAME, 'dashboard-redirect-modal')
@@ -110,11 +114,12 @@ class SyscoBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
             close_modal.click()
             time.sleep(6)
             self.driver.get('https://shop.sysco.com/app/lists/purchase-history')
-            time.sleep(5)
+            
         except:
             pass
         
-
+        time.sleep(6)
+        input('Click enter when ready')
         # Choose the correct list
         list_container = self.driver.find_element(By.CLASS_NAME, 'list-navigation-sidebar')
         lists = list_container.find_elements(By.CLASS_NAME, 'list-navigation-item')
@@ -170,6 +175,9 @@ class SyscoBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
                 item_name 		= row[12]
                 quantity, units = PricingBotMixin.helper_format_size_units(row[7], row[8])
                 cost 			= float(row[14]) if row[14] != '' else float(row[15])
+
+                if item_sku in self.special_cases:
+                    quantity, units = PricingBotMixin.helper_format_size_units(self.special_cases[item_sku]['pack'], self.special_cases[item_sku]['unit'])
 
                 if item_name not in item_info:
                     item_info[item_name] = {

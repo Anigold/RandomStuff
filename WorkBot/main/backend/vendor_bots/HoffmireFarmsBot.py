@@ -40,6 +40,7 @@ class HoffmireFarmsBot(VendorBot, SeleniumBotMixin):
         time.sleep(3)
 
         
+
     def get_units_from_pack_size(self, pack_size: str) -> str:
 
         quantity = ''
