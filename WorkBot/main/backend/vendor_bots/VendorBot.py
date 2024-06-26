@@ -14,7 +14,7 @@ class VendorBot(ABC):
         pass
 
 
-class SeleniumBotMixin:
+class SeleniumBotMixin(ABC):
 
     def __init__(self, driver, username, password) -> None:
         self.is_logged_in = False
@@ -32,7 +32,7 @@ class SeleniumBotMixin:
         return self.driver.close()
     
 
-class PricingBotMixin:
+class PricingBotMixin(ABC):
 
     def __init__(self) -> None:
         self.special_cases = {}
@@ -52,7 +52,9 @@ class PricingBotMixin:
 			'EA': 'EA',
 			'CT': 'EA',
 			'DOZ': 'DZ',
-			'PINT': 'PT'
+			'PINT': 'PT',
+            'HD': 'EA',
+            'HEAD': 'EA'
 		}
 
         return units[unit] if unit in units else unit
@@ -158,6 +160,10 @@ class PricingBotMixin:
 
         return [size_string * float(pack), unit_string]
 
+    @abstractmethod
+    def retrieve_pricing_sheet(self) -> None:
+        pass
 
     def _special_case_info(self, unit: str, pack: float) -> dict:
         return {'unit': unit, 'pack': pack}
+    

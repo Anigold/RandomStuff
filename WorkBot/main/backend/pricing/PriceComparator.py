@@ -70,7 +70,7 @@ class PriceComparator:
         vendors = []
         for vendor_path in vendor_sheets_paths:
             vendor_name = vendor_path.split('\\')[-1].split('_')[0]
-            print(vendor_name)
+   
             item_info = self.get_skus_from_vendor_sheet(vendor_path)
             if vendor_name not in vendor_skus:
                 vendor_skus[vendor_name] = item_info
@@ -99,7 +99,7 @@ class PriceComparator:
 
         return self.compare_prices(output_file_path)
 
-    def compare_prices(self, path_to_pricing_sheet: str) -> None:
+    def  compare_prices(self, path_to_pricing_sheet: str) -> None:
         workbook = load_workbook(path_to_pricing_sheet)
         sheet = workbook.active
 
@@ -139,3 +139,6 @@ class PriceComparator:
 
         workbook.save(path_to_pricing_sheet)
         return
+
+    def find_price_fluctuations(self, path):
+        pass

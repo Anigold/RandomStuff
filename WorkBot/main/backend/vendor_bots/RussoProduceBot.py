@@ -22,14 +22,14 @@ class RussoProduceBot(VendorBot, PricingBotMixin):
         self.store_ids = {}
 
         self.special_cases = {
-            'Alfalfa Sprouts': {'unit': 'OZ', 'pack': 36},
+            'Alfalfa Sprouts': {'unit': 'LB', 'pack': 2.25},
             'Bananas': {'unit': 'LB', 'pack': 40},
-            'Basil (Cleaned)': {'unit': 'EA', 'pack': 1},
+            'Basil (Cleaned)': {'unit': 'LB', 'pack': .15625},
             'Brussel Sprouts': {'unit': 'LB', 'pack': 25},
             'Cabbage Shredded': {'unit': 'LB', 'pack': 25},
             'Cauliflower': {'unit': 'EA', 'pack': 12},
             'Cilantro': {'unit': 'EA', 'pack': 1},
-            'Collard Greens': {'unit': 'LB', 'pack': 18},
+            'Collard Greens': {'unit': 'EA', 'pack': 9},
             'Cucumbers English': {'unit': 'EA', 'pack': 12},
             'Garlic Peeled': {'unit': 'LB', 'pack': 5},
             'Ginger Root': {'unit': 'LB', 'pack': 1},
@@ -37,7 +37,7 @@ class RussoProduceBot(VendorBot, PricingBotMixin):
             'Honeydew Melon': {'unit': 'EA', 'pack': 5.5},
             'Kale': {'unit': 'EA', 'pack': 24},
             'Kiwi': {'unit': 'EA', 'pack': 1},
-            'Lemon': {'unit': 'LB', 'pack': 40},
+            'Lemon': {'unit': 'EA', 'pack': 140},
             'Limes': {'unit': 'LB', 'pack': 10},
             'Mushrooms Thick Sliced': {'unit': 'LB', 'pack': 10},
             'Mushrooms Whole Button': {'unit': 'LB', 'pack': 10},
@@ -53,14 +53,9 @@ class RussoProduceBot(VendorBot, PricingBotMixin):
             'Tomatos 5x6': self._special_case_info('LB', 25),
         }
 
-    
-
     def format_for_file_upload(self, item_data: dict, path_to_save: str):
         pass
     
-   
-        
-
     def get_pricing_info_from_sheet(self, path_to_pricing_sheet: str) -> dict:
         workbook = load_workbook(path_to_pricing_sheet)
         sheet    = workbook.active
@@ -117,3 +112,6 @@ class RussoProduceBot(VendorBot, PricingBotMixin):
             
 
         return item_info
+    
+    def retrieve_pricing_sheet(self, pricing_guide) -> None:
+        return 'Russo Produce_IBProduce.xlsx'

@@ -11,7 +11,7 @@ from csv import writer, reader as csv_reader
 
 class SyscoBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
 
-    def __init__(self, driver: webdriver = None, username = None, password = None) -> None:
+    def __init__(self, driver: webdriver = None, username: str = None, password: str = None) -> None:
         VendorBot.__init__(self)
         SeleniumBotMixin.__init__(self, driver, username, password)
 

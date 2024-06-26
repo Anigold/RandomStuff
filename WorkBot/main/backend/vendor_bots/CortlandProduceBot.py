@@ -31,6 +31,13 @@ class CortlandProduceBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
             '4166': {'unit': 'EA', 'pack': 80},
             '8465': {'unit': 'CS', 'pack': 1},
             '027398': {'unit': 'GAL', 'pack': 1},
+            '8170': self._special_case_info('LB', .625), # Basil (Cleaned)
+            '8324': self._special_case_info('LB', 88), # NAPA Cabbage
+            '4184': self._special_case_info('EA', 7), # Honeydew Melon
+            '8115': self._special_case_info('LB', 19), # Lettuce Green Leaf Washed and Trimmed
+            '8169': self._special_case_info('LB', 12), # Green Onion (Scallion)
+            '8178': self._special_case_info('LB', 2), # Oregano
+     
         }
 
     def login(self):
@@ -143,7 +150,7 @@ class CortlandProduceBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
             else:
                 unit = self.special_cases[item_sku]['unit']
                 pack_size = self.special_cases[item_sku]['pack']
-
+                print(self.name, item_name, unit, pack_size)
             cost = float(row[8])
 
             if item_name not in item_info:

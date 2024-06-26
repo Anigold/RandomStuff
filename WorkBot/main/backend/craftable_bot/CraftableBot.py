@@ -304,6 +304,7 @@ class CraftableBot:
         table_rows = table_body.find_elements(By.XPATH, './tr')
 
         order_counter = len(table_rows)
+        print(order_counter, flush=True)
         while order_counter > 0:
             table_body      = self.driver.find_element(By.XPATH, './/tbody')
             table_rows      = table_body.find_elements(By.XPATH, './tr')
@@ -316,14 +317,22 @@ class CraftableBot:
             row_date.click()
         
             try:
-                WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[5]/div[2]/div/div/div[1]/div[2]/div/div[3]/div/div[2]/span[1]/a')))
+                WebDriverWait(self.driver, 35).until(EC.element_to_be_clickable((By.CLASS_NAME, 'btn-danger')))
             except:
-                #ActionChains(self.driver).scroll_to_element(iframe).perform()
-                js_code = 'arguments[0].scrollIntoView();'
-                self.driver.execute_script(js_code, self.driver.find_element(By.XPATH, '/html/body/div[5]/div[2]/div/div/div[1]/div[2]/div/div[3]/div/div[2]/span[1]/a'))
+                # #ActionChains(self.driver).scroll_to_element(iframe).perform()
+                # js_code = 'arguments[0].scrollIntoView();'
+                # self.driver.execute_script(js_code, self.driver.find_element(By.XPATH, 'btn-danger'))
+                pass
+              
 
-            delete_button = self.driver.find_element(By.XPATH, '/html/body/div[5]/div[2]/div/div/div[1]/div[2]/div/div[3]/div/div[2]/span[1]/a')
-            delete_button.click()
+            tries = 2
+            while tries >= 0:
+                try:
+                    delete_button = self.driver.find_element(By.CLASS_NAME, 'btn-danger')
+                    delete_button.click()
+                    break
+                except:
+                    tries -= 1
             
             WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.ID, 'confirmOrderDeleteModal')))
             confirm_delete_modal = self.driver.find_element(By.ID, 'confirmOrderDeleteModal')
@@ -332,7 +341,7 @@ class CraftableBot:
             delete_button = footer_buttons[1]
             delete_button.click()
             order_counter -= 1
-            time.sleep(4)
+            time.sleep(5)
 
         return
 
@@ -385,7 +394,7 @@ class CraftableBot:
         store_to_select.click()
 
         time.sleep(2)
-
+    
         options = self.driver.find_elements(By.XPATH, './/li[@class="select2-results__option"]')
         for option in options:
             choice_id_full = option.get_attribute('data-select2-id')
@@ -396,10 +405,10 @@ class CraftableBot:
                 break
 
         time.sleep(4)
-
-        transfer_modal = self.driver.find_element(By.ID, 'transferNewModal')
+        WebDriverWait(self.driver, 120).until(EC.element_to_be_clickable((By.ID, 'transferNewModal')))
+        transfer_modal        = self.driver.find_element(By.ID, 'transferNewModal')
         transfer_modal_footer = transfer_modal.find_element(By.XPATH, './/div[@class="modal-footer "]')
-        submit_button = transfer_modal_footer.find_elements(By.TAG_NAME, 'button')[1]
+        submit_button         = transfer_modal_footer.find_elements(By.TAG_NAME, 'button')[1]
 
         submit_button.click()
 
@@ -414,33 +423,44 @@ class CraftableBot:
             
             add_item_button.click()
 
-            time.sleep(4)
-
-            # Enter the item name
-            item_input = self.driver.find_element(By.ID, 'typeahead')
-            item_input.send_keys(item.name)
-            time.sleep(4)
-
-            # Select the item from the dropdown
-            item_choice_container = self.driver.find_element(By.XPATH, './/div[@class="input-group input-typeahead-container input-group-merge"]')
-            item_choice = item_choice_container.find_elements(By.XPATH, './following-sibling::div/div[@class="input-type-ahead "]/div[@class="input-type-ahead-row"]')[0]
-            item_choice.click()
-            
-
-            transfer_modal = self.driver.find_element(By.ID, 'transferItemModal')
-            transfer_form = transfer_modal.find_element(By.XPATH, './/form')
-            quantity_input_container = transfer_form.find_elements(By.XPATH, './div')[2]
-            quantity_input = quantity_input_container.find_element(By.XPATH, './/input')
-            quantity_input.send_keys(Keys.BACKSPACE)
-            quantity_input.send_keys(item.quantity)
-
             time.sleep(2)
 
-            add_transfer_item_button = self.driver.find_element(By.XPATH, './/button[text()="Add Transfer Line"]')
-            add_transfer_item_button.click()
+            # Enter the item name
+            try:
 
-            WebDriverWait(self.driver, 60).until(EC.element_to_be_clickable((By.XPATH, './/div[@class="_c-notification__content"][text()="Successfully added a Transfer Line"]')))
-            
+               
+                item_input = self.driver.find_element(By.ID, 'typeahead')
+                item_input.send_keys(item.name)
+                time.sleep(2)
+
+                # Select the item from the dropdown
+                item_choice_container = self.driver.find_element(By.XPATH, './/div[@class="input-group input-typeahead-container input-group-merge"]')
+                item_choice = item_choice_container.find_elements(By.XPATH, './following-sibling::div/div[@class="input-type-ahead "]/div[@class="input-type-ahead-row"]')[0]
+                item_choice.click()
+                
+                
+
+
+                transfer_modal           = self.driver.find_element(By.ID, 'transferItemModal')
+                transfer_form            = transfer_modal.find_element(By.XPATH, './/form')
+                quantity_input_container = transfer_form.find_elements(By.XPATH, './div')[2]
+                quantity_input           = quantity_input_container.find_element(By.XPATH, './/input')
+                quantity_input.send_keys(Keys.BACKSPACE)
+                quantity_input.send_keys(item.quantity)
+
+                time.sleep(3)
+
+                for i in range(3):
+                    try:
+                        add_transfer_item_button = self.driver.find_element(By.XPATH, './/button[text()="Add Transfer Line"]')
+                        add_transfer_item_button.click()
+                        WebDriverWait(self.driver, 180).until(EC.element_to_be_clickable((By.XPATH, './/div[@class="_c-notification__content"][text()="Successfully added a Transfer Line"]')))
+                        break
+                    except:
+                        pass
+                    
+            except:
+                print(item.name, transfer.store_to, flush=True)
             # time.sleep(5)
         
         submit_transfer_button = self.driver.find_element(By.XPATH, './/a[text()="Request"]')

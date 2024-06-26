@@ -22,18 +22,21 @@ class BehlogProduceBot(VendorBot, PricingBotMixin):
         self.store_ids = {}
 
         self.special_cases = {
-            '1425': self._special_case_info('EA', 1)
+            '1425': self._special_case_info('EA', 1), # Honeydew
+            '1081': self._special_case_info('EA', 109), # Empire Apple
+            '253': self._special_case_info('EA', 23), # Cilantro
+            '176': self._special_case_info('EA', 15), # Collard Greens
+            '1305': self._special_case_info('EA', 34.5), # Kiwi
+            '1150': self._special_case_info('LB', 8), # Strawberry
+            '340': self._special_case_info('EA', 24), # Romaine Heart (Whole Thing)
+            '347': self._special_case_info('LB', 36), # Romaine Heart (Just the heart)
         }
-
-    
 
     def format_for_file_upload(self, item_data: dict, path_to_save: str):
         pass
     
-   
-        
-
     def get_pricing_info_from_sheet(self, path_to_pricing_sheet: str) -> dict:
+
         workbook = load_workbook(path_to_pricing_sheet)
         sheet    = workbook.active
 
@@ -72,6 +75,7 @@ class BehlogProduceBot(VendorBot, PricingBotMixin):
                     pack_size = ( float(packs) * float(size) )
 
             else:
+                print(item_name)
                 unit = self.special_cases[item_sku]['unit']
                 pack_size = self.special_cases[item_sku]['pack']
 
@@ -88,3 +92,6 @@ class BehlogProduceBot(VendorBot, PricingBotMixin):
             
 
         return item_info
+    
+    def retrieve_pricing_sheet(self, pricing_guide) -> None:
+        return 'Behlog Produce_IBProduce.xlsx'
