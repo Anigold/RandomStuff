@@ -129,15 +129,17 @@ class PerformanceFoodBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
         row_info  = list(PricingBotMixin.helper_iter_rows(sheet))[9:-3] # We remove the "metadata" from the top and the ancillary information from the bottom of the sheet. 
         item_info = {}
         for row in row_info:
-            item_sku  = row[4]
+            print(row, flush=True)
+            item_sku  = row[5]
             item_name = row[1]
 
 
             '''
             This is the ugliest hack ever
             '''
-            if not row[5]: continue
-            pack_size_info = row[5].split('/')
+            if not row[6]: continue
+            pack_size_info = row[6].split('/')
+            print(pack_size_info, flush=True)
             pack_info      = pack_size_info[1].split(' ')
             
             if len(pack_info) == 2 and pack_info[1] == 'Bu':
@@ -149,7 +151,7 @@ class PerformanceFoodBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
                 else:
                     quantity, units = PricingBotMixin.helper_format_size_units(pack_size_info[0], pack_size_info[1])
 
-            cost = float(row[7].replace('$', ''))
+            cost = float(row[8].replace('$', ''))
 
             if item_name not in item_info:
                 item_info[item_name] = {
@@ -157,7 +159,7 @@ class PerformanceFoodBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
                     'quantity': quantity,
                     'units': PricingBotMixin.normalize_units(units),
                     'cost': cost,
-                    'case_size': row[5]
+                    'case_size': row[6]
 
                 }
 

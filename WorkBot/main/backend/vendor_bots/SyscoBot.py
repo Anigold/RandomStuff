@@ -131,8 +131,8 @@ class SyscoBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
         # Export the list
         content_area = self.driver.find_element(By.XPATH, './/div[@class="myProducts-content myProducts-content-list-nav"]')
 
-        more_actions_button_container = content_area.find_element(By.XPATH, './/div[@class="list-action-container"]')
-        more_actions = more_actions_button_container.find_element(By.XPATH, './/div[@class="fd more-actions-wrapper"]')
+        more_actions_button_container = content_area.find_element(By.XPATH, './/div[@class="fd more-actions-wrapper"]')
+        more_actions = more_actions_button_container.find_element(By.XPATH, './/button[@data-id="more-actions-btn"]')
         more_actions.click()                  
 
         time.sleep(2)
@@ -140,7 +140,7 @@ class SyscoBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
         export_button = self.driver.find_element(By.XPATH, './/li[@data-id="export-list-btn"]')
         export_button.click()
 
-        time.sleep(2)
+        time.sleep(8)
 
         # The export modal seemingly gets reloaded after every interaction leading to stale references. I've skipped it entirely.
         # export_modal = self.driver.find_element(By.CLASS_NAME, 'modal-body')
@@ -159,7 +159,7 @@ class SyscoBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
         submit_export = self.driver.find_element(By.XPATH, './/button[@data-id="export-list-modal-export-btn"]')
         submit_export.click()
 
-        time.sleep(3)
+        time.sleep(10)
 
         return f'{filename}.csv'
     

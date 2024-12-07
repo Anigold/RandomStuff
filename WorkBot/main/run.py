@@ -8,12 +8,13 @@ from dotenv import load_dotenv
 from os import getenv
 from os import listdir, remove as os_remove, mkdir, rename
 from os.path import isfile, join, isdir
+import os
 
 from backend.helpers import  FormatItemData
 
 from backend.vendor_bots.VendorBot import VendorBot
 from backend.vendor_bots.HillNMarkesBot import HillNMarkesBot
-from backend.vendor_bots.RenziBot import RenziBot
+from backend.vendor_bots.USFoodsBot import USFoodsBot
 from backend.vendor_bots.CopperHorseBot import CopperHorseBot
 from backend.vendor_bots.PerformanceFoodBot import PerformanceFoodBot
 from backend.vendor_bots.SyscoBot import SyscoBot
@@ -23,6 +24,7 @@ from backend.vendor_bots.DutchValleyBot import DutchValleyBot
 from backend.vendor_bots.CortlandProduceBot import CortlandProduceBot
 from backend.vendor_bots.BehlogProduceBot import BehlogProduceBot
 from backend.vendor_bots.RussoProduceBot import RussoProduceBot
+from backend.vendor_bots.EuroCafeBot import EuroCafeBot
 
 from backend.orders import OrderManager
 
@@ -96,7 +98,7 @@ def get_excel_files(path: str) -> list:
 def get_bot(name) -> VendorBot:
      
     bots = {
-        'Renzi': RenziBot,
+        'US Foods': USFoodsBot,
         'Hill & Markes': HillNMarkesBot,
         'Sysco': SyscoBot,
         'Performance Food': PerformanceFoodBot,
@@ -107,7 +109,8 @@ def get_bot(name) -> VendorBot:
         'Cortland Produce Inc.': CortlandProduceBot,
         'Behlog Produce': BehlogProduceBot,
         'Russo Produce': RussoProduceBot,
-        'Webstaurant': WebstaurantBot
+        'Webstaurant': WebstaurantBot,
+        'Eurocafe Imports': EuroCafeBot,
     }
 
     if name not in bots:
@@ -181,7 +184,7 @@ def setup_emails_for_sunday() -> None:
     emails = [
         {
         'subject': 'Equal Exchange Order',
-        'to': ['orders@equalexchange.com'],
+        'to': ['orders@equalexchange.coop'],
         'body': 'Please see attached for orders, thank you!',
         'attachments': equal_exchange_order_attachments
         },
@@ -202,7 +205,7 @@ def setup_emails_for_sunday() -> None:
         'subject': 'Macro Mama Order',
         'to': ['macromamas@gmail.com'],
         'body': 'Please see attached for orders, thank you!',
-        'attachements': macro_mamas_order_attachments
+        'attachments': macro_mamas_order_attachments
         },
         {
         'subject': 'Copper Horse Order',
@@ -287,11 +290,10 @@ def produce_pricing_and_email(driver) -> None:
     emailer.display_email(email)
     return
 
-def download_pricing_sheets(driver, vendors=['Renzi', 'Sysco', 'Performance Food', 'Cortland Produce Inc.', 'Behlog Produce', 'Russo Produce', ], guides=['IBProduce']) -> None:
+def download_pricing_sheets(driver, vendors=['Sysco', 'Performance Food', 'US Foods', 'Behlog Produce', 'Russo Produce',], guides=['IBProduce']) -> None:
 
     for vendor in vendors:
         creds = get_credentials(vendor)
-
         bot = get_bot(vendor)() if creds['username'] == None else get_bot(vendor)(driver, creds['username'], creds['password'])
 
         for pricing_guide in guides:
@@ -305,7 +307,7 @@ def download_pricing_sheets(driver, vendors=['Renzi', 'Sysco', 'Performance Food
         
     return
 
-def generate_pricing_sheets(vendors=['Behlog Produce', 'Russo Produce', 'Renzi', 'Sysco', 'Performance Food', 'Cortland Produce Inc.'], guides=['IBProduce']):
+def generate_pricing_sheets(vendors=['Sysco', 'Performance Food', 'US Foods', 'Behlog Produce', 'Russo Produce',], guides=['IBProduce']):
         pricer = PriceComparator()
         # pricer.item_skus_file_path = f'{PRICING_FILES_PATH}\\ItemSkus.xlsx'
         for guide in guides:
@@ -320,64 +322,152 @@ def delete_all_files_without_extension(directory: str, extension: str) -> None:
             os_remove(f'{directory}\\{file}')
     return
 
+
+def find_order_files(base_directory: str, depth=2) -> list:
+    orders = []
+    for root, dirs, files in os.walk(base_directory):
+        if root.count(os.sep) - base_directory.count(os.sep) < depth:
+            for file in files:
+                if file.endswith('.xlsx'):
+                    file_path = os.path.join(root, file)
+                    orders.append(file_path)
+    return orders
+
+def get_orders_by_store(base_directory:str, stores: list, depth=2) -> list[list]:
+    all_order_files = find_order_files(base_directory, depth)
+
+    store_orders = {}
+    for store in stores:
+        if store not in store_orders:
+            store_orders[store]= []
+
+    for order_file in all_order_files:
+        for store in stores:
+            if store in order_file:
+                store_orders[store].append(order_file)
+    
+    return store_orders
+
+def update_orders(self, store: str, download_pdf=False) -> None:
+        
+        
+        all_saved_orders = find_order_files(ORDER_FILES_PATH)
+
+        stores_orders = []
+        for pos, saved_order in enumerate(all_saved_orders):
+            if store not in saved_order:
+                continue
+            stores_orders.append(saved_order)
+        
+        pprint(stores_orders)
+        # Get current orders (XLSX files) for respective store.
+        # order_paths = []
+        # for entry in scandir(ORDER_FILES_PATH):
+        #     if entry.is_dir():
+        #         order_paths.append(entry.path)
+        
+        # for vendor_orders_path in order_paths:
+        #     print(vendor_orders_path)
+        #     for vendor_order_files in scandir(vendor_orders_path):
+        #         if vendor_order_files
+        #     for i in order:
+        #         print(i)
+        # For each order in Craftable:
+            # If the order is different than the saved order
+                # Delete the saved order information
+                # get_order_from_vendor(store, vendor, download_pdf=download_pdf)
+            # Else
+                # continue
+
+        # self.driver.get(f'https://app.craftable.com/buyer/2/{self.stores[store]}/orders/list')
+        # time.sleep(6)
+
+        # table_body = self.driver.find_element(By.XPATH, './/tbody')
+        # table_rows = table_body.find_elements(By.XPATH, './tr')
+        
+        # completed_orders = []
+        # for pos, order in enumerate(table_rows):
+        #     table_body      = self.driver.find_element(By.XPATH, './/tbody')
+        #     table_rows      = table_body.find_elements(By.XPATH, './tr')
+        #     row             = table_rows[pos]
+        #     row_data        = row.find_elements(By.XPATH, './td')
+        #     row_date        = row_data[2]
+        #     row_date_text   = row_data[2].text
+        #     row_vendor_name = row_data[3].text
+
+        #     if pos not in completed_orders:
+            
+        #         row_date.click()
+        #         WebDriverWait(self.driver, 45).until(EC.element_to_be_clickable((By.TAG_NAME, 'table')))
+
+        #         items = self._scrape_order()
+        
+        return
+
+
 if __name__ == '__main__':
 
-    vendors = [
-        'Renzi', 
+    vendors = [ 
         # 'Sysco', 
         # 'Performance Food',
         # 'US Foods',
-        # 'UNFI',
+        # 'Renzi',
+        'UNFI',
         # 'Hill & Markes',
-        # 'Copper Horse Coffee',
         # 'Johnston Paper',
         # 'Regional Distributors, Inc.',
+        # 'Peters Supply',
+        # 'SANICO',
+        # 'Copper Horse Coffee',
+        # 'Equal Exchange',
+        # 'Eurocafe Imports',
+        # 'Macro Mamas',
+        # 'Coca-Cola',
+        # 'FingerLakes Farms',
         # 'Ithaca Bakery',
+        # 'Webstaurant',
+        # 'Hillcrest Dairy',
         # 'Hillcrest Foods',
         # 'BakeMark',
         # 'Lentz',
         # 'Keck\'s Food Service',
+        # 'Dawn',
         # 'Cortland Produce Inc.',
-        # 'Eurocafe Imports',
-        # 'Hillcrest Dairy',
         # 'A.L. George',
         # 'BALKAN BEVERAGE LLC',
         # 'Casa',
         # 'Palmer',
-        # 'Equal Exchange',
-        # 'Macro Mamas',
-        # 'SANICO',
-        # 'Coca-Cola',
-        # 'FingerLakes Farms',
         # 'ACE ENDICO',
-        # 'Dawn'
     ]
 
     stores = [
         #  'BAKERY',
-         'TRIPHAMMER',
+        #  'TRIPHAMMER',
          'COLLEGETOWN',
          'EASTHILL',
          'DOWNTOWN'
     ]
 
-    options = create_options()
-    driver  = uc.Chrome(options=options, use_subprocess=True)
-
-    # with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
-    #     for store in stores: 
-    #         for vendor in vendors:
-    #             craft_bot.get_order_from_vendor(store, vendor, download_pdf=True)
-    #         # craft_bot.get_all_orders_from_webpage(store, download_pdf=True)
-    #     sort_orders(ORDER_FILES_PATH)
+    pprint.pprint(get_orders_by_store(ORDER_FILES_PATH, stores))
+    # options = create_options()
+    # driver  = uc.Chrome(options=options, use_subprocess=True)
 
     # sort_orders(ORDER_FILES_PATH)
+    # with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
+    #     for store in stores: 
+    #         # for vendor in vendors:
+    #         #     craft_bot.get_order_from_vendor(store, vendor, download_pdf=True)
+    #         craft_bot.get_all_orders_from_webpage(store, download_pdf=True)
+    #     sort_orders(ORDER_FILES_PATH)
+
+    # # sort_orders(ORDER_FILES_PATH)
+    # # # # # # # input("Press enter when ready")
     # for vendor in vendors:
     #     format_orders(vendor, ORDER_FILES_PATH)
     
-    with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
-        for store in stores:
-            craft_bot.delete_all_orders(store)
+    # with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
+    #     for store in stores:
+    #         craft_bot.delete_all_orders(store)
 
     def get_all_orders_from_vendor(driver, vendor) -> None:
         stores = [
@@ -414,7 +504,9 @@ if __name__ == '__main__':
 
     # options = create_options()
     # driver  = uc.Chrome(options=options, use_subprocess=True)
+    
     # transfer_vendor = 'Ithaca Bakery'
+    
     # # format_orders_for_transfer(transfer_vendor, ORDER_FILES_PATH)
     # with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
     #     for transfer_file in get_transfers(transfer_vendor):
@@ -446,29 +538,26 @@ if __name__ == '__main__':
 
 
     vendor_to_print = [
-        'Renzi',
         'Sysco',
         'Performance Food',
         'US Foods',
+        'Renzi',
         # 'BakeMark',
         # 'Lentz',
-        # "Regional Distributors, Inc.",
+        # 'Hill & Markes',
         # 'Johnston Paper',
+        # 'Regional Distributors, Inc.',
+        # 'Peters Supply',
+        # 'SANICO',
         # 'DUTCH VALLEY FOOD DIST',
         # 'Eurocafe Imports',
         # 'Coca-Cola',
-        # 'Ithaca Bakery',
-        # 'Copper Horse Coffee',
-        # 'Hill & Markes',
-        # 'Johnston Paper',
         # 'FingerLakes Farms',
-        # 'Renzi',
-        # 'Sysco',
-        # 'Performance Food',
-        # 'BJ\'s',
+        # 'Equal Exchange',
         # 'Copper Horse Coffee',
         # 'Webstaurant',
         # 'UNFI',
+        # 'Ithaca Bakery',
     ]
     # printer = Printer()    
     # for vendor in vendor_to_print:
@@ -477,32 +566,40 @@ if __name__ == '__main__':
     #         printer.print_file(f'{ORDER_FILES_PATH}\\{vendor}\\{file}')
     #         time.sleep(6)
         
-    # print_schedule_daily(get_day('Saturday'))
-    # print_schedule_daily(get_day('Sunday'))
-    # print_schedule_daily(get_day('Monday'))
-    # print_schedule_daily(get_day('Tuesday'))
-    # print_schedule_daily(get_day('Wednesday'))
-    # print_schedule_daily(get_day('Thursday'))
-    # print_schedule_daily(get_day('Friday'))
-    
-    # copper_path = f'{ORDER_FILES_PATH}\\Copper Horse Coffee'
+    days_of_the_week = [
+        'Saturday',
+        'Sunday',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday'
+    ]
+    # for day in days_of_the_week:
+    #     print_schedule_daily(get_day(day))
 
-    # copper_store_string = f'Copper Horse Coffee _ % 06212024.xlsx'
     
 
-    # copper_bot = CopperHorseBot()
-    # copper_bot.combine_orders([f'{copper_path}\\{copper_store_string.replace('%', store)}' for store in stores], copper_path)
+    vendors = [
+        'Copper Horse Coffee',
+        'Eurocafe Imports',
+        'Ithaca Bakery'
+    ]
+    # for vendor in vendors:
+
+    #     vendor_bot    = get_bot(vendor)()
+    #     vendor_path   = f'{ORDER_FILES_PATH}\\{vendor_bot.name}'
+    #     vendor_orders = [join(f'{vendor_path}\\', file) for file in listdir(f'{vendor_path}\\') if isfile(join(f'{vendor_path}\\', file)) and file.endswith('.xlsx')]
+    #     # pprint.pprint(vendor_orders)
+    #     vendor_bot.combine_orders(vendor_orders, vendor_path)
+
+    
     # input('click enter when ready')
     # setup_emails_for_sunday()
 
-   
- 
-    # ithaca_bot = get_bot('Ithaca Bakery')()
-    # ithaca_path = f'{ORDER_FILES_PATH}\\Ithaca Bakery\\'
 
-    # ithaca_store_string = f'Ithaca Bakery _ % 06212024.xlsx'
 
-    # ithaca_bot.combine_orders([f'{ithaca_path}{ithaca_store_string.replace('%', store)}' for store in stores], ithaca_path)
+    
     # milk_orders = tuple([join(f'{ORDER_FILES_PATH}\\Hillcrest Dairy\\', file) for file in listdir(f'{ORDER_FILES_PATH}\\Hillcrest Dairy\\') if isfile(join(f'{ORDER_FILES_PATH}\\Hillcrest Dairy\\', file)) and file.endswith('.pdf')])
     # milk_email = Email(tuple([getenv('HILLCREST_DAIRY_CONTACT_EMAIL')]), 'Hillcrest Dairy Order', 'Please see attached for orders, thank you!', cc=None, attachments=milk_orders)
     # prepare_email_to_send(milk_email)
@@ -545,14 +642,12 @@ if __name__ == '__main__':
     # webstaurant_bot_creds = get_credentials(bot_name)
     # webstaurant_bot       = get_bot(bot_name)(driver, webstaurant_bot_creds['username'], webstaurant_bot_creds['password'])
 
-    # # order_info = webstaurant_bot.get_order_info(99178108)
-    # # pprint.pprint(order_info)
+    # order_info = webstaurant_bot.get_order_info(99178108)
+    # pprint.pprint(order_info)
     # undocumented_orders = webstaurant_bot.get_all_undocumented_orders()
     # print(undocumented_orders)
     # for order in undocumented_orders:
     #     order_info = webstaurant_bot.get_order_info(order, download_invoice=True)
     #     webstaurant_bot.update_pick_list(order_info)
-
-
 
 

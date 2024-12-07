@@ -52,6 +52,7 @@ class WebstaurantBot:
         password_form.send_keys(self.password)
 
         login_button = self.driver.find_element(By.ID, 'the_login_button')
+        time.sleep(5)
         login_button.click()
 
         WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CLASS_NAME, 'account__section')))
