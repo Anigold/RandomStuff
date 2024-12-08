@@ -86,9 +86,9 @@ def create_options() -> uc.ChromeOptions:
     return options
 
 def get_credentials(name) -> dict:
-     
-    username = getenv(f'{name.upper().replace(' ', '_')}_USERNAME') or None
-    password = getenv(f'{name.upper().replace(' ', '_')}_PASSWORD') or None
+
+    username = getenv(f'{name.upper().replace(" ", "_")}_USERNAME') or None
+    password = getenv(f'{name.upper().replace(" ", "_")}_PASSWORD') or None
 
     return {'username': username, 'password': password}
 
@@ -277,7 +277,7 @@ def produce_pricing_and_email(driver) -> None:
 
         for pricing_guide in 'IBProduce':
             file_name     = bot.retrieve_pricing_sheet(pricing_guide)
-            new_file_name = f'{PRICING_FILES_PATH}{bot.name} {pricing_guide} {date.today()}.{file_name.split('.')[-1]}'
+            new_file_name = f'{PRICING_FILES_PATH}{bot.name} {pricing_guide} {date.today()}.{file_name.split(".")[-1]}'
 
             rename(f'{DOWNLOAD_PATH}{file_name}', new_file_name)
 
@@ -299,11 +299,11 @@ def download_pricing_sheets(driver, vendors=['Sysco', 'Performance Food', 'US Fo
         for pricing_guide in guides:
             file_name = bot.retrieve_pricing_sheet(pricing_guide)
     
-            new_file_name = f'{PRICING_FILES_PATH}\\VendorSheets\\{bot.name}_{pricing_guide}_{date.today()}.{file_name.split('.')[1]}'
+            new_file_name = f'{PRICING_FILES_PATH}\\VendorSheets\\{bot.name}_{pricing_guide}_{date.today()}.{file_name.split(".")[1]}'
 
             rename(f'{DOWNLOAD_PATH}\\{file_name}', new_file_name)
             # print(new_file_name)
-            bot.format_vendor_pricing_sheet(new_file_name, f'{new_file_name.rsplit('.', 1)[0]}.xlsx')
+            bot.format_vendor_pricing_sheet(new_file_name, f'{new_file_name.rsplit(".", 1)[0]}.xlsx')
         
     return
 
@@ -333,7 +333,17 @@ def find_order_files(base_directory: str, depth=2) -> list:
                     orders.append(file_path)
     return orders
 
-def get_orders_by_store(base_directory:str, stores: list, depth=2) -> list[list]:
+def find_order_pdfs(base_directory: str, depth=2) -> list:
+    orders = []
+    for root, dirs, files in os.walk(base_directory):
+        if root.count(os.sep) - base_directory.count(os.sep) < depth:
+            for file in files:
+                if file.endswith('.pdf'):
+                    file_path = os.path.join(root, file)
+                    orders.append(file_path)
+    return orders
+
+def get_orders_by_store(base_directory: str, stores: list, depth=2) -> list[list]:
     all_order_files = find_order_files(base_directory, depth)
 
     store_orders = {}
@@ -348,71 +358,83 @@ def get_orders_by_store(base_directory:str, stores: list, depth=2) -> list[list]
     
     return store_orders
 
+def get_pdfs_by_store(base_directory: str, store: str, depth=2) -> list[list]:
+    all_order_files = find_order_pdfs(base_directory, depth)
+
+    store_orders = {store: []}
+
+    for order_file in all_order_files:
+
+        if store in order_file:
+            store_orders[store].append(order_file)
+    pprint.pprint(store_orders)
+    return store_orders
+
 def update_orders(self, store: str, download_pdf=False) -> None:
         
         
-        all_saved_orders = find_order_files(ORDER_FILES_PATH)
+#     all_saved_orders = find_order_files(ORDER_FILES_PATH)
 
-        stores_orders = []
-        for pos, saved_order in enumerate(all_saved_orders):
-            if store not in saved_order:
-                continue
-            stores_orders.append(saved_order)
+#     stores_orders = []
+#     for pos, saved_order in enumerate(all_saved_orders):
+#         if store not in saved_order:
+#             continue
+#         stores_orders.append(saved_order)
+    
+#     pprint(stores_orders)
+#     # Get current orders (XLSX files) for respective store.
+#     # order_paths = []
+#     # for entry in scandir(ORDER_FILES_PATH):
+#     #     if entry.is_dir():
+#     #         order_paths.append(entry.path)
+    
+#     # for vendor_orders_path in order_paths:
+#     #     print(vendor_orders_path)
+#     #     for vendor_order_files in scandir(vendor_orders_path):
+#     #         if vendor_order_files
+#     #     for i in order:
+#     #         print(i)
+#     # For each order in Craftable:
+#         # If the order is different than the saved order
+#             # Delete the saved order information
+#             # get_order_from_vendor(store, vendor, download_pdf=download_pdf)
+#         # Else
+#             # continue
+
+#     # self.driver.get(f'https://app.craftable.com/buyer/2/{self.stores[store]}/orders/list')
+#     # time.sleep(6)
+
+#     # table_body = self.driver.find_element(By.XPATH, './/tbody')
+#     # table_rows = table_body.find_elements(By.XPATH, './tr')
+    
+#     # completed_orders = []
+#     # for pos, order in enumerate(table_rows):
+#     #     table_body      = self.driver.find_element(By.XPATH, './/tbody')
+#     #     table_rows      = table_body.find_elements(By.XPATH, './tr')
+#     #     row             = table_rows[pos]
+#     #     row_data        = row.find_elements(By.XPATH, './td')
+#     #     row_date        = row_data[2]
+#     #     row_date_text   = row_data[2].text
+#     #     row_vendor_name = row_data[3].text
+
+#     #     if pos not in completed_orders:
         
-        pprint(stores_orders)
-        # Get current orders (XLSX files) for respective store.
-        # order_paths = []
-        # for entry in scandir(ORDER_FILES_PATH):
-        #     if entry.is_dir():
-        #         order_paths.append(entry.path)
-        
-        # for vendor_orders_path in order_paths:
-        #     print(vendor_orders_path)
-        #     for vendor_order_files in scandir(vendor_orders_path):
-        #         if vendor_order_files
-        #     for i in order:
-        #         print(i)
-        # For each order in Craftable:
-            # If the order is different than the saved order
-                # Delete the saved order information
-                # get_order_from_vendor(store, vendor, download_pdf=download_pdf)
-            # Else
-                # continue
+#     #         row_date.click()
+#     #         WebDriverWait(self.driver, 45).until(EC.element_to_be_clickable((By.TAG_NAME, 'table')))
 
-        # self.driver.get(f'https://app.craftable.com/buyer/2/{self.stores[store]}/orders/list')
-        # time.sleep(6)
-
-        # table_body = self.driver.find_element(By.XPATH, './/tbody')
-        # table_rows = table_body.find_elements(By.XPATH, './tr')
-        
-        # completed_orders = []
-        # for pos, order in enumerate(table_rows):
-        #     table_body      = self.driver.find_element(By.XPATH, './/tbody')
-        #     table_rows      = table_body.find_elements(By.XPATH, './tr')
-        #     row             = table_rows[pos]
-        #     row_data        = row.find_elements(By.XPATH, './td')
-        #     row_date        = row_data[2]
-        #     row_date_text   = row_data[2].text
-        #     row_vendor_name = row_data[3].text
-
-        #     if pos not in completed_orders:
-            
-        #         row_date.click()
-        #         WebDriverWait(self.driver, 45).until(EC.element_to_be_clickable((By.TAG_NAME, 'table')))
-
-        #         items = self._scrape_order()
-        
-        return
+#     #         items = self._scrape_order()
+    
+    return
 
 
 if __name__ == '__main__':
 
     vendors = [ 
-        # 'Sysco', 
-        # 'Performance Food',
-        # 'US Foods',
+        'Sysco', 
+        'Performance Food',
+        'US Foods',
         # 'Renzi',
-        'UNFI',
+        # 'UNFI',
         # 'Hill & Markes',
         # 'Johnston Paper',
         # 'Regional Distributors, Inc.',
@@ -443,21 +465,45 @@ if __name__ == '__main__':
     stores = [
         #  'BAKERY',
         #  'TRIPHAMMER',
-         'COLLEGETOWN',
-         'EASTHILL',
+        #  'COLLEGETOWN',
+        #  'EASTHILL',
          'DOWNTOWN'
     ]
 
-    pprint.pprint(get_orders_by_store(ORDER_FILES_PATH, stores))
+    
+    def generate_weekly_orders_email(store: str, to: list):
+        order_paths_by_store = get_pdfs_by_store(ORDER_FILES_PATH, store)
+        # pprint.pprint(order_paths_by_store)
+        emailer = Emailer(service=Outlook)
+
+        store_orders_path = order_paths_by_store[store]
+        email = Email(
+            tuple(to), 
+            'Weekly Orders', 
+            '',
+            attachments=tuple(store_orders_path)
+        )
+        
+        emailer.create_email(email)
+        emailer.display_email(email)
+        return 
+    
+    # store_weekly_emails = {
+    #     'DOWNTOWN': ['tucker.coburn@gmail.com', 'hselsner@gmail.com'],
+    #     'COLLEGETOWN': ['goldsmithnandrew@gmail.com'],
+    # }
+    # for store in store_weekly_emails:
+    #     generate_weekly_orders_email(store, store_weekly_emails[store])
+
     # options = create_options()
     # driver  = uc.Chrome(options=options, use_subprocess=True)
 
-    # sort_orders(ORDER_FILES_PATH)
+    # # sort_orders(ORDER_FILES_PATH)
     # with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
     #     for store in stores: 
-    #         # for vendor in vendors:
-    #         #     craft_bot.get_order_from_vendor(store, vendor, download_pdf=True)
-    #         craft_bot.get_all_orders_from_webpage(store, download_pdf=True)
+    #         for vendor in vendors:
+    #             craft_bot.get_order_from_vendor(store, vendor, download_pdf=True)
+    #         # craft_bot.get_all_orders_from_webpage(store, download_pdf=True)
     #     sort_orders(ORDER_FILES_PATH)
 
     # # sort_orders(ORDER_FILES_PATH)

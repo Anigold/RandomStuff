@@ -463,73 +463,7 @@ class CraftableBot:
         submit_transfer_button = self.driver.find_element(By.XPATH, './/a[text()="Request"]')
         return
 
-    def update_orders(self, store: str, download_pdf=False) -> None:
-        
-        def find_order_files(base_directory: str, depth=2) -> list:
-            orders = []
-            for root, dirs, files in os.walk(base_directory):
-                # print(root)
-                if root.count(os.sep) - base_directory.count(os.sep) < depth:
-                    # print(files)
-                    for file in files:
-                        if file.endswith('.xlsx'):
-                            file_path = os.path.join(root, file)
-                            orders.append(file_path)
-            return orders
-        
-        all_saved_orders = find_order_files(ORDER_FILES_PATH)
-
-        stores_orders = []
-        for pos, saved_order in enumerate(all_saved_orders):
-            if store not in saved_order:
-                continue
-            stores_orders.append(saved_order)
-        
-        pprint(stores_orders)
-        # Get current orders (XLSX files) for respective store.
-        # order_paths = []
-        # for entry in scandir(ORDER_FILES_PATH):
-        #     if entry.is_dir():
-        #         order_paths.append(entry.path)
-        
-        # for vendor_orders_path in order_paths:
-        #     print(vendor_orders_path)
-        #     for vendor_order_files in scandir(vendor_orders_path):
-        #         if vendor_order_files
-        #     for i in order:
-        #         print(i)
-        # For each order in Craftable:
-            # If the order is different than the saved order
-                # Delete the saved order information
-                # get_order_from_vendor(store, vendor, download_pdf=download_pdf)
-            # Else
-                # continue
-
-        # self.driver.get(f'https://app.craftable.com/buyer/2/{self.stores[store]}/orders/list')
-        # time.sleep(6)
-
-        # table_body = self.driver.find_element(By.XPATH, './/tbody')
-        # table_rows = table_body.find_elements(By.XPATH, './tr')
-        
-        # completed_orders = []
-        # for pos, order in enumerate(table_rows):
-        #     table_body      = self.driver.find_element(By.XPATH, './/tbody')
-        #     table_rows      = table_body.find_elements(By.XPATH, './tr')
-        #     row             = table_rows[pos]
-        #     row_data        = row.find_elements(By.XPATH, './td')
-        #     row_date        = row_data[2]
-        #     row_date_text   = row_data[2].text
-        #     row_vendor_name = row_data[3].text
-
-        #     if pos not in completed_orders:
-            
-        #         row_date.click()
-        #         WebDriverWait(self.driver, 45).until(EC.element_to_be_clickable((By.TAG_NAME, 'table')))
-
-        #         items = self._scrape_order()
-        
-        return
-
+    
         
     def _rename_new_order_file(self, path:str, file_name:str) -> None:
      

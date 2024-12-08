@@ -214,7 +214,7 @@ class WebstaurantBot:
 
         workbook.save(f'{SOURCE_PATH}\\backend\\smallwares\\PickList.xlsx')
 
-        rename(f'{SOURCE_PATH}\\backend\\smallwares\\invoices\\{order_info['order_number']}.pdf', f'{COMPLETED_INVOICES_PATH}\\{order_info['order_number']}.pdf')
+        rename(f'{SOURCE_PATH}\\backend\\smallwares\\invoices\\{order_info["order_number"]}.pdf', f'{COMPLETED_INVOICES_PATH}\\{order_info["order_number"]}.pdf')
 
         return
 

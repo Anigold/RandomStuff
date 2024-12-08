@@ -106,7 +106,7 @@ class CortlandProduceBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
         self.driver.switch_to.window(window_name=self.driver.window_handles[0])
         time.sleep(2)
         
-        return f'OrderGuide_ProductListing-{date.today().strftime('%m-%d-%Y')}.xlsx'
+        return f'OrderGuide_ProductListing-{date.today().strftime("%m-%d-%Y")}.xlsx'
         
 
     def get_pricing_info_from_sheet(self, path_to_pricing_sheet: str) -> dict:
