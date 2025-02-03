@@ -1,9 +1,6 @@
 from backend.craftable_bot.CraftableBot import CraftableBot
 import undetected_chromedriver as uc
-from selenium import webdriver
 
-import pprint
-import time
 from dotenv import load_dotenv
 from os import getenv
 from os import listdir, remove as os_remove, mkdir, rename
@@ -57,7 +54,7 @@ TRANSFER_PATH      = f'{SOURCE_PATH}\\backend\\transferring'
 def get_files(path: str) -> list:
 	return [file for file in listdir(path) if isfile(join(path, file))]
 
-def sort_orders(path: str) -> None:
+def sort_orders(path: str, override=True) -> None:
     # Sort and group orders
     files = get_files(path)
     for file in files:
@@ -176,8 +173,8 @@ def setup_emails_for_sunday() -> None:
     copper_horse_combined_order_attachment  = tuple([f'{ORDER_FILES_PATH}\\Copper Horse Coffee\\combined_order.xlsx'])
     equal_exchange_order_attachments        = tuple([join(f'{ORDER_FILES_PATH}\\Equal Exchange\\', file) for file in listdir(f'{ORDER_FILES_PATH}\\Equal Exchange\\') if isfile(join(f'{ORDER_FILES_PATH}\\Equal Exchange\\', file)) and file.endswith('.pdf')])
     finger_lakes_farms_order_attachments    = tuple([join(f'{ORDER_FILES_PATH}\\FingerLakes Farms\\', file) for file in listdir(f'{ORDER_FILES_PATH}\\FingerLakes Farms\\') if isfile(join(f'{ORDER_FILES_PATH}\\FingerLakes Farms\\', file)) and file.endswith('.pdf')])
-    euro_cafe_order_attachments             = tuple([join(f'{ORDER_FILES_PATH}\\Eurocafe Imports\\', file) for file in listdir(f'{ORDER_FILES_PATH}\\Eurocafe Imports\\') if isfile(join(f'{ORDER_FILES_PATH}\\Eurocafe Imports\\', file)) and file.endswith('.pdf')])
-    macro_mamas_order_attachments           = tuple([join(f'{ORDER_FILES_PATH}\\Macro Mamas\\', file) for file in listdir(f'{ORDER_FILES_PATH}\\Macro Mamas\\') if isfile(join(f'{ORDER_FILES_PATH}\\Macro Mamas\\', file)) and file.endswith('.pdf')])
+    # euro_cafe_order_attachments             = tuple([join(f'{ORDER_FILES_PATH}\\Eurocafe Imports\\', file) for file in listdir(f'{ORDER_FILES_PATH}\\Eurocafe Imports\\') if isfile(join(f'{ORDER_FILES_PATH}\\Eurocafe Imports\\', file)) and file.endswith('.pdf')])
+    # macro_mamas_order_attachments           = tuple([join(f'{ORDER_FILES_PATH}\\Macro Mamas\\', file) for file in listdir(f'{ORDER_FILES_PATH}\\Macro Mamas\\') if isfile(join(f'{ORDER_FILES_PATH}\\Macro Mamas\\', file)) and file.endswith('.pdf')])
     
     sunday_emailer = Emailer(service=Outlook)
 
@@ -188,25 +185,25 @@ def setup_emails_for_sunday() -> None:
         'body': 'Please see attached for orders, thank you!',
         'attachments': equal_exchange_order_attachments
         },
-        {
-        'subject': 'Euro Cafe Order',
-        'to': ['sales@eurocafeimports.com'],
-        'body': 'Please see attached for orders, thank you!',
-        'cc': 'scott.tota@eurocafeimports.com',
-        'attachments': euro_cafe_order_attachments
-        },
+        # {
+        # 'subject': 'Euro Cafe Order',
+        # 'to': ['sales@eurocafeimports.com'],
+        # 'body': 'Please see attached for orders, thank you!',
+        # 'cc': 'scott.tota@eurocafeimports.com',
+        # 'attachments': euro_cafe_order_attachments
+        # },
         {
         'subject': 'Fingerlakes Farms Order',
         'to': ['orders@ilovenyfarms.com'],
         'body': 'Please see attached for orders, thank you!',
         'attachments': finger_lakes_farms_order_attachments
         },
-        {
-        'subject': 'Macro Mama Order',
-        'to': ['macromamas@gmail.com'],
-        'body': 'Please see attached for orders, thank you!',
-        'attachments': macro_mamas_order_attachments
-        },
+        # {
+        # 'subject': 'Macro Mama Order',
+        # 'to': ['macromamas@gmail.com'],
+        # 'body': 'Please see attached for orders, thank you!',
+        # 'attachments': macro_mamas_order_attachments
+        # },
         {
         'subject': 'Copper Horse Order',
         'to': ['copperhorsecoffee@gmail.com'],
@@ -322,7 +319,6 @@ def delete_all_files_without_extension(directory: str, extension: str) -> None:
             os_remove(f'{directory}\\{file}')
     return
 
-
 def find_order_files(base_directory: str, depth=2) -> list:
     orders = []
     for root, dirs, files in os.walk(base_directory):
@@ -367,7 +363,7 @@ def get_pdfs_by_store(base_directory: str, store: str, depth=2) -> list[list]:
 
         if store in order_file:
             store_orders[store].append(order_file)
-    pprint.pprint(store_orders)
+    # pprint.pprint(store_orders)
     return store_orders
 
 def update_orders(self, store: str, download_pdf=False) -> None:
@@ -426,13 +422,40 @@ def update_orders(self, store: str, download_pdf=False) -> None:
     
     return
 
+def generate_weekly_orders_email(store: str, to: list):
+
+    order_paths_by_store = get_pdfs_by_store(ORDER_FILES_PATH, store)
+    # pprint.pprint(order_paths_by_store)
+    emailer = Emailer(service=Outlook)
+
+    store_orders_path = order_paths_by_store[store]
+    email = Email(
+        tuple(to), 
+        'Weekly Orders', 
+        '',
+        attachments=tuple(store_orders_path)
+    )
+    
+    emailer.create_email(email)
+    emailer.display_email(email)
+    return 
+
+def delete_orders_from_craftable(stores: list[str]) -> None:
+
+    options = create_options()
+    driver  = uc.Chrome(options=options, use_subprocess=True)
+
+    with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
+        for store in stores: craft_bot.delete_all_orders(store)
+
+    return
 
 if __name__ == '__main__':
 
     vendors = [ 
-        'Sysco', 
-        'Performance Food',
-        'US Foods',
+        # 'Sysco', 
+        # 'Performance Food',
+        # 'US Foods',
         # 'Renzi',
         # 'UNFI',
         # 'Hill & Markes',
@@ -460,65 +483,97 @@ if __name__ == '__main__':
         # 'Casa',
         # 'Palmer',
         # 'ACE ENDICO',
+        'Russo Produce',
+        'BEHLOG & SON, INC.',
     ]
 
     stores = [
         #  'BAKERY',
-        #  'TRIPHAMMER',
+         'TRIPHAMMER',
         #  'COLLEGETOWN',
         #  'EASTHILL',
-         'DOWNTOWN'
+        #  'DOWNTOWN'
     ]
-
     
-    def generate_weekly_orders_email(store: str, to: list):
-        order_paths_by_store = get_pdfs_by_store(ORDER_FILES_PATH, store)
-        # pprint.pprint(order_paths_by_store)
-        emailer = Emailer(service=Outlook)
 
-        store_orders_path = order_paths_by_store[store]
-        email = Email(
-            tuple(to), 
-            'Weekly Orders', 
-            '',
-            attachments=tuple(store_orders_path)
+    ''' Welcome to Work Protocol '''
+    def welcome_to_work() -> None:
+
+        days_of_the_week = [
+            'Saturday',
+            'Sunday',
+            'Monday',
+            'Tuesday',
+            'Wednesday',
+            'Thursday',
+            'Friday'
+        ]
+        for day in days_of_the_week: print_schedule_daily(get_day(day))
+
+        options = create_options()
+        driver  = uc.Chrome(options=options, use_subprocess=True)
+
+        stores = [
+            'TRIPHAMMER',
+            'COLLEGETOWN',
+            'EASTHILL',
+            'DOWNTOWN'
+        ]
+
+        sort_orders(ORDER_FILES_PATH)
+        with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
+            for store in stores:
+                craft_bot.get_all_orders_from_webpage(store, download_pdf=True, update=False)
+        sort_orders(ORDER_FILES_PATH)
+
+        store_weekly_emails = {
+            'DOWNTOWN': ['tucker.coburn@gmail.com', 'hselsner@gmail.com'],
+            # 'COLLEGETOWN': ['goldsmithnandrew@gmail.com'],
+        }
+
+        for store in store_weekly_emails: generate_weekly_orders_email(store, store_weekly_emails[store])
+
+        return
+
+    # welcome_to_work()
+    '''--------------------------'''
+
+
+    ''' DELETE ORDERS FROM CRAFTABLE '''
+    # delete_orders_from_craftable(stores)
+    '''------------------------------'''
+
+
+    ''' DOWNLOAD ORDERS FROM CRAFTABLE '''
+    options = create_options()
+    driver  = uc.Chrome(options=options, use_subprocess=True)
+
+    update       = True
+    download_pdf = True
+
+    sort_orders(ORDER_FILES_PATH)
+    with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
+        craft_bot.download_orders(
+            stores, 
+            vendors=vendors, 
+            download_pdf=download_pdf, 
+            update=update
         )
-        
-        emailer.create_email(email)
-        emailer.display_email(email)
-        return 
-    
-    # store_weekly_emails = {
-    #     'DOWNTOWN': ['tucker.coburn@gmail.com', 'hselsner@gmail.com'],
-    #     'COLLEGETOWN': ['goldsmithnandrew@gmail.com'],
-    # }
-    # for store in store_weekly_emails:
-    #     generate_weekly_orders_email(store, store_weekly_emails[store])
+        sort_orders(ORDER_FILES_PATH)
+    '''--------------------------------'''
 
-    # options = create_options()
-    # driver  = uc.Chrome(options=options, use_subprocess=True)
 
+    ''' FORMAT ORDERS FOR VENDOR UPLOAD '''
     # # sort_orders(ORDER_FILES_PATH)
-    # with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
-    #     for store in stores: 
-    #         for vendor in vendors:
-    #             craft_bot.get_order_from_vendor(store, vendor, download_pdf=True)
-    #         # craft_bot.get_all_orders_from_webpage(store, download_pdf=True)
-    #     sort_orders(ORDER_FILES_PATH)
-
-    # # sort_orders(ORDER_FILES_PATH)
-    # # # # # # # input("Press enter when ready")
     # for vendor in vendors:
     #     format_orders(vendor, ORDER_FILES_PATH)
-    
-    # with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
-    #     for store in stores:
-    #         craft_bot.delete_all_orders(store)
+    '''---------------------------------'''
+
 
     def get_all_orders_from_vendor(driver, vendor) -> None:
         stores = [
-            'BAKERY',
-            'TRIPHAMMER',
+            # 'BAKERY',
+            # 'TRIPHAMMER',
             'COLLEGETOWN',
             'EASTHILL',
             'DOWNTOWN'
@@ -531,8 +586,8 @@ if __name__ == '__main__':
 
     def get_all_orders_from_all_stores(driver) -> None:
         stores = [
-            'BAKERY',
-            # 'TRIPHAMMER',
+            # 'BAKERY',
+            'TRIPHAMMER',
             # 'COLLEGETOWN',
             # 'EASTHILL',
             # 'DOWNTOWN'
@@ -603,7 +658,7 @@ if __name__ == '__main__':
         # 'Copper Horse Coffee',
         # 'Webstaurant',
         # 'UNFI',
-        # 'Ithaca Bakery',
+        'Ithaca Bakery',
     ]
     # printer = Printer()    
     # for vendor in vendor_to_print:
@@ -612,24 +667,14 @@ if __name__ == '__main__':
     #         printer.print_file(f'{ORDER_FILES_PATH}\\{vendor}\\{file}')
     #         time.sleep(6)
         
-    days_of_the_week = [
-        'Saturday',
-        'Sunday',
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday'
-    ]
-    # for day in days_of_the_week:
-    #     print_schedule_daily(get_day(day))
+
 
     
 
     vendors = [
         'Copper Horse Coffee',
-        'Eurocafe Imports',
-        'Ithaca Bakery'
+        # 'Eurocafe Imports',
+        # 'Ithaca Bakery'
     ]
     # for vendor in vendors:
 

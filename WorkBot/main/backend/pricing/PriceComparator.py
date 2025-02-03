@@ -99,7 +99,7 @@ class PriceComparator:
 
         return self.compare_prices(output_file_path)
 
-    def  compare_prices(self, path_to_pricing_sheet: str) -> None:
+    def compare_prices(self, path_to_pricing_sheet: str) -> None:
         workbook = load_workbook(path_to_pricing_sheet)
         sheet = workbook.active
 

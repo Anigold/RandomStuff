@@ -30,6 +30,8 @@ class BehlogProduceBot(VendorBot, PricingBotMixin):
             '1150': self._special_case_info('LB', 8), # Strawberry
             '340': self._special_case_info('EA', 24), # Romaine Heart (Whole Thing)
             '347': self._special_case_info('LB', 36), # Romaine Heart (Just the heart)
+            '404': self._special_case_info('LB', 3) # Portobello Mushroom Cap
+
         }
 
     def format_for_file_upload(self, item_data: dict, path_to_save: str):
@@ -45,8 +47,11 @@ class BehlogProduceBot(VendorBot, PricingBotMixin):
 
         numeric_non_numerics = ['.', '-', '/']
         for row in row_info:
-            item_sku  = str(row[0])
-            item_name = str(row[1])
+
+            if (row[0] == None) or (row[1] == None) or (row[2] == None) or (row[3] == None) or (not row[3]): continue
+
+            item_sku  = str(row[1])
+            item_name = str(row[0])
             if not item_name: continue
             pack_size = ''
             unit = ''
@@ -79,8 +84,9 @@ class BehlogProduceBot(VendorBot, PricingBotMixin):
                 unit = self.special_cases[item_sku]['unit']
                 pack_size = self.special_cases[item_sku]['pack']
 
+            if row[3] == '' or row[3] == ' ' or row[3]=='sp': continue
             cost = float(row[3])
-
+            if pack_size == '': pack_size = 1
             if item_name not in item_info:
                 item_info[item_name] = {
                     'SKU': item_sku,

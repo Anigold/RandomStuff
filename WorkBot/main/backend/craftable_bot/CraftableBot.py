@@ -12,7 +12,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support.ui import Select
 from dotenv import load_dotenv
 
-from openpyxl import Workbook
+from openpyxl import Workbook, load_workbook
 
 from backend.transferring import Transfer
 import calendar
@@ -46,8 +46,12 @@ class CraftableBot:
         return self
     
     def __exit__(self, type, value, traceback):
-        print(value)
-        self.close_session()
+        # print(value)
+        try:
+            self.close_session()
+        except OSError as os_error:
+            print(os_error)
+
         return True
     
     '''
@@ -123,6 +127,142 @@ class CraftableBot:
         time.sleep(5)
         return
 
+    ''' Download orders from Craftable.
+
+    ARGS
+
+    stores: a list of stores for which to retrieve orders.
+    vendors: a list of vendors to retrieve orders of. If none supplied, then all possible orders are retrieved.
+    download_pdf: a boolean of whether to download an accompanying PDF file.
+    update: a boolean of whether to overwrite currently saved order data.
+
+    RETURN
+
+    None
+
+    Will scrape the Craftable order page for each store and selected vendors, download and generate the appropriate
+    files, and save in the ORDER_FILES_PATH.
+
+    '''
+    def download_orders(self, stores: list, vendors=list, download_pdf=True, update=True) -> None:
+
+        print('\nBeginning to download orders from Craftable.', flush=True)
+        for store in stores:
+            
+            print(f'\nGetting order page for {store}.', flush=True)
+            self.driver.get(f'https://app.craftable.com/buyer/2/{self.stores[store]}/orders/list')
+            time.sleep(6)
+
+            table_body = self.driver.find_element(By.XPATH, './/tbody')
+            table_rows = table_body.find_elements(By.XPATH, './tr')
+
+            print('Orders found.', flush=True)
+            completed_orders = [] # Store the index of the rows here
+            for pos, row in enumerate(table_rows):
+                table_body      = self.driver.find_element(By.XPATH, './/tbody')
+                table_rows      = table_body.find_elements(By.XPATH, './tr')
+                row             = table_rows[pos]
+                row_data        = row.find_elements(By.XPATH, './td')
+                row_date        = row_data[2]
+                row_date_text   = row_data[2].text
+                row_vendor_name = row_data[3].text
+
+                # If vendors have been supplied and the current vendor isn't in the list, we skip it.
+                if (vendors) and (row_vendor_name not in vendors):
+                    print(f'{row_vendor_name} not wanted...skipping.')
+                    completed_orders.append(pos) # Is this superfluous?
+                    continue
+
+                if pos not in completed_orders:
+                    
+                    print(f'\nRetrieving order for {row_vendor_name}.', flush=True)
+                    row_date.click()
+                    WebDriverWait(self.driver, 45).until(EC.element_to_be_clickable((By.TAG_NAME, 'table')))
+
+                    items = self._scrape_order()
+
+                    if update:
+                        
+                        preexisting_workbook_path = f'{ORDER_FILES_PATH}{row_vendor_name}\\{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.xlsx'
+                        preexisting_file_exists = True
+                        try:
+                            # We use read-only to ensure the file properly closes after use.
+                            # We also don't need to edit it, as we are generating a new file anyways.
+                            print(f'Loading pre-existing XLSX file for {row_vendor_name}...', flush=True)
+                            workbook = load_workbook(preexisting_workbook_path, read_only=True)
+                            print('...opened.', flush=True)
+                        except:
+                            
+                            print(f'No pre-existing XLSX file exists for {row_vendor_name}.', flush=True)
+                            preexisting_file_exists = False
+                        
+                        if preexisting_file_exists:
+                            print('Accessing saved data.', flush=True)
+                            sheet = workbook.active
+                            saved_items = []
+                            for item_row in sheet.iter_rows(min_row=2):
+                                sku, name, quantity, cost_per, total_cost = item_row
+                                saved_items.append([sku.value, name.value, quantity.value, cost_per.value, total_cost.value])
+
+                            print('Closing pre-existing file.', flush=True)
+                            try:
+                                workbook.close()
+                            except:
+                                print('Failed to properly close XLSX file. Crash imminent.')
+
+                            items_set       = set(map(tuple, items))
+                            saved_items_set = set(map(tuple, saved_items))
+
+                            print('Comparing new data with pre-existing data.', flush=True)
+                            if items_set == saved_items_set:
+                                print('New data matches old data, skipping update protocol.', flush=True)
+                                completed_orders.append(pos)
+                                self.driver.back()
+                                time.sleep(3)
+                                continue
+                                
+                            try:
+                                # Check if the file exists, if it does, remove it.
+                                print('Removing out of date files.', flush=True)
+                                print(f'\nSearching for XLSX file: {preexisting_workbook_path}...', flush=True)
+                                if os.path.isfile(preexisting_workbook_path):
+                                    print(f'...file found. Removing...')
+                                    os.remove(preexisting_workbook_path)
+
+                                print(f'\nSearching for PDF file: {preexisting_workbook_path.replace(".xlsx", ".pdf")}...', flush=True)
+                                if os.path.isfile(preexisting_workbook_path.replace('.xlsx', '.pdf')):
+                                    print(f'...file found. Removing...')
+                                    os.remove(preexisting_workbook_path.replace('.xlsx', '.pdf'))
+
+                            except OSError as e:
+                                print(e)
+                                if e.errno == 13:
+                                    print('File is being accessed by another program at time of deletion.')
+                                    print('Aborting file replacement.')
+                                
+                                else:
+                                    print(e)
+                                    print('Unable to remove current files.')
+                            
+                            
+                        
+                    self._save_order_as_excel(items, f'{ORDER_FILES_PATH}{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.xlsx')
+                    
+                    time.sleep(2)
+
+                    if download_pdf:
+                        
+                        self._download_order_pdf()
+                        time.sleep(5)
+                        self._rename_new_order_file(DOWNLOAD_PATH, f'{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.pdf')
+
+                    completed_orders.append(pos)
+                    self.driver.back()
+                    time.sleep(3)
+
+        return
+
+
     '''
     Scrapes the order webpage of each order and saves to file.
 
@@ -138,7 +278,7 @@ class CraftableBot:
 
     I don't want to hardcode every integer pair, so we will scrape the webpage instead.
     '''
-    def get_all_orders_from_webpage(self, store: str, download_pdf=False) -> None:
+    def get_all_orders_from_webpage(self, store: str, download_pdf=False, update=False) -> None:
         # Go to the orders page
         self.driver.get(f'https://app.craftable.com/buyer/2/{self.stores[store]}/orders/list')
         time.sleep(6)
@@ -148,6 +288,7 @@ class CraftableBot:
 
         completed_orders = [] # Store the index of the rows here
         for pos, row in enumerate(table_rows):
+
             table_body      = self.driver.find_element(By.XPATH, './/tbody')
             table_rows      = table_body.find_elements(By.XPATH, './tr')
             row             = table_rows[pos]
@@ -155,7 +296,8 @@ class CraftableBot:
             row_date        = row_data[2]
             row_date_text   = row_data[2].text
             row_vendor_name = row_data[3].text
-         
+
+  
             if pos not in completed_orders:
                 
                 row_date.click()
@@ -163,6 +305,56 @@ class CraftableBot:
 
                 items = self._scrape_order()
 
+                if update:
+                    
+                    try:
+                        workbook = load_workbook(f'{ORDER_FILES_PATH}{row_vendor_name}\\{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.xlsx')
+                        sheet = workbook.active
+                    except:
+                        print('EXCEL FILE FOR UPDATE COMPARISON NOT FOUND, CRASH IMINENT.')
+                        pass
+
+                    saved_items = []
+                    for item_row in sheet.iter_rows(min_row=2):
+                        sku, name, quantity, cost_per, total_cost = item_row
+                        saved_items.append([sku.value, name.value, quantity.value, cost_per.value, total_cost.value])
+
+                    # We have to save to unload the workbook from memory.
+                    # Otherwise, the program doesn't let go of the file until the Python script ends.
+                    # This causes crashes when trying to update or remove the file during the same process.
+                    workbook.save(f'{ORDER_FILES_PATH}{row_vendor_name}\\{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.xlsx')
+                    workbook.close()
+
+                    items_set       = set(map(tuple, items))
+                    saved_items_set = set(map(tuple, saved_items))
+
+                    # pprint(items_set)
+                    # print('------')
+                    # pprint(saved_items_set)
+                    # print('------')
+                    # # same_info = bool(items_set.intersection(saved_items_set))
+                    # print(items_set == saved_items_set, flush=True)
+
+                    if items_set == saved_items_set:
+                        completed_orders.append(pos)
+                        self.driver.back()
+                        time.sleep(3)
+                        continue
+                    
+                    try:
+                        os.remove(f'{ORDER_FILES_PATH}{row_vendor_name}\\{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.xlsx')
+                        os.remove(f'{ORDER_FILES_PATH}{row_vendor_name}\\{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.pdf')
+
+                    except OSError as e:
+                        
+                        if e.errno == 13:
+                            print('File is being accessed by another program at time of deletion.')
+                            print('Aborting file replacement.')
+                        
+                        else:
+                            print(e)
+                            print('Unable to remove current files.')
+                    
                 self._save_order_as_excel(items, f'{ORDER_FILES_PATH}{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.xlsx')
                 
                 time.sleep(2)
@@ -231,7 +423,7 @@ class CraftableBot:
 
     '''
     '''
-    def get_order_from_vendor(self, store: str, vendor: str, download_pdf=False) -> None:
+    def get_order_from_vendor(self, store: str, vendor: str, download_pdf=False, update=False) -> None:
         # Go to the orders page
         self.driver.get(f'https://app.craftable.com/buyer/2/{self.stores[store]}/orders/list')
         time.sleep(6)
@@ -272,6 +464,61 @@ class CraftableBot:
                     self._save_order_as_excel(items, f'{ORDER_FILES_PATH}{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.xlsx')
                     
                     time.sleep(2)
+
+                    if update:
+                    
+                        try:
+                            workbook = load_workbook(f'{ORDER_FILES_PATH}{row_vendor_name}\\{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.xlsx')
+                            sheet = workbook.active
+                        except:
+                            print('EXCEL FILE FOR UPDATE COMPARISON NOT FOUND, CRASH IMINENT.')
+                            pass
+
+                        saved_items = []
+                        for item_row in sheet.iter_rows(min_row=2):
+                            sku, name, quantity, cost_per, total_cost = item_row
+                            saved_items.append([sku.value, name.value, quantity.value, cost_per.value, total_cost.value])
+
+                        # We have to save to unload the workbook from memory.
+                        # Otherwise, the program doesn't let go of the file until the Python script ends.
+                        # This causes crashes when trying to update or remove the file during the same process.
+                        workbook.save(f'{ORDER_FILES_PATH}{row_vendor_name}\\{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.xlsx')
+                        workbook.close()
+                        
+
+                        items_set       = set(map(tuple, items))
+                        saved_items_set = set(map(tuple, saved_items))
+
+                        # pprint(items_set)
+                        # print('------')
+                        # pprint(saved_items_set)
+                        # print('------')
+                        # # same_info = bool(items_set.intersection(saved_items_set))
+                        # print(items_set == saved_items_set, flush=True)
+
+                        if items_set == saved_items_set:
+                            self.driver.back()
+                            time.sleep(3)
+                            continue
+
+                        try:
+                            os.remove(f'{ORDER_FILES_PATH}{row_vendor_name}\\{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.xlsx')
+                            os.remove(f'{ORDER_FILES_PATH}{row_vendor_name}\\{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.pdf')
+
+                        except OSError as e:
+                            
+                            if e.errno == 13:
+                                print('File is being accessed by another program at time of deletion.')
+                                print('Aborting file replacement.')
+                            
+                            else:
+                                print(e)
+                                print('Unable to remove current files.')
+
+                        self._save_order_as_excel(items, f'{ORDER_FILES_PATH}{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.xlsx')
+                
+                        time.sleep(2)
+
 
                     if download_pdf:
                         
@@ -463,7 +710,58 @@ class CraftableBot:
         submit_transfer_button = self.driver.find_element(By.XPATH, './/a[text()="Request"]')
         return
 
-    
+    def update_orders(self, store: str) -> None:
+        
+        # Iterate through all orders for store, compare the Craftable order to respective saved Excel file
+        # If Craftable order matches Excel file, ignore.
+        # If Craftable order does not match Excel file, 
+        #   Delete the Excel file and its corresponding PDF
+        #   Download order and generate new Excel file
+
+        # Go to the orders page
+        self.driver.get(f'https://app.craftable.com/buyer/2/{self.stores[store]}/orders/list')
+        time.sleep(6)
+
+        table_body = self.driver.find_element(By.XPATH, './/tbody')
+        table_rows = table_body.find_elements(By.XPATH, './tr')
+
+        completed_orders = [] # Store the index of the rows here
+        for pos, row in enumerate(table_rows):
+            table_body      = self.driver.find_element(By.XPATH, './/tbody')
+            table_rows      = table_body.find_elements(By.XPATH, './tr')
+            row             = table_rows[pos]
+            row_data        = row.find_elements(By.XPATH, './td')
+            row_date        = row_data[2]
+            row_date_text   = row_data[2].text
+            row_vendor_name = row_data[3].text
+         
+            if pos not in completed_orders:
+                
+                row_date.click()
+                WebDriverWait(self.driver, 45).until(EC.element_to_be_clickable((By.TAG_NAME, 'table')))
+
+                items = self._scrape_order()
+
+
+                self._save_order_as_excel(items, f'{ORDER_FILES_PATH}{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.xlsx')
+                
+                time.sleep(2)
+
+                if download_pdf:
+                    
+                    self._download_order_pdf()
+                    time.sleep(3)
+                    self._rename_new_order_file(DOWNLOAD_PATH, f'{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.pdf')
+
+                completed_orders.append(pos)
+                self.driver.back()
+                time.sleep(3)
+        return
+
+
+        
+
+
         
     def _rename_new_order_file(self, path:str, file_name:str) -> None:
      
@@ -538,6 +836,7 @@ class CraftableBot:
         sheet = workbook.active
         
         col_headers = ['SKU', 'Item', 'Quantity', 'Cost Per', 'Total Cost']
+
         # Insert headers
         for pos, header in enumerate(col_headers):
             sheet.cell(row=1, column=pos+1).value = header
@@ -548,6 +847,7 @@ class CraftableBot:
                 sheet.cell(row=pos+2, column=info_pos+1).value = item_info
         
         workbook.save(file_name)
+        workbook.close()
         return
     
     def _delete_order_protocol(self) -> None:
