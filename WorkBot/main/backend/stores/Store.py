@@ -1,16 +1,20 @@
-class Store():
-
-    def __init__(self, name: str, store_id: str, craftable_id: str) -> None:
+class Store:
+    def __init__(self, store_id: str, name: str, address: str = None):
+        self.store_id     = store_id
         self.name         = name
-        self.id           = store_id
-        self.craftable_id = craftable_id
+        self.address      = ''
 
-stores = {}
+    def to_dict(self):
+        return {
+            "store_id": self.store_id,
+            "name":     self.name,
+            "address":  self.address
+        }
 
-Bakery      = Store('Bakery', '0')
-Collegetown = Store('Collegetown', '1')
-Downtown    = Store('Downtown', '2')
-Easthill    = Store('Easthill', '3')
-Triphammer  = Store('Triphammer', '4')
+    @classmethod
+    def from_dict(cls, data):
+        return cls(data["store_id"], data["name"], data.get("address"))
 
-stores['Bakery']
+    def __repr__(self):
+        return f"Store({self.store_id}, {self.name}, {self.address})"
+

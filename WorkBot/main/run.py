@@ -25,6 +25,9 @@ from backend.vendor_bots.EuroCafeBot import EuroCafeBot
 
 from backend.orders import OrderManager
 
+from backend.stores.Store import Store
+from backend.stores.StoreManager import StoreManager
+
 from backend.emailer.Emailer import Emailer
 from backend.emailer.Services.Service import Email
 from backend.emailer.Services.Outlook import Outlook
@@ -46,10 +49,10 @@ CRAFTABLE_PASSWORD = getenv('CRAFTABLE_PASSWORD')
 
 SOURCE_PATH = getenv('SOURCE_PATH')
 
-ORDER_FILES_PATH   = f'{SOURCE_PATH}\\backend\\orders\\OrderFiles'
-PRICING_FILES_PATH = f'{SOURCE_PATH}\\backend\\pricing'
-DOWNLOAD_PATH      = f'{SOURCE_PATH}\\backend\\downloads'
-TRANSFER_PATH      = f'{SOURCE_PATH}\\backend\\transferring'
+ORDER_FILES_PATH   = f'{SOURCE_PATH}\\backend\\orders\\OrderFiles\\'
+PRICING_FILES_PATH = f'{SOURCE_PATH}\\backend\\pricing\\'
+DOWNLOAD_PATH      = f'{SOURCE_PATH}\\backend\\downloads\\'
+TRANSFER_PATH      = f'{SOURCE_PATH}\\backend\\transferring\\'
 
 def get_files(path: str) -> list:
 	return [file for file in listdir(path) if isfile(join(path, file))]
@@ -82,6 +85,10 @@ def create_options() -> uc.ChromeOptions:
     
     return options
 
+def get_store(name: str) -> Store:
+    store_manager = StoreManager(storage_file=f'{SOURCE_PATH}\\backend\\stores\\stores.json')
+    return store_manager.find_store_by_name(name)
+
 def get_credentials(name) -> dict:
 
     username = getenv(f'{name.upper().replace(" ", "_")}_USERNAME') or None
@@ -90,7 +97,7 @@ def get_credentials(name) -> dict:
     return {'username': username, 'password': password}
 
 def get_excel_files(path: str) -> list:
-	return [file for file in listdir(path) if isfile(join(path, file)) and file.endswith('.xlsx')]
+	return [f'{path}{file}' for file in listdir(path) if isfile(join(path, file)) and file.endswith('.xlsx')]
 
 def get_bot(name) -> VendorBot:
      
@@ -135,13 +142,14 @@ def check_bot_if_creds_are_needed(name) -> bool:
     
     return bots[name]
 
+'''FIX THIS UGLY ASS HACKY JOB'''
 def format_orders(vendor: str, path_to_folder: str) -> None:
     vendor_bot  = get_bot(vendor)()
-    excel_files = get_excel_files(f'{path_to_folder}\\{vendor_bot.name}\\')
+    excel_files = get_excel_files(f'{path_to_folder}{vendor_bot.name}\\')
     for file in excel_files:
-        file_name_no_extension  = file.split('.')[0]
-        item_data               = FormatItemData.extract_item_data_from_excel_file(f'{path_to_folder}\\{vendor_bot.name}\\{file}')
-        vendor_bot.format_for_file_upload(item_data, f'{path_to_folder}\\{vendor_bot.name}\\Formatted _ {file_name_no_extension}')
+        file_name_no_extension  = file.split('\\')[-1].split('.')[0]
+        item_data               = FormatItemData.extract_item_data_from_excel_file(f'{file}')
+        vendor_bot.format_for_file_upload(item_data, f'{path_to_folder}{vendor_bot.name}\\Formatted _ {file_name_no_extension}')
     return
 
 def format_orders_for_transfer(vendor: str, path_to_folder: str) -> None:
@@ -458,7 +466,7 @@ if __name__ == '__main__':
         # 'US Foods',
         # 'Renzi',
         # 'UNFI',
-        # 'Hill & Markes',
+        'Hill & Markes',
         # 'Johnston Paper',
         # 'Regional Distributors, Inc.',
         # 'Peters Supply',
@@ -483,18 +491,33 @@ if __name__ == '__main__':
         # 'Casa',
         # 'Palmer',
         # 'ACE ENDICO',
-        'Russo Produce',
-        'BEHLOG & SON, INC.',
+        # 'Russo Produce',
+        # 'BEHLOG & SON, INC.',
     ]
 
     stores = [
-        #  'BAKERY',
-         'TRIPHAMMER',
+         'BAKERY',
+        #  'TRIPHAMMER',
         #  'COLLEGETOWN',
         #  'EASTHILL',
         #  'DOWNTOWN'
     ]
     
+
+    ''' CURRENT PROJECT: STORE MANAGER '''
+    # store_manager = StoreManager(
+    #     storage_file=f'{SOURCE_PATH}\\backend\\stores\\stores.json'
+    #     )
+    
+    # for i in store_manager.stores:
+    #     print(i)
+
+    # store_manager.add_store("006", "NEW TEST STORE")
+    # store_manager.save_stores()
+
+    # print(store_manager.list_stores())
+
+
 
     ''' Welcome to Work Protocol '''
     def welcome_to_work() -> None:
@@ -545,72 +568,40 @@ if __name__ == '__main__':
 
 
     ''' DOWNLOAD ORDERS FROM CRAFTABLE '''
-    options = create_options()
-    driver  = uc.Chrome(options=options, use_subprocess=True)
+    # options = create_options()
+    # driver  = uc.Chrome(options=options, use_subprocess=True)
 
-    update       = True
-    download_pdf = True
+    # update       = True
+    # download_pdf = True
 
-    sort_orders(ORDER_FILES_PATH)
-    with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
-        craft_bot.download_orders(
-            stores, 
-            vendors=vendors, 
-            download_pdf=download_pdf, 
-            update=update
-        )
-        sort_orders(ORDER_FILES_PATH)
+    # sort_orders(ORDER_FILES_PATH)
+    # with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
+    #     craft_bot.download_orders(
+    #         stores, 
+    #         vendors=vendors, 
+    #         download_pdf=download_pdf, 
+    #         update=update
+    #     )
+    #     sort_orders(ORDER_FILES_PATH)
     '''--------------------------------'''
 
 
     ''' FORMAT ORDERS FOR VENDOR UPLOAD '''
     # # sort_orders(ORDER_FILES_PATH)
-    # for vendor in vendors:
-    #     format_orders(vendor, ORDER_FILES_PATH)
+    for vendor in vendors:
+        format_orders(vendor, ORDER_FILES_PATH)
     '''---------------------------------'''
 
-
-    def get_all_orders_from_vendor(driver, vendor) -> None:
-        stores = [
-            # 'BAKERY',
-            # 'TRIPHAMMER',
-            'COLLEGETOWN',
-            'EASTHILL',
-            'DOWNTOWN'
-        ]
-        with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
-            for store in stores: 
-                craft_bot.get_order_from_vendor(store, vendor, download_pdf=True)
-            sort_orders(ORDER_FILES_PATH)
-        return
-
-    def get_all_orders_from_all_stores(driver) -> None:
-        stores = [
-            # 'BAKERY',
-            'TRIPHAMMER',
-            # 'COLLEGETOWN',
-            # 'EASTHILL',
-            # 'DOWNTOWN'
-        ]
-
-        with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
-            for store in stores: 
-                craft_bot.get_all_orders_from_webpage(store, download_pdf=True)
-            sort_orders(ORDER_FILES_PATH)
-        return
     
-    # for vendor in vendors: get_all_orders_from_vendor(driver, vendor)
-
-    # get_all_orders_from_all_stores(driver)
-
     # options = create_options()
     # driver  = uc.Chrome(options=options, use_subprocess=True)
     
     # transfer_vendor = 'Ithaca Bakery'
-    
+    # transfer_files_directory = get_excel_files(f'{ORDER_FILES_PATH}\\{transfer_vendor}')
     # # format_orders_for_transfer(transfer_vendor, ORDER_FILES_PATH)
     # with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
-    #     for transfer_file in get_transfers(transfer_vendor):
+        
+        # for transfer_file in get_transfers(transfer_vendor):
 
     #         store_to            = transfer_file.split(' _ ')[2].split(' ')[0]
     #         store_from          = 'BAKERY'
@@ -637,6 +628,45 @@ if __name__ == '__main__':
 
             # rename(f'{ORDER_FILES_PATH}\\{transfer_vendor}\\{transfer_file}', f'{ORDER_FILES_PATH}\\{transfer_vendor}\\COMPLETED {transfer_file}')
 
+    def upload_store_transfers(transfer_files: list[str], origin_store: Store) -> None:
+
+        options = create_options()
+        driver  = uc.Chrome(options=options, use_subprocess=True)
+
+        with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
+            # print("START", flush=True)
+            # print(transfer_files)
+            for transfer_file in transfer_files:
+                print(transfer_file, flush=True)
+                store_to            = transfer_file.split('\\')[-1].split(' _ ')[2].split(' ')[0]
+                print(store_to, flush=True)
+                store_from          = origin_store.name
+                items               = []
+                date_from_file_name = transfer_file.split('\\')[-1].split(' _ ')[2].split(' ')[1].split('.')[0]
+                print(date_from_file_name, flush=True)
+                month               = int(date_from_file_name[0:2])
+                day                 = int(date_from_file_name[2:4])
+                year                = int(date_from_file_name[4:])
+
+                print(f'\nPreparing transfer data between {store_from} to {store_to}.', flush=True)
+
+                workbook = load_workbook(transfer_file)
+                sheet = workbook.active
+
+                for item_row in sheet.iter_rows():
+                    # print(item_row)
+                    name = item_row[1]
+                    quantity = item_row[2]
+                    print([name, quantity], flush=True)
+
+                    items.append(TransferItem(name.value, quantity.value))
+                
+                transfer = Transfer(store_from, store_to, items, datetime(year, month, day))
+                craft_bot.input_transfer(transfer)
+
+    # ithaca_bakery_transfer_files = get_excel_files(f'{ORDER_FILES_PATH}Ithaca Bakery\\')
+    # # print(transfer_files)
+    # upload_store_transfers(ithaca_bakery_transfer_files, get_store('Bakery'))
 
     vendor_to_print = [
         'Sysco',

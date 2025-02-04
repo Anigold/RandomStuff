@@ -1,12 +1,14 @@
-from Store import Store
+from .Store import Store
 import json
 
 class StoreManager:
 
-    def __init__(self):
+    def __init__(self, storage_file='stores.json'):
         self.stores = {}
+        self.storage_file = storage_file
+        self.load_stores()
 
-    def add_store(self, store_id: int, name: str):
+    def add_store(self, store_id: int, name: str) -> None:
         """Add a new store and save it."""
         if store_id in self.stores:
             print(f"Store ID {store_id} already exists.")
@@ -14,10 +16,19 @@ class StoreManager:
         self.stores[store_id] = Store(store_id, name)
         self.save_stores()
 
-    def get_store(self, store_id: int):
+    def get_store(self, store_id: int) -> Store:
         """Retrieve a store by ID."""
         return self.stores.get(store_id)
 
+    def find_store_by_name(self, store_name: str) -> Store:
+        """Retrieve a store by its name. 
+        If more than one exists, return the first instance.
+        """
+        stores = self.list_stores()
+        for store in stores:
+            if store.name == store_name:
+                return self.get_store(store)
+        
     def save_stores(self):
         """Save all stores to a JSON file."""
         with open(self.storage_file, "w") as f:

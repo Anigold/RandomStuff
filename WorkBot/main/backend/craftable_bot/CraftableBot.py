@@ -50,8 +50,9 @@ class CraftableBot:
         try:
             self.close_session()
         except OSError as os_error:
-            print(os_error)
-
+            # print(os_error)
+            pass
+        time.sleep(2) # We need to avoid a race condition when the session closes right before the script ends.
         return True
     
     '''
@@ -101,7 +102,13 @@ class CraftableBot:
         None
     '''
     def close_session(self) -> None:
-        self.driver.close()
+        print('\nClosing session...', flush=True)
+        try:
+            self.driver.close()
+        except:
+            print('...session failed to close.', flush=True)
+
+        print('...success.', flush=True)
         return
     
     '''
