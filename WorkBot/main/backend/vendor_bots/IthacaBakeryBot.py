@@ -28,7 +28,7 @@ class IthacaBakeryBot(VendorBot):
     '''
     File name format:
 
-    {MAIN PATH} \ {vendor} _ {store} {date}.xlsx
+    {MAIN PATH} / {vendor} _ {store} {date}.xlsx
 
     '''
     def get_store_from_file_name(self, file_name: str) -> str:

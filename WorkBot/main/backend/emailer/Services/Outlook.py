@@ -1,6 +1,12 @@
 from .Service import Service, Email
-import win32com.client
-from win32com.client import Dispatch
+
+try:
+    import win32com.client
+    from win32com.client import Dispatch
+except:
+    pass
+
+
 from dataclasses import dataclass
 
 
