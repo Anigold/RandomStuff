@@ -2,7 +2,7 @@ class Store:
     def __init__(self, store_id: str, name: str, address: str = None):
         self.store_id     = store_id
         self.name         = name
-        self.address      = ''
+        self.address      = address
 
     def to_dict(self):
         return {

@@ -1,9 +1,12 @@
 from .Store import Store
 import json
+from pathlib import Path
+
+DEFAULT_STORAGE_FILE = Path(__file__).parent / 'stores.json'
 
 class StoreManager:
 
-    def __init__(self, storage_file='stores.json'):
+    def __init__(self, storage_file: Path = DEFAULT_STORAGE_FILE):
         self.stores = {}
         self.storage_file = storage_file
         self.load_stores()
@@ -24,10 +27,9 @@ class StoreManager:
         """Retrieve a store by its name. 
         If more than one exists, return the first instance.
         """
-        stores = self.list_stores()
-        for store in stores:
+        for store in self.list_stores():
             if store.name == store_name:
-                return self.get_store(store)
+                return self.get_store(store.store_id)
         
     def save_stores(self):
         """Save all stores to a JSON file."""
@@ -39,7 +41,7 @@ class StoreManager:
         try:
             with open(self.storage_file, "r") as f:
                 data = json.load(f)
-                self.stores = {int(sid): Store.from_dict(store_data) for sid, store_data in data.items()}
+                self.stores = {sid: Store.from_dict(store_data) for sid, store_data in data.items()}
         except (FileNotFoundError, json.JSONDecodeError):
             self.stores = {}
 
@@ -52,3 +54,6 @@ class StoreManager:
     def list_stores(self):
         """Return a list of all stores."""
         return list(self.stores.values())
+    
+    def __repr__(self) -> str:
+        return f'StoreManager({self.stores}, {self.storage_file})'

@@ -608,11 +608,13 @@ class CraftableBot:
 
         time.sleep(5)
 
+        print('\nCreating new transfer in Craftable...', flush=True)
         new_transfer_button = self.driver.find_element(By.XPATH, '//a[text()="New Transfer"]')
         new_transfer_button.click()
 
         time.sleep(4)
 
+        print('Entering transfer information...', flush=True)
         transfer_modal = self.driver.find_element(By.ID, 'transferNewModal')
 
         transfer_form = transfer_modal.find_element(By.XPATH, './/form')
@@ -621,6 +623,7 @@ class CraftableBot:
         date_input = transfer_form_inputs[0].find_element(By.XPATH, './/input')
         toggle_out = transfer_form_inputs[1].find_element(By.XPATH, './/input') # We can do this because we only want the first input.
         
+        print('...transfer date...', flush=True)
         date_input.click()
         WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CLASS_NAME, 'flatpickr-calendar')))
         date_input_current_month = self.driver.find_element(By.CLASS_NAME, 'cur-month')
@@ -628,10 +631,12 @@ class CraftableBot:
         # NEED TO UPDATE SO IT CAN CHOOSE THE CORRECT MONTH!!!!!
 
         calendar = self.driver.find_element(By.CLASS_NAME, 'dayContainer')
-    
-
+        print(transfer.date.day)
         today = calendar.find_element(By.XPATH, f'.//span[@class="flatpickr-day "][text()="{transfer.date.day}"]')
+        print('done')
         today.click()
+        
+        print('...outbound transfer.', flush=True)
         time.sleep(2)
         toggle_out.click()
         time.sleep(2)
@@ -642,6 +647,7 @@ class CraftableBot:
         transfer_form = transfer_modal.find_element(By.XPATH, './/form')
         transfer_form_inputs = transfer_form.find_elements(By.XPATH, './div')
 
+        print('...transfer destination.', flush=True)
         store_to_select = transfer_form_inputs[2].find_element(By.XPATH, './/div[@class="search ember-view input-select-searchable"]')
         store_to_select.click()
 
@@ -660,12 +666,15 @@ class CraftableBot:
         WebDriverWait(self.driver, 120).until(EC.element_to_be_clickable((By.ID, 'transferNewModal')))
         transfer_modal        = self.driver.find_element(By.ID, 'transferNewModal')
         transfer_modal_footer = transfer_modal.find_element(By.XPATH, './/div[@class="modal-footer "]')
+
+        print('...submitting.', flush=True)
         submit_button         = transfer_modal_footer.find_elements(By.TAG_NAME, 'button')[1]
 
         submit_button.click()
 
         time.sleep(4)
 
+        print('Beginning to enter transfer items...', flush=True)
         for item in transfer.items:
             
             # Click the add-item button
@@ -711,7 +720,12 @@ class CraftableBot:
                         pass
                     
             except:
+                transfer_modal = self.driver.find_element(By.ID, 'transferItemModal')
+                close_button = transfer_modal.find_element(By.CLASS_NAME, 'close')
+                close_button.click()
                 print(item.name, transfer.store_to, flush=True)
+                time.sleep(4)
+                continue
             # time.sleep(5)
         
         submit_transfer_button = self.driver.find_element(By.XPATH, './/a[text()="Request"]')

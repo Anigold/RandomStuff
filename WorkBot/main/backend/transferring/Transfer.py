@@ -10,5 +10,5 @@ class TransferItem:
 class Transfer:
     store_from: str
     store_to:   str
-    # items:      list[TransferItem]
+    items:      list[TransferItem]
     date:       datetime
