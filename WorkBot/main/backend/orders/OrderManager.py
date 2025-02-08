@@ -1,52 +1,67 @@
-import json
-from ..vendor_bots import VendorBot
-STORE_VENDOR_MAPPINGS = './OrderManagerMappings.json'
+import re
+from pathlib import Path
+from .Order import Order
+from openpyxl import Workbook, load_workbook
+
+SOURCE_PATH      = Path(__file__).parent / 'backend'
+ORDERS_DIRECTORY = SOURCE_PATH / 'orders' / 'OrderFiles'
 
 class OrderManager:
 
-    def __init__(self, store: str, vendors: list):
-        self.store  = store
-        self.vendor = vendors
+    def __init__(self):
+        self.orders_directory = self.get_order_files_path()
+        self.file_pattern     = re.compile(r"^(.+?) _ (.+?) (\d{2}\d{2}\d{4})$")
 
-    '''
-    Get the vendor ID for our current store.
-    '''
-    def get_vendor_id(self) -> str:
-        with open(STORE_VENDOR_MAPPINGS, 'r') as sv_mappings:
-            data = json.load(sv_mappings)
-
-            # This is not efficient, but N < 10 so we don't care.
-            for store in data['stores']:
-                if store['store_name'] == self.store:
-                    for vendor in enumerate(store['vendors']):
-                        if vendor['vendor_name'] == self.vendor:
-                            return vendor['vendor_store_id']
-
-    def convert_craftable_pdf_to_vendor_format(self, path: str, vendor: VendorBot) -> None:
-        order_sheets = get_files(f'{path}')
-	
-        for order_sheet in order_sheets:
-
-            output = StringIO()
-            
-            # Extract PDF text to string builder
-            convert_to_html(join(path, order_sheet), output)
-
-            # Convert PDF text to HTML page
-            with open(f'{path}temp{order_sheet.split(".")[0]}.html', 'w') as html_file:
-                html_file.write(output.getvalue())
-
-            # Parse HTML page
-            with open(f'{path}temp{order_sheet.split(".")[0]}.html') as fp:
-                column_info = extract_table_column_data(fp, {'item_skus': {'styles': 'left:52px'}, 'item_quantities': {'styles': 'left:352px'}})
-                
-            items = retrieve_item_ordering_information(column_info)
-
-            workbook = vendor.format_for_file_upload(items, f'{path}{order_sheet.split(".")[0]}')
-            
-            
-
-            remove(join(path, f'temp{order_sheet.split(".")[0]}.html'))
-
-
+    def get_order_files_path() -> Path:
+        return ORDERS_DIRECTORY
     
+    def generate_filename(self, order: Order, file_extension: str = '.xlsx') -> str:
+        return f'{order.vendor} _ {order.store} {order.date}{file_extension}'
+    
+    def get_file_path(self, order: Order, file_extension: str = '.xlsx') -> Path:
+        return self.orders_directory / self.generate_filename(order, file_extension)
+
+    def save_order(self, order: Order, file_extension: str = '.xlsx') -> None:
+
+        extensions = {
+            '.xlsx': self._save_as_excel
+        }
+
+        if file_extension in extensions: extensions[file_extension]()
+
+        else: return None
+
+    def _save_as_excel(self, order: Order) -> None:
+        
+        workbook = self._order_to_excel(order)
+        workbook.save(self.get_file_path(order, '.xlsx'))
+
+    # def extract_general_order_info(self, order_file_name: Path) -> dict:
+    #     filename = order_file_name.stem
+    #     print(filename)
+    #     match = self.file_pattern.match(filename)
+    #     print(match)
+    #     if not match: return None
+
+    #     store_name, vendor_name, date = match.groups()
+
+    #     return {'store': store_name,
+    #             'vendor': vendor_name,
+    #             'date': date}
+
+    def _order_to_excel(self, order: Order) -> Workbook:
+        workbook = Workbook()
+        sheet = workbook.active
+
+        col_headers = ['SKU', 'Item', 'Quantity', 'Cost Per', 'Total Cost']
+
+        # Insert headers
+        for pos, header in enumerate(col_headers):
+            sheet.cell(row=1, column=pos+1).value = header
+
+        # Insert item data
+        for pos, item in enumerate(order.items):
+            for info_pos, item_info in enumerate(item):
+                sheet.cell(row=pos+2, column=info_pos+1).value = item_info
+        
+        return workbook

@@ -23,7 +23,7 @@ from backend.vendor_bots.BehlogProduceBot import BehlogProduceBot
 from backend.vendor_bots.RussoProduceBot import RussoProduceBot
 from backend.vendor_bots.EuroCafeBot import EuroCafeBot
 
-from backend.orders import OrderManager
+from backend.orders.OrderManager import OrderManager
 
 from backend.stores.Store import Store
 from backend.stores.StoreManager import StoreManager
@@ -339,42 +339,41 @@ def find_order_files(base_directory: str, depth=2) -> list:
                     orders.append(file_path)
     return orders
 
-def find_order_pdfs(base_directory: str, depth=2) -> list:
+def find_order_pdfs(base_directory: Path, depth=2) -> list:
+    base_directory = Path(base_directory)
     orders = []
-    for root, dirs, files in os.walk(base_directory):
-        if root.count(os.sep) - base_directory.count(os.sep) < depth:
-            for file in files:
-                if file.endswith('.pdf'):
-                    file_path = os.path.join(root, file)
-                    orders.append(file_path)
+    
+    for path in base_directory.rglob("*.pdf"):
+        if len(path.relative_to(base_directory).parts) <= depth:
+            orders.append(path)
+    
     return orders
 
-def get_orders_by_store(base_directory: str, stores: list, depth=2) -> list[list]:
-    all_order_files = find_order_files(base_directory, depth)
+def get_orders_by_store(base_directory: Path, stores: list, depth=2) -> dict:
+    base_directory = Path(base_directory)
+    all_order_files = find_order_pdfs(base_directory, depth)
 
-    store_orders = {}
-    for store in stores:
-        if store not in store_orders:
-            store_orders[store]= []
+    store_orders = {store: [] for store in stores}
 
     for order_file in all_order_files:
         for store in stores:
-            if store in order_file:
+            if store in order_file.stem or store in order_file.parts:
                 store_orders[store].append(order_file)
     
     return store_orders
 
-def get_pdfs_by_store(base_directory: str, store: str, depth=2) -> list[list]:
+def get_pdfs_by_store(base_directory: Path, store: str, depth=2) -> dict:
+    base_directory = Path(base_directory)
     all_order_files = find_order_pdfs(base_directory, depth)
 
     store_orders = {store: []}
 
     for order_file in all_order_files:
-
-        if store in order_file:
+        if store in order_file.stem or store in order_file.parts:
             store_orders[store].append(order_file)
-    # pprint.pprint(store_orders)
+    
     return store_orders
+
 
 def update_orders(self, store: str, download_pdf=False) -> None:
         
@@ -464,8 +463,8 @@ if __name__ == '__main__':
 
     vendors = [ 
         'Sysco', 
-        'Performance Food',
-        'US Foods',
+        # 'Performance Food',
+        # 'US Foods',
         # 'Renzi',
         # 'UNFI',
         # 'Hill & Markes',
@@ -499,14 +498,14 @@ if __name__ == '__main__':
 
     stores = [
          'BAKERY',
-         'TRIPHAMMER',
-         'COLLEGETOWN',
+        #  'TRIPHAMMER',
+        #  'COLLEGETOWN',
         #  'EASTHILL',
         #  'DOWNTOWN'
     ]
     
 
-    ''' CURRENT PROJECT: STORE MANAGER '''
+    ''' CURRENT PROJECT: STORE AND ORDER MANAGERS '''
     # store_manager = StoreManager(
     #     storage_file=f'{SOURCE_PATH}\\backend\\stores\\stores.json'
     #     )
@@ -519,7 +518,10 @@ if __name__ == '__main__':
 
     # print(store_manager.list_stores())
 
+    # order_manager = OrderManager()
+    # print(order_manager.extract_general_order_info(ORDER_FILES_PATH / 'Ithaca Bakery' / 'Ithaca Bakery _ COLLEGETOWN 02072025.xlsx').to_dict())
 
+    
 
     ''' Welcome to Work Protocol '''
     def welcome_to_work() -> None:
@@ -590,11 +592,10 @@ if __name__ == '__main__':
 
     ''' FORMAT ORDERS FOR VENDOR UPLOAD '''
     # # sort_orders(ORDER_FILES_PATH)
-    for vendor in vendors:
-        format_orders(vendor, ORDER_FILES_PATH)
+    # for vendor in vendors:
+    #     format_orders(vendor, ORDER_FILES_PATH)
     '''---------------------------------'''
 
-    
     # options = create_options()
     # driver  = uc.Chrome(options=options, use_subprocess=True)
     

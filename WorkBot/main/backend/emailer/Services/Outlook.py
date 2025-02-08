@@ -24,7 +24,7 @@ class Outlook(Service):
         if email.cc: new_email.CC = email.cc
 
         if email.attachments: 
-            for attachment in email.attachments: new_email.Attachments.Add(Source=attachment)
+            for attachment in email.attachments: new_email.Attachments.Add(Source=str(attachment))
 
         return new_email
     
