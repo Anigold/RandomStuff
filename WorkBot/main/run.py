@@ -463,11 +463,11 @@ def delete_orders_from_craftable(stores: list[str]) -> None:
 if __name__ == '__main__':
 
     vendors = [ 
-        # 'Sysco', 
-        # 'Performance Food',
-        # 'US Foods',
+        'Sysco', 
+        'Performance Food',
+        'US Foods',
         # 'Renzi',
-        'UNFI',
+        # 'UNFI',
         # 'Hill & Markes',
         # 'Johnston Paper',
         # 'Regional Distributors, Inc.',
@@ -500,9 +500,9 @@ if __name__ == '__main__':
     stores = [
          'BAKERY',
         #  'TRIPHAMMER',
-        #  'COLLEGETOWN',
-        #  'EASTHILL',
-        #  'DOWNTOWN'
+         'COLLEGETOWN',
+         'EASTHILL',
+         'DOWNTOWN'
     ]
     
 
@@ -573,28 +573,27 @@ if __name__ == '__main__':
 
 
     ''' DOWNLOAD ORDERS FROM CRAFTABLE '''
-    options = create_options()
-    driver  = uc.Chrome(options=options, use_subprocess=True)
+    # options = create_options()
+    # driver  = uc.Chrome(options=options, use_subprocess=True)
 
-    update       = True
-    download_pdf = True
+    # update       = True
+    # download_pdf = True
 
-    # sort_orders(ORDER_FILES_PATH)
-    with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
-        craft_bot.download_orders(
-            stores, 
-            vendors=vendors, 
-            download_pdf=download_pdf, 
-            update=update
-        )
-        # sort_orders(ORDER_FILES_PATH)
+    # with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
+    #     craft_bot.download_orders(
+    #         stores, 
+    #         vendors=vendors, 
+    #         download_pdf=download_pdf, 
+    #         update=update
+    #     )
+    #     sort_orders(ORDER_FILES_PATH)
     '''--------------------------------'''
 
 
     ''' FORMAT ORDERS FOR VENDOR UPLOAD '''
     # # sort_orders(ORDER_FILES_PATH)
-    # for vendor in vendors:
-    #     format_orders(vendor, ORDER_FILES_PATH)
+    for vendor in vendors:
+        format_orders(vendor, ORDER_FILES_PATH)
     '''---------------------------------'''
 
     # options = create_options()
@@ -707,9 +706,9 @@ if __name__ == '__main__':
     
 
     vendors = [
-        'Copper Horse Coffee',
+        # 'Copper Horse Coffee',
         # 'Eurocafe Imports',
-        # 'Ithaca Bakery'
+        'Ithaca Bakery'
     ]
     # for vendor in vendors:
 

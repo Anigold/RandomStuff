@@ -17,8 +17,11 @@ from openpyxl import Workbook, load_workbook
 
 from backend.transferring import Transfer
 from ..orders.OrderManager import OrderManager
+from ..orders.Order import Order
 
 from datetime import datetime
+
+from pathlib import Path
 
 ORDER_FILES_PATH    = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\'
 # PRICING_FILES_PATH  = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\pricing\\VendorSheets\\'
@@ -189,98 +192,41 @@ class CraftableBot:
               
                 row_date_formatted = self._convert_date_format(row_date_text, '%m/%d/%Y', '%Y%m%d')
                 
+                if pos in completed_orders:
+                    continue
+
                 # If vendors have been supplied and the current vendor isn't in the list, we skip it.
                 if (vendors) and (row_vendor_name not in vendors):
                     print(f'{row_vendor_name} not wanted...skipping.')
                     completed_orders.append(pos) # Is this superfluous?
                     continue
+    
+                print(f'\nRetrieving order for {row_vendor_name}.', flush=True)
+                row_date.click()
+                WebDriverWait(self.driver, 45).until(EC.element_to_be_clickable((By.TAG_NAME, 'table')))
+                
+                # print('Scraping order.', flush=True)
+                items = self._scrape_order()
 
-                if pos not in completed_orders:
-                    
-                    print(f'\nRetrieving order for {row_vendor_name}.', flush=True)
-                    row_date.click()
-                    WebDriverWait(self.driver, 45).until(EC.element_to_be_clickable((By.TAG_NAME, 'table')))
-
-                    items = self._scrape_order()
-
-                    if update:
-                        
-                        preexisting_workbook_path = f'{ORDER_FILES_PATH}{row_vendor_name}\\{row_vendor_name} _ {store} {row_date_formatted.replace("/", "")}.xlsx'
-                        preexisting_file_exists = True
-                        try:
-                            # We use read-only to ensure the file properly closes after use.
-                            # We also don't need to edit it, as we are generating a new file anyways.
-                            print(f'Loading pre-existing XLSX file for {row_vendor_name}...', flush=True)
-                            workbook = load_workbook(preexisting_workbook_path, read_only=True)
-                            print('...opened.', flush=True)
-                        except:
-                            
-                            print(f'No pre-existing XLSX file exists for {row_vendor_name}.', flush=True)
-                            preexisting_file_exists = False
-                        
-                        if preexisting_file_exists:
-                            print('Accessing saved data.', flush=True)
-                            sheet = workbook.active
-                            saved_items = []
-                            for item_row in sheet.iter_rows(min_row=2):
-                                sku, name, quantity, cost_per, total_cost = item_row
-                                saved_items.append([sku.value, name.value, quantity.value, cost_per.value, total_cost.value])
-
-                            print('Closing pre-existing file.', flush=True)
-                            try:
-                                workbook.close()
-                            except:
-                                print('Failed to properly close XLSX file. Crash imminent.')
-
-                            items_set       = set(map(tuple, items))
-                            saved_items_set = set(map(tuple, saved_items))
-
-                            print('Comparing new data with pre-existing data.', flush=True)
-                            if items_set == saved_items_set:
-                                print('New data matches old data, skipping update protocol.', flush=True)
-                                completed_orders.append(pos)
-                                self.driver.back()
-                                time.sleep(3)
-                                continue
-                                
-                            try:
-                                # Check if the file exists, if it does, remove it.
-                                print('Removing out of date files.', flush=True)
-                                print(f'\nSearching for XLSX file: {preexisting_workbook_path}...', flush=True)
-                                if os.path.isfile(preexisting_workbook_path):
-                                    print(f'...file found. Removing...')
-                                    os.remove(preexisting_workbook_path)
-
-                                print(f'\nSearching for PDF file: {preexisting_workbook_path.replace(".xlsx", ".pdf")}...', flush=True)
-                                if os.path.isfile(preexisting_workbook_path.replace('.xlsx', '.pdf')):
-                                    print(f'...file found. Removing...')
-                                    os.remove(preexisting_workbook_path.replace('.xlsx', '.pdf'))
-
-                            except OSError as e:
-                                print(e)
-                                if e.errno == 13:
-                                    print('File is being accessed by another program at time of deletion.')
-                                    print('Aborting file replacement.')
-                                
-                                else:
-                                    print(e)
-                                    print('Unable to remove current files.')
-                            
-                            
-                        
-                    self._save_order_as_excel(items, f'{ORDER_FILES_PATH}{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.xlsx')
-                    
-                    time.sleep(2)
-
-                    if download_pdf:
-                        
-                        self._download_order_pdf()
-                        time.sleep(5)
-                        self._rename_new_order_file(store=store, vendor=row_vendor_name, date=row_date_formatted)
-
+                print('Checking if update is necessary.', flush=True)
+                if update and self._update_existing_order(store, row_vendor_name, row_date_formatted, items):
+                    print('No update necessary, continuing to next order.', flush=True)
                     completed_orders.append(pos)
                     self.driver.back()
                     time.sleep(3)
+                    continue
+                        
+                self._save_order_as_excel(items, store=store, vendor=row_vendor_name, date=row_date_formatted )
+                time.sleep(2)
+
+                if download_pdf:
+                    self._download_order_pdf()
+                    time.sleep(5)
+                    self._rename_new_order_file(store=store, vendor=row_vendor_name, date=row_date_formatted)
+
+                completed_orders.append(pos)
+                self.driver.back()
+                time.sleep(3)
 
         return
 
@@ -541,32 +487,20 @@ class CraftableBot:
         ActionChains(self.driver).key_down(Keys.CONTROL).click(download_button).perform()
         return
     
-    '''
-    Takes in a 2-D list of item data assuming the following 
-    column formatting:
+    def _save_order_as_excel(self, item_data, store: str, vendor: str, date: str) -> None:
 
-    SKU | Item Name | Quantity | Cost Per | Total Cost
+        print('Saving order as an Excel workbook.', flush=True)
 
-    Saves to an Excel file with the supplied file name/path.
-    '''
-    def _save_order_as_excel(self, item_data, file_name) -> None:
+        order = Order(store, vendor, date, items=item_data)
+     
+        order_as_workbook = order.to_excel_workbook()
 
-        workbook = Workbook()
-        sheet = workbook.active
-        
-        col_headers = ['SKU', 'Item', 'Quantity', 'Cost Per', 'Total Cost']
+        new_filename = self.order_manager.generate_filename(store=store, vendor=vendor, date=date, file_extension='.xlsx')
+        new_filepath = self.order_manager.get_order_files_directory() / new_filename
 
-        # Insert headers
-        for pos, header in enumerate(col_headers):
-            sheet.cell(row=1, column=pos+1).value = header
+        order_as_workbook.save(new_filepath)
+        order_as_workbook.close()
 
-        # Insert item data
-        for pos, item in enumerate(item_data):
-            for info_pos, item_info in enumerate(item):
-                sheet.cell(row=pos+2, column=info_pos+1).value = item_info
-        
-        workbook.save(file_name)
-        workbook.close()
         return
     
     def _delete_order_protocol(self) -> None:
@@ -593,3 +527,59 @@ class CraftableBot:
     def _extract_order_table_rows(self, row) -> tuple:
         pass
 
+    def _update_existing_order(self, store, vendor_name, date_formatted, items) -> bool:
+
+        """Handles the update protocol for checking existing orders and removing outdated files."""
+        print('\nBeginning order update protocol.', flush=True)
+
+        preexisting_workbook_filename = self.order_manager.generate_filename(
+            store=store, 
+            vendor=vendor_name, 
+            date=date_formatted, 
+            file_extension='.xlsx'
+        )
+        
+        print('Checking for pre-existing order data.', flush=True)
+        preexisting_workbook_path = self.order_manager.get_order_files_directory() / vendor_name / preexisting_workbook_filename
+        preexisting_file_exists = preexisting_workbook_path.exists()
+        
+        if not self.order_manager.get_vendor_orders_directory(vendor_name): 
+            print('No file to update, continuing with data download.', flush=True)
+            return False
+        if not preexisting_file_exists: 
+            print('No file to update, continuing with data download.', flush=True)
+            return False
+        
+        print('Extracting saved data...', flush=True)
+        workbook = load_workbook(preexisting_workbook_path, read_only=True)
+        sheet = workbook.active
+        saved_items = [[cell.value for cell in row] for row in sheet.iter_rows(min_row=2)]
+        workbook.close()
+
+        print('Comparing new data with pre-existing data.', flush=True)
+        if set(map(tuple, items)) == set(map(tuple, saved_items)):
+            print('New data matches old data, skipping update protocol.', flush=True)
+            return True  # Skip further processing
+
+        self._remove_old_files(preexisting_workbook_path)
+
+        return False  # Continue with saving new data
+    
+    def _remove_old_files(self, workbook_path):
+        """Removes outdated XLSX and PDF files."""
+        try:
+            print('Removing out-of-date files.', flush=True)
+
+            if os.path.isfile(workbook_path):
+                print(f'Removing file: {workbook_path}')
+                os.remove(workbook_path)
+
+            pdf_path = workbook_path.with_suffix('.pdf')
+            if os.path.isfile(pdf_path):
+                print(f'Removing file: {pdf_path}')
+                os.remove(pdf_path)
+
+        except OSError as e:
+            print(f'Error removing files: {e}')
+            if e.errno == 13:
+                print('File is being accessed by another program at time of deletion. Aborting file replacement.')

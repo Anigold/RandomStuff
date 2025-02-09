@@ -1,7 +1,6 @@
 import re
 from pathlib import Path
 from .Order import Order
-from openpyxl import Workbook
 
 SOURCE_PATH      = Path(__file__).parent.parent
 ORDERS_DIRECTORY = SOURCE_PATH / 'orders' / 'OrderFiles'
@@ -17,9 +16,17 @@ class OrderManager:
         return ORDERS_DIRECTORY
     
     def get_downloads_directory(self) -> Path:
-        print(f'OrderManager: {DOWNLOADS_DIRECTORY}', flush=True)
         return DOWNLOADS_DIRECTORY
     
+    def get_vendor_orders_directory(self, vendor: str) -> Path:
+        print('Checking for vendor order directory...', flush=True)
+        vendor_orders_directory = self.get_order_files_directory() / vendor
+        if vendor_orders_directory.exists() and vendor_orders_directory.is_dir():
+            print(f'...order directory found for {vendor}.')
+            return vendor_orders_directory
+        print(f'...no order directory found for {vendor}.')
+        return None
+
     def generate_filename(self, order: Order = None, store: str = None, vendor: str = None, date: str = None, file_extension: str = '.xlsx') -> str:
 
         if order:
@@ -47,23 +54,7 @@ class OrderManager:
 
         return 
     
-    def _order_to_excel(self, order: Order) -> Workbook:
 
-        workbook = Workbook()
-        sheet = workbook.active
-
-        col_headers = ['SKU', 'Item', 'Quantity', 'Cost Per', 'Total Cost']
-
-        # Insert headers
-        for pos, header in enumerate(col_headers):
-            sheet.cell(row=1, column=pos+1).value = header
-
-        # Insert item data
-        for pos, item in enumerate(order.items):
-            for info_pos, item_info in enumerate(item):
-                sheet.cell(row=pos+2, column=info_pos+1).value = item_info
-        
-        return workbook
     
     # def extract_general_order_info(self, order_file_name: Path) -> dict:
     #     filename = order_file_name.stem
