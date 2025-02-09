@@ -18,9 +18,11 @@ from openpyxl import Workbook, load_workbook
 from backend.transferring import Transfer
 from ..orders.OrderManager import OrderManager
 
+from datetime import datetime
+
 ORDER_FILES_PATH    = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\'
-PRICING_FILES_PATH  = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\pricing\\VendorSheets\\'
-DOWNLOAD_PATH       = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\'
+# PRICING_FILES_PATH  = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\pricing\\VendorSheets\\'
+# DOWNLOAD_PATH       = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\'
 
 '''
 Craftable Bot utlizes Selenium to interact with the Craftable website. 
@@ -139,6 +141,11 @@ class CraftableBot:
         time.sleep(5)
         return
 
+    def go_to_store_order_page(self, store: str) -> None:
+        self.driver.get(f'https://app.craftable.com/buyer/2/{self.stores[store]}/orders/list')
+        time.sleep(5)
+        return
+    
     ''' Download orders from Craftable.
 
     ARGS
@@ -162,7 +169,7 @@ class CraftableBot:
         for store in stores:
             
             print(f'\nGetting order page for {store}.', flush=True)
-            self.driver.get(f'https://app.craftable.com/buyer/2/{self.stores[store]}/orders/list')
+            self.go_to_store_order_page(store)
             time.sleep(6)
 
             table_body = self.driver.find_element(By.XPATH, './/tbody')
@@ -178,7 +185,10 @@ class CraftableBot:
                 row_date        = row_data[2]
                 row_date_text   = row_data[2].text
                 row_vendor_name = row_data[3].text
-
+                
+              
+                row_date_formatted = self._convert_date_format(row_date_text, '%m/%d/%Y', '%Y%m%d')
+                
                 # If vendors have been supplied and the current vendor isn't in the list, we skip it.
                 if (vendors) and (row_vendor_name not in vendors):
                     print(f'{row_vendor_name} not wanted...skipping.')
@@ -195,7 +205,7 @@ class CraftableBot:
 
                     if update:
                         
-                        preexisting_workbook_path = f'{ORDER_FILES_PATH}{row_vendor_name}\\{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.xlsx'
+                        preexisting_workbook_path = f'{ORDER_FILES_PATH}{row_vendor_name}\\{row_vendor_name} _ {store} {row_date_formatted.replace("/", "")}.xlsx'
                         preexisting_file_exists = True
                         try:
                             # We use read-only to ensure the file properly closes after use.
@@ -266,7 +276,7 @@ class CraftableBot:
                         
                         self._download_order_pdf()
                         time.sleep(5)
-                        self._rename_new_order_file(DOWNLOAD_PATH, f'{row_vendor_name} _ {store} {row_date_text.replace("/", "")}.pdf')
+                        self._rename_new_order_file(store=store, vendor=row_vendor_name, date=row_date_formatted)
 
                     completed_orders.append(pos)
                     self.driver.back()
@@ -462,9 +472,18 @@ class CraftableBot:
         submit_transfer_button = self.driver.find_element(By.XPATH, './/a[text()="Request"]')
         return
         
-    def _rename_new_order_file(self, path:str, file_name:str) -> None:
-     
-        rename(f'{path}Order.pdf', f'{ORDER_FILES_PATH}{file_name}')
+    def _rename_new_order_file(self, store: str, vendor: str, date: str) -> None:
+
+        original_file = self.order_manager.get_downloads_directory() / 'Order.pdf'
+
+        if not original_file.exists():
+            print(f'Warning: Expected file not found: {original_file}')
+            return
+        
+        new_filename = self.order_manager.generate_filename(store=store, vendor=vendor, date=date, file_extension='.pdf')
+        new_filepath = self.order_manager.get_order_files_directory() / new_filename
+        
+        original_file.rename(new_filepath)
         return
     
     def _run_save_protocol() -> None:
@@ -531,6 +550,7 @@ class CraftableBot:
     Saves to an Excel file with the supplied file name/path.
     '''
     def _save_order_as_excel(self, item_data, file_name) -> None:
+
         workbook = Workbook()
         sheet = workbook.active
         
@@ -551,3 +571,25 @@ class CraftableBot:
     
     def _delete_order_protocol(self) -> None:
         pass
+
+    def _convert_date_format(self, date_str: str, input_format: str, output_format: str) -> str:
+        """
+        Converts a date string from one format to another.
+
+        Args:
+            date_str (str): The date string to be converted.
+            input_format (str): The format of the input date string (e.g., "%m/%d/%Y").
+            output_format (str): The desired output format (e.g., "%Y%m%d").
+
+        Returns:
+            str: The converted date string, or an error message if invalid.
+        """
+        try:
+            date_obj = datetime.strptime(date_str, input_format)
+            return date_obj.strftime(output_format)
+        except ValueError:
+            return f"Invalid date format: {date_str}. Expected format: {input_format}"
+        
+    def _extract_order_table_rows(self, row) -> tuple:
+        pass
+

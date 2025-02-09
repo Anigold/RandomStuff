@@ -24,6 +24,7 @@ from backend.vendor_bots.RussoProduceBot import RussoProduceBot
 from backend.vendor_bots.EuroCafeBot import EuroCafeBot
 
 from backend.orders.OrderManager import OrderManager
+from backend.orders.OrderBot import OrderBot
 
 from backend.stores.Store import Store
 from backend.stores.StoreManager import StoreManager
@@ -462,11 +463,11 @@ def delete_orders_from_craftable(stores: list[str]) -> None:
 if __name__ == '__main__':
 
     vendors = [ 
-        'Sysco', 
+        # 'Sysco', 
         # 'Performance Food',
         # 'US Foods',
         # 'Renzi',
-        # 'UNFI',
+        'UNFI',
         # 'Hill & Markes',
         # 'Johnston Paper',
         # 'Regional Distributors, Inc.',
@@ -519,8 +520,8 @@ if __name__ == '__main__':
     # print(store_manager.list_stores())
 
     # order_manager = OrderManager()
-    # print(order_manager.extract_general_order_info(ORDER_FILES_PATH / 'Ithaca Bakery' / 'Ithaca Bakery _ COLLEGETOWN 02072025.xlsx').to_dict())
-
+    # order_bot = OrderBot(order_manager)
+    
     
 
     ''' Welcome to Work Protocol '''
@@ -572,21 +573,21 @@ if __name__ == '__main__':
 
 
     ''' DOWNLOAD ORDERS FROM CRAFTABLE '''
-    # options = create_options()
-    # driver  = uc.Chrome(options=options, use_subprocess=True)
+    options = create_options()
+    driver  = uc.Chrome(options=options, use_subprocess=True)
 
-    # update       = True
-    # download_pdf = True
+    update       = True
+    download_pdf = True
 
     # sort_orders(ORDER_FILES_PATH)
-    # with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
-    #     craft_bot.download_orders(
-    #         stores, 
-    #         vendors=vendors, 
-    #         download_pdf=download_pdf, 
-    #         update=update
-    #     )
-    #     sort_orders(ORDER_FILES_PATH)
+    with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
+        craft_bot.download_orders(
+            stores, 
+            vendors=vendors, 
+            download_pdf=download_pdf, 
+            update=update
+        )
+        # sort_orders(ORDER_FILES_PATH)
     '''--------------------------------'''
 
 
