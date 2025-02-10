@@ -23,7 +23,6 @@ from datetime import datetime
 
 from pathlib import Path
 
-ORDER_FILES_PATH    = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\'
 # PRICING_FILES_PATH  = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\pricing\\VendorSheets\\'
 # DOWNLOAD_PATH       = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\'
 
@@ -32,11 +31,11 @@ Craftable Bot utlizes Selenium to interact with the Craftable website.
 '''
 class CraftableBot:
 
-    def __init__(self, driver: WebDriver, username: str, password: str, order_manager: OrderManager = OrderManager()):
+    def __init__(self, driver: WebDriver, username: str, password: str, order_manager: OrderManager = None):
         self.driver        = driver
         self.username      = username
         self.password      = password
-        self.order_manager = order_manager
+        self.order_manager = order_manager or OrderManager()
 
         self.is_logged_in = False
         self.stores = {
@@ -213,15 +212,15 @@ class CraftableBot:
                     print('No update necessary, continuing to next order.', flush=True)
                     completed_orders.append(pos)
                     self.driver.back()
-                    time.sleep(3)
+                    time.sleep(2)
                     continue
                         
                 self._save_order_as_excel(items, store=store, vendor=row_vendor_name, date=row_date_formatted )
-                time.sleep(2)
+                time.sleep(1)
 
                 if download_pdf:
                     self._download_order_pdf()
-                    time.sleep(5)
+                    time.sleep(3)
                     self._rename_new_order_file(store=store, vendor=row_vendor_name, date=row_date_formatted)
 
                 completed_orders.append(pos)

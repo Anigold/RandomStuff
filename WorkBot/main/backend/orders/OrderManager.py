@@ -2,15 +2,13 @@ import re
 from pathlib import Path
 from .Order import Order
 
-SOURCE_PATH      = Path(__file__).parent.parent
-ORDERS_DIRECTORY = SOURCE_PATH / 'orders' / 'OrderFiles'
+SOURCE_PATH         = Path(__file__).parent.parent
+ORDERS_DIRECTORY    = SOURCE_PATH / 'orders' / 'OrderFiles'
 DOWNLOADS_DIRECTORY = SOURCE_PATH / 'downloads'
 
 class OrderManager:
 
-    def __init__(self):
-        self.orders_directory = self.get_order_files_directory()
-        self.file_pattern     = re.compile(r"^(.+?) _ (.+?) (\d{2}\d{2}\d{4})$")
+    file_pattern = re.compile(r"^(?P<vendor>.+?) _ (?P<store>.+?) (?P<date>\d{8})$")
 
     def get_order_files_directory(self) -> Path:
         return ORDERS_DIRECTORY
@@ -54,17 +52,34 @@ class OrderManager:
 
         return 
     
+    def sort_orders(self) -> None:
+        """Sorts order files into vendor-specific subdirectories within the orders directory."""
+        orders_dir = self.get_order_files_directory()
+        
+        for file in orders_dir.iterdir():
+            
+            if file.is_file() and OrderManager.is_valid_filename(file):
+                
+                order_info = self.parse_file_name(file)
+                vendor_name = order_info.get('vendor')
+                
+                if not vendor_name:
+                    raise ValueError(f'Filename "{file.stem}" does not contain a valid vendor name.')
 
+                vendor_dir = orders_dir / vendor_name  # Target directory for vendor
+                vendor_dir.mkdir(exist_ok=True)  # Create vendor directory if it doesn't exist
+                
+                new_path = vendor_dir / file.name
+                file.rename(new_path)  # Move file into the vendor directory
+                # print(f'Moved: {file.name} → {new_path}')  # Debug output
+     
+    @classmethod
+    def is_valid_filename(cls, filename: Path) -> bool:
+        return cls.file_pattern.match(filename.stem)
     
-    # def extract_general_order_info(self, order_file_name: Path) -> dict:
-    #     filename = order_file_name.stem
-    #     print(filename)
-    #     match = self.file_pattern.match(filename)
-    #     print(match)
-    #     if not match: return None
-
-    #     store_name, vendor_name, date = match.groups()
-
-    #     return {'store': store_name,
-    #             'vendor': vendor_name,
-    #             'date': date}
+    @classmethod
+    def parse_file_name(cls, filename: Path) -> dict:
+        if cls.is_valid_filename(filename): 
+            return cls.file_pattern.match(filename.stem).groupdict()
+        raise ValueError(f'Filename "{filename}" does not match expected pattern.')
+        

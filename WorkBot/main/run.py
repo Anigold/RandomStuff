@@ -60,18 +60,18 @@ TRANSFER_PATH      = SOURCE_PATH / 'transferring'
 def get_files(path: str) -> list:
 	return [file for file in listdir(path) if isfile(join(path, file))]
 
-def sort_orders(path: str, override=True) -> None:
-    # Sort and group orders
-    files = get_files(path)
-    for file in files:
+# def sort_orders(path: str, override=True) -> None:
+#     # Sort and group orders
+#     files = get_files(path)
+#     for file in files:
         
-        vendor_name = file.split('_')[0].strip()
+#         vendor_name = file.split('_')[0].strip()
 
-        if not isdir(f'{path}\\{vendor_name}'):
-            mkdir(f'{path}\\{vendor_name}')
+#         if not isdir(f'{path}\\{vendor_name}'):
+#             mkdir(f'{path}\\{vendor_name}')
         
-        rename(f'{path}\\{file}', f'{path}\\{vendor_name}\\{file}')
-    return
+#         rename(f'{path}\\{file}', f'{path}\\{vendor_name}\\{file}')
+#     return
 
 def create_options() -> uc.ChromeOptions:
 
@@ -500,8 +500,8 @@ if __name__ == '__main__':
     stores = [
          'BAKERY',
         #  'TRIPHAMMER',
-         'COLLEGETOWN',
-         'EASTHILL',
+        #  'COLLEGETOWN',
+        #  'EASTHILL',
          'DOWNTOWN'
     ]
     
@@ -573,27 +573,27 @@ if __name__ == '__main__':
 
 
     ''' DOWNLOAD ORDERS FROM CRAFTABLE '''
-    # options = create_options()
-    # driver  = uc.Chrome(options=options, use_subprocess=True)
+    options = create_options()
+    driver  = uc.Chrome(options=options, use_subprocess=True)
 
-    # update       = True
-    # download_pdf = True
+    update       = True
+    download_pdf = True
 
-    # with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
-    #     craft_bot.download_orders(
-    #         stores, 
-    #         vendors=vendors, 
-    #         download_pdf=download_pdf, 
-    #         update=update
-    #     )
-    #     sort_orders(ORDER_FILES_PATH)
+    with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
+        craft_bot.download_orders(
+            stores, 
+            vendors=vendors, 
+            download_pdf=download_pdf, 
+            update=update
+        )
+        craft_bot.order_manager.sort_orders()
     '''--------------------------------'''
 
 
     ''' FORMAT ORDERS FOR VENDOR UPLOAD '''
     # # sort_orders(ORDER_FILES_PATH)
-    for vendor in vendors:
-        format_orders(vendor, ORDER_FILES_PATH)
+    # for vendor in vendors:
+    #     format_orders(vendor, ORDER_FILES_PATH)
     '''---------------------------------'''
 
     # options = create_options()
