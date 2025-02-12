@@ -16,6 +16,7 @@ from dotenv import load_dotenv
 from openpyxl import Workbook, load_workbook
 
 from backend.transferring import Transfer
+from..transferring.TransferManager import TransferManager
 from ..orders.OrderManager import OrderManager
 from ..orders.Order import Order
 
@@ -31,11 +32,12 @@ Craftable Bot utlizes Selenium to interact with the Craftable website.
 '''
 class CraftableBot:
 
-    def __init__(self, driver: WebDriver, username: str, password: str, order_manager: OrderManager = None):
-        self.driver        = driver
-        self.username      = username
-        self.password      = password
-        self.order_manager = order_manager or OrderManager()
+    def __init__(self, driver: WebDriver, username: str, password: str, order_manager: OrderManager = None, transfer_manager: TransferManager = None):
+        self.driver           = driver
+        self.username         = username
+        self.password         = password
+        self.order_manager    = order_manager or OrderManager()
+        self.transfer_manager = transfer_manager or TransferManager()
 
         self.is_logged_in = False
         self.stores = {
@@ -285,7 +287,6 @@ class CraftableBot:
 
     def input_transfer(self, transfer: Transfer) -> None:
         
-        
         if not self.is_logged_in: self.login()
 
         time.sleep(3)
@@ -310,19 +311,27 @@ class CraftableBot:
         toggle_out = transfer_form_inputs[1].find_element(By.XPATH, './/input') # We can do this because we only want the first input.
         
         print('...transfer date...', flush=True)
+        print('Opening calendar.', flush=True)
         date_input.click()
+        
         WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CLASS_NAME, 'flatpickr-calendar')))
-        date_input_current_month = self.driver.find_element(By.CLASS_NAME, 'cur-month')
+        # date_input_current_month = self.driver.find_element(By.CLASS_NAME, 'cur-month')
         
-        # NEED TO UPDATE SO IT CAN CHOOSE THE CORRECT MONTH!!!!!
+        # calendar_current_month = self.driver.find_element(By.CLASS_NAME, 'cur-month')
+        # calendar_current_year_input = self.driver.find_element(By.CLASS_NAME, 'cur_year')
 
-        calendar = self.driver.find_element(By.CLASS_NAME, 'dayContainer')
-        print(transfer.date.day)
-        today = calendar.find_element(By.XPATH, f'.//span[@class="flatpickr-day "][text()="{transfer.date.day}"]')
-        print('done')
-        today.click()
+        # calendar_current_year_input.send_keys('2025')
+
+        # NEED TO UPDATE SO IT CAN CHOOSE THE CORRECT MONTH!!!!!
+        print('going', flush=True)
+        self._change_calendar_date(transfer.date)
+
+        # calendar = self.driver.find_element(By.CLASS_NAME, 'dayContainer')
+        # print(transfer.date.day)
+        # today = calendar.find_element(By.XPATH, f'.//span[@class="flatpickr-day "][text()="{transfer.date.day}"]')
+        # today.click()
         
-        print('...outbound transfer.', flush=True)
+        print('...outbound transfer...', flush=True)
         time.sleep(2)
         toggle_out.click()
         time.sleep(2)
@@ -333,7 +342,7 @@ class CraftableBot:
         transfer_form = transfer_modal.find_element(By.XPATH, './/form')
         transfer_form_inputs = transfer_form.find_elements(By.XPATH, './div')
 
-        print('...transfer destination.', flush=True)
+        print('...transfer destination....', flush=True)
         store_to_select = transfer_form_inputs[2].find_element(By.XPATH, './/div[@class="search ember-view input-select-searchable"]')
         store_to_select.click()
 
@@ -360,6 +369,7 @@ class CraftableBot:
 
         time.sleep(4)
 
+        print('\nTranfer successfully created!')
         print('Beginning to enter transfer items...', flush=True)
         for item in transfer.items:
             
@@ -416,7 +426,9 @@ class CraftableBot:
         
         submit_transfer_button = self.driver.find_element(By.XPATH, './/a[text()="Request"]')
         return
-        
+
+    '''HELPER FUNCTIONS'''
+
     def _rename_new_order_file(self, store: str, vendor: str, date: str) -> None:
 
         original_file = self.order_manager.get_downloads_directory() / 'Order.pdf'
@@ -582,3 +594,62 @@ class CraftableBot:
             print(f'Error removing files: {e}')
             if e.errno == 13:
                 print('File is being accessed by another program at time of deletion. Aborting file replacement.')
+
+    def _change_calendar_date(self, transfer_datetime: datetime) -> None:
+       
+        try:
+            WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CLASS_NAME, 'flatpickr-calendar')))
+        except:
+            print('Calendar not found.', flush=True)
+
+        print('Checking year, month, and days.', flush=True)
+        calendar_current_month      = self.driver.find_element(By.CLASS_NAME, 'cur-month')
+        calendar_current_year_input = self.driver.find_element(By.CLASS_NAME, 'cur-year')
+
+        calendar_current_year_input.send_keys(transfer_datetime.year)
+
+        current_month_value = self._get_month_value(calendar_current_month.text)
+        # desired_month_value = self._get_month_value(transfer_datetime.month)
+
+        # print(current_month_value, flush=True)
+        # print(desired_month_value, flush=True)
+        if current_month_value != transfer_datetime.month:
+            print('Changing month', flush=True)
+            if current_month_value > transfer_datetime.month:
+                # Click back
+                for _ in range(current_month_value - transfer_datetime.month + 1):
+                    previous_month_button = self.driver.find_element(By.CLASS_NAME, 'flatpickr-prev-month')
+                    previous_month_button.click()
+                    time.wait(1)
+            if current_month_value < transfer_datetime.month:
+                for _ in range(transfer_datetime.month - current_month_value + 1):
+                    next_month_button = self.driver.find_element(By.CLASS_NAME, 'flatpickr-next-month')
+                    next_month_button.click()
+                    time.wait(1)
+
+        calendar = self.driver.find_element(By.CLASS_NAME, 'dayContainer')
+        today = calendar.find_element(By.XPATH, f'.//span[@class="flatpickr-day "][text()="{transfer_datetime.day}"]')
+        today.click()
+        time.wait(2)
+
+        return
+    
+    def _get_month_value(self, month: str) -> int:
+        print(month, flush=True)
+        months = {
+            'January': 1,
+            'February': 2,
+            'March': 3,
+            'April': 4,
+            'May': 5, 
+            'June': 6, 
+            'July': 7, 
+            'August': 8, 
+            'September': 9, 
+            'October': 10, 
+            'November': 11, 
+            'December': 12
+        }
+
+        if month not in months: return None
+        return months[month]

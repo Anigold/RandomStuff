@@ -27,9 +27,9 @@ class Order:
             'items': self.items
         }
 
-    def is_valid_date_format(self, given_date: str) -> bool:
-        date_pattern = re.compile(r"^\d{4}-\d{2}-\d{2}$")
-        return bool(date_pattern.match(given_date))
+    # def is_valid_date_format(self, given_date: str) -> bool:
+    #     date_pattern = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+    #     return bool(date_pattern.match(given_date))
     
     def to_excel_workbook(self) -> Workbook:
 

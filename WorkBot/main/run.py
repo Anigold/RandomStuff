@@ -34,6 +34,7 @@ from backend.emailer.Services.Service import Email
 from backend.emailer.Services.Outlook import Outlook
 
 from backend.printing.Printer import Printer
+from backend.transferring.TransferManager import TransferManager
 from backend.transferring.Transfer import Transfer, TransferItem
 from backend.pricing.PriceComparator import PriceComparator
 
@@ -467,7 +468,7 @@ if __name__ == '__main__':
         'Performance Food',
         'US Foods',
         # 'Renzi',
-        # 'UNFI',
+        'UNFI',
         # 'Hill & Markes',
         # 'Johnston Paper',
         # 'Regional Distributors, Inc.',
@@ -475,11 +476,11 @@ if __name__ == '__main__':
         # 'SANICO',
         # 'Copper Horse Coffee',
         # 'Equal Exchange',
-        # 'Eurocafe Imports',
+        'Eurocafe Imports',
         # 'Macro Mamas',
         # 'Coca-Cola',
         # 'FingerLakes Farms',
-        # 'Ithaca Bakery',
+        'Ithaca Bakery',
         # 'Webstaurant',
         # 'Hillcrest Dairy',
         # 'Hillcrest Foods',
@@ -493,16 +494,16 @@ if __name__ == '__main__':
         # 'Casa',
         # 'Palmer',
         # 'ACE ENDICO',
-        # 'Russo Produce',
-        # 'BEHLOG & SON, INC.',
+        'Russo Produce',
+        'BEHLOG & SON, INC.',
     ]
 
     stores = [
          'BAKERY',
-        #  'TRIPHAMMER',
-        #  'COLLEGETOWN',
+         'TRIPHAMMER',
+         'COLLEGETOWN',
         #  'EASTHILL',
-         'DOWNTOWN'
+        #  'DOWNTOWN'
     ]
     
 
@@ -573,27 +574,41 @@ if __name__ == '__main__':
 
 
     ''' DOWNLOAD ORDERS FROM CRAFTABLE '''
-    options = create_options()
-    driver  = uc.Chrome(options=options, use_subprocess=True)
+    # options = create_options()
+    # driver  = uc.Chrome(options=options, use_subprocess=True)
 
-    update       = True
-    download_pdf = True
+    # update       = True
+    # download_pdf = True
 
-    with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
-        craft_bot.download_orders(
-            stores, 
-            vendors=vendors, 
-            download_pdf=download_pdf, 
-            update=update
-        )
-        craft_bot.order_manager.sort_orders()
+    # with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
+    #     craft_bot.download_orders(
+    #         stores, 
+    #         vendors=vendors, 
+    #         download_pdf=download_pdf, 
+    #         update=update
+    #     )
+    #     craft_bot.order_manager.sort_orders()
     '''--------------------------------'''
 
+    ''' TRANSFER ITEMS BETWEEN STORES '''
+
+    # options = create_options()
+    # driver  = uc.Chrome(options=options, use_subprocess=True)
+
+    # transfer_manager = TransferManager()
+    # transfers_directory = TransferManager.get_transfer_files_directory()
+
+    # test_transfer = transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to TRIPHAMMER 20250211.xlsx')
+
+    # with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
+    #     craft_bot.input_transfer(test_transfer)
+
+    '''-------------------------------'''
 
     ''' FORMAT ORDERS FOR VENDOR UPLOAD '''
     # # sort_orders(ORDER_FILES_PATH)
-    # for vendor in vendors:
-    #     format_orders(vendor, ORDER_FILES_PATH)
+    for vendor in vendors:
+        format_orders(vendor, ORDER_FILES_PATH)
     '''---------------------------------'''
 
     # options = create_options()
@@ -601,25 +616,29 @@ if __name__ == '__main__':
     
     # transfer_vendor = 'Ithaca Bakery'
     # transfer_files_directory = get_excel_files(ORDER_FILES_PATH / 'Ithaca Bakery')
-    # # format_orders_for_transfer(transfer_vendor, ORDER_FILES_PATH)
+    # format_orders_for_transfer(transfer_vendor, ORDER_FILES_PATH)
     # with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
         
+    #     print('\nRetrieving transfer files.', flush=True)
     #     for transfer_file in get_transfers(transfer_vendor):
 
     #         store_to            = transfer_file.split(' _ ')[2].split(' ')[0]
     #         store_from          = 'BAKERY'
     #         items               = []
     #         date_from_file_name = transfer_file.split(' _ ')[2].split(' ')[1].split('.')[0]
-    #         month               = int(date_from_file_name[0:2])
-    #         day                 = int(date_from_file_name[2:4])
-    #         year                = int(date_from_file_name[4:])
+    #         year                = int(date_from_file_name[0:4])
+    #         month               = int(date_from_file_name[4:6])
+    #         day                 = int(date_from_file_name[6:])
 
-    #         workbook = load_workbook(f'{ORDER_FILES_PATH}\\{transfer_vendor}\\{transfer_file}')
+    #         print(f'\nCreating transfer for {store_to} on {month}/{day}/{year}.', flush=True)
+    #         workbook = load_workbook(ORDER_FILES_PATH / transfer_vendor / transfer_file)
     #         sheet = workbook.active
 
     #         for item_row in sheet.iter_rows():
     #             # print(item_row)
     #             to_transfer, name, quantity = item_row
+    #             print((to_transfer.value, name.value, quantity.value))
+    #             if quantity.value < 1: continue
 
     #             if not to_transfer: continue
                 
@@ -630,6 +649,36 @@ if __name__ == '__main__':
     #         workbook.save(f'{ORDER_FILES_PATH}\\{transfer_vendor}\\COMPLETED {transfer_file}')
 
             # rename(f'{ORDER_FILES_PATH}\\{transfer_vendor}\\{transfer_file}', f'{ORDER_FILES_PATH}\\{transfer_vendor}\\COMPLETED {transfer_file}')
+
+    # with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
+        
+    #     # transfer_file = ORDER_FILES_PATH / 'Ithaca Bakery' / 'Ithaca Bakery _ TRIPHAMMER 20250211.xlsx'
+   
+    #     store_to            = transfer_file.split(' _ ')[2].split(' ')[0]
+    #     store_from          = 'BAKERY'
+    #     items               = []
+    #     date_from_file_name = transfer_file.split(' _ ')[2].split(' ')[1].split('.')[0]
+    #     year                = int(date_from_file_name[0:4])
+    #     month               = int(date_from_file_name[4:6])
+    #     day                 = int(date_from_file_name[6:])
+
+    #     print(f'\nCreating transfer for {store_to} on {month}/{day}/{year}.', flush=True)
+    #     workbook = load_workbook(ORDER_FILES_PATH / transfer_vendor / transfer_file)
+    #     sheet = workbook.active
+
+    #     for item_row in sheet.iter_rows():
+    #         # print(item_row)
+    #         to_transfer, name, quantity = item_row
+    #         print((to_transfer.value, name.value, quantity.value))
+    #         if quantity.value < 1: continue
+
+    #         if not to_transfer: continue
+            
+    #         items.append(TransferItem(name.value, quantity.value))
+        
+    #     transfer = Transfer(store_from, store_to, items, datetime(year, month, day))
+    #     craft_bot.input_transfer(transfer)
+    #     workbook.save(f'{ORDER_FILES_PATH}\\{transfer_vendor}\\COMPLETED {transfer_file}')
 
     def upload_store_transfers(transfer_files: list[Path], origin_store: Store) -> None:
 

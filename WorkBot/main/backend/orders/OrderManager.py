@@ -26,12 +26,8 @@ class OrderManager:
         return None
 
     def generate_filename(self, order: Order = None, store: str = None, vendor: str = None, date: str = None, file_extension: str = '.xlsx') -> str:
+        return f'{order.vendor} _ {order.store} {order.date}{file_extension}' if order else f'{vendor} _ {store} {date}{file_extension}'
 
-        if order:
-            return f'{order.vendor} _ {order.store} {order.date}{file_extension}'
-        
-        return f'{vendor} _ {store} {date}{file_extension}'
-    
     def get_file_path(self, order: Order, file_extension: str = '.xlsx') -> Path:
         return self.orders_directory / self.generate_filename(order, file_extension)
 
@@ -47,7 +43,7 @@ class OrderManager:
 
     def _save_as_excel(self, order: Order) -> None:
         
-        workbook = self._order_to_excel(order)
+        workbook = order.to_excel_workbook()
         workbook.save(self.get_file_path(order, '.xlsx'))
 
         return 
