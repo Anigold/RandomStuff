@@ -1,0 +1,32 @@
+2025-02-14 10:41:21,308 - INFO - WorkBot - Welcome to Work protocol started.
+2025-02-14 10:41:43,748 - INFO - WorkBot - Sorting downloaded orders.
+2025-02-14 10:41:43,750 - INFO - WorkBot - Generating emails for GMs.
+2025-02-14 10:42:33,995 - INFO - WorkBot - Welcome to Work protocol started.
+2025-02-14 10:42:55,529 - INFO - WorkBot - Sorting downloaded orders.
+2025-02-14 10:42:55,531 - INFO - WorkBot - Generating emails for GMs.
+2025-02-14 10:43:37,371 - INFO - WorkBot - Welcome to Work protocol started.
+2025-02-14 12:26:48,991 - ERROR - backend.craftable_bot.CraftableBot - Error in input_transfer: module 'time' has no attribute 'wait'
+Traceback (most recent call last):
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/logger/Logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 320, in input_transfer
+    self._enter_transfer_details(transfer)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 363, in _enter_transfer_details
+    self._change_calendar_date(transfer.date)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 677, in _change_calendar_date
+    time.wait(2)
+    ^^^^^^^^^
+AttributeError: module 'time' has no attribute 'wait'
+2025-02-14 12:28:15,282 - ERROR - backend.craftable_bot.CraftableBot - Error in input_transfer: 'set' object has no attribute 'items'
+Traceback (most recent call last):
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/logger/Logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 322, in input_transfer
+    self._input_transfer_items(transfer.items)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 412, in _input_transfer_items
+    self.logger.info(f'Starting input for {len(transfer.items)} transfer items.')
+                                               ^^^^^^^^^^^^^^
+AttributeError: 'set' object has no attribute 'items'

@@ -24,6 +24,8 @@ from datetime import datetime
 
 from pathlib import Path
 
+from backend.logger.Logger import Logger
+
 # PRICING_FILES_PATH  = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\pricing\\VendorSheets\\'
 # DOWNLOAD_PATH       = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\'
 
@@ -32,7 +34,11 @@ Craftable Bot utlizes Selenium to interact with the Craftable website.
 '''
 class CraftableBot:
 
-    def __init__(self, driver: WebDriver, username: str, password: str, order_manager: OrderManager = None, transfer_manager: TransferManager = None):
+    logger = Logger.get_logger('CraftableBot', log_file='logs/craftable_bot.log')
+
+    def __init__(self, driver: WebDriver, username: str, password: str, 
+                 order_manager: OrderManager = None, transfer_manager: TransferManager = None):
+        
         self.driver           = driver
         self.username         = username
         self.password         = password
@@ -53,17 +59,18 @@ class CraftableBot:
         }
 
     def __enter__(self):
+        self.logger.info('Starting CraftableBot session.')
         self.login()
         return self
     
     def __exit__(self, type, value, traceback):
-        # print(value)
+        self.logger.info('Ending CraftableBot session.')
         try:
             self.close_session()
-        except OSError as os_error:
-            # print(os_error)
-            pass
-        time.sleep(2) # We need to avoid a race condition when the session closes right before the script ends.
+        except Exception as e:
+            self.logger.warning(f'Issue with closing session: {e}')
+
+        time.sleep(2) # Prevents race condition with OS program manager
         return True
     
     '''
@@ -77,8 +84,9 @@ class CraftableBot:
     Returns:
         None
     '''
+    @Logger.log_exceptions
     def login(self) -> None:
-
+        self.logger.info('Logging into Craftable.')
         self.driver.get(self.site_map['login_page'])
 
         WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, './/form')))
@@ -101,6 +109,7 @@ class CraftableBot:
         time.sleep(5)
 
         self.is_logged_in = True
+        self.logger.info('Login successful.')
         return
     
     '''
@@ -113,13 +122,13 @@ class CraftableBot:
         None
     '''
     def close_session(self) -> None:
-        print('\nClosing session...', flush=True)
-        try:
-            self.driver.close()
-        except:
-            print('...session failed to close.', flush=True)
+        self.logger.info('Closing WebDriver session.')
 
-        print('...success.', flush=True)
+        try: 
+            self.driver.close()
+        except Exception as e: 
+            self.logger.error(f'Error closing WebDriver session: {e}')
+
         return
     
     '''
@@ -131,15 +140,20 @@ class CraftableBot:
     Returns:
         None
     '''
+    @Logger.log_exceptions
     def switch_store(self, store: str) -> None:
-
-        if store not in self.stores: return
+        
+        if store not in self.stores: 
+            self.logger.warning(f'Invalid store name: {store}.')
+            return
 
         if store == 'DIRECTOR':
             self.driver.get('https://app.craftable.com/director/2/583')
             return
         
-        self.driver.get(f'https://app.craftable.com/buyer/2/{self.stores[store]}')
+        self.logger.info(f'Switching to store: {store}.')
+        store_url = f'https://app.craftable.com/buyer/2/{self.stores[store]}'
+        self.driver.get(store_url)
 
         #WebDriverWait(self.driver, 45).until(EC.element_to_be_clickable((By.CLASS_NAME, 'row home-cards-orders-invoices')))
         time.sleep(5)
@@ -167,23 +181,28 @@ class CraftableBot:
     files, and save in the ORDER_FILES_PATH.
 
     '''
+    @Logger.log_exceptions
     def download_orders(self, stores: list, vendors=list, download_pdf=True, update=True) -> None:
 
-        print('\nBeginning to download orders from Craftable.', flush=True)
+        self.logger.info('Starting order download protocol.')
         for store in stores:
             
-            print(f'\nGetting order page for {store}.', flush=True)
+            self.logger.info(f'Accessing order page for {store}.')
             self.go_to_store_order_page(store)
             time.sleep(6)
 
             table_body = self.driver.find_element(By.XPATH, './/tbody')
             table_rows = table_body.find_elements(By.XPATH, './tr')
 
-            print('Orders found.', flush=True)
+            if not table_rows:
+                self.logger.warning(f'No orders found for {store}.')
+                continue
+
+            self.logger.info(f'{len(table_rows)} orders found.')
             completed_orders = [] # Store the index of the rows here
             for pos, row in enumerate(table_rows):
-                table_body      = self.driver.find_element(By.XPATH, './/tbody')
-                table_rows      = table_body.find_elements(By.XPATH, './tr')
+                table_body      = self.driver.find_element(By.XPATH, './/tbody') # Did I do this to avoid stale references?
+                table_rows      = table_body.find_elements(By.XPATH, './tr')     # That sounds good, let's go with that.
                 row             = table_rows[pos]
                 row_data        = row.find_elements(By.XPATH, './td')
                 row_date        = row_data[2]
@@ -198,25 +217,24 @@ class CraftableBot:
 
                 # If vendors have been supplied and the current vendor isn't in the list, we skip it.
                 if (vendors) and (row_vendor_name not in vendors):
-                    print(f'{row_vendor_name} not wanted...skipping.')
+                    self.logger.debug(f'Skipping vendor {row_vendor_name}.')
                     completed_orders.append(pos) # Is this superfluous?
                     continue
     
-                print(f'\nRetrieving order for {row_vendor_name}.', flush=True)
+                self.logger.info(f'Retrieving order for {row_vendor_name}.')
                 row_date.click()
                 WebDriverWait(self.driver, 45).until(EC.element_to_be_clickable((By.TAG_NAME, 'table')))
                 
-                # print('Scraping order.', flush=True)
                 items = self._scrape_order()
 
-                print('Checking if update is necessary.', flush=True)
                 if update and self._update_existing_order(store, row_vendor_name, row_date_formatted, items):
-                    print('No update necessary, continuing to next order.', flush=True)
+                    self.logger.info(f'Order for {row_vendor_name} is up-to-date. Skipping.')
                     completed_orders.append(pos)
                     self.driver.back()
                     time.sleep(2)
                     continue
-                        
+                    
+                self.logger.info(f'Saving order for {row_vendor_name}.')
                 self._save_order_as_excel(items, store=store, vendor=row_vendor_name, date=row_date_formatted )
                 time.sleep(1)
 
@@ -229,6 +247,7 @@ class CraftableBot:
                 self.driver.back()
                 time.sleep(3)
 
+        self.logger.info('Order download complete.')
         return
 
     def delete_order(self, store: str, vendor: str) -> None:
@@ -285,23 +304,41 @@ class CraftableBot:
 
         return
 
+    @Logger.log_exceptions
     def input_transfer(self, transfer: Transfer) -> None:
         
+        self.logger.info(f'Starting transfer protocol for {len(transfer.items)} items from {transfer.store_from} to {transfer.store_to} on {transfer.date}')
         if not self.is_logged_in: self.login()
 
         time.sleep(3)
 
-        self.driver.get('https://app.craftable.com/buyer/2/14376/transfers/list')
+        self.driver.get('https://app.craftable.com/buyer/2/14376/transfers/list') # Make this dyanimc based on Transfer attributes
 
         time.sleep(5)
 
-        print('\nCreating new transfer in Craftable...', flush=True)
+        self._start_new_transfer()
+        self._enter_transfer_details(transfer)
+        self._submit_transfer()
+        self._input_transfer_items(transfer)
+
+        self.logger.info(f'Transfer for {len(transfer.items)} items from {transfer.store_from} to {transfer.store_to} on {transfer.date} completed successfully.')
+        
+        # submit_transfer_button = self.driver.find_element(By.XPATH, './/a[text()="Request"]')
+        return
+
+    def _start_new_transfer(self) -> None:
+        self.logger.info('Creating new transfer in Craftable.')
         new_transfer_button = self.driver.find_element(By.XPATH, '//a[text()="New Transfer"]')
         new_transfer_button.click()
 
-        time.sleep(4)
+        time.sleep(4) # WebDriver wait and exception handling...or we just wait and pray.
 
-        print('Entering transfer information...', flush=True)
+        return
+    
+    def _enter_transfer_details(self, transfer: Transfer) -> None:
+
+        self.logger.info(f'Entering transfer details: {transfer.store_from} to {transfer.store_to} on {transfer.date}')
+
         transfer_modal = self.driver.find_element(By.ID, 'transferNewModal')
 
         transfer_form = transfer_modal.find_element(By.XPATH, './/form')
@@ -310,8 +347,7 @@ class CraftableBot:
         date_input = transfer_form_inputs[0].find_element(By.XPATH, './/input')
         toggle_out = transfer_form_inputs[1].find_element(By.XPATH, './/input') # We can do this because we only want the first input.
         
-        print('...transfer date...', flush=True)
-        print('Opening calendar.', flush=True)
+        self.logger.info('Opening transfer date calendar.')
         date_input.click()
         
         WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CLASS_NAME, 'flatpickr-calendar')))
@@ -323,7 +359,7 @@ class CraftableBot:
         # calendar_current_year_input.send_keys('2025')
 
         # NEED TO UPDATE SO IT CAN CHOOSE THE CORRECT MONTH!!!!!
-        print('going', flush=True)
+        self.logger.info(f'Selecting calendar date: {transfer.date}')
         self._change_calendar_date(transfer.date)
 
         # calendar = self.driver.find_element(By.CLASS_NAME, 'dayContainer')
@@ -331,7 +367,7 @@ class CraftableBot:
         # today = calendar.find_element(By.XPATH, f'.//span[@class="flatpickr-day "][text()="{transfer.date.day}"]')
         # today.click()
         
-        print('...outbound transfer...', flush=True)
+        self.logger.info('Marking transfer as "Out".')
         time.sleep(2)
         toggle_out.click()
         time.sleep(2)
@@ -342,7 +378,7 @@ class CraftableBot:
         transfer_form = transfer_modal.find_element(By.XPATH, './/form')
         transfer_form_inputs = transfer_form.find_elements(By.XPATH, './div')
 
-        print('...transfer destination....', flush=True)
+        self.logger.info(f'Selecting outbound store: {transfer.store_to}')
         store_to_select = transfer_form_inputs[2].find_element(By.XPATH, './/div[@class="search ember-view input-select-searchable"]')
         store_to_select.click()
 
@@ -358,74 +394,82 @@ class CraftableBot:
                 break
 
         time.sleep(4)
+        return
+    
+    def _submit_transfer(self) -> None:
+        self.logger.info('Submitting transfer form.')
         WebDriverWait(self.driver, 120).until(EC.element_to_be_clickable((By.ID, 'transferNewModal')))
         transfer_modal        = self.driver.find_element(By.ID, 'transferNewModal')
         transfer_modal_footer = transfer_modal.find_element(By.XPATH, './/div[@class="modal-footer "]')
 
-        print('...submitting.', flush=True)
-        submit_button         = transfer_modal_footer.find_elements(By.TAG_NAME, 'button')[1]
-
+        submit_button = transfer_modal_footer.find_elements(By.TAG_NAME, 'button')[1]
         submit_button.click()
 
         time.sleep(4)
-
-        print('\nTranfer successfully created!')
-        print('Beginning to enter transfer items...', flush=True)
-        for item in transfer.items:
-            
-            # Click the add-item button
-            page_body = self.driver.find_element(By.XPATH, './/div[@class="card-body"]')
-            WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, '//a[text()="Add Transfer Line"]')))
-            add_item_button = page_body.find_element(By.XPATH, '//a[text()="Add Transfer Line"]')
-            add_item_button.click()
-
-            time.sleep(2)
-
-            # Enter the item name
-            try:
-
-               
-                item_input = self.driver.find_element(By.ID, 'typeahead')
-                item_input.send_keys(item.name)
-                time.sleep(5)
-
-                # Select the item from the dropdown
-                item_choice_container = self.driver.find_element(By.XPATH, './/div[@class="input-group input-typeahead-container input-group-merge"]')
-                item_choice = item_choice_container.find_elements(By.XPATH, './following-sibling::div/div[@class="input-type-ahead "]/div[@class="input-type-ahead-row"]')[0]
-                item_choice.click()
-                
-                
-
-
-                transfer_modal           = self.driver.find_element(By.ID, 'transferItemModal')
-                transfer_form            = transfer_modal.find_element(By.XPATH, './/form')
-                quantity_input_container = transfer_form.find_elements(By.XPATH, './div')[2]
-                quantity_input           = quantity_input_container.find_element(By.XPATH, './/input')
-                quantity_input.send_keys(Keys.BACKSPACE)
-                quantity_input.send_keys(item.quantity)
-
-                time.sleep(3)
-
-                for i in range(3):
-                    try:
-                        add_transfer_item_button = self.driver.find_element(By.XPATH, './/button[text()="Add Transfer Line"]')
-                        add_transfer_item_button.click()
-                        WebDriverWait(self.driver, 180).until(EC.element_to_be_clickable((By.XPATH, './/div[@class="_c-notification__content"][text()="Successfully added a Transfer Line"]')))
-                        break
-                    except:
-                        pass
-                    
-            except:
-                transfer_modal = self.driver.find_element(By.ID, 'transferItemModal')
-                close_button = transfer_modal.find_element(By.CLASS_NAME, 'close')
-                close_button.click()
-                print(item.name, transfer.store_to, flush=True)
-                time.sleep(4)
-                continue
-            # time.sleep(5)
-        
-        submit_transfer_button = self.driver.find_element(By.XPATH, './/a[text()="Request"]')
         return
+    
+    def _input_transfer_items(self, transfer: Transfer) -> None:
+        self.logger.info(f'Starting input for {len(transfer.items)} transfer items.')
+
+        for item in transfer.items:
+            try:
+                self.logger.debug(f'Adding transfer item: {item.name} ({item.quantity})')
+                self._add_transfer_item(item)
+            except Exception as e:
+                self.logger.warning(f'Failed to add item {item.name}: {e}', exc_info=True)
+        
+        self.logger.info('All items processed.')
+        return
+    
+    def _add_transfer_item(self, item) -> None:
+
+        self.logger.debug(f'Clicking "Add Transfer Line" button for {item.name}.')
+        # Click the add-item button
+        page_body = self.driver.find_element(By.XPATH, './/div[@class="card-body"]')
+        WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, '//a[text()="Add Transfer Line"]')))
+        add_item_button = page_body.find_element(By.XPATH, '//a[text()="Add Transfer Line"]')
+        add_item_button.click()
+
+        time.sleep(2)
+
+        # Enter the item name   
+        item_input = self.driver.find_element(By.ID, 'typeahead')
+        item_input.send_keys(item.name)
+        time.sleep(5)
+
+        # Select the item from the dropdown
+        item_choice_container = self.driver.find_element(By.XPATH, './/div[@class="input-group input-typeahead-container input-group-merge"]')
+        item_choice = item_choice_container.find_elements(By.XPATH, './following-sibling::div/div[@class="input-type-ahead "]/div[@class="input-type-ahead-row"]')[0]
+        item_choice.click()
+        
+        transfer_modal           = self.driver.find_element(By.ID, 'transferItemModal')
+        transfer_form            = transfer_modal.find_element(By.XPATH, './/form')
+        quantity_input_container = transfer_form.find_elements(By.XPATH, './div')[2]
+        quantity_input           = quantity_input_container.find_element(By.XPATH, './/input')
+
+        quantity_input.send_keys(Keys.BACKSPACE)
+        quantity_input.send_keys(item.quantity)
+        time.sleep(3)
+
+        for attempt in range(3):
+            try:
+                add_transfer_item_button = self.driver.find_element(By.XPATH, './/button[text()="Add Transfer Line"]')
+                add_transfer_item_button.click()
+                WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.XPATH, './/div[@class="_c-notification__content"][text()="Successfully added a Transfer Line"]')))
+                self.logger.debug(f'Item {item.name} addedd successfully.')
+                break
+            except Exception as e:
+                self.logger.warning(f'Attempt {attempt+1} failed for {item.name}: {e}')
+            
+        return
+            
+
+
+
+
+
+
+
 
     '''HELPER FUNCTIONS'''
 
@@ -630,7 +674,7 @@ class CraftableBot:
         calendar = self.driver.find_element(By.CLASS_NAME, 'dayContainer')
         today = calendar.find_element(By.XPATH, f'.//span[@class="flatpickr-day "][text()="{transfer_datetime.day}"]')
         today.click()
-        time.wait(2)
+        time.sleep(2)
 
         return
     

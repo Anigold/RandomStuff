@@ -33,7 +33,7 @@ from backend.emailer.Emailer import Emailer
 from backend.emailer.Services.Service import Email
 from backend.emailer.Services.Outlook import Outlook
 
-from backend.printing.Printer import Printer
+# from backend.printing.Printer import Printer
 from backend.transferring.TransferManager import TransferManager
 from backend.transferring.Transfer import Transfer, TransferItem
 from backend.pricing.PriceComparator import PriceComparator
@@ -46,6 +46,8 @@ from openpyxl import load_workbook
 
 from pathlib import Path
 
+from backend.logger.Logger import Logger
+
 dotenv = load_dotenv()
 
 CRAFTABLE_USERNAME = getenv('CRAFTABLE_USERNAME')
@@ -57,22 +59,6 @@ ORDER_FILES_PATH   = SOURCE_PATH / 'orders' / 'OrderFiles'
 PRICING_FILES_PATH = SOURCE_PATH / 'pricing'
 DOWNLOAD_PATH      = SOURCE_PATH / 'downloads'
 TRANSFER_PATH      = SOURCE_PATH / 'transferring'
-
-def get_files(path: str) -> list:
-	return [file for file in listdir(path) if isfile(join(path, file))]
-
-# def sort_orders(path: str, override=True) -> None:
-#     # Sort and group orders
-#     files = get_files(path)
-#     for file in files:
-        
-#         vendor_name = file.split('_')[0].strip()
-
-#         if not isdir(f'{path}\\{vendor_name}'):
-#             mkdir(f'{path}\\{vendor_name}')
-        
-#         rename(f'{path}\\{file}', f'{path}\\{vendor_name}\\{file}')
-#     return
 
 def create_options() -> uc.ChromeOptions:
 
@@ -354,6 +340,8 @@ def delete_orders_from_craftable(stores: list[str]) -> None:
 
 if __name__ == '__main__':
 
+    main_logger = Logger.get_logger('WorkBot')
+
     vendors = [ 
         'Sysco', 
         'Performance Food',
@@ -417,8 +405,12 @@ if __name__ == '__main__':
     
 
     ''' Welcome to Work Protocol '''
+    @Logger.log_exceptions
     def welcome_to_work() -> None:
 
+        main_logger.info('Welcome to Work protocol started.')
+
+        main_logger.debug("Generating schedule for the week.")
         days_of_the_week = [
             'Saturday',
             'Sunday',
@@ -430,6 +422,8 @@ if __name__ == '__main__':
         ]
         for day in days_of_the_week: print_schedule_daily(get_day(day))
 
+
+            
         options = create_options()
         driver  = uc.Chrome(options=options, use_subprocess=True)
 
@@ -440,19 +434,32 @@ if __name__ == '__main__':
             'DOWNTOWN'
         ]
 
-
+        main_logger.info("Starting CraftableBot for order download.")
         with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
-            for store in stores:
-                craft_bot.get_all_orders_from_webpage(store, download_pdf=True, update=False)
-        craft_bot.order_manager.sort_orders()
 
+            main_logger.info('Downloading orders.')
+            craft_bot.download_orders(
+                stores, 
+                vendors=[], # Grabs all orders
+                download_pdf=True, 
+                update=True
+            )
+
+            main_logger.info('Sorting downloaded orders.')
+            craft_bot.order_manager.sort_orders()
+
+
+        main_logger.info('Generating emails for GMs.')
         store_weekly_emails = {
             'DOWNTOWN': ['tucker.coburn@gmail.com', 'hselsner@gmail.com'],
             # 'COLLEGETOWN': ['goldsmithnandrew@gmail.com'],
         }
 
-        for store in store_weekly_emails: generate_weekly_orders_email(store, store_weekly_emails[store])
-
+        for store, emails in store_weekly_emails.items(): 
+            main_logger.debug(f'Generating email for {store} to {emails}.')
+            generate_weekly_orders_email(store, emails)
+        
+        main_logger.info('Welcome to Work prototcol completed.')
         return
 
     # welcome_to_work()
@@ -483,23 +490,23 @@ if __name__ == '__main__':
 
     ''' TRANSFER ITEMS BETWEEN STORES '''
 
-    # options = create_options()
-    # driver  = uc.Chrome(options=options, use_subprocess=True)
+    options = create_options()
+    driver  = uc.Chrome(options=options, use_subprocess=True)
 
-    # transfer_manager = TransferManager()
-    # transfers_directory = TransferManager.get_transfer_files_directory()
+    transfer_manager = TransferManager()
+    transfers_directory = TransferManager.get_transfer_files_directory()
 
-    # test_transfer = transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to TRIPHAMMER 20250211.xlsx')
+    test_transfer = transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to TRIPHAMMER 20250211.xlsx')
 
-    # with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
-    #     craft_bot.input_transfer(test_transfer)
+    with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
+        craft_bot.input_transfer(test_transfer)
 
     '''-------------------------------'''
 
     ''' FORMAT ORDERS FOR VENDOR UPLOAD '''
     # # sort_orders(ORDER_FILES_PATH)
-    for vendor in vendors:
-        format_orders(vendor, ORDER_FILES_PATH)
+    # for vendor in vendors:
+    #     format_orders(vendor, ORDER_FILES_PATH)
     '''---------------------------------'''
 
     # options = create_options()

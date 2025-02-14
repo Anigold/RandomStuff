@@ -71,7 +71,7 @@ class OrderManager:
      
     @classmethod
     def is_valid_filename(cls, filename: Path) -> bool:
-        return cls.file_pattern.match(filename.stem)
+        return bool(cls.file_pattern.match(filename.stem))
     
     @classmethod
     def parse_file_name(cls, filename: Path) -> dict:

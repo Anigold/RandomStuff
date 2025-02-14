@@ -35,8 +35,7 @@ class TransferManager:
             '.xlsx': self._save_as_excel
         }
 
-        if file_extension in extensions: return extensions[file_extension]()
-        return None
+        return extensions[file_extension](transfer) if file_extension in extensions else None
     
     def _save_as_excel(self, transfer: Transfer) -> None:
         
@@ -52,16 +51,6 @@ class TransferManager:
     @staticmethod
     def get_transfer_files_directory() -> Path:
         return TRANSFER_FILES_DIRECTORY
-    
-    @classmethod
-    def parse_filename(cls, filename: Path) -> dict:
-        if cls.is_valid_filename(filename): 
-            return cls.file_pattern.match(filename.stem).groupdict()
-        raise ValueError(f'Filename "{filename}" does not match expected pattern.')
-    
-    @classmethod
-    def is_valid_filename(cls, filename: Path) -> bool:
-        return bool(cls.file_pattern.match(filename.stem))
     
     @staticmethod
     def _format_datetime_to_string(datetime_obj: datetime) -> str:
@@ -97,3 +86,14 @@ class TransferManager:
                 continue
 
         raise ValueError(f"Could not parse date: {date_string}")
+    
+    @classmethod
+    def parse_filename(cls, filename: Path) -> dict:
+        if cls.is_valid_filename(filename): 
+            return cls.file_pattern.match(filename.stem).groupdict()
+        raise ValueError(f'Filename "{filename}" does not match expected pattern.')
+    
+    @classmethod
+    def is_valid_filename(cls, filename: Path) -> bool:
+        return bool(cls.file_pattern.match(filename.stem))
+    
