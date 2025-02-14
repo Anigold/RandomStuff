@@ -100,9 +100,6 @@ def get_credentials(name) -> dict:
 
     return {'username': username, 'password': password}
 
-def get_excel_files(path: Path) -> list[Path]:
-	return [path / file for file in listdir(path) if isfile(join(path, file)) and file.endswith('.xlsx') and '~' not in file]
-
 def get_bot(name) -> VendorBot:
      
     bots = {
@@ -254,10 +251,6 @@ def print_schedule_daily(day: int) -> None:
 
     return printer_object.print_file(f'{path_to_schedules}{schedule[day]}.pdf')
 
-def get_transfers(vendor: str) -> list:
-    path = f'{ORDER_FILES_PATH}\\{vendor}'
-    return [file for file in listdir(path) if isfile(join(path, file)) and file.endswith('.xlsx') and file.split(' _ ')[0] == 'Formatted']
-
 def get_day(day_of_week: str):
     days = {
         'Sunday': 0,
@@ -329,108 +322,6 @@ def delete_all_files_without_extension(directory: str, extension: str) -> None:
     for file in listdir(directory):
         if isfile(join(directory, file)) and not file.endswith(extension):
             os_remove(f'{directory}\\{file}')
-    return
-
-def find_order_files(base_directory: str, depth=2) -> list:
-    orders = []
-    for root, dirs, files in os.walk(base_directory):
-        if root.count(os.sep) - base_directory.count(os.sep) < depth:
-            for file in files:
-                if file.endswith('.xlsx'):
-                    file_path = os.path.join(root, file)
-                    orders.append(file_path)
-    return orders
-
-def find_order_pdfs(base_directory: Path, depth=2) -> list:
-    base_directory = Path(base_directory)
-    orders = []
-    
-    for path in base_directory.rglob("*.pdf"):
-        if len(path.relative_to(base_directory).parts) <= depth:
-            orders.append(path)
-    
-    return orders
-
-def get_orders_by_store(base_directory: Path, stores: list, depth=2) -> dict:
-    base_directory = Path(base_directory)
-    all_order_files = find_order_pdfs(base_directory, depth)
-
-    store_orders = {store: [] for store in stores}
-
-    for order_file in all_order_files:
-        for store in stores:
-            if store in order_file.stem or store in order_file.parts:
-                store_orders[store].append(order_file)
-    
-    return store_orders
-
-def get_pdfs_by_store(base_directory: Path, store: str, depth=2) -> dict:
-    base_directory = Path(base_directory)
-    all_order_files = find_order_pdfs(base_directory, depth)
-
-    store_orders = {store: []}
-
-    for order_file in all_order_files:
-        if store in order_file.stem or store in order_file.parts:
-            store_orders[store].append(order_file)
-    
-    return store_orders
-
-
-def update_orders(self, store: str, download_pdf=False) -> None:
-        
-        
-    all_saved_orders = find_order_files(ORDER_FILES_PATH)
-
-    stores_orders = []
-    for pos, saved_order in enumerate(all_saved_orders):
-        if store not in saved_order:
-            continue
-        stores_orders.append(saved_order)
-    
-    pprint(stores_orders)
-    # Get current orders (XLSX files) for respective store.
-    # order_paths = []
-    # for entry in scandir(ORDER_FILES_PATH):
-    #     if entry.is_dir():
-    #         order_paths.append(entry.path)
-    
-    # for vendor_orders_path in order_paths:
-    #     print(vendor_orders_path)
-    #     for vendor_order_files in scandir(vendor_orders_path):
-    #         if vendor_order_files
-    #     for i in order:
-    #         print(i)
-    # For each order in Craftable:
-        # If the order is different than the saved order
-            # Delete the saved order information
-            # get_order_from_vendor(store, vendor, download_pdf=download_pdf)
-        # Else
-            # continue
-
-    # self.driver.get(f'https://app.craftable.com/buyer/2/{self.stores[store]}/orders/list')
-    # time.sleep(6)
-
-    # table_body = self.driver.find_element(By.XPATH, './/tbody')
-    # table_rows = table_body.find_elements(By.XPATH, './tr')
-    
-    # completed_orders = []
-    # for pos, order in enumerate(table_rows):
-    #     table_body      = self.driver.find_element(By.XPATH, './/tbody')
-    #     table_rows      = table_body.find_elements(By.XPATH, './tr')
-    #     row             = table_rows[pos]
-    #     row_data        = row.find_elements(By.XPATH, './td')
-    #     row_date        = row_data[2]
-    #     row_date_text   = row_data[2].text
-    #     row_vendor_name = row_data[3].text
-
-    #     if pos not in completed_orders:
-        
-    #         row_date.click()
-    #         WebDriverWait(self.driver, 45).until(EC.element_to_be_clickable((By.TAG_NAME, 'table')))
-
-    #         items = self._scrape_order()
-    
     return
 
 def generate_weekly_orders_email(store: str, to: list):
@@ -549,11 +440,11 @@ if __name__ == '__main__':
             'DOWNTOWN'
         ]
 
-        sort_orders(ORDER_FILES_PATH)
+
         with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
             for store in stores:
                 craft_bot.get_all_orders_from_webpage(store, download_pdf=True, update=False)
-        sort_orders(ORDER_FILES_PATH)
+        craft_bot.order_manager.sort_orders()
 
         store_weekly_emails = {
             'DOWNTOWN': ['tucker.coburn@gmail.com', 'hselsner@gmail.com'],
