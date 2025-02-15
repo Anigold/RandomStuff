@@ -1,17 +1,16 @@
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains 
-import time
-from pynput.keyboard import Key, Controller
-from os import rename, getenv, scandir
-import os
-from os.path import join
-from pprint import pprint
+from selenium.common.exceptions import StaleElementReferenceException
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.chrome.webdriver import WebDriver
-from dotenv import load_dotenv
+
+import time
+from pynput.keyboard import Key, Controller
+import os
+
 
 from openpyxl import Workbook, load_workbook
 
@@ -26,9 +25,6 @@ from pathlib import Path
 
 from backend.logger.Logger import Logger
 
-# PRICING_FILES_PATH  = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\pricing\\VendorSheets\\'
-# DOWNLOAD_PATH       = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\'
-
 '''
 Craftable Bot utlizes Selenium to interact with the Craftable website. 
 '''
@@ -36,6 +32,20 @@ class CraftableBot:
 
     logger = Logger.get_logger('CraftableBot', log_file='logs/craftable_bot.log')
 
+    site_map = {
+            'login_page': 'https://app.craftable.com/signin',
+            'orders_page': 'https://app.craftable.com/buyer/2/{store_id}/orders/list',
+            'transfer_page': 'https://app.craftable.com/buyer/2/{store_id}/transfers/list',
+        }
+    
+    stores = {
+            'BAKERY':      '14376',
+            'DOWNTOWN':    '14373',
+            'EASTHILL':    '14374',
+            'TRIPHAMMER':  '14375',
+            'COLLEGETOWN': '14372',
+        }
+    
     def __init__(self, driver: WebDriver, username: str, password: str, 
                  order_manager: OrderManager = None, transfer_manager: TransferManager = None):
         
@@ -46,17 +56,6 @@ class CraftableBot:
         self.transfer_manager = transfer_manager or TransferManager()
 
         self.is_logged_in = False
-        self.stores = {
-            'BAKERY':      '14376',
-            'DOWNTOWN':    '14373',
-            'EASTHILL':    '14374',
-            'TRIPHAMMER':  '14375',
-            'COLLEGETOWN': '14372',
-        }
-
-        self.site_map = {
-            'login_page': 'https://app.craftable.com/signin'
-        }
 
     def __enter__(self):
         self.logger.info('Starting CraftableBot session.')
@@ -158,11 +157,6 @@ class CraftableBot:
         #WebDriverWait(self.driver, 45).until(EC.element_to_be_clickable((By.CLASS_NAME, 'row home-cards-orders-invoices')))
         time.sleep(5)
         return
-
-    def go_to_store_order_page(self, store: str) -> None:
-        self.driver.get(f'https://app.craftable.com/buyer/2/{self.stores[store]}/orders/list')
-        time.sleep(5)
-        return
     
     ''' Download orders from Craftable.
 
@@ -188,122 +182,184 @@ class CraftableBot:
         for store in stores:
             
             self.logger.info(f'Accessing order page for {store}.')
-            self.go_to_store_order_page(store)
+            store_order_url = self.get_url('orders_page', store=store)
+            self.driver.get(store_order_url)
+            time.sleep(6)
+            
+            table_rows = self._get_order_table_rows()
+            if not table_rows:
+                self.logger.warning(f"No more orders found for {store}. Moving to next store.")
+                break  # Exit while loop and move to the next store
+
+            for pos in range(len(table_rows) + 1):
+                stale_reference_table_rows = self._get_order_table_rows() # Refresh to avoid stale references
+                self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+
+        self.logger.info("Order download complete.")
+
+        return
+   
+    def _get_order_table_rows(self) -> list:
+        """Returns all order rows in the table, handling stale references."""
+        try:
+            table_body = self.driver.find_element(By.XPATH, './/tbody')
+            return table_body.find_elements(By.XPATH, './tr')
+        except Exception as e:
+            self.logger.warning(f"Failed to retrieve order table: {e}")
+            return []
+    
+    def _process_order_row(self, store: str, row, vendors: list, download_pdf: bool, update: bool) -> None:
+        """Processes a single order row: extracts data, downloads order, and saves it."""
+
+        row_data = row.find_elements(By.XPATH, './td')
+        row_date_text = row_data[2].text
+        row_vendor_name = row_data[3].text
+        row_date_formatted = self._convert_date_format(row_date_text, '%m/%d/%Y', '%Y%m%d')
+
+        if vendors and row_vendor_name not in vendors:
+            self.logger.debug(f"Skipping vendor {row_vendor_name}.")
+            return 
+
+        self.logger.info(f"Retrieving order for {row_vendor_name} ({row_date_text}).")
+
+        row_data[2].click()
+        
+
+        WebDriverWait(self.driver, 45).until(EC.element_to_be_clickable((By.TAG_NAME, 'table')))
+        items = self._scrape_order()
+
+        if update and self._update_existing_order(store, row_vendor_name, row_date_formatted, items):
+            self.logger.info(f"Order for {row_vendor_name} is up-to-date. Skipping.")
+            self.driver.back()
+            time.sleep(2)
+            return 
+
+        self.logger.info(f"Saving order for {row_vendor_name}.")
+        self._save_order_as_excel(items, store=store, vendor=row_vendor_name, date=row_date_formatted)
+        time.sleep(1)
+
+        if download_pdf:
+            self._download_order_pdf()
+            time.sleep(3)
+            self._rename_new_order_file(store=store, vendor=row_vendor_name, date=row_date_formatted)
+
+        self.driver.back()
+        time.sleep(3)
+        return 
+
+    def _find_order_row(self, table_rows, vendor_name, date_text):
+        """Finds the correct order row by vendor name and order date."""
+        for row in table_rows:
+            row_data = row.find_elements(By.XPATH, './td')
+            if len(row_data) < 4:
+                continue  # Skip malformed rows
+            if row_data[2].text == date_text and row_data[3].text == vendor_name:
+                return row
+        return None
+    
+    @Logger.log_exceptions
+    def delete_orders(self, stores: list[str], vendors: list[str] = None) -> None:
+
+        for store in stores:
+            self.logger.info(f'Starting order deletion for store: {store}.')
+            
+            if store not in stores:
+                self.logger.warning(f'Invalid store name: {store}, Skipping.')
+                continue
+
+            store_orders_url = self.get_url('orders_page', store=store)
+            self.logger.debug(f'Navigating to: {store_orders_url}')
+            self.driver.get(store_orders_url)
             time.sleep(6)
 
             table_body = self.driver.find_element(By.XPATH, './/tbody')
             table_rows = table_body.find_elements(By.XPATH, './tr')
 
             if not table_rows:
-                self.logger.warning(f'No orders found for {store}.')
+                self.logger.info(f'No orders found for store: {store}. Skipping.')
                 continue
 
-            self.logger.info(f'{len(table_rows)} orders found.')
-            completed_orders = [] # Store the index of the rows here
-            for pos, row in enumerate(table_rows):
-                table_body      = self.driver.find_element(By.XPATH, './/tbody') # Did I do this to avoid stale references?
-                table_rows      = table_body.find_elements(By.XPATH, './tr')     # That sounds good, let's go with that.
-                row             = table_rows[pos]
+            self.logger.info(f'Found {len(table_rows)} orders for deletion.')
+
+            while table_rows:
+                row             = table_rows[-1]  # Always delete the last order first
                 row_data        = row.find_elements(By.XPATH, './td')
-                row_date        = row_data[2]
                 row_date_text   = row_data[2].text
                 row_vendor_name = row_data[3].text
-                
-              
-                row_date_formatted = self._convert_date_format(row_date_text, '%m/%d/%Y', '%Y%m%d')
-                
-                if pos in completed_orders:
+
+                # If vendors list is provided, only delete matching vendor orders
+                if vendors and row_vendor_name not in vendors:
+                    self.logger.debug(f"Skipping order from vendor: {row_vendor_name}.")
+                    table_rows.pop()
                     continue
 
-                # If vendors have been supplied and the current vendor isn't in the list, we skip it.
-                if (vendors) and (row_vendor_name not in vendors):
-                    self.logger.debug(f'Skipping vendor {row_vendor_name}.')
-                    completed_orders.append(pos) # Is this superfluous?
-                    continue
-    
-                self.logger.info(f'Retrieving order for {row_vendor_name}.')
-                row_date.click()
-                WebDriverWait(self.driver, 45).until(EC.element_to_be_clickable((By.TAG_NAME, 'table')))
-                
-                items = self._scrape_order()
+                self.logger.info(f"Deleting order: {row_vendor_name} ({row_date_text})")
+                self._delete_order(row)
 
-                if update and self._update_existing_order(store, row_vendor_name, row_date_formatted, items):
-                    self.logger.info(f'Order for {row_vendor_name} is up-to-date. Skipping.')
-                    completed_orders.append(pos)
-                    self.driver.back()
-                    time.sleep(2)
-                    continue
-                    
-                self.logger.info(f'Saving order for {row_vendor_name}.')
-                self._save_order_as_excel(items, store=store, vendor=row_vendor_name, date=row_date_formatted )
-                time.sleep(1)
+                # Refresh table after deletion
+                table_body = self.driver.find_element(By.XPATH, './/tbody')
+                table_rows = table_body.find_elements(By.XPATH, './tr')
 
-                if download_pdf:
-                    self._download_order_pdf()
-                    time.sleep(3)
-                    self._rename_new_order_file(store=store, vendor=row_vendor_name, date=row_date_formatted)
+            self.logger.info(f"Finished deleting orders for store: {store}.")
 
-                completed_orders.append(pos)
-                self.driver.back()
-                time.sleep(3)
+    def _delete_order(self, row) -> None:
+        """Handles the deletion of a single order."""
+        try:
+            row.find_elements(By.XPATH, './td')[2].click()
+            WebDriverWait(self.driver, 35).until(EC.element_to_be_clickable((By.CLASS_NAME, 'btn-danger')))
+        except Exception as e:
+            self.logger.warning(f"Could not open order details: {e}")
+            return
 
-        self.logger.info('Order download complete.')
-        return
+        self._click_delete_button()
+        self._confirm_delete()
 
-    def delete_order(self, store: str, vendor: str) -> None:
-        pass
-
-    def delete_all_orders(self, store: str) -> None:
-        # Go to the orders page
-        self.driver.get(f'https://app.craftable.com/buyer/2/{self.stores[store]}/orders/list')
-        time.sleep(6)
-
-        
-        table_body = self.driver.find_element(By.XPATH, './/tbody')
-        table_rows = table_body.find_elements(By.XPATH, './tr')
-
-        order_counter = len(table_rows)
-        print(order_counter, flush=True)
-        while order_counter > 0:
-            table_body      = self.driver.find_element(By.XPATH, './/tbody')
-            table_rows      = table_body.find_elements(By.XPATH, './tr')
-            row             = table_rows[order_counter-1]
-            row_data        = row.find_elements(By.XPATH, './td')
-            row_date        = row_data[2]
-            row_date_text   = row_data[2].text
-            row_vendor_name = row_data[3].text
-
-            row_date.click()
-        
+    def _click_delete_button(self) -> None:
+        """Clicks the delete button within the order page."""
+        for attempt in range(3):
             try:
-                WebDriverWait(self.driver, 35).until(EC.element_to_be_clickable((By.CLASS_NAME, 'btn-danger')))
-            except:
-                # #ActionChains(self.driver).scroll_to_element(iframe).perform()
-                # js_code = 'arguments[0].scrollIntoView();'
-                # self.driver.execute_script(js_code, self.driver.find_element(By.XPATH, 'btn-danger'))
-                pass
-              
+                delete_button = self.driver.find_element(By.CLASS_NAME, 'btn-danger')
+                delete_button.click()
+                self.logger.debug("Delete button clicked.")
+                return
+            except Exception as e:
+                self.logger.warning(f"Attempt {attempt+1} failed to click delete button: {e}")
+                time.sleep(2)
 
-            tries = 2
-            while tries >= 0:
-                try:
-                    delete_button = self.driver.find_element(By.CLASS_NAME, 'btn-danger')
-                    delete_button.click()
-                    break
-                except:
-                    tries -= 1
-            
+        self.logger.error("Failed to click delete button after 3 attempts.")
+
+    def _confirm_delete(self) -> None:
+        """Handles confirming the deletion of an order."""
+        try:
             WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.ID, 'confirmOrderDeleteModal')))
-            confirm_delete_modal = self.driver.find_element(By.ID, 'confirmOrderDeleteModal')
-            modal_footer = confirm_delete_modal.find_element(By.CLASS_NAME, 'modal-footer')
-            footer_buttons = modal_footer.find_elements(By.TAG_NAME, 'button')
-            delete_button = footer_buttons[1]
+            confirm_modal = self.driver.find_element(By.ID, 'confirmOrderDeleteModal')
+            modal_footer  = confirm_modal.find_element(By.CLASS_NAME, 'modal-footer')
+            delete_button = modal_footer.find_elements(By.TAG_NAME, 'button')[1]
+
             delete_button.click()
-            order_counter -= 1
+            self.logger.info("Order deletion confirmed.")
             time.sleep(5)
+        except Exception as e:
+            self.logger.error(f"Failed to confirm deletion: {e}")
 
-        return
+    @classmethod
+    @Logger.log_exceptions
+    def get_url(cls, key: str, store: str = None) -> str:
 
+        cls.logger.debug('Retrieving URL from site map.')
+
+        if key not in cls.site_map:
+            cls.logger.error(f'INvalid site map key: {key}')
+            return ''
+        
+        if '{store_id}' in cls.site_map[key]:
+            if store not in cls.stores:
+                cls.logger.error(f'Invalid store name: {store}')
+                return ''
+            return cls.site_map[key].format(store_id=cls.stores[store])
+        
+        return cls.site_map[key]
+    
     @Logger.log_exceptions
     def input_transfer(self, transfer: Transfer) -> None:
         
@@ -312,7 +368,8 @@ class CraftableBot:
 
         time.sleep(3)
 
-        self.driver.get('https://app.craftable.com/buyer/2/14376/transfers/list') # Make this dyanimc based on Transfer attributes
+        transfer_url = self.get_url('transfer_page', store=transfer.store_from)
+        self.driver.get(transfer_url)
 
         time.sleep(5)
 
@@ -463,8 +520,6 @@ class CraftableBot:
             
         return
             
-
-
     '''HELPER FUNCTIONS'''
 
     def _rename_new_order_file(self, store: str, vendor: str, date: str) -> None:

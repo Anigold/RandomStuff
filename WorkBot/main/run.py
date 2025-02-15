@@ -29,11 +29,12 @@ from backend.orders.OrderBot import OrderBot
 from backend.stores.Store import Store
 from backend.stores.StoreManager import StoreManager
 
+from backend.printing.Printer import Printer
 from backend.emailer.Emailer import Emailer
 from backend.emailer.Services.Service import Email
 from backend.emailer.Services.Outlook import Outlook
 
-# from backend.printing.Printer import Printer
+from backend.printing.Printer import Printer
 from backend.transferring.TransferManager import TransferManager
 from backend.transferring.Transfer import Transfer, TransferItem
 from backend.pricing.PriceComparator import PriceComparator
@@ -46,8 +47,6 @@ from openpyxl import load_workbook
 
 from pathlib import Path
 
-from backend.logger.Logger import Logger
-
 dotenv = load_dotenv()
 
 CRAFTABLE_USERNAME = getenv('CRAFTABLE_USERNAME')
@@ -59,6 +58,22 @@ ORDER_FILES_PATH   = SOURCE_PATH / 'orders' / 'OrderFiles'
 PRICING_FILES_PATH = SOURCE_PATH / 'pricing'
 DOWNLOAD_PATH      = SOURCE_PATH / 'downloads'
 TRANSFER_PATH      = SOURCE_PATH / 'transferring'
+
+def get_files(path: str) -> list:
+	return [file for file in listdir(path) if isfile(join(path, file))]
+
+# def sort_orders(path: str, override=True) -> None:
+#     # Sort and group orders
+#     files = get_files(path)
+#     for file in files:
+        
+#         vendor_name = file.split('_')[0].strip()
+
+#         if not isdir(f'{path}\\{vendor_name}'):
+#             mkdir(f'{path}\\{vendor_name}')
+        
+#         rename(f'{path}\\{file}', f'{path}\\{vendor_name}\\{file}')
+#     return
 
 def create_options() -> uc.ChromeOptions:
 
@@ -85,6 +100,9 @@ def get_credentials(name) -> dict:
     password = getenv(f'{name.upper().replace(" ", "_")}_PASSWORD') or None
 
     return {'username': username, 'password': password}
+
+def get_excel_files(path: Path) -> list[Path]:
+	return [path / file for file in listdir(path) if isfile(join(path, file)) and file.endswith('.xlsx') and '~' not in file]
 
 def get_bot(name) -> VendorBot:
      
@@ -237,6 +255,10 @@ def print_schedule_daily(day: int) -> None:
 
     return printer_object.print_file(f'{path_to_schedules}{schedule[day]}.pdf')
 
+def get_transfers(vendor: str) -> list:
+    path = f'{ORDER_FILES_PATH}\\{vendor}'
+    return [file for file in listdir(path) if isfile(join(path, file)) and file.endswith('.xlsx') and file.split(' _ ')[0] == 'Formatted']
+
 def get_day(day_of_week: str):
     days = {
         'Sunday': 0,
@@ -310,6 +332,51 @@ def delete_all_files_without_extension(directory: str, extension: str) -> None:
             os_remove(f'{directory}\\{file}')
     return
 
+def find_order_files(base_directory: str, depth=2) -> list:
+    orders = []
+    for root, dirs, files in os.walk(base_directory):
+        if root.count(os.sep) - base_directory.count(os.sep) < depth:
+            for file in files:
+                if file.endswith('.xlsx'):
+                    file_path = os.path.join(root, file)
+                    orders.append(file_path)
+    return orders
+
+def find_order_pdfs(base_directory: Path, depth=2) -> list:
+    base_directory = Path(base_directory)
+    orders = []
+    
+    for path in base_directory.rglob("*.pdf"):
+        if len(path.relative_to(base_directory).parts) <= depth:
+            orders.append(path)
+    
+    return orders
+
+def get_orders_by_store(base_directory: Path, stores: list, depth=2) -> dict:
+    base_directory = Path(base_directory)
+    all_order_files = find_order_pdfs(base_directory, depth)
+
+    store_orders = {store: [] for store in stores}
+
+    for order_file in all_order_files:
+        for store in stores:
+            if store in order_file.stem or store in order_file.parts:
+                store_orders[store].append(order_file)
+    
+    return store_orders
+
+def get_pdfs_by_store(base_directory: Path, store: str, depth=2) -> dict:
+    base_directory = Path(base_directory)
+    all_order_files = find_order_pdfs(base_directory, depth)
+
+    store_orders = {store: []}
+
+    for order_file in all_order_files:
+        if store in order_file.stem or store in order_file.parts:
+            store_orders[store].append(order_file)
+    
+    return store_orders
+
 def generate_weekly_orders_email(store: str, to: list):
 
     order_paths_by_store = get_pdfs_by_store(ORDER_FILES_PATH, store)
@@ -340,14 +407,12 @@ def delete_orders_from_craftable(stores: list[str]) -> None:
 
 if __name__ == '__main__':
 
-    main_logger = Logger.get_logger('WorkBot')
-
     vendors = [ 
-        'Sysco', 
-        'Performance Food',
-        'US Foods',
+        # 'Sysco', 
+        # 'Performance Food',
+        # 'US Foods',
         # 'Renzi',
-        'UNFI',
+        # 'UNFI',
         # 'Hill & Markes',
         # 'Johnston Paper',
         # 'Regional Distributors, Inc.',
@@ -355,11 +420,11 @@ if __name__ == '__main__':
         # 'SANICO',
         # 'Copper Horse Coffee',
         # 'Equal Exchange',
-        'Eurocafe Imports',
+        # 'Eurocafe Imports',
         # 'Macro Mamas',
         # 'Coca-Cola',
         # 'FingerLakes Farms',
-        'Ithaca Bakery',
+        # 'Ithaca Bakery',
         # 'Webstaurant',
         # 'Hillcrest Dairy',
         # 'Hillcrest Foods',
@@ -373,16 +438,16 @@ if __name__ == '__main__':
         # 'Casa',
         # 'Palmer',
         # 'ACE ENDICO',
-        'Russo Produce',
-        'BEHLOG & SON, INC.',
+        # 'Russo Produce',
+        # 'BEHLOG & SON, INC.',
     ]
 
     stores = [
          'BAKERY',
          'TRIPHAMMER',
          'COLLEGETOWN',
-        #  'EASTHILL',
-        #  'DOWNTOWN'
+         'EASTHILL',
+         'DOWNTOWN'
     ]
     
 
@@ -405,12 +470,8 @@ if __name__ == '__main__':
     
 
     ''' Welcome to Work Protocol '''
-    @Logger.log_exceptions
     def welcome_to_work() -> None:
 
-        main_logger.info('Welcome to Work protocol started.')
-
-        main_logger.debug("Generating schedule for the week.")
         days_of_the_week = [
             'Saturday',
             'Sunday',
@@ -422,8 +483,6 @@ if __name__ == '__main__':
         ]
         for day in days_of_the_week: print_schedule_daily(get_day(day))
 
-
-            
         options = create_options()
         driver  = uc.Chrome(options=options, use_subprocess=True)
 
@@ -434,32 +493,22 @@ if __name__ == '__main__':
             'DOWNTOWN'
         ]
 
-        main_logger.info("Starting CraftableBot for order download.")
         with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
-
-            main_logger.info('Downloading orders.')
             craft_bot.download_orders(
-                stores, 
-                vendors=[], # Grabs all orders
-                download_pdf=True, 
+                stores,
+                vendors,
+                download_pdf=True,
                 update=True
             )
-
-            main_logger.info('Sorting downloaded orders.')
             craft_bot.order_manager.sort_orders()
 
-
-        main_logger.info('Generating emails for GMs.')
         store_weekly_emails = {
             'DOWNTOWN': ['tucker.coburn@gmail.com', 'hselsner@gmail.com'],
             # 'COLLEGETOWN': ['goldsmithnandrew@gmail.com'],
         }
 
-        for store, emails in store_weekly_emails.items(): 
-            main_logger.debug(f'Generating email for {store} to {emails}.')
-            generate_weekly_orders_email(store, emails)
-        
-        main_logger.info('Welcome to Work prototcol completed.')
+        for store in store_weekly_emails: generate_weekly_orders_email(store, store_weekly_emails[store])
+
         return
 
     # welcome_to_work()
@@ -467,39 +516,43 @@ if __name__ == '__main__':
 
 
     ''' DELETE ORDERS FROM CRAFTABLE '''
-    # delete_orders_from_craftable(stores)
+    # options = create_options()
+    # driver  = uc.Chrome(options=options, use_subprocess=True)
+
+    # with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
+    #     craft_bot.delete_orders(stores=['BAKERY'], vendors=['Performance Food', 'US Foods', 'Sysco', 'Casa'])
     '''------------------------------'''
 
 
     ''' DOWNLOAD ORDERS FROM CRAFTABLE '''
-    # options = create_options()
-    # driver  = uc.Chrome(options=options, use_subprocess=True)
+    options = create_options()
+    driver  = uc.Chrome(options=options, use_subprocess=True)
 
-    # update       = True
-    # download_pdf = True
+    update       = True
+    download_pdf = True
 
-    # with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
-    #     craft_bot.download_orders(
-    #         stores, 
-    #         vendors=vendors, 
-    #         download_pdf=download_pdf, 
-    #         update=update
-    #     )
-    #     craft_bot.order_manager.sort_orders()
+    with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
+        craft_bot.download_orders(
+            stores, 
+            vendors=vendors, 
+            download_pdf=download_pdf, 
+            update=update
+        )
+        craft_bot.order_manager.sort_orders()
     '''--------------------------------'''
 
     ''' TRANSFER ITEMS BETWEEN STORES '''
 
-    options = create_options()
-    driver  = uc.Chrome(options=options, use_subprocess=True)
+    # options = create_options()
+    # driver  = uc.Chrome(options=options, use_subprocess=True)
 
-    transfer_manager = TransferManager()
-    transfers_directory = TransferManager.get_transfer_files_directory()
+    # transfer_manager = TransferManager()
+    # transfers_directory = TransferManager.get_transfer_files_directory()
 
-    test_transfer = transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to TRIPHAMMER 20250211.xlsx')
+    # test_transfer = transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to TRIPHAMMER 20250211.xlsx')
 
-    with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
-        craft_bot.input_transfer(test_transfer)
+    # with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
+    #     craft_bot.input_transfer(test_transfer)
 
     '''-------------------------------'''
 

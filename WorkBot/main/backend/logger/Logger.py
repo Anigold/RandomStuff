@@ -30,7 +30,7 @@ class Logger:
             if logger.hasHandlers(): return logger
 
             # File Handler (Rotating)
-            file_handler = RotatingFileHandler(log_file, maxBytes=1_000_000, backupCount=5)
+            file_handler = RotatingFileHandler(log_file, maxBytes=1_000_000, backupCount=5, delay=False)
             file_handler.setLevel(logging.INFO)
 
             # Console Handler (Warnings & Errors only)

@@ -30,3 +30,495 @@ Traceback (most recent call last):
     self.logger.info(f'Starting input for {len(transfer.items)} transfer items.')
                                                ^^^^^^^^^^^^^^
 AttributeError: 'set' object has no attribute 'items'
+2025-02-15 13:37:42,844 - ERROR - backend.craftable_bot.CraftableBot - Error in get_url: type object 'CraftableBot' has no attribute 'site_map'
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 335, in get_url
+    if key not in cls.site_map:
+                  ^^^^^^^^^^^^
+AttributeError: type object 'CraftableBot' has no attribute 'site_map'
+2025-02-15 13:37:42,847 - ERROR - backend.craftable_bot.CraftableBot - Error in download_orders: type object 'CraftableBot' has no attribute 'site_map'
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 181, in download_orders
+    store_order_url = self.get_url('orders_page', store=store)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 335, in get_url
+    if key not in cls.site_map:
+                  ^^^^^^^^^^^^
+AttributeError: type object 'CraftableBot' has no attribute 'site_map'
+2025-02-15 13:38:59,003 - ERROR - backend.craftable_bot.CraftableBot - Error in get_url: type object 'CraftableBot' has no attribute 'stores'
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 342, in get_url
+    if store not in cls.stores:
+                    ^^^^^^^^^^
+AttributeError: type object 'CraftableBot' has no attribute 'stores'
+2025-02-15 13:38:59,006 - ERROR - backend.craftable_bot.CraftableBot - Error in download_orders: type object 'CraftableBot' has no attribute 'stores'
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 183, in download_orders
+    store_order_url = self.get_url('orders_page', store=store)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 342, in get_url
+    if store not in cls.stores:
+                    ^^^^^^^^^^
+AttributeError: type object 'CraftableBot' has no attribute 'stores'
+2025-02-15 13:39:53,207 - ERROR - backend.craftable_bot.CraftableBot - Error in download_orders: Message: stale element reference: stale element not found in the current frame
+  (Session info: chrome=133.0.6943.98); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+	GetHandleVerifier [0x005702D3+25139]
+	(No symbol) [0x004FB284]
+	(No symbol) [0x003D04A3]
+	(No symbol) [0x003D6EA1]
+	(No symbol) [0x003D8F9A]
+	(No symbol) [0x003D9017]
+	(No symbol) [0x00417BC1]
+	(No symbol) [0x0041868B]
+	(No symbol) [0x0040DD71]
+	(No symbol) [0x0043CF84]
+	(No symbol) [0x0040D8E4]
+	(No symbol) [0x0043D1B4]
+	(No symbol) [0x0045E6E1]
+	(No symbol) [0x0043CD36]
+	(No symbol) [0x0040BD29]
+	(No symbol) [0x0040D064]
+	GetHandleVerifier [0x0087B193+3215603]
+	GetHandleVerifier [0x0089230A+3310186]
+	GetHandleVerifier [0x0088C522+3286146]
+	GetHandleVerifier [0x00609CD0+654384]
+	(No symbol) [0x0050460D]
+	(No symbol) [0x005014F8]
+	(No symbol) [0x00501697]
+	(No symbol) [0x004F3D70]
+	BaseThreadInitThunk [0x7673FCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x771682AE+286]
+	RtlGetAppContainerNamedObjectPath [0x7716827E+238]
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 193, in download_orders
+    self._process_order_row(store, row, vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 210, in _process_order_row
+    row_data = row.find_elements(By.XPATH, './td')
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 628, in find_elements
+    return self._execute(Command.FIND_CHILD_ELEMENTS, {"using": by, "value": value})["value"]
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 570, in _execute
+    return self._parent.execute(command, params)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 429, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.StaleElementReferenceException: Message: stale element reference: stale element not found in the current frame
+  (Session info: chrome=133.0.6943.98); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+	GetHandleVerifier [0x005702D3+25139]
+	(No symbol) [0x004FB284]
+	(No symbol) [0x003D04A3]
+	(No symbol) [0x003D6EA1]
+	(No symbol) [0x003D8F9A]
+	(No symbol) [0x003D9017]
+	(No symbol) [0x00417BC1]
+	(No symbol) [0x0041868B]
+	(No symbol) [0x0040DD71]
+	(No symbol) [0x0043CF84]
+	(No symbol) [0x0040D8E4]
+	(No symbol) [0x0043D1B4]
+	(No symbol) [0x0045E6E1]
+	(No symbol) [0x0043CD36]
+	(No symbol) [0x0040BD29]
+	(No symbol) [0x0040D064]
+	GetHandleVerifier [0x0087B193+3215603]
+	GetHandleVerifier [0x0089230A+3310186]
+	GetHandleVerifier [0x0088C522+3286146]
+	GetHandleVerifier [0x00609CD0+654384]
+	(No symbol) [0x0050460D]
+	(No symbol) [0x005014F8]
+	(No symbol) [0x00501697]
+	(No symbol) [0x004F3D70]
+	BaseThreadInitThunk [0x7673FCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x771682AE+286]
+	RtlGetAppContainerNamedObjectPath [0x7716827E+238]
+
+2025-02-15 13:40:45,810 - ERROR - backend.craftable_bot.CraftableBot - Error in download_orders: Message: stale element reference: stale element not found in the current frame
+  (Session info: chrome=133.0.6943.98); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+	GetHandleVerifier [0x005702D3+25139]
+	(No symbol) [0x004FB284]
+	(No symbol) [0x003D04A3]
+	(No symbol) [0x003D6EA1]
+	(No symbol) [0x003D8F9A]
+	(No symbol) [0x003D9017]
+	(No symbol) [0x00417BC1]
+	(No symbol) [0x0041868B]
+	(No symbol) [0x0040DD71]
+	(No symbol) [0x0043CF84]
+	(No symbol) [0x0040D8E4]
+	(No symbol) [0x0043D1B4]
+	(No symbol) [0x0045E6E1]
+	(No symbol) [0x0043CD36]
+	(No symbol) [0x0040BD29]
+	(No symbol) [0x0040D064]
+	GetHandleVerifier [0x0087B193+3215603]
+	GetHandleVerifier [0x0089230A+3310186]
+	GetHandleVerifier [0x0088C522+3286146]
+	GetHandleVerifier [0x00609CD0+654384]
+	(No symbol) [0x0050460D]
+	(No symbol) [0x005014F8]
+	(No symbol) [0x00501697]
+	(No symbol) [0x004F3D70]
+	BaseThreadInitThunk [0x7673FCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x771682AE+286]
+	RtlGetAppContainerNamedObjectPath [0x7716827E+238]
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 193, in download_orders
+    self._process_order_row(store, row, vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 210, in _process_order_row
+    row_data = row.find_elements(By.XPATH, './td')
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 628, in find_elements
+    return self._execute(Command.FIND_CHILD_ELEMENTS, {"using": by, "value": value})["value"]
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 570, in _execute
+    return self._parent.execute(command, params)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 429, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.StaleElementReferenceException: Message: stale element reference: stale element not found in the current frame
+  (Session info: chrome=133.0.6943.98); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+	GetHandleVerifier [0x005702D3+25139]
+	(No symbol) [0x004FB284]
+	(No symbol) [0x003D04A3]
+	(No symbol) [0x003D6EA1]
+	(No symbol) [0x003D8F9A]
+	(No symbol) [0x003D9017]
+	(No symbol) [0x00417BC1]
+	(No symbol) [0x0041868B]
+	(No symbol) [0x0040DD71]
+	(No symbol) [0x0043CF84]
+	(No symbol) [0x0040D8E4]
+	(No symbol) [0x0043D1B4]
+	(No symbol) [0x0045E6E1]
+	(No symbol) [0x0043CD36]
+	(No symbol) [0x0040BD29]
+	(No symbol) [0x0040D064]
+	GetHandleVerifier [0x0087B193+3215603]
+	GetHandleVerifier [0x0089230A+3310186]
+	GetHandleVerifier [0x0088C522+3286146]
+	GetHandleVerifier [0x00609CD0+654384]
+	(No symbol) [0x0050460D]
+	(No symbol) [0x005014F8]
+	(No symbol) [0x00501697]
+	(No symbol) [0x004F3D70]
+	BaseThreadInitThunk [0x7673FCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x771682AE+286]
+	RtlGetAppContainerNamedObjectPath [0x7716827E+238]
+
+2025-02-15 13:49:54,232 - ERROR - backend.craftable_bot.CraftableBot - Error in download_orders: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\Order.pdf' -> 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\UNFI _ BAKERY 20250215.pdf'
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 196, in download_orders
+    self._process_order_row(store, row, vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 251, in _process_order_row
+    self._rename_new_order_file(store=store, vendor=row_vendor_name, date=row_date_formatted)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 543, in _rename_new_order_file
+    original_file.rename(new_filepath)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Will\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 767, in rename
+    os.rename(self, target)
+    ~~~~~~~~~^^^^^^^^^^^^^^
+FileExistsError: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\Order.pdf' -> 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\UNFI _ BAKERY 20250215.pdf'
+2025-02-15 13:50:47,192 - ERROR - backend.craftable_bot.CraftableBot - Error in download_orders: Message: stale element reference: stale element not found in the current frame
+  (Session info: chrome=133.0.6943.98); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+	GetHandleVerifier [0x00AD02D3+25139]
+	(No symbol) [0x00A5B284]
+	(No symbol) [0x009304A3]
+	(No symbol) [0x00936EA1]
+	(No symbol) [0x00938F9A]
+	(No symbol) [0x00939017]
+	(No symbol) [0x00977BC1]
+	(No symbol) [0x0097868B]
+	(No symbol) [0x0096DD71]
+	(No symbol) [0x0099CF84]
+	(No symbol) [0x0096D8E4]
+	(No symbol) [0x0099D1B4]
+	(No symbol) [0x009BE6E1]
+	(No symbol) [0x0099CD36]
+	(No symbol) [0x0096BD29]
+	(No symbol) [0x0096D064]
+	GetHandleVerifier [0x00DDB193+3215603]
+	GetHandleVerifier [0x00DF230A+3310186]
+	GetHandleVerifier [0x00DEC522+3286146]
+	GetHandleVerifier [0x00B69CD0+654384]
+	(No symbol) [0x00A6460D]
+	(No symbol) [0x00A614F8]
+	(No symbol) [0x00A61697]
+	(No symbol) [0x00A53D70]
+	BaseThreadInitThunk [0x7673FCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x771682AE+286]
+	RtlGetAppContainerNamedObjectPath [0x7716827E+238]
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 196, in download_orders
+    self._process_order_row(store, row, vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 213, in _process_order_row
+    row_data = row.find_elements(By.XPATH, './td')
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 628, in find_elements
+    return self._execute(Command.FIND_CHILD_ELEMENTS, {"using": by, "value": value})["value"]
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 570, in _execute
+    return self._parent.execute(command, params)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 429, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.StaleElementReferenceException: Message: stale element reference: stale element not found in the current frame
+  (Session info: chrome=133.0.6943.98); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+	GetHandleVerifier [0x00AD02D3+25139]
+	(No symbol) [0x00A5B284]
+	(No symbol) [0x009304A3]
+	(No symbol) [0x00936EA1]
+	(No symbol) [0x00938F9A]
+	(No symbol) [0x00939017]
+	(No symbol) [0x00977BC1]
+	(No symbol) [0x0097868B]
+	(No symbol) [0x0096DD71]
+	(No symbol) [0x0099CF84]
+	(No symbol) [0x0096D8E4]
+	(No symbol) [0x0099D1B4]
+	(No symbol) [0x009BE6E1]
+	(No symbol) [0x0099CD36]
+	(No symbol) [0x0096BD29]
+	(No symbol) [0x0096D064]
+	GetHandleVerifier [0x00DDB193+3215603]
+	GetHandleVerifier [0x00DF230A+3310186]
+	GetHandleVerifier [0x00DEC522+3286146]
+	GetHandleVerifier [0x00B69CD0+654384]
+	(No symbol) [0x00A6460D]
+	(No symbol) [0x00A614F8]
+	(No symbol) [0x00A61697]
+	(No symbol) [0x00A53D70]
+	BaseThreadInitThunk [0x7673FCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x771682AE+286]
+	RtlGetAppContainerNamedObjectPath [0x7716827E+238]
+
+2025-02-15 13:58:12,204 - ERROR - backend.craftable_bot.CraftableBot - Error in download_orders: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\Order.pdf' -> 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\UNFI _ BAKERY 20250215.pdf'
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 198, in download_orders
+    if self._process_order_row(store, row, vendors, download_pdf, update):
+       ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 260, in _process_order_row
+    self._rename_new_order_file(store=store, vendor=row_vendor_name, date=row_date_formatted)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 552, in _rename_new_order_file
+    original_file.rename(new_filepath)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Will\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 767, in rename
+    os.rename(self, target)
+    ~~~~~~~~~^^^^^^^^^^^^^^
+FileExistsError: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\Order.pdf' -> 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\UNFI _ BAKERY 20250215.pdf'
+2025-02-15 13:59:04,564 - ERROR - backend.craftable_bot.CraftableBot - Error in download_orders: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\Order.pdf' -> 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\UNFI _ BAKERY 20250215.pdf'
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 198, in download_orders
+    if self._process_order_row(store, row, vendors, download_pdf, update):
+       ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 260, in _process_order_row
+    self._rename_new_order_file(store=store, vendor=row_vendor_name, date=row_date_formatted)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 552, in _rename_new_order_file
+    original_file.rename(new_filepath)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Will\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 767, in rename
+    os.rename(self, target)
+    ~~~~~~~~~^^^^^^^^^^^^^^
+FileExistsError: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\Order.pdf' -> 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\UNFI _ BAKERY 20250215.pdf'
+2025-02-15 14:00:08,160 - ERROR - backend.craftable_bot.CraftableBot - Error in download_orders: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\Order.pdf' -> 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\UNFI _ BAKERY 20250215.pdf'
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 198, in download_orders
+    if self._process_order_row(store, row, vendors, download_pdf, update):
+       ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 260, in _process_order_row
+    self._rename_new_order_file(store=store, vendor=row_vendor_name, date=row_date_formatted)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 552, in _rename_new_order_file
+    original_file.rename(new_filepath)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Will\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 767, in rename
+    os.rename(self, target)
+    ~~~~~~~~~^^^^^^^^^^^^^^
+FileExistsError: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\Order.pdf' -> 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\UNFI _ BAKERY 20250215.pdf'
+2025-02-15 14:14:28,053 - ERROR - backend.craftable_bot.CraftableBot - Error in download_orders: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\Order.pdf' -> 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\UNFI _ BAKERY 20250215.pdf'
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 202, in download_orders
+    if self._process_order_row(store, row, vendors, download_pdf, update):
+       ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 264, in _process_order_row
+    self._rename_new_order_file(store=store, vendor=row_vendor_name, date=row_date_formatted)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 556, in _rename_new_order_file
+    original_file.rename(new_filepath)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Will\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 767, in rename
+    os.rename(self, target)
+    ~~~~~~~~~^^^^^^^^^^^^^^
+FileExistsError: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\Order.pdf' -> 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\UNFI _ BAKERY 20250215.pdf'
+2025-02-15 14:15:32,190 - ERROR - backend.craftable_bot.CraftableBot - Error in download_orders: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\Order.pdf' -> 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\UNFI _ BAKERY 20250215.pdf'
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 202, in download_orders
+    if self._process_order_row(store, row, vendors, download_pdf, update):
+       ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 264, in _process_order_row
+    self._rename_new_order_file(store=store, vendor=row_vendor_name, date=row_date_formatted)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 556, in _rename_new_order_file
+    original_file.rename(new_filepath)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Will\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 767, in rename
+    os.rename(self, target)
+    ~~~~~~~~~^^^^^^^^^^^^^^
+FileExistsError: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\Order.pdf' -> 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\UNFI _ BAKERY 20250215.pdf'
+2025-02-15 14:17:53,209 - ERROR - backend.craftable_bot.CraftableBot - Error in download_orders: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\Order.pdf' -> 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\UNFI _ BAKERY 20250215.pdf'
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 202, in download_orders
+    if self._process_order_row(store, row, vendors, download_pdf, update):
+       ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 257, in _process_order_row
+    self._rename_new_order_file(store=store, vendor=row_vendor_name, date=row_date_formatted)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 549, in _rename_new_order_file
+    original_file.rename(new_filepath)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Will\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 767, in rename
+    os.rename(self, target)
+    ~~~~~~~~~^^^^^^^^^^^^^^
+FileExistsError: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\Order.pdf' -> 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\UNFI _ BAKERY 20250215.pdf'
+2025-02-15 14:19:52,168 - ERROR - backend.craftable_bot.CraftableBot - Error in download_orders: 'int' object is not iterable
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 198, in download_orders
+    for index in len(table_rows):
+                 ~~~^^^^^^^^^^^^
+TypeError: 'int' object is not iterable
+2025-02-15 14:20:52,635 - ERROR - backend.craftable_bot.CraftableBot - Error in download_orders: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\Order.pdf' -> 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\UNFI _ BAKERY 20250215.pdf'
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 202, in download_orders
+    if self._process_order_row(store, stale_reference_table_rows[index], vendors, download_pdf, update):
+       ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 257, in _process_order_row
+    self._rename_new_order_file(store=store, vendor=row_vendor_name, date=row_date_formatted)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 549, in _rename_new_order_file
+    original_file.rename(new_filepath)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Will\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 767, in rename
+    os.rename(self, target)
+    ~~~~~~~~~^^^^^^^^^^^^^^
+FileExistsError: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\Order.pdf' -> 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\UNFI _ BAKERY 20250215.pdf'
+2025-02-15 14:21:58,088 - ERROR - backend.craftable_bot.CraftableBot - Error in download_orders: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\Order.pdf' -> 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\UNFI _ BAKERY 20250215.pdf'
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 202, in download_orders
+    if self._process_order_row(store, stale_reference_table_rows[index], vendors, download_pdf, update):
+       ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 257, in _process_order_row
+    self._rename_new_order_file(store=store, vendor=row_vendor_name, date=row_date_formatted)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 549, in _rename_new_order_file
+    original_file.rename(new_filepath)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Will\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 767, in rename
+    os.rename(self, target)
+    ~~~~~~~~~^^^^^^^^^^^^^^
+FileExistsError: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\Order.pdf' -> 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\UNFI _ BAKERY 20250215.pdf'
+2025-02-15 14:22:59,589 - ERROR - backend.craftable_bot.CraftableBot - Error in download_orders: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\Order.pdf' -> 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\UNFI _ BAKERY 20250215.pdf'
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 202, in download_orders
+    if self._process_order_row(store, stale_reference_table_rows[index], vendors, download_pdf, update):
+       ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 256, in _process_order_row
+    self._rename_new_order_file(store=store, vendor=row_vendor_name, date=row_date_formatted)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 548, in _rename_new_order_file
+    original_file.rename(new_filepath)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Will\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 767, in rename
+    os.rename(self, target)
+    ~~~~~~~~~^^^^^^^^^^^^^^
+FileExistsError: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\Order.pdf' -> 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\UNFI _ BAKERY 20250215.pdf'
+2025-02-15 14:24:34,709 - ERROR - backend.craftable_bot.CraftableBot - Error in download_orders: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\Order.pdf' -> 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\UNFI _ BAKERY 20250215.pdf'
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 202, in download_orders
+    if self._process_order_row(store, row, vendors, download_pdf, update):
+       ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 256, in _process_order_row
+    self._rename_new_order_file(store=store, vendor=row_vendor_name, date=row_date_formatted)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 548, in _rename_new_order_file
+    original_file.rename(new_filepath)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Will\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 767, in rename
+    os.rename(self, target)
+    ~~~~~~~~~^^^^^^^^^^^^^^
+FileExistsError: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\Order.pdf' -> 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\UNFI _ BAKERY 20250215.pdf'
+2025-02-15 14:28:21,930 - ERROR - backend.craftable_bot.CraftableBot - Error in download_orders: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\Order.pdf' -> 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\UNFI _ BAKERY 20250215.pdf'
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 202, in download_orders
+    if self._process_order_row(store, row, vendors, download_pdf, update):
+       ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 257, in _process_order_row
+    self._rename_new_order_file(store=store, vendor=row_vendor_name, date=row_date_formatted)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 549, in _rename_new_order_file
+    original_file.rename(new_filepath)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Will\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 767, in rename
+    os.rename(self, target)
+    ~~~~~~~~~^^^^^^^^^^^^^^
+FileExistsError: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\Order.pdf' -> 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\UNFI _ BAKERY 20250215.pdf'
