@@ -465,12 +465,6 @@ class CraftableBot:
             
 
 
-
-
-
-
-
-
     '''HELPER FUNCTIONS'''
 
     def _rename_new_order_file(self, store: str, vendor: str, date: str) -> None:

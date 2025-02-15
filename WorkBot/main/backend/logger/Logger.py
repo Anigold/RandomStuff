@@ -85,6 +85,7 @@ class Logger:
                 logger.error(f"Error in {func.__name__}: {e}", exc_info=True)
                 raise  # Ensure the error still propagates
         return wrapper
+ 
     
 class JsonFormatter(logging.Formatter):
     """Custom JSON log formatter for structured logging."""
