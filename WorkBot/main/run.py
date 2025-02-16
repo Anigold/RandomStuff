@@ -120,6 +120,7 @@ def get_bot(name) -> VendorBot:
         'Russo Produce': RussoProduceBot,
         'Webstaurant': WebstaurantBot,
         'Eurocafe Imports': EuroCafeBot,
+        'Webstaurant': WebstaurantBot
     }
 
     if name not in bots:
@@ -408,9 +409,9 @@ def delete_orders_from_craftable(stores: list[str]) -> None:
 if __name__ == '__main__':
 
     vendors = [ 
-        # 'Sysco', 
-        # 'Performance Food',
-        # 'US Foods',
+        'Sysco', 
+        'Performance Food',
+        'US Foods',
         # 'Renzi',
         # 'UNFI',
         # 'Hill & Markes',
@@ -466,8 +467,49 @@ if __name__ == '__main__':
 
     # order_manager = OrderManager()
     # order_bot = OrderBot(order_manager)
-    
-    
+    ''' -----------------------------------------'''
+
+    options = create_options()
+    driver = uc.Chrome(options=options, use_subprocess=True)
+
+    with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
+
+        # ''' DOWNLOAD ORDERS '''
+        # update       = True
+        # download_pdf = True
+
+        # craft_bot.download_orders(
+        #     stores, 
+        #     vendors=vendors, 
+        #     download_pdf=download_pdf, 
+        #     update=update
+        # )
+        # craft_bot.order_manager.sort_orders()
+    #     '''-----------------'''
+
+    #     ''' DELETE ORDERS '''
+    #     # craft_bot.delete_orders(stores, vendors=vendors) 
+    #     '''---------------'''
+
+    #     ''' TRANSFER ITEM BETWEEN STORES '''
+    #     # transfer_manager = TransferManager()
+    #     # transfers_directory = TransferManager.get_transfer_files_directory()
+
+    #     # test_transfer = transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to TRIPHAMMER 20250211.xlsx')
+
+        
+    #     # craft_bot.input_transfers([test_transfer])
+    #     '''------------------------------'''
+
+    #     ''' FORMAT ORDERS FOR VENDOR UPLOAD '''
+    #     # # sort_orders(ORDER_FILES_PATH)
+        # for vendor in vendors:
+        #     format_orders(vendor, ORDER_FILES_PATH)
+    #     '''---------------------------------'''
+        pass
+
+    for vendor in vendors:
+        format_orders(vendor, ORDER_FILES_PATH)
 
     ''' Welcome to Work Protocol '''
     def welcome_to_work() -> None:
@@ -515,161 +557,6 @@ if __name__ == '__main__':
     '''--------------------------'''
 
 
-    ''' DELETE ORDERS FROM CRAFTABLE '''
-    # options = create_options()
-    # driver  = uc.Chrome(options=options, use_subprocess=True)
-
-    # with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
-    #     craft_bot.delete_orders(stores=['BAKERY'], vendors=['Performance Food', 'US Foods', 'Sysco', 'Casa'])
-    '''------------------------------'''
-
-
-    ''' DOWNLOAD ORDERS FROM CRAFTABLE '''
-    options = create_options()
-    driver  = uc.Chrome(options=options, use_subprocess=True)
-
-    update       = True
-    download_pdf = True
-
-    with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
-        craft_bot.download_orders(
-            stores, 
-            vendors=vendors, 
-            download_pdf=download_pdf, 
-            update=update
-        )
-        craft_bot.order_manager.sort_orders()
-    '''--------------------------------'''
-
-    ''' TRANSFER ITEMS BETWEEN STORES '''
-
-    # options = create_options()
-    # driver  = uc.Chrome(options=options, use_subprocess=True)
-
-    # transfer_manager = TransferManager()
-    # transfers_directory = TransferManager.get_transfer_files_directory()
-
-    # test_transfer = transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to TRIPHAMMER 20250211.xlsx')
-
-    # with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
-    #     craft_bot.input_transfer(test_transfer)
-
-    '''-------------------------------'''
-
-    ''' FORMAT ORDERS FOR VENDOR UPLOAD '''
-    # # sort_orders(ORDER_FILES_PATH)
-    # for vendor in vendors:
-    #     format_orders(vendor, ORDER_FILES_PATH)
-    '''---------------------------------'''
-
-    # options = create_options()
-    # driver  = uc.Chrome(options=options, use_subprocess=True)
-    
-    # transfer_vendor = 'Ithaca Bakery'
-    # transfer_files_directory = get_excel_files(ORDER_FILES_PATH / 'Ithaca Bakery')
-    # format_orders_for_transfer(transfer_vendor, ORDER_FILES_PATH)
-    # with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
-        
-    #     print('\nRetrieving transfer files.', flush=True)
-    #     for transfer_file in get_transfers(transfer_vendor):
-
-    #         store_to            = transfer_file.split(' _ ')[2].split(' ')[0]
-    #         store_from          = 'BAKERY'
-    #         items               = []
-    #         date_from_file_name = transfer_file.split(' _ ')[2].split(' ')[1].split('.')[0]
-    #         year                = int(date_from_file_name[0:4])
-    #         month               = int(date_from_file_name[4:6])
-    #         day                 = int(date_from_file_name[6:])
-
-    #         print(f'\nCreating transfer for {store_to} on {month}/{day}/{year}.', flush=True)
-    #         workbook = load_workbook(ORDER_FILES_PATH / transfer_vendor / transfer_file)
-    #         sheet = workbook.active
-
-    #         for item_row in sheet.iter_rows():
-    #             # print(item_row)
-    #             to_transfer, name, quantity = item_row
-    #             print((to_transfer.value, name.value, quantity.value))
-    #             if quantity.value < 1: continue
-
-    #             if not to_transfer: continue
-                
-    #             items.append(TransferItem(name.value, quantity.value))
-            
-    #         transfer = Transfer(store_from, store_to, items, datetime(year, month, day))
-    #         craft_bot.input_transfer(transfer)
-    #         workbook.save(f'{ORDER_FILES_PATH}\\{transfer_vendor}\\COMPLETED {transfer_file}')
-
-            # rename(f'{ORDER_FILES_PATH}\\{transfer_vendor}\\{transfer_file}', f'{ORDER_FILES_PATH}\\{transfer_vendor}\\COMPLETED {transfer_file}')
-
-    # with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
-        
-    #     # transfer_file = ORDER_FILES_PATH / 'Ithaca Bakery' / 'Ithaca Bakery _ TRIPHAMMER 20250211.xlsx'
-   
-    #     store_to            = transfer_file.split(' _ ')[2].split(' ')[0]
-    #     store_from          = 'BAKERY'
-    #     items               = []
-    #     date_from_file_name = transfer_file.split(' _ ')[2].split(' ')[1].split('.')[0]
-    #     year                = int(date_from_file_name[0:4])
-    #     month               = int(date_from_file_name[4:6])
-    #     day                 = int(date_from_file_name[6:])
-
-    #     print(f'\nCreating transfer for {store_to} on {month}/{day}/{year}.', flush=True)
-    #     workbook = load_workbook(ORDER_FILES_PATH / transfer_vendor / transfer_file)
-    #     sheet = workbook.active
-
-    #     for item_row in sheet.iter_rows():
-    #         # print(item_row)
-    #         to_transfer, name, quantity = item_row
-    #         print((to_transfer.value, name.value, quantity.value))
-    #         if quantity.value < 1: continue
-
-    #         if not to_transfer: continue
-            
-    #         items.append(TransferItem(name.value, quantity.value))
-        
-    #     transfer = Transfer(store_from, store_to, items, datetime(year, month, day))
-    #     craft_bot.input_transfer(transfer)
-    #     workbook.save(f'{ORDER_FILES_PATH}\\{transfer_vendor}\\COMPLETED {transfer_file}')
-
-    def upload_store_transfers(transfer_files: list[Path], origin_store: Store) -> None:
-
-        options = create_options()
-        driver  = uc.Chrome(options=options, use_subprocess=True)
-        print(origin_store)
-        with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
-            # print("START", flush=True)
-            for transfer_file in transfer_files:
-                file_name           = transfer_file.name
-                store_to            = str(file_name).split(' _ ')[1].split(' ')[0]
-                store_from          = origin_store.name
-                items               = []
-                date_from_file_name = str(file_name).split(' _ ')[1].split(' ')[1].split('.')[0]
-                month               = int(date_from_file_name[0:2])
-                day                 = int(date_from_file_name[2:4])
-                year                = int(date_from_file_name[4:])
-
-                print(f'\nPreparing transfer data between {store_from} to {store_to}.', flush=True)
-
-                workbook = load_workbook(transfer_file)
-                sheet = workbook.active
-
-                for item_row in sheet.iter_rows():
-                    # print(item_row)
-                    name     = item_row[1].value
-                    quantity = item_row[2].value
-                    # print([name, quantity], flush=True)
-
-                    items.append(TransferItem(name, quantity))
-                
-                transfer = Transfer(store_from, store_to, items, datetime(year, month, day))
-                print(transfer)
-                craft_bot.input_transfer(transfer)
-
-
-    # ithaca_bakery_transfer_files = get_excel_files(ORDER_FILES_PATH / 'Ithaca Bakery')
-    # store = get_store('Bakery')
-    # print(store)
-    # upload_store_transfers(ithaca_bakery_transfer_files, get_store('Bakery'))
 
 
     vendor_to_print = [
@@ -706,21 +593,21 @@ if __name__ == '__main__':
     
 
     vendors = [
-        # 'Copper Horse Coffee',
+        'Copper Horse Coffee',
         # 'Eurocafe Imports',
         'Ithaca Bakery'
     ]
-    # for vendor in vendors:
+    for vendor in vendors:
 
-    #     vendor_bot    = get_bot(vendor)()
-    #     vendor_path   = f'{ORDER_FILES_PATH}\\{vendor_bot.name}'
-    #     vendor_orders = [join(f'{vendor_path}\\', file) for file in listdir(f'{vendor_path}\\') if isfile(join(f'{vendor_path}\\', file)) and file.endswith('.xlsx')]
-    #     # pprint.pprint(vendor_orders)
-    #     vendor_bot.combine_orders(vendor_orders, vendor_path)
+        vendor_bot    = get_bot(vendor)()
+        vendor_path   = f'{ORDER_FILES_PATH}\\{vendor_bot.name}'
+        vendor_orders = [join(f'{vendor_path}\\', file) for file in listdir(f'{vendor_path}\\') if isfile(join(f'{vendor_path}\\', file)) and file.endswith('.xlsx')]
+        # pprint.pprint(vendor_orders)
+        vendor_bot.combine_orders(vendor_orders, vendor_path)
 
     
-    # input('click enter when ready')
-    # setup_emails_for_sunday()
+    input('click enter when ready')
+    setup_emails_for_sunday()
 
 
 
@@ -767,11 +654,9 @@ if __name__ == '__main__':
     # webstaurant_bot_creds = get_credentials(bot_name)
     # webstaurant_bot       = get_bot(bot_name)(driver, webstaurant_bot_creds['username'], webstaurant_bot_creds['password'])
 
-    # order_info = webstaurant_bot.get_order_info(99178108)
-    # pprint.pprint(order_info)
     # undocumented_orders = webstaurant_bot.get_all_undocumented_orders()
-    # print(undocumented_orders)
-    # for order in undocumented_orders:
+
+    # for order in reversed(undocumented_orders): # Go backwards to implicitly sort by ascending date
     #     order_info = webstaurant_bot.get_order_info(order, download_invoice=True)
     #     webstaurant_bot.update_pick_list(order_info)
 

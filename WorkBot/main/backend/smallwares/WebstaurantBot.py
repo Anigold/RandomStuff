@@ -12,7 +12,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support.ui import Select
 from dotenv import load_dotenv
 from os import getenv
-import pprint
+from pprint import pprint
 
 from openpyxl import Workbook
 
@@ -22,11 +22,13 @@ from datetime import date, datetime
 
 from openpyxl import load_workbook
 
+from pathlib import Path
+
 dotenv = load_dotenv()
 
-SOURCE_PATH = getenv('SOURCE_PATH')
-COMPLETED_INVOICES_PATH = f'{SOURCE_PATH}\\backend\\smallwares\\invoices\\completed'
-DOWNLOAD_PATH = f'{SOURCE_PATH}\\backend\\downloads'
+SOURCE_PATH             = Path(__file__).parent.parent
+COMPLETED_INVOICES_PATH = SOURCE_PATH / 'smallwares' / 'invoices' / 'completed'
+DOWNLOAD_PATH           = SOURCE_PATH / 'downloads'
 
 class WebstaurantBot:
 
@@ -69,11 +71,11 @@ class WebstaurantBot:
 
         return self.driver.get('https://www.webstaurantstore.com/myaccount/orders/')
     
-    def go_to_order_page(self, order_page: int) -> None:
+    def go_to_order_page(self) -> None:
 
         if not self.is_logged_in: self.login()
 
-        return self.driver.get(f'https://www.webstaurantstore.com/myaccount/orders?PageNumber={order_page}')
+        return self.driver.get(f'https://www.webstaurantstore.com/myaccount/orders')
     
     def go_to_order(self, invoice_number: int) -> None:
         
@@ -86,71 +88,52 @@ class WebstaurantBot:
         self.go_to_order(invoice_number)
         time.sleep(5)
 
-        # Ensure we're looking at items and not tracking info
-        item_tab = self.driver.find_element(By.XPATH, './/a[@class="tab__link"][text()="Items"]')
-        item_tab.click()
-        time.sleep(4)
+        date_element = self.driver.find_element(By.XPATH, '//*[contains(text(), "Placed on ")]')
+        date_text = date_element.text.split('on')[1]
 
-        order = {}
-        '''
-        order = {
-            order_number
-            date
-            order_items
-        }
-        '''
-
+        items = self.driver.find_elements(By.CSS_SELECTOR, '[data-testid="individual-item"]')
         order_items = []
-        '''
-        order_item = {
-            name
-            sku
-            quantity
-            price
-            total_cost
-        }
-        '''
-        order_summary_card = self.driver.find_element(By.CLASS_NAME, 'order__summary')
-        order_date         = order_summary_card.find_element(By.CLASS_NAME, 'panel__header-subheader').text
-        print(order_date, flush=True)
-        order_date = order_date.replace('Placed: ', '')
-        print(order_date, flush=True)
-        item_list_table      = self.driver.find_element(By.ID, 'orderItems') # This is organized by location and then items.
-        order_item_locations = item_list_table.find_elements(By.CLASS_NAME, 'order__tracking-location')
+        for item in items:
+            item_name_element = item.find_element(By.CSS_SELECTOR, 'a[data-testid="item-link"]')
+            item_name = item_name_element.text
 
-        for order_item_location in order_item_locations:
-            item_info_table = order_item_location.find_element(By.TAG_NAME, 'tbody')
-            item_info       = item_info_table.find_elements(By.TAG_NAME, 'tr')
-            for item in item_info:
+            sku_element = item_name_element.find_element(By.XPATH, 'following-sibling::p')
+            sku = sku_element.text.split('#')[-1]
+            # print(sku, flush=True)
+            pricing_container_element = sku_element.find_element(By.XPATH, 'following-sibling::div')
+            pricing_info_elements = pricing_container_element.find_elements(By.TAG_NAME, 'p')
 
-                name       = item.find_element(By.CLASS_NAME, 'itemlist__title').text
-                sku        = item.find_element(By.CLASS_NAME, 'itemlist__sku').text
-                quantity   = item.find_element(By.CLASS_NAME, 'itemlist__qty').text
-                price      = item.find_element(By.CLASS_NAME, 'itemlist__subtotal').text
-                total_cost = item.find_element(By.CLASS_NAME, 'itemlist__total').text
+            quantity_element = pricing_info_elements[0]
+            quantity = quantity_element.text.split(':')[1]
 
-                order_item = {
-                    'name': name,
-                    'sku': sku,
-                    'quantity': quantity,
-                    'price': price,
-                    'total_cost': total_cost
-                }
+            total_price_element = pricing_info_elements[1]
+            total_price = total_price_element.text.split(':')[1]
 
-                order_items.append(order_item)
+            price_per = float(total_price.replace('$', '').replace(',', '')) / int(quantity)
+
+            order_item = {
+                'name': item_name,
+                'sku': sku,
+                'quantity': quantity,
+                'total_cost': total_price,
+                'price_per': price_per
+            }
+
+            order_items.append(order_item)
+
 
         order = {
             'order_number': invoice_number,
-            'order_date': order_date,
-            'order_items': order_items,
+            'order_date': date_text,
+            'order_items': order_items
         }
 
         if download_invoice:
-            download_button = self.driver.find_element(By.CLASS_NAME, 'icon-download')
+            download_button = self.driver.find_element(By.CSS_SELECTOR, f'[download="{invoice_number}.pdf"]')
             download_button.click()
             time.sleep(2)
 
-            rename(f'{DOWNLOAD_PATH}\\{invoice_number}.pdf', f'{SOURCE_PATH}\\backend\\smallwares\\invoices\\{invoice_number}.pdf')
+            rename( DOWNLOAD_PATH / f'{invoice_number}.pdf', SOURCE_PATH / 'smallwares' / 'invoices' / f'{invoice_number}.pdf')
 
         return order
     
@@ -175,21 +158,42 @@ class WebstaurantBot:
     def get_all_undocumented_orders(self) -> list:
 
         completed_orders = set(self.get_completed_orders_list())
-        orders = []
-        page = 1
-        finished = False
-        while not finished:
-            self.go_to_order_page(page)
-            time.sleep(4)
-            
-            order_cards = self.driver.find_elements(By.CLASS_NAME, 'item-listing')
-            order_cards.pop(0)
-            for order_card in order_cards:
-                order_number = order_card.find_element(By.CLASS_NAME, 'control-label').text.split('#')[1]
-                if f'{order_number}.pdf' in completed_orders: return orders
-                orders.append(order_number)
 
-            page += 1
+        orders = []
+        finished = False
+        self.go_to_order_page()
+        time.sleep(4)
+
+        # Choose Last 6 Months filter
+        date_filter_select_element = self.driver.find_element(By.ID, 'name')
+        date_filter_dropdown = Select(date_filter_select_element)
+
+        date_filter_dropdown.select_by_visible_text('In the Past 6 Months')
+        time.sleep(2)
+
+        filter_submit_button = self.driver.find_element(By.ID, 'filter-orders-button')
+        filter_submit_button.click()
+        time.sleep(3)
+
+        while not finished:
+           
+            order_number_texts = self.driver.find_elements(By.CSS_SELECTOR, "[id*='dashboard-order-number-']")
+            for order_element in order_number_texts:
+                id_text = order_element.get_attribute('id')
+                order_id = id_text.split('-')[-1]
+
+                if f'{order_id}.pdf' in completed_orders:
+                    finished = True
+                    break # Break loop when we get to the first completed order.
+
+                orders.append(order_id)
+
+            if finished: break
+
+            pagination_nav_element = self.driver.find_element(By.CSS_SELECTOR, 'nav[aria-label="pagination"]')
+            pagination_next_page = pagination_nav_element.find_element(By.XPATH, "ul/li[last()]")
+            pagination_next_page.click()
+            time.sleep(3)
 
         return orders
 
@@ -197,7 +201,9 @@ class WebstaurantBot:
         return [file for file in listdir(COMPLETED_INVOICES_PATH) if isfile(join(COMPLETED_INVOICES_PATH, file))]
 
     def update_pick_list(self, order_info) -> None:
-        workbook = load_workbook(f'{SOURCE_PATH}\\backend\\smallwares\\PickList.xlsx')
+
+        workbook_path = SOURCE_PATH / 'smallwares' / 'PickList.xlsx'
+        workbook = load_workbook(workbook_path)
         sheet = workbook.active
 
         for order_item in order_info['order_items']:
@@ -209,12 +215,12 @@ class WebstaurantBot:
                 order_item['quantity'],
                 '',
                 '',
-                order_item['price']
+                order_item['price_per']
             ])
 
-        workbook.save(f'{SOURCE_PATH}\\backend\\smallwares\\PickList.xlsx')
+        workbook.save(workbook_path)
 
-        rename(f'{SOURCE_PATH}\\backend\\smallwares\\invoices\\{order_info["order_number"]}.pdf', f'{COMPLETED_INVOICES_PATH}\\{order_info["order_number"]}.pdf')
+        rename( SOURCE_PATH / 'smallwares' / 'invoices' / f'{order_info["order_number"]}.pdf', COMPLETED_INVOICES_PATH / f'{order_info["order_number"]}.pdf')
 
         return
 

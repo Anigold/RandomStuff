@@ -522,3 +522,247 @@ Traceback (most recent call last):
     os.rename(self, target)
     ~~~~~~~~~^^^^^^^^^^^^^^
 FileExistsError: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\Order.pdf' -> 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\UNFI _ BAKERY 20250215.pdf'
+2025-02-16 06:45:41,570 - ERROR - backend.craftable_bot.CraftableBot - Error in login: 'NoneType' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 89, in login
+    self.driver.get(self.site_map['login_page'])
+    ^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+2025-02-16 12:15:16,750 - ERROR - backend.craftable_bot.CraftableBot - Error in login: Message: 
+Stacktrace:
+	GetHandleVerifier [0x003702D3+25139]
+	(No symbol) [0x002FB284]
+	(No symbol) [0x001D04A3]
+	(No symbol) [0x00218338]
+	(No symbol) [0x0021868B]
+	(No symbol) [0x00260F62]
+	(No symbol) [0x0023CF84]
+	(No symbol) [0x0025E6E1]
+	(No symbol) [0x0023CD36]
+	(No symbol) [0x0020BD29]
+	(No symbol) [0x0020D064]
+	GetHandleVerifier [0x0067B193+3215603]
+	GetHandleVerifier [0x0069230A+3310186]
+	GetHandleVerifier [0x0068C522+3286146]
+	GetHandleVerifier [0x00409CD0+654384]
+	(No symbol) [0x0030460D]
+	(No symbol) [0x003014F8]
+	(No symbol) [0x00301697]
+	(No symbol) [0x002F3D70]
+	BaseThreadInitThunk [0x7673FCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x771682AE+286]
+	RtlGetAppContainerNamedObjectPath [0x7716827E+238]
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 91, in login
+    WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, './/form')))
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\selenium\webdriver\support\wait.py", line 146, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+	GetHandleVerifier [0x003702D3+25139]
+	(No symbol) [0x002FB284]
+	(No symbol) [0x001D04A3]
+	(No symbol) [0x00218338]
+	(No symbol) [0x0021868B]
+	(No symbol) [0x00260F62]
+	(No symbol) [0x0023CF84]
+	(No symbol) [0x0025E6E1]
+	(No symbol) [0x0023CD36]
+	(No symbol) [0x0020BD29]
+	(No symbol) [0x0020D064]
+	GetHandleVerifier [0x0067B193+3215603]
+	GetHandleVerifier [0x0069230A+3310186]
+	GetHandleVerifier [0x0068C522+3286146]
+	GetHandleVerifier [0x00409CD0+654384]
+	(No symbol) [0x0030460D]
+	(No symbol) [0x003014F8]
+	(No symbol) [0x00301697]
+	(No symbol) [0x002F3D70]
+	BaseThreadInitThunk [0x7673FCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x771682AE+286]
+	RtlGetAppContainerNamedObjectPath [0x7716827E+238]
+
+2025-02-16 12:16:23,026 - ERROR - backend.craftable_bot.CraftableBot - Error in login: Message: 
+Stacktrace:
+	GetHandleVerifier [0x00B702D3+25139]
+	(No symbol) [0x00AFB284]
+	(No symbol) [0x009D04A3]
+	(No symbol) [0x00A18338]
+	(No symbol) [0x00A1868B]
+	(No symbol) [0x00A60F62]
+	(No symbol) [0x00A3CF84]
+	(No symbol) [0x00A5E6E1]
+	(No symbol) [0x00A3CD36]
+	(No symbol) [0x00A0BD29]
+	(No symbol) [0x00A0D064]
+	GetHandleVerifier [0x00E7B193+3215603]
+	GetHandleVerifier [0x00E9230A+3310186]
+	GetHandleVerifier [0x00E8C522+3286146]
+	GetHandleVerifier [0x00C09CD0+654384]
+	(No symbol) [0x00B0460D]
+	(No symbol) [0x00B014F8]
+	(No symbol) [0x00B01697]
+	(No symbol) [0x00AF3D70]
+	BaseThreadInitThunk [0x7673FCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x771682AE+286]
+	RtlGetAppContainerNamedObjectPath [0x7716827E+238]
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 91, in login
+    WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, './/form')))
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\selenium\webdriver\support\wait.py", line 146, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+	GetHandleVerifier [0x00B702D3+25139]
+	(No symbol) [0x00AFB284]
+	(No symbol) [0x009D04A3]
+	(No symbol) [0x00A18338]
+	(No symbol) [0x00A1868B]
+	(No symbol) [0x00A60F62]
+	(No symbol) [0x00A3CF84]
+	(No symbol) [0x00A5E6E1]
+	(No symbol) [0x00A3CD36]
+	(No symbol) [0x00A0BD29]
+	(No symbol) [0x00A0D064]
+	GetHandleVerifier [0x00E7B193+3215603]
+	GetHandleVerifier [0x00E9230A+3310186]
+	GetHandleVerifier [0x00E8C522+3286146]
+	GetHandleVerifier [0x00C09CD0+654384]
+	(No symbol) [0x00B0460D]
+	(No symbol) [0x00B014F8]
+	(No symbol) [0x00B01697]
+	(No symbol) [0x00AF3D70]
+	BaseThreadInitThunk [0x7673FCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x771682AE+286]
+	RtlGetAppContainerNamedObjectPath [0x7716827E+238]
+
+2025-02-16 12:17:43,555 - ERROR - backend.craftable_bot.CraftableBot - Error in login: Message: 
+Stacktrace:
+	GetHandleVerifier [0x00E702D3+25139]
+	(No symbol) [0x00DFB284]
+	(No symbol) [0x00CD04A3]
+	(No symbol) [0x00D18338]
+	(No symbol) [0x00D1868B]
+	(No symbol) [0x00D60F62]
+	(No symbol) [0x00D3CF84]
+	(No symbol) [0x00D5E6E1]
+	(No symbol) [0x00D3CD36]
+	(No symbol) [0x00D0BD29]
+	(No symbol) [0x00D0D064]
+	GetHandleVerifier [0x0117B193+3215603]
+	GetHandleVerifier [0x0119230A+3310186]
+	GetHandleVerifier [0x0118C522+3286146]
+	GetHandleVerifier [0x00F09CD0+654384]
+	(No symbol) [0x00E0460D]
+	(No symbol) [0x00E014F8]
+	(No symbol) [0x00E01697]
+	(No symbol) [0x00DF3D70]
+	BaseThreadInitThunk [0x7673FCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x771682AE+286]
+	RtlGetAppContainerNamedObjectPath [0x7716827E+238]
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 91, in login
+    WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, './/form')))
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\selenium\webdriver\support\wait.py", line 146, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+	GetHandleVerifier [0x00E702D3+25139]
+	(No symbol) [0x00DFB284]
+	(No symbol) [0x00CD04A3]
+	(No symbol) [0x00D18338]
+	(No symbol) [0x00D1868B]
+	(No symbol) [0x00D60F62]
+	(No symbol) [0x00D3CF84]
+	(No symbol) [0x00D5E6E1]
+	(No symbol) [0x00D3CD36]
+	(No symbol) [0x00D0BD29]
+	(No symbol) [0x00D0D064]
+	GetHandleVerifier [0x0117B193+3215603]
+	GetHandleVerifier [0x0119230A+3310186]
+	GetHandleVerifier [0x0118C522+3286146]
+	GetHandleVerifier [0x00F09CD0+654384]
+	(No symbol) [0x00E0460D]
+	(No symbol) [0x00E014F8]
+	(No symbol) [0x00E01697]
+	(No symbol) [0x00DF3D70]
+	BaseThreadInitThunk [0x7673FCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x771682AE+286]
+	RtlGetAppContainerNamedObjectPath [0x7716827E+238]
+
+2025-02-16 12:19:31,327 - ERROR - backend.craftable_bot.CraftableBot - Error in login: Message: 
+Stacktrace:
+	GetHandleVerifier [0x008402D3+25139]
+	(No symbol) [0x007CB284]
+	(No symbol) [0x006A04A3]
+	(No symbol) [0x006E8338]
+	(No symbol) [0x006E868B]
+	(No symbol) [0x00730F62]
+	(No symbol) [0x0070CF84]
+	(No symbol) [0x0072E6E1]
+	(No symbol) [0x0070CD36]
+	(No symbol) [0x006DBD29]
+	(No symbol) [0x006DD064]
+	GetHandleVerifier [0x00B4B193+3215603]
+	GetHandleVerifier [0x00B6230A+3310186]
+	GetHandleVerifier [0x00B5C522+3286146]
+	GetHandleVerifier [0x008D9CD0+654384]
+	(No symbol) [0x007D460D]
+	(No symbol) [0x007D14F8]
+	(No symbol) [0x007D1697]
+	(No symbol) [0x007C3D70]
+	BaseThreadInitThunk [0x7673FCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x771682AE+286]
+	RtlGetAppContainerNamedObjectPath [0x7716827E+238]
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 92, in login
+    WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, './/form')))
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\selenium\webdriver\support\wait.py", line 146, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+	GetHandleVerifier [0x008402D3+25139]
+	(No symbol) [0x007CB284]
+	(No symbol) [0x006A04A3]
+	(No symbol) [0x006E8338]
+	(No symbol) [0x006E868B]
+	(No symbol) [0x00730F62]
+	(No symbol) [0x0070CF84]
+	(No symbol) [0x0072E6E1]
+	(No symbol) [0x0070CD36]
+	(No symbol) [0x006DBD29]
+	(No symbol) [0x006DD064]
+	GetHandleVerifier [0x00B4B193+3215603]
+	GetHandleVerifier [0x00B6230A+3310186]
+	GetHandleVerifier [0x00B5C522+3286146]
+	GetHandleVerifier [0x008D9CD0+654384]
+	(No symbol) [0x007D460D]
+	(No symbol) [0x007D14F8]
+	(No symbol) [0x007D1697]
+	(No symbol) [0x007C3D70]
+	BaseThreadInitThunk [0x7673FCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x771682AE+286]
+	RtlGetAppContainerNamedObjectPath [0x7716827E+238]
+
+2025-02-16 12:23:16,823 - ERROR - backend.craftable_bot.CraftableBot - Error in download_orders: list index out of range
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 197, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+IndexError: list index out of range

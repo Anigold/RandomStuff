@@ -108,6 +108,7 @@ class CraftableBot:
         time.sleep(5)
 
         self.is_logged_in = True
+
         self.logger.info('Login successful.')
         return
     
@@ -191,7 +192,7 @@ class CraftableBot:
                 self.logger.warning(f"No more orders found for {store}. Moving to next store.")
                 break  # Exit while loop and move to the next store
 
-            for pos in range(len(table_rows) + 1):
+            for pos in range(len(table_rows)):
                 stale_reference_table_rows = self._get_order_table_rows() # Refresh to avoid stale references
                 self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
 
@@ -359,6 +360,14 @@ class CraftableBot:
             return cls.site_map[key].format(store_id=cls.stores[store])
         
         return cls.site_map[key]
+    
+    @Logger.log_exceptions
+    def input_transfers(self, transfers: list) -> None:
+        self.logger.info(f'Starting protocol for {len(transfers)} transfers.')
+        for transfer in transfers:
+            self.input_transfer(transfer)
+        self.logger.info('Transfers complete.')
+        return
     
     @Logger.log_exceptions
     def input_transfer(self, transfer: Transfer) -> None:
