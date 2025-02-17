@@ -1,0 +1,253 @@
+{
+    "vendors": {
+        "Behlog Produce": {
+            "bot_class": "BehlogProduceBot",
+            "module_path": "backend.vendors.vendor_bots.BehlogProduceBot",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "CSV",
+            "min_order_value": 0,
+            "special_notes": "No minimum order requirement.",
+            "internal_contacts": []
+        },
+        "Copper Horse Coffee": {
+            "bot_class": "CopperHorseBot",
+            "module_path": "backend.vendors.vendor_bots.CopperHorseBot",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "CSV",
+            "min_order_value": 50,
+            "special_notes": "Orders must be placed by Sunday.",
+            "internal_contacts": [
+                {
+                    "name": "Jesse Harriott",
+                    "title": "Sales Representative",
+                    "email": "copperhorsecoffee@gmail.com",
+                    "phone": "6073425824"
+                }
+            ]
+        },
+        "Cortland Produce Inc.": {
+            "bot_class": "CortlandProduceBot",
+            "module_path": "backend.vendors.vendor_bots.CortlandProduceBot",
+            "uses_selenium": true,
+            "requires_credentials": true,
+            "order_format": "XLSX",
+            "min_order_value": 100,
+            "special_notes": "Online ordering only.",
+            "internal_contacts": []
+        },
+        "Dutch Valley": {
+            "bot_class": "DutchValleyBot",
+            "module_path": "backend.vendors.vendor_bots.DutchValleyBot",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "CSV",
+            "min_order_value": 0,
+            "special_notes": "",
+            "internal_contacts": [
+                {
+                    "name": "Doug",
+                    "title": "Sales Representative",
+                    "email": "",
+                    "phone": "7176739547"
+                }
+            ]
+        },
+        "Eurocafe Imports": {
+            "bot_class": "EuroCafeBot",
+            "module_path": "backend.vendors.vendor_bots.EuroCafeBot",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "CSV",
+            "min_order_value": 75,
+            "special_notes": "Call before ordering.",
+            "internal_contacts": [
+                {
+                    "name": "Scott Tota",
+                    "title": "Sales Representative",
+                    "email": "",
+                    "phone": "7162818528"
+                }
+            ]
+        },
+        "Hill & Markes": {
+            "bot_class": "HillNMarkesBot",
+            "module_path": "backend.vendors.vendor_bots.HillNMarkesBot",
+            "uses_selenium": true,
+            "requires_credentials": true,
+            "order_format": "XLSX",
+            "min_order_value": 150,
+            "special_notes": "Orders over $500 qualify for free shipping.",
+            "internal_contacts": [
+                {
+                    "name": "Mike Schoemaker",
+                    "title": "Sales Representative",
+                    "email": "",
+                    "phone": "3156575562"
+                },
+                {
+                    "name": "Jane Smith",
+                    "title": "Inside Sales Representative",
+                    "email": "",
+                    "phone": ""
+                }
+            ]
+        },
+        "Hoffmire Farms": {
+            "bot_class": "HoffmireFarmsBot",
+            "module_path": "backend.vendors.vendor_bots.HoffmireFarmsBot",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "CSV",
+            "min_order_value": 0,
+            "special_notes": "",
+            "internal_contacts": [
+                {
+                    "name": "John Doe",
+                    "title": "Sales Representative",
+                    "email": "johndoe@behlogproduce.com",
+                    "phone": "555-123-4567"
+                },
+                {
+                    "name": "Jane Smith",
+                    "title": "Customer Support",
+                    "email": "support@behlogproduce.com",
+                    "phone": "555-987-6543"
+                }
+            ]
+        },
+        "Ithaca Bakery": {
+            "bot_class": "IthacaBakeryBot",
+            "module_path": "backend.vendors.vendor_bots.IthacaBakeryBot",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "CSV",
+            "min_order_value": 0,
+            "special_notes": "Internal vendor.",
+            "internal_contacts": [
+                {
+                    "name": "Andrew Goldsmith",
+                    "title": "Purchasing Manager",
+                    "email": "purchasing@ithacabakery.com",
+                    "phone": "6072737110"
+                }
+            ]
+        },
+        "Performance Food": {
+            "bot_class": "PerformanceFoodBot",
+            "module_path": "backend.vendors.vendor_bots.PerformanceFoodBot",
+            "uses_selenium": true,
+            "requires_credentials": true,
+            "order_format": "TXT",
+            "min_order_value": 200,
+            "special_notes": "Requires 2-step authentication.",
+            "internal_contacts": [
+                {
+                    "name": "John Doe",
+                    "title": "Sales Representative",
+                    "email": "johndoe@behlogproduce.com",
+                    "phone": "555-123-4567"
+                },
+                {
+                    "name": "Jane Smith",
+                    "title": "Customer Support",
+                    "email": "support@behlogproduce.com",
+                    "phone": "555-987-6543"
+                }
+            ]
+        },
+        "Russo Produce": {
+            "bot_class": "RussoProduceBot",
+            "module_path": "backend.vendors.vendor_bots.RussoProduceBot",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "XLSX",
+            "min_order_value": 100,
+            "special_notes": "",
+            "internal_contacts": [
+                {
+                    "name": "John Doe",
+                    "title": "Sales Representative",
+                    "email": "johndoe@behlogproduce.com",
+                    "phone": "555-123-4567"
+                },
+                {
+                    "name": "Jane Smith",
+                    "title": "Customer Support",
+                    "email": "support@behlogproduce.com",
+                    "phone": "555-987-6543"
+                }
+            ]
+        },
+        "Sysco": {
+            "bot_class": "SyscoBot",
+            "module_path": "backend.vendors.vendor_bots.SyscoBot",
+            "uses_selenium": true,
+            "requires_credentials": true,
+            "order_format": "CSV",
+            "min_order_value": 500,
+            "special_notes": "Sysco account required.",
+            "internal_contacts": [
+                {
+                    "name": "John Doe",
+                    "title": "Sales Representative",
+                    "email": "johndoe@behlogproduce.com",
+                    "phone": "555-123-4567"
+                },
+                {
+                    "name": "Jane Smith",
+                    "title": "Customer Support",
+                    "email": "support@behlogproduce.com",
+                    "phone": "555-987-6543"
+                }
+            ]
+        },
+        "UNFI": {
+            "bot_class": "UNFIBot",
+            "module_path": "backend.vendors.vendor_bots.UNFIBot",
+            "uses_selenium": false,
+            "requires_credentials": true,
+            "order_format": "CSV",
+            "min_order_value": 1500,
+            "special_notes": "Minimum order $1,500.",
+            "internal_contacts": [
+                {
+                    "name": "John Doe",
+                    "title": "Sales Representative",
+                    "email": "johndoe@behlogproduce.com",
+                    "phone": "555-123-4567"
+                },
+                {
+                    "name": "Jane Smith",
+                    "title": "Customer Support",
+                    "email": "support@behlogproduce.com",
+                    "phone": "555-987-6543"
+                }
+            ]
+        },
+        "US Foods": {
+            "bot_class": "USFoodsBot",
+            "module_path": "backend.vendors.vendor_bots.USFoodsBot",
+            "uses_selenium": true,
+            "requires_credentials": true,
+            "order_format": "XLSX",
+            "min_order_value": 500,
+            "special_notes": "Large orders must be placed 48 hours in advance.",
+            "internal_contacts": [
+                {
+                    "name": "John Doe",
+                    "title": "Sales Representative",
+                    "email": "johndoe@behlogproduce.com",
+                    "phone": "555-123-4567"
+                },
+                {
+                    "name": "Jane Smith",
+                    "title": "Customer Support",
+                    "email": "support@behlogproduce.com",
+                    "phone": "555-987-6543"
+                }
+            ]
+        }
+    }
+}

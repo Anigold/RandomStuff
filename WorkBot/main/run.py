@@ -9,19 +9,19 @@ import os
 
 from backend.helpers import  FormatItemData
 
-from backend.vendor_bots.VendorBot import VendorBot
-from backend.vendor_bots.HillNMarkesBot import HillNMarkesBot
-from backend.vendor_bots.USFoodsBot import USFoodsBot
-from backend.vendor_bots.CopperHorseBot import CopperHorseBot
-from backend.vendor_bots.PerformanceFoodBot import PerformanceFoodBot
-from backend.vendor_bots.SyscoBot import SyscoBot
-from backend.vendor_bots.UNFIBot import UNFIBot
-from backend.vendor_bots.IthacaBakeryBot import IthacaBakeryBot
-from backend.vendor_bots.DutchValleyBot import DutchValleyBot
-from backend.vendor_bots.CortlandProduceBot import CortlandProduceBot
-from backend.vendor_bots.BehlogProduceBot import BehlogProduceBot
-from backend.vendor_bots.RussoProduceBot import RussoProduceBot
-from backend.vendor_bots.EuroCafeBot import EuroCafeBot
+from backend.vendors.vendor_bots.VendorBot import VendorBot
+from backend.vendors.vendor_bots.USFoodsBot import USFoodsBot
+from backend.vendors.vendor_bots.HillNMarkesBot import HillNMarkesBot
+from backend.vendors.vendor_bots.CopperHorseBot import CopperHorseBot
+from backend.vendors.vendor_bots.PerformanceFoodBot import PerformanceFoodBot
+from backend.vendors.vendor_bots.SyscoBot import SyscoBot
+from backend.vendors.vendor_bots.UNFIBot import UNFIBot
+from backend.vendors.vendor_bots.IthacaBakeryBot import IthacaBakeryBot
+from backend.vendors.vendor_bots.DutchValleyBot import DutchValleyBot
+from backend.vendors.vendor_bots.CortlandProduceBot import CortlandProduceBot
+from backend.vendors.vendor_bots.BehlogProduceBot import BehlogProduceBot
+from backend.vendors.vendor_bots.RussoProduceBot import RussoProduceBot
+from backend.vendors.vendor_bots.EuroCafeBot import EuroCafeBot
 
 from backend.orders.OrderManager import OrderManager
 from backend.orders.OrderBot import OrderBot
