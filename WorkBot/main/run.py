@@ -29,12 +29,12 @@ from backend.orders.OrderBot import OrderBot
 from backend.stores.Store import Store
 from backend.stores.StoreManager import StoreManager
 
-from backend.printing.Printer import Printer
+# from backend.printing.Printer import Printer
 from backend.emailer.Emailer import Emailer
 from backend.emailer.Services.Service import Email
 from backend.emailer.Services.Outlook import Outlook
 
-from backend.printing.Printer import Printer
+# from backend.printing.Printer import Printer
 from backend.transferring.TransferManager import TransferManager
 from backend.transferring.Transfer import Transfer, TransferItem
 from backend.pricing.PriceComparator import PriceComparator
@@ -46,6 +46,8 @@ from datetime import date, datetime
 from openpyxl import load_workbook
 
 from pathlib import Path
+
+from backend.WorkBot import WorkBot
 
 dotenv = load_dotenv()
 
@@ -62,91 +64,15 @@ TRANSFER_PATH      = SOURCE_PATH / 'transferring'
 def get_files(path: str) -> list:
 	return [file for file in listdir(path) if isfile(join(path, file))]
 
-# def sort_orders(path: str, override=True) -> None:
-#     # Sort and group orders
-#     files = get_files(path)
-#     for file in files:
-        
-#         vendor_name = file.split('_')[0].strip()
 
-#         if not isdir(f'{path}\\{vendor_name}'):
-#             mkdir(f'{path}\\{vendor_name}')
-        
-#         rename(f'{path}\\{file}', f'{path}\\{vendor_name}\\{file}')
-#     return
 
-def create_options() -> uc.ChromeOptions:
-
-    options = uc.ChromeOptions()
-    preferences = {
-        "plugins.plugins_list":               [{"enabled": False, "name": "Chrome PDF Viewer"}],
-        "download.default_directory":         str(DOWNLOAD_PATH), # Needs to be casted to a string for proper Chrome Driver handling.
-        "download.prompt_for_download":       False,
-        "safebrowsing.enabled":               True,
-        "plugins.always_open_pdf_externally": True,
-        "download.directory_upgrade":         True,
-    }
-    options.add_experimental_option("prefs", preferences)
-    
-    return options
-
-def get_store(name: str) -> Store:
-    store_manager = StoreManager(storage_file=SOURCE_PATH / 'stores' / 'stores.json')
-    return store_manager.find_store_by_name(name)
-
-def get_credentials(name) -> dict:
-
-    username = getenv(f'{name.upper().replace(" ", "_")}_USERNAME') or None
-    password = getenv(f'{name.upper().replace(" ", "_")}_PASSWORD') or None
-
-    return {'username': username, 'password': password}
 
 def get_excel_files(path: Path) -> list[Path]:
 	return [path / file for file in listdir(path) if isfile(join(path, file)) and file.endswith('.xlsx') and '~' not in file]
 
-def get_bot(name) -> VendorBot:
-     
-    bots = {
-        'US Foods': USFoodsBot,
-        'Hill & Markes': HillNMarkesBot,
-        'Sysco': SyscoBot,
-        'Performance Food': PerformanceFoodBot,
-        'Copper Horse Coffee': CopperHorseBot,
-        'UNFI': UNFIBot,
-        'Ithaca Bakery': IthacaBakeryBot,
-        'Dutch Valley': DutchValleyBot,
-        'Cortland Produce Inc.': CortlandProduceBot,
-        'Behlog Produce': BehlogProduceBot,
-        'Russo Produce': RussoProduceBot,
-        'Webstaurant': WebstaurantBot,
-        'Eurocafe Imports': EuroCafeBot,
-        'Webstaurant': WebstaurantBot
-    }
 
-    if name not in bots:
-        return
-    
-    return bots[name]
 
-def check_bot_if_creds_are_needed(name) -> bool:
-    bots = {
-        'Renzi': True,
-        'Hill & Markes': True,
-        'Sysco': True,
-        'Performance Food': True,
-        'Copper Horse Coffee': CopperHorseBot,
-        'UNFI': UNFIBot,
-        'Ithaca Bakery': IthacaBakeryBot,
-        'Dutch Valley': DutchValleyBot,
-        'Cortland Produce Inc.': CortlandProduceBot,
-        'Behlog Produce': BehlogProduceBot,
-        'Russo Produce': RussoProduceBot,
-    }
 
-    if name not in bots:
-        return
-    
-    return bots[name]
 
 '''FIX THIS UGLY-ASS HACKY JOB'''
 def format_orders(vendor: str, path_to_folder: str) -> None:
@@ -333,50 +259,6 @@ def delete_all_files_without_extension(directory: str, extension: str) -> None:
             os_remove(f'{directory}\\{file}')
     return
 
-def find_order_files(base_directory: str, depth=2) -> list:
-    orders = []
-    for root, dirs, files in os.walk(base_directory):
-        if root.count(os.sep) - base_directory.count(os.sep) < depth:
-            for file in files:
-                if file.endswith('.xlsx'):
-                    file_path = os.path.join(root, file)
-                    orders.append(file_path)
-    return orders
-
-def find_order_pdfs(base_directory: Path, depth=2) -> list:
-    base_directory = Path(base_directory)
-    orders = []
-    
-    for path in base_directory.rglob("*.pdf"):
-        if len(path.relative_to(base_directory).parts) <= depth:
-            orders.append(path)
-    
-    return orders
-
-def get_orders_by_store(base_directory: Path, stores: list, depth=2) -> dict:
-    base_directory = Path(base_directory)
-    all_order_files = find_order_pdfs(base_directory, depth)
-
-    store_orders = {store: [] for store in stores}
-
-    for order_file in all_order_files:
-        for store in stores:
-            if store in order_file.stem or store in order_file.parts:
-                store_orders[store].append(order_file)
-    
-    return store_orders
-
-def get_pdfs_by_store(base_directory: Path, store: str, depth=2) -> dict:
-    base_directory = Path(base_directory)
-    all_order_files = find_order_pdfs(base_directory, depth)
-
-    store_orders = {store: []}
-
-    for order_file in all_order_files:
-        if store in order_file.stem or store in order_file.parts:
-            store_orders[store].append(order_file)
-    
-    return store_orders
 
 def generate_weekly_orders_email(store: str, to: list):
 
@@ -396,15 +278,6 @@ def generate_weekly_orders_email(store: str, to: list):
     emailer.display_email(email)
     return 
 
-def delete_orders_from_craftable(stores: list[str]) -> None:
-
-    options = create_options()
-    driver  = uc.Chrome(options=options, use_subprocess=True)
-
-    with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
-        for store in stores: craft_bot.delete_all_orders(store)
-
-    return
 
 if __name__ == '__main__':
 
@@ -445,34 +318,17 @@ if __name__ == '__main__':
 
     stores = [
          'BAKERY',
-         'TRIPHAMMER',
-         'COLLEGETOWN',
-         'EASTHILL',
-         'DOWNTOWN'
+        #  'TRIPHAMMER',
+        #  'COLLEGETOWN',
+        #  'EASTHILL',
+        #  'DOWNTOWN'
     ]
     
+    work_bot = WorkBot()
 
-    ''' CURRENT PROJECT: STORE AND ORDER MANAGERS '''
-    # store_manager = StoreManager(
-    #     storage_file=f'{SOURCE_PATH}\\backend\\stores\\stores.json'
-    #     )
-    
-    # for i in store_manager.stores:
-    #     print(i)
+    work_bot.download_orders(stores=stores, vendors=vendors)
 
-    # store_manager.add_store("006", "NEW TEST STORE")
-    # store_manager.save_stores()
-
-    # print(store_manager.list_stores())
-
-    # order_manager = OrderManager()
-    # order_bot = OrderBot(order_manager)
-    ''' -----------------------------------------'''
-
-    options = create_options()
-    driver = uc.Chrome(options=options, use_subprocess=True)
-
-    with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
+    # with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
 
         # ''' DOWNLOAD ORDERS '''
         # update       = True
@@ -506,10 +362,10 @@ if __name__ == '__main__':
         # for vendor in vendors:
         #     format_orders(vendor, ORDER_FILES_PATH)
     #     '''---------------------------------'''
-        pass
+        # pass
 
-    for vendor in vendors:
-        format_orders(vendor, ORDER_FILES_PATH)
+    # for vendor in vendors:
+    #     format_orders(vendor, ORDER_FILES_PATH)
 
     ''' Welcome to Work Protocol '''
     def welcome_to_work() -> None:
@@ -592,22 +448,22 @@ if __name__ == '__main__':
 
     
 
-    vendors = [
-        'Copper Horse Coffee',
-        # 'Eurocafe Imports',
-        'Ithaca Bakery'
-    ]
-    for vendor in vendors:
+    # vendors = [
+    #     'Copper Horse Coffee',
+    #     # 'Eurocafe Imports',
+    #     'Ithaca Bakery'
+    # ]
+    # for vendor in vendors:
 
-        vendor_bot    = get_bot(vendor)()
-        vendor_path   = f'{ORDER_FILES_PATH}\\{vendor_bot.name}'
-        vendor_orders = [join(f'{vendor_path}\\', file) for file in listdir(f'{vendor_path}\\') if isfile(join(f'{vendor_path}\\', file)) and file.endswith('.xlsx')]
-        # pprint.pprint(vendor_orders)
-        vendor_bot.combine_orders(vendor_orders, vendor_path)
+    #     vendor_bot    = get_bot(vendor)()
+    #     vendor_path   = f'{ORDER_FILES_PATH}\\{vendor_bot.name}'
+    #     vendor_orders = [join(f'{vendor_path}\\', file) for file in listdir(f'{vendor_path}\\') if isfile(join(f'{vendor_path}\\', file)) and file.endswith('.xlsx')]
+    #     # pprint.pprint(vendor_orders)
+    #     vendor_bot.combine_orders(vendor_orders, vendor_path)
 
     
-    input('click enter when ready')
-    setup_emails_for_sunday()
+    # input('click enter when ready')
+    # setup_emails_for_sunday()
 
 
 

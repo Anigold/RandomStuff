@@ -57,20 +57,20 @@ class CraftableBot:
 
         self.is_logged_in = False
 
-    def __enter__(self):
-        self.logger.info('Starting CraftableBot session.')
-        self.login()
-        return self
+    # def __enter__(self):
+    #     self.logger.info('Starting CraftableBot session.')
+    #     self.login()
+    #     return self
     
-    def __exit__(self, type, value, traceback):
-        self.logger.info('Ending CraftableBot session.')
-        try:
-            self.close_session()
-        except Exception as e:
-            self.logger.warning(f'Issue with closing session: {e}')
+    # def __exit__(self, type, value, traceback):
+    #     self.logger.info('Ending CraftableBot session.')
+    #     try:
+    #         self.close_session()
+    #     except Exception as e:
+    #         self.logger.warning(f'Issue with closing session: {e}')
 
-        time.sleep(2) # Prevents race condition with OS program manager
-        return True
+    #     time.sleep(2) # Prevents race condition with OS program manager
+    #     return True
     
     '''
     Login to the Craftable website using the standard landing page.
@@ -179,6 +179,8 @@ class CraftableBot:
     @Logger.log_exceptions
     def download_orders(self, stores: list, vendors=list, download_pdf=True, update=True) -> None:
 
+        self.login()
+
         self.logger.info('Starting order download protocol.')
         for store in stores:
             
@@ -260,6 +262,8 @@ class CraftableBot:
     
     @Logger.log_exceptions
     def delete_orders(self, stores: list[str], vendors: list[str] = None) -> None:
+
+        self.login()
 
         for store in stores:
             self.logger.info(f'Starting order deletion for store: {store}.')
@@ -363,6 +367,8 @@ class CraftableBot:
     
     @Logger.log_exceptions
     def input_transfers(self, transfers: list) -> None:
+        self.login()
+
         self.logger.info(f'Starting protocol for {len(transfers)} transfers.')
         for transfer in transfers:
             self.input_transfer(transfer)
@@ -372,6 +378,9 @@ class CraftableBot:
     @Logger.log_exceptions
     def input_transfer(self, transfer: Transfer) -> None:
         
+        if not self.is_logged_in:
+            self.login()
+            
         self.logger.info(f'Starting transfer protocol for {len(transfer.items)} items from {transfer.store_from} to {transfer.store_to} on {transfer.date}')
         if not self.is_logged_in: self.login()
 

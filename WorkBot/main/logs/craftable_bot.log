@@ -826,3 +826,95 @@ Stacktrace:
 2025-02-16 12:44:18,632 - INFO - CraftableBot - Login successful.
 2025-02-16 12:44:18,632 - INFO - CraftableBot - Ending CraftableBot session.
 2025-02-16 12:44:18,632 - INFO - CraftableBot - Closing WebDriver session.
+2025-02-18 20:56:23,873 - INFO - CraftableBot - Starting order download protocol.
+2025-02-18 20:56:23,873 - INFO - CraftableBot - Accessing order page for BAKERY.
+2025-02-18 20:56:31,029 - WARNING - CraftableBot - Failed to retrieve order table: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//tbody"}
+  (Session info: chrome=133.0.6943.53); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+#0 0x562b15165bea <unknown>
+#1 0x562b14c037d0 <unknown>
+#2 0x562b14c54cc0 <unknown>
+#3 0x562b14c54e41 <unknown>
+#4 0x562b14ca3984 <unknown>
+#5 0x562b14c7aabd <unknown>
+#6 0x562b14ca0d0c <unknown>
+#7 0x562b14c7a863 <unknown>
+#8 0x562b14c46ac8 <unknown>
+#9 0x562b14c47c31 <unknown>
+#10 0x562b1512f18b <unknown>
+#11 0x562b15133112 <unknown>
+#12 0x562b1511c04c <unknown>
+#13 0x562b15133d04 <unknown>
+#14 0x562b151004bf <unknown>
+#15 0x562b15154528 <unknown>
+#16 0x562b151546f9 <unknown>
+#17 0x562b15164a66 <unknown>
+#18 0x7fdb89044609 start_thread
+
+2025-02-18 20:56:31,029 - WARNING - CraftableBot - No more orders found for BAKERY. Moving to next store.
+2025-02-18 20:56:31,029 - INFO - CraftableBot - Order download complete.
+2025-02-18 20:56:42,279 - INFO - CraftableBot - Starting order download protocol.
+2025-02-18 20:56:42,279 - INFO - CraftableBot - Accessing order page for BAKERY.
+2025-02-18 20:56:49,428 - WARNING - CraftableBot - Failed to retrieve order table: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//tbody"}
+  (Session info: chrome=133.0.6943.53); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+#0 0x55d98aa53bea <unknown>
+#1 0x55d98a4f17d0 <unknown>
+#2 0x55d98a542cc0 <unknown>
+#3 0x55d98a542e41 <unknown>
+#4 0x55d98a591984 <unknown>
+#5 0x55d98a568abd <unknown>
+#6 0x55d98a58ed0c <unknown>
+#7 0x55d98a568863 <unknown>
+#8 0x55d98a534ac8 <unknown>
+#9 0x55d98a535c31 <unknown>
+#10 0x55d98aa1d18b <unknown>
+#11 0x55d98aa21112 <unknown>
+#12 0x55d98aa0a04c <unknown>
+#13 0x55d98aa21d04 <unknown>
+#14 0x55d98a9ee4bf <unknown>
+#15 0x55d98aa42528 <unknown>
+#16 0x55d98aa426f9 <unknown>
+#17 0x55d98aa52a66 <unknown>
+#18 0x7f0e58ca1609 start_thread
+
+2025-02-18 20:56:49,428 - WARNING - CraftableBot - No more orders found for BAKERY. Moving to next store.
+2025-02-18 20:56:49,428 - INFO - CraftableBot - Order download complete.
+2025-02-18 20:57:12,943 - INFO - CraftableBot - Starting order download protocol.
+2025-02-18 20:57:12,943 - INFO - CraftableBot - Accessing order page for BAKERY.
+2025-02-18 20:57:19,995 - WARNING - CraftableBot - Failed to retrieve order table: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//tbody"}
+  (Session info: chrome=133.0.6943.53); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+#0 0x5568066d7bea <unknown>
+#1 0x5568061757d0 <unknown>
+#2 0x5568061c6cc0 <unknown>
+#3 0x5568061c6e41 <unknown>
+#4 0x556806215984 <unknown>
+#5 0x5568061ecabd <unknown>
+#6 0x556806212d0c <unknown>
+#7 0x5568061ec863 <unknown>
+#8 0x5568061b8ac8 <unknown>
+#9 0x5568061b9c31 <unknown>
+#10 0x5568066a118b <unknown>
+#11 0x5568066a5112 <unknown>
+#12 0x55680668e04c <unknown>
+#13 0x5568066a5d04 <unknown>
+#14 0x5568066724bf <unknown>
+#15 0x5568066c6528 <unknown>
+#16 0x5568066c66f9 <unknown>
+#17 0x5568066d6a66 <unknown>
+#18 0x7f3b63af0609 start_thread
+
+2025-02-18 20:57:19,995 - WARNING - CraftableBot - No more orders found for BAKERY. Moving to next store.
+2025-02-18 20:57:19,995 - INFO - CraftableBot - Order download complete.
+2025-02-18 20:59:58,034 - INFO - CraftableBot - Logging into Craftable.
+2025-02-18 21:00:04,784 - INFO - CraftableBot - Login successful.
+2025-02-18 21:00:04,784 - INFO - CraftableBot - Starting order download protocol.
+2025-02-18 21:00:04,784 - INFO - CraftableBot - Accessing order page for BAKERY.
+2025-02-18 21:00:11,283 - INFO - CraftableBot - Retrieving order for Sysco (02/16/2025).
+2025-02-18 21:00:13,155 - INFO - CraftableBot - Saving order for Sysco.
+2025-02-18 21:00:20,559 - INFO - CraftableBot - Retrieving order for Performance Food (02/16/2025).
+2025-02-18 21:00:22,333 - INFO - CraftableBot - Saving order for Performance Food.
+2025-02-18 21:00:29,788 - INFO - CraftableBot - Retrieving order for US Foods (02/16/2025).
+2025-02-18 21:00:31,038 - INFO - CraftableBot - Saving order for US Foods.
+2025-02-18 21:00:38,725 - INFO - CraftableBot - Order download complete.

@@ -1,4 +1,4 @@
-from ..vendor_bots.VendorBot import PricingBotMixin
+from backend.vendors.vendor_bots.VendorBot import PricingBotMixin
 from openpyxl import load_workbook, Workbook
 import shutil
 import pprint
