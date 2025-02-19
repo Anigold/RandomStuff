@@ -21,7 +21,8 @@ PATHS = {
 
 LOG_FILES = {
     "app": "logs/app.log",
-    "craftable_bot": "logs/craftable_bot.log"
+    "craftable_bot": "logs/craftable_bot.log",
+    'master': 'logs/master.log'
 }
 
 def get_env_variable(var_name: str, default=None):

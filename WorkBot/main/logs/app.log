@@ -766,3 +766,69 @@ Traceback (most recent call last):
     self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
 IndexError: list index out of range
+2025-02-19 07:53:01,342 - ERROR - backend.craftable_bot.CraftableBot - Error in delete_orders: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//tbody"}
+  (Session info: chrome=133.0.6943.100); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x00310283+25139]
+	(No symbol) [0x0029B234]
+	(No symbol) [0x001704A3]
+	(No symbol) [0x001B8338]
+	(No symbol) [0x001B868B]
+	(No symbol) [0x00200F62]
+	(No symbol) [0x001DCF84]
+	(No symbol) [0x001FE6E1]
+	(No symbol) [0x001DCD36]
+	(No symbol) [0x001ABD29]
+	(No symbol) [0x001AD064]
+	GetHandleVerifier [0x0061B143+3215603]
+	GetHandleVerifier [0x006322BA+3310186]
+	GetHandleVerifier [0x0062C4D2+3286146]
+	GetHandleVerifier [0x003A9C80+654384]
+	(No symbol) [0x002A45BD]
+	(No symbol) [0x002A14A8]
+	(No symbol) [0x002A1647]
+	(No symbol) [0x00293D20]
+	BaseThreadInitThunk [0x76F1FCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x77A582AE+286]
+	RtlGetAppContainerNamedObjectPath [0x77A5827E+238]
+	(No symbol) [0x00000000]
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 315, in delete_orders
+    table_body = self.driver.find_element(By.XPATH, './/tbody')
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 888, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 429, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//tbody"}
+  (Session info: chrome=133.0.6943.100); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x00310283+25139]
+	(No symbol) [0x0029B234]
+	(No symbol) [0x001704A3]
+	(No symbol) [0x001B8338]
+	(No symbol) [0x001B868B]
+	(No symbol) [0x00200F62]
+	(No symbol) [0x001DCF84]
+	(No symbol) [0x001FE6E1]
+	(No symbol) [0x001DCD36]
+	(No symbol) [0x001ABD29]
+	(No symbol) [0x001AD064]
+	GetHandleVerifier [0x0061B143+3215603]
+	GetHandleVerifier [0x006322BA+3310186]
+	GetHandleVerifier [0x0062C4D2+3286146]
+	GetHandleVerifier [0x003A9C80+654384]
+	(No symbol) [0x002A45BD]
+	(No symbol) [0x002A14A8]
+	(No symbol) [0x002A1647]
+	(No symbol) [0x00293D20]
+	BaseThreadInitThunk [0x76F1FCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x77A582AE+286]
+	RtlGetAppContainerNamedObjectPath [0x77A5827E+238]
+	(No symbol) [0x00000000]
+

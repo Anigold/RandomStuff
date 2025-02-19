@@ -25,6 +25,18 @@ from pathlib import Path
 
 from backend.logger.Logger import Logger
 
+
+
+def temporary_login(func):
+    def wrapper(self, *args, **kwargs):
+        self.login()
+        try:
+            return func(self, *args, **kwargs)
+        finally:
+            self.close_session()
+    return wrapper
+
+
 '''
 Craftable Bot utlizes Selenium to interact with the Craftable website. 
 '''
@@ -129,6 +141,7 @@ class CraftableBot:
         except Exception as e: 
             self.logger.error(f'Error closing WebDriver session: {e}')
 
+        time.sleep(2)
         return
     
     '''
@@ -176,10 +189,9 @@ class CraftableBot:
     files, and save in the ORDER_FILES_PATH.
 
     '''
+    @temporary_login
     @Logger.log_exceptions
     def download_orders(self, stores: list, vendors=list, download_pdf=True, update=True) -> None:
-
-        self.login()
 
         self.logger.info('Starting order download protocol.')
         for store in stores:
@@ -260,10 +272,9 @@ class CraftableBot:
                 return row
         return None
     
+    @temporary_login
     @Logger.log_exceptions
     def delete_orders(self, stores: list[str], vendors: list[str] = None) -> None:
-
-        self.login()
 
         for store in stores:
             self.logger.info(f'Starting order deletion for store: {store}.')
@@ -302,8 +313,12 @@ class CraftableBot:
                 self._delete_order(row)
 
                 # Refresh table after deletion
-                table_body = self.driver.find_element(By.XPATH, './/tbody')
-                table_rows = table_body.find_elements(By.XPATH, './tr')
+                try:
+                    table_body = self.driver.find_element(By.XPATH, './/tbody')
+                    table_rows = table_body.find_elements(By.XPATH, './tr')
+                except:
+                    self.logger.info('No orders table found. All orders deleted.')
+                    break
 
             self.logger.info(f"Finished deleting orders for store: {store}.")
 
@@ -365,9 +380,9 @@ class CraftableBot:
         
         return cls.site_map[key]
     
+    @temporary_login
     @Logger.log_exceptions
     def input_transfers(self, transfers: list) -> None:
-        self.login()
 
         self.logger.info(f'Starting protocol for {len(transfers)} transfers.')
         for transfer in transfers:
@@ -378,8 +393,6 @@ class CraftableBot:
     @Logger.log_exceptions
     def input_transfer(self, transfer: Transfer) -> None:
         
-        if not self.is_logged_in:
-            self.login()
             
         self.logger.info(f'Starting transfer protocol for {len(transfer.items)} items from {transfer.store_from} to {transfer.store_to} on {transfer.date}')
         if not self.is_logged_in: self.login()
@@ -487,6 +500,8 @@ class CraftableBot:
         self.logger.info(f'Starting input for {len(transfer.items)} transfer items.')
 
         for item in transfer.items:
+            print(item.name, flush=True)
+            if item.quantity <= 0: return # Skip items that weren't transferred.
             try:
                 self.logger.debug(f'Adding transfer item: {item.name} ({item.quantity})')
                 self._add_transfer_item(item)
@@ -497,6 +512,7 @@ class CraftableBot:
         return
     
     def _add_transfer_item(self, item) -> None:
+
 
         self.logger.debug(f'Clicking "Add Transfer Line" button for {item.name}.')
         # Click the add-item button
@@ -663,7 +679,7 @@ class CraftableBot:
         
         print('Checking for pre-existing order data.', flush=True)
         preexisting_workbook_path = self.order_manager.get_order_files_directory() / vendor_name / preexisting_workbook_filename
-        preexisting_file_exists = preexisting_workbook_path.exists()
+        preexisting_file_exists   = preexisting_workbook_path.exists()
         
         if not self.order_manager.get_vendor_orders_directory(vendor_name): 
             print('No file to update, continuing with data download.', flush=True)
@@ -673,8 +689,8 @@ class CraftableBot:
             return False
         
         print('Extracting saved data...', flush=True)
-        workbook = load_workbook(preexisting_workbook_path, read_only=True)
-        sheet = workbook.active
+        workbook    = load_workbook(preexisting_workbook_path, read_only=True)
+        sheet       = workbook.active
         saved_items = [[cell.value for cell in row] for row in sheet.iter_rows(min_row=2)]
         workbook.close()
 

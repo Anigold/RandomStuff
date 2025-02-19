@@ -3,31 +3,13 @@ import undetected_chromedriver as uc
 
 from dotenv import load_dotenv
 from os import getenv
-from os import listdir, remove as os_remove, mkdir, rename
-from os.path import isfile, join, isdir
-import os
+from os import listdir, remove as os_remove, rename
+from os.path import isfile, join
+
 
 from backend.helpers import  FormatItemData
 
-from backend.vendors.vendor_bots.VendorBot import VendorBot
-from backend.vendors.vendor_bots.USFoodsBot import USFoodsBot
-from backend.vendors.vendor_bots.HillNMarkesBot import HillNMarkesBot
-from backend.vendors.vendor_bots.CopperHorseBot import CopperHorseBot
-from backend.vendors.vendor_bots.PerformanceFoodBot import PerformanceFoodBot
-from backend.vendors.vendor_bots.SyscoBot import SyscoBot
-from backend.vendors.vendor_bots.UNFIBot import UNFIBot
-from backend.vendors.vendor_bots.IthacaBakeryBot import IthacaBakeryBot
-from backend.vendors.vendor_bots.DutchValleyBot import DutchValleyBot
-from backend.vendors.vendor_bots.CortlandProduceBot import CortlandProduceBot
-from backend.vendors.vendor_bots.BehlogProduceBot import BehlogProduceBot
-from backend.vendors.vendor_bots.RussoProduceBot import RussoProduceBot
-from backend.vendors.vendor_bots.EuroCafeBot import EuroCafeBot
 
-from backend.orders.OrderManager import OrderManager
-from backend.orders.OrderBot import OrderBot
-
-from backend.stores.Store import Store
-from backend.stores.StoreManager import StoreManager
 
 # from backend.printing.Printer import Printer
 from backend.emailer.Emailer import Emailer
@@ -39,11 +21,10 @@ from backend.transferring.TransferManager import TransferManager
 from backend.transferring.Transfer import Transfer, TransferItem
 from backend.pricing.PriceComparator import PriceComparator
 
-from backend.smallwares.WebstaurantBot import WebstaurantBot
 
-from datetime import date, datetime
 
-from openpyxl import load_workbook
+from datetime import date
+
 
 from pathlib import Path
 
@@ -76,7 +57,8 @@ def get_excel_files(path: Path) -> list[Path]:
 
 '''FIX THIS UGLY-ASS HACKY JOB'''
 def format_orders(vendor: str, path_to_folder: str) -> None:
-    vendor_bot  = get_bot(vendor)()
+    import backend.vendors.vendor_config as vendor_config
+    vendor_bot  = vendor_config.get_vendor_bot(vendor)()
     excel_files = get_excel_files(path_to_folder / vendor_bot.name)
     for file in excel_files:
         file_name_no_extension  = file.name.split('.')[0]
@@ -318,15 +300,31 @@ if __name__ == '__main__':
 
     stores = [
          'BAKERY',
-        #  'TRIPHAMMER',
-        #  'COLLEGETOWN',
+         'TRIPHAMMER',
+         'COLLEGETOWN',
         #  'EASTHILL',
         #  'DOWNTOWN'
     ]
     
     work_bot = WorkBot()
 
-    work_bot.download_orders(stores=stores, vendors=vendors)
+    # work_bot.download_orders(stores=stores, vendors=vendors)
+    # work_bot.sort_orders()
+    # work_bot.delete_orders(stores, vendors=vendors)
+
+    transfers_directory = TransferManager.get_transfer_files_directory()
+    transfer_ctb  = work_bot.craft_bot.transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to COLLEGETOWN 20250217.xlsx')
+    transfer_dtb  = work_bot.craft_bot.transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to DOWNTOWN 20250217.xlsx')
+    transfer_ehp  = work_bot.craft_bot.transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to EASTHILL 20250217.xlsx')
+    transfer_trip = work_bot.craft_bot.transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to TRIPHAMMER 20250217.xlsx')
+    
+    transfers = []
+    # transfers.append(transfer_ctb)
+    # transfers.append(transfer_dtb)
+    transfers.append(transfer_ehp)
+    # transfers.append(transfer_trip)
+    work_bot.input_transfers(transfers)
+
 
     # with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
 
@@ -359,8 +357,8 @@ if __name__ == '__main__':
 
     #     ''' FORMAT ORDERS FOR VENDOR UPLOAD '''
     #     # # sort_orders(ORDER_FILES_PATH)
-        # for vendor in vendors:
-        #     format_orders(vendor, ORDER_FILES_PATH)
+    # for vendor in vendors:
+    #     format_orders(vendor, ORDER_FILES_PATH)
     #     '''---------------------------------'''
         # pass
 

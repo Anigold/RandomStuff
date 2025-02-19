@@ -2,6 +2,7 @@ from backend.logger.Logger import Logger
 from backend.vendors.VendorManager import VendorManager
 from backend.stores.StoreManager import StoreManager
 from backend.orders.OrderManager import OrderManager
+from backend.transferring.TransferManager import TransferManager
 
 from backend.craftable_bot.CraftableBot import CraftableBot
 from backend.craftable_bot.helpers import generate_craftablebot_args
@@ -17,15 +18,28 @@ class WorkBot:
 
         self.logger.info('Initializing WorkBot...')
 
-        self.vendor_manager = VendorManager()
-        self.order_manager  = OrderManager()
-        self.store_manager  = StoreManager()
+        self.vendor_manager   = VendorManager()
+        self.order_manager    = OrderManager()
+        self.store_manager    = StoreManager()
+        self.transfer_manager = TransferManager()
 
         driver, username, password = generate_craftablebot_args(config.get_full_path('downloads'))
-        self.craft_bot = CraftableBot(driver, username, password, order_manager=self.order_manager)
+        self.craft_bot = CraftableBot(driver, username, password, 
+                                      order_manager=self.order_manager, 
+                                      transfer_manager=self.transfer_manager
+                                      )
         
         self.logger.info('WorkBot initialized successfully.')
 
     
     def download_orders(self, stores, vendors=[], download_pdf=True, update=True):
-        self.craft_bot.download_orders(stores, vendors, download_pdf, update)
+        self.craft_bot.download_orders(stores, vendors, download_pdf=download_pdf, update=update)
+    
+    def sort_orders(self):
+        self.order_manager.sort_orders()
+
+    def delete_orders(self, stores, vendors=[]):
+        self.craft_bot.delete_orders(stores, vendors)
+
+    def input_transfers(self, transfers: list):
+        self.craft_bot.input_transfers(transfers)

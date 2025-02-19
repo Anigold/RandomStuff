@@ -29,9 +29,13 @@ class Logger:
             # Prevent duplicate handlers
             if logger.hasHandlers(): return logger
 
+            master_log_file = 'logs/master.log'
+
             # File Handler (Rotating)
             file_handler = RotatingFileHandler(log_file, maxBytes=1_000_000, backupCount=5, delay=False)
+            master_handler = RotatingFileHandler(master_log_file, maxBytes=5_000_000, backupCount=5, delay=False)
             file_handler.setLevel(logging.INFO)
+            master_handler.setLevel(logging.INFO)
 
             # Console Handler (Warnings & Errors only)
             console_handler = logging.StreamHandler()
@@ -41,10 +45,12 @@ class Logger:
             formatter = JsonFormatter() if json_format else logging.Formatter("%(asctime)s - %(levelname)s - %(name)s - %(message)s")
 
             file_handler.setFormatter(formatter)
+            master_handler.setFormatter(formatter)
             console_handler.setFormatter(logging.Formatter("\033[91m%(levelname)s - %(name)s: %(message)s\033[0m"))  # Red for visibility
 
             # Attach handlers
             logger.addHandler(file_handler)
+            logger.addHandler(master_handler)
             logger.addHandler(console_handler)
 
             # Store and return logger
