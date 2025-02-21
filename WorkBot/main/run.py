@@ -20,6 +20,8 @@ from backend.emailer.Services.Outlook import Outlook
 from backend.transferring.TransferManager import TransferManager
 from backend.transferring.Transfer import Transfer, TransferItem
 from backend.pricing.PriceComparator import PriceComparator
+from backend.orders.OrderManager import OrderManager
+from backend.orders.Order import Order
 
 
 
@@ -310,20 +312,34 @@ if __name__ == '__main__':
 
     # work_bot.download_orders(stores=stores, vendors=vendors)
     # work_bot.sort_orders()
+    
     # work_bot.delete_orders(stores, vendors=vendors)
 
+
+    # CONVERT ITHACA_BAKERY ORDERS TO TRANSFERS
     transfers_directory = TransferManager.get_transfer_files_directory()
-    transfer_ctb  = work_bot.craft_bot.transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to COLLEGETOWN 20250217.xlsx')
-    transfer_dtb  = work_bot.craft_bot.transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to DOWNTOWN 20250217.xlsx')
-    transfer_ehp  = work_bot.craft_bot.transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to EASTHILL 20250217.xlsx')
-    transfer_trip = work_bot.craft_bot.transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to TRIPHAMMER 20250217.xlsx')
+    
+    ib_orders = work_bot.order_manager.get_vendor_orders('Ithaca Bakery')
+
+    
+    for i in ib_orders:
+        print(i, flush=True)
+        metadata = OrderManager.parse_file_name(i)
+        order = Order(metadata['store'], metadata['vendor'], metadata['date'])
+        order.load_items_from_excel(i)
+        transfer = work_bot.convert_order_to_transfer(order, 'BAKERY', metadata['store'], metadata['date'])
+        print(transfer)
+    # transfer_ctb  = work_bot.craft_bot.transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to COLLEGETOWN 20250217.xlsx')
+    # transfer_dtb  = work_bot.craft_bot.transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to DOWNTOWN 20250217.xlsx')
+    # transfer_ehp  = work_bot.craft_bot.transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to EASTHILL 20250217.xlsx')
+    # transfer_trip = work_bot.craft_bot.transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to TRIPHAMMER 20250217.xlsx')
     
     transfers = []
     # transfers.append(transfer_ctb)
     # transfers.append(transfer_dtb)
-    transfers.append(transfer_ehp)
+    # transfers.append(transfer_ehp)
     # transfers.append(transfer_trip)
-    work_bot.input_transfers(transfers)
+    # work_bot.input_transfers(transfers)
 
 
     # with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:

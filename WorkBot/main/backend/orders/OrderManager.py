@@ -2,12 +2,15 @@ import re
 from pathlib import Path
 from .Order import Order
 
+from backend.logger.Logger import Logger
+
 SOURCE_PATH         = Path(__file__).parent.parent
 ORDERS_DIRECTORY    = SOURCE_PATH / 'orders' / 'OrderFiles'
 DOWNLOADS_DIRECTORY = SOURCE_PATH / 'downloads'
 
 class OrderManager:
 
+    logger = Logger.get_logger('OrderManager', log_file='logs/order_manager.log')
     file_pattern = re.compile(r"^(?P<vendor>.+?) _ (?P<store>.+?) (?P<date>\d{8})$")
 
     def get_order_files_directory(self) -> Path:
@@ -17,19 +20,32 @@ class OrderManager:
         return DOWNLOADS_DIRECTORY
     
     def get_vendor_orders_directory(self, vendor: str) -> Path:
-        print('Checking for vendor order directory...', flush=True)
+        self.logger.info(f'Checking for directory for: {vendor}.')
+        
         vendor_orders_directory = self.get_order_files_directory() / vendor
         if vendor_orders_directory.exists() and vendor_orders_directory.is_dir():
-            print(f'...order directory found for {vendor}.')
+            self.logger.info(f'Directory found: {vendor_orders_directory}')
             return vendor_orders_directory
-        print(f'...no order directory found for {vendor}.')
+        self.logger.info(f'Directory not found for: {vendor}')
         return None
+
+    def get_vendor_orders(self, vendor: str, file_extension: str = '.xlsx') -> list[Path]:
+
+        vendor_orders_directory = self.get_vendor_orders_directory(vendor)
+
+        if not vendor_orders_directory:
+            # print(f"No order directory found for vendor: {vendor}")
+            return []
+
+        for file in vendor_orders_directory.iterdir():
+            print(file.suffix, flush=True)
+        return [file for file in vendor_orders_directory.iterdir() if file.is_file() and self.is_valid_filename(file) and file.suffix == file_extension]
 
     def generate_filename(self, order: Order = None, store: str = None, vendor: str = None, date: str = None, file_extension: str = '.xlsx') -> str:
         return f'{order.vendor} _ {order.store} {order.date}{file_extension}' if order else f'{vendor} _ {store} {date}{file_extension}'
 
     def get_file_path(self, order: Order, file_extension: str = '.xlsx') -> Path:
-        return self.orders_directory / self.generate_filename(order, file_extension)
+        return self.get_order_files_directory() / self.generate_filename(order, file_extension)
 
     def save_order(self, order: Order, file_extension: str = '.xlsx') -> None:
 

@@ -37,6 +37,13 @@ def temporary_login(func):
     return wrapper
 
 
+def login_necessary(func):
+    def wrapper(self, *args, **kwargs):
+        if not self.is_logged_in:
+            self.login()
+        return func(self, *args, **kwargs)
+    return wrapper
+
 '''
 Craftable Bot utlizes Selenium to interact with the Craftable website. 
 '''
@@ -104,11 +111,11 @@ class CraftableBot:
         
         login_form = self.driver.find_element(By.XPATH, './/form')
         
-        fieldsets = login_form.find_elements(By.XPATH, './/fieldset')
-        email_fieldset = fieldsets[0]
+        fieldsets         = login_form.find_elements(By.XPATH, './/fieldset')
+        email_fieldset    = fieldsets[0]
         password_fieldset = fieldsets[1]
 
-        email_input = email_fieldset.find_element(By.XPATH, './/input')
+        email_input    = email_fieldset.find_element(By.XPATH, './/input')
         password_input = password_fieldset.find_element(By.XPATH, './/input')
 
         submit_button_div = login_form.find_elements(By.XPATH, './/button')[0]
@@ -189,7 +196,7 @@ class CraftableBot:
     files, and save in the ORDER_FILES_PATH.
 
     '''
-    @temporary_login
+    @login_necessary
     @Logger.log_exceptions
     def download_orders(self, stores: list, vendors=list, download_pdf=True, update=True) -> None:
 
@@ -203,7 +210,7 @@ class CraftableBot:
             
             table_rows = self._get_order_table_rows()
             if not table_rows:
-                self.logger.warning(f"No more orders found for {store}. Moving to next store.")
+                self.logger.info(f'No more orders found for {store}. Moving to next store.')
                 break  # Exit while loop and move to the next store
 
             for pos in range(len(table_rows)):
@@ -272,7 +279,7 @@ class CraftableBot:
                 return row
         return None
     
-    @temporary_login
+    @login_necessary
     @Logger.log_exceptions
     def delete_orders(self, stores: list[str], vendors: list[str] = None) -> None:
 
@@ -561,7 +568,7 @@ class CraftableBot:
         original_file = self.order_manager.get_downloads_directory() / 'Order.pdf'
 
         if not original_file.exists():
-            print(f'Warning: Expected file not found: {original_file}')
+            self.logger.warding(f'Expected file not found: {original_file}')
             return
         
         new_filename = self.order_manager.generate_filename(store=store, vendor=vendor, date=date, file_extension='.pdf')
@@ -627,18 +634,17 @@ class CraftableBot:
     
     def _save_order_as_excel(self, item_data, store: str, vendor: str, date: str) -> None:
 
-        print('Saving order as an Excel workbook.', flush=True)
-
+        new_filename = self.order_manager.generate_filename(store=store, vendor=vendor, date=date, file_extension='.xlsx')
+        new_filepath = self.order_manager.get_order_files_directory() / new_filename
+        
+        self.logger.info(f'Saving order as Excel file: {new_filename}')
         order = Order(store, vendor, date, items=item_data)
      
         order_as_workbook = order.to_excel_workbook()
 
-        new_filename = self.order_manager.generate_filename(store=store, vendor=vendor, date=date, file_extension='.xlsx')
-        new_filepath = self.order_manager.get_order_files_directory() / new_filename
-
         order_as_workbook.save(new_filepath)
         order_as_workbook.close()
-
+        
         return
     
     def _delete_order_protocol(self) -> None:
@@ -668,7 +674,8 @@ class CraftableBot:
     def _update_existing_order(self, store, vendor_name, date_formatted, items) -> bool:
 
         """Handles the update protocol for checking existing orders and removing outdated files."""
-        print('\nBeginning order update protocol.', flush=True)
+
+        self.logger.info(f'[Order Update] Initiating update protocol for {store} for vendor: {vendor_name}, on {date_formatted}.')
 
         preexisting_workbook_filename = self.order_manager.generate_filename(
             store=store, 
@@ -677,50 +684,50 @@ class CraftableBot:
             file_extension='.xlsx'
         )
         
-        print('Checking for pre-existing order data.', flush=True)
+        self.logger.info(f'[Order Update] Checking for pre-existing order file: {preexisting_workbook_filename}')
         preexisting_workbook_path = self.order_manager.get_order_files_directory() / vendor_name / preexisting_workbook_filename
         preexisting_file_exists   = preexisting_workbook_path.exists()
         
         if not self.order_manager.get_vendor_orders_directory(vendor_name): 
-            print('No file to update, continuing with data download.', flush=True)
+            self.logger.info(f'[Order Update] No order directory found for vendor: {vendor_name}. Proceeding with new download.')
             return False
         if not preexisting_file_exists: 
-            print('No file to update, continuing with data download.', flush=True)
+            self.logger.info(f'[Order Update] No existing order file found for {store} for {vendor_name} on {date_formatted}. Proceeding with new download.')
             return False
         
-        print('Extracting saved data...', flush=True)
+        self.logger.info(f'[Order Update] Extracting data from existing order file: {preexisting_workbook_filename}')
         workbook    = load_workbook(preexisting_workbook_path, read_only=True)
         sheet       = workbook.active
         saved_items = [[cell.value for cell in row] for row in sheet.iter_rows(min_row=2)]
         workbook.close()
 
-        print('Comparing new data with pre-existing data.', flush=True)
+        self.logger.info(f'[Order Update] Comparing new data with the existing file for {store} for {vendor_name} on {date_formatted}.')
         if set(map(tuple, items)) == set(map(tuple, saved_items)):
-            print('New data matches old data, skipping update protocol.', flush=True)
+            self.logger.info(f'[Order Update] No changes detected for {store} for {vendor_name} on {date_formatted}. Skipping update protocol.')
             return True  # Skip further processing
 
-        self._remove_old_files(preexisting_workbook_path)
+        self.logger.info(f'[Order Update] Removing outdated order file: {preexisting_workbook_path}')
+        self._remove_old_file(preexisting_workbook_path)
 
         return False  # Continue with saving new data
     
-    def _remove_old_files(self, workbook_path):
-        """Removes outdated XLSX and PDF files."""
+    def _remove_old_file(self, file_path: Path) -> None:
+        '''Used to remove outdated order files.'''
         try:
-            print('Removing out-of-date files.', flush=True)
+            self.logger.info(f'[File Cleanup] Attempting to remove file: {file_path}')
 
-            if os.path.isfile(workbook_path):
-                print(f'Removing file: {workbook_path}')
-                os.remove(workbook_path)
-
-            pdf_path = workbook_path.with_suffix('.pdf')
-            if os.path.isfile(pdf_path):
-                print(f'Removing file: {pdf_path}')
-                os.remove(pdf_path)
+            if file_path.is_file():
+                os.remove(file_path)
+                self.logger.info(f'[File Cleanup] Successfully removed file: {file_path}')
+            else:
+                self.logger.warning(f'[File Cleanup] File does not exist: {file_path}')
 
         except OSError as e:
-            print(f'Error removing files: {e}')
+            self.logger.error(f'[File Cleanup] Error removing file: {e}')
+
             if e.errno == 13:
-                print('File is being accessed by another program at time of deletion. Aborting file replacement.')
+                self.logger.warning(f'[File Cleanup] File is in use by another program. Aborting deletion.')
+            
 
     def _change_calendar_date(self, transfer_datetime: datetime) -> None:
        

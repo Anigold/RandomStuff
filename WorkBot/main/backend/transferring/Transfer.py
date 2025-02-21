@@ -13,10 +13,10 @@ class TransferItem:
 
 class Transfer:
 
-    def __init__(self, store_from: str, store_to: str, items: set[TransferItem], date: datetime) -> None:
+    def __init__(self, store_from: str, store_to: str, date: datetime, items: set[TransferItem] = None) -> None:
         self.store_from = store_from
         self.store_to   = store_to
-        self.items      = items
+        self.items      = items or set()
         self.date       = date
 
     def to_excel_workbook(self) -> Workbook:
