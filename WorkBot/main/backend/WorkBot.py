@@ -109,10 +109,13 @@ class WorkBotCLI:
         parser = argparse.ArgumentParser(prog="download_orders", description="Download orders from vendors.")
         parser.add_argument("--stores", nargs="+", required=True, help="List of store names.")
         parser.add_argument("--vendors", nargs="+", help="List of vendors (default: all).")
-
+        parser.add_argument('--sort', action='store_true', help='Sort orders by vendor after downloading.')
         try:
             parsed_args = parser.parse_args(args)
             self.workbot.download_orders(parsed_args.stores, parsed_args.vendors)
+
+            if parsed_args.sort: self.workbot.sort_orders()
+            
             print("✅ Orders downloaded successfully.")
         except SystemExit:
             pass  # Prevent argparse from exiting CLI loop
@@ -134,10 +137,10 @@ class WorkBotCLI:
     def show_help(self, args):
         """Displays available commands."""
         print("\n📌 Available Commands:")
-        print("  download_orders --stores [STORE_NAMES] --vendors [VENDORS]   # Download orders for specific stores/vendors")
-        print("  shutdown                                                     # Shut down WorkBot and close sessions")
-        print("  help                                                         # Show available commands")
-        print("  exit                                                         # Exit the CLI\n")
+        print("  download_orders --stores [STORE_NAMES] --vendors [VENDORS] --sort   # Download orders for specific stores/vendors")
+        print("  shutdown                                                            # Shut down WorkBot and close sessions")
+        print("  help                                                                # Show available commands")
+        print("  exit                                                                # Exit the CLI\n")
 
     def exit_cli(self, args):
         """Exits the CLI loop."""
