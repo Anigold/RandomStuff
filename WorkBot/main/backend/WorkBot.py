@@ -15,6 +15,8 @@ from pathlib import Path
 from datetime import datetime
 import argparse
 
+from tabulate import tabulate
+
 
 
 class WorkBot:
@@ -51,13 +53,13 @@ class WorkBot:
     def input_transfers(self, transfers: list):
         self.craft_bot.input_transfers(transfers)
 
-    def convert_order_to_transfer(self, order: Order, store_from: str, store_to: str, date: datetime) -> Transfer:
+    def convert_order_to_transfer(self, order: Order) -> Transfer:
         '''This is so niche that we only need to use it once a week, but it removes tedium from my life so it stays.'''
 
         return Transfer(
-            store_from=store_from,
-            store_to=store_to,
-            date=date,
+            store_from=order.vendor,
+            store_to=order.store,
+            date=order.date,
             items=frozenset(order.items)
             )
 
@@ -66,6 +68,12 @@ class WorkBot:
 
     def welcome_to_work(self) -> None:
         pass
+
+    def get_orders(self, stores: list, vendors: list = []) -> list:
+        return self.order_manager.get_store_orders(stores=stores, vendors=vendors)
+
+
+
 
 class WorkBotCLI:
     ''' Interactive CLI for WorkBot '''
@@ -76,6 +84,7 @@ class WorkBotCLI:
         self.workbot = WorkBot()
         self.commands = {
             "download_orders": self.download_orders,
+            'list_orders': self.list_orders,
             "sort_orders": self.sort_orders,
             "shutdown": self.shutdown,
             "help": self.show_help,
@@ -84,7 +93,7 @@ class WorkBotCLI:
 
     def start(self):
         """Starts the interactive command loop."""
-        print("\n🚀 Welcome to WorkBot CLI! Type 'help' to see available commands.\n")
+        print("\nWelcome to WorkBot CLI! Type 'help' to see available commands.\n")
 
         while True:
             try:
@@ -99,9 +108,9 @@ class WorkBotCLI:
                 if command in self.commands:
                     self.commands[command](command_args)
                 else:
-                    print(f"⚠️ Unknown command: '{command}'. Type 'help' for available commands.")
+                    print(f"Unknown command: '{command}'. Type 'help' for available commands.")
             except KeyboardInterrupt:
-                print("\n🔴 Exiting WorkBot CLI.")
+                print("\nExiting WorkBot CLI.")
                 self.exit_cli([])
 
     def download_orders(self, args):
@@ -116,7 +125,7 @@ class WorkBotCLI:
 
             if parsed_args.sort: self.workbot.sort_orders()
             
-            print("✅ Orders downloaded successfully.")
+            print("Orders downloaded successfully.")
         except SystemExit:
             pass  # Prevent argparse from exiting CLI loop
     
@@ -125,19 +134,46 @@ class WorkBotCLI:
 
         try:    
             self.workbot.sort_orders()
-            print('✅ Orders sorted successfully.')
+            print('Orders sorted successfully.')
         except SystemExit:
             pass
+
+    def list_orders(self, args):
+
+        parser = argparse.ArgumentParser(prog='list_orders', description='List the saved orders.')
+        parser.add_argument('--stores', nargs='+', required=True, help='List of store names.')
+        parser.add_argument('--vendors', nargs='+', help='List of vendors (default: all).')
+        # parser.add_argument('--sort_by', nargs=)
+        try:
+            parsed_args      = parser.parse_args(args)
+            orders           = self.workbot.get_orders(parsed_args.stores, parsed_args.vendors)
+            formatted_orders = self._format_order_list(orders)
+            print(formatted_orders)
+        except SystemExit:
+            pass
+        
+    def _format_order_list(self, orders: list):
+
+        orders.sort(key=lambda x: x.store)
+
+        formatted_orders = []
+        for order in orders:
+            formatted_orders.append([order.store, order.vendor, order.date, len(order.items)])
+
+        return tabulate(formatted_orders, headers=["Store", "Vendor", "Date", "Items"], tablefmt="grid")
+
 
     def shutdown(self, args):
         """Shuts down WorkBot and all vendor sessions."""
         self.workbot.shutdown()
-        print("🔴 WorkBot shut down successfully.")
+        print("WorkBot shut down successfully.")
 
     def show_help(self, args):
         """Displays available commands."""
-        print("\n📌 Available Commands:")
+        print("\nAvailable Commands:")
         print("  download_orders --stores [STORE_NAMES] --vendors [VENDORS] --sort   # Download orders for specific stores/vendors")
+        print('  list_orders --stores [STORE_NAMES] --vendors [VENDORS]              # Display orders for specific stores/vendors')
+        print('  sort_orders                                                         # Sort order files by vendor')
         print("  shutdown                                                            # Shut down WorkBot and close sessions")
         print("  help                                                                # Show available commands")
         print("  exit                                                                # Exit the CLI\n")
@@ -145,5 +181,5 @@ class WorkBotCLI:
     def exit_cli(self, args):
         """Exits the CLI loop."""
         self.workbot.close_craftable_session()
-        print("🔴 Exiting WorkBot CLI.")
+        print("Exiting WorkBot CLI.")
         exit()

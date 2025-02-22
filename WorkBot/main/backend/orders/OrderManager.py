@@ -29,6 +29,33 @@ class OrderManager:
         self.logger.info(f'Directory not found for: {vendor}')
         return None
 
+    def get_store_orders(self, stores: list, vendors: list = []) -> list:
+
+        orders_dir = self.get_order_files_directory()
+
+        orders = []
+ 
+        for vendor_order_dir in orders_dir.iterdir():
+
+            if vendors and vendor_order_file not in vendors: 
+                continue
+            
+            for vendor_order_file in vendor_order_dir.iterdir():
+                
+                if vendor_order_file.suffix != '.xlsx' or not self.is_valid_filename(vendor_order_file): 
+                    continue
+                
+                file_metadata = OrderManager.parse_file_name(vendor_order_file)
+                if 'store' not in file_metadata or file_metadata['store'] not in stores: continue
+                
+                order = OrderManager.create_order_from_excel(vendor_order_file)
+
+                orders.append(order)
+
+        return orders  
+
+
+
     def get_vendor_orders(self, vendor: str, file_extension: str = '.xlsx') -> list[Path]:
 
         vendor_orders_directory = self.get_vendor_orders_directory(vendor)
@@ -37,8 +64,8 @@ class OrderManager:
             # print(f"No order directory found for vendor: {vendor}")
             return []
 
-        for file in vendor_orders_directory.iterdir():
-            print(file.suffix, flush=True)
+        # for file in vendor_orders_directory.iterdir():
+        #     print(file.suffix, flush=True)
         return [file for file in vendor_orders_directory.iterdir() if file.is_file() and self.is_valid_filename(file) and file.suffix == file_extension]
 
     def generate_filename(self, order: Order = None, store: str = None, vendor: str = None, date: str = None, file_extension: str = '.xlsx') -> str:
@@ -84,7 +111,20 @@ class OrderManager:
                 new_path = vendor_dir / file.name
                 file.rename(new_path)  # Move file into the vendor directory
                 # print(f'Moved: {file.name} → {new_path}')  # Debug output
-     
+
+    @classmethod
+    def create_order_from_excel(cls, file_path: Path) -> Order:
+
+        file_metadata = cls.parse_file_name(file_path)
+        store_name    = file_metadata['store']
+        vendor_name   = file_metadata['vendor']
+        order_date    = file_metadata['date']
+
+        order = Order(store_name, vendor_name, order_date)
+        order.load_items_from_excel(file_path)
+
+        return order
+    
     @classmethod
     def is_valid_filename(cls, filename: Path) -> bool:
         return bool(cls.file_pattern.match(filename.stem))

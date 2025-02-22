@@ -7,11 +7,11 @@ from openpyxl import load_workbook, Workbook
 
 class Order:
 
-    def __init__(self, store: str, vendor: str, date: str, items: list = []) -> None:
+    def __init__(self, store: str, vendor: str, date: str, items: list = None) -> None:
         self.store  = store
         self.vendor = vendor
         self.date   = date
-        self.items  = items
+        self.items  = items or []
 
     def load_items_from_csv(self, load_path: Path) -> None:
         pass
@@ -49,7 +49,9 @@ class Order:
     # def is_valid_date_format(self, given_date: str) -> bool:
     #     date_pattern = re.compile(r"^\d{4}-\d{2}-\d{2}$")
     #     return bool(date_pattern.match(given_date))
-    
+
+
+
     def to_excel_workbook(self) -> Workbook:
 
         workbook = Workbook()
@@ -67,4 +69,7 @@ class Order:
                 sheet.cell(row=pos+2, column=info_pos+1).value = item_info
 
         return workbook
+    
+    def __repr__(self) -> str:
+        return f'< Order store={self.store}, vendor={self.vendor}, date={self.date}, items={len(self.items)} >'
     
