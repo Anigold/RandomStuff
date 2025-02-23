@@ -6,6 +6,7 @@ from selenium import webdriver
 from openpyxl import Workbook
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from csv import writer
 
 class USFoodsBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
 
@@ -16,11 +17,11 @@ class USFoodsBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
         self.minimum_order_amount = 500_00
 
         self.store_ids = {
-            'Bakery': "11104",
-            'Collegetown': "11106",
-            'Triphammer': "11105",
-            'Easthill': "11108",
-            'Downtown': "11107"
+            'BAKERY':      '91602987',
+            'COLLEGETOWN': '11602976',
+            'TRIPHAMMER':  '1602994',
+            'EASTHILL':    '31602998',
+            'DOWNTOWN':    '21602990',
         }
 
         self.special_cases = {
@@ -93,20 +94,62 @@ class USFoodsBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
 
         return
 
-    def format_for_file_upload(self, item_data: dict, path_to_save: str) -> None:
+    def format_for_file_upload(self, item_data: dict, path_to_save: str, store: str) -> None:
         # CSV-style Excel file with "Item Code, Quantity, and Broken Case"
         workbook = Workbook()
         sheet = workbook.active
 
-        for pos, sku in enumerate(item_data):
-            quantity = item_data[sku]['quantity']
-            #sku = item_data[name]['sku']
-
-            sheet.cell(row=pos+1, column=1).value = int(sku)
-            sheet.cell(row=pos+1, column=2).value = int(quantity)
-            sheet.cell(row=pos+1, column=3).value = int(0)
+        headers = ['CUSTOMER NUMBER', 'DISTRIBUTOR', 'DEPARTMENT', 'DATE', 'PO NUMBER', 
+                   'PRODUCT NUMBER', 'CUST PROD #', 'DESCRIPTION', 'BRAND', 'PACK SIZE',
+                   'CS PRICE', 'EA PRICE', 'CS', 'EA', 'EXTENDED PRICE', 'ORDER #',
+                   'STOCK STATUS', 'EXCEPTIONS / AUTO-SUB', 'SHORTED',
+                   ]
         
-        workbook.save(filename=f'{path_to_save}.xlsx')
+        with open(f'{path_to_save}.csv', 'w', newline='') as csv_file:
+
+            csv_writer = writer(csv_file, delimiter=',')
+
+            csv_writer.writerow(headers)
+            for sku in item_data:
+                
+                quantity = item_data[sku]['quantity']
+                
+                csv_writer.writerow([self.store_ids[store], '2195', '0', '2/23/2025', store, sku,
+                                     '', '', '', '', '', '',
+                                    quantity, '0'
+                                    '', '', '', '',])
+                
+        # for pos, header in enumerate(headers):
+        #     sheet.cell(row=1, column=pos+1).value = header
+            
+        # for pos, sku in enumerate(item_data):
+        #     quantity = item_data[sku]['quantity']
+        #     #sku = item_data[name]['sku']
+
+        #     sheet.cell(row=pos+2, column=2).value = '2195' # DISTRIBUTOR NUMBER
+        #     sheet.cell(row=pos+2, column=3).value = '0' # DEPARTMENT NUMBER
+        #     sheet.cell(row=pos+2, column=4).value = '2/23/2025' # Need to figure out how to implement dynamic date
+        #     sheet.cell(row=pos+2, column=1).value = self.store_ids[store] # Store ID
+        #     sheet.cell(row=pos+2, column=5).value = store # PO Number is the store name
+        #     sheet.cell(row=pos+2, column=6).value = sku
+
+        #     sheet.cell(row=pos+2, column=7).value  = ''
+        #     sheet.cell(row=pos+2, column=9).value  = ''
+        #     sheet.cell(row=pos+2, column=8).value  = ''
+        #     sheet.cell(row=pos+2, column=10).value = ''
+        #     sheet.cell(row=pos+2, column=11).value = ''
+        #     sheet.cell(row=pos+2, column=12).value = ''
+
+        #     sheet.cell(row=pos+2, column=13).value = quantity
+        #     sheet.cell(row=pos+2, column=14).value = '0'
+
+        #     sheet.cell(row=pos+2, column=15).value = ''
+        #     sheet.cell(row=pos+2, column=16).value = ''
+        #     sheet.cell(row=pos+2, column=17).value = ''
+        #     sheet.cell(row=pos+2, column=18).value = ''
+
+        
+        # workbook.save(filename=f'{path_to_save}.csv')
 
         return
     

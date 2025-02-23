@@ -1,5 +1,5 @@
 import logging
-from backend.vendors.vendor_config import get_vendor_bot, get_vendor_credentials
+from backend.vendors.vendor_config import get_vendor_bot, get_vendor_credentials, vendor_requires_credentials, vendor_uses_selenium
 
 class VendorManager:
     """Manages vendor bot instances dynamically."""
@@ -10,19 +10,27 @@ class VendorManager:
     def initialize_vendor(self, vendor_name, driver=None):
         """Creates and stores a vendor bot instance."""
         if vendor_name in self.active_vendors:
-            logging.info(f"✅ {vendor_name} bot is already initialized.")
+            logging.info(f"{vendor_name} bot is already initialized.")
             return self.active_vendors[vendor_name]
 
         bot_class = get_vendor_bot(vendor_name)
         if not bot_class:
-            raise ValueError(f"⚠️ No bot found for {vendor_name}")
+            raise ValueError(f"No bot found for {vendor_name}")
 
-        credentials = get_vendor_credentials(vendor_name)
-        if credentials:
-            bot_instance = bot_class(driver, credentials["username"], credentials["password"])
-        else:
-            bot_instance = bot_class(driver)
+        init_args = {}
+        init_kwargs = {}
 
+        if vendor_uses_selenium(vendor_name):
+            init_args.append(driver)
+
+        if vendor_requires_credentials(vendor_name):
+            credentials = get_vendor_credentials(vendor_name)
+            init_kwargs.update({
+                'username': credentials['username'],
+                'password': credentials['password']
+            })
+            
+        bot_instance = bot_class(*init_args, **init_kwargs)
         self.active_vendors[vendor_name] = bot_instance
         logging.info(f"✅ Initialized {vendor_name} bot.")
         return bot_instance

@@ -54,8 +54,6 @@ class OrderManager:
 
         return orders  
 
-
-
     def get_vendor_orders(self, vendor: str, file_extension: str = '.xlsx') -> list[Path]:
 
         vendor_orders_directory = self.get_vendor_orders_directory(vendor)

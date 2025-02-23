@@ -22,9 +22,10 @@ from backend.transferring.Transfer import Transfer, TransferItem
 from backend.pricing.PriceComparator import PriceComparator
 from backend.orders.OrderManager import OrderManager
 from backend.orders.Order import Order
+from backend.vendors.VendorManager import VendorManager
 
 
-
+from backend.vendors.vendor_bots.USFoodsBot import USFoodsBot
 from datetime import date
 
 
@@ -65,7 +66,11 @@ def format_orders(vendor: str, path_to_folder: str) -> None:
     for file in excel_files:
         file_name_no_extension  = file.name.split('.')[0]
         item_data               = FormatItemData.extract_item_data_from_excel_file(f'{file}')
-        vendor_bot.format_for_file_upload(item_data, f'{path_to_folder}\\{vendor_bot.name}\\Formatted _ {file_name_no_extension}')
+        if vendor_bot.name == 'US Foods':
+            store_name = file_name_no_extension.split(' _ ')[1].split(' ')[0]
+            vendor_bot.format_for_file_upload(item_data, f'{path_to_folder}\\{vendor_bot.name}\\Formatted _ {file_name_no_extension}', store_name)
+        else:
+            vendor_bot.format_for_file_upload(item_data, f'{path_to_folder}\\{vendor_bot.name}\\Formatted _ {file_name_no_extension}')
     return
 
 def format_orders_for_transfer(vendor: str, path_to_folder: str) -> None:
@@ -268,7 +273,7 @@ if __name__ == '__main__':
     vendors = [ 
         'Sysco', 
         'Performance Food',
-        'US Foods',
+        # 'US Foods',
         # 'Renzi',
         # 'UNFI',
         # 'Hill & Markes',
@@ -308,7 +313,7 @@ if __name__ == '__main__':
         #  'DOWNTOWN'
     ]
     
-    work_bot = WorkBot()
+    # work_bot = WorkBot()
 
     # work_bot.download_orders(stores=stores, vendors=vendors)
     # work_bot.sort_orders()
@@ -317,18 +322,18 @@ if __name__ == '__main__':
 
 
     # CONVERT ITHACA_BAKERY ORDERS TO TRANSFERS
-    transfers_directory = TransferManager.get_transfer_files_directory()
+    # transfers_directory = TransferManager.get_transfer_files_directory()
     
-    ib_orders = work_bot.order_manager.get_vendor_orders('Ithaca Bakery')
+    # ib_orders = work_bot.order_manager.get_vendor_orders('Ithaca Bakery')
 
     
-    for i in ib_orders:
-        print(i, flush=True)
-        metadata = OrderManager.parse_file_name(i)
-        order = Order(metadata['store'], metadata['vendor'], metadata['date'])
-        order.load_items_from_excel(i)
-        transfer = work_bot.convert_order_to_transfer(order, 'BAKERY', metadata['store'], metadata['date'])
-        print(transfer)
+    # for i in ib_orders:
+    #     print(i, flush=True)
+    #     metadata = OrderManager.parse_file_name(i)
+    #     order = Order(metadata['store'], metadata['vendor'], metadata['date'])
+    #     order.load_items_from_excel(i)
+    #     transfer = work_bot.convert_order_to_transfer(order, 'BAKERY', metadata['store'], metadata['date'])
+    #     print(transfer)
     # transfer_ctb  = work_bot.craft_bot.transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to COLLEGETOWN 20250217.xlsx')
     # transfer_dtb  = work_bot.craft_bot.transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to DOWNTOWN 20250217.xlsx')
     # transfer_ehp  = work_bot.craft_bot.transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to EASTHILL 20250217.xlsx')
@@ -373,8 +378,13 @@ if __name__ == '__main__':
 
     #     ''' FORMAT ORDERS FOR VENDOR UPLOAD '''
     #     # # sort_orders(ORDER_FILES_PATH)
-    # for vendor in vendors:
-    #     format_orders(vendor, ORDER_FILES_PATH)
+
+    
+    for vendor in vendors:
+        format_orders(vendor, ORDER_FILES_PATH)
+
+    # us_bot = USFoodsBot(None, 'as', 'as')
+    # us_bot.format_for_file_upload()
     #     '''---------------------------------'''
         # pass
 
@@ -460,7 +470,7 @@ if __name__ == '__main__':
         
 
 
-    
+    # vendor_manager = VendorManager()
 
     # vendors = [
     #     'Copper Horse Coffee',
@@ -469,7 +479,7 @@ if __name__ == '__main__':
     # ]
     # for vendor in vendors:
 
-    #     vendor_bot    = get_bot(vendor)()
+    #     vendor_bot    = vendor_manager.initialize_vendor(vendor)
     #     vendor_path   = f'{ORDER_FILES_PATH}\\{vendor_bot.name}'
     #     vendor_orders = [join(f'{vendor_path}\\', file) for file in listdir(f'{vendor_path}\\') if isfile(join(f'{vendor_path}\\', file)) and file.endswith('.xlsx')]
     #     # pprint.pprint(vendor_orders)

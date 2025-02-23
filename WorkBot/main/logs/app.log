@@ -890,3 +890,20 @@ Traceback (most recent call last):
     self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
 IndexError: list index out of range
+2025-02-23 06:52:25,464 - ERROR - backend.craftable_bot.CraftableBot - Error in download_orders: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\Order.pdf' -> 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\Sysco _ DOWNTOWN 20250221.pdf'
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 89, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 218, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 266, in _process_order_row
+    self._rename_new_order_file(store=store, vendor=row_vendor_name, date=row_date_formatted)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 577, in _rename_new_order_file
+    original_file.rename(new_filepath)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Will\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 767, in rename
+    os.rename(self, target)
+    ~~~~~~~~~^^^^^^^^^^^^^^
+FileExistsError: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\Order.pdf' -> 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\Sysco _ DOWNTOWN 20250221.pdf'

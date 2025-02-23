@@ -10,7 +10,7 @@ class VendorBot(ABC):
         self.minimum_order_case   = 0 # By each
 
     @abstractmethod
-    def format_for_file_upload(self, item_data: dict, path_to_save: str):
+    def format_for_file_upload(self, item_data: dict, path_to_save: str, store: str = None):
         pass
 
 

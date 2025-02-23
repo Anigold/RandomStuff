@@ -708,12 +708,14 @@ class CraftableBot:
 
         self.logger.info(f'[Order Update] Removing outdated order file: {preexisting_workbook_path}')
         self._remove_old_file(preexisting_workbook_path)
-
+        self._remove_old_file(preexisting_workbook_path.with_suffix('.pdf'))
         return False  # Continue with saving new data
     
     def _remove_old_file(self, file_path: Path) -> None:
         '''Used to remove outdated order files.'''
         try:
+
+            
             self.logger.info(f'[File Cleanup] Attempting to remove file: {file_path}')
 
             if file_path.is_file():

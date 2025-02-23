@@ -143,6 +143,9 @@ class WorkBotCLI:
         parser = argparse.ArgumentParser(prog='list_orders', description='List the saved orders.')
         parser.add_argument('--stores', nargs='+', required=True, help='List of store names.')
         parser.add_argument('--vendors', nargs='+', help='List of vendors (default: all).')
+        parser.add_argument('--show_pricing', action='store_true', description='Display the total estimated price of the order.')
+        parser.add_argument('--show_minimums', action='store_true', description='Display the vendor order minimums.')
+        
         # parser.add_argument('--sort_by', nargs=)
         try:
             parsed_args      = parser.parse_args(args)
