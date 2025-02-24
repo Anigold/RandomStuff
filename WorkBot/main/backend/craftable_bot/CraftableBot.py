@@ -609,8 +609,8 @@ class CraftableBot:
             item_sku   = item_info[2].text
             item_name  = item_info[3].find_element(By.XPATH, './/a').text
             quantity   = item_info[5].text
-            cost_per   = item_info[6].text
-            total_cost = item_info[7].text
+            cost_per   = item_info[6].text.replace('$', '').replace(',', '')
+            total_cost = item_info[7].text.replace('$', '').replace(',', '')
 
             items.append([
                 item_sku, 

@@ -16,6 +16,7 @@ from datetime import datetime
 import argparse
 
 from tabulate import tabulate
+from termcolor import colored
 
 
 
@@ -72,8 +73,8 @@ class WorkBot:
     def get_orders(self, stores: list, vendors: list = []) -> list:
         return self.order_manager.get_store_orders(stores=stores, vendors=vendors)
 
-
-
+    def get_vendor_information(self, vendor_name: str) -> dict:
+        return self.vendor_manager.get_vendor_information(vendor_name)
 
 class WorkBotCLI:
     ''' Interactive CLI for WorkBot '''
@@ -143,27 +144,52 @@ class WorkBotCLI:
         parser = argparse.ArgumentParser(prog='list_orders', description='List the saved orders.')
         parser.add_argument('--stores', nargs='+', required=True, help='List of store names.')
         parser.add_argument('--vendors', nargs='+', help='List of vendors (default: all).')
-        parser.add_argument('--show_pricing', action='store_true', description='Display the total estimated price of the order.')
-        parser.add_argument('--show_minimums', action='store_true', description='Display the vendor order minimums.')
+        parser.add_argument('--show_pricing', action='store_true', help='Display the total estimated price of the order.')
+        parser.add_argument('--show_minimums', action='store_true', help='Display the vendor order minimums.')
         
         # parser.add_argument('--sort_by', nargs=)
         try:
             parsed_args      = parser.parse_args(args)
             orders           = self.workbot.get_orders(parsed_args.stores, parsed_args.vendors)
-            formatted_orders = self._format_order_list(orders)
+            formatted_orders = self._format_order_list(orders, parsed_args.show_pricing, parsed_args.show_minimums)
             print(formatted_orders)
         except SystemExit:
             pass
         
-    def _format_order_list(self, orders: list):
+    def _format_order_list(self, orders: list, show_pricing: bool = False, show_minimums: bool = False):
 
         orders.sort(key=lambda x: x.store)
 
-        formatted_orders = []
-        for order in orders:
-            formatted_orders.append([order.store, order.vendor, order.date, len(order.items)])
+        headers = ['Store', 'Vendor', 'Date', 'Items']
 
-        return tabulate(formatted_orders, headers=["Store", "Vendor", "Date", "Items"], tablefmt="grid")
+        formatted_orders = [[order.store, order.vendor, order.date, len(order.items)] for order in orders]
+
+        if show_pricing:
+            headers.append('Total Cost')
+            for pos, order in enumerate(orders):
+                total_cost = sum(float(item['Total Cost']) for item in order.items if item['Total Cost']) if show_pricing else "N/A"
+                formatted_orders[pos].append(f'${total_cost:.2f}')
+        
+        if show_minimums:
+            headers.extend(['Min. Price', 'Min. Cases'])
+            for pos, order in enumerate(orders):
+                vendor_information = self.workbot.get_vendor_information(order.vendor)
+                min_order_price = vendor_information['min_order_value']
+                min_order_cases = vendor_information['min_order_cases']
+                
+                total_cost = sum(float(item['Total Cost']) for item in order.items if item['Total Cost']) if show_pricing else "N/A"
+                
+                # Check if the order meets vendor minimums
+                below_min_value = total_cost < min_order_price
+                below_min_cases = len(order.items) < min_order_cases
+
+                total_cost_str = colored(f"${total_cost:.2f}", "red") if below_min_value else f"${total_cost:.2f}"
+                min_order_value_str = colored(f"${min_order_price:.2f}", "red") if below_min_value else f"${min_order_price:.2f}"
+                min_order_cases_str = colored(str(min_order_cases), "red") if below_min_cases else str(min_order_cases)
+
+                formatted_orders[pos].extend([min_order_value_str, min_order_cases_str])
+
+        return tabulate(formatted_orders, headers=headers, tablefmt="grid")
 
 
     def shutdown(self, args):

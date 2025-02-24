@@ -13899,3 +13899,781 @@ FileExistsError: [WinError 183] Cannot create a file when that file already exis
 2025-02-23 12:50:21,080 - INFO - CraftableBot - Saving order as Excel file: Hoffmire Farms _ TRIPHAMMER 20250223.xlsx
 2025-02-23 12:50:28,418 - INFO - CraftableBot - Order download complete.
 2025-02-23 12:51:15,849 - INFO - CraftableBot - Closing WebDriver session.
+2025-02-23 19:34:51,717 - INFO - WorkBot - Initializing WorkBot...
+2025-02-23 19:34:53,805 - INFO - WorkBot - WorkBot initialized successfully.
+2025-02-23 19:35:41,315 - INFO - WorkBot - Initializing WorkBot...
+2025-02-23 19:35:42,527 - INFO - WorkBot - WorkBot initialized successfully.
+2025-02-23 19:36:46,029 - INFO - WorkBot - Initializing WorkBot...
+2025-02-23 19:36:47,182 - INFO - WorkBot - WorkBot initialized successfully.
+2025-02-23 19:38:26,516 - INFO - CraftableBot - Closing WebDriver session.
+2025-02-23 19:38:30,840 - INFO - WorkBot - Initializing WorkBot...
+2025-02-23 19:38:37,225 - INFO - WorkBot - WorkBot initialized successfully.
+2025-02-23 19:51:48,039 - INFO - CraftableBot - Closing WebDriver session.
+2025-02-23 19:52:12,373 - INFO - WorkBot - Initializing WorkBot...
+2025-02-23 19:52:13,728 - INFO - WorkBot - WorkBot initialized successfully.
+2025-02-23 19:54:29,147 - INFO - CraftableBot - Closing WebDriver session.
+2025-02-23 19:54:34,955 - INFO - WorkBot - Initializing WorkBot...
+2025-02-23 19:54:37,599 - INFO - WorkBot - WorkBot initialized successfully.
+2025-02-23 19:56:08,203 - INFO - WorkBot - Initializing WorkBot...
+2025-02-23 19:56:13,287 - INFO - WorkBot - WorkBot initialized successfully.
+2025-02-23 20:00:33,858 - INFO - WorkBot - Initializing WorkBot...
+2025-02-23 20:00:35,462 - INFO - WorkBot - WorkBot initialized successfully.
+2025-02-23 20:00:50,941 - INFO - CraftableBot - Logging into Craftable.
+2025-02-23 20:00:57,627 - INFO - CraftableBot - Login successful.
+2025-02-23 20:00:57,627 - INFO - CraftableBot - Starting order download protocol.
+2025-02-23 20:00:57,627 - INFO - CraftableBot - Accessing order page for BAKERY.
+2025-02-23 20:01:04,040 - INFO - CraftableBot - Retrieving order for UNFI (02/22/2025).
+2025-02-23 20:01:04,977 - INFO - CraftableBot - [Order Update] Initiating update protocol for BAKERY for vendor: UNFI, on 20250222.
+2025-02-23 20:01:04,978 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: UNFI_BAKERY_20250222.xlsx
+2025-02-23 20:01:04,978 - INFO - OrderManager - Checking for directory for: UNFI.
+2025-02-23 20:01:04,978 - INFO - OrderManager - Directory not found for: UNFI
+2025-02-23 20:01:04,978 - INFO - CraftableBot - [Order Update] No order directory found for vendor: UNFI. Proceeding with new download.
+2025-02-23 20:01:04,978 - INFO - CraftableBot - Saving order for UNFI.
+2025-02-23 20:01:04,978 - INFO - CraftableBot - Saving order as Excel file: UNFI_BAKERY_20250222.xlsx
+2025-02-23 20:01:12,482 - INFO - CraftableBot - Retrieving order for Webstaurant (02/22/2025).
+2025-02-23 20:01:13,921 - INFO - CraftableBot - [Order Update] Initiating update protocol for BAKERY for vendor: Webstaurant, on 20250222.
+2025-02-23 20:01:13,921 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Webstaurant_BAKERY_20250222.xlsx
+2025-02-23 20:01:13,921 - INFO - OrderManager - Checking for directory for: Webstaurant.
+2025-02-23 20:01:13,921 - INFO - OrderManager - Directory not found for: Webstaurant
+2025-02-23 20:01:13,921 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Webstaurant. Proceeding with new download.
+2025-02-23 20:01:13,921 - INFO - CraftableBot - Saving order for Webstaurant.
+2025-02-23 20:01:13,921 - INFO - CraftableBot - Saving order as Excel file: Webstaurant_BAKERY_20250222.xlsx
+2025-02-23 20:01:21,301 - INFO - CraftableBot - Retrieving order for Sysco (02/23/2025).
+2025-02-23 20:01:23,214 - INFO - CraftableBot - [Order Update] Initiating update protocol for BAKERY for vendor: Sysco, on 20250223.
+2025-02-23 20:01:23,214 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Sysco_BAKERY_20250223.xlsx
+2025-02-23 20:01:23,214 - INFO - OrderManager - Checking for directory for: Sysco.
+2025-02-23 20:01:23,214 - INFO - OrderManager - Directory not found for: Sysco
+2025-02-23 20:01:23,214 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Sysco. Proceeding with new download.
+2025-02-23 20:01:23,214 - INFO - CraftableBot - Saving order for Sysco.
+2025-02-23 20:01:23,214 - INFO - CraftableBot - Saving order as Excel file: Sysco_BAKERY_20250223.xlsx
+2025-02-23 20:01:30,602 - INFO - CraftableBot - Retrieving order for Performance Food (02/23/2025).
+2025-02-23 20:01:32,769 - INFO - CraftableBot - [Order Update] Initiating update protocol for BAKERY for vendor: Performance Food, on 20250223.
+2025-02-23 20:01:32,769 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Performance Food_BAKERY_20250223.xlsx
+2025-02-23 20:01:32,770 - INFO - OrderManager - Checking for directory for: Performance Food.
+2025-02-23 20:01:32,770 - INFO - OrderManager - Directory not found for: Performance Food
+2025-02-23 20:01:32,770 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Performance Food. Proceeding with new download.
+2025-02-23 20:01:32,770 - INFO - CraftableBot - Saving order for Performance Food.
+2025-02-23 20:01:32,770 - INFO - CraftableBot - Saving order as Excel file: Performance Food_BAKERY_20250223.xlsx
+2025-02-23 20:01:40,155 - INFO - CraftableBot - Retrieving order for US Foods (02/23/2025).
+2025-02-23 20:01:42,008 - INFO - CraftableBot - [Order Update] Initiating update protocol for BAKERY for vendor: US Foods, on 20250223.
+2025-02-23 20:01:42,009 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: US Foods_BAKERY_20250223.xlsx
+2025-02-23 20:01:42,009 - INFO - OrderManager - Checking for directory for: US Foods.
+2025-02-23 20:01:42,009 - INFO - OrderManager - Directory not found for: US Foods
+2025-02-23 20:01:42,009 - INFO - CraftableBot - [Order Update] No order directory found for vendor: US Foods. Proceeding with new download.
+2025-02-23 20:01:42,009 - INFO - CraftableBot - Saving order for US Foods.
+2025-02-23 20:01:42,009 - INFO - CraftableBot - Saving order as Excel file: US Foods_BAKERY_20250223.xlsx
+2025-02-23 20:01:49,432 - INFO - CraftableBot - Retrieving order for FingerLakes Farms (02/23/2025).
+2025-02-23 20:01:51,082 - INFO - CraftableBot - [Order Update] Initiating update protocol for BAKERY for vendor: FingerLakes Farms, on 20250223.
+2025-02-23 20:01:51,082 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: FingerLakes Farms_BAKERY_20250223.xlsx
+2025-02-23 20:01:51,082 - INFO - OrderManager - Checking for directory for: FingerLakes Farms.
+2025-02-23 20:01:51,082 - INFO - OrderManager - Directory not found for: FingerLakes Farms
+2025-02-23 20:01:51,082 - INFO - CraftableBot - [Order Update] No order directory found for vendor: FingerLakes Farms. Proceeding with new download.
+2025-02-23 20:01:51,082 - INFO - CraftableBot - Saving order for FingerLakes Farms.
+2025-02-23 20:01:51,082 - INFO - CraftableBot - Saving order as Excel file: FingerLakes Farms_BAKERY_20250223.xlsx
+2025-02-23 20:01:58,518 - INFO - CraftableBot - Retrieving order for Equal Exchange (02/23/2025).
+2025-02-23 20:01:59,924 - INFO - CraftableBot - [Order Update] Initiating update protocol for BAKERY for vendor: Equal Exchange, on 20250223.
+2025-02-23 20:01:59,924 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Equal Exchange_BAKERY_20250223.xlsx
+2025-02-23 20:01:59,924 - INFO - OrderManager - Checking for directory for: Equal Exchange.
+2025-02-23 20:01:59,924 - INFO - OrderManager - Directory not found for: Equal Exchange
+2025-02-23 20:01:59,924 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Equal Exchange. Proceeding with new download.
+2025-02-23 20:01:59,924 - INFO - CraftableBot - Saving order for Equal Exchange.
+2025-02-23 20:01:59,925 - INFO - CraftableBot - Saving order as Excel file: Equal Exchange_BAKERY_20250223.xlsx
+2025-02-23 20:02:07,387 - INFO - CraftableBot - Retrieving order for Copper Horse Coffee (02/23/2025).
+2025-02-23 20:02:08,652 - INFO - CraftableBot - [Order Update] Initiating update protocol for BAKERY for vendor: Copper Horse Coffee, on 20250223.
+2025-02-23 20:02:08,653 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Copper Horse Coffee_BAKERY_20250223.xlsx
+2025-02-23 20:02:08,653 - INFO - OrderManager - Checking for directory for: Copper Horse Coffee.
+2025-02-23 20:02:08,653 - INFO - OrderManager - Directory not found for: Copper Horse Coffee
+2025-02-23 20:02:08,653 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Copper Horse Coffee. Proceeding with new download.
+2025-02-23 20:02:08,653 - INFO - CraftableBot - Saving order for Copper Horse Coffee.
+2025-02-23 20:02:08,653 - INFO - CraftableBot - Saving order as Excel file: Copper Horse Coffee_BAKERY_20250223.xlsx
+2025-02-23 20:02:16,021 - INFO - CraftableBot - Retrieving order for Coca-Cola (02/23/2025).
+2025-02-23 20:02:17,668 - INFO - CraftableBot - [Order Update] Initiating update protocol for BAKERY for vendor: Coca-Cola, on 20250223.
+2025-02-23 20:02:17,668 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Coca-Cola_BAKERY_20250223.xlsx
+2025-02-23 20:02:17,668 - INFO - OrderManager - Checking for directory for: Coca-Cola.
+2025-02-23 20:02:17,668 - INFO - OrderManager - Directory not found for: Coca-Cola
+2025-02-23 20:02:17,668 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Coca-Cola. Proceeding with new download.
+2025-02-23 20:02:17,668 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-02-23 20:02:17,668 - INFO - CraftableBot - Saving order as Excel file: Coca-Cola_BAKERY_20250223.xlsx
+2025-02-23 20:02:25,037 - INFO - CraftableBot - Order download complete.
+2025-02-23 20:03:35,952 - INFO - WorkBot - Initializing WorkBot...
+2025-02-23 20:03:38,175 - INFO - WorkBot - WorkBot initialized successfully.
+2025-02-23 20:04:14,254 - INFO - CraftableBot - Logging into Craftable.
+2025-02-23 20:04:20,956 - INFO - CraftableBot - Login successful.
+2025-02-23 20:04:20,956 - INFO - CraftableBot - Starting order download protocol.
+2025-02-23 20:04:20,956 - INFO - CraftableBot - Accessing order page for BAKERY.
+2025-02-23 20:04:27,332 - INFO - CraftableBot - Retrieving order for UNFI (02/22/2025).
+2025-02-23 20:04:28,314 - INFO - CraftableBot - [Order Update] Initiating update protocol for BAKERY for vendor: UNFI, on 20250222.
+2025-02-23 20:04:28,314 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: UNFI_BAKERY_20250222.xlsx
+2025-02-23 20:04:28,314 - INFO - OrderManager - Checking for directory for: UNFI.
+2025-02-23 20:04:28,314 - INFO - OrderManager - Directory not found for: UNFI
+2025-02-23 20:04:28,315 - INFO - CraftableBot - [Order Update] No order directory found for vendor: UNFI. Proceeding with new download.
+2025-02-23 20:04:28,315 - INFO - CraftableBot - Saving order for UNFI.
+2025-02-23 20:04:28,315 - INFO - CraftableBot - Saving order as Excel file: UNFI_BAKERY_20250222.xlsx
+2025-02-23 20:04:36,089 - INFO - CraftableBot - Order download complete.
+2025-02-23 20:06:15,103 - INFO - CraftableBot - Starting order download protocol.
+2025-02-23 20:06:15,103 - INFO - CraftableBot - Accessing order page for TRIPHAMMER.
+2025-02-23 20:06:21,542 - INFO - CraftableBot - Retrieving order for Ithaca Bakery (02/21/2025).
+2025-02-23 20:06:23,647 - INFO - CraftableBot - [Order Update] Initiating update protocol for TRIPHAMMER for vendor: Ithaca Bakery, on 20250221.
+2025-02-23 20:06:23,647 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Ithaca Bakery_TRIPHAMMER_20250221.xlsx
+2025-02-23 20:06:23,648 - INFO - OrderManager - Checking for directory for: Ithaca Bakery.
+2025-02-23 20:06:23,648 - INFO - OrderManager - Directory not found for: Ithaca Bakery
+2025-02-23 20:06:23,648 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Ithaca Bakery. Proceeding with new download.
+2025-02-23 20:06:23,648 - INFO - CraftableBot - Saving order for Ithaca Bakery.
+2025-02-23 20:06:23,648 - INFO - CraftableBot - Saving order as Excel file: Ithaca Bakery_TRIPHAMMER_20250221.xlsx
+2025-02-23 20:06:31,167 - INFO - CraftableBot - Retrieving order for US Foods (02/21/2025).
+2025-02-23 20:06:32,686 - INFO - CraftableBot - [Order Update] Initiating update protocol for TRIPHAMMER for vendor: US Foods, on 20250221.
+2025-02-23 20:06:32,686 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: US Foods_TRIPHAMMER_20250221.xlsx
+2025-02-23 20:06:32,686 - INFO - OrderManager - Checking for directory for: US Foods.
+2025-02-23 20:06:32,686 - INFO - OrderManager - Directory not found for: US Foods
+2025-02-23 20:06:32,686 - INFO - CraftableBot - [Order Update] No order directory found for vendor: US Foods. Proceeding with new download.
+2025-02-23 20:06:32,686 - INFO - CraftableBot - Saving order for US Foods.
+2025-02-23 20:06:32,686 - INFO - CraftableBot - Saving order as Excel file: US Foods_TRIPHAMMER_20250221.xlsx
+2025-02-23 20:06:40,096 - INFO - CraftableBot - Retrieving order for UNFI (02/21/2025).
+2025-02-23 20:06:41,749 - INFO - CraftableBot - [Order Update] Initiating update protocol for TRIPHAMMER for vendor: UNFI, on 20250221.
+2025-02-23 20:06:41,749 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: UNFI_TRIPHAMMER_20250221.xlsx
+2025-02-23 20:06:41,749 - INFO - OrderManager - Checking for directory for: UNFI.
+2025-02-23 20:06:41,749 - INFO - OrderManager - Directory found: /home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/orders/OrderFiles/UNFI
+2025-02-23 20:06:41,749 - INFO - CraftableBot - [Order Update] No existing order file found for TRIPHAMMER for UNFI on 20250221. Proceeding with new download.
+2025-02-23 20:06:41,749 - INFO - CraftableBot - Saving order for UNFI.
+2025-02-23 20:06:41,749 - INFO - CraftableBot - Saving order as Excel file: UNFI_TRIPHAMMER_20250221.xlsx
+2025-02-23 20:06:49,091 - INFO - CraftableBot - Retrieving order for FingerLakes Farms (02/21/2025).
+2025-02-23 20:06:50,719 - INFO - CraftableBot - [Order Update] Initiating update protocol for TRIPHAMMER for vendor: FingerLakes Farms, on 20250221.
+2025-02-23 20:06:50,719 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: FingerLakes Farms_TRIPHAMMER_20250221.xlsx
+2025-02-23 20:06:50,719 - INFO - OrderManager - Checking for directory for: FingerLakes Farms.
+2025-02-23 20:06:50,719 - INFO - OrderManager - Directory not found for: FingerLakes Farms
+2025-02-23 20:06:50,719 - INFO - CraftableBot - [Order Update] No order directory found for vendor: FingerLakes Farms. Proceeding with new download.
+2025-02-23 20:06:50,719 - INFO - CraftableBot - Saving order for FingerLakes Farms.
+2025-02-23 20:06:50,719 - INFO - CraftableBot - Saving order as Excel file: FingerLakes Farms_TRIPHAMMER_20250221.xlsx
+2025-02-23 20:06:58,163 - INFO - CraftableBot - Retrieving order for Performance Food (02/21/2025).
+2025-02-23 20:07:00,146 - INFO - CraftableBot - [Order Update] Initiating update protocol for TRIPHAMMER for vendor: Performance Food, on 20250221.
+2025-02-23 20:07:00,146 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Performance Food_TRIPHAMMER_20250221.xlsx
+2025-02-23 20:07:00,146 - INFO - OrderManager - Checking for directory for: Performance Food.
+2025-02-23 20:07:00,147 - INFO - OrderManager - Directory not found for: Performance Food
+2025-02-23 20:07:00,147 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Performance Food. Proceeding with new download.
+2025-02-23 20:07:00,147 - INFO - CraftableBot - Saving order for Performance Food.
+2025-02-23 20:07:00,147 - INFO - CraftableBot - Saving order as Excel file: Performance Food_TRIPHAMMER_20250221.xlsx
+2025-02-23 20:07:07,620 - INFO - CraftableBot - Retrieving order for Hillcrest Dairy (02/21/2025).
+2025-02-23 20:07:09,131 - INFO - CraftableBot - [Order Update] Initiating update protocol for TRIPHAMMER for vendor: Hillcrest Dairy, on 20250221.
+2025-02-23 20:07:09,131 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Hillcrest Dairy_TRIPHAMMER_20250221.xlsx
+2025-02-23 20:07:09,132 - INFO - OrderManager - Checking for directory for: Hillcrest Dairy.
+2025-02-23 20:07:09,132 - INFO - OrderManager - Directory not found for: Hillcrest Dairy
+2025-02-23 20:07:09,132 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Hillcrest Dairy. Proceeding with new download.
+2025-02-23 20:07:09,132 - INFO - CraftableBot - Saving order for Hillcrest Dairy.
+2025-02-23 20:07:09,132 - INFO - CraftableBot - Saving order as Excel file: Hillcrest Dairy_TRIPHAMMER_20250221.xlsx
+2025-02-23 20:07:16,538 - INFO - CraftableBot - Retrieving order for Sysco (02/21/2025).
+2025-02-23 20:07:18,495 - INFO - CraftableBot - [Order Update] Initiating update protocol for TRIPHAMMER for vendor: Sysco, on 20250221.
+2025-02-23 20:07:18,495 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Sysco_TRIPHAMMER_20250221.xlsx
+2025-02-23 20:07:18,495 - INFO - OrderManager - Checking for directory for: Sysco.
+2025-02-23 20:07:18,495 - INFO - OrderManager - Directory not found for: Sysco
+2025-02-23 20:07:18,495 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Sysco. Proceeding with new download.
+2025-02-23 20:07:18,495 - INFO - CraftableBot - Saving order for Sysco.
+2025-02-23 20:07:18,495 - INFO - CraftableBot - Saving order as Excel file: Sysco_TRIPHAMMER_20250221.xlsx
+2025-02-23 20:07:25,891 - INFO - CraftableBot - Retrieving order for Webstaurant (02/21/2025).
+2025-02-23 20:07:27,038 - INFO - CraftableBot - [Order Update] Initiating update protocol for TRIPHAMMER for vendor: Webstaurant, on 20250221.
+2025-02-23 20:07:27,038 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Webstaurant_TRIPHAMMER_20250221.xlsx
+2025-02-23 20:07:27,038 - INFO - OrderManager - Checking for directory for: Webstaurant.
+2025-02-23 20:07:27,039 - INFO - OrderManager - Directory not found for: Webstaurant
+2025-02-23 20:07:27,039 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Webstaurant. Proceeding with new download.
+2025-02-23 20:07:27,039 - INFO - CraftableBot - Saving order for Webstaurant.
+2025-02-23 20:07:27,039 - INFO - CraftableBot - Saving order as Excel file: Webstaurant_TRIPHAMMER_20250221.xlsx
+2025-02-23 20:07:34,393 - INFO - CraftableBot - Retrieving order for Peters Supply (02/21/2025).
+2025-02-23 20:07:35,781 - INFO - CraftableBot - [Order Update] Initiating update protocol for TRIPHAMMER for vendor: Peters Supply, on 20250221.
+2025-02-23 20:07:35,781 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Peters Supply_TRIPHAMMER_20250221.xlsx
+2025-02-23 20:07:35,781 - INFO - OrderManager - Checking for directory for: Peters Supply.
+2025-02-23 20:07:35,781 - INFO - OrderManager - Directory not found for: Peters Supply
+2025-02-23 20:07:35,781 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Peters Supply. Proceeding with new download.
+2025-02-23 20:07:35,781 - INFO - CraftableBot - Saving order for Peters Supply.
+2025-02-23 20:07:35,781 - INFO - CraftableBot - Saving order as Excel file: Peters Supply_TRIPHAMMER_20250221.xlsx
+2025-02-23 20:07:43,204 - INFO - CraftableBot - Retrieving order for Hill & Markes (02/21/2025).
+2025-02-23 20:07:44,632 - INFO - CraftableBot - [Order Update] Initiating update protocol for TRIPHAMMER for vendor: Hill & Markes, on 20250221.
+2025-02-23 20:07:44,632 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Hill & Markes_TRIPHAMMER_20250221.xlsx
+2025-02-23 20:07:44,632 - INFO - OrderManager - Checking for directory for: Hill & Markes.
+2025-02-23 20:07:44,632 - INFO - OrderManager - Directory not found for: Hill & Markes
+2025-02-23 20:07:44,632 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Hill & Markes. Proceeding with new download.
+2025-02-23 20:07:44,632 - INFO - CraftableBot - Saving order for Hill & Markes.
+2025-02-23 20:07:44,632 - INFO - CraftableBot - Saving order as Excel file: Hill & Markes_TRIPHAMMER_20250221.xlsx
+2025-02-23 20:07:52,048 - INFO - CraftableBot - Retrieving order for Johnston Paper (02/21/2025).
+2025-02-23 20:07:53,319 - INFO - CraftableBot - [Order Update] Initiating update protocol for TRIPHAMMER for vendor: Johnston Paper, on 20250221.
+2025-02-23 20:07:53,319 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Johnston Paper_TRIPHAMMER_20250221.xlsx
+2025-02-23 20:07:53,319 - INFO - OrderManager - Checking for directory for: Johnston Paper.
+2025-02-23 20:07:53,319 - INFO - OrderManager - Directory not found for: Johnston Paper
+2025-02-23 20:07:53,319 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Johnston Paper. Proceeding with new download.
+2025-02-23 20:07:53,319 - INFO - CraftableBot - Saving order for Johnston Paper.
+2025-02-23 20:07:53,319 - INFO - CraftableBot - Saving order as Excel file: Johnston Paper_TRIPHAMMER_20250221.xlsx
+2025-02-23 20:08:00,788 - INFO - CraftableBot - Retrieving order for Equal Exchange (02/21/2025).
+2025-02-23 20:08:02,165 - INFO - CraftableBot - [Order Update] Initiating update protocol for TRIPHAMMER for vendor: Equal Exchange, on 20250221.
+2025-02-23 20:08:02,165 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Equal Exchange_TRIPHAMMER_20250221.xlsx
+2025-02-23 20:08:02,166 - INFO - OrderManager - Checking for directory for: Equal Exchange.
+2025-02-23 20:08:02,166 - INFO - OrderManager - Directory not found for: Equal Exchange
+2025-02-23 20:08:02,166 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Equal Exchange. Proceeding with new download.
+2025-02-23 20:08:02,166 - INFO - CraftableBot - Saving order for Equal Exchange.
+2025-02-23 20:08:02,166 - INFO - CraftableBot - Saving order as Excel file: Equal Exchange_TRIPHAMMER_20250221.xlsx
+2025-02-23 20:08:09,668 - INFO - CraftableBot - Retrieving order for Coca-Cola (02/21/2025).
+2025-02-23 20:08:11,167 - INFO - CraftableBot - [Order Update] Initiating update protocol for TRIPHAMMER for vendor: Coca-Cola, on 20250221.
+2025-02-23 20:08:11,167 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Coca-Cola_TRIPHAMMER_20250221.xlsx
+2025-02-23 20:08:11,167 - INFO - OrderManager - Checking for directory for: Coca-Cola.
+2025-02-23 20:08:11,167 - INFO - OrderManager - Directory not found for: Coca-Cola
+2025-02-23 20:08:11,167 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Coca-Cola. Proceeding with new download.
+2025-02-23 20:08:11,167 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-02-23 20:08:11,167 - INFO - CraftableBot - Saving order as Excel file: Coca-Cola_TRIPHAMMER_20250221.xlsx
+2025-02-23 20:08:18,647 - INFO - CraftableBot - Retrieving order for A.L. George (02/21/2025).
+2025-02-23 20:08:19,866 - INFO - CraftableBot - [Order Update] Initiating update protocol for TRIPHAMMER for vendor: A.L. George, on 20250221.
+2025-02-23 20:08:19,867 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: A.L. George_TRIPHAMMER_20250221.xlsx
+2025-02-23 20:08:19,867 - INFO - OrderManager - Checking for directory for: A.L. George.
+2025-02-23 20:08:19,867 - INFO - OrderManager - Directory not found for: A.L. George
+2025-02-23 20:08:19,867 - INFO - CraftableBot - [Order Update] No order directory found for vendor: A.L. George. Proceeding with new download.
+2025-02-23 20:08:19,867 - INFO - CraftableBot - Saving order for A.L. George.
+2025-02-23 20:08:19,867 - INFO - CraftableBot - Saving order as Excel file: A.L. George_TRIPHAMMER_20250221.xlsx
+2025-02-23 20:08:27,343 - INFO - CraftableBot - Retrieving order for Eurocafe Imports (02/21/2025).
+2025-02-23 20:08:28,484 - INFO - CraftableBot - [Order Update] Initiating update protocol for TRIPHAMMER for vendor: Eurocafe Imports, on 20250221.
+2025-02-23 20:08:28,484 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Eurocafe Imports_TRIPHAMMER_20250221.xlsx
+2025-02-23 20:08:28,484 - INFO - OrderManager - Checking for directory for: Eurocafe Imports.
+2025-02-23 20:08:28,484 - INFO - OrderManager - Directory not found for: Eurocafe Imports
+2025-02-23 20:08:28,484 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Eurocafe Imports. Proceeding with new download.
+2025-02-23 20:08:28,484 - INFO - CraftableBot - Saving order for Eurocafe Imports.
+2025-02-23 20:08:28,484 - INFO - CraftableBot - Saving order as Excel file: Eurocafe Imports_TRIPHAMMER_20250221.xlsx
+2025-02-23 20:08:35,850 - INFO - CraftableBot - Retrieving order for Hillcrest Foods (02/23/2025).
+2025-02-23 20:08:37,163 - INFO - CraftableBot - [Order Update] Initiating update protocol for TRIPHAMMER for vendor: Hillcrest Foods, on 20250223.
+2025-02-23 20:08:37,164 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Hillcrest Foods_TRIPHAMMER_20250223.xlsx
+2025-02-23 20:08:37,164 - INFO - OrderManager - Checking for directory for: Hillcrest Foods.
+2025-02-23 20:08:37,165 - INFO - OrderManager - Directory not found for: Hillcrest Foods
+2025-02-23 20:08:37,165 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Hillcrest Foods. Proceeding with new download.
+2025-02-23 20:08:37,165 - INFO - CraftableBot - Saving order for Hillcrest Foods.
+2025-02-23 20:08:37,166 - INFO - CraftableBot - Saving order as Excel file: Hillcrest Foods_TRIPHAMMER_20250223.xlsx
+2025-02-23 20:08:44,590 - INFO - CraftableBot - Retrieving order for Fingerlakes Artisen Foods (02/23/2025).
+2025-02-23 20:08:45,779 - INFO - CraftableBot - [Order Update] Initiating update protocol for TRIPHAMMER for vendor: Fingerlakes Artisen Foods, on 20250223.
+2025-02-23 20:08:45,780 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Fingerlakes Artisen Foods_TRIPHAMMER_20250223.xlsx
+2025-02-23 20:08:45,780 - INFO - OrderManager - Checking for directory for: Fingerlakes Artisen Foods.
+2025-02-23 20:08:45,780 - INFO - OrderManager - Directory not found for: Fingerlakes Artisen Foods
+2025-02-23 20:08:45,780 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Fingerlakes Artisen Foods. Proceeding with new download.
+2025-02-23 20:08:45,780 - INFO - CraftableBot - Saving order for Fingerlakes Artisen Foods.
+2025-02-23 20:08:45,780 - INFO - CraftableBot - Saving order as Excel file: Fingerlakes Artisen Foods_TRIPHAMMER_20250223.xlsx
+2025-02-23 20:08:53,229 - INFO - CraftableBot - Retrieving order for Russo Produce (02/23/2025).
+2025-02-23 20:08:54,403 - INFO - CraftableBot - [Order Update] Initiating update protocol for TRIPHAMMER for vendor: Russo Produce, on 20250223.
+2025-02-23 20:08:54,403 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Russo Produce_TRIPHAMMER_20250223.xlsx
+2025-02-23 20:08:54,403 - INFO - OrderManager - Checking for directory for: Russo Produce.
+2025-02-23 20:08:54,403 - INFO - OrderManager - Directory not found for: Russo Produce
+2025-02-23 20:08:54,403 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Russo Produce. Proceeding with new download.
+2025-02-23 20:08:54,403 - INFO - CraftableBot - Saving order for Russo Produce.
+2025-02-23 20:08:54,403 - INFO - CraftableBot - Saving order as Excel file: Russo Produce_TRIPHAMMER_20250223.xlsx
+2025-02-23 20:09:01,843 - INFO - CraftableBot - Retrieving order for Renzi (02/23/2025).
+2025-02-23 20:09:03,014 - INFO - CraftableBot - [Order Update] Initiating update protocol for TRIPHAMMER for vendor: Renzi, on 20250223.
+2025-02-23 20:09:03,014 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Renzi_TRIPHAMMER_20250223.xlsx
+2025-02-23 20:09:03,014 - INFO - OrderManager - Checking for directory for: Renzi.
+2025-02-23 20:09:03,014 - INFO - OrderManager - Directory not found for: Renzi
+2025-02-23 20:09:03,014 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Renzi. Proceeding with new download.
+2025-02-23 20:09:03,014 - INFO - CraftableBot - Saving order for Renzi.
+2025-02-23 20:09:03,014 - INFO - CraftableBot - Saving order as Excel file: Renzi_TRIPHAMMER_20250223.xlsx
+2025-02-23 20:09:10,456 - INFO - CraftableBot - Retrieving order for BEHLOG & SON, INC. (02/23/2025).
+2025-02-23 20:09:11,292 - INFO - CraftableBot - [Order Update] Initiating update protocol for TRIPHAMMER for vendor: BEHLOG & SON, INC., on 20250223.
+2025-02-23 20:09:11,293 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: BEHLOG & SON, INC._TRIPHAMMER_20250223.xlsx
+2025-02-23 20:09:11,293 - INFO - OrderManager - Checking for directory for: BEHLOG & SON, INC..
+2025-02-23 20:09:11,293 - INFO - OrderManager - Directory not found for: BEHLOG & SON, INC.
+2025-02-23 20:09:11,293 - INFO - CraftableBot - [Order Update] No order directory found for vendor: BEHLOG & SON, INC.. Proceeding with new download.
+2025-02-23 20:09:11,293 - INFO - CraftableBot - Saving order for BEHLOG & SON, INC..
+2025-02-23 20:09:11,293 - INFO - CraftableBot - Saving order as Excel file: BEHLOG & SON, INC._TRIPHAMMER_20250223.xlsx
+2025-02-23 20:09:18,714 - INFO - CraftableBot - Retrieving order for Hoffmire Farms (02/23/2025).
+2025-02-23 20:09:19,802 - INFO - CraftableBot - [Order Update] Initiating update protocol for TRIPHAMMER for vendor: Hoffmire Farms, on 20250223.
+2025-02-23 20:09:19,803 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Hoffmire Farms_TRIPHAMMER_20250223.xlsx
+2025-02-23 20:09:19,803 - INFO - OrderManager - Checking for directory for: Hoffmire Farms.
+2025-02-23 20:09:19,803 - INFO - OrderManager - Directory not found for: Hoffmire Farms
+2025-02-23 20:09:19,803 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Hoffmire Farms. Proceeding with new download.
+2025-02-23 20:09:19,803 - INFO - CraftableBot - Saving order for Hoffmire Farms.
+2025-02-23 20:09:19,803 - INFO - CraftableBot - Saving order as Excel file: Hoffmire Farms_TRIPHAMMER_20250223.xlsx
+2025-02-23 20:09:27,157 - INFO - CraftableBot - Accessing order page for BAKERY.
+2025-02-23 20:09:33,526 - INFO - CraftableBot - Retrieving order for UNFI (02/22/2025).
+2025-02-23 20:09:34,435 - INFO - CraftableBot - [Order Update] Initiating update protocol for BAKERY for vendor: UNFI, on 20250222.
+2025-02-23 20:09:34,435 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: UNFI_BAKERY_20250222.xlsx
+2025-02-23 20:09:34,435 - INFO - OrderManager - Checking for directory for: UNFI.
+2025-02-23 20:09:34,435 - INFO - OrderManager - Directory found: /home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/orders/OrderFiles/UNFI
+2025-02-23 20:09:34,435 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: UNFI_BAKERY_20250222.xlsx
+2025-02-23 20:09:34,438 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for BAKERY for UNFI on 20250222.
+2025-02-23 20:09:34,438 - INFO - CraftableBot - [Order Update] No changes detected for BAKERY for UNFI on 20250222. Skipping update protocol.
+2025-02-23 20:09:34,438 - INFO - CraftableBot - Order for UNFI is up-to-date. Skipping.
+2025-02-23 20:09:36,567 - INFO - CraftableBot - Retrieving order for Webstaurant (02/22/2025).
+2025-02-23 20:09:37,923 - INFO - CraftableBot - [Order Update] Initiating update protocol for BAKERY for vendor: Webstaurant, on 20250222.
+2025-02-23 20:09:37,923 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Webstaurant_BAKERY_20250222.xlsx
+2025-02-23 20:09:37,923 - INFO - OrderManager - Checking for directory for: Webstaurant.
+2025-02-23 20:09:37,923 - INFO - OrderManager - Directory not found for: Webstaurant
+2025-02-23 20:09:37,923 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Webstaurant. Proceeding with new download.
+2025-02-23 20:09:37,923 - INFO - CraftableBot - Saving order for Webstaurant.
+2025-02-23 20:09:37,923 - INFO - CraftableBot - Saving order as Excel file: Webstaurant_BAKERY_20250222.xlsx
+2025-02-23 20:09:45,336 - INFO - CraftableBot - Retrieving order for Sysco (02/23/2025).
+2025-02-23 20:09:47,828 - INFO - CraftableBot - [Order Update] Initiating update protocol for BAKERY for vendor: Sysco, on 20250223.
+2025-02-23 20:09:47,828 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Sysco_BAKERY_20250223.xlsx
+2025-02-23 20:09:47,829 - INFO - OrderManager - Checking for directory for: Sysco.
+2025-02-23 20:09:47,829 - INFO - OrderManager - Directory not found for: Sysco
+2025-02-23 20:09:47,829 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Sysco. Proceeding with new download.
+2025-02-23 20:09:47,829 - INFO - CraftableBot - Saving order for Sysco.
+2025-02-23 20:09:47,829 - INFO - CraftableBot - Saving order as Excel file: Sysco_BAKERY_20250223.xlsx
+2025-02-23 20:09:55,242 - INFO - CraftableBot - Retrieving order for Performance Food (02/23/2025).
+2025-02-23 20:09:57,360 - INFO - CraftableBot - [Order Update] Initiating update protocol for BAKERY for vendor: Performance Food, on 20250223.
+2025-02-23 20:09:57,360 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Performance Food_BAKERY_20250223.xlsx
+2025-02-23 20:09:57,360 - INFO - OrderManager - Checking for directory for: Performance Food.
+2025-02-23 20:09:57,360 - INFO - OrderManager - Directory not found for: Performance Food
+2025-02-23 20:09:57,360 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Performance Food. Proceeding with new download.
+2025-02-23 20:09:57,360 - INFO - CraftableBot - Saving order for Performance Food.
+2025-02-23 20:09:57,360 - INFO - CraftableBot - Saving order as Excel file: Performance Food_BAKERY_20250223.xlsx
+2025-02-23 20:10:04,829 - INFO - CraftableBot - Retrieving order for US Foods (02/23/2025).
+2025-02-23 20:10:06,725 - INFO - CraftableBot - [Order Update] Initiating update protocol for BAKERY for vendor: US Foods, on 20250223.
+2025-02-23 20:10:06,725 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: US Foods_BAKERY_20250223.xlsx
+2025-02-23 20:10:06,725 - INFO - OrderManager - Checking for directory for: US Foods.
+2025-02-23 20:10:06,725 - INFO - OrderManager - Directory not found for: US Foods
+2025-02-23 20:10:06,725 - INFO - CraftableBot - [Order Update] No order directory found for vendor: US Foods. Proceeding with new download.
+2025-02-23 20:10:06,725 - INFO - CraftableBot - Saving order for US Foods.
+2025-02-23 20:10:06,725 - INFO - CraftableBot - Saving order as Excel file: US Foods_BAKERY_20250223.xlsx
+2025-02-23 20:10:14,111 - INFO - CraftableBot - Retrieving order for FingerLakes Farms (02/23/2025).
+2025-02-23 20:10:15,181 - INFO - CraftableBot - [Order Update] Initiating update protocol for BAKERY for vendor: FingerLakes Farms, on 20250223.
+2025-02-23 20:10:15,181 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: FingerLakes Farms_BAKERY_20250223.xlsx
+2025-02-23 20:10:15,181 - INFO - OrderManager - Checking for directory for: FingerLakes Farms.
+2025-02-23 20:10:15,181 - INFO - OrderManager - Directory not found for: FingerLakes Farms
+2025-02-23 20:10:15,181 - INFO - CraftableBot - [Order Update] No order directory found for vendor: FingerLakes Farms. Proceeding with new download.
+2025-02-23 20:10:15,181 - INFO - CraftableBot - Saving order for FingerLakes Farms.
+2025-02-23 20:10:15,181 - INFO - CraftableBot - Saving order as Excel file: FingerLakes Farms_BAKERY_20250223.xlsx
+2025-02-23 20:10:22,595 - INFO - CraftableBot - Retrieving order for Equal Exchange (02/23/2025).
+2025-02-23 20:10:24,142 - INFO - CraftableBot - [Order Update] Initiating update protocol for BAKERY for vendor: Equal Exchange, on 20250223.
+2025-02-23 20:10:24,142 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Equal Exchange_BAKERY_20250223.xlsx
+2025-02-23 20:10:24,142 - INFO - OrderManager - Checking for directory for: Equal Exchange.
+2025-02-23 20:10:24,142 - INFO - OrderManager - Directory not found for: Equal Exchange
+2025-02-23 20:10:24,142 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Equal Exchange. Proceeding with new download.
+2025-02-23 20:10:24,142 - INFO - CraftableBot - Saving order for Equal Exchange.
+2025-02-23 20:10:24,142 - INFO - CraftableBot - Saving order as Excel file: Equal Exchange_BAKERY_20250223.xlsx
+2025-02-23 20:10:31,588 - INFO - CraftableBot - Retrieving order for Copper Horse Coffee (02/23/2025).
+2025-02-23 20:10:32,792 - INFO - CraftableBot - [Order Update] Initiating update protocol for BAKERY for vendor: Copper Horse Coffee, on 20250223.
+2025-02-23 20:10:32,792 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Copper Horse Coffee_BAKERY_20250223.xlsx
+2025-02-23 20:10:32,792 - INFO - OrderManager - Checking for directory for: Copper Horse Coffee.
+2025-02-23 20:10:32,792 - INFO - OrderManager - Directory not found for: Copper Horse Coffee
+2025-02-23 20:10:32,792 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Copper Horse Coffee. Proceeding with new download.
+2025-02-23 20:10:32,792 - INFO - CraftableBot - Saving order for Copper Horse Coffee.
+2025-02-23 20:10:32,792 - INFO - CraftableBot - Saving order as Excel file: Copper Horse Coffee_BAKERY_20250223.xlsx
+2025-02-23 20:10:40,133 - INFO - CraftableBot - Retrieving order for Coca-Cola (02/23/2025).
+2025-02-23 20:10:41,445 - INFO - CraftableBot - [Order Update] Initiating update protocol for BAKERY for vendor: Coca-Cola, on 20250223.
+2025-02-23 20:10:41,445 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Coca-Cola_BAKERY_20250223.xlsx
+2025-02-23 20:10:41,445 - INFO - OrderManager - Checking for directory for: Coca-Cola.
+2025-02-23 20:10:41,445 - INFO - OrderManager - Directory not found for: Coca-Cola
+2025-02-23 20:10:41,445 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Coca-Cola. Proceeding with new download.
+2025-02-23 20:10:41,445 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-02-23 20:10:41,445 - INFO - CraftableBot - Saving order as Excel file: Coca-Cola_BAKERY_20250223.xlsx
+2025-02-23 20:10:48,816 - INFO - CraftableBot - Accessing order page for COLLEGETOWN.
+2025-02-23 20:10:55,533 - INFO - CraftableBot - Retrieving order for Ithaca Bakery (02/21/2025).
+2025-02-23 20:10:57,814 - INFO - CraftableBot - [Order Update] Initiating update protocol for COLLEGETOWN for vendor: Ithaca Bakery, on 20250221.
+2025-02-23 20:10:57,814 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Ithaca Bakery_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:10:57,814 - INFO - OrderManager - Checking for directory for: Ithaca Bakery.
+2025-02-23 20:10:57,814 - INFO - OrderManager - Directory not found for: Ithaca Bakery
+2025-02-23 20:10:57,814 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Ithaca Bakery. Proceeding with new download.
+2025-02-23 20:10:57,814 - INFO - CraftableBot - Saving order for Ithaca Bakery.
+2025-02-23 20:10:57,814 - INFO - CraftableBot - Saving order as Excel file: Ithaca Bakery_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:11:05,239 - INFO - CraftableBot - Retrieving order for Performance Food (02/21/2025).
+2025-02-23 20:11:06,587 - INFO - CraftableBot - [Order Update] Initiating update protocol for COLLEGETOWN for vendor: Performance Food, on 20250221.
+2025-02-23 20:11:06,587 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Performance Food_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:11:06,587 - INFO - OrderManager - Checking for directory for: Performance Food.
+2025-02-23 20:11:06,588 - INFO - OrderManager - Directory not found for: Performance Food
+2025-02-23 20:11:06,588 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Performance Food. Proceeding with new download.
+2025-02-23 20:11:06,588 - INFO - CraftableBot - Saving order for Performance Food.
+2025-02-23 20:11:06,588 - INFO - CraftableBot - Saving order as Excel file: Performance Food_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:11:14,039 - INFO - CraftableBot - Retrieving order for Sysco (02/21/2025).
+2025-02-23 20:11:15,421 - INFO - CraftableBot - [Order Update] Initiating update protocol for COLLEGETOWN for vendor: Sysco, on 20250221.
+2025-02-23 20:11:15,421 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Sysco_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:11:15,421 - INFO - OrderManager - Checking for directory for: Sysco.
+2025-02-23 20:11:15,421 - INFO - OrderManager - Directory not found for: Sysco
+2025-02-23 20:11:15,421 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Sysco. Proceeding with new download.
+2025-02-23 20:11:15,421 - INFO - CraftableBot - Saving order for Sysco.
+2025-02-23 20:11:15,421 - INFO - CraftableBot - Saving order as Excel file: Sysco_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:11:22,937 - INFO - CraftableBot - Retrieving order for Hillcrest Dairy (02/21/2025).
+2025-02-23 20:11:23,746 - INFO - CraftableBot - [Order Update] Initiating update protocol for COLLEGETOWN for vendor: Hillcrest Dairy, on 20250221.
+2025-02-23 20:11:23,746 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Hillcrest Dairy_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:11:23,746 - INFO - OrderManager - Checking for directory for: Hillcrest Dairy.
+2025-02-23 20:11:23,746 - INFO - OrderManager - Directory not found for: Hillcrest Dairy
+2025-02-23 20:11:23,747 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Hillcrest Dairy. Proceeding with new download.
+2025-02-23 20:11:23,747 - INFO - CraftableBot - Saving order for Hillcrest Dairy.
+2025-02-23 20:11:23,747 - INFO - CraftableBot - Saving order as Excel file: Hillcrest Dairy_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:11:31,234 - INFO - CraftableBot - Retrieving order for FingerLakes Farms (02/21/2025).
+2025-02-23 20:11:33,436 - INFO - CraftableBot - [Order Update] Initiating update protocol for COLLEGETOWN for vendor: FingerLakes Farms, on 20250221.
+2025-02-23 20:11:33,436 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: FingerLakes Farms_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:11:33,436 - INFO - OrderManager - Checking for directory for: FingerLakes Farms.
+2025-02-23 20:11:33,436 - INFO - OrderManager - Directory not found for: FingerLakes Farms
+2025-02-23 20:11:33,436 - INFO - CraftableBot - [Order Update] No order directory found for vendor: FingerLakes Farms. Proceeding with new download.
+2025-02-23 20:11:33,436 - INFO - CraftableBot - Saving order for FingerLakes Farms.
+2025-02-23 20:11:33,436 - INFO - CraftableBot - Saving order as Excel file: FingerLakes Farms_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:11:40,876 - INFO - CraftableBot - Retrieving order for US Foods (02/21/2025).
+2025-02-23 20:11:42,528 - INFO - CraftableBot - [Order Update] Initiating update protocol for COLLEGETOWN for vendor: US Foods, on 20250221.
+2025-02-23 20:11:42,528 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: US Foods_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:11:42,528 - INFO - OrderManager - Checking for directory for: US Foods.
+2025-02-23 20:11:42,528 - INFO - OrderManager - Directory not found for: US Foods
+2025-02-23 20:11:42,528 - INFO - CraftableBot - [Order Update] No order directory found for vendor: US Foods. Proceeding with new download.
+2025-02-23 20:11:42,528 - INFO - CraftableBot - Saving order for US Foods.
+2025-02-23 20:11:42,528 - INFO - CraftableBot - Saving order as Excel file: US Foods_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:11:49,958 - INFO - CraftableBot - Retrieving order for Equal Exchange (02/21/2025).
+2025-02-23 20:11:51,228 - INFO - CraftableBot - [Order Update] Initiating update protocol for COLLEGETOWN for vendor: Equal Exchange, on 20250221.
+2025-02-23 20:11:51,228 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Equal Exchange_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:11:51,229 - INFO - OrderManager - Checking for directory for: Equal Exchange.
+2025-02-23 20:11:51,229 - INFO - OrderManager - Directory not found for: Equal Exchange
+2025-02-23 20:11:51,229 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Equal Exchange. Proceeding with new download.
+2025-02-23 20:11:51,229 - INFO - CraftableBot - Saving order for Equal Exchange.
+2025-02-23 20:11:51,229 - INFO - CraftableBot - Saving order as Excel file: Equal Exchange_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:11:58,556 - INFO - CraftableBot - Retrieving order for Copper Horse Coffee (02/21/2025).
+2025-02-23 20:11:59,681 - INFO - CraftableBot - [Order Update] Initiating update protocol for COLLEGETOWN for vendor: Copper Horse Coffee, on 20250221.
+2025-02-23 20:11:59,682 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Copper Horse Coffee_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:11:59,682 - INFO - OrderManager - Checking for directory for: Copper Horse Coffee.
+2025-02-23 20:11:59,682 - INFO - OrderManager - Directory not found for: Copper Horse Coffee
+2025-02-23 20:11:59,682 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Copper Horse Coffee. Proceeding with new download.
+2025-02-23 20:11:59,682 - INFO - CraftableBot - Saving order for Copper Horse Coffee.
+2025-02-23 20:11:59,682 - INFO - CraftableBot - Saving order as Excel file: Copper Horse Coffee_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:12:07,035 - INFO - CraftableBot - Retrieving order for Regional Distributors, Inc. (02/21/2025).
+2025-02-23 20:12:08,145 - INFO - CraftableBot - [Order Update] Initiating update protocol for COLLEGETOWN for vendor: Regional Distributors, Inc., on 20250221.
+2025-02-23 20:12:08,145 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Regional Distributors, Inc._COLLEGETOWN_20250221.xlsx
+2025-02-23 20:12:08,145 - INFO - OrderManager - Checking for directory for: Regional Distributors, Inc..
+2025-02-23 20:12:08,145 - INFO - OrderManager - Directory not found for: Regional Distributors, Inc.
+2025-02-23 20:12:08,145 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Regional Distributors, Inc.. Proceeding with new download.
+2025-02-23 20:12:08,145 - INFO - CraftableBot - Saving order for Regional Distributors, Inc..
+2025-02-23 20:12:08,145 - INFO - CraftableBot - Saving order as Excel file: Regional Distributors, Inc._COLLEGETOWN_20250221.xlsx
+2025-02-23 20:12:15,624 - INFO - CraftableBot - Retrieving order for Hill & Markes (02/21/2025).
+2025-02-23 20:12:16,887 - INFO - CraftableBot - [Order Update] Initiating update protocol for COLLEGETOWN for vendor: Hill & Markes, on 20250221.
+2025-02-23 20:12:16,887 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Hill & Markes_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:12:16,887 - INFO - OrderManager - Checking for directory for: Hill & Markes.
+2025-02-23 20:12:16,887 - INFO - OrderManager - Directory not found for: Hill & Markes
+2025-02-23 20:12:16,887 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Hill & Markes. Proceeding with new download.
+2025-02-23 20:12:16,888 - INFO - CraftableBot - Saving order for Hill & Markes.
+2025-02-23 20:12:16,888 - INFO - CraftableBot - Saving order as Excel file: Hill & Markes_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:12:24,297 - INFO - CraftableBot - Retrieving order for Peters Supply (02/21/2025).
+2025-02-23 20:12:25,656 - INFO - CraftableBot - [Order Update] Initiating update protocol for COLLEGETOWN for vendor: Peters Supply, on 20250221.
+2025-02-23 20:12:25,656 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Peters Supply_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:12:25,656 - INFO - OrderManager - Checking for directory for: Peters Supply.
+2025-02-23 20:12:25,656 - INFO - OrderManager - Directory not found for: Peters Supply
+2025-02-23 20:12:25,656 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Peters Supply. Proceeding with new download.
+2025-02-23 20:12:25,656 - INFO - CraftableBot - Saving order for Peters Supply.
+2025-02-23 20:12:25,656 - INFO - CraftableBot - Saving order as Excel file: Peters Supply_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:12:33,069 - INFO - CraftableBot - Retrieving order for Webstaurant (02/21/2025).
+2025-02-23 20:12:34,381 - INFO - CraftableBot - [Order Update] Initiating update protocol for COLLEGETOWN for vendor: Webstaurant, on 20250221.
+2025-02-23 20:12:34,381 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Webstaurant_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:12:34,381 - INFO - OrderManager - Checking for directory for: Webstaurant.
+2025-02-23 20:12:34,381 - INFO - OrderManager - Directory not found for: Webstaurant
+2025-02-23 20:12:34,381 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Webstaurant. Proceeding with new download.
+2025-02-23 20:12:34,381 - INFO - CraftableBot - Saving order for Webstaurant.
+2025-02-23 20:12:34,381 - INFO - CraftableBot - Saving order as Excel file: Webstaurant_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:12:41,853 - INFO - CraftableBot - Retrieving order for BJ's (02/21/2025).
+2025-02-23 20:12:43,135 - INFO - CraftableBot - [Order Update] Initiating update protocol for COLLEGETOWN for vendor: BJ's, on 20250221.
+2025-02-23 20:12:43,135 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: BJ's_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:12:43,135 - INFO - OrderManager - Checking for directory for: BJ's.
+2025-02-23 20:12:43,136 - INFO - OrderManager - Directory not found for: BJ's
+2025-02-23 20:12:43,136 - INFO - CraftableBot - [Order Update] No order directory found for vendor: BJ's. Proceeding with new download.
+2025-02-23 20:12:43,136 - INFO - CraftableBot - Saving order for BJ's.
+2025-02-23 20:12:43,136 - INFO - CraftableBot - Saving order as Excel file: BJ's_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:12:50,503 - INFO - CraftableBot - Retrieving order for A.L. George (02/21/2025).
+2025-02-23 20:12:51,967 - INFO - CraftableBot - [Order Update] Initiating update protocol for COLLEGETOWN for vendor: A.L. George, on 20250221.
+2025-02-23 20:12:51,967 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: A.L. George_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:12:51,968 - INFO - OrderManager - Checking for directory for: A.L. George.
+2025-02-23 20:12:51,968 - INFO - OrderManager - Directory not found for: A.L. George
+2025-02-23 20:12:51,968 - INFO - CraftableBot - [Order Update] No order directory found for vendor: A.L. George. Proceeding with new download.
+2025-02-23 20:12:51,968 - INFO - CraftableBot - Saving order for A.L. George.
+2025-02-23 20:12:51,969 - INFO - CraftableBot - Saving order as Excel file: A.L. George_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:12:59,437 - INFO - CraftableBot - Retrieving order for UNFI (02/21/2025).
+2025-02-23 20:13:00,722 - INFO - CraftableBot - [Order Update] Initiating update protocol for COLLEGETOWN for vendor: UNFI, on 20250221.
+2025-02-23 20:13:00,722 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: UNFI_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:13:00,722 - INFO - OrderManager - Checking for directory for: UNFI.
+2025-02-23 20:13:00,722 - INFO - OrderManager - Directory found: /home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/orders/OrderFiles/UNFI
+2025-02-23 20:13:00,722 - INFO - CraftableBot - [Order Update] No existing order file found for COLLEGETOWN for UNFI on 20250221. Proceeding with new download.
+2025-02-23 20:13:00,722 - INFO - CraftableBot - Saving order for UNFI.
+2025-02-23 20:13:00,722 - INFO - CraftableBot - Saving order as Excel file: UNFI_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:13:08,188 - INFO - CraftableBot - Retrieving order for Eurocafe Imports (02/21/2025).
+2025-02-23 20:13:09,349 - INFO - CraftableBot - [Order Update] Initiating update protocol for COLLEGETOWN for vendor: Eurocafe Imports, on 20250221.
+2025-02-23 20:13:09,349 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Eurocafe Imports_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:13:09,349 - INFO - OrderManager - Checking for directory for: Eurocafe Imports.
+2025-02-23 20:13:09,350 - INFO - OrderManager - Directory not found for: Eurocafe Imports
+2025-02-23 20:13:09,350 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Eurocafe Imports. Proceeding with new download.
+2025-02-23 20:13:09,350 - INFO - CraftableBot - Saving order for Eurocafe Imports.
+2025-02-23 20:13:09,350 - INFO - CraftableBot - Saving order as Excel file: Eurocafe Imports_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:13:16,815 - INFO - CraftableBot - Retrieving order for Coca-Cola (02/21/2025).
+2025-02-23 20:13:17,549 - INFO - CraftableBot - [Order Update] Initiating update protocol for COLLEGETOWN for vendor: Coca-Cola, on 20250221.
+2025-02-23 20:13:17,549 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Coca-Cola_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:13:17,550 - INFO - OrderManager - Checking for directory for: Coca-Cola.
+2025-02-23 20:13:17,550 - INFO - OrderManager - Directory not found for: Coca-Cola
+2025-02-23 20:13:17,550 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Coca-Cola. Proceeding with new download.
+2025-02-23 20:13:17,550 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-02-23 20:13:17,550 - INFO - CraftableBot - Saving order as Excel file: Coca-Cola_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:13:25,054 - INFO - CraftableBot - Retrieving order for BALKAN BEVERAGE LLC (02/21/2025).
+2025-02-23 20:13:26,500 - INFO - CraftableBot - [Order Update] Initiating update protocol for COLLEGETOWN for vendor: BALKAN BEVERAGE LLC, on 20250221.
+2025-02-23 20:13:26,500 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: BALKAN BEVERAGE LLC_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:13:26,500 - INFO - OrderManager - Checking for directory for: BALKAN BEVERAGE LLC.
+2025-02-23 20:13:26,500 - INFO - OrderManager - Directory not found for: BALKAN BEVERAGE LLC
+2025-02-23 20:13:26,500 - INFO - CraftableBot - [Order Update] No order directory found for vendor: BALKAN BEVERAGE LLC. Proceeding with new download.
+2025-02-23 20:13:26,500 - INFO - CraftableBot - Saving order for BALKAN BEVERAGE LLC.
+2025-02-23 20:13:26,500 - INFO - CraftableBot - Saving order as Excel file: BALKAN BEVERAGE LLC_COLLEGETOWN_20250221.xlsx
+2025-02-23 20:13:33,862 - INFO - CraftableBot - Accessing order page for EASTHILL.
+2025-02-23 20:13:40,211 - INFO - CraftableBot - Retrieving order for Hill & Markes (02/21/2025).
+2025-02-23 20:13:41,966 - INFO - CraftableBot - [Order Update] Initiating update protocol for EASTHILL for vendor: Hill & Markes, on 20250221.
+2025-02-23 20:13:41,966 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Hill & Markes_EASTHILL_20250221.xlsx
+2025-02-23 20:13:41,966 - INFO - OrderManager - Checking for directory for: Hill & Markes.
+2025-02-23 20:13:41,966 - INFO - OrderManager - Directory not found for: Hill & Markes
+2025-02-23 20:13:41,966 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Hill & Markes. Proceeding with new download.
+2025-02-23 20:13:41,966 - INFO - CraftableBot - Saving order for Hill & Markes.
+2025-02-23 20:13:41,966 - INFO - CraftableBot - Saving order as Excel file: Hill & Markes_EASTHILL_20250221.xlsx
+2025-02-23 20:13:49,363 - INFO - CraftableBot - Retrieving order for Peters Supply (02/21/2025).
+2025-02-23 20:13:50,773 - INFO - CraftableBot - [Order Update] Initiating update protocol for EASTHILL for vendor: Peters Supply, on 20250221.
+2025-02-23 20:13:50,773 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Peters Supply_EASTHILL_20250221.xlsx
+2025-02-23 20:13:50,773 - INFO - OrderManager - Checking for directory for: Peters Supply.
+2025-02-23 20:13:50,773 - INFO - OrderManager - Directory not found for: Peters Supply
+2025-02-23 20:13:50,773 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Peters Supply. Proceeding with new download.
+2025-02-23 20:13:50,773 - INFO - CraftableBot - Saving order for Peters Supply.
+2025-02-23 20:13:50,773 - INFO - CraftableBot - Saving order as Excel file: Peters Supply_EASTHILL_20250221.xlsx
+2025-02-23 20:13:58,166 - INFO - CraftableBot - Retrieving order for Ithaca Bakery (02/21/2025).
+2025-02-23 20:14:00,241 - INFO - CraftableBot - [Order Update] Initiating update protocol for EASTHILL for vendor: Ithaca Bakery, on 20250221.
+2025-02-23 20:14:00,242 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Ithaca Bakery_EASTHILL_20250221.xlsx
+2025-02-23 20:14:00,242 - INFO - OrderManager - Checking for directory for: Ithaca Bakery.
+2025-02-23 20:14:00,242 - INFO - OrderManager - Directory not found for: Ithaca Bakery
+2025-02-23 20:14:00,242 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Ithaca Bakery. Proceeding with new download.
+2025-02-23 20:14:00,242 - INFO - CraftableBot - Saving order for Ithaca Bakery.
+2025-02-23 20:14:00,242 - INFO - CraftableBot - Saving order as Excel file: Ithaca Bakery_EASTHILL_20250221.xlsx
+2025-02-23 20:14:07,628 - INFO - CraftableBot - Retrieving order for US Foods (02/21/2025).
+2025-02-23 20:14:09,191 - INFO - CraftableBot - [Order Update] Initiating update protocol for EASTHILL for vendor: US Foods, on 20250221.
+2025-02-23 20:14:09,191 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: US Foods_EASTHILL_20250221.xlsx
+2025-02-23 20:14:09,191 - INFO - OrderManager - Checking for directory for: US Foods.
+2025-02-23 20:14:09,191 - INFO - OrderManager - Directory not found for: US Foods
+2025-02-23 20:14:09,191 - INFO - CraftableBot - [Order Update] No order directory found for vendor: US Foods. Proceeding with new download.
+2025-02-23 20:14:09,191 - INFO - CraftableBot - Saving order for US Foods.
+2025-02-23 20:14:09,191 - INFO - CraftableBot - Saving order as Excel file: US Foods_EASTHILL_20250221.xlsx
+2025-02-23 20:14:16,663 - INFO - CraftableBot - Retrieving order for UNFI (02/21/2025).
+2025-02-23 20:14:17,466 - INFO - CraftableBot - [Order Update] Initiating update protocol for EASTHILL for vendor: UNFI, on 20250221.
+2025-02-23 20:14:17,466 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: UNFI_EASTHILL_20250221.xlsx
+2025-02-23 20:14:17,467 - INFO - OrderManager - Checking for directory for: UNFI.
+2025-02-23 20:14:17,467 - INFO - OrderManager - Directory found: /home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/orders/OrderFiles/UNFI
+2025-02-23 20:14:17,467 - INFO - CraftableBot - [Order Update] No existing order file found for EASTHILL for UNFI on 20250221. Proceeding with new download.
+2025-02-23 20:14:17,467 - INFO - CraftableBot - Saving order for UNFI.
+2025-02-23 20:14:17,467 - INFO - CraftableBot - Saving order as Excel file: UNFI_EASTHILL_20250221.xlsx
+2025-02-23 20:14:24,961 - INFO - CraftableBot - Retrieving order for Webstaurant (02/21/2025).
+2025-02-23 20:14:26,361 - INFO - CraftableBot - [Order Update] Initiating update protocol for EASTHILL for vendor: Webstaurant, on 20250221.
+2025-02-23 20:14:26,361 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Webstaurant_EASTHILL_20250221.xlsx
+2025-02-23 20:14:26,361 - INFO - OrderManager - Checking for directory for: Webstaurant.
+2025-02-23 20:14:26,362 - INFO - OrderManager - Directory not found for: Webstaurant
+2025-02-23 20:14:26,362 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Webstaurant. Proceeding with new download.
+2025-02-23 20:14:26,362 - INFO - CraftableBot - Saving order for Webstaurant.
+2025-02-23 20:14:26,362 - INFO - CraftableBot - Saving order as Excel file: Webstaurant_EASTHILL_20250221.xlsx
+2025-02-23 20:14:33,844 - INFO - CraftableBot - Retrieving order for Sysco (02/21/2025).
+2025-02-23 20:14:35,707 - INFO - CraftableBot - [Order Update] Initiating update protocol for EASTHILL for vendor: Sysco, on 20250221.
+2025-02-23 20:14:35,707 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Sysco_EASTHILL_20250221.xlsx
+2025-02-23 20:14:35,707 - INFO - OrderManager - Checking for directory for: Sysco.
+2025-02-23 20:14:35,707 - INFO - OrderManager - Directory not found for: Sysco
+2025-02-23 20:14:35,707 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Sysco. Proceeding with new download.
+2025-02-23 20:14:35,707 - INFO - CraftableBot - Saving order for Sysco.
+2025-02-23 20:14:35,708 - INFO - CraftableBot - Saving order as Excel file: Sysco_EASTHILL_20250221.xlsx
+2025-02-23 20:14:43,156 - INFO - CraftableBot - Retrieving order for Coca-Cola (02/21/2025).
+2025-02-23 20:14:44,401 - INFO - CraftableBot - [Order Update] Initiating update protocol for EASTHILL for vendor: Coca-Cola, on 20250221.
+2025-02-23 20:14:44,401 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Coca-Cola_EASTHILL_20250221.xlsx
+2025-02-23 20:14:44,401 - INFO - OrderManager - Checking for directory for: Coca-Cola.
+2025-02-23 20:14:44,401 - INFO - OrderManager - Directory not found for: Coca-Cola
+2025-02-23 20:14:44,401 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Coca-Cola. Proceeding with new download.
+2025-02-23 20:14:44,401 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-02-23 20:14:44,401 - INFO - CraftableBot - Saving order as Excel file: Coca-Cola_EASTHILL_20250221.xlsx
+2025-02-23 20:14:51,781 - INFO - CraftableBot - Retrieving order for Performance Food (02/21/2025).
+2025-02-23 20:14:53,126 - INFO - CraftableBot - [Order Update] Initiating update protocol for EASTHILL for vendor: Performance Food, on 20250221.
+2025-02-23 20:14:53,126 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Performance Food_EASTHILL_20250221.xlsx
+2025-02-23 20:14:53,126 - INFO - OrderManager - Checking for directory for: Performance Food.
+2025-02-23 20:14:53,126 - INFO - OrderManager - Directory not found for: Performance Food
+2025-02-23 20:14:53,126 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Performance Food. Proceeding with new download.
+2025-02-23 20:14:53,126 - INFO - CraftableBot - Saving order for Performance Food.
+2025-02-23 20:14:53,126 - INFO - CraftableBot - Saving order as Excel file: Performance Food_EASTHILL_20250221.xlsx
+2025-02-23 20:15:00,525 - INFO - CraftableBot - Retrieving order for Copper Horse Coffee (02/21/2025).
+2025-02-23 20:15:01,763 - INFO - CraftableBot - [Order Update] Initiating update protocol for EASTHILL for vendor: Copper Horse Coffee, on 20250221.
+2025-02-23 20:15:01,764 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Copper Horse Coffee_EASTHILL_20250221.xlsx
+2025-02-23 20:15:01,764 - INFO - OrderManager - Checking for directory for: Copper Horse Coffee.
+2025-02-23 20:15:01,764 - INFO - OrderManager - Directory not found for: Copper Horse Coffee
+2025-02-23 20:15:01,764 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Copper Horse Coffee. Proceeding with new download.
+2025-02-23 20:15:01,764 - INFO - CraftableBot - Saving order for Copper Horse Coffee.
+2025-02-23 20:15:01,764 - INFO - CraftableBot - Saving order as Excel file: Copper Horse Coffee_EASTHILL_20250221.xlsx
+2025-02-23 20:15:09,147 - INFO - CraftableBot - Retrieving order for Regional Distributors, Inc. (02/21/2025).
+2025-02-23 20:15:10,789 - INFO - CraftableBot - [Order Update] Initiating update protocol for EASTHILL for vendor: Regional Distributors, Inc., on 20250221.
+2025-02-23 20:15:10,790 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Regional Distributors, Inc._EASTHILL_20250221.xlsx
+2025-02-23 20:15:10,790 - INFO - OrderManager - Checking for directory for: Regional Distributors, Inc..
+2025-02-23 20:15:10,790 - INFO - OrderManager - Directory not found for: Regional Distributors, Inc.
+2025-02-23 20:15:10,790 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Regional Distributors, Inc.. Proceeding with new download.
+2025-02-23 20:15:10,791 - INFO - CraftableBot - Saving order for Regional Distributors, Inc..
+2025-02-23 20:15:10,791 - INFO - CraftableBot - Saving order as Excel file: Regional Distributors, Inc._EASTHILL_20250221.xlsx
+2025-02-23 20:15:18,240 - INFO - CraftableBot - Retrieving order for Equal Exchange (02/21/2025).
+2025-02-23 20:15:19,570 - INFO - CraftableBot - [Order Update] Initiating update protocol for EASTHILL for vendor: Equal Exchange, on 20250221.
+2025-02-23 20:15:19,570 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Equal Exchange_EASTHILL_20250221.xlsx
+2025-02-23 20:15:19,570 - INFO - OrderManager - Checking for directory for: Equal Exchange.
+2025-02-23 20:15:19,570 - INFO - OrderManager - Directory not found for: Equal Exchange
+2025-02-23 20:15:19,570 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Equal Exchange. Proceeding with new download.
+2025-02-23 20:15:19,570 - INFO - CraftableBot - Saving order for Equal Exchange.
+2025-02-23 20:15:19,570 - INFO - CraftableBot - Saving order as Excel file: Equal Exchange_EASTHILL_20250221.xlsx
+2025-02-23 20:15:26,983 - INFO - CraftableBot - Retrieving order for Eurocafe Imports (02/21/2025).
+2025-02-23 20:15:28,159 - INFO - CraftableBot - [Order Update] Initiating update protocol for EASTHILL for vendor: Eurocafe Imports, on 20250221.
+2025-02-23 20:15:28,159 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Eurocafe Imports_EASTHILL_20250221.xlsx
+2025-02-23 20:15:28,159 - INFO - OrderManager - Checking for directory for: Eurocafe Imports.
+2025-02-23 20:15:28,159 - INFO - OrderManager - Directory not found for: Eurocafe Imports
+2025-02-23 20:15:28,159 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Eurocafe Imports. Proceeding with new download.
+2025-02-23 20:15:28,159 - INFO - CraftableBot - Saving order for Eurocafe Imports.
+2025-02-23 20:15:28,159 - INFO - CraftableBot - Saving order as Excel file: Eurocafe Imports_EASTHILL_20250221.xlsx
+2025-02-23 20:15:35,621 - INFO - CraftableBot - Retrieving order for SANICO (02/21/2025).
+2025-02-23 20:15:36,997 - INFO - CraftableBot - [Order Update] Initiating update protocol for EASTHILL for vendor: SANICO, on 20250221.
+2025-02-23 20:15:36,997 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: SANICO_EASTHILL_20250221.xlsx
+2025-02-23 20:15:36,997 - INFO - OrderManager - Checking for directory for: SANICO.
+2025-02-23 20:15:36,997 - INFO - OrderManager - Directory not found for: SANICO
+2025-02-23 20:15:36,997 - INFO - CraftableBot - [Order Update] No order directory found for vendor: SANICO. Proceeding with new download.
+2025-02-23 20:15:36,997 - INFO - CraftableBot - Saving order for SANICO.
+2025-02-23 20:15:36,997 - INFO - CraftableBot - Saving order as Excel file: SANICO_EASTHILL_20250221.xlsx
+2025-02-23 20:15:44,476 - INFO - CraftableBot - Retrieving order for Hillcrest Dairy (02/21/2025).
+2025-02-23 20:15:46,181 - INFO - CraftableBot - [Order Update] Initiating update protocol for EASTHILL for vendor: Hillcrest Dairy, on 20250221.
+2025-02-23 20:15:46,181 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Hillcrest Dairy_EASTHILL_20250221.xlsx
+2025-02-23 20:15:46,181 - INFO - OrderManager - Checking for directory for: Hillcrest Dairy.
+2025-02-23 20:15:46,181 - INFO - OrderManager - Directory not found for: Hillcrest Dairy
+2025-02-23 20:15:46,181 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Hillcrest Dairy. Proceeding with new download.
+2025-02-23 20:15:46,181 - INFO - CraftableBot - Saving order for Hillcrest Dairy.
+2025-02-23 20:15:46,181 - INFO - CraftableBot - Saving order as Excel file: Hillcrest Dairy_EASTHILL_20250221.xlsx
+2025-02-23 20:15:53,584 - INFO - CraftableBot - Retrieving order for FingerLakes Farms (02/21/2025).
+2025-02-23 20:15:55,002 - INFO - CraftableBot - [Order Update] Initiating update protocol for EASTHILL for vendor: FingerLakes Farms, on 20250221.
+2025-02-23 20:15:55,002 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: FingerLakes Farms_EASTHILL_20250221.xlsx
+2025-02-23 20:15:55,002 - INFO - OrderManager - Checking for directory for: FingerLakes Farms.
+2025-02-23 20:15:55,002 - INFO - OrderManager - Directory not found for: FingerLakes Farms
+2025-02-23 20:15:55,002 - INFO - CraftableBot - [Order Update] No order directory found for vendor: FingerLakes Farms. Proceeding with new download.
+2025-02-23 20:15:55,002 - INFO - CraftableBot - Saving order for FingerLakes Farms.
+2025-02-23 20:15:55,002 - INFO - CraftableBot - Saving order as Excel file: FingerLakes Farms_EASTHILL_20250221.xlsx
+2025-02-23 20:16:02,387 - INFO - CraftableBot - Retrieving order for Johnston Paper (02/21/2025).
+2025-02-23 20:16:03,740 - INFO - CraftableBot - [Order Update] Initiating update protocol for EASTHILL for vendor: Johnston Paper, on 20250221.
+2025-02-23 20:16:03,741 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Johnston Paper_EASTHILL_20250221.xlsx
+2025-02-23 20:16:03,741 - INFO - OrderManager - Checking for directory for: Johnston Paper.
+2025-02-23 20:16:03,741 - INFO - OrderManager - Directory not found for: Johnston Paper
+2025-02-23 20:16:03,742 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Johnston Paper. Proceeding with new download.
+2025-02-23 20:16:03,742 - INFO - CraftableBot - Saving order for Johnston Paper.
+2025-02-23 20:16:03,743 - INFO - CraftableBot - Saving order as Excel file: Johnston Paper_EASTHILL_20250221.xlsx
+2025-02-23 20:16:11,076 - INFO - CraftableBot - Accessing order page for DOWNTOWN.
+2025-02-23 20:16:17,469 - INFO - CraftableBot - Retrieving order for Hillcrest Dairy (02/21/2025).
+2025-02-23 20:16:19,217 - INFO - CraftableBot - [Order Update] Initiating update protocol for DOWNTOWN for vendor: Hillcrest Dairy, on 20250221.
+2025-02-23 20:16:19,217 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Hillcrest Dairy_DOWNTOWN_20250221.xlsx
+2025-02-23 20:16:19,217 - INFO - OrderManager - Checking for directory for: Hillcrest Dairy.
+2025-02-23 20:16:19,217 - INFO - OrderManager - Directory not found for: Hillcrest Dairy
+2025-02-23 20:16:19,217 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Hillcrest Dairy. Proceeding with new download.
+2025-02-23 20:16:19,217 - INFO - CraftableBot - Saving order for Hillcrest Dairy.
+2025-02-23 20:16:19,217 - INFO - CraftableBot - Saving order as Excel file: Hillcrest Dairy_DOWNTOWN_20250221.xlsx
+2025-02-23 20:16:26,662 - INFO - CraftableBot - Retrieving order for Performance Food (02/21/2025).
+2025-02-23 20:16:27,595 - INFO - CraftableBot - [Order Update] Initiating update protocol for DOWNTOWN for vendor: Performance Food, on 20250221.
+2025-02-23 20:16:27,595 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Performance Food_DOWNTOWN_20250221.xlsx
+2025-02-23 20:16:27,595 - INFO - OrderManager - Checking for directory for: Performance Food.
+2025-02-23 20:16:27,596 - INFO - OrderManager - Directory not found for: Performance Food
+2025-02-23 20:16:27,596 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Performance Food. Proceeding with new download.
+2025-02-23 20:16:27,596 - INFO - CraftableBot - Saving order for Performance Food.
+2025-02-23 20:16:27,596 - INFO - CraftableBot - Saving order as Excel file: Performance Food_DOWNTOWN_20250221.xlsx
+2025-02-23 20:16:35,032 - INFO - CraftableBot - Retrieving order for Sysco (02/21/2025).
+2025-02-23 20:16:36,636 - INFO - CraftableBot - [Order Update] Initiating update protocol for DOWNTOWN for vendor: Sysco, on 20250221.
+2025-02-23 20:16:36,636 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Sysco_DOWNTOWN_20250221.xlsx
+2025-02-23 20:16:36,636 - INFO - OrderManager - Checking for directory for: Sysco.
+2025-02-23 20:16:36,636 - INFO - OrderManager - Directory not found for: Sysco
+2025-02-23 20:16:36,636 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Sysco. Proceeding with new download.
+2025-02-23 20:16:36,636 - INFO - CraftableBot - Saving order for Sysco.
+2025-02-23 20:16:36,636 - INFO - CraftableBot - Saving order as Excel file: Sysco_DOWNTOWN_20250221.xlsx
+2025-02-23 20:16:44,120 - INFO - CraftableBot - Retrieving order for Ithaca Bakery (02/21/2025).
+2025-02-23 20:16:46,620 - INFO - CraftableBot - [Order Update] Initiating update protocol for DOWNTOWN for vendor: Ithaca Bakery, on 20250221.
+2025-02-23 20:16:46,620 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Ithaca Bakery_DOWNTOWN_20250221.xlsx
+2025-02-23 20:16:46,620 - INFO - OrderManager - Checking for directory for: Ithaca Bakery.
+2025-02-23 20:16:46,620 - INFO - OrderManager - Directory not found for: Ithaca Bakery
+2025-02-23 20:16:46,620 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Ithaca Bakery. Proceeding with new download.
+2025-02-23 20:16:46,620 - INFO - CraftableBot - Saving order for Ithaca Bakery.
+2025-02-23 20:16:46,620 - INFO - CraftableBot - Saving order as Excel file: Ithaca Bakery_DOWNTOWN_20250221.xlsx
+2025-02-23 20:16:54,111 - INFO - CraftableBot - Retrieving order for Equal Exchange (02/21/2025).
+2025-02-23 20:16:55,490 - INFO - CraftableBot - [Order Update] Initiating update protocol for DOWNTOWN for vendor: Equal Exchange, on 20250221.
+2025-02-23 20:16:55,490 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Equal Exchange_DOWNTOWN_20250221.xlsx
+2025-02-23 20:16:55,490 - INFO - OrderManager - Checking for directory for: Equal Exchange.
+2025-02-23 20:16:55,490 - INFO - OrderManager - Directory not found for: Equal Exchange
+2025-02-23 20:16:55,490 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Equal Exchange. Proceeding with new download.
+2025-02-23 20:16:55,490 - INFO - CraftableBot - Saving order for Equal Exchange.
+2025-02-23 20:16:55,490 - INFO - CraftableBot - Saving order as Excel file: Equal Exchange_DOWNTOWN_20250221.xlsx
+2025-02-23 20:17:02,856 - INFO - CraftableBot - Retrieving order for US Foods (02/21/2025).
+2025-02-23 20:17:04,143 - INFO - CraftableBot - [Order Update] Initiating update protocol for DOWNTOWN for vendor: US Foods, on 20250221.
+2025-02-23 20:17:04,143 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: US Foods_DOWNTOWN_20250221.xlsx
+2025-02-23 20:17:04,143 - INFO - OrderManager - Checking for directory for: US Foods.
+2025-02-23 20:17:04,143 - INFO - OrderManager - Directory not found for: US Foods
+2025-02-23 20:17:04,143 - INFO - CraftableBot - [Order Update] No order directory found for vendor: US Foods. Proceeding with new download.
+2025-02-23 20:17:04,143 - INFO - CraftableBot - Saving order for US Foods.
+2025-02-23 20:17:04,143 - INFO - CraftableBot - Saving order as Excel file: US Foods_DOWNTOWN_20250221.xlsx
+2025-02-23 20:17:11,560 - INFO - CraftableBot - Retrieving order for FingerLakes Farms (02/21/2025).
+2025-02-23 20:17:12,834 - INFO - CraftableBot - [Order Update] Initiating update protocol for DOWNTOWN for vendor: FingerLakes Farms, on 20250221.
+2025-02-23 20:17:12,834 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: FingerLakes Farms_DOWNTOWN_20250221.xlsx
+2025-02-23 20:17:12,834 - INFO - OrderManager - Checking for directory for: FingerLakes Farms.
+2025-02-23 20:17:12,834 - INFO - OrderManager - Directory not found for: FingerLakes Farms
+2025-02-23 20:17:12,834 - INFO - CraftableBot - [Order Update] No order directory found for vendor: FingerLakes Farms. Proceeding with new download.
+2025-02-23 20:17:12,834 - INFO - CraftableBot - Saving order for FingerLakes Farms.
+2025-02-23 20:17:12,834 - INFO - CraftableBot - Saving order as Excel file: FingerLakes Farms_DOWNTOWN_20250221.xlsx
+2025-02-23 20:17:20,225 - INFO - CraftableBot - Retrieving order for Hill & Markes (02/21/2025).
+2025-02-23 20:17:21,557 - INFO - CraftableBot - [Order Update] Initiating update protocol for DOWNTOWN for vendor: Hill & Markes, on 20250221.
+2025-02-23 20:17:21,557 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Hill & Markes_DOWNTOWN_20250221.xlsx
+2025-02-23 20:17:21,557 - INFO - OrderManager - Checking for directory for: Hill & Markes.
+2025-02-23 20:17:21,557 - INFO - OrderManager - Directory not found for: Hill & Markes
+2025-02-23 20:17:21,557 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Hill & Markes. Proceeding with new download.
+2025-02-23 20:17:21,557 - INFO - CraftableBot - Saving order for Hill & Markes.
+2025-02-23 20:17:21,557 - INFO - CraftableBot - Saving order as Excel file: Hill & Markes_DOWNTOWN_20250221.xlsx
+2025-02-23 20:17:28,995 - INFO - CraftableBot - Retrieving order for Peters Supply (02/21/2025).
+2025-02-23 20:17:30,296 - INFO - CraftableBot - [Order Update] Initiating update protocol for DOWNTOWN for vendor: Peters Supply, on 20250221.
+2025-02-23 20:17:30,296 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Peters Supply_DOWNTOWN_20250221.xlsx
+2025-02-23 20:17:30,296 - INFO - OrderManager - Checking for directory for: Peters Supply.
+2025-02-23 20:17:30,296 - INFO - OrderManager - Directory not found for: Peters Supply
+2025-02-23 20:17:30,296 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Peters Supply. Proceeding with new download.
+2025-02-23 20:17:30,296 - INFO - CraftableBot - Saving order for Peters Supply.
+2025-02-23 20:17:30,296 - INFO - CraftableBot - Saving order as Excel file: Peters Supply_DOWNTOWN_20250221.xlsx
+2025-02-23 20:17:37,698 - INFO - CraftableBot - Retrieving order for Coca-Cola (02/21/2025).
+2025-02-23 20:17:38,959 - INFO - CraftableBot - [Order Update] Initiating update protocol for DOWNTOWN for vendor: Coca-Cola, on 20250221.
+2025-02-23 20:17:38,959 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Coca-Cola_DOWNTOWN_20250221.xlsx
+2025-02-23 20:17:38,959 - INFO - OrderManager - Checking for directory for: Coca-Cola.
+2025-02-23 20:17:38,959 - INFO - OrderManager - Directory not found for: Coca-Cola
+2025-02-23 20:17:38,959 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Coca-Cola. Proceeding with new download.
+2025-02-23 20:17:38,959 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-02-23 20:17:38,959 - INFO - CraftableBot - Saving order as Excel file: Coca-Cola_DOWNTOWN_20250221.xlsx
+2025-02-23 20:17:46,347 - INFO - CraftableBot - Retrieving order for Regional Distributors, Inc. (02/21/2025).
+2025-02-23 20:17:47,553 - INFO - CraftableBot - [Order Update] Initiating update protocol for DOWNTOWN for vendor: Regional Distributors, Inc., on 20250221.
+2025-02-23 20:17:47,553 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Regional Distributors, Inc._DOWNTOWN_20250221.xlsx
+2025-02-23 20:17:47,553 - INFO - OrderManager - Checking for directory for: Regional Distributors, Inc..
+2025-02-23 20:17:47,554 - INFO - OrderManager - Directory not found for: Regional Distributors, Inc.
+2025-02-23 20:17:47,554 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Regional Distributors, Inc.. Proceeding with new download.
+2025-02-23 20:17:47,554 - INFO - CraftableBot - Saving order for Regional Distributors, Inc..
+2025-02-23 20:17:47,554 - INFO - CraftableBot - Saving order as Excel file: Regional Distributors, Inc._DOWNTOWN_20250221.xlsx
+2025-02-23 20:17:54,933 - INFO - CraftableBot - Retrieving order for UNFI (02/21/2025).
+2025-02-23 20:17:56,644 - INFO - CraftableBot - [Order Update] Initiating update protocol for DOWNTOWN for vendor: UNFI, on 20250221.
+2025-02-23 20:17:56,644 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: UNFI_DOWNTOWN_20250221.xlsx
+2025-02-23 20:17:56,644 - INFO - OrderManager - Checking for directory for: UNFI.
+2025-02-23 20:17:56,644 - INFO - OrderManager - Directory found: /home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/orders/OrderFiles/UNFI
+2025-02-23 20:17:56,644 - INFO - CraftableBot - [Order Update] No existing order file found for DOWNTOWN for UNFI on 20250221. Proceeding with new download.
+2025-02-23 20:17:56,644 - INFO - CraftableBot - Saving order for UNFI.
+2025-02-23 20:17:56,645 - INFO - CraftableBot - Saving order as Excel file: UNFI_DOWNTOWN_20250221.xlsx
+2025-02-23 20:18:04,119 - INFO - CraftableBot - Retrieving order for Eurocafe Imports (02/21/2025).
+2025-02-23 20:18:05,246 - INFO - CraftableBot - [Order Update] Initiating update protocol for DOWNTOWN for vendor: Eurocafe Imports, on 20250221.
+2025-02-23 20:18:05,246 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Eurocafe Imports_DOWNTOWN_20250221.xlsx
+2025-02-23 20:18:05,246 - INFO - OrderManager - Checking for directory for: Eurocafe Imports.
+2025-02-23 20:18:05,246 - INFO - OrderManager - Directory not found for: Eurocafe Imports
+2025-02-23 20:18:05,246 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Eurocafe Imports. Proceeding with new download.
+2025-02-23 20:18:05,246 - INFO - CraftableBot - Saving order for Eurocafe Imports.
+2025-02-23 20:18:05,246 - INFO - CraftableBot - Saving order as Excel file: Eurocafe Imports_DOWNTOWN_20250221.xlsx
+2025-02-23 20:18:12,664 - INFO - CraftableBot - Retrieving order for Worlds Best Cheeses (02/21/2025).
+2025-02-23 20:18:14,061 - INFO - CraftableBot - [Order Update] Initiating update protocol for DOWNTOWN for vendor: Worlds Best Cheeses, on 20250221.
+2025-02-23 20:18:14,061 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Worlds Best Cheeses_DOWNTOWN_20250221.xlsx
+2025-02-23 20:18:14,062 - INFO - OrderManager - Checking for directory for: Worlds Best Cheeses.
+2025-02-23 20:18:14,062 - INFO - OrderManager - Directory not found for: Worlds Best Cheeses
+2025-02-23 20:18:14,062 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Worlds Best Cheeses. Proceeding with new download.
+2025-02-23 20:18:14,062 - INFO - CraftableBot - Saving order for Worlds Best Cheeses.
+2025-02-23 20:18:14,062 - INFO - CraftableBot - Saving order as Excel file: Worlds Best Cheeses_DOWNTOWN_20250221.xlsx
+2025-02-23 20:18:21,407 - INFO - CraftableBot - Order download complete.
+2025-02-23 20:20:50,032 - INFO - WorkBot - Initializing WorkBot...
+2025-02-23 20:20:51,161 - INFO - WorkBot - WorkBot initialized successfully.
+2025-02-23 20:22:27,880 - INFO - CraftableBot - Closing WebDriver session.
+2025-02-23 20:22:32,472 - INFO - WorkBot - Initializing WorkBot...
+2025-02-23 20:22:33,744 - INFO - WorkBot - WorkBot initialized successfully.
+2025-02-23 20:23:10,068 - INFO - CraftableBot - Closing WebDriver session.
+2025-02-23 20:23:15,532 - INFO - WorkBot - Initializing WorkBot...
+2025-02-23 20:23:16,732 - INFO - WorkBot - WorkBot initialized successfully.
+2025-02-23 20:24:29,714 - INFO - CraftableBot - Closing WebDriver session.
+2025-02-23 20:24:34,234 - INFO - WorkBot - Initializing WorkBot...
+2025-02-23 20:24:35,425 - INFO - WorkBot - WorkBot initialized successfully.
+2025-02-23 20:56:56,512 - INFO - CraftableBot - Closing WebDriver session.
+2025-02-23 21:02:07,521 - INFO - WorkBot - Initializing WorkBot...
+2025-02-23 21:02:08,752 - INFO - WorkBot - WorkBot initialized successfully.
+2025-02-23 21:02:52,853 - INFO - CraftableBot - Closing WebDriver session.
+2025-02-23 21:02:57,907 - INFO - WorkBot - Initializing WorkBot...
+2025-02-23 21:02:59,152 - INFO - WorkBot - WorkBot initialized successfully.
+2025-02-23 21:06:12,276 - INFO - CraftableBot - Closing WebDriver session.
+2025-02-23 21:06:16,137 - INFO - WorkBot - Initializing WorkBot...
+2025-02-23 21:06:17,225 - INFO - WorkBot - WorkBot initialized successfully.
+2025-02-23 21:16:47,930 - INFO - WorkBot - Initializing WorkBot...
+2025-02-23 21:16:49,005 - INFO - WorkBot - WorkBot initialized successfully.
+2025-02-23 21:18:07,994 - INFO - WorkBot - Initializing WorkBot...
+2025-02-23 21:18:09,168 - INFO - WorkBot - WorkBot initialized successfully.
+2025-02-23 21:20:17,323 - INFO - WorkBot - Initializing WorkBot...
+2025-02-23 21:20:18,387 - INFO - WorkBot - WorkBot initialized successfully.
+2025-02-23 21:21:20,639 - INFO - CraftableBot - Closing WebDriver session.

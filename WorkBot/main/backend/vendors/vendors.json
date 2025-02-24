@@ -1,13 +1,59 @@
 {
     "vendors": {
-        "Behlog Produce": {
+        "A.L. George": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 0,
+            "min_order_cases": 10,
+            "special_notes": "",
+            "internal_contacts": []
+        },
+        "BALKAN BEVERAGE LLC": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 0,
+            "min_order_cases": 10,
+            "special_notes": "",
+            "internal_contacts": []
+        },
+        
+        "BJ's": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 0,
+            "min_order_cases": 0,
+            "special_notes": "No delivery, pickup only.",
+            "internal_contacts": []
+        },
+        "BEHLOG & SON, INC.": {
             "bot_class": "BehlogProduceBot",
             "module_path": "backend.vendors.vendor_bots.BehlogProduceBot",
             "uses_selenium": false,
             "requires_credentials": false,
             "order_format": "CSV",
             "min_order_value": 0,
+            "min_order_cases": 4,
             "special_notes": "No minimum order requirement.",
+            "internal_contacts": []
+        },
+        "Coca-Cola": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 0,
+            "min_order_cases": 15,
+            "special_notes": "",
             "internal_contacts": []
         },
         "Copper Horse Coffee": {
@@ -17,6 +63,7 @@
             "requires_credentials": false,
             "order_format": "CSV",
             "min_order_value": 50,
+            "min_order_cases": 4,
             "special_notes": "Orders must be placed by Sunday.",
             "internal_contacts": [
                 {
@@ -34,6 +81,7 @@
             "requires_credentials": true,
             "order_format": "XLSX",
             "min_order_value": 100,
+            "min_order_cases": 4,
             "special_notes": "Online ordering only.",
             "internal_contacts": []
         },
@@ -44,6 +92,7 @@
             "requires_credentials": false,
             "order_format": "CSV",
             "min_order_value": 0,
+            "min_order_cases": 4,
             "special_notes": "",
             "internal_contacts": [
                 {
@@ -61,6 +110,7 @@
             "requires_credentials": false,
             "order_format": "CSV",
             "min_order_value": 75,
+            "min_order_cases": 4,
             "special_notes": "Call before ordering.",
             "internal_contacts": [
                 {
@@ -71,14 +121,37 @@
                 }
             ]
         },
+        "Equal Exchange": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 0,
+            "min_order_cases": 0,
+            "special_notes": "",
+            "internal_contacts": []
+        },
+        "FingerLakes Farms": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 250,
+            "min_order_cases": 0,
+            "special_notes": "",
+            "internal_contacts": []
+        },
         "Hill & Markes": {
             "bot_class": "HillNMarkesBot",
             "module_path": "backend.vendors.vendor_bots.HillNMarkesBot",
             "uses_selenium": true,
             "requires_credentials": true,
             "order_format": "XLSX",
-            "min_order_value": 150,
-            "special_notes": "Orders over $500 qualify for free shipping.",
+            "min_order_value": 350,
+            "min_order_cases": 0,
+            "special_notes": "",
             "internal_contacts": [
                 {
                     "name": "Mike Schoemaker",
@@ -94,6 +167,39 @@
                 }
             ]
         },
+        "Hillcrest Dairy": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 0,
+            "min_order_cases": 0,
+            "special_notes": "",
+            "internal_contacts": []
+        },
+        "Hillcrest Foods": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 850,
+            "min_order_cases": 0,
+            "special_notes": "",
+            "internal_contacts": []
+        },
+        "Renzi": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 0,
+            "min_order_cases": 0,
+            "special_notes": "",
+            "internal_contacts": []
+        },
         "Hoffmire Farms": {
             "bot_class": "HoffmireFarmsBot",
             "module_path": "backend.vendors.vendor_bots.HoffmireFarmsBot",
@@ -101,6 +207,7 @@
             "requires_credentials": false,
             "order_format": "CSV",
             "min_order_value": 0,
+            "min_order_cases": 4,
             "special_notes": "",
             "internal_contacts": [
                 {
@@ -117,6 +224,50 @@
                 }
             ]
         },
+        "Johnston Paper": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 250,
+            "min_order_cases": 0,
+            "special_notes": "",
+            "internal_contacts": []
+        },
+        "Peters Supply": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 0,
+            "min_order_cases": 0,
+            "special_notes": "",
+            "internal_contacts": []
+        },
+        "Regional Distributors, Inc.": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 0,
+            "min_order_cases": 0,
+            "special_notes": "",
+            "internal_contacts": []
+        },
+        "SANICO": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 0,
+            "min_order_cases": 0,
+            "special_notes": "",
+            "internal_contacts": []
+        },
         "Ithaca Bakery": {
             "bot_class": "IthacaBakeryBot",
             "module_path": "backend.vendors.vendor_bots.IthacaBakeryBot",
@@ -124,6 +275,7 @@
             "requires_credentials": false,
             "order_format": "CSV",
             "min_order_value": 0,
+            "min_order_cases": 4,
             "special_notes": "Internal vendor.",
             "internal_contacts": [
                 {
@@ -141,6 +293,7 @@
             "requires_credentials": true,
             "order_format": "TXT",
             "min_order_value": 200,
+            "min_order_cases": 4,
             "special_notes": "Requires 2-step authentication.",
             "internal_contacts": [
                 {
@@ -164,6 +317,7 @@
             "requires_credentials": false,
             "order_format": "XLSX",
             "min_order_value": 100,
+            "min_order_cases": 4,
             "special_notes": "",
             "internal_contacts": [
                 {
@@ -187,6 +341,7 @@
             "requires_credentials": true,
             "order_format": "CSV",
             "min_order_value": 500,
+            "min_order_cases": 4,
             "special_notes": "Sysco account required.",
             "internal_contacts": [
                 {
@@ -210,6 +365,7 @@
             "requires_credentials": true,
             "order_format": "CSV",
             "min_order_value": 1500,
+            "min_order_cases": 4,
             "special_notes": "Minimum order $1,500.",
             "internal_contacts": [
                 {
@@ -233,6 +389,7 @@
             "requires_credentials": true,
             "order_format": "XLSX",
             "min_order_value": 500,
+            "min_order_cases": 4,
             "special_notes": "Large orders must be placed 48 hours in advance.",
             "internal_contacts": [
                 {
@@ -248,6 +405,39 @@
                     "phone": "555-987-6543"
                 }
             ]
+        },
+        "Webstaurant": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 0,
+            "min_order_cases": 0,
+            "special_notes": "",
+            "internal_contacts": []
+        },
+        "Worlds Best Cheeses": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 0,
+            "min_order_cases": 0,
+            "special_notes": "",
+            "internal_contacts": []
+        },
+        "Fingerlakes Artisen Foods": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 0,
+            "min_order_cases": 10,
+            "special_notes": "",
+            "internal_contacts": []
         }
     }
 }

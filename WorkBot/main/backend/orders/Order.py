@@ -37,11 +37,11 @@ class Order:
         for row in sheet.iter_rows(min_row=2):
             sku, name, quantity, cost_per, total_cost = row[0:5]
             self.items.append({
-                'SKU': sku,
-                'Item': name,
-                'Quantity': quantity,
-                'Cost Per': cost_per,
-                'Total Cost': total_cost
+                'SKU': sku.value,
+                'Item': name.value,
+                'Quantity': quantity.value,
+                'Cost Per': cost_per.value,
+                'Total Cost': total_cost.value
                 })
             
         return

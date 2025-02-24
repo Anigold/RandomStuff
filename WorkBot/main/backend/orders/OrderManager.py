@@ -11,7 +11,7 @@ DOWNLOADS_DIRECTORY = SOURCE_PATH / 'downloads'
 class OrderManager:
 
     logger = Logger.get_logger('OrderManager', log_file='logs/order_manager.log')
-    file_pattern = re.compile(r"^(?P<vendor>.+?) _ (?P<store>.+?) (?P<date>\d{8})$")
+    file_pattern = re.compile(r"^(?P<vendor>.+?)_(?P<store>.+?)_(?P<date>\d{8})$")
 
     def get_order_files_directory(self) -> Path:
         return ORDERS_DIRECTORY
@@ -37,8 +37,7 @@ class OrderManager:
  
         for vendor_order_dir in orders_dir.iterdir():
 
-            if vendors and vendor_order_file not in vendors: 
-                continue
+            
             
             for vendor_order_file in vendor_order_dir.iterdir():
                 
@@ -48,6 +47,8 @@ class OrderManager:
                 file_metadata = OrderManager.parse_file_name(vendor_order_file)
                 if 'store' not in file_metadata or file_metadata['store'] not in stores: continue
                 
+                if vendors and file_metadata['vendor'] not in vendors: break
+
                 order = OrderManager.create_order_from_excel(vendor_order_file)
 
                 orders.append(order)
@@ -67,7 +68,7 @@ class OrderManager:
         return [file for file in vendor_orders_directory.iterdir() if file.is_file() and self.is_valid_filename(file) and file.suffix == file_extension]
 
     def generate_filename(self, order: Order = None, store: str = None, vendor: str = None, date: str = None, file_extension: str = '.xlsx') -> str:
-        return f'{order.vendor} _ {order.store} {order.date}{file_extension}' if order else f'{vendor} _ {store} {date}{file_extension}'
+        return f'{order.vendor}_{order.store}_{order.date}{file_extension}' if order else f'{vendor}_{store}_{date}{file_extension}'
 
     def get_file_path(self, order: Order, file_extension: str = '.xlsx') -> Path:
         return self.get_order_files_directory() / self.generate_filename(order, file_extension)
