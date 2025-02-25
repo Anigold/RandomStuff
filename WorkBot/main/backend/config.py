@@ -2,10 +2,12 @@ import os
 from dotenv import load_dotenv
 from pathlib import Path
 
-# Load environment variables
-load_dotenv()
+
 
 BASE_DIR = Path(__file__).parent
+
+# Load environment variables
+load_dotenv(dotenv_path=BASE_DIR.parent / '.env')
 
 # Relative Paths
 # Probably change this, but for now I want a centralized directory

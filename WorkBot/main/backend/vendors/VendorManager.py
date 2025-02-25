@@ -24,7 +24,7 @@ class VendorManager:
         except (ImportError, AttributeError) as e:
             raise ImportError(f"Could not load {vendor_info['bot_class']} for {vendor_name}: {e}")
 
-        init_args = {}
+        init_args = []
         init_kwargs = {}
 
         if vendor_info.get('uses_selenium', False):

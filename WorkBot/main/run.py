@@ -60,14 +60,17 @@ def get_excel_files(path: Path) -> list[Path]:
 
 '''FIX THIS UGLY-ASS HACKY JOB'''
 def format_orders(vendor: str, path_to_folder: str) -> None:
-    import backend.vendors.vendor_config as vendor_config
-    vendor_bot  = vendor_config.get_vendor_bot(vendor)()
+
+    from backend.vendors.VendorManager import VendorManager
+
+    vendor_manager = VendorManager()
+    vendor_bot  = vendor_manager.initialize_vendor(vendor)
     excel_files = get_excel_files(path_to_folder / vendor_bot.name)
     for file in excel_files:
         file_name_no_extension  = file.name.split('.')[0]
         item_data               = FormatItemData.extract_item_data_from_excel_file(f'{file}')
         if vendor_bot.name == 'US Foods':
-            store_name = file_name_no_extension.split(' _ ')[1].split(' ')[0]
+            store_name = file_name_no_extension.split('_')[1]
             vendor_bot.format_for_file_upload(item_data, f'{path_to_folder}\\{vendor_bot.name}\\Formatted _ {file_name_no_extension}', store_name)
         else:
             vendor_bot.format_for_file_upload(item_data, f'{path_to_folder}\\{vendor_bot.name}\\Formatted _ {file_name_no_extension}')
@@ -271,12 +274,12 @@ def generate_weekly_orders_email(store: str, to: list):
 if __name__ == '__main__':
 
     vendors = [ 
-        'Sysco', 
-        'Performance Food',
+        # 'Sysco', 
+        # 'Performance Food',
         # 'US Foods',
         # 'Renzi',
         # 'UNFI',
-        # 'Hill & Markes',
+        'Hill & Markes',
         # 'Johnston Paper',
         # 'Regional Distributors, Inc.',
         # 'Peters Supply',
@@ -472,11 +475,11 @@ if __name__ == '__main__':
 
     # vendor_manager = VendorManager()
 
-    # vendors = [
-    #     'Copper Horse Coffee',
-    #     # 'Eurocafe Imports',
-    #     'Ithaca Bakery'
-    # ]
+    vendors = [
+        # 'Copper Horse Coffee',
+        # 'Eurocafe Imports',
+        'Ithaca Bakery'
+    ]
     # for vendor in vendors:
 
     #     vendor_bot    = vendor_manager.initialize_vendor(vendor)

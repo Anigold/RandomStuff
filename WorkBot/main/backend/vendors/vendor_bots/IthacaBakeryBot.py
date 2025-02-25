@@ -33,7 +33,7 @@ class IthacaBakeryBot(VendorBot):
     '''
     def get_store_from_file_name(self, file_name: str) -> str:
         #return ntpath.basename(file_name)
-        return file_name.split(' _ ')[1].split(' ')[0]
+        return file_name.split('_')[1]
         
     '''
     Takes the pre-formatted orders and merges them to one sheet.
