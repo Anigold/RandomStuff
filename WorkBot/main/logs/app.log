@@ -907,3 +907,439 @@ Traceback (most recent call last):
     os.rename(self, target)
     ~~~~~~~~~^^^^^^^^^^^^^^
 FileExistsError: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\downloads\\Order.pdf' -> 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\backend\\orders\\OrderFiles\\Sysco _ DOWNTOWN 20250221.pdf'
+2025-02-26 07:51:32,955 - ERROR - backend.craftable_bot.CraftableBot - Error in input_transfer: Message: invalid argument
+  (Session info: chrome=133.0.6943.127)
+Stacktrace:
+	GetHandleVerifier [0x010A0B43+25139]
+	(No symbol) [0x010313F4]
+	(No symbol) [0x00F10340]
+	(No symbol) [0x00F009E6]
+	(No symbol) [0x00EFF095]
+	(No symbol) [0x00EFF80B]
+	(No symbol) [0x00F13FAE]
+	(No symbol) [0x00F9F427]
+	(No symbol) [0x00F7CFCC]
+	(No symbol) [0x00F9E778]
+	(No symbol) [0x00F7CDC6]
+	(No symbol) [0x00F4BDE9]
+	(No symbol) [0x00F4D124]
+	GetHandleVerifier [0x013A4373+3185251]
+	GetHandleVerifier [0x013C291A+3309578]
+	GetHandleVerifier [0x013BCF42+3286578]
+	GetHandleVerifier [0x01137AE0+643536]
+	(No symbol) [0x0103A20D]
+	(No symbol) [0x010370B8]
+	(No symbol) [0x01037257]
+	(No symbol) [0x01029E00]
+	BaseThreadInitThunk [0x76D9FCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x77CB82AE+286]
+	RtlGetAppContainerNamedObjectPath [0x77CB827E+238]
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 89, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 410, in input_transfer
+    self.driver.get(transfer_url)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\undetected_chromedriver\__init__.py", line 665, in get
+    return super().get(url)
+           ~~~~~~~~~~~^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 454, in get
+    self.execute(Command.GET, {"url": url})
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 429, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.InvalidArgumentException: Message: invalid argument
+  (Session info: chrome=133.0.6943.127)
+Stacktrace:
+	GetHandleVerifier [0x010A0B43+25139]
+	(No symbol) [0x010313F4]
+	(No symbol) [0x00F10340]
+	(No symbol) [0x00F009E6]
+	(No symbol) [0x00EFF095]
+	(No symbol) [0x00EFF80B]
+	(No symbol) [0x00F13FAE]
+	(No symbol) [0x00F9F427]
+	(No symbol) [0x00F7CFCC]
+	(No symbol) [0x00F9E778]
+	(No symbol) [0x00F7CDC6]
+	(No symbol) [0x00F4BDE9]
+	(No symbol) [0x00F4D124]
+	GetHandleVerifier [0x013A4373+3185251]
+	GetHandleVerifier [0x013C291A+3309578]
+	GetHandleVerifier [0x013BCF42+3286578]
+	GetHandleVerifier [0x01137AE0+643536]
+	(No symbol) [0x0103A20D]
+	(No symbol) [0x010370B8]
+	(No symbol) [0x01037257]
+	(No symbol) [0x01029E00]
+	BaseThreadInitThunk [0x76D9FCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x77CB82AE+286]
+	RtlGetAppContainerNamedObjectPath [0x77CB827E+238]
+
+2025-02-26 07:51:32,972 - ERROR - backend.craftable_bot.CraftableBot - Error in input_transfers: Message: invalid argument
+  (Session info: chrome=133.0.6943.127)
+Stacktrace:
+	GetHandleVerifier [0x010A0B43+25139]
+	(No symbol) [0x010313F4]
+	(No symbol) [0x00F10340]
+	(No symbol) [0x00F009E6]
+	(No symbol) [0x00EFF095]
+	(No symbol) [0x00EFF80B]
+	(No symbol) [0x00F13FAE]
+	(No symbol) [0x00F9F427]
+	(No symbol) [0x00F7CFCC]
+	(No symbol) [0x00F9E778]
+	(No symbol) [0x00F7CDC6]
+	(No symbol) [0x00F4BDE9]
+	(No symbol) [0x00F4D124]
+	GetHandleVerifier [0x013A4373+3185251]
+	GetHandleVerifier [0x013C291A+3309578]
+	GetHandleVerifier [0x013BCF42+3286578]
+	GetHandleVerifier [0x01137AE0+643536]
+	(No symbol) [0x0103A20D]
+	(No symbol) [0x010370B8]
+	(No symbol) [0x01037257]
+	(No symbol) [0x01029E00]
+	BaseThreadInitThunk [0x76D9FCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x77CB82AE+286]
+	RtlGetAppContainerNamedObjectPath [0x77CB827E+238]
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 89, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 396, in input_transfers
+    self.input_transfer(transfer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 89, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 410, in input_transfer
+    self.driver.get(transfer_url)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\undetected_chromedriver\__init__.py", line 665, in get
+    return super().get(url)
+           ~~~~~~~~~~~^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 454, in get
+    self.execute(Command.GET, {"url": url})
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 429, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.InvalidArgumentException: Message: invalid argument
+  (Session info: chrome=133.0.6943.127)
+Stacktrace:
+	GetHandleVerifier [0x010A0B43+25139]
+	(No symbol) [0x010313F4]
+	(No symbol) [0x00F10340]
+	(No symbol) [0x00F009E6]
+	(No symbol) [0x00EFF095]
+	(No symbol) [0x00EFF80B]
+	(No symbol) [0x00F13FAE]
+	(No symbol) [0x00F9F427]
+	(No symbol) [0x00F7CFCC]
+	(No symbol) [0x00F9E778]
+	(No symbol) [0x00F7CDC6]
+	(No symbol) [0x00F4BDE9]
+	(No symbol) [0x00F4D124]
+	GetHandleVerifier [0x013A4373+3185251]
+	GetHandleVerifier [0x013C291A+3309578]
+	GetHandleVerifier [0x013BCF42+3286578]
+	GetHandleVerifier [0x01137AE0+643536]
+	(No symbol) [0x0103A20D]
+	(No symbol) [0x010370B8]
+	(No symbol) [0x01037257]
+	(No symbol) [0x01029E00]
+	BaseThreadInitThunk [0x76D9FCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x77CB82AE+286]
+	RtlGetAppContainerNamedObjectPath [0x77CB827E+238]
+
+2025-02-26 07:53:47,604 - ERROR - backend.craftable_bot.CraftableBot - Error in input_transfer: Message: invalid argument
+  (Session info: chrome=133.0.6943.127)
+Stacktrace:
+	GetHandleVerifier [0x002B0B43+25139]
+	(No symbol) [0x002413F4]
+	(No symbol) [0x00120340]
+	(No symbol) [0x001109E6]
+	(No symbol) [0x0010F095]
+	(No symbol) [0x0010F80B]
+	(No symbol) [0x00123FAE]
+	(No symbol) [0x001AF427]
+	(No symbol) [0x0018CFCC]
+	(No symbol) [0x001AE778]
+	(No symbol) [0x0018CDC6]
+	(No symbol) [0x0015BDE9]
+	(No symbol) [0x0015D124]
+	GetHandleVerifier [0x005B4373+3185251]
+	GetHandleVerifier [0x005D291A+3309578]
+	GetHandleVerifier [0x005CCF42+3286578]
+	GetHandleVerifier [0x00347AE0+643536]
+	(No symbol) [0x0024A20D]
+	(No symbol) [0x002470B8]
+	(No symbol) [0x00247257]
+	(No symbol) [0x00239E00]
+	BaseThreadInitThunk [0x76D9FCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x77CB82AE+286]
+	RtlGetAppContainerNamedObjectPath [0x77CB827E+238]
+	(No symbol) [0x00000000]
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 89, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 410, in input_transfer
+    self.driver.get(transfer_url)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\undetected_chromedriver\__init__.py", line 665, in get
+    return super().get(url)
+           ~~~~~~~~~~~^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 454, in get
+    self.execute(Command.GET, {"url": url})
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 429, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.InvalidArgumentException: Message: invalid argument
+  (Session info: chrome=133.0.6943.127)
+Stacktrace:
+	GetHandleVerifier [0x002B0B43+25139]
+	(No symbol) [0x002413F4]
+	(No symbol) [0x00120340]
+	(No symbol) [0x001109E6]
+	(No symbol) [0x0010F095]
+	(No symbol) [0x0010F80B]
+	(No symbol) [0x00123FAE]
+	(No symbol) [0x001AF427]
+	(No symbol) [0x0018CFCC]
+	(No symbol) [0x001AE778]
+	(No symbol) [0x0018CDC6]
+	(No symbol) [0x0015BDE9]
+	(No symbol) [0x0015D124]
+	GetHandleVerifier [0x005B4373+3185251]
+	GetHandleVerifier [0x005D291A+3309578]
+	GetHandleVerifier [0x005CCF42+3286578]
+	GetHandleVerifier [0x00347AE0+643536]
+	(No symbol) [0x0024A20D]
+	(No symbol) [0x002470B8]
+	(No symbol) [0x00247257]
+	(No symbol) [0x00239E00]
+	BaseThreadInitThunk [0x76D9FCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x77CB82AE+286]
+	RtlGetAppContainerNamedObjectPath [0x77CB827E+238]
+	(No symbol) [0x00000000]
+
+2025-02-26 07:53:47,608 - ERROR - backend.craftable_bot.CraftableBot - Error in input_transfers: Message: invalid argument
+  (Session info: chrome=133.0.6943.127)
+Stacktrace:
+	GetHandleVerifier [0x002B0B43+25139]
+	(No symbol) [0x002413F4]
+	(No symbol) [0x00120340]
+	(No symbol) [0x001109E6]
+	(No symbol) [0x0010F095]
+	(No symbol) [0x0010F80B]
+	(No symbol) [0x00123FAE]
+	(No symbol) [0x001AF427]
+	(No symbol) [0x0018CFCC]
+	(No symbol) [0x001AE778]
+	(No symbol) [0x0018CDC6]
+	(No symbol) [0x0015BDE9]
+	(No symbol) [0x0015D124]
+	GetHandleVerifier [0x005B4373+3185251]
+	GetHandleVerifier [0x005D291A+3309578]
+	GetHandleVerifier [0x005CCF42+3286578]
+	GetHandleVerifier [0x00347AE0+643536]
+	(No symbol) [0x0024A20D]
+	(No symbol) [0x002470B8]
+	(No symbol) [0x00247257]
+	(No symbol) [0x00239E00]
+	BaseThreadInitThunk [0x76D9FCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x77CB82AE+286]
+	RtlGetAppContainerNamedObjectPath [0x77CB827E+238]
+	(No symbol) [0x00000000]
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 89, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 396, in input_transfers
+    self.input_transfer(transfer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 89, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 410, in input_transfer
+    self.driver.get(transfer_url)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\undetected_chromedriver\__init__.py", line 665, in get
+    return super().get(url)
+           ~~~~~~~~~~~^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 454, in get
+    self.execute(Command.GET, {"url": url})
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 429, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.InvalidArgumentException: Message: invalid argument
+  (Session info: chrome=133.0.6943.127)
+Stacktrace:
+	GetHandleVerifier [0x002B0B43+25139]
+	(No symbol) [0x002413F4]
+	(No symbol) [0x00120340]
+	(No symbol) [0x001109E6]
+	(No symbol) [0x0010F095]
+	(No symbol) [0x0010F80B]
+	(No symbol) [0x00123FAE]
+	(No symbol) [0x001AF427]
+	(No symbol) [0x0018CFCC]
+	(No symbol) [0x001AE778]
+	(No symbol) [0x0018CDC6]
+	(No symbol) [0x0015BDE9]
+	(No symbol) [0x0015D124]
+	GetHandleVerifier [0x005B4373+3185251]
+	GetHandleVerifier [0x005D291A+3309578]
+	GetHandleVerifier [0x005CCF42+3286578]
+	GetHandleVerifier [0x00347AE0+643536]
+	(No symbol) [0x0024A20D]
+	(No symbol) [0x002470B8]
+	(No symbol) [0x00247257]
+	(No symbol) [0x00239E00]
+	BaseThreadInitThunk [0x76D9FCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x77CB82AE+286]
+	RtlGetAppContainerNamedObjectPath [0x77CB827E+238]
+	(No symbol) [0x00000000]
+
+2025-02-26 07:55:49,555 - ERROR - backend.craftable_bot.CraftableBot - Error in input_transfer: 'str' object has no attribute 'year'
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 89, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 415, in input_transfer
+    self._enter_transfer_details(transfer)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 458, in _enter_transfer_details
+    self._change_calendar_date(transfer.date)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 745, in _change_calendar_date
+    calendar_current_year_input.send_keys(transfer_datetime.year)
+                                          ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'year'
+2025-02-26 07:55:49,558 - ERROR - backend.craftable_bot.CraftableBot - Error in input_transfers: 'str' object has no attribute 'year'
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 89, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 396, in input_transfers
+    self.input_transfer(transfer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 89, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 415, in input_transfer
+    self._enter_transfer_details(transfer)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 458, in _enter_transfer_details
+    self._change_calendar_date(transfer.date)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 745, in _change_calendar_date
+    calendar_current_year_input.send_keys(transfer_datetime.year)
+                                          ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'year'
+2025-02-26 08:00:06,805 - ERROR - backend.craftable_bot.CraftableBot - Error in input_transfer: 'str' object has no attribute 'year'
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 89, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 415, in input_transfer
+    self._enter_transfer_details(transfer)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 458, in _enter_transfer_details
+    self._change_calendar_date(transfer.date)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 745, in _change_calendar_date
+    calendar_current_year_input.send_keys(transfer_datetime.year)
+                                          ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'year'
+2025-02-26 08:00:06,807 - ERROR - backend.craftable_bot.CraftableBot - Error in input_transfers: 'str' object has no attribute 'year'
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 89, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 396, in input_transfers
+    self.input_transfer(transfer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 89, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 415, in input_transfer
+    self._enter_transfer_details(transfer)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 458, in _enter_transfer_details
+    self._change_calendar_date(transfer.date)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 745, in _change_calendar_date
+    calendar_current_year_input.send_keys(transfer_datetime.year)
+                                          ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'year'
+2025-02-26 08:04:08,969 - ERROR - backend.craftable_bot.CraftableBot - Error in input_transfer: 'dict' object has no attribute 'name'
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 89, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 417, in input_transfer
+    self._input_transfer_items(transfer)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 510, in _input_transfer_items
+    print(item.name, flush=True)
+          ^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'name'
+2025-02-26 08:04:08,972 - ERROR - backend.craftable_bot.CraftableBot - Error in input_transfers: 'dict' object has no attribute 'name'
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 89, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 396, in input_transfers
+    self.input_transfer(transfer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 89, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 417, in input_transfer
+    self._input_transfer_items(transfer)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 510, in _input_transfer_items
+    print(item.name, flush=True)
+          ^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'name'
+2025-02-26 08:08:13,906 - ERROR - backend.craftable_bot.CraftableBot - Error in input_transfer: '<=' not supported between instances of 'str' and 'int'
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 89, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 417, in input_transfer
+    self._input_transfer_items(transfer)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 511, in _input_transfer_items
+    if item.quantity <= 0: return # Skip items that weren't transferred.
+       ^^^^^^^^^^^^^^^^^^
+TypeError: '<=' not supported between instances of 'str' and 'int'
+2025-02-26 08:08:13,908 - ERROR - backend.craftable_bot.CraftableBot - Error in input_transfers: '<=' not supported between instances of 'str' and 'int'
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 89, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 396, in input_transfers
+    self.input_transfer(transfer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 89, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 417, in input_transfer
+    self._input_transfer_items(transfer)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 511, in _input_transfer_items
+    if item.quantity <= 0: return # Skip items that weren't transferred.
+       ^^^^^^^^^^^^^^^^^^
+TypeError: '<=' not supported between instances of 'str' and 'int'
+2025-02-26 13:22:32,168 - ERROR - backend.craftable_bot.CraftableBot - Error in download_orders: OrderManager._save_as_excel() missing 1 required positional argument: 'order'
+Traceback (most recent call last):
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 89, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 218, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 261, in _process_order_row
+    self.order_manager.save_order(order_to_save)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\orders\OrderManager.py", line 82, in save_order
+    if file_extension in extensions: extensions[file_extension]()
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TypeError: OrderManager._save_as_excel() missing 1 required positional argument: 'order'

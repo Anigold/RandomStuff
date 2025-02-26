@@ -429,12 +429,12 @@
             ]
         },
         "Webstaurant": {
-            "bot_class": "",
-            "module_path": "",
-            "uses_selenium": false,
-            "requires_credentials": false,
+            "bot_class": "WebstaurantBot",
+            "module_path": "backend.smallwares.WebstaurantBot",
+            "uses_selenium": true,
+            "requires_credentials": true,
             "order_format": "",
-            "min_order_value": 0,
+            "min_order_value": 2900,
             "min_order_cases": 0,
             "special_notes": "",
             "internal_contacts": []
@@ -449,6 +449,24 @@
             "min_order_cases": 0,
             "special_notes": "",
             "internal_contacts": []
+        },
+        "Sweet Sam's": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 0,
+            "min_order_cases": 0,
+            "special_notes": "",
+            "internal_contacts": [
+                {
+                    "name": "Jeira Martinez",
+                    "title": "Customer Service Manager",
+                    "email": "service@sweetsams.com",
+                    "phone": "718-822-0599"
+                }
+            ]
         },
         "Fingerlakes Artisen Foods": {
             "bot_class": "",

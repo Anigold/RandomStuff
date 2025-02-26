@@ -3,6 +3,8 @@ from pathlib import Path
 from datetime import datetime
 import re
 
+from backend.helpers.DatetimeFormattingHelper import string_to_datetime
+
 SOURCE_PATH              = Path(__file__).parent.parent
 TRANSFER_FILES_DIRECTORY = SOURCE_PATH / 'transferring' / 'TransferFiles'
 
@@ -19,7 +21,7 @@ class TransferManager:
             return None
         
         transfer_metadata = self.parse_filename(path)
-        datetime = TransferManager._string_to_datetime(transfer_metadata['date'])
+        datetime = string_to_datetime(transfer_metadata['date'])
 
         return Transfer.from_excel_workbook(path, transfer_metadata['store_from'], transfer_metadata['store_to'], datetime)
 
@@ -46,7 +48,7 @@ class TransferManager:
     
     @staticmethod
     def format_date_string(date_string: str) -> str:
-        return TransferManager._format_datetime_to_string(TransferManager._string_to_datetime(date_string))
+        return TransferManager._format_datetime_to_string(string_to_datetime(date_string))
 
     @staticmethod
     def get_transfer_files_directory() -> Path:
@@ -55,37 +57,6 @@ class TransferManager:
     @staticmethod
     def _format_datetime_to_string(datetime_obj: datetime) -> str:
         return datetime_obj.strftime('%Y%m%d')
-    
-    @staticmethod
-    def _string_to_datetime(date_string: str) -> datetime:
-        """
-        Attempts to convert an arbitrary date string into a datetime object.
-        
-        Supports formats like:
-        - "2025-02-12"
-        - "20250212"
-        - "12-02-2025"
-        - "Feb 12, 2025"
-        - "February 12 2025"
-        - "02/12/2025"
-        """
-        formats = [
-            "%Y-%m-%d",    # 2025-02-12
-            "%Y%m%d",      # 20250212
-            "%d-%m-%Y",    # 12-02-2025
-            "%b %d, %Y",   # Feb 12, 2025
-            "%B %d %Y",    # February 12 2025
-            "%m/%d/%Y",    # 02/12/2025
-            "%d/%m/%Y",    # 12/02/2025 (European format)
-        ]
-
-        for fmt in formats:
-            try:
-                return datetime.strptime(date_string, fmt)
-            except ValueError:
-                continue
-
-        raise ValueError(f"Could not parse date: {date_string}")
     
     @classmethod
     def parse_filename(cls, filename: Path) -> dict:

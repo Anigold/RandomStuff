@@ -79,7 +79,7 @@ class OrderManager:
             '.xlsx': self._save_as_excel
         }
 
-        if file_extension in extensions: extensions[file_extension]()
+        if file_extension in extensions: extensions[file_extension](order)
 
         else: return None
 

@@ -1,6 +1,12 @@
 import logging
 import importlib
 from backend.vendors.vendor_config import get_vendor_information, get_vendor_credentials
+from backend.helpers.selenium_helpers import create_driver, create_options
+from pathlib import Path
+
+SOURCE_PATH         = Path(__file__).parent.parent
+ORDERS_DIRECTORY    = SOURCE_PATH / 'orders' / 'OrderFiles'
+DOWNLOADS_DIRECTORY = SOURCE_PATH / 'downloads'
 
 class VendorManager:
     """Manages vendor bot instances dynamically."""
@@ -28,6 +34,9 @@ class VendorManager:
         init_kwargs = {}
 
         if vendor_info.get('uses_selenium', False):
+            if not driver: 
+                driver = create_driver(create_options(DOWNLOADS_DIRECTORY))
+                
             init_args.append(driver)
 
         if vendor_info.get('requires_credentials', False):

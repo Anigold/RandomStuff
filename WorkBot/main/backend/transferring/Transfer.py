@@ -16,7 +16,7 @@ class Transfer:
     def __init__(self, store_from: str, store_to: str, date: datetime, items: set[TransferItem] = None) -> None:
         self.store_from = store_from
         self.store_to   = store_to
-        self.items      = items or set()
+        self.items      = items or []
         self.date       = date
 
     def to_excel_workbook(self) -> Workbook:
@@ -52,15 +52,20 @@ class Transfer:
         if not required_cols.issubset(col_index.keys()):
             raise ValueError(f"Excel file must contain the columns: {required_cols}")
         
-        items = set()
+        items = []
         for row in sheet.iter_rows(min_row=2, values_only=True):  # Skip headers
             item_name = row[col_index["Item"]]
-            quantity = row[col_index["Quantity"]]
+            quantity  = row[col_index["Quantity"]]
 
             if item_name and quantity is not None:
-                items.add(TransferItem(item_name, float(quantity)))
+                items.append(TransferItem(item_name, float(quantity)))
 
-        return Transfer(store_from, store_to, items, date)
+        return Transfer(
+            store_from=store_from,
+            store_to=store_to,
+            items=items,
+            date=date
+            )
 
 
     

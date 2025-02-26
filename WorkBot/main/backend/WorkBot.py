@@ -8,12 +8,13 @@ from backend.transferring.Transfer import Transfer, TransferItem
 
 from backend.craftable_bot.CraftableBot import CraftableBot
 from backend.craftable_bot.helpers import generate_craftablebot_args
-
+from backend.helpers.DatetimeFormattingHelper import string_to_datetime
 import backend.config as config
 
 from pathlib import Path
 from datetime import datetime
 import argparse
+import json
 
 from tabulate import tabulate
 from termcolor import colored
@@ -56,13 +57,32 @@ class WorkBot:
 
     def convert_order_to_transfer(self, order: Order) -> Transfer:
         '''This is so niche that we only need to use it once a week, but it removes tedium from my life so it stays.'''
+        # print(order.items, flush=True)
+
+        if order.vendor == 'Ithaca Bakery': 
+            store_from = 'BAKERY'
+        else:
+            store_from = order.vendor
+
+        transfer_items = []
+        for item in order.items:
+            transfer_item = TransferItem(name=item['Item'], quantity=float(item['Quantity']))
+            transfer_items.append(transfer_item)
+
+        order_datetime = string_to_datetime(order.date)
 
         return Transfer(
-            store_from=order.vendor,
+            store_from=store_from,
             store_to=order.store,
-            date=order.date,
-            items=frozenset(order.items)
+            date=order_datetime,
+            items=transfer_items
             )
+
+    # def format_orders_for_upload(self, orders: list):
+        # Need to implement OrderItems before moving forward
+        # for order in orders:
+        #     vendor_bot = self.vendor_manager.initialize_vendor(order.vendor)
+            # vendor_bot.format_for_file_upload(order.)
 
     def close_craftable_session(self):
         self.craft_bot.close_session()
@@ -85,11 +105,12 @@ class WorkBotCLI:
         self.workbot = WorkBot()
         self.commands = {
             "download_orders": self.download_orders,
-            'list_orders': self.list_orders,
-            "sort_orders": self.sort_orders,
-            "shutdown": self.shutdown,
-            "help": self.show_help,
-            "exit": self.exit_cli,
+            'list_orders':     self.list_orders,
+            "sort_orders":     self.sort_orders,
+            'delete_orders':   self.delete_orders,
+            "shutdown":        self.shutdown,
+            "help":            self.show_help,
+            "exit":            self.exit_cli,
         }
 
     def start(self):
@@ -155,7 +176,31 @@ class WorkBotCLI:
             print(formatted_orders)
         except SystemExit:
             pass
-        
+
+    def format_orders_for_upload(self, args):
+        parser = argparse.ArgumentParser(prog='list_orders', description='List the saved orders.')
+        parser.add_argument('--vendors', nargs='+', help='List of vendors (default: all).')
+
+        try:
+            parsed_args      = parser.parse_args(args)
+            orders           = self.workbot.get_orders(parsed_args.stores, parsed_args.vendors)
+            formatted_orders = self._format_order_list(orders, parsed_args.show_pricing, parsed_args.show_minimums)
+            print(formatted_orders)
+        except SystemExit:
+            pass
+
+    def delete_orders(self, args):
+        parser = argparse.ArgumentParser(prog="download_orders", description="Download orders from vendors.")
+        parser.add_argument("--stores", nargs="+", required=True, help="List of store names.")
+        parser.add_argument("--vendors", nargs="+", help="List of vendors (default: all).")
+        try:
+            parsed_args = parser.parse_args(args)
+            self.workbot.delete_orders(parsed_args.stores, parsed_args.vendors)
+            
+            print("Orders deleted successfully.")
+        except SystemExit:
+            pass  # Prevent argparse from exiting CLI loop
+
     def _format_order_list(self, orders: list, show_pricing: bool = False, show_minimums: bool = False):
 
         orders.sort(key=lambda x: x.store)
@@ -200,10 +245,10 @@ class WorkBotCLI:
     def show_help(self, args):
         """Displays available commands."""
         print("\nAvailable Commands:")
-        print("  download_orders --stores [STORE_NAMES] --vendors [VENDORS] --sort   # Download orders for specific stores/vendors")
+        print("  download_orders --stores [STORE_NAMES] --vendors [VENDORS] --sort   # Download orders from Craftable for specific stores/vendors")
         print('  list_orders --stores [STORE_NAMES] --vendors [VENDORS]              # Display orders for specific stores/vendors')
         print('  sort_orders                                                         # Sort order files by vendor')
-        print("  shutdown                                                            # Shut down WorkBot and close sessions")
+        print('  delete_orders --stores [STORE NAMES] --vendors [VENDORS]            # Delete orders from Craftable for specific stores/vendors.')
         print("  help                                                                # Show available commands")
         print("  exit                                                                # Exit the CLI\n")
 

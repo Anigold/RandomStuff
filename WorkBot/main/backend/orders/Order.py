@@ -4,10 +4,18 @@ from pathlib import Path
 import re
 from openpyxl import load_workbook, Workbook
 
+class OrderItem:
+
+    def __init__(self, sku: str, name: str, quantity: float, cost_per: float, total_cost: float = None) -> None:
+        self.sku        = sku
+        self.name       = name
+        self.quantity   = quantity
+        self.cost_per   = cost_per
+        self.total_cost = total_cost or (quantity * cost_per)
 
 class Order:
 
-    def __init__(self, store: str, vendor: str, date: str, items: list = None) -> None:
+    def __init__(self, store: str, vendor: str, date: str, items: list[OrderItem] = None) -> None:
         self.store  = store
         self.vendor = vendor
         self.date   = date

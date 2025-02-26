@@ -24,7 +24,7 @@ from datetime import datetime
 from pathlib import Path
 
 from backend.logger.Logger import Logger
-
+from backend.helpers.DatetimeFormattingHelper import convert_date_format
 
 
 def temporary_login(func):
@@ -236,7 +236,7 @@ class CraftableBot:
         row_data = row.find_elements(By.XPATH, './td')
         row_date_text = row_data[2].text
         row_vendor_name = row_data[3].text
-        row_date_formatted = self._convert_date_format(row_date_text, '%m/%d/%Y', '%Y%m%d')
+        row_date_formatted = convert_date_format(row_date_text, '%m/%d/%Y', '%Y%m%d')
 
         if vendors and row_vendor_name not in vendors:
             self.logger.debug(f"Skipping vendor {row_vendor_name}.")
@@ -257,7 +257,10 @@ class CraftableBot:
             return 
 
         self.logger.info(f"Saving order for {row_vendor_name}.")
-        self._save_order_as_excel(items, store=store, vendor=row_vendor_name, date=row_date_formatted)
+        order_to_save = Order(store=store, vendor=row_vendor_name, date=row_date_formatted, items=items)
+        self.order_manager.save_order(order_to_save)
+
+        # self._save_order_as_excel(items, store=store, vendor=row_vendor_name, date=row_date_formatted)
         time.sleep(1)
 
         if download_pdf:
@@ -318,7 +321,9 @@ class CraftableBot:
 
                 self.logger.info(f"Deleting order: {row_vendor_name} ({row_date_text})")
                 self._delete_order(row)
-
+                
+                # self.driver.back()
+                # time.sleep(5)
                 # Refresh table after deletion
                 try:
                     table_body = self.driver.find_element(By.XPATH, './/tbody')
@@ -634,6 +639,7 @@ class CraftableBot:
     
     def _save_order_as_excel(self, item_data, store: str, vendor: str, date: str) -> None:
 
+        self.order_manager.save_order()
         new_filename = self.order_manager.generate_filename(store=store, vendor=vendor, date=date, file_extension='.xlsx')
         new_filepath = self.order_manager.get_order_files_directory() / new_filename
         
@@ -649,24 +655,6 @@ class CraftableBot:
     
     def _delete_order_protocol(self) -> None:
         pass
-
-    def _convert_date_format(self, date_str: str, input_format: str, output_format: str) -> str:
-        """
-        Converts a date string from one format to another.
-
-        Args:
-            date_str (str): The date string to be converted.
-            input_format (str): The format of the input date string (e.g., "%m/%d/%Y").
-            output_format (str): The desired output format (e.g., "%Y%m%d").
-
-        Returns:
-            str: The converted date string, or an error message if invalid.
-        """
-        try:
-            date_obj = datetime.strptime(date_str, input_format)
-            return date_obj.strftime(output_format)
-        except ValueError:
-            return f"Invalid date format: {date_str}. Expected format: {input_format}"
         
     def _extract_order_table_rows(self, row) -> tuple:
         pass
@@ -730,7 +718,6 @@ class CraftableBot:
             if e.errno == 13:
                 self.logger.warning(f'[File Cleanup] File is in use by another program. Aborting deletion.')
             
-
     def _change_calendar_date(self, transfer_datetime: datetime) -> None:
        
         try:
