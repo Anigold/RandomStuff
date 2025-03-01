@@ -19,6 +19,7 @@ import json
 from tabulate import tabulate
 from termcolor import colored
 
+from pprint import pprint
 
 
 class WorkBot:
@@ -78,11 +79,16 @@ class WorkBot:
             items=transfer_items
             )
 
-    # def format_orders_for_upload(self, orders: list):
-        # Need to implement OrderItems before moving forward
-        # for order in orders:
-        #     vendor_bot = self.vendor_manager.initialize_vendor(order.vendor)
-            # vendor_bot.format_for_file_upload(order.)
+    def format_orders_for_upload(self, orders: list):
+
+        for order in orders:
+            vendor_bot = self.vendor_manager.initialize_vendor(order.vendor)
+
+            # Need to deconstruct the OrderItem objects to pass into the vendor bot
+            order_items = [order_item.to_dict() for order_item in order.items]
+            
+            save_path = self.order_manager.get_vendor_orders_directory(vendor_bot.name) / f'Formatted-{self.order_manager.generate_filename(order)}'
+            vendor_bot.format_for_file_upload(order_items, save_path, order.store)
 
     def close_craftable_session(self):
         self.craft_bot.close_session()

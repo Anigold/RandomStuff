@@ -274,11 +274,11 @@ def generate_weekly_orders_email(store: str, to: list):
 if __name__ == '__main__':
 
     vendors = [ 
-        'Sysco', 
-        'Performance Food',
-        'US Foods',
+        # 'Sysco', 
+        # 'Performance Food',
+        # 'US Foods',
         # 'Renzi',
-        # 'UNFI',
+        'UNFI',
         # 'Hill & Markes',
         # 'Johnston Paper',
         # 'Regional Distributors, Inc.',
@@ -316,7 +316,17 @@ if __name__ == '__main__':
          'DOWNTOWN'
     ]
     
-    # work_bot = WorkBot()
+    work_bot = WorkBot()
+
+    for vendor in vendors:
+        vendor_order_paths = work_bot.order_manager.get_vendor_orders(vendor)
+
+        orders = []
+        for vendor_order_path in vendor_order_paths:
+            order = OrderManager.create_order_from_excel(vendor_order_path)
+            orders.append(order)
+            
+        work_bot.format_orders_for_upload(orders)
 
     # work_bot.download_orders(stores=stores, vendors=vendors)
     # work_bot.sort_orders()
@@ -533,21 +543,21 @@ if __name__ == '__main__':
     # pricer.item_skus_file_path = f'{PRICING_FILES_PATH}\\ItemSkus.xlsx'
     # pricer.compare_prices(f'{PRICING_FILES_PATH}\\Pricing Guides\\IBProduce\\IBProduce 2024-06-15.xlsx')
 
-    work_bot = WorkBot()
+    # work_bot = WorkBot()
 
-    webstaurant_bot = work_bot.vendor_manager.initialize_vendor('Webstaurant')
+    # webstaurant_bot = work_bot.vendor_manager.initialize_vendor('Webstaurant')
 
-    # options = create_options()
-    # driver  = uc.Chrome(options=options, use_subprocess=True)
+    # # options = create_options()
+    # # driver  = uc.Chrome(options=options, use_subprocess=True)
 
-    # bot_name = 'Webstaurant'
-    # webstaurant_bot_creds = get_credentials(bot_name)
-    # webstaurant_bot       = get_bot(bot_name)(driver, webstaurant_bot_creds['username'], webstaurant_bot_creds['password'])
+    # # bot_name = 'Webstaurant'
+    # # webstaurant_bot_creds = get_credentials(bot_name)
+    # # webstaurant_bot       = get_bot(bot_name)(driver, webstaurant_bot_creds['username'], webstaurant_bot_creds['password'])
 
-    undocumented_orders = webstaurant_bot.get_all_undocumented_orders()
+    # undocumented_orders = webstaurant_bot.get_all_undocumented_orders()
 
-    for order in reversed(undocumented_orders): # Go backwards to implicitly sort by ascending date
-        order_info = webstaurant_bot.get_order_info(order, download_invoice=True)
-        webstaurant_bot.update_pick_list(order_info)
+    # for order in reversed(undocumented_orders): # Go backwards to implicitly sort by ascending date
+    #     order_info = webstaurant_bot.get_order_info(order, download_invoice=True)
+    #     webstaurant_bot.update_pick_list(order_info)
 
 

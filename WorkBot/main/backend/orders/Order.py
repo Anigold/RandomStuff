@@ -13,6 +13,15 @@ class OrderItem:
         self.cost_per   = cost_per
         self.total_cost = total_cost or (quantity * cost_per)
 
+    def to_dict(self) -> dict:
+        return {
+            'sku':        self.sku,
+            'name':       self.name,
+            'quantity':   self.quantity,
+            'cost_per':   self.cost_per,
+            'total_cost': self.total_cost
+        }
+    
 class Order:
 
     def __init__(self, store: str, vendor: str, date: str, items: list[OrderItem] = None) -> None:
@@ -44,13 +53,14 @@ class Order:
 
         for row in sheet.iter_rows(min_row=2):
             sku, name, quantity, cost_per, total_cost = row[0:5]
-            self.items.append({
-                'SKU': sku.value,
-                'Item': name.value,
-                'Quantity': quantity.value,
-                'Cost Per': cost_per.value,
-                'Total Cost': total_cost.value
-                })
+            order_item = OrderItem(
+                sku=sku.value,
+                name=name.value,
+                quantity=quantity.value,
+                cost_per=cost_per.value,
+                total_cost=total_cost.value
+            )
+            self.items.append(order_item)
             
         return
 

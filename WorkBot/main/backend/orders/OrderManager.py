@@ -111,6 +111,10 @@ class OrderManager:
                 file.rename(new_path)  # Move file into the vendor directory
                 # print(f'Moved: {file.name} → {new_path}')  # Debug output
 
+    def format_orders(self, vendors: list = []) -> None:
+        
+        pass
+
     @classmethod
     def create_order_from_excel(cls, file_path: Path) -> Order:
 
