@@ -326,7 +326,7 @@ if __name__ == '__main__':
             order = OrderManager.create_order_from_excel(vendor_order_path)
             orders.append(order)
             
-        work_bot.format_orders_for_upload(orders)
+        work_bot.generate_vendor_upload_files(orders)
 
     # work_bot.download_orders(stores=stores, vendors=vendors)
     # work_bot.sort_orders()

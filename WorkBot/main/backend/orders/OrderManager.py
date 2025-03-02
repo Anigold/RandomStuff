@@ -8,9 +8,9 @@ SOURCE_PATH         = Path(__file__).parent.parent
 ORDERS_DIRECTORY    = SOURCE_PATH / 'orders' / 'OrderFiles'
 DOWNLOADS_DIRECTORY = SOURCE_PATH / 'downloads'
 
+@Logger.attach_logger
 class OrderManager:
 
-    logger = Logger.get_logger('OrderManager', log_file='logs/order_manager.log')
     file_pattern = re.compile(r"^(?P<vendor>.+?)_(?P<store>.+?)_(?P<date>\d{8})$")
 
     def get_order_files_directory(self) -> Path:
@@ -20,13 +20,15 @@ class OrderManager:
         return DOWNLOADS_DIRECTORY
     
     def get_vendor_orders_directory(self, vendor: str) -> Path:
-        self.logger.info(f'Checking for directory for: {vendor}.')
+
+        self.logger.info(f'Looking up directory for: {vendor}.')
         
         vendor_orders_directory = self.get_order_files_directory() / vendor
         if vendor_orders_directory.exists() and vendor_orders_directory.is_dir():
             self.logger.info(f'Directory found: {vendor_orders_directory}')
             return vendor_orders_directory
-        self.logger.info(f'Directory not found for: {vendor}')
+        self.logger.info(f'Directory not found for: {vendor}.')
+
         return None
 
     def get_store_orders(self, stores: list, vendors: list = []) -> list:
@@ -56,15 +58,12 @@ class OrderManager:
         return orders  
 
     def get_vendor_orders(self, vendor: str, file_extension: str = '.xlsx') -> list[Path]:
-
+    
         vendor_orders_directory = self.get_vendor_orders_directory(vendor)
 
         if not vendor_orders_directory:
-            # print(f"No order directory found for vendor: {vendor}")
             return []
 
-        # for file in vendor_orders_directory.iterdir():
-        #     print(file.suffix, flush=True)
         return [file for file in vendor_orders_directory.iterdir() if file.is_file() and self.is_valid_filename(file) and file.suffix == file_extension]
 
     def generate_filename(self, order: Order = None, store: str = None, vendor: str = None, date: str = None, file_extension: str = '.xlsx') -> str:
@@ -109,12 +108,7 @@ class OrderManager:
                 
                 new_path = vendor_dir / file.name
                 file.rename(new_path)  # Move file into the vendor directory
-                # print(f'Moved: {file.name} → {new_path}')  # Debug output
-
-    def format_orders(self, vendors: list = []) -> None:
-        
-        pass
-
+                
     @classmethod
     def create_order_from_excel(cls, file_path: Path) -> Order:
 

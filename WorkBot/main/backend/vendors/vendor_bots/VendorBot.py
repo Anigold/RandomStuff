@@ -1,6 +1,5 @@
 from abc import ABC, abstractmethod
 from openpyxl import load_workbook, Workbook
-import pprint
 
 
 class VendorBot(ABC):
@@ -89,7 +88,7 @@ class PricingBotMixin(ABC):
         for row_pos, item_name in enumerate(price_info):
 
             item_info     = price_info[item_name]
-            pprint.pprint(item_info)
+     
             sku           = item_info['SKU']
             cost          = item_info['cost']
             case_size     = item_info['case_size']

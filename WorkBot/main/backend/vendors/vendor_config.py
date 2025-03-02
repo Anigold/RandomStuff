@@ -27,7 +27,6 @@ def get_vendor_credentials(vendor_name: str):
     '''Returns a dictionary containing the username and password for a given vendor.'''
     sanitized_vendor_name = _sanitize_vendor_name_for_credentials(vendor_name)
 
-    print(sanitized_vendor_name, flush=True)
     username = get_env_variable(f'{sanitized_vendor_name}_USERNAME')
     password = get_env_variable(f'{sanitized_vendor_name}_PASSWORD')
 

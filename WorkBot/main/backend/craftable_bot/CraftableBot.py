@@ -15,9 +15,9 @@ import os
 from openpyxl import Workbook, load_workbook
 
 from backend.transferring import Transfer
-from..transferring.TransferManager import TransferManager
-from ..orders.OrderManager import OrderManager
-from ..orders.Order import Order
+from backend.transferring.TransferManager import TransferManager
+from backend.orders.OrderManager import OrderManager
+from backend.orders.Order import Order
 
 from datetime import datetime
 
@@ -49,7 +49,7 @@ Craftable Bot utlizes Selenium to interact with the Craftable website.
 '''
 class CraftableBot:
 
-    logger = Logger.get_logger('CraftableBot', log_file='logs/craftable_bot.log')
+    _logger = None
 
     site_map = {
             'login_page': 'https://app.craftable.com/signin',
@@ -65,9 +65,16 @@ class CraftableBot:
             'COLLEGETOWN': '14372',
         }
     
+    @classmethod
+    def get_logger(cls):
+        if cls._logger is None:
+            cls._logger = Logger.get_logger('CraftableBot', log_file='logs/craftable_bot.log')
+        return cls._logger
+    
     def __init__(self, driver: WebDriver, username: str, password: str, 
                  order_manager: OrderManager = None, transfer_manager: TransferManager = None):
         
+        self.logger = self.get_logger()
         self.driver           = driver
         self.username         = username
         self.password         = password
