@@ -96,8 +96,8 @@ class USFoodsBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
 
     def format_for_file_upload(self, item_data: dict, path_to_save: str, store: str) -> None:
         # CSV-style Excel file with "Item Code, Quantity, and Broken Case"
-        workbook = Workbook()
-        sheet = workbook.active
+        # workbook = Workbook()
+        # sheet = workbook.active
 
         headers = ['CUSTOMER NUMBER', 'DISTRIBUTOR', 'DEPARTMENT', 'DATE', 'PO NUMBER', 
                    'PRODUCT NUMBER', 'CUST PROD #', 'DESCRIPTION', 'BRAND', 'PACK SIZE',
@@ -110,10 +110,11 @@ class USFoodsBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
             csv_writer = writer(csv_file, delimiter=',')
 
             csv_writer.writerow(headers)
-            for sku in item_data:
+            for item in item_data:
                 
-                quantity = item_data[sku]['quantity']
-                
+                quantity = item['quantity']
+                sku = item['sku']
+
                 csv_writer.writerow([self.store_ids[store], '2195', '0', '2/23/2025', store, sku,
                                      '', '', '', '', '', '',
                                     quantity, '0'

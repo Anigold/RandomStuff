@@ -80,12 +80,12 @@ class WorkBot:
     def generate_vendor_upload_files(self, orders: list):
 
         for order in orders:
-            vendor_bot = self.vendor_manager.initialize_vendor(order.vendor)
+            vendor_bot = self.vendor_manager.initialize_vendor(order.vendor, driver=self.craft_bot.driver)
 
             # Need to deconstruct the OrderItem objects to pass into the vendor bot
             order_items = [order_item.to_dict() for order_item in order.items]
             
-            save_path = self.order_manager.get_vendor_orders_directory('UNFI') / f'Formatted-{self.order_manager.generate_filename(order)}'
+            save_path = self.order_manager.get_vendor_orders_directory(order.vendor) / f'Formatted-{self.order_manager.generate_filename(order)}'
             vendor_bot.format_for_file_upload(order_items, save_path, order.store)
 
         return
@@ -188,7 +188,7 @@ class WorkBotCLI:
             pass
 
     def generate_vendor_upload_files(self, args):
-        parser = argparse.ArgumentParser(prog='format_orders_for_upload', description='Generate a vendor-specific upload file.')
+        parser = argparse.ArgumentParser(prog='generate_vendor_upload_files', description='Generate a vendor-specific upload file.')
         parser.add_argument('--vendors', nargs='+', help='List of vendors (default: all).')
 
         try:
@@ -227,7 +227,7 @@ class WorkBotCLI:
         if show_pricing:
             headers.append('Total Cost')
             for pos, order in enumerate(orders):
-                total_cost = sum(float(item['Total Cost']) for item in order.items if item['Total Cost']) if show_pricing else "N/A"
+                total_cost = sum(float(item.total_cost) for item in order.items if item.total_cost) if show_pricing else "N/A"
                 formatted_orders[pos].append(f'${total_cost:.2f}')
         
         if show_minimums:
@@ -237,7 +237,7 @@ class WorkBotCLI:
                 min_order_price = vendor_information['min_order_value']
                 min_order_cases = vendor_information['min_order_cases']
                 
-                total_cost = sum(float(item['Total Cost']) for item in order.items if item['Total Cost']) if show_pricing else "N/A"
+                total_cost = sum(float(item.total_cost) for item in order.items if item.total_cost) if show_pricing else "N/A"
                 
                 # Check if the order meets vendor minimums
                 below_min_value = total_cost < min_order_price

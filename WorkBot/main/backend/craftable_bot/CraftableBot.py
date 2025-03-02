@@ -47,9 +47,8 @@ def login_necessary(func):
 '''
 Craftable Bot utlizes Selenium to interact with the Craftable website. 
 '''
+@Logger.attach_logger
 class CraftableBot:
-
-    _logger = None
 
     site_map = {
             'login_page': 'https://app.craftable.com/signin',
@@ -65,16 +64,11 @@ class CraftableBot:
             'COLLEGETOWN': '14372',
         }
     
-    @classmethod
-    def get_logger(cls):
-        if cls._logger is None:
-            cls._logger = Logger.get_logger('CraftableBot', log_file='logs/craftable_bot.log')
-        return cls._logger
+
     
     def __init__(self, driver: WebDriver, username: str, password: str, 
                  order_manager: OrderManager = None, transfer_manager: TransferManager = None):
         
-        self.logger = self.get_logger()
         self.driver           = driver
         self.username         = username
         self.password         = password
@@ -388,7 +382,7 @@ class CraftableBot:
         cls.logger.debug('Retrieving URL from site map.')
 
         if key not in cls.site_map:
-            cls.logger.error(f'INvalid site map key: {key}')
+            cls.logger.error(f'Invalid site map key: {key}')
             return ''
         
         if '{store_id}' in cls.site_map[key]:

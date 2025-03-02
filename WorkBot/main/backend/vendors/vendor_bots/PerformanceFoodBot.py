@@ -53,16 +53,17 @@ class PerformanceFoodBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
     def switch_store(self, store_id: str) -> None:
         pass
 
-    def format_for_file_upload(self, item_data: dict, path_to_save: str) -> None:
+    def format_for_file_upload(self, item_data: dict, path_to_save: str, store: str) -> None:
         
         with open(f'{path_to_save}.txt', 'w', newline='') as csv_file:
 
             csv_writer = writer(csv_file, delimiter='\t')
-            pprint(item_data)
-            for sku in item_data:
+
+            for item in item_data:
                 
-                quantity = item_data[sku]['quantity']
-                
+                quantity = item['quantity']
+                sku      = item['sku']
+
                 csv_writer.writerow([sku, int(quantity), 'CS'])
 
         return

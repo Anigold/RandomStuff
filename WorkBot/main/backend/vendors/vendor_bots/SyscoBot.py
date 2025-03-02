@@ -80,15 +80,15 @@ class SyscoBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
             location.click()
         return
     
-    def format_for_file_upload(self, item_data: dict, path_to_save: str) -> None:
+    def format_for_file_upload(self, item_data: dict, path_to_save: str, store: str) -> None:
 
         with open(f'{path_to_save}.csv', 'w', newline='') as csv_file:
 
             csv_writer = writer(csv_file)
 
-            for sku in item_data:
-                quantity = item_data[sku]['quantity']
-                #sku = item_data[sku]['sku']
+            for item in item_data:
+                quantity = item['quantity']
+                sku      = item['sku']
                 csv_writer.writerow(['P', sku, int(quantity), 0])
 
         return

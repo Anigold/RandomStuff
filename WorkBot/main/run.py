@@ -316,17 +316,17 @@ if __name__ == '__main__':
          'DOWNTOWN'
     ]
     
-    work_bot = WorkBot()
+    # work_bot = WorkBot()
 
-    for vendor in vendors:
-        vendor_order_paths = work_bot.order_manager.get_vendor_orders(vendor)
+    # for vendor in vendors:
+    #     vendor_order_paths = work_bot.order_manager.get_vendor_orders(vendor)
 
-        orders = []
-        for vendor_order_path in vendor_order_paths:
-            order = OrderManager.create_order_from_excel(vendor_order_path)
-            orders.append(order)
+    #     orders = []
+    #     for vendor_order_path in vendor_order_paths:
+    #         order = OrderManager.create_order_from_excel(vendor_order_path)
+    #         orders.append(order)
             
-        work_bot.generate_vendor_upload_files(orders)
+    #     work_bot.generate_vendor_upload_files(orders)
 
     # work_bot.download_orders(stores=stores, vendors=vendors)
     # work_bot.sort_orders()
@@ -489,9 +489,9 @@ if __name__ == '__main__':
     # vendor_manager = VendorManager()
 
     vendors = [
-        # 'Copper Horse Coffee',
+        'Copper Horse Coffee',
         # 'Eurocafe Imports',
-        'Ithaca Bakery'
+        # 'Ithaca Bakery'
     ]
     # for vendor in vendors:
 

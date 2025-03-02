@@ -106,10 +106,14 @@ class Logger:
  
     def attach_logger(cls):
         '''Decorator to automatically attach a class-specific logger.'''
+        
+        log_file = f'logs/{cls.__name__}.log'
+        cls.logger = Logger.get_logger(cls.__name__, log_file=log_file)
+
         orig_init = cls.__init__  # Store original __init__
 
         def new_init(self, *args, **kwargs):
-            log_file = f'logs/{cls.__name__}.log'
+            
             self.logger = Logger.get_logger(cls.__name__, log_file=log_file)  # Attach class-specific logger
             orig_init(self, *args, **kwargs)  # Call original __init__
 
