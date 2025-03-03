@@ -6,6 +6,7 @@ from os import getenv
 from os import listdir, remove as os_remove, rename
 from os.path import isfile, join
 
+from backend.helpers.selenium_helpers import create_driver, create_options
 
 from backend.helpers import  FormatItemData
 
@@ -219,20 +220,28 @@ def produce_pricing_and_email(driver) -> None:
     emailer.display_email(email)
     return
 
-def download_pricing_sheets(driver, vendors=['Sysco', 'Performance Food', 'US Foods', 'Behlog Produce', 'Russo Produce',], guides=['IBProduce']) -> None:
+def download_pricing_sheets(driver, vendors=['Sysco', ], guides=['IBProduce']) -> None:
 
     for vendor in vendors:
-        creds = get_credentials(vendor)
-        bot = get_bot(vendor)() if creds['username'] == None else get_bot(vendor)(driver, creds['username'], creds['password'])
+        # creds = get_credentials(vendor)
+        # bot = get_bot(vendor)() if creds['username'] == None else get_bot(vendor)(driver, creds['username'], creds['password'])
 
+        vendor_manager = VendorManager()
+
+        bot = vendor_manager.initialize_vendor(vendor, driver)
         for pricing_guide in guides:
-            file_name = bot.retrieve_pricing_sheet(pricing_guide)
-    
-            new_file_name = f'{PRICING_FILES_PATH}\\VendorSheets\\{bot.name}_{pricing_guide}_{date.today()}.{file_name.split(".")[1]}'
 
-            rename(f'{DOWNLOAD_PATH}\\{file_name}', new_file_name)
+            if vendor != 'US Foods':
+                file_name = bot.retrieve_pricing_sheet(pricing_guide)
+            else:
+                file_name = 'US Foods_IBProduce.csv'
+
+
+            # new_file_name = f'{PRICING_FILES_PATH}\\VendorSheets\\{bot.name}_{pricing_guide}_{date.today()}.{file_name.split(".")[1]}'
+            new_file_name = PRICING_FILES_PATH / 'VendorSheets' / f'{bot.name}_{pricing_guide}_{date.today()}.{file_name.split(".")[1]}'
+            rename( DOWNLOAD_PATH / file_name, new_file_name)
             # print(new_file_name)
-            bot.format_vendor_pricing_sheet(new_file_name, f'{new_file_name.rsplit(".", 1)[0]}.xlsx')
+            bot.format_vendor_pricing_sheet(new_file_name, f'{new_file_name.stem}.xlsx')
         
     return
 
@@ -517,11 +526,11 @@ if __name__ == '__main__':
 
     
     '''Pricing Sheet Protocol'''
-    # options = create_options()
-    # driver  = uc.Chrome(options=options, use_subprocess=True)
-    # download_pricing_sheets(driver)
-    # delete_all_files_without_extension(f'{PRICING_FILES_PATH}\\VendorSheets', '.xlsx')
-    # generate_pricing_sheets()
+    options = create_options(DOWNLOAD_PATH)
+    driver  = uc.Chrome(options=options, use_subprocess=True)
+    download_pricing_sheets(driver)
+    delete_all_files_without_extension(PRICING_FILES_PATH / 'VendorSheets', '.xlsx')
+    generate_pricing_sheets()
     
     vendors = [
         # 'Sysco',
@@ -559,33 +568,6 @@ if __name__ == '__main__':
     # for order in reversed(undocumented_orders): # Go backwards to implicitly sort by ascending date
     #     order_info = webstaurant_bot.get_order_info(order, download_invoice=True)
     #     webstaurant_bot.update_pick_list(order_info)
-
-
-
-
-
-    def cat():
-        var1 = 10
-    
-        def hat():
-            
-            def rat():
-                nonlocal var1
-                return (var1, id(var1), 'rat')
-                # print(var1, id(var1), 'rat') # Called 3rd
-            
-            # nonlocal var1
-            # var1 = 20
-            
-            # print(var1, id(var1), 'hat') # Called 2nd
-
-            print(rat())
-            return (var1, id(var1), 'hat')
-        # print(var1, id(var1), 'cat') # Called 1st
-
-        print(hat())
-        return(var1, id(var1), 'cat')
-    print(cat())
 
 
 

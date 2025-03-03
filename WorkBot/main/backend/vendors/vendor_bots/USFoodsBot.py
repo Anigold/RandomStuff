@@ -6,7 +6,7 @@ from selenium import webdriver
 from openpyxl import Workbook
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from csv import writer
+from csv import writer, reader
 
 class USFoodsBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
 
@@ -196,7 +196,35 @@ class USFoodsBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
         # home_button.click()
         # time.sleep(10)
 
-        return 'export.xls'
+        return 'export.csv'
+
+    def get_pricing_info_from_sheet(self, path_to_pricing_sheet: str) -> dict:
+        item_info = {}
+        with open(path_to_pricing_sheet) as us_food_info:
+            reader = reader(us_food_info, delimiter=',')
+            for pos, row in enumerate(reader):
+
+                if pos == 0: continue
+                if row[7] == 0 or row[7] == '0': continue
+
+                item_sku 		= row[2]
+                item_name 		= row[3]
+                quantity, units = PricingBotMixin.helper_format_size_units(1, row[5])
+                cost 			= float(row[7])
+
+                if item_sku in self.special_cases:
+                    quantity, units = PricingBotMixin.helper_format_size_units(self.special_cases[item_sku]['pack'], self.special_cases[item_sku]['unit'])
+
+                if item_name not in item_info:
+                    item_info[item_name] = {
+                        'SKU': item_sku,
+                        'quantity': quantity,
+                        'units': PricingBotMixin.normalize_units(units),
+                        'cost': cost,
+                        'case_size': f'1 / {row[5]}'
+                    }
+
+        return item_info
 
     def get_pricing_info_from_sheet(self, path_to_pricing_sheet: str) -> dict:
         item_info = {}
