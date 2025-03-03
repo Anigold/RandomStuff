@@ -561,3 +561,31 @@ if __name__ == '__main__':
     #     webstaurant_bot.update_pick_list(order_info)
 
 
+
+
+
+    def cat():
+        var1 = 10
+    
+        def hat():
+            
+            def rat():
+                nonlocal var1
+                return (var1, id(var1), 'rat')
+                # print(var1, id(var1), 'rat') # Called 3rd
+            
+            # nonlocal var1
+            # var1 = 20
+            
+            # print(var1, id(var1), 'hat') # Called 2nd
+
+            print(rat())
+            return (var1, id(var1), 'hat')
+        # print(var1, id(var1), 'cat') # Called 1st
+
+        print(hat())
+        return(var1, id(var1), 'cat')
+    print(cat())
+
+
+

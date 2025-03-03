@@ -27,7 +27,7 @@ class Logger:
             logger.setLevel(level)
 
             # # Prevent duplicate handlers
-            # if logger.hasHandlers(): return logger 
+            if logger.hasHandlers(): return logger 
 
             master_log_file = 'logs/master.log'
 
@@ -47,7 +47,7 @@ class Logger:
 
             file_handler.setFormatter(formatter)
             master_handler.setFormatter(formatter)
-            console_handler.setFormatter(formatter)  # Red for visibility
+            console_handler.setFormatter(formatter) 
 
             # Attach handlers
             logger.addHandler(file_handler)
@@ -103,6 +103,46 @@ class Logger:
                 raise  # Ensure the error still propagates
 
         return wrapper
+    
+    @staticmethod
+    def log_exceptions(logger=None):
+        '''Decorator to log exceptions using a given logger (defaults to module-level logger).'''
+
+        def decorator(func):
+            @wraps(func)
+            def wrapper(*args, **kwargs):
+
+                # TIL: "nonlocal" references a variable from the outer scope from the in-line reference.  
+                # I have found contradicting information whether it is exactly one scope up, or the first
+                # instance of the variable before arriving at the global scope.
+                # I should test, but I won't...
+
+                # Okay, I tested it. It unravels the scope until it finds the variable.
+                # It is impossible to call "nonlocal" on a variable which doesn't exist, or one that exists
+                # in the global scope.
+
+                # Now ask me why we shouldn't instead just use depedency injection for the variable state.
+
+                # Excellent question. This lets us provide a default logger without requiring an explicit argument.
+                # This is nice for the wrapper/decorator style where we're just attaching a 
+                # function reference above another function and don't necessarily know if a logger is available
+                # to pass down.
+
+                # This is dumb because we can run the risk of a namespace collision. So we won't be doing this.
+                # A nice exercise though.
+
+                # nonlocal logger 
+                # if logger is None:
+                #     logger = Logger.get_logger(func.__module__)
+
+                logger = logger if logger else Logger.get_logger(func.__module__)
+                try:
+                    return func(*args, **kwargs)
+                except Exception as e:
+                    logger.error(f'Error in {func.__name__}: {e}', exc_info=True)
+                    raise  
+            return wrapper
+        return decorator
  
     def attach_logger(cls):
         '''Decorator to automatically attach a class-specific logger.'''
@@ -113,7 +153,6 @@ class Logger:
         orig_init = cls.__init__  # Store original __init__
 
         def new_init(self, *args, **kwargs):
-            
             self.logger = Logger.get_logger(cls.__name__, log_file=log_file)  # Attach class-specific logger
             orig_init(self, *args, **kwargs)  # Call original __init__
 
@@ -123,11 +162,14 @@ class Logger:
 class JsonFormatter(logging.Formatter):
     '''Custom JSON log formatter for structured logging.'''
     def format(self, record):
-        log_record = {
+        return json.dumps({
             'time': self.formatTime(record),
             'level': record.levelname,
             'name': record.name,
             'message': record.getMessage(),
-        }
-        return json.dumps(log_record)
+            'filename': record.filename,
+            'lineno': record.lineno,
+            'funcName': record.funcName,
+            'threadName': record.threadName
+        })
 
