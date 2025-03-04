@@ -8,6 +8,7 @@ from openpyxl import Workbook
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from csv import writer, reader as csv_reader
+from pprint import pprint
 
 class SyscoBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
 
@@ -187,5 +188,5 @@ class SyscoBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
                         'cost': cost,
                         'case_size': f'{row[7]} / {row[8]}'
                     }
-
+        pprint(item_info)
         return item_info

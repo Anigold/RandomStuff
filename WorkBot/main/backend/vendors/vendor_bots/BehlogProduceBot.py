@@ -16,7 +16,7 @@ class BehlogProduceBot(VendorBot, PricingBotMixin):
     def __init__(self, **kwargs) -> None:
         VendorBot.__init__(self)
         PricingBotMixin.__init__(self)
-        self.name = 'Behlog Produce'
+        self.name = 'BEHLOG & SON, INC.'
         self.minimum_order_case = 5
 
         self.store_ids = {}

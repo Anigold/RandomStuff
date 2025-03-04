@@ -201,16 +201,18 @@ class USFoodsBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
     def get_pricing_info_from_sheet(self, path_to_pricing_sheet: str) -> dict:
         item_info = {}
         with open(path_to_pricing_sheet) as us_food_info:
-            reader = reader(us_food_info, delimiter=',')
-            for pos, row in enumerate(reader):
+            csv_reader = reader(us_food_info, delimiter=',')
+            for pos, row in enumerate(csv_reader):
 
                 if pos == 0: continue
                 if row[7] == 0 or row[7] == '0': continue
-
+                if row[5] == '' or row[5] is None: continue
+                
                 item_sku 		= row[2]
                 item_name 		= row[3]
+                print(item_name, flush=True)
                 quantity, units = PricingBotMixin.helper_format_size_units(1, row[5])
-                cost 			= float(row[7])
+                cost 			= float(row[7].replace('$', ''))
 
                 if item_sku in self.special_cases:
                     quantity, units = PricingBotMixin.helper_format_size_units(self.special_cases[item_sku]['pack'], self.special_cases[item_sku]['unit'])
@@ -226,32 +228,32 @@ class USFoodsBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
 
         return item_info
 
-    def get_pricing_info_from_sheet(self, path_to_pricing_sheet: str) -> dict:
-        item_info = {}
-        with open(path_to_pricing_sheet) as file:
-            for pos, row in enumerate(file):
+    # def get_pricing_info_from_sheet(self, path_to_pricing_sheet: str) -> dict:
+    #     item_info = {}
+    #     with open(path_to_pricing_sheet) as file:
+    #         for pos, row in enumerate(file):
 
-                if pos == 0: continue
+    #             if pos == 0: continue
 
-                row_info = row.split('\t')
-
-                item_sku  		= row_info[0].split('"')[1]
-                item_name 		= row_info[7]
-                cost   	  		= float(row_info[8])
+    #             row_info = row.split('\t')
+    #             print(row_info, flush=True)
+    #             item_sku  		= row_info[0].split('"')[1]
+    #             item_name 		= row_info[7]
+    #             cost   	  		= float(row_info[8])
                 
-                if item_sku in self.special_cases:
-                    quantity, units = PricingBotMixin.helper_format_size_units(self.special_cases[item_sku]['pack'], self.special_cases[item_sku]['unit'])
-                else:
-                    quantity, units = PricingBotMixin.helper_format_size_units(row_info[4], row_info[5])
+    #             if item_sku in self.special_cases:
+    #                 quantity, units = PricingBotMixin.helper_format_size_units(self.special_cases[item_sku]['pack'], self.special_cases[item_sku]['unit'])
+    #             else:
+    #                 quantity, units = PricingBotMixin.helper_format_size_units(row_info[4], row_info[5])
 
             
-                if item_name not in item_info:
-                    item_info[item_name] = {
-                        'SKU': item_sku,
-                        'quantity': quantity,
-                        'units': PricingBotMixin.normalize_units(units),
-                        'cost': cost,
-                        'case_size': f'{row_info[4]} / {row_info[5]}'
-                    }
+    #             if item_name not in item_info:
+    #                 item_info[item_name] = {
+    #                     'SKU': item_sku,
+    #                     'quantity': quantity,
+    #                     'units': PricingBotMixin.normalize_units(units),
+    #                     'cost': cost,
+    #                     'case_size': f'{row_info[4]} / {row_info[5]}'
+    #                 }
 
-        return item_info
+    #     return item_info

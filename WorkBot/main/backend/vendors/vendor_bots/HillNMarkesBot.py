@@ -126,20 +126,22 @@ class HillNMarkesBot(VendorBot, SeleniumBotMixin):
 
         return
 
-    def format_for_file_upload(self, item_data: dict, path_to_save: str) -> None:
+    def format_for_file_upload(self, item_data: dict, path_to_save: str, store: str) -> None:
         # First row needs to be "Key Word, Quantity"
         # Then just CSV-style rows saved as an .XLSX file
         workbook = Workbook()
         sheet = workbook.active
         sheet.cell(row=1, column=1).value = 'Key Word'
         sheet.cell(row=1, column=2).value = 'Quantity'
+        
+        for pos, item in enumerate(item_data):
+            quantity = item['quantity']
+            sku      = item['sku']
 
-        for pos, sku in enumerate(item_data):
-            quantity = item_data[sku]['quantity']
             sheet.cell(row=pos+2, column=1).value = sku
             sheet.cell(row=pos+2, column=2).value = quantity
         
-        workbook.save(filename=f'{path_to_save}.xlsx')
+        workbook.save(filename=f'{path_to_save}')
 
         return
 

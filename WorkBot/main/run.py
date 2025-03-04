@@ -220,11 +220,9 @@ def produce_pricing_and_email(driver) -> None:
     emailer.display_email(email)
     return
 
-def download_pricing_sheets(driver, vendors=['Sysco', ], guides=['IBProduce']) -> None:
+def download_pricing_sheets(driver, vendors=['BEHLOG & SON, INC.', 'Russo Produce'], guides=['IBProduce']) -> None:
 
     for vendor in vendors:
-        # creds = get_credentials(vendor)
-        # bot = get_bot(vendor)() if creds['username'] == None else get_bot(vendor)(driver, creds['username'], creds['password'])
 
         vendor_manager = VendorManager()
 
@@ -233,19 +231,20 @@ def download_pricing_sheets(driver, vendors=['Sysco', ], guides=['IBProduce']) -
 
             if vendor != 'US Foods':
                 file_name = bot.retrieve_pricing_sheet(pricing_guide)
+                # file_name = None
             else:
-                file_name = 'US Foods_IBProduce.csv'
-
+                file_name = None
 
             # new_file_name = f'{PRICING_FILES_PATH}\\VendorSheets\\{bot.name}_{pricing_guide}_{date.today()}.{file_name.split(".")[1]}'
             new_file_name = PRICING_FILES_PATH / 'VendorSheets' / f'{bot.name}_{pricing_guide}_{date.today()}.{file_name.split(".")[1]}'
+
             rename( DOWNLOAD_PATH / file_name, new_file_name)
-            # print(new_file_name)
-            bot.format_vendor_pricing_sheet(new_file_name, f'{new_file_name.stem}.xlsx')
+            # new_file_name = PRICING_FILES_PATH / 'VendorSheets' / 'US Foods_IBProduce_2025-03-04.csv'
+            bot.format_vendor_pricing_sheet(new_file_name, new_file_name.with_suffix('.xlsx'))
         
     return
 
-def generate_pricing_sheets(vendors=['Sysco', 'Performance Food', 'US Foods', 'Behlog Produce', 'Russo Produce',], guides=['IBProduce']):
+def generate_pricing_sheets(vendors=['Sysco', 'Performance Food', 'US Foods', 'BEHLOG & SON, INC.', 'Russo Produce',], guides=['IBProduce']):
         pricer = PriceComparator()
         # pricer.item_skus_file_path = f'{PRICING_FILES_PATH}\\ItemSkus.xlsx'
         for guide in guides:
@@ -526,10 +525,11 @@ if __name__ == '__main__':
 
     
     '''Pricing Sheet Protocol'''
-    options = create_options(DOWNLOAD_PATH)
-    driver  = uc.Chrome(options=options, use_subprocess=True)
-    download_pricing_sheets(driver)
-    delete_all_files_without_extension(PRICING_FILES_PATH / 'VendorSheets', '.xlsx')
+    # options = create_options(DOWNLOAD_PATH)
+    # driver  = uc.Chrome(options=options, use_subprocess=True)
+    # download_pricing_sheets(driver)
+    # delete_all_files_without_extension(PRICING_FILES_PATH / 'VendorSheets', '.xlsx')
+    # input('Press ENTER to stop waiting.')
     generate_pricing_sheets()
     
     vendors = [

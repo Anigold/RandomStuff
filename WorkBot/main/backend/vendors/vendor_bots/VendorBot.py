@@ -82,11 +82,14 @@ class PricingBotMixin(ABC):
     def format_vendor_pricing_sheet(self, pricing_sheet_path: str, save_path: str) -> None:
         price_info = self.get_pricing_info_from_sheet(pricing_sheet_path)
 
+        print('creating workbook',  flush=True)
         workbook = Workbook()
         sheet = workbook.active
-       
+
+        print('importing pricing data', flush=True)
         for row_pos, item_name in enumerate(price_info):
 
+            print(item_name)
             item_info     = price_info[item_name]
      
             sku           = item_info['SKU']
@@ -100,6 +103,8 @@ class PricingBotMixin(ABC):
             for col_position, col_value in enumerate(row):
                 sheet.cell(row=row_pos+1, column=col_position+1).value = col_value
 
+        print('Saving workbook', flush=True)
+        print(save_path, flush=True)
         return workbook.save(filename=f'{save_path}')
     
     def helper_format_size_units(pack: str, size: str) -> list:
