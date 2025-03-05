@@ -530,7 +530,7 @@ if __name__ == '__main__':
     # download_pricing_sheets(driver)
     # delete_all_files_without_extension(PRICING_FILES_PATH / 'VendorSheets', '.xlsx')
     # input('Press ENTER to stop waiting.')
-    generate_pricing_sheets()
+    # generate_pricing_sheets()
     
     vendors = [
         # 'Sysco',
@@ -552,22 +552,22 @@ if __name__ == '__main__':
     # pricer.item_skus_file_path = f'{PRICING_FILES_PATH}\\ItemSkus.xlsx'
     # pricer.compare_prices(f'{PRICING_FILES_PATH}\\Pricing Guides\\IBProduce\\IBProduce 2024-06-15.xlsx')
 
-    # work_bot = WorkBot()
+    work_bot = WorkBot()
 
-    # webstaurant_bot = work_bot.vendor_manager.initialize_vendor('Webstaurant')
+    webstaurant_bot = work_bot.vendor_manager.initialize_vendor('Webstaurant', driver=work_bot.craft_bot.driver)
 
-    # # options = create_options()
-    # # driver  = uc.Chrome(options=options, use_subprocess=True)
+    # options = create_options()
+    # driver  = uc.Chrome(options=options, use_subprocess=True)
 
-    # # bot_name = 'Webstaurant'
-    # # webstaurant_bot_creds = get_credentials(bot_name)
-    # # webstaurant_bot       = get_bot(bot_name)(driver, webstaurant_bot_creds['username'], webstaurant_bot_creds['password'])
+    # bot_name = 'Webstaurant'
+    # webstaurant_bot_creds = get_credentials(bot_name)
+    # webstaurant_bot       = get_bot(bot_name)(driver, webstaurant_bot_creds['username'], webstaurant_bot_creds['password'])
 
-    # undocumented_orders = webstaurant_bot.get_all_undocumented_orders()
+    undocumented_orders = webstaurant_bot.get_all_undocumented_orders()
 
-    # for order in reversed(undocumented_orders): # Go backwards to implicitly sort by ascending date
-    #     order_info = webstaurant_bot.get_order_info(order, download_invoice=True)
-    #     webstaurant_bot.update_pick_list(order_info)
+    for order in reversed(undocumented_orders): # Go backwards to implicitly sort by ascending date
+        order_info = webstaurant_bot.get_order_info(order, download_invoice=True)
+        webstaurant_bot.update_pick_list(order_info)
 
 
 

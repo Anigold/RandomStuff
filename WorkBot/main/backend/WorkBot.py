@@ -65,7 +65,7 @@ class WorkBot:
 
         transfer_items = []
         for item in order.items:
-            transfer_item = TransferItem(name=item['Item'], quantity=float(item['Quantity']))
+            transfer_item = TransferItem(name=item.name, quantity=item.quantity)
             transfer_items.append(transfer_item)
 
         order_datetime = string_to_datetime(order.date)

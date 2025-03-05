@@ -17,3 +17,4 @@ def create_options(downloads_path) -> uc.ChromeOptions:
 
 def create_driver(options):
     return uc.Chrome(options=options, use_subprocess=True)
+

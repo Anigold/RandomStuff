@@ -1,4 +1,31 @@
 from backend.WorkBot import WorkBotCLI
+import subprocess
+import sys
+import platform
+from pathlib import Path
+
+LOG_FILE = Path('./logs/master.log').absolute().as_posix()
+GIT_BASH_PATH = Path('C:/Program Files/Git/bin/bash.exe')
+
+def open_log_terminal():
+    """Open a new terminal window and follow the master.logs file."""
+    system = platform.system()
+    # print(str(LOG_FILE))
+    if system == "Windows":
+        # Open a new CMD window and redirect output away from Git Bash
+        subprocess.Popen([
+            'start', '', str(GIT_BASH_PATH), 
+            '-c', f'tail -F {str(LOG_FILE)}'
+        ], shell=True)
+
+    elif system in ["Linux", "Darwin"]:  # Darwin = macOS
+        # Open a new terminal and run 'tail -f' on the log file
+        subprocess.Popen([
+            "x-terminal-emulator", "-e", f"bash -c 'tail -f {LOG_FILE}'"
+        ])
+    else:
+        print("Unsupported OS. Unable to open log terminal.")
 
 if __name__ == '__main__':
+    open_log_terminal()
     WorkBotCLI().start()

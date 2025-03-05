@@ -64,8 +64,6 @@ class CraftableBot:
             'COLLEGETOWN': '14372',
         }
     
-
-    
     def __init__(self, driver: WebDriver, username: str, password: str, 
                  order_manager: OrderManager = None, transfer_manager: TransferManager = None):
         
@@ -514,7 +512,7 @@ class CraftableBot:
 
         for item in transfer.items:
             print(item.name, flush=True)
-            if item.quantity <= 0: return # Skip items that weren't transferred.
+            if float(item.quantity) <= 0: return # Skip items that weren't transferred.
             try:
                 self.logger.debug(f'Adding transfer item: {item.name} ({item.quantity})')
                 self._add_transfer_item(item)
@@ -744,12 +742,12 @@ class CraftableBot:
                 for _ in range(current_month_value - transfer_datetime.month + 1):
                     previous_month_button = self.driver.find_element(By.CLASS_NAME, 'flatpickr-prev-month')
                     previous_month_button.click()
-                    time.wait(1)
+                    time.sleep(1)
             if current_month_value < transfer_datetime.month:
                 for _ in range(transfer_datetime.month - current_month_value + 1):
                     next_month_button = self.driver.find_element(By.CLASS_NAME, 'flatpickr-next-month')
                     next_month_button.click()
-                    time.wait(1)
+                    time.sleep(1)
 
         calendar = self.driver.find_element(By.CLASS_NAME, 'dayContainer')
         today = calendar.find_element(By.XPATH, f'.//span[@class="flatpickr-day "][text()="{transfer_datetime.day}"]')
