@@ -17,6 +17,8 @@ from datetime import datetime
 import argparse
 import json
 import shlex
+import sys
+import subprocess
 
 from tabulate import tabulate
 from termcolor import colored
@@ -112,6 +114,7 @@ class WorkBotCLI:
 
         self.commands = {
             "download_orders":              self.download_orders,
+            'open_directory':               self.open_directory,
             'list_orders':                  self.list_orders,
             "sort_orders":                  self.sort_orders,
             'delete_orders':                self.delete_orders,
@@ -251,6 +254,36 @@ class WorkBotCLI:
 
         return tabulate(formatted_orders, headers=headers, tablefmt="grid")
 
+    def open_directory(self, args) -> None:
+
+        parser = argparse.ArgumentParser(prog='open_directory', description='Open the directory of the specified vendor(s).')
+        parser.add_argument('--vendors', nargs='+', required=True, help='List of vendors.')
+
+        try:
+
+            parsed_args = parser.parse_args(args)
+
+            for vendor in parsed_args.vendors:
+
+                directory_path = str(self.workbot.order_manager.get_vendor_orders_directory(vendor))
+
+                try:
+                    self.logger.info(f'Attempting to open directory for: {vendor}')
+                    if sys.platform.startswith("win"):
+                        # subprocess.run(["explorer", directory_path], check=True)
+                        subprocess.Popen(['explorer', directory_path], shell=True)
+                    elif sys.platform.startswith("darwin"):  # macOS
+                        subprocess.run(["open", directory_path], check=True)
+                    else:  # Linux and other UNIX-like systems
+                        subprocess.run(["xdg-open", directory_path], check=True)
+
+                except Exception as e:
+                    print(f"Error opening file explorer: {e}")
+
+                self.logger.info(f'Directory opened.')
+        except SystemExit:
+            pass  # Prevent argparse from exiting CLI loop
+
     def shutdown(self, args):
         """Shuts down WorkBot and all vendor sessions."""
         self.workbot.shutdown()
@@ -260,6 +293,7 @@ class WorkBotCLI:
         """Displays available commands."""
         print("\nAvailable Commands:")
         print("  download_orders --stores [STORE_NAMES] --vendors [VENDORS] --sort   # Download orders from Craftable for specific stores/vendors")
+        print('  open_directory --vendors [VENDORS]                                  # Open the directory of the specified vendor(s).')
         print('  list_orders --stores [STORE_NAMES] --vendors [VENDORS]              # Display orders for specific stores/vendors')
         print('  sort_orders                                                         # Sort order files by vendor')
         print('  delete_orders --stores [STORE NAMES] --vendors [VENDORS]            # Delete orders from Craftable for specific stores/vendors.')
