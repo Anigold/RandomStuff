@@ -32,7 +32,7 @@ from datetime import date
 
 from pathlib import Path
 
-from backend.WorkBot import WorkBot
+from WorkBot.main.backend.workbot.WorkBot import WorkBot
 
 dotenv = load_dotenv()
 
@@ -59,32 +59,8 @@ def get_excel_files(path: Path) -> list[Path]:
 
 
 
-'''FIX THIS UGLY-ASS HACKY JOB'''
-def format_orders(vendor: str, path_to_folder: str) -> None:
 
-    from backend.vendors.VendorManager import VendorManager
 
-    vendor_manager = VendorManager()
-    vendor_bot  = vendor_manager.initialize_vendor(vendor)
-    excel_files = get_excel_files(path_to_folder / vendor_bot.name)
-    for file in excel_files:
-        file_name_no_extension  = file.name.split('.')[0]
-        item_data               = FormatItemData.extract_item_data_from_excel_file(f'{file}')
-        if vendor_bot.name == 'US Foods':
-            store_name = file_name_no_extension.split('_')[1]
-            vendor_bot.format_for_file_upload(item_data, f'{path_to_folder}\\{vendor_bot.name}\\Formatted _ {file_name_no_extension}', store_name)
-        else:
-            vendor_bot.format_for_file_upload(item_data, f'{path_to_folder}\\{vendor_bot.name}\\Formatted _ {file_name_no_extension}')
-    return
-
-def format_orders_for_transfer(vendor: str, path_to_folder: str) -> None:
-    vendor_bot  = get_bot(vendor)()
-    excel_files = get_excel_files(path_to_folder / vendor)
-    for file in excel_files:
-        file_name_no_extension = file.name.split('.')[0]
-        item_data = FormatItemData.extract_item_data_from_excel_file_for_transfer(path_to_folder / vendor_bot.name / file)
-        vendor_bot.format_for_file_upload(item_data, f'{path_to_folder}\\{vendor_bot.name}\\Formatted _ {file_name_no_extension}')
-    return
 
 def prepare_email_to_send(email: Email) -> None:
 
@@ -175,9 +151,6 @@ def print_schedule_daily(day: int) -> None:
 
     return printer_object.print_file(f'{path_to_schedules}{schedule[day]}.pdf')
 
-def get_transfers(vendor: str) -> list:
-    path = f'{ORDER_FILES_PATH}\\{vendor}'
-    return [file for file in listdir(path) if isfile(join(path, file)) and file.endswith('.xlsx') and file.split(' _ ')[0] == 'Formatted']
 
 def get_day(day_of_week: str):
     days = {
@@ -554,7 +527,7 @@ if __name__ == '__main__':
 
     work_bot = WorkBot()
 
-    webstaurant_bot = work_bot.vendor_manager.initialize_vendor('Webstaurant', driver=work_bot.craft_bot.driver)
+    # webstaurant_bot = work_bot.vendor_manager.initialize_vendor('Webstaurant', driver=work_bot.craft_bot.driver)
 
     # options = create_options()
     # driver  = uc.Chrome(options=options, use_subprocess=True)
@@ -563,11 +536,11 @@ if __name__ == '__main__':
     # webstaurant_bot_creds = get_credentials(bot_name)
     # webstaurant_bot       = get_bot(bot_name)(driver, webstaurant_bot_creds['username'], webstaurant_bot_creds['password'])
 
-    undocumented_orders = webstaurant_bot.get_all_undocumented_orders()
+    # undocumented_orders = webstaurant_bot.get_all_undocumented_orders()
 
-    for order in reversed(undocumented_orders): # Go backwards to implicitly sort by ascending date
-        order_info = webstaurant_bot.get_order_info(order, download_invoice=True)
-        webstaurant_bot.update_pick_list(order_info)
+    # for order in reversed(undocumented_orders): # Go backwards to implicitly sort by ascending date
+    #     order_info = webstaurant_bot.get_order_info(order, download_invoice=True)
+    #     webstaurant_bot.update_pick_list(order_info)
 
 
 

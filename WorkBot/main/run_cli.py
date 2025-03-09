@@ -1,4 +1,4 @@
-from backend.WorkBot import WorkBotCLI
+from backend.workbot.WorkBotCLI import WorkBotCLI
 import subprocess
 import sys
 import platform

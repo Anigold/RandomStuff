@@ -64,7 +64,7 @@ class PerformanceFoodBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
                 quantity = item['quantity']
                 sku      = item['sku']
 
-                csv_writer.writerow([sku, int(quantity), 'CS'])
+                csv_writer.writerow([sku, int(float(quantity)), 'CS'])
 
         return
     
