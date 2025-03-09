@@ -3,10 +3,7 @@ from pathlib import Path
 from .Order import Order
 
 from backend.logger.Logger import Logger
-
-SOURCE_PATH         = Path(__file__).parent.parent
-ORDERS_DIRECTORY    = SOURCE_PATH / 'orders' / 'OrderFiles'
-DOWNLOADS_DIRECTORY = SOURCE_PATH / 'downloads'
+from config.paths import DOWNLOADS_DIR, ORDER_FILES_DIR
 
 @Logger.attach_logger
 class OrderManager:
@@ -14,10 +11,10 @@ class OrderManager:
     file_pattern = re.compile(r"^(?P<vendor>.+?)_(?P<store>.+?)_(?P<date>\d{8})$")
 
     def get_order_files_directory(self) -> Path:
-        return ORDERS_DIRECTORY
+        return ORDER_FILES_DIR
     
     def get_downloads_directory(self) -> Path:
-        return DOWNLOADS_DIRECTORY
+        return DOWNLOADS_DIR
     
     def get_vendor_orders_directory(self, vendor: str) -> Path:
 
@@ -38,9 +35,6 @@ class OrderManager:
         orders = []
  
         for vendor_order_dir in orders_dir.iterdir():
-
-            
-            
             for vendor_order_file in vendor_order_dir.iterdir():
                 
                 if vendor_order_file.suffix != '.xlsx' or not self.is_valid_filename(vendor_order_file): 

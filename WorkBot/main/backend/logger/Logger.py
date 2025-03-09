@@ -5,6 +5,8 @@ import threading
 from logging.handlers import RotatingFileHandler
 from functools import wraps
 
+from config.paths import MASTER_LOG_FILE
+
 class Logger:
     '''Centralized logging class with per-module loggers, rotating files, and optional JSON formatting.'''
 
@@ -29,7 +31,7 @@ class Logger:
             # # Prevent duplicate handlers
             if logger.hasHandlers(): return logger 
 
-            master_log_file = 'logs/master.log'
+            master_log_file = MASTER_LOG_FILE
 
             # File Handler (Rotating)
             file_handler   = RotatingFileHandler(log_file, maxBytes=1_000_000, backupCount=5, delay=False)

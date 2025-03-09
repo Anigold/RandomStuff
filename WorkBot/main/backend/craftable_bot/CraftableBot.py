@@ -16,8 +16,8 @@ from openpyxl import Workbook, load_workbook
 
 from backend.transferring import Transfer
 from backend.transferring.TransferManager import TransferManager
-from backend.orders.OrderManager import OrderManager
-from backend.orders.Order import Order
+from backend.ordering.OrderManager import OrderManager
+from backend.ordering.Order import Order
 
 from datetime import datetime
 

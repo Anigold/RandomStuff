@@ -4,9 +4,7 @@ from datetime import datetime
 import re
 
 from backend.helpers.DatetimeFormattingHelper import string_to_datetime
-
-SOURCE_PATH              = Path(__file__).parent.parent
-TRANSFER_FILES_DIRECTORY = SOURCE_PATH / 'transferring' / 'TransferFiles'
+from config.paths import TRANSFERRING_DIR
 
 class TransferManager:
 
@@ -52,7 +50,7 @@ class TransferManager:
 
     @staticmethod
     def get_transfer_files_directory() -> Path:
-        return TRANSFER_FILES_DIRECTORY
+        return TRANSFERRING_DIR
     
     @staticmethod
     def _format_datetime_to_string(datetime_obj: datetime) -> str:

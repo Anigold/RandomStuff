@@ -4,10 +4,8 @@ from backend.vendors.vendor_config import get_vendor_information, get_vendor_cre
 from backend.helpers.selenium_helpers import create_driver, create_options
 from pathlib import Path
 from backend.logger.Logger import Logger
+from config.paths import DOWNLOADS_DIR
 
-SOURCE_PATH         = Path(__file__).parent.parent
-ORDERS_DIRECTORY    = SOURCE_PATH / 'orders' / 'OrderFiles'
-DOWNLOADS_DIRECTORY = SOURCE_PATH / 'downloads'
 
 @Logger.attach_logger
 class VendorManager:
@@ -51,7 +49,7 @@ class VendorManager:
         init_args, init_kwargs = [], {}
 
         if vendor_info.get('uses_selenium', False):
-            driver = driver or create_driver(create_options(DOWNLOADS_DIRECTORY))              
+            driver = driver or create_driver(create_options(DOWNLOADS_DIR))              
             init_args.append(driver)
 
         if vendor_info.get('requires_credentials', False):

@@ -21,8 +21,8 @@ from backend.emailer.Services.Outlook import Outlook
 from backend.transferring.TransferManager import TransferManager
 from backend.transferring.Transfer import Transfer, TransferItem
 from backend.pricing.PriceComparator import PriceComparator
-from backend.orders.OrderManager import OrderManager
-from backend.orders.Order import Order
+from backend.ordering.OrderManager import OrderManager
+from backend.ordering.Order import Order
 from backend.vendors.VendorManager import VendorManager
 
 
@@ -525,7 +525,7 @@ if __name__ == '__main__':
     # pricer.item_skus_file_path = f'{PRICING_FILES_PATH}\\ItemSkus.xlsx'
     # pricer.compare_prices(f'{PRICING_FILES_PATH}\\Pricing Guides\\IBProduce\\IBProduce 2024-06-15.xlsx')
 
-    work_bot = WorkBot()
+    # work_bot = WorkBot()
 
     # webstaurant_bot = work_bot.vendor_manager.initialize_vendor('Webstaurant', driver=work_bot.craft_bot.driver)
 

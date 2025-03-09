@@ -1,12 +1,11 @@
 from .Store import Store
 import json
 from pathlib import Path
-
-DEFAULT_STORAGE_FILE = Path(__file__).parent / 'stores.json'
+from config.paths import STORES_DATA_FILE
 
 class StoreManager:
 
-    def __init__(self, storage_file: Path = DEFAULT_STORAGE_FILE):
+    def __init__(self, storage_file: Path = STORES_DATA_FILE):
         self.stores = {}
         self.storage_file = storage_file
         self.load_stores()
