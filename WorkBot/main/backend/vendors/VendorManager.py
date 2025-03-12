@@ -5,6 +5,7 @@ from backend.helpers.selenium_helpers import create_driver, create_options
 from pathlib import Path
 from backend.logger.Logger import Logger
 from config.paths import DOWNLOADS_DIR
+from .vendor_config import get_vendors
 
 
 @Logger.attach_logger
@@ -84,3 +85,5 @@ class VendorManager:
     def get_vendor_information(self, vendor_name: str) -> dict:
         return get_vendor_information(vendor_name)
     
+    def list_vendors(self):
+        return get_vendors()

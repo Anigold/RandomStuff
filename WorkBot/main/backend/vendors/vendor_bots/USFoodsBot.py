@@ -22,6 +22,11 @@ class USFoodsBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
             'TRIPHAMMER':  '1602994',
             'EASTHILL':    '31602998',
             'DOWNTOWN':    '21602990',
+            'Bakery':      '91602987',
+            'Collegetown': '11602976',
+            'Triphammer':  '1602994',
+            'Easthill':    '31602998',
+            'Downtown':    '21602990',
         }
 
         self.special_cases = {

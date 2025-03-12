@@ -62,6 +62,11 @@ class CraftableBot:
             'EASTHILL':    '14374',
             'TRIPHAMMER':  '14375',
             'COLLEGETOWN': '14372',
+            'Bakery':      '14376',
+            'Downtown':    '14373',
+            'Easthill':    '14374',
+            'Triphammer':  '14375',
+            'Collegetown': '14372',
         }
     
     def __init__(self, driver: WebDriver, username: str, password: str, 
@@ -162,6 +167,8 @@ class CraftableBot:
     @Logger.log_exceptions
     def switch_store(self, store: str) -> None:
         
+        store = store.upper()
+
         if store not in self.stores: 
             self.logger.warning(f'Invalid store name: {store}.')
             return
@@ -511,10 +518,9 @@ class CraftableBot:
         self.logger.info(f'Starting input for {len(transfer.items)} transfer items.')
 
         for item in transfer.items:
-            print(item.name, flush=True)
             if float(item.quantity) <= 0: return # Skip items that weren't transferred.
             try:
-                self.logger.debug(f'Adding transfer item: {item.name} ({item.quantity})')
+                self.logger.info(f'Adding transfer item: {item.name} ({item.quantity})')
                 self._add_transfer_item(item)
             except Exception as e:
                 self.logger.warning(f'Failed to add item {item.name}: {e}', exc_info=True)
@@ -537,12 +543,16 @@ class CraftableBot:
         # Enter the item name   
         item_input = self.driver.find_element(By.ID, 'typeahead')
         item_input.send_keys(item.name)
-        time.sleep(5)
 
+        # WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, './/div[@class="input-group input-typeahead-container input-group-merge"]')))
+        time.sleep(6)
         # Select the item from the dropdown
+
         item_choice_container = self.driver.find_element(By.XPATH, './/div[@class="input-group input-typeahead-container input-group-merge"]')
-        item_choice = item_choice_container.find_elements(By.XPATH, './following-sibling::div/div[@class="input-type-ahead "]/div[@class="input-type-ahead-row"]')[0]
-        item_choice.click()
+        item_choices          = item_choice_container.find_elements(By.XPATH, './following-sibling::div/div[@class="input-type-ahead "]/div[@class="input-type-ahead-row"]')
+        for i in item_choices:
+            print(i.text, flush=True)
+        item_choices[0].click()
         
         transfer_modal           = self.driver.find_element(By.ID, 'transferItemModal')
         transfer_form            = transfer_modal.find_element(By.XPATH, './/form')
@@ -558,10 +568,15 @@ class CraftableBot:
                 add_transfer_item_button = self.driver.find_element(By.XPATH, './/button[text()="Add Transfer Line"]')
                 add_transfer_item_button.click()
                 WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.XPATH, './/div[@class="_c-notification__content"][text()="Successfully added a Transfer Line"]')))
-                self.logger.debug(f'Item {item.name} addedd successfully.')
+                self.logger.info(f'Item {item.name} addedd successfully.')
                 break
             except Exception as e:
-                self.logger.warning(f'Attempt {attempt+1} failed for {item.name}: {e}')
+                self.logger.info(f'Attempt {attempt+1} failed for {item.name}: {e}')
+                # self.logger.info('Closing add-item window and trying again.')
+                # back_button = self.driver.find_element(By.XPATH, './/button[text()="Back"]')
+                # back_button.click()
+
+
             
         return
             

@@ -104,6 +104,9 @@ class WorkBot:
     def get_vendor_information(self, vendor_name: str) -> dict:
         return self.vendor_manager.get_vendor_information(vendor_name)
 
+    def combine_orders(self, vendors: list) -> None:
+        self.order_manager.combine_orders(vendors)
+
     def shutdown(self) -> None:
         """Exits the CLI loop."""
         self.close_craftable_session()

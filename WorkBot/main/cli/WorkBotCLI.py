@@ -15,14 +15,19 @@ from termcolor import colored
 from typing import Optional
 from config.paths import CLI_HISTORY_FILE
 
+import re
 
 class CLI:
+
+    FLAG_REGEX_PATTERN = r'(--\w[\w-]*)(?:\s+([^\s-][^\s]*))?'
 
     def __init__(self) -> None:
 
         self.commands = {}
 
         self._register_commands()
+
+        self.autocomplete_registry = {}
         self._setup_autocomplete()
 
     def _register_commands(self) -> None:
@@ -35,59 +40,94 @@ class CLI:
 
         # Autocomplete
         readline.set_completer(self._completer)
-        readline.parse_and_bind('tab: complete')
+
+        # We need to remove the hyphen as a word delimiter to enable the usage of flags (e.g. "command --flag 'Flag value').
+        delimiters = readline.get_completer_delims().replace('-', '')
+        readline.set_completer_delims(delimiters + ' ') # Possible Bug: on startup there is a chance the blank space is not present in the default delims.
         
+
+        readline.parse_and_bind("set completion-ignore-case on")        # Ignore case sensitivity
+        readline.parse_and_bind("set show-all-if-ambiguous on")         # List all matches if ambiguous
+        readline.parse_and_bind("set menu-complete-display-prefix on")  # Show common prefix in list
+        readline.parse_and_bind("set skip-completed-text on")
+        readline.parse_and_bind("TAB: complete")
+
         # Command History
         if CLI_HISTORY_FILE.exists():
             readline.read_history_file(str(CLI_HISTORY_FILE))
         readline.set_history_length(100)
 
-    # def save_command_history(self) -> None:
-    #     readline.write_history_file(self.history_file_path)
-
     def _completer(self, text: str, state: int) -> Optional[str]:
-        
-        buffer = readline.get_line_buffer().split()
-       
-        if not buffer:
+        buffer = readline.get_line_buffer().strip()
+
+
+        FLAG_REGEX = re.compile(self.FLAG_REGEX_PATTERN)
+
+        if not buffer:  # Nothing typed
             options = list(self.commands.keys())
-        if len(buffer) == 1:
-            options = [cmd for cmd in self.commands.keys() if cmd.startswith(text)]
+        elif " " not in buffer:  # Typing command
+            options = [cmd for cmd in self.commands.keys() if cmd.startswith(buffer)]
         else:
-            command = buffer[0]
-            if command in self.commands and hasattr(self, f'args_{command}'):
-                parser = getattr(self, f'args_{command}')()
-                options = [arg for arg in parser._option_string_actions.keys() if arg.startswith(text)]
-            else:
-                options = []
-        return options[state] if state < len(options) else None
-    
-    def start(self) -> None:
-        """Starts the interactive command loop."""
-        print("\nWelcome to WorkBot CLI! Type 'help' to see available commands.\n")
+            command = buffer.split()[0]
+            if command not in self.commands:
+                return None
 
-        while True:
-            try:
-                user_input = input("WorkBot> ").strip()
+            possible_flags = self._get_command_args(command, "")
 
-                if not user_input: continue
+            # Find all flag matches
+            matches = FLAG_REGEX.findall(buffer)
 
-                args         = shlex.split(user_input)
-                command      = args[0]
-                command_args = args[1:]
+            if matches:
+                last_flag = None  # Track the most recent flag
 
-                if command in self.commands:
-                    self.commands[command](command_args)
+                # Iterate over matches to determine the last flag in the buffer
+                for flag, _ in matches:  
+                    if flag in possible_flags:
+                        last_flag = flag  # Store last valid flag
+
+                last_token = buffer.split()[-1]
+
+                # Case 1: Typing a new flag (`--`)
+                if last_token.startswith("--"):
+                    options = [f for f in possible_flags if f.startswith(text)]
+
+                # Case 2: Pressing TAB **after** a flag (should show values)
+                elif last_flag and (last_token == last_flag or buffer.endswith(" ")):
+                    if last_flag in possible_flags and command in self.autocomplete_registry:
+                        handler = self.autocomplete_registry[command]
+                        options = handler(last_flag, text)
+
+                # Case 3: Typing within a flag value (autocomplete values)
+                elif last_flag and last_token not in possible_flags:
+                    if command in self.autocomplete_registry:
+                        handler = self.autocomplete_registry[command]
+                        options = handler(last_flag, text)
+
+                # Case 4: Something weird happens and Cases 1 - 3 aren't reached
                 else:
-                    print(f"Unknown command: '{command}'. Type 'help' for available commands.")
+                    options = []
+            else:
+                options = possible_flags if buffer.count(" ") == 1 else []
 
-                readline.write_history_file(str(CLI_HISTORY_FILE))
-                
-            except KeyboardInterrupt:
-                print("\nExiting WorkBot CLI.")
-                self._exit(0)
-                break
+        return options[state] if state < len(options) else None
+   
+    def _get_command_args(self, command: str, text: str):
+        if hasattr(self, f'args_{command}'):
+            parser = getattr(self, f'args_{command}')()
+            return [arg for arg in parser._option_string_actions.keys() if arg.startswith(text)]
+        return []
+
+    def register_autocomplete(self, command: str, handler):
+        self.autocomplete_registry[command] = handler
+
+    def start(self) -> None:
+        print('\nWelcome to WorkBot CLI! Type "help" to see available commands.\n')
+        self._run()
     
+    def cmd_shutdown(self, args):
+        '''Shuts down CLI.'''
+        self._exit()
+
     def cmd_help(self, args) -> None:
         '''Displays available commands'''
         print("\nAvailable Commands:")
@@ -115,6 +155,28 @@ class CLI:
 
         sys.exit(0)
 
+    def _run(self):
+        while True:
+            try:
+                user_input = input('WorkBot> ').strip()
+
+                if not user_input: continue
+
+                args         = shlex.split(user_input)
+                command      = args[0]
+                command_args = args[1:]
+
+                if command in self.commands:
+                    self.commands[command](command_args)
+                else:
+                    print(f'Unknown command: "{command}". Type "help" for available commands.')
+
+                readline.write_history_file(str(CLI_HISTORY_FILE))
+                
+            except KeyboardInterrupt:
+                print('\nExiting CLI.')
+                self._exit(0)
+                break
 
 @Logger.attach_logger
 class WorkBotCLI(CLI):
@@ -124,6 +186,9 @@ class WorkBotCLI(CLI):
 
         self.workbot = workbot or WorkBot()
         super().__init__()
+
+        self.register_autocomplete('download_orders', self._autocomplete_download_orders)
+        self.register_autocomplete('delete_orders', self._autocomplete_delete_orders)
 
     def cmd_download_orders(self, args):
         """Handles downloading orders."""
@@ -149,6 +214,16 @@ class WorkBotCLI(CLI):
         parser.add_argument("--vendors", nargs="+", help="List of vendors (default: all).")
         parser.add_argument('--sort', action='store_true', help='Sort orders by vendor after downloading.')
         return parser
+    
+    def _autocomplete_download_orders(self, flag: str, text: str):
+
+        
+        flags = {
+            '--stores': self._get_stores,
+            '--vendors': self._get_vendors
+        }
+        
+        return [option for option in flags.get(flag, [])() if option.startswith(text)]
     
     def args_sort_orders(self) -> None:
         return argparse.ArgumentParser(prog='sort_orders', description='Sort the saved orders by vendor.')
@@ -207,7 +282,7 @@ class WorkBotCLI(CLI):
         parser = argparse.ArgumentParser(prog='delete_orders', description='Download orders from vendors.')
         parser.add_argument('--stores', nargs='+', required=True, help='List of store names.')
         parser.add_argument('--vendors', nargs='+', help='List of vendors (default: all).')
-        return
+        return parser
     
     def cmd_delete_orders(self, args):
         parser = self.args_delete_orders()
@@ -219,6 +294,16 @@ class WorkBotCLI(CLI):
         except SystemExit:
             pass  # Prevent argparse from exiting CLI loop
 
+    def _autocomplete_delete_orders(self, flag: str, text: str):
+
+        
+        flags = {
+            '--stores': self._get_stores,
+            '--vendors': self._get_vendors
+        }
+        
+        return [option for option in flags.get(flag, [])() if option.startswith(text)]
+    
     def _format_order_list(self, orders: list, show_pricing: bool = False, show_minimums: bool = False):
 
         orders.sort(key=lambda x: x.store)
@@ -286,13 +371,12 @@ class WorkBotCLI(CLI):
                 self.logger.info(f'Directory opened.')
         except SystemExit:
             pass  # Prevent argparse from exiting CLI loop
-
-    def cmd_shutdown(self, args):
-        """Shuts down WorkBot and all vendor sessions."""
-        self.workbot.shutdown()
-        print("WorkBot shut down successfully.")
-        super()._exit()
-        
+  
+    def _get_stores(self):
+        return [store.name for store in self.workbot.store_manager.list_stores()]
+    
+    def _get_vendors(self):
+        return sorted(self.workbot.vendor_manager.list_vendors())
 
     # def show_help(self, args):
     #     """Displays available commands."""

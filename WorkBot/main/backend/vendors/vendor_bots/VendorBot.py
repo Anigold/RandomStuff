@@ -12,7 +12,7 @@ class VendorBot(ABC):
     def format_for_file_upload(self, item_data: dict, path_to_save: str, store: str = None):
         pass
 
-
+    
 class SeleniumBotMixin(ABC):
 
     def __init__(self, driver, username, password) -> None:

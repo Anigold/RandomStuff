@@ -32,7 +32,7 @@ from datetime import date
 
 from pathlib import Path
 
-from WorkBot.main.backend.workbot.WorkBot import WorkBot
+from backend.workbot.WorkBot import WorkBot
 
 dotenv = load_dotenv()
 
@@ -41,7 +41,7 @@ CRAFTABLE_PASSWORD = getenv('CRAFTABLE_PASSWORD')
 
 SOURCE_PATH = Path(__file__).parent / 'backend'
 
-ORDER_FILES_PATH   = SOURCE_PATH / 'orders' / 'OrderFiles'
+ORDER_FILES_PATH   = SOURCE_PATH / 'ordering' / 'OrderFiles'
 PRICING_FILES_PATH = SOURCE_PATH / 'pricing'
 DOWNLOAD_PATH      = SOURCE_PATH / 'downloads'
 TRANSFER_PATH      = SOURCE_PATH / 'transferring'
@@ -193,26 +193,28 @@ def produce_pricing_and_email(driver) -> None:
     emailer.display_email(email)
     return
 
-def download_pricing_sheets(driver, vendors=['BEHLOG & SON, INC.', 'Russo Produce'], guides=['IBProduce']) -> None:
+def download_pricing_sheets(driver, vendors=['US Foods'], guides=['IBProduce']) -> None:
 
     for vendor in vendors:
 
         vendor_manager = VendorManager()
 
         bot = vendor_manager.initialize_vendor(vendor, driver)
+        print(bot, flush=True)
         for pricing_guide in guides:
 
             if vendor != 'US Foods':
                 file_name = bot.retrieve_pricing_sheet(pricing_guide)
                 # file_name = None
             else:
-                file_name = None
+                file_name = 'US Foods_IBProduce.csv'
 
-            # new_file_name = f'{PRICING_FILES_PATH}\\VendorSheets\\{bot.name}_{pricing_guide}_{date.today()}.{file_name.split(".")[1]}'
-            new_file_name = PRICING_FILES_PATH / 'VendorSheets' / f'{bot.name}_{pricing_guide}_{date.today()}.{file_name.split(".")[1]}'
+            
+            # new_file_name = PRICING_FILES_PATH / 'VendorSheets' / f'{bot.name}_{pricing_guide}_{date.today()}.{file_name.split(".")[1]}'
 
+            
+            new_file_name = PRICING_FILES_PATH / 'VendorSheets' / 'US Foods_IBProduce_2025-03-10.csv'
             rename( DOWNLOAD_PATH / file_name, new_file_name)
-            # new_file_name = PRICING_FILES_PATH / 'VendorSheets' / 'US Foods_IBProduce_2025-03-04.csv'
             bot.format_vendor_pricing_sheet(new_file_name, new_file_name.with_suffix('.xlsx'))
         
     return
@@ -316,22 +318,23 @@ if __name__ == '__main__':
 
 
     # CONVERT ITHACA_BAKERY ORDERS TO TRANSFERS
-    # transfers_directory = TransferManager.get_transfer_files_directory()
+    work_bot = WorkBot()
+    transfers_directory = TransferManager.get_transfer_files_directory()
     
-    # ib_orders = work_bot.order_manager.get_vendor_orders('Ithaca Bakery')
+    ib_orders = work_bot.order_manager.get_vendor_orders('Ithaca Bakery')
 
-    # transfers = []
-    # for i in ib_orders:
-    #     print(i, flush=True)
-    #     metadata = OrderManager.parse_file_name(i)
-    #     order = Order(metadata['store'], metadata['vendor'], metadata['date'])
-    #     order.load_items_from_excel(i)
-    #     transfer = work_bot.convert_order_to_transfer(order)
-    #     transfers.append(transfer)
+    transfers = []
+    for i in ib_orders:
+        # print(i, flush=True)
+        metadata = OrderManager.parse_file_name(i)
+        order = Order(metadata['store'], metadata['vendor'], metadata['date'])
+        order.load_items_from_excel(i)
+        transfer = work_bot.convert_order_to_transfer(order)
+        transfers.append(transfer)
     
-    # work_bot.input_transfers(transfers)
+    work_bot.input_transfers(transfers)
 
-    # transfer_ctb  = work_bot.craft_bot.transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to COLLEGETOWN 20250217.xlsx')
+    # transfer_ctb  = work_bot.craft_bot.transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to COLLEGETOWN 20250307.xlsx')
     # transfer_dtb  = work_bot.craft_bot.transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to DOWNTOWN 20250217.xlsx')
     # transfer_ehp  = work_bot.craft_bot.transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to EASTHILL 20250217.xlsx')
     # transfer_trip = work_bot.craft_bot.transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to TRIPHAMMER 20250217.xlsx')
@@ -470,9 +473,9 @@ if __name__ == '__main__':
     # vendor_manager = VendorManager()
 
     vendors = [
-        'Copper Horse Coffee',
+        # 'Copper Horse Coffee',
         # 'Eurocafe Imports',
-        # 'Ithaca Bakery'
+        'Ithaca Bakery'
     ]
     # for vendor in vendors:
 
