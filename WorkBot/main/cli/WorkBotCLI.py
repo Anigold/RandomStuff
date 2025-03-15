@@ -189,6 +189,9 @@ class WorkBotCLI(CLI):
 
         self.register_autocomplete('download_orders', self._autocomplete_download_orders)
         self.register_autocomplete('delete_orders', self._autocomplete_delete_orders)
+        self.register_autocomplete('combine_orders', self._autocomplete_combine_orders)
+
+
 
     def cmd_download_orders(self, args):
         """Handles downloading orders."""
@@ -224,7 +227,9 @@ class WorkBotCLI(CLI):
         }
         
         return [option for option in flags.get(flag, [])() if option.startswith(text)]
-    
+
+
+
     def args_sort_orders(self) -> None:
         return argparse.ArgumentParser(prog='sort_orders', description='Sort the saved orders by vendor.')
     
@@ -236,6 +241,9 @@ class WorkBotCLI(CLI):
             print('Orders sorted successfully.')
         except SystemExit:
             pass
+
+
+
 
     def args_list_orders(self) -> None:
         parser = argparse.ArgumentParser(prog='list_orders', description='List the saved orders.')
@@ -258,52 +266,6 @@ class WorkBotCLI(CLI):
         except SystemExit:
             pass
 
-    def args_generate_vendor_upload_files(self):
-        parser = argparse.ArgumentParser(prog='generate_vendor_upload_files', description='Generate a vendor-specific upload file.')
-        parser.add_argument('--vendors', nargs='+', help='List of vendors (default: all).')
-        return parser
-    
-    def cmd_generate_vendor_upload_files(self, args):
-        parser = self.args_generate_vendor_upload_files()
-        try:
-            parsed_args = parser.parse_args(args)
-
-            for vendor in parsed_args.vendors:
-                vendor_order_paths = self.workbot.order_manager.get_vendor_orders(vendor)
-
-                orders = [OrderManager.create_order_from_excel(vendor_order_path) for vendor_order_path in vendor_order_paths]
-
-                self.workbot.generate_vendor_upload_files(orders)
-
-        except SystemExit:
-            pass
-
-    def args_delete_orders(self) -> None:
-        parser = argparse.ArgumentParser(prog='delete_orders', description='Download orders from vendors.')
-        parser.add_argument('--stores', nargs='+', required=True, help='List of store names.')
-        parser.add_argument('--vendors', nargs='+', help='List of vendors (default: all).')
-        return parser
-    
-    def cmd_delete_orders(self, args):
-        parser = self.args_delete_orders()
-        try:
-            parsed_args = parser.parse_args(args)
-            self.workbot.delete_orders(parsed_args.stores, parsed_args.vendors)
-            
-            print("Orders deleted successfully.")
-        except SystemExit:
-            pass  # Prevent argparse from exiting CLI loop
-
-    def _autocomplete_delete_orders(self, flag: str, text: str):
-
-        
-        flags = {
-            '--stores': self._get_stores,
-            '--vendors': self._get_vendors
-        }
-        
-        return [option for option in flags.get(flag, [])() if option.startswith(text)]
-    
     def _format_order_list(self, orders: list, show_pricing: bool = False, show_minimums: bool = False):
 
         orders.sort(key=lambda x: x.store)
@@ -339,6 +301,60 @@ class WorkBotCLI(CLI):
 
         return tabulate(formatted_orders, headers=headers, tablefmt="grid")
 
+
+
+    def args_generate_vendor_upload_files(self):
+        parser = argparse.ArgumentParser(prog='generate_vendor_upload_files', description='Generate a vendor-specific upload file.')
+        parser.add_argument('--vendors', nargs='+', help='List of vendors (default: all).')
+        return parser
+    
+    def cmd_generate_vendor_upload_files(self, args):
+        parser = self.args_generate_vendor_upload_files()
+        try:
+            parsed_args = parser.parse_args(args)
+
+            for vendor in parsed_args.vendors:
+                vendor_order_paths = self.workbot.order_manager.get_vendor_orders(vendor)
+
+                orders = [OrderManager.create_order_from_excel(vendor_order_path) for vendor_order_path in vendor_order_paths]
+
+                self.workbot.generate_vendor_upload_files(orders)
+
+        except SystemExit:
+            pass
+
+
+
+
+    def args_delete_orders(self) -> None:
+        parser = argparse.ArgumentParser(prog='delete_orders', description='Download orders from vendors.')
+        parser.add_argument('--stores', nargs='+', required=True, help='List of store names.')
+        parser.add_argument('--vendors', nargs='+', help='List of vendors (default: all).')
+        return parser
+    
+    def cmd_delete_orders(self, args):
+        parser = self.args_delete_orders()
+        try:
+            parsed_args = parser.parse_args(args)
+            self.workbot.delete_orders(parsed_args.stores, parsed_args.vendors)
+            
+            print("Orders deleted successfully.")
+        except SystemExit:
+            pass  # Prevent argparse from exiting CLI loop
+
+    def _autocomplete_delete_orders(self, flag: str, text: str):
+
+        
+        flags = {
+            '--stores': self._get_stores,
+            '--vendors': self._get_vendors
+        }
+        
+        return [option for option in flags.get(flag, [])() if option.startswith(text)]
+
+
+
+
     def args_open_directory(self) -> None:
         parser = argparse.ArgumentParser(prog='open_directory', description='Open the directory of the specified vendor(s).')
         parser.add_argument('--vendors', nargs='+', required=True, help='List of vendors.')
@@ -371,7 +387,32 @@ class WorkBotCLI(CLI):
                 self.logger.info(f'Directory opened.')
         except SystemExit:
             pass  # Prevent argparse from exiting CLI loop
-  
+
+
+    def args_combine_orders(self):
+        parser = argparse.ArgumentParser(prog='combine_orders', description='Merge all orders in a specific vendor order directory into a single file.')
+        parser.add_argument('--vendors', nargs='+', required=True, help='List of vendors.')
+        return parser
+    
+    def cmd_combine_orders(self, args) -> None:
+
+        parser = self.args_combine_orders()
+        parsed_args = parser.parse_args(args)
+        try:
+            self.workbot.order_manager.combine_orders(parsed_args.vendors)
+        except SystemExit:
+            pass
+
+    def _autocomplete_combine_orders(self, flag: str, text: str):
+
+        flags = {
+            '--vendors': self._get_vendors
+        }
+        
+        return [option for option in flags.get(flag, [])() if option.startswith(text)]
+
+
+
     def _get_stores(self):
         return [store.name for store in self.workbot.store_manager.list_stores()]
     

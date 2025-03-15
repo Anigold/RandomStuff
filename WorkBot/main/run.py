@@ -318,21 +318,21 @@ if __name__ == '__main__':
 
 
     # CONVERT ITHACA_BAKERY ORDERS TO TRANSFERS
-    work_bot = WorkBot()
-    transfers_directory = TransferManager.get_transfer_files_directory()
+    # work_bot = WorkBot()
+    # transfers_directory = TransferManager.get_transfer_files_directory()
     
-    ib_orders = work_bot.order_manager.get_vendor_orders('Ithaca Bakery')
+    # ib_orders = work_bot.order_manager.get_vendor_orders('Ithaca Bakery')
 
-    transfers = []
-    for i in ib_orders:
-        # print(i, flush=True)
-        metadata = OrderManager.parse_file_name(i)
-        order = Order(metadata['store'], metadata['vendor'], metadata['date'])
-        order.load_items_from_excel(i)
-        transfer = work_bot.convert_order_to_transfer(order)
-        transfers.append(transfer)
+    # transfers = []
+    # for i in ib_orders:
+    #     # print(i, flush=True)
+    #     metadata = OrderManager.parse_file_name(i)
+    #     order = Order(metadata['store'], metadata['vendor'], metadata['date'])
+    #     order.load_items_from_excel(i)
+    #     transfer = work_bot.convert_order_to_transfer(order)
+    #     transfers.append(transfer)
     
-    work_bot.input_transfers(transfers)
+    # work_bot.input_transfers(transfers)
 
     # transfer_ctb  = work_bot.craft_bot.transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to COLLEGETOWN 20250307.xlsx')
     # transfer_dtb  = work_bot.craft_bot.transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to DOWNTOWN 20250217.xlsx')
@@ -528,22 +528,17 @@ if __name__ == '__main__':
     # pricer.item_skus_file_path = f'{PRICING_FILES_PATH}\\ItemSkus.xlsx'
     # pricer.compare_prices(f'{PRICING_FILES_PATH}\\Pricing Guides\\IBProduce\\IBProduce 2024-06-15.xlsx')
 
-    # work_bot = WorkBot()
+    work_bot = WorkBot()
 
-    # webstaurant_bot = work_bot.vendor_manager.initialize_vendor('Webstaurant', driver=work_bot.craft_bot.driver)
+    webstaurant_bot = work_bot.vendor_manager.initialize_vendor('Webstaurant', driver=work_bot.craft_bot.driver)
 
-    # options = create_options()
-    # driver  = uc.Chrome(options=options, use_subprocess=True)
+    
 
-    # bot_name = 'Webstaurant'
-    # webstaurant_bot_creds = get_credentials(bot_name)
-    # webstaurant_bot       = get_bot(bot_name)(driver, webstaurant_bot_creds['username'], webstaurant_bot_creds['password'])
+    undocumented_orders = webstaurant_bot.get_all_undocumented_orders()
 
-    # undocumented_orders = webstaurant_bot.get_all_undocumented_orders()
-
-    # for order in reversed(undocumented_orders): # Go backwards to implicitly sort by ascending date
-    #     order_info = webstaurant_bot.get_order_info(order, download_invoice=True)
-    #     webstaurant_bot.update_pick_list(order_info)
+    for order in reversed(undocumented_orders): # Go backwards to implicitly sort by ascending date
+        order_info = webstaurant_bot.get_order_info(order, download_invoice=True)
+        webstaurant_bot.update_pick_list(order_info)
 
 
 

@@ -106,22 +106,27 @@ class OrderManager:
                 file.rename(new_path)  # Move file into the vendor directory
 
     def combine_orders(self, vendors: list) -> None:
+        self.logger.info(f'Combining orders for {len(vendors)} vendors.')
         for vendor in vendors:
+            self.logger.info(f'Combining orders for: {vendor}')
             vendor_order_dir = self.get_vendor_orders_directory(vendor)
             order_files      = self.get_vendor_orders(vendor)
 
             combined_orders = {}
 
+            self.logger.info(f'{len(order_files)} order files found.')
             for order_file in order_files:
                 order = self.create_order_from_excel(order_file)
 
                 for item in order.items:
                     if item.name not in combined_orders:
                         combined_orders[item.name] = {order.store: item.quantity}
+                    else:
+                        combined_orders[item.name][order.store] = item.quantity
 
             combined_excel = self._create_combined_orders_excel(combined_orders)
             combined_excel.save(f'{vendor_order_dir / 'combined_orders.xlsx'}')
-
+            self.logger.info('Orders combined successfully.')
         return
                 
     def _create_combined_orders_excel(self, combined_orders: dict):
@@ -138,6 +143,7 @@ class OrderManager:
             sheet.cell(row=1, column=pos+1).value = header
 
         for pos, item in enumerate(combined_orders):
+            sheet.cell(row=pos+2, column=1).value = item
             for store in combined_orders[item]:
                 sheet.cell(row=pos+2, column=(headers.index(store)+1)).value = combined_orders[item][store]
 
