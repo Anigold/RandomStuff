@@ -18221,3 +18221,302 @@ Stacktrace:
 2025-03-15 10:57:43,076 - INFO - OrderManager - Directory found: C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Ithaca Bakery
 2025-03-15 10:57:43,077 - INFO - OrderManager - 4 order files found.
 2025-03-15 10:57:43,132 - INFO - OrderManager - Orders combined successfully.
+2025-03-16 07:46:18,662 - INFO - WorkBot - Initializing WorkBot...
+2025-03-16 07:46:21,580 - INFO - WorkBot - WorkBot initialized successfully.
+2025-03-16 07:46:41,100 - INFO - CraftableBot - Logging into Craftable.
+2025-03-16 07:46:48,518 - INFO - CraftableBot - Login successful.
+2025-03-16 07:46:48,519 - INFO - CraftableBot - Starting order download protocol.
+2025-03-16 07:46:48,519 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-03-16 07:46:55,126 - INFO - CraftableBot - Retrieving order for UNFI (03/15/2025).
+2025-03-16 07:46:57,135 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: UNFI, on 20250315.
+2025-03-16 07:46:57,135 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: UNFI_Bakery_20250315.xlsx
+2025-03-16 07:46:57,136 - INFO - OrderManager - Looking up directory for: UNFI.
+2025-03-16 07:46:57,137 - INFO - OrderManager - Directory found: C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\UNFI
+2025-03-16 07:46:57,137 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: UNFI_Bakery_20250315.xlsx
+2025-03-16 07:46:57,155 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for UNFI on 20250315.
+2025-03-16 07:46:57,155 - INFO - CraftableBot - [Order Update] No changes detected for Bakery for UNFI on 20250315. Skipping update protocol.
+2025-03-16 07:46:57,155 - INFO - CraftableBot - Order for UNFI is up-to-date. Skipping.
+2025-03-16 07:46:59,219 - INFO - CraftableBot - Retrieving order for Webstaurant (03/15/2025).
+2025-03-16 07:47:00,572 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Webstaurant, on 20250315.
+2025-03-16 07:47:00,573 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Webstaurant_Bakery_20250315.xlsx
+2025-03-16 07:47:00,573 - INFO - OrderManager - Looking up directory for: Webstaurant.
+2025-03-16 07:47:00,573 - INFO - OrderManager - Directory found: C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Webstaurant
+2025-03-16 07:47:00,573 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: Webstaurant_Bakery_20250315.xlsx
+2025-03-16 07:47:00,589 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for Webstaurant on 20250315.
+2025-03-16 07:47:00,589 - INFO - CraftableBot - [Order Update] Removing outdated order file: C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Webstaurant\Webstaurant_Bakery_20250315.xlsx
+2025-03-16 07:47:00,589 - INFO - CraftableBot - [File Cleanup] Attempting to remove file: C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Webstaurant\Webstaurant_Bakery_20250315.xlsx
+2025-03-16 07:47:00,590 - INFO - CraftableBot - [File Cleanup] Successfully removed file: C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Webstaurant\Webstaurant_Bakery_20250315.xlsx
+2025-03-16 07:47:00,590 - INFO - CraftableBot - [File Cleanup] Attempting to remove file: C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Webstaurant\Webstaurant_Bakery_20250315.pdf
+2025-03-16 07:47:00,590 - INFO - CraftableBot - [File Cleanup] Successfully removed file: C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Webstaurant\Webstaurant_Bakery_20250315.pdf
+2025-03-16 07:47:00,591 - INFO - CraftableBot - Saving order for Webstaurant.
+2025-03-16 07:47:07,996 - INFO - CraftableBot - Retrieving order for Sysco (03/16/2025).
+2025-03-16 07:47:09,747 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Sysco, on 20250316.
+2025-03-16 07:47:09,747 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Sysco_Bakery_20250316.xlsx
+2025-03-16 07:47:09,747 - INFO - OrderManager - Looking up directory for: Sysco.
+2025-03-16 07:47:09,748 - INFO - OrderManager - Directory found: C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Sysco
+2025-03-16 07:47:09,748 - INFO - CraftableBot - [Order Update] No existing order file found for Bakery for Sysco on 20250316. Proceeding with new download.
+2025-03-16 07:47:09,748 - INFO - CraftableBot - Saving order for Sysco.
+2025-03-16 07:47:17,135 - INFO - CraftableBot - Retrieving order for Performance Food (03/16/2025).
+2025-03-16 07:47:19,562 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Performance Food, on 20250316.
+2025-03-16 07:47:19,562 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Performance Food_Bakery_20250316.xlsx
+2025-03-16 07:47:19,563 - INFO - OrderManager - Looking up directory for: Performance Food.
+2025-03-16 07:47:19,563 - INFO - OrderManager - Directory found: C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Performance Food
+2025-03-16 07:47:19,563 - INFO - CraftableBot - [Order Update] No existing order file found for Bakery for Performance Food on 20250316. Proceeding with new download.
+2025-03-16 07:47:19,563 - INFO - CraftableBot - Saving order for Performance Food.
+2025-03-16 07:47:26,947 - INFO - CraftableBot - Retrieving order for US Foods (03/16/2025).
+2025-03-16 07:47:29,493 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: US Foods, on 20250316.
+2025-03-16 07:47:29,494 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: US Foods_Bakery_20250316.xlsx
+2025-03-16 07:47:29,494 - INFO - OrderManager - Looking up directory for: US Foods.
+2025-03-16 07:47:29,494 - INFO - OrderManager - Directory found: C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\US Foods
+2025-03-16 07:47:29,494 - INFO - CraftableBot - [Order Update] No existing order file found for Bakery for US Foods on 20250316. Proceeding with new download.
+2025-03-16 07:47:29,494 - INFO - CraftableBot - Saving order for US Foods.
+2025-03-16 07:47:36,894 - INFO - CraftableBot - Retrieving order for FingerLakes Farms (03/16/2025).
+2025-03-16 07:47:38,671 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: FingerLakes Farms, on 20250316.
+2025-03-16 07:47:38,671 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: FingerLakes Farms_Bakery_20250316.xlsx
+2025-03-16 07:47:38,671 - INFO - OrderManager - Looking up directory for: FingerLakes Farms.
+2025-03-16 07:47:38,672 - INFO - OrderManager - Directory found: C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\FingerLakes Farms
+2025-03-16 07:47:38,672 - INFO - CraftableBot - [Order Update] No existing order file found for Bakery for FingerLakes Farms on 20250316. Proceeding with new download.
+2025-03-16 07:47:38,672 - INFO - CraftableBot - Saving order for FingerLakes Farms.
+2025-03-16 07:47:46,101 - INFO - CraftableBot - Retrieving order for Equal Exchange (03/16/2025).
+2025-03-16 07:47:47,505 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Equal Exchange, on 20250316.
+2025-03-16 07:47:47,505 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Equal Exchange_Bakery_20250316.xlsx
+2025-03-16 07:47:47,505 - INFO - OrderManager - Looking up directory for: Equal Exchange.
+2025-03-16 07:47:47,505 - INFO - OrderManager - Directory found: C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Equal Exchange
+2025-03-16 07:47:47,506 - INFO - CraftableBot - [Order Update] No existing order file found for Bakery for Equal Exchange on 20250316. Proceeding with new download.
+2025-03-16 07:47:47,506 - INFO - CraftableBot - Saving order for Equal Exchange.
+2025-03-16 07:47:54,895 - INFO - CraftableBot - Retrieving order for Copper Horse Coffee (03/16/2025).
+2025-03-16 07:47:56,252 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Copper Horse Coffee, on 20250316.
+2025-03-16 07:47:56,252 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Copper Horse Coffee_Bakery_20250316.xlsx
+2025-03-16 07:47:56,252 - INFO - OrderManager - Looking up directory for: Copper Horse Coffee.
+2025-03-16 07:47:56,253 - INFO - OrderManager - Directory found: C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Copper Horse Coffee
+2025-03-16 07:47:56,253 - INFO - CraftableBot - [Order Update] No existing order file found for Bakery for Copper Horse Coffee on 20250316. Proceeding with new download.
+2025-03-16 07:47:56,253 - INFO - CraftableBot - Saving order for Copper Horse Coffee.
+2025-03-16 07:48:03,648 - INFO - CraftableBot - Retrieving order for Coca-Cola (03/16/2025).
+2025-03-16 07:48:05,275 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Coca-Cola, on 20250316.
+2025-03-16 07:48:05,276 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Coca-Cola_Bakery_20250316.xlsx
+2025-03-16 07:48:05,276 - INFO - OrderManager - Looking up directory for: Coca-Cola.
+2025-03-16 07:48:05,276 - INFO - OrderManager - Directory not found for: Coca-Cola.
+2025-03-16 07:48:05,276 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Coca-Cola. Proceeding with new download.
+2025-03-16 07:48:05,276 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-03-16 07:48:12,633 - INFO - CraftableBot - Order download complete.
+2025-03-16 07:49:11,024 - INFO - OrderManager - Looking up directory for: UNFI.
+2025-03-16 07:49:11,024 - INFO - OrderManager - Directory found: C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\UNFI
+2025-03-16 07:49:11,025 - INFO - WorkBotCLI - Attempting to open directory for: UNFI
+2025-03-16 07:49:11,031 - INFO - WorkBotCLI - Directory opened.
+2025-03-16 07:58:35,726 - INFO - WorkBot - Initializing WorkBot...
+2025-03-16 07:58:37,878 - INFO - WorkBot - WorkBot initialized successfully.
+2025-03-16 07:59:04,408 - INFO - CraftableBot - Logging into Craftable.
+2025-03-16 07:59:11,771 - INFO - CraftableBot - Login successful.
+2025-03-16 07:59:11,771 - INFO - CraftableBot - Starting order download protocol.
+2025-03-16 07:59:11,772 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-03-16 07:59:18,701 - INFO - CraftableBot - Retrieving order for Coca-Cola (03/16/2025).
+2025-03-16 07:59:20,376 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Coca-Cola, on 20250316.
+2025-03-16 07:59:20,376 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: CocaCola_Bakery_20250316.xlsx
+2025-03-16 07:59:20,376 - INFO - OrderManager - Looking up directory for: Coca-Cola.
+2025-03-16 07:59:20,377 - INFO - OrderManager - Directory not found for: Coca-Cola.
+2025-03-16 07:59:20,377 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Coca-Cola. Proceeding with new download.
+2025-03-16 07:59:20,377 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-03-16 07:59:27,727 - INFO - CraftableBot - Accessing order page for Triphammer.
+2025-03-16 07:59:34,750 - INFO - CraftableBot - Retrieving order for Coca-Cola (03/14/2025).
+2025-03-16 07:59:36,499 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer for vendor: Coca-Cola, on 20250314.
+2025-03-16 07:59:36,499 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: CocaCola_Triphammer_20250314.xlsx
+2025-03-16 07:59:36,500 - INFO - OrderManager - Looking up directory for: Coca-Cola.
+2025-03-16 07:59:36,500 - INFO - OrderManager - Directory not found for: Coca-Cola.
+2025-03-16 07:59:36,500 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Coca-Cola. Proceeding with new download.
+2025-03-16 07:59:36,500 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-03-16 07:59:44,043 - INFO - CraftableBot - Accessing order page for Easthill.
+2025-03-16 07:59:50,749 - INFO - CraftableBot - Retrieving order for Coca-Cola (03/14/2025).
+2025-03-16 07:59:51,626 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill for vendor: Coca-Cola, on 20250314.
+2025-03-16 07:59:51,626 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: CocaCola_Easthill_20250314.xlsx
+2025-03-16 07:59:51,626 - INFO - OrderManager - Looking up directory for: Coca-Cola.
+2025-03-16 07:59:51,626 - INFO - OrderManager - Directory not found for: Coca-Cola.
+2025-03-16 07:59:51,627 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Coca-Cola. Proceeding with new download.
+2025-03-16 07:59:51,627 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-03-16 07:59:59,310 - INFO - CraftableBot - Accessing order page for Collegetown.
+2025-03-16 08:00:06,186 - INFO - CraftableBot - Retrieving order for Coca-Cola (03/14/2025).
+2025-03-16 08:00:07,529 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown for vendor: Coca-Cola, on 20250314.
+2025-03-16 08:00:07,530 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: CocaCola_Collegetown_20250314.xlsx
+2025-03-16 08:00:07,530 - INFO - OrderManager - Looking up directory for: Coca-Cola.
+2025-03-16 08:00:07,530 - INFO - OrderManager - Directory not found for: Coca-Cola.
+2025-03-16 08:00:07,530 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Coca-Cola. Proceeding with new download.
+2025-03-16 08:00:07,530 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-03-16 08:00:15,156 - INFO - CraftableBot - Accessing order page for Downtown.
+2025-03-16 08:00:21,961 - INFO - CraftableBot - Retrieving order for Coca-Cola (03/14/2025).
+2025-03-16 08:00:23,499 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown for vendor: Coca-Cola, on 20250314.
+2025-03-16 08:00:23,499 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: CocaCola_Downtown_20250314.xlsx
+2025-03-16 08:00:23,500 - INFO - OrderManager - Looking up directory for: Coca-Cola.
+2025-03-16 08:00:23,500 - INFO - OrderManager - Directory not found for: Coca-Cola.
+2025-03-16 08:00:23,500 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Coca-Cola. Proceeding with new download.
+2025-03-16 08:00:23,500 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-03-16 08:00:31,145 - INFO - CraftableBot - Order download complete.
+2025-03-16 08:02:23,637 - INFO - CraftableBot - Starting order download protocol.
+2025-03-16 08:02:23,638 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-03-16 08:02:30,441 - INFO - CraftableBot - Retrieving order for Coca-Cola (03/16/2025).
+2025-03-16 08:02:32,099 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Coca-Cola, on 20250316.
+2025-03-16 08:02:32,099 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: CocaCola_Bakery_20250316.xlsx
+2025-03-16 08:02:32,099 - INFO - OrderManager - Looking up directory for: Coca-Cola.
+2025-03-16 08:02:32,100 - INFO - OrderManager - Directory not found for: Coca-Cola.
+2025-03-16 08:02:32,100 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Coca-Cola. Proceeding with new download.
+2025-03-16 08:02:32,100 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-03-16 08:02:39,455 - INFO - CraftableBot - Accessing order page for Triphammer.
+2025-03-16 08:02:46,452 - INFO - CraftableBot - Retrieving order for Coca-Cola (03/14/2025).
+2025-03-16 08:02:48,287 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer for vendor: Coca-Cola, on 20250314.
+2025-03-16 08:02:48,288 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: CocaCola_Triphammer_20250314.xlsx
+2025-03-16 08:02:48,288 - INFO - OrderManager - Looking up directory for: Coca-Cola.
+2025-03-16 08:02:48,288 - INFO - OrderManager - Directory not found for: Coca-Cola.
+2025-03-16 08:02:48,288 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Coca-Cola. Proceeding with new download.
+2025-03-16 08:02:48,288 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-03-16 08:02:55,755 - INFO - CraftableBot - Accessing order page for Easthill.
+2025-03-16 08:03:02,491 - INFO - CraftableBot - Retrieving order for Coca-Cola (03/14/2025).
+2025-03-16 08:03:03,670 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill for vendor: Coca-Cola, on 20250314.
+2025-03-16 08:03:03,671 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: CocaCola_Easthill_20250314.xlsx
+2025-03-16 08:03:03,671 - INFO - OrderManager - Looking up directory for: Coca-Cola.
+2025-03-16 08:03:03,671 - INFO - OrderManager - Directory not found for: Coca-Cola.
+2025-03-16 08:03:03,672 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Coca-Cola. Proceeding with new download.
+2025-03-16 08:03:03,672 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-03-16 08:03:11,392 - INFO - CraftableBot - Accessing order page for Collegetown.
+2025-03-16 08:03:18,211 - INFO - CraftableBot - Retrieving order for Coca-Cola (03/14/2025).
+2025-03-16 08:03:19,537 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown for vendor: Coca-Cola, on 20250314.
+2025-03-16 08:03:19,537 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: CocaCola_Collegetown_20250314.xlsx
+2025-03-16 08:03:19,537 - INFO - OrderManager - Looking up directory for: Coca-Cola.
+2025-03-16 08:03:19,537 - INFO - OrderManager - Directory not found for: Coca-Cola.
+2025-03-16 08:03:19,537 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Coca-Cola. Proceeding with new download.
+2025-03-16 08:03:19,538 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-03-16 08:03:27,115 - INFO - CraftableBot - Accessing order page for Downtown.
+2025-03-16 08:03:33,894 - INFO - CraftableBot - Retrieving order for Coca-Cola (03/14/2025).
+2025-03-16 08:03:35,280 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown for vendor: Coca-Cola, on 20250314.
+2025-03-16 08:03:35,280 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: CocaCola_Downtown_20250314.xlsx
+2025-03-16 08:03:35,280 - INFO - OrderManager - Looking up directory for: Coca-Cola.
+2025-03-16 08:03:35,281 - INFO - OrderManager - Directory not found for: Coca-Cola.
+2025-03-16 08:03:35,281 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Coca-Cola. Proceeding with new download.
+2025-03-16 08:03:35,281 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-03-16 08:03:42,915 - INFO - CraftableBot - Order download complete.
+2025-03-16 08:04:59,853 - INFO - WorkBot - Initializing WorkBot...
+2025-03-16 08:05:02,000 - INFO - WorkBot - WorkBot initialized successfully.
+2025-03-16 08:05:23,459 - INFO - CraftableBot - Logging into Craftable.
+2025-03-16 08:05:30,804 - INFO - CraftableBot - Login successful.
+2025-03-16 08:05:30,805 - INFO - CraftableBot - Starting order download protocol.
+2025-03-16 08:05:30,805 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-03-16 08:05:37,760 - INFO - CraftableBot - Retrieving order for Coca-Cola (03/16/2025).
+2025-03-16 08:05:39,419 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Coca-Cola, on 20250316.
+2025-03-16 08:05:39,419 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: CocaCola_Bakery_20250316.xlsx
+2025-03-16 08:05:39,420 - INFO - OrderManager - Looking up directory for: Coca-Cola.
+2025-03-16 08:05:39,420 - INFO - OrderManager - Directory not found for: Coca-Cola.
+2025-03-16 08:05:39,420 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Coca-Cola. Proceeding with new download.
+2025-03-16 08:05:39,420 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-03-16 08:05:46,773 - INFO - CraftableBot - Accessing order page for Triphammer.
+2025-03-16 08:05:53,731 - INFO - CraftableBot - Retrieving order for Coca-Cola (03/14/2025).
+2025-03-16 08:05:55,447 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer for vendor: Coca-Cola, on 20250314.
+2025-03-16 08:05:55,447 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: CocaCola_Triphammer_20250314.xlsx
+2025-03-16 08:05:55,447 - INFO - OrderManager - Looking up directory for: Coca-Cola.
+2025-03-16 08:05:55,448 - INFO - OrderManager - Directory not found for: Coca-Cola.
+2025-03-16 08:05:55,448 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Coca-Cola. Proceeding with new download.
+2025-03-16 08:05:55,448 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-03-16 08:06:02,990 - INFO - CraftableBot - Accessing order page for Easthill.
+2025-03-16 08:06:09,895 - INFO - CraftableBot - Retrieving order for Coca-Cola (03/14/2025).
+2025-03-16 08:06:11,073 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill for vendor: Coca-Cola, on 20250314.
+2025-03-16 08:06:11,073 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: CocaCola_Easthill_20250314.xlsx
+2025-03-16 08:06:11,074 - INFO - OrderManager - Looking up directory for: Coca-Cola.
+2025-03-16 08:06:11,074 - INFO - OrderManager - Directory not found for: Coca-Cola.
+2025-03-16 08:06:11,074 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Coca-Cola. Proceeding with new download.
+2025-03-16 08:06:11,074 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-03-16 08:06:18,663 - INFO - CraftableBot - Accessing order page for Collegetown.
+2025-03-16 08:06:25,503 - INFO - CraftableBot - Retrieving order for Coca-Cola (03/14/2025).
+2025-03-16 08:06:26,850 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown for vendor: Coca-Cola, on 20250314.
+2025-03-16 08:06:26,850 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: CocaCola_Collegetown_20250314.xlsx
+2025-03-16 08:06:26,851 - INFO - OrderManager - Looking up directory for: Coca-Cola.
+2025-03-16 08:06:26,851 - INFO - OrderManager - Directory not found for: Coca-Cola.
+2025-03-16 08:06:26,851 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Coca-Cola. Proceeding with new download.
+2025-03-16 08:06:26,851 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-03-16 08:06:34,452 - INFO - CraftableBot - Accessing order page for Downtown.
+2025-03-16 08:06:41,260 - INFO - CraftableBot - Retrieving order for Coca-Cola (03/14/2025).
+2025-03-16 08:06:42,647 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown for vendor: Coca-Cola, on 20250314.
+2025-03-16 08:06:42,647 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: CocaCola_Downtown_20250314.xlsx
+2025-03-16 08:06:42,647 - INFO - OrderManager - Looking up directory for: Coca-Cola.
+2025-03-16 08:06:42,647 - INFO - OrderManager - Directory not found for: Coca-Cola.
+2025-03-16 08:06:42,647 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Coca-Cola. Proceeding with new download.
+2025-03-16 08:06:42,648 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-03-16 08:06:50,278 - INFO - CraftableBot - Order download complete.
+2025-03-16 08:08:27,308 - INFO - WorkBot - Initializing WorkBot...
+2025-03-16 08:08:29,516 - INFO - WorkBot - WorkBot initialized successfully.
+2025-03-16 09:02:27,761 - INFO - OrderManager - Combining orders for 1 vendors.
+2025-03-16 09:02:27,762 - INFO - OrderManager - Combining orders for: Copper Horse Coffee
+2025-03-16 09:02:27,762 - INFO - OrderManager - Looking up directory for: Copper Horse Coffee.
+2025-03-16 09:02:27,762 - INFO - OrderManager - Directory found: C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Copper Horse Coffee
+2025-03-16 09:02:27,762 - INFO - OrderManager - Looking up directory for: Copper Horse Coffee.
+2025-03-16 09:02:27,762 - INFO - OrderManager - Directory found: C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Copper Horse Coffee
+2025-03-16 09:02:27,763 - INFO - OrderManager - 4 order files found.
+2025-03-16 09:02:27,835 - INFO - OrderManager - Orders combined successfully.
+2025-03-16 09:24:24,267 - INFO - OrderManager - Combining orders for 1 vendors.
+2025-03-16 09:24:24,268 - INFO - OrderManager - Combining orders for: Ithaca Bakery
+2025-03-16 09:24:24,268 - INFO - OrderManager - Looking up directory for: Ithaca Bakery.
+2025-03-16 09:24:24,268 - INFO - OrderManager - Directory found: C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Ithaca Bakery
+2025-03-16 09:24:24,268 - INFO - OrderManager - Looking up directory for: Ithaca Bakery.
+2025-03-16 09:24:24,269 - INFO - OrderManager - Directory found: C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Ithaca Bakery
+2025-03-16 09:24:24,270 - INFO - OrderManager - 4 order files found.
+2025-03-16 09:24:24,364 - INFO - OrderManager - Orders combined successfully.
+2025-03-16 11:07:37,915 - INFO - WorkBot - Initializing WorkBot...
+2025-03-16 11:07:40,402 - INFO - WorkBot - WorkBot initialized successfully.
+2025-03-16 11:08:09,736 - INFO - CraftableBot - Logging into Craftable.
+2025-03-16 11:08:17,029 - INFO - CraftableBot - Login successful.
+2025-03-16 11:08:17,029 - INFO - CraftableBot - Starting order download protocol.
+2025-03-16 11:08:17,029 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-03-16 11:08:23,973 - INFO - CraftableBot - Retrieving order for Coca-Cola (03/16/2025).
+2025-03-16 11:08:25,599 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Coca-Cola, on 20250316.
+2025-03-16 11:08:25,600 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Coca-Cola_Bakery_20250316.xlsx
+2025-03-16 11:08:25,600 - INFO - OrderManager - Looking up directory for: Coca-Cola.
+2025-03-16 11:08:25,600 - INFO - OrderManager - Directory not found for: Coca-Cola.
+2025-03-16 11:08:25,600 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Coca-Cola. Proceeding with new download.
+2025-03-16 11:08:25,600 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-03-16 11:08:32,959 - INFO - CraftableBot - Accessing order page for Triphammer.
+2025-03-16 11:08:39,913 - INFO - CraftableBot - Retrieving order for Coca-Cola (03/14/2025).
+2025-03-16 11:08:41,606 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer for vendor: Coca-Cola, on 20250314.
+2025-03-16 11:08:41,606 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Coca-Cola_Triphammer_20250314.xlsx
+2025-03-16 11:08:41,606 - INFO - OrderManager - Looking up directory for: Coca-Cola.
+2025-03-16 11:08:41,607 - INFO - OrderManager - Directory not found for: Coca-Cola.
+2025-03-16 11:08:41,607 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Coca-Cola. Proceeding with new download.
+2025-03-16 11:08:41,607 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-03-16 11:08:49,075 - INFO - CraftableBot - Accessing order page for Easthill.
+2025-03-16 11:08:55,745 - INFO - CraftableBot - Retrieving order for Coca-Cola (03/14/2025).
+2025-03-16 11:08:56,911 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill for vendor: Coca-Cola, on 20250314.
+2025-03-16 11:08:56,911 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Coca-Cola_Easthill_20250314.xlsx
+2025-03-16 11:08:56,912 - INFO - OrderManager - Looking up directory for: Coca-Cola.
+2025-03-16 11:08:56,912 - INFO - OrderManager - Directory not found for: Coca-Cola.
+2025-03-16 11:08:56,912 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Coca-Cola. Proceeding with new download.
+2025-03-16 11:08:56,912 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-03-16 11:09:04,481 - INFO - CraftableBot - Accessing order page for Collegetown.
+2025-03-16 11:09:11,388 - INFO - CraftableBot - Retrieving order for Coca-Cola (03/14/2025).
+2025-03-16 11:09:12,711 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown for vendor: Coca-Cola, on 20250314.
+2025-03-16 11:09:12,711 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Coca-Cola_Collegetown_20250314.xlsx
+2025-03-16 11:09:12,711 - INFO - OrderManager - Looking up directory for: Coca-Cola.
+2025-03-16 11:09:12,711 - INFO - OrderManager - Directory not found for: Coca-Cola.
+2025-03-16 11:09:12,711 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Coca-Cola. Proceeding with new download.
+2025-03-16 11:09:12,712 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-03-16 11:09:20,355 - INFO - CraftableBot - Accessing order page for Downtown.
+2025-03-16 11:09:27,144 - INFO - CraftableBot - Retrieving order for Coca-Cola (03/14/2025).
+2025-03-16 11:09:28,523 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown for vendor: Coca-Cola, on 20250314.
+2025-03-16 11:09:28,524 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Coca-Cola_Downtown_20250314.xlsx
+2025-03-16 11:09:28,524 - INFO - OrderManager - Looking up directory for: Coca-Cola.
+2025-03-16 11:09:28,524 - INFO - OrderManager - Directory not found for: Coca-Cola.
+2025-03-16 11:09:28,524 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Coca-Cola. Proceeding with new download.
+2025-03-16 11:09:28,524 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-03-16 11:09:36,126 - INFO - CraftableBot - Order download complete.
+2025-03-16 11:10:57,799 - INFO - WorkBot - Initializing WorkBot...
+2025-03-16 11:10:59,976 - INFO - WorkBot - WorkBot initialized successfully.
+2025-03-16 11:11:28,534 - INFO - OrderManager - Looking up directory for: UNFI.
+2025-03-16 11:11:28,534 - INFO - OrderManager - Directory found: C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\UNFI
+2025-03-16 11:11:28,609 - INFO - VendorManager - Initialized UNFI bot.
+2025-03-16 11:11:28,609 - INFO - OrderManager - Looking up directory for: UNFI.
+2025-03-16 11:11:28,609 - INFO - OrderManager - Directory found: C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\UNFI
+2025-03-16 11:11:28,610 - INFO - VendorManager - UNFI bot is already initialized.
+2025-03-16 11:11:28,610 - INFO - OrderManager - Looking up directory for: UNFI.
+2025-03-16 11:11:28,611 - INFO - OrderManager - Directory found: C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\UNFI
+2025-03-16 11:11:28,611 - INFO - VendorManager - UNFI bot is already initialized.
+2025-03-16 11:11:28,611 - INFO - OrderManager - Looking up directory for: UNFI.
+2025-03-16 11:11:28,612 - INFO - OrderManager - Directory found: C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\UNFI
+2025-03-16 11:11:28,612 - INFO - VendorManager - UNFI bot is already initialized.
+2025-03-16 11:11:28,613 - INFO - OrderManager - Looking up directory for: UNFI.
+2025-03-16 11:11:28,613 - INFO - OrderManager - Directory found: C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\UNFI
+2025-03-16 11:11:28,614 - INFO - VendorManager - UNFI bot is already initialized.
+2025-03-16 11:11:28,614 - INFO - OrderManager - Looking up directory for: UNFI.
+2025-03-16 11:11:28,614 - INFO - OrderManager - Directory found: C:\Users\Will\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\UNFI

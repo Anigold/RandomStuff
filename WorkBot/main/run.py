@@ -530,15 +530,15 @@ if __name__ == '__main__':
 
     work_bot = WorkBot()
 
-    webstaurant_bot = work_bot.vendor_manager.initialize_vendor('Webstaurant', driver=work_bot.craft_bot.driver)
+    # webstaurant_bot = work_bot.vendor_manager.initialize_vendor('Webstaurant', driver=work_bot.craft_bot.driver)
 
     
 
-    undocumented_orders = webstaurant_bot.get_all_undocumented_orders()
+    # undocumented_orders = webstaurant_bot.get_all_undocumented_orders()
 
-    for order in reversed(undocumented_orders): # Go backwards to implicitly sort by ascending date
-        order_info = webstaurant_bot.get_order_info(order, download_invoice=True)
-        webstaurant_bot.update_pick_list(order_info)
+    # for order in reversed(undocumented_orders): # Go backwards to implicitly sort by ascending date
+    #     order_info = webstaurant_bot.get_order_info(order, download_invoice=True)
+    #     webstaurant_bot.update_pick_list(order_info)
 
 
 

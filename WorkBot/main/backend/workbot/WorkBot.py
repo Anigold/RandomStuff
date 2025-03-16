@@ -87,7 +87,8 @@ class WorkBot:
             # Need to deconstruct the OrderItem objects to pass into the vendor bot
             order_items = [order_item.to_dict() for order_item in order.items]
             
-            save_path = self.order_manager.get_vendor_orders_directory(order.vendor) / f'Formatted-{self.order_manager.generate_filename(order)}'
+            formatted_file_prefix = self.order_manager.FILE_PREFIXES['formatted']
+            save_path = self.order_manager.get_vendor_orders_directory(order.vendor) / f'{formatted_file_prefix}{self.order_manager.generate_filename(order)}'
             vendor_bot.format_for_file_upload(order_items, save_path, order.store)
 
         return

@@ -27,5 +27,5 @@ def open_log_terminal():
         print("Unsupported OS. Unable to open log terminal.")
 
 if __name__ == '__main__':
-    open_log_terminal()
+    # open_log_terminal()
     WorkBotCLI().start()

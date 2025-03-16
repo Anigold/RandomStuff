@@ -10,7 +10,13 @@ from config.paths import DOWNLOADS_DIR, ORDER_FILES_DIR
 @Logger.attach_logger
 class OrderManager:
 
-    file_pattern = re.compile(r"^(?P<vendor>[^-]+?)_(?P<store>.+?)_(?P<date>\d{8})$")
+    file_pattern = re.compile(r"^(?P<vendor>.+?)_(?P<store>.+?)_(?P<date>\d{8})$")
+
+    FILE_PREFIXES = {
+            'formatted': 'Formatted__',
+            'archived': 'Archived__',
+            'backup': 'Backup__'
+    }
 
     def get_order_files_directory(self) -> Path:
         return ORDER_FILES_DIR
@@ -61,7 +67,7 @@ class OrderManager:
             return []
 
         return [file for file in vendor_orders_directory.iterdir() if file.is_file() and self.is_valid_filename(file) and file.suffix == file_extension]
-
+    
     def generate_filename(self, order: Order = None, store: str = None, vendor: str = None, date: str = None, file_extension: str = '.xlsx') -> str:
         return f'{order.vendor}_{order.store}_{order.date}{file_extension}' if order else f'{vendor}_{store}_{date}{file_extension}'
 

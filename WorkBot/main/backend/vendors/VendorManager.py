@@ -1,8 +1,7 @@
-import logging
+
 import importlib
 from backend.vendors.vendor_config import get_vendor_information, get_vendor_credentials
 from backend.helpers.selenium_helpers import create_driver, create_options
-from pathlib import Path
 from backend.logger.Logger import Logger
 from config.paths import DOWNLOADS_DIR
 from .vendor_config import get_vendors
