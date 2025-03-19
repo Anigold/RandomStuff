@@ -200,20 +200,24 @@ def download_pricing_sheets(driver, vendors=['US Foods'], guides=['IBProduce']) 
         vendor_manager = VendorManager()
 
         bot = vendor_manager.initialize_vendor(vendor, driver)
-        print(bot, flush=True)
+        # print(bot, flush=True)
         for pricing_guide in guides:
 
             if vendor != 'US Foods':
                 file_name = bot.retrieve_pricing_sheet(pricing_guide)
                 # file_name = None
+                new_file_name = PRICING_FILES_PATH / 'VendorSheets' / f'{bot.name}_{pricing_guide}_{date.today()}.{file_name.split(".")[1]}'
+
             else:
                 file_name = 'US Foods_IBProduce.csv'
+                new_file_name = PRICING_FILES_PATH / 'VendorSheets' / 'US Foods_IBProduce_2025-03-18.csv'
+            
 
             
             # new_file_name = PRICING_FILES_PATH / 'VendorSheets' / f'{bot.name}_{pricing_guide}_{date.today()}.{file_name.split(".")[1]}'
 
             
-            new_file_name = PRICING_FILES_PATH / 'VendorSheets' / 'US Foods_IBProduce_2025-03-10.csv'
+            # new_file_name = PRICING_FILES_PATH / 'VendorSheets' / 'US Foods_IBProduce_2025-03-10.csv'
             rename( DOWNLOAD_PATH / file_name, new_file_name)
             bot.format_vendor_pricing_sheet(new_file_name, new_file_name.with_suffix('.xlsx'))
         
@@ -530,15 +534,15 @@ if __name__ == '__main__':
 
     work_bot = WorkBot()
 
-    # webstaurant_bot = work_bot.vendor_manager.initialize_vendor('Webstaurant', driver=work_bot.craft_bot.driver)
+    webstaurant_bot = work_bot.vendor_manager.initialize_vendor('Webstaurant', driver=work_bot.craft_bot.driver)
 
     
 
-    # undocumented_orders = webstaurant_bot.get_all_undocumented_orders()
+    undocumented_orders = webstaurant_bot.get_all_undocumented_orders()
 
-    # for order in reversed(undocumented_orders): # Go backwards to implicitly sort by ascending date
-    #     order_info = webstaurant_bot.get_order_info(order, download_invoice=True)
-    #     webstaurant_bot.update_pick_list(order_info)
+    for order in reversed(undocumented_orders): # Go backwards to implicitly sort by ascending date
+        order_info = webstaurant_bot.get_order_info(order, download_invoice=True)
+        webstaurant_bot.update_pick_list(order_info)
 
 
 

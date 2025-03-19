@@ -7,6 +7,7 @@ from openpyxl import Workbook
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from csv import writer, reader
+from pprint import pprint
 
 class USFoodsBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
 
@@ -215,10 +216,21 @@ class USFoodsBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
                 
                 item_sku 		= row[2]
                 item_name 		= row[3]
-                print(item_name, flush=True)
-                quantity, units = PricingBotMixin.helper_format_size_units(1, row[5])
-                cost 			= float(row[7].replace('$', ''))
+                # print(item_name, flush=True)
 
+                package_info = row[5]
+
+                quantity, units = PricingBotMixin.helper_format_size_units(package_info)
+
+                # if '/' in package_info:
+                #     size = package_info.split('/')[0]
+                #     pack = package_info.split('/')[1]
+                #     quantity, units = PricingBotMixin.helper_format_size_units(pack, size)
+                # else:    
+                #     quantity, units = PricingBotMixin.helper_format_size_units(1, row[5])
+
+                cost 			= float(row[7].replace('$', ''))
+                # print(f'{item_name}: {quantity} {units}')
                 if item_sku in self.special_cases:
                     quantity, units = PricingBotMixin.helper_format_size_units(self.special_cases[item_sku]['pack'], self.special_cases[item_sku]['unit'])
 
@@ -228,9 +240,10 @@ class USFoodsBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
                         'quantity': quantity,
                         'units': PricingBotMixin.normalize_units(units),
                         'cost': cost,
-                        'case_size': f'1 / {row[5]}'
+                        'case_size': f'{quantity} {units}'
                     }
-
+                print(item_name)
+                pprint(item_info[item_name])
         return item_info
 
     # def get_pricing_info_from_sheet(self, path_to_pricing_sheet: str) -> dict:

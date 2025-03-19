@@ -14,8 +14,8 @@ class OrderManager:
 
     FILE_PREFIXES = {
             'formatted': 'Formatted__',
-            'archived': 'Archived__',
-            'backup': 'Backup__'
+            'archived':  'Archived__',
+            'backup':    'Backup__'
     }
 
     def get_order_files_directory(self) -> Path:
