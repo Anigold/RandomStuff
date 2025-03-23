@@ -193,7 +193,7 @@ def produce_pricing_and_email(driver) -> None:
     emailer.display_email(email)
     return
 
-def download_pricing_sheets(driver, vendors=['US Foods'], guides=['IBProduce']) -> None:
+def download_pricing_sheets(driver, vendors=['Performance Food', 'US Foods', 'BEHLOG & SON, INC.', 'Russo Produce',], guides=['IBProduce']) -> None:
 
     for vendor in vendors:
 
@@ -203,16 +203,18 @@ def download_pricing_sheets(driver, vendors=['US Foods'], guides=['IBProduce']) 
         # print(bot, flush=True)
         for pricing_guide in guides:
 
-            if vendor != 'US Foods':
+            if vendor != 'US Foods' and vendor != 'Sysco':
                 file_name = bot.retrieve_pricing_sheet(pricing_guide)
                 # file_name = None
                 new_file_name = PRICING_FILES_PATH / 'VendorSheets' / f'{bot.name}_{pricing_guide}_{date.today()}.{file_name.split(".")[1]}'
 
-            else:
+            elif vendor == 'US Foods':
                 file_name = 'US Foods_IBProduce.csv'
-                new_file_name = PRICING_FILES_PATH / 'VendorSheets' / 'US Foods_IBProduce_2025-03-18.csv'
+                new_file_name = PRICING_FILES_PATH / 'VendorSheets' / 'US Foods_IBProduce_2025-03-23.csv'
             
-
+            elif vendor == 'Sysco':
+                file_name = 'Sysco_IBProduce.csv'
+                new_file_name = PRICING_FILES_PATH / 'VendorSheets' / 'Sysco_IBProduce_2025-03-23.csv'
             
             # new_file_name = PRICING_FILES_PATH / 'VendorSheets' / f'{bot.name}_{pricing_guide}_{date.today()}.{file_name.split(".")[1]}'
 
@@ -505,12 +507,12 @@ if __name__ == '__main__':
 
     
     '''Pricing Sheet Protocol'''
-    # options = create_options(DOWNLOAD_PATH)
-    # driver  = uc.Chrome(options=options, use_subprocess=True)
-    # download_pricing_sheets(driver)
-    # delete_all_files_without_extension(PRICING_FILES_PATH / 'VendorSheets', '.xlsx')
-    # input('Press ENTER to stop waiting.')
-    # generate_pricing_sheets()
+    options = create_options(DOWNLOAD_PATH)
+    driver  = uc.Chrome(options=options, use_subprocess=True)
+    download_pricing_sheets(driver)
+    delete_all_files_without_extension(PRICING_FILES_PATH / 'VendorSheets', '.xlsx')
+    input('Press ENTER to stop waiting.')
+    generate_pricing_sheets()
     
     vendors = [
         # 'Sysco',
@@ -532,17 +534,17 @@ if __name__ == '__main__':
     # pricer.item_skus_file_path = f'{PRICING_FILES_PATH}\\ItemSkus.xlsx'
     # pricer.compare_prices(f'{PRICING_FILES_PATH}\\Pricing Guides\\IBProduce\\IBProduce 2024-06-15.xlsx')
 
-    work_bot = WorkBot()
+    # work_bot = WorkBot()
 
-    webstaurant_bot = work_bot.vendor_manager.initialize_vendor('Webstaurant', driver=work_bot.craft_bot.driver)
+    # webstaurant_bot = work_bot.vendor_manager.initialize_vendor('Webstaurant', driver=work_bot.craft_bot.driver)
 
     
 
-    undocumented_orders = webstaurant_bot.get_all_undocumented_orders()
+    # undocumented_orders = webstaurant_bot.get_all_undocumented_orders()
 
-    for order in reversed(undocumented_orders): # Go backwards to implicitly sort by ascending date
-        order_info = webstaurant_bot.get_order_info(order, download_invoice=True)
-        webstaurant_bot.update_pick_list(order_info)
+    # for order in reversed(undocumented_orders): # Go backwards to implicitly sort by ascending date
+    #     order_info = webstaurant_bot.get_order_info(order, download_invoice=True)
+    #     webstaurant_bot.update_pick_list(order_info)
 
 
 

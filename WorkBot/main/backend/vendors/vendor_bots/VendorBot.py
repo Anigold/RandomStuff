@@ -59,8 +59,8 @@ class PricingBotMixin(ABC):
         ^(?:                   # Start match
             (?P<packs>\d+)[/x]\s*  # Pack multiplier (e.g., "4/", "2x") (optional)
         )?
-        (?P<low>\d+(\.\d+)?)   # Main quantity (supports decimals, e.g., "2.5")
-        (?:-(?P<high>\d+(\.\d+)?))?  # Optional range (supports decimals, e.g., "1.5-2.5")
+        (?P<low>(?:\d+)?(?:\.\d+)?|\d+)    # Main quantity (now supports ".5")
+        (?:-(?P<high>(?:\d+)?(?:\.\d+)?|\d+))?  # Optional range (also supports ".5")
         \s*
         (?P<unit>[a-zA-Z#]+)   # Unit of measure (e.g., "LB", "EA", "QT")
         """,
@@ -126,7 +126,7 @@ class PricingBotMixin(ABC):
         # print('importing pricing data', flush=True)
         for row_pos, item_name in enumerate(price_info):
 
-            # print(item_name)
+          
             item_info     = price_info[item_name]
             print(item_name)
             pprint(item_info)
@@ -142,11 +142,20 @@ class PricingBotMixin(ABC):
                 sheet.cell(row=row_pos+1, column=col_position+1).value = col_value
 
         # print('Saving workbook', flush=True)
-        print(save_path, flush=True)
+        # print(save_path, flush=True)
         return workbook.save(filename=f'{save_path}')
     
     @classmethod
     def helper_format_size_units(cls, pack_size_str):
+
+
+        # Expected pack strings:
+
+        #   pack/size unit (12/6 oz)
+        #   low-high unit (5-6 EA)
+        #   size unit (5 LB)
+        #
+
         if not pack_size_str:
             return None, None
         
@@ -169,6 +178,7 @@ class PricingBotMixin(ABC):
         avg_size = (low + high) / 2
         total_quantity = avg_size * packs
 
+        # print(f'{pack_size_str} -> ({total_quantity}, {unit})')
         return total_quantity, unit
 
     # def helper_format_size_units(pack: str, size: str) -> list:

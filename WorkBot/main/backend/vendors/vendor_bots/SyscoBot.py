@@ -9,6 +9,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from csv import writer, reader as csv_reader
 from pprint import pprint
+import re
 
 class SyscoBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
 
@@ -174,11 +175,11 @@ class SyscoBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
 
                 item_sku 		= row[1]
                 item_name 		= row[12]
-                quantity, units = PricingBotMixin.helper_format_size_units(row[7], row[8])
-                cost 			= float(row[14]) if row[14] != '' else float(row[15])
 
-                if item_sku in self.special_cases:
-                    quantity, units = PricingBotMixin.helper_format_size_units(self.special_cases[item_sku]['pack'], self.special_cases[item_sku]['unit'])
+                pack_string = self.generate_pack_string(row[7], row[8]) if item_sku not in self.special_cases else self.generate_pack_string(self.special_cases[item_sku]['pack'], self.special_cases[item_sku]['unit'])
+                quantity, units = PricingBotMixin.helper_format_size_units(pack_string)
+
+                cost = float(row[14]) if row[14] != '' else float(row[15])
 
                 if item_name not in item_info:
                     item_info[item_name] = {
@@ -188,5 +189,26 @@ class SyscoBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
                         'cost': cost,
                         'case_size': f'{row[7]} / {row[8]}'
                     }
-        pprint(item_info)
+                print(item_name)
+                pprint(item_info[item_name])
+        # pprint(item_info)
         return item_info
+    
+
+    def generate_pack_string(self, packs: str, size_str: str) -> str:
+        """
+        Combines packs and size string into a single string parsable by the regex.
+        Handles cases like `.5 EA`, missing units, etc.
+        """
+        packs = str(packs).strip()
+        size_str = size_str.strip()
+
+        # If it's just a unit
+        if re.fullmatch(r"[a-zA-Z#]+", size_str):
+            return f"{packs} {size_str}"
+
+        # If it's a number or range *without* a unit (e.g., "12-15")
+        if re.fullmatch(r"\d+(\.\d+)?(-\d+(\.\d+)?)?", size_str):
+            return f"{packs}/{size_str} EA"
+
+        return f"{packs}/{size_str}"
