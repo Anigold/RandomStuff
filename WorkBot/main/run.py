@@ -311,21 +311,21 @@ if __name__ == '__main__':
     ]
     
     
-    gmail_service = GmailService()
+    # gmail_service = GmailService()
 
-    emailer = Emailer(gmail_service)
+    # emailer = Emailer(gmail_service)
 
-    test_email = Email(
-        to=('andrew.ctb.ithaca@gmail.com',),
-        subject='Test Email',
-        body='This is a test email for the automated service.'
-    )
+    # test_email = Email(
+    #     to=('andrew.ctb.ithaca@gmail.com',),
+    #     subject='Test Email',
+    #     body='This is a test email for the automated service.'
+    # )
 
-    test_email_data = gmail_service.create_email(test_email)
-    gmail_service.display_email(test_email_data)
+    # test_email_data = gmail_service.create_email(test_email)
+    # gmail_service.display_email(test_email_data)
 
-    input('Press Enter to send email')
-    gmail_service.send_email(test_email_data)
+    # input('Press Enter to send email')
+    # gmail_service.send_email(test_email_data)
 
 
     # CONVERT ITHACA_BAKERY ORDERS TO TRANSFERS
@@ -405,17 +405,17 @@ if __name__ == '__main__':
     # generate_pricing_sheets()
     
     '''Smallwares Pricing Sheet Generation'''
-    # work_bot = WorkBot()
+    work_bot = WorkBot()
 
-    # webstaurant_bot = work_bot.vendor_manager.initialize_vendor('Webstaurant', driver=work_bot.craft_bot.driver)
+    webstaurant_bot = work_bot.vendor_manager.initialize_vendor('Webstaurant', driver=work_bot.craft_bot.driver)
 
     
 
-    # undocumented_orders = webstaurant_bot.get_all_undocumented_orders()
+    undocumented_orders = webstaurant_bot.get_all_undocumented_orders()
 
-    # for order in reversed(undocumented_orders): # Go backwards to implicitly sort by ascending date
-    #     order_info = webstaurant_bot.get_order_info(order, download_invoice=True)
-    #     webstaurant_bot.update_pick_list(order_info)
+    for order in reversed(undocumented_orders): # Go backwards to implicitly sort by ascending date
+        order_info = webstaurant_bot.get_order_info(order, download_invoice=True)
+        webstaurant_bot.update_pick_list(order_info)
 
 
 
