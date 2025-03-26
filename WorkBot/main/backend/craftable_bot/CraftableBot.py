@@ -550,9 +550,18 @@ class CraftableBot:
 
         item_choice_container = self.driver.find_element(By.XPATH, './/div[@class="input-group input-typeahead-container input-group-merge"]')
         item_choices          = item_choice_container.find_elements(By.XPATH, './following-sibling::div/div[@class="input-type-ahead "]/div[@class="input-type-ahead-row"]')
-        for i in item_choices:
-            print(i.text, flush=True)
-        item_choices[0].click()
+        item_chosen = False
+        for pos, i in enumerate(item_choices):
+            item_choice = i.text.split(' ')
+            item_choice = ' '.join(item_choice[:-1])
+            print(item_choice, flush=True)
+            if item_choice == item.name:
+                item_choices[pos].click()
+                item_chosen = True
+                break
+            
+        if not item_chosen:
+            item_choices[0].click()
         
         transfer_modal           = self.driver.find_element(By.ID, 'transferItemModal')
         transfer_form            = transfer_modal.find_element(By.XPATH, './/form')

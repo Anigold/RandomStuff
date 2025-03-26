@@ -1,10 +1,11 @@
 from .Services.Service import Service, Email
+from .Services.Gmail import GmailService
 from pprint import pprint
 
 class Emailer:
 
     def __init__(self, service: Service) -> None:
-        self.service = service()
+        self.service = service 
         self.emails = {}
         '''
         {

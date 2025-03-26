@@ -5,18 +5,18 @@ from pathlib import Path
 BASE_DIR = Path(__file__).parent
 
 # Load environment variables
-load_dotenv(dotenv_path=BASE_DIR.parent / '.env')
+load_dotenv(dotenv_path=BASE_DIR / 'credentials' / '.env')
 
 # Relative Paths
 # Probably change this, but for now I want a centralized directory
 PATHS = {
     'downloads': 'downloads',
-    'orders': 'orders/OrderFiles',
-    'pricing': 'pricing',
+    'orders':    'orders/OrderFiles',
+    'pricing':   'pricing',
     'transfers': 'transferring',
-    'logs': 'logs',
+    'logs':      'logs',
     'schedules': 'Schedules',
-    'vendors': 'vendors',
+    'vendors':   'vendors',
 }
 
 LOG_FILES = {

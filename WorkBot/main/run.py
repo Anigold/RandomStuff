@@ -16,6 +16,7 @@ from backend.helpers import  FormatItemData
 from backend.emailer.Emailer import Emailer
 from backend.emailer.Services.Service import Email
 from backend.emailer.Services.Outlook import Outlook
+from backend.emailer.Services.Gmail import GmailService
 
 # from backend.printing.Printer import Printer
 from backend.transferring.TransferManager import TransferManager
@@ -203,7 +204,7 @@ def download_pricing_sheets(driver, vendors=['Performance Food', 'US Foods', 'BE
         # print(bot, flush=True)
         for pricing_guide in guides:
 
-            if vendor != 'US Foods' and vendor != 'Sysco':
+            if vendor not in ['US Foods', 'Sysco', 'Performance Food']:
                 file_name = bot.retrieve_pricing_sheet(pricing_guide)
                 # file_name = None
                 new_file_name = PRICING_FILES_PATH / 'VendorSheets' / f'{bot.name}_{pricing_guide}_{date.today()}.{file_name.split(".")[1]}'
@@ -216,6 +217,10 @@ def download_pricing_sheets(driver, vendors=['Performance Food', 'US Foods', 'BE
                 file_name = 'Sysco_IBProduce.csv'
                 new_file_name = PRICING_FILES_PATH / 'VendorSheets' / 'Sysco_IBProduce_2025-03-23.csv'
             
+            elif vendor == 'Performance Food':
+                file_name = 'Performance Food_IBProduce.xlsx'
+                new_file_name = PRICING_FILES_PATH / 'VendorSheets' / 'Performance Food_IBProduce_2025-03-23.xlsx'
+
             # new_file_name = PRICING_FILES_PATH / 'VendorSheets' / f'{bot.name}_{pricing_guide}_{date.today()}.{file_name.split(".")[1]}'
 
             
@@ -305,22 +310,22 @@ if __name__ == '__main__':
          'DOWNTOWN'
     ]
     
-    # work_bot = WorkBot()
-
-    # for vendor in vendors:
-    #     vendor_order_paths = work_bot.order_manager.get_vendor_orders(vendor)
-
-    #     orders = []
-    #     for vendor_order_path in vendor_order_paths:
-    #         order = OrderManager.create_order_from_excel(vendor_order_path)
-    #         orders.append(order)
-            
-    #     work_bot.generate_vendor_upload_files(orders)
-
-    # work_bot.download_orders(stores=stores, vendors=vendors)
-    # work_bot.sort_orders()
     
-    # work_bot.delete_orders(stores, vendors=vendors)
+    gmail_service = GmailService()
+
+    emailer = Emailer(gmail_service)
+
+    test_email = Email(
+        to=('andrew.ctb.ithaca@gmail.com',),
+        subject='Test Email',
+        body='This is a test email for the automated service.'
+    )
+
+    test_email_data = gmail_service.create_email(test_email)
+    gmail_service.display_email(test_email_data)
+
+    input('Press Enter to send email')
+    gmail_service.send_email(test_email_data)
 
 
     # CONVERT ITHACA_BAKERY ORDERS TO TRANSFERS
@@ -336,111 +341,10 @@ if __name__ == '__main__':
     #     order = Order(metadata['store'], metadata['vendor'], metadata['date'])
     #     order.load_items_from_excel(i)
     #     transfer = work_bot.convert_order_to_transfer(order)
-    #     transfers.append(transfer)
+    #     if order.store in ['Easthill', 'Collegetown', 'Triphammer']f:
+    #         transfers.append(transfer)
     
     # work_bot.input_transfers(transfers)
-
-    # transfer_ctb  = work_bot.craft_bot.transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to COLLEGETOWN 20250307.xlsx')
-    # transfer_dtb  = work_bot.craft_bot.transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to DOWNTOWN 20250217.xlsx')
-    # transfer_ehp  = work_bot.craft_bot.transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to EASTHILL 20250217.xlsx')
-    # transfer_trip = work_bot.craft_bot.transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to TRIPHAMMER 20250217.xlsx')
-    
-    
-    # transfers.append(transfer_ctb)
-    # transfers.append(transfer_dtb)
-    # transfers.append(transfer_ehp)
-    # transfers.append(transfer_trip)
-    # work_bot.input_transfers(transfers)
-
-
-    # with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
-
-        # ''' DOWNLOAD ORDERS '''
-        # update       = True
-        # download_pdf = True
-
-        # craft_bot.download_orders(
-        #     stores, 
-        #     vendors=vendors, 
-        #     download_pdf=download_pdf, 
-        #     update=update
-        # )
-        # craft_bot.order_manager.sort_orders()
-    #     '''-----------------'''
-
-    #     ''' DELETE ORDERS '''
-    #     # craft_bot.delete_orders(stores, vendors=vendors) 
-    #     '''---------------'''
-
-    #     ''' TRANSFER ITEM BETWEEN STORES '''
-    #     # transfer_manager = TransferManager()
-    #     # transfers_directory = TransferManager.get_transfer_files_directory()
-
-    #     # test_transfer = transfer_manager.load_transfer_from_file(transfers_directory / 'BAKERY to TRIPHAMMER 20250211.xlsx')
-
-        
-    #     # craft_bot.input_transfers([test_transfer])
-    #     '''------------------------------'''
-
-    #     ''' FORMAT ORDERS FOR VENDOR UPLOAD '''
-    #     # # sort_orders(ORDER_FILES_PATH)
-
-    
-    # for vendor in vendors:
-    #     format_orders(vendor, ORDER_FILES_PATH)
-
-    # us_bot = USFoodsBot(None, 'as', 'as')
-    # us_bot.format_for_file_upload()
-    #     '''---------------------------------'''
-        # pass
-
-    # for vendor in vendors:
-    #     format_orders(vendor, ORDER_FILES_PATH)
-
-    ''' Welcome to Work Protocol '''
-    def welcome_to_work() -> None:
-
-        days_of_the_week = [
-            'Saturday',
-            'Sunday',
-            'Monday',
-            'Tuesday',
-            'Wednesday',
-            'Thursday',
-            'Friday'
-        ]
-        for day in days_of_the_week: print_schedule_daily(get_day(day))
-
-        options = create_options()
-        driver  = uc.Chrome(options=options, use_subprocess=True)
-
-        stores = [
-            'TRIPHAMMER',
-            'COLLEGETOWN',
-            'EASTHILL',
-            'DOWNTOWN'
-        ]
-
-        with CraftableBot(driver, CRAFTABLE_USERNAME, CRAFTABLE_PASSWORD) as craft_bot:
-            craft_bot.download_orders(
-                stores,
-                vendors,
-                download_pdf=True,
-                update=True
-            )
-            craft_bot.order_manager.sort_orders()
-
-        store_weekly_emails = {
-            'DOWNTOWN': ['tucker.coburn@gmail.com', 'hselsner@gmail.com'],
-            # 'COLLEGETOWN': ['goldsmithnandrew@gmail.com'],
-        }
-
-        for store in store_weekly_emails: generate_weekly_orders_email(store, store_weekly_emails[store])
-
-        return
-
-    # welcome_to_work()
-    '''--------------------------'''
 
 
 
@@ -476,20 +380,6 @@ if __name__ == '__main__':
         
 
 
-    # vendor_manager = VendorManager()
-
-    vendors = [
-        # 'Copper Horse Coffee',
-        # 'Eurocafe Imports',
-        'Ithaca Bakery'
-    ]
-    # for vendor in vendors:
-
-    #     vendor_bot    = vendor_manager.initialize_vendor(vendor)
-    #     vendor_path   = f'{ORDER_FILES_PATH}\\{vendor_bot.name}'
-    #     vendor_orders = [join(f'{vendor_path}\\', file) for file in listdir(f'{vendor_path}\\') if isfile(join(f'{vendor_path}\\', file)) and file.endswith('.xlsx')]
-    #     # pprint.pprint(vendor_orders)
-    #     vendor_bot.combine_orders(vendor_orders, vendor_path)
 
     
     # input('click enter when ready')
@@ -501,39 +391,20 @@ if __name__ == '__main__':
     # milk_orders = tuple([join(f'{ORDER_FILES_PATH}\\Hillcrest Dairy\\', file) for file in listdir(f'{ORDER_FILES_PATH}\\Hillcrest Dairy\\') if isfile(join(f'{ORDER_FILES_PATH}\\Hillcrest Dairy\\', file)) and file.endswith('.pdf')])
     # milk_email = Email(tuple([getenv('HILLCREST_DAIRY_CONTACT_EMAIL')]), 'Hillcrest Dairy Order', 'Please see attached for orders, thank you!', cc=None, attachments=milk_orders)
     # prepare_email_to_send(milk_email)
-    # produce_pricing_and_email(None)
+
 
     
 
     
     '''Pricing Sheet Protocol'''
-    options = create_options(DOWNLOAD_PATH)
-    driver  = uc.Chrome(options=options, use_subprocess=True)
-    download_pricing_sheets(driver)
-    delete_all_files_without_extension(PRICING_FILES_PATH / 'VendorSheets', '.xlsx')
-    input('Press ENTER to stop waiting.')
-    generate_pricing_sheets()
-    
-    vendors = [
-        # 'Sysco',
-        # 'Performance Food',
-        # 'Renzi',
-        # 'Cortland Produce Inc.',
-        'Russo Produce',
-        'Behlog Produce',
-    ]
-    # options = create_options()
+    # options = create_options(DOWNLOAD_PATH)
     # driver  = uc.Chrome(options=options, use_subprocess=True)
-    # for vendor in vendors:
-    #     creds = get_credentials(vendor)
-    #     bot = get_bot(vendor)()
-    #     # file_name = bot.retrieve_pricing_sheet('IBProduce')
-    #     bot.format_vendor_pricing_sheet(f'{PRICING_FILES_PATH}\\VendorSheets\\{bot.name}_IBProduce_2024-06-15.xlsx', f'{PRICING_FILES_PATH}\\{bot.name}_IBProduce_{date.today()}.xlsx', )
-
-    # pricer = PriceComparator()
-    # pricer.item_skus_file_path = f'{PRICING_FILES_PATH}\\ItemSkus.xlsx'
-    # pricer.compare_prices(f'{PRICING_FILES_PATH}\\Pricing Guides\\IBProduce\\IBProduce 2024-06-15.xlsx')
-
+    # download_pricing_sheets(driver)
+    # delete_all_files_without_extension(PRICING_FILES_PATH / 'VendorSheets', '.xlsx')
+    # input('Press ENTER to stop waiting.')
+    # generate_pricing_sheets()
+    
+    '''Smallwares Pricing Sheet Generation'''
     # work_bot = WorkBot()
 
     # webstaurant_bot = work_bot.vendor_manager.initialize_vendor('Webstaurant', driver=work_bot.craft_bot.driver)

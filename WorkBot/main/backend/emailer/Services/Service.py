@@ -1,24 +1,26 @@
 from dataclasses import dataclass
+from abc import ABC, abstractmethod
+from typing import Optional, Tuple
 
 @dataclass(unsafe_hash=True, frozen=True)
 class Email:
-    to:          tuple
+    to:          Tuple[str, ...]
     subject:     str
     body:        str        
-    cc:          tuple = None # We use a tuple to remain hashable
-    attachments: tuple = None # We use a tuple to remain hashable
+    cc:          Optional[Tuple[str, ...]] = None # We use a tuple to remain hashable
+    attachments: Optional[Tuple[str, ...]] = None # We use a tuple to remain hashable
     
 
-class Service:
+class Service(ABC):
     
-    def create_email(self):
+    @abstractmethod
+    def create_email(self, email: Email) -> dict:
         pass
 
-    def discard_email(self):
+    @abstractmethod
+    def send_email(self, email_data: dict) -> None:
         pass
 
-    def send_email(self):
-        pass
-
-    def display_email(self):
+    @abstractmethod
+    def display_email(self, email_data: dict) -> None:
         pass
