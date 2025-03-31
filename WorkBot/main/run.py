@@ -329,22 +329,22 @@ if __name__ == '__main__':
 
 
     # CONVERT ITHACA_BAKERY ORDERS TO TRANSFERS
-    # work_bot = WorkBot()
-    # transfers_directory = TransferManager.get_transfer_files_directory()
+    work_bot = WorkBot()
+    transfers_directory = TransferManager.get_transfer_files_directory()
     
-    # ib_orders = work_bot.order_manager.get_vendor_orders('Ithaca Bakery')
+    ib_orders = work_bot.order_manager.get_vendor_orders('Ithaca Bakery')
 
-    # transfers = []
-    # for i in ib_orders:
-    #     # print(i, flush=True)
-    #     metadata = OrderManager.parse_file_name(i)
-    #     order = Order(metadata['store'], metadata['vendor'], metadata['date'])
-    #     order.load_items_from_excel(i)
-    #     transfer = work_bot.convert_order_to_transfer(order)
-    #     if order.store in ['Easthill', 'Collegetown', 'Triphammer']f:
-    #         transfers.append(transfer)
-    
-    # work_bot.input_transfers(transfers)
+    transfers = []
+    for i in ib_orders:
+        # print(i, flush=True)
+        metadata = OrderManager.parse_file_name(i)
+        order = Order(metadata['store'], metadata['vendor'], metadata['date'])
+        order.load_items_from_excel(i)
+        transfer = work_bot.convert_order_to_transfer(order)
+        # if order.store in ['Easthill', 'Collegetown', 'Triphammer',]:
+        #     transfers.append(transfer)
+        transfers.append(transfer)
+    work_bot.input_transfers(transfers)
 
 
 
@@ -405,17 +405,17 @@ if __name__ == '__main__':
     # generate_pricing_sheets()
     
     '''Smallwares Pricing Sheet Generation'''
-    work_bot = WorkBot()
+    # work_bot = WorkBot()
 
-    webstaurant_bot = work_bot.vendor_manager.initialize_vendor('Webstaurant', driver=work_bot.craft_bot.driver)
+    # webstaurant_bot = work_bot.vendor_manager.initialize_vendor('Webstaurant', driver=work_bot.craft_bot.driver)
 
     
 
-    undocumented_orders = webstaurant_bot.get_all_undocumented_orders()
+    # undocumented_orders = webstaurant_bot.get_all_undocumented_orders()
 
-    for order in reversed(undocumented_orders): # Go backwards to implicitly sort by ascending date
-        order_info = webstaurant_bot.get_order_info(order, download_invoice=True)
-        webstaurant_bot.update_pick_list(order_info)
+    # for order in reversed(undocumented_orders): # Go backwards to implicitly sort by ascending date
+    #     order_info = webstaurant_bot.get_order_info(order, download_invoice=True)
+    #     webstaurant_bot.update_pick_list(order_info)
 
 
 

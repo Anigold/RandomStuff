@@ -82,7 +82,11 @@ class VendorManager:
         self.logger.info(f'Closed session for {vendor_name}.')
 
     def get_vendor_information(self, vendor_name: str) -> dict:
-        return get_vendor_information(vendor_name)
+        self.logger.info(f'Getting information for: {vendor_name}')
+        vendor_info = get_vendor_information(vendor_name)
+        self.logger.info(f'Information found.')
+        self.logger.debug(f'{vendor_info}')
+        return vendor_info
     
     def list_vendors(self):
         return get_vendors()

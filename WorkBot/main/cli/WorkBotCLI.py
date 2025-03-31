@@ -17,6 +17,8 @@ from config.paths import CLI_HISTORY_FILE
 
 import re
 
+from pprint import pprint
+
 class CLI:
 
     FLAG_REGEX_PATTERN = r'(--\w[\w-]*)(?:\s+([^\s-][^\s]*))?'
@@ -190,6 +192,10 @@ class WorkBotCLI(CLI):
         self.register_autocomplete('download_orders', self._autocomplete_download_orders)
         self.register_autocomplete('delete_orders', self._autocomplete_delete_orders)
         self.register_autocomplete('combine_orders', self._autocomplete_combine_orders)
+        self.register_autocomplete('list_orders', self._autocomplete_list_orders)
+        self.register_autocomplete('generate_vendor_upload_files', self._autocomplete_generate_vendor_upload_files)
+        self.register_autocomplete('open_directory', self._autocomplete_open_directory)
+        self.register_autocomplete('vendor_information', self._autocomplete_vendor_information)
 
 
 
@@ -262,11 +268,13 @@ class WorkBotCLI(CLI):
             
             orders           = self.workbot.get_orders(parsed_args.stores, parsed_args.vendors)
             formatted_orders = self._format_order_list(orders, parsed_args.show_pricing, parsed_args.show_minimums)
-            print(formatted_orders)
+            print(f'\n{formatted_orders}\n')
         except SystemExit:
             pass
 
     def _format_order_list(self, orders: list, show_pricing: bool = False, show_minimums: bool = False):
+
+        if not orders: return tabulate([])
 
         orders.sort(key=lambda x: x.store)
 
@@ -284,22 +292,32 @@ class WorkBotCLI(CLI):
             headers.extend(['Min. Price', 'Min. Cases'])
             for pos, order in enumerate(orders):
                 vendor_information = self.workbot.get_vendor_information(order.vendor)
-                min_order_price = vendor_information['min_order_value']
-                min_order_cases = vendor_information['min_order_cases']
+
+                min_order_price = vendor_information['min_order_value'] if 'min_order_value' in vendor_information else ''
+                min_order_cases = vendor_information['min_order_cases'] if 'min_order_cases' in vendor_information else ''
                 
                 total_cost = sum(float(item.total_cost) for item in order.items if item.total_cost) if show_pricing else "N/A"
                 
                 # Check if the order meets vendor minimums
-                below_min_value = total_cost < min_order_price
-                below_min_cases = len(order.items) < min_order_cases
+                # below_min_value = total_cost < min_order_price
+                # below_min_cases = len(order.items) < min_order_cases
 
-                total_cost_str = colored(f"${total_cost:.2f}", "red") if below_min_value else f"${total_cost:.2f}"
-                min_order_value_str = colored(f"${min_order_price:.2f}", "red") if below_min_value else f"${min_order_price:.2f}"
-                min_order_cases_str = colored(str(min_order_cases), "red") if below_min_cases else str(min_order_cases)
+                # total_cost_str = colored(f"${total_cost:.2f}", "red") if below_min_value else f"${total_cost:.2f}"
+                # min_order_value_str = colored(f"${min_order_price:.2f}", "red") if below_min_value else f"${min_order_price:.2f}"
+                # min_order_cases_str = colored(str(min_order_cases), "red") if below_min_cases else str(min_order_cases)
 
-                formatted_orders[pos].extend([min_order_value_str, min_order_cases_str])
+                formatted_orders[pos].extend([min_order_price, min_order_cases])
 
         return tabulate(formatted_orders, headers=headers, tablefmt="grid")
+
+    def _autocomplete_list_orders(self, flag: str, text: str):
+        
+        flags = {
+            '--stores': self._get_stores,
+            '--vendors': self._get_vendors
+        }
+        
+        return [option for option in flags.get(flag, [])() if option.startswith(text)]
 
 
 
@@ -323,6 +341,13 @@ class WorkBotCLI(CLI):
         except SystemExit:
             pass
 
+    def _autocomplete_generate_vendor_upload_files(self, flag: str, text: str):
+        
+        flags = {
+            '--vendors': self._get_vendors
+        }
+        
+        return [option for option in flags.get(flag, [])() if option.startswith(text)]
 
 
 
@@ -388,6 +413,14 @@ class WorkBotCLI(CLI):
         except SystemExit:
             pass  # Prevent argparse from exiting CLI loop
 
+    def _autocomplete_open_directory(self, flag: str, text: str):
+        
+        flags = {
+            '--vendors': self._get_vendors
+        }
+        
+        return [option for option in flags.get(flag, [])() if option.startswith(text)]
+
 
     def args_combine_orders(self):
         parser = argparse.ArgumentParser(prog='combine_orders', description='Merge all orders in a specific vendor order directory into a single file.')
@@ -411,6 +444,48 @@ class WorkBotCLI(CLI):
         
         return [option for option in flags.get(flag, [])() if option.startswith(text)]
 
+
+    def args_vendor_information(self):
+        parser = argparse.ArgumentParser(prog='vendor_information', description='Display the saved information for the specified vendor, if any.')
+        parser.add_argument('--vendor', required=True, help='A single vendor name.')
+        return parser
+
+    def cmd_vendor_information(self, args):
+        parser = self.args_vendor_information()
+        parsed_args = parser.parse_args(args)
+        try:
+            vendor_info = self.workbot.get_vendor_information(parsed_args.vendor)
+            print(f'\n{self._format_vendor_info(vendor_info)}\n')
+        except SystemExit:
+            pass
+    
+    def _format_vendor_info(self, data: dict) -> str:
+        internal_contacts = "\n".join(
+            f"  - {contact['name']} ({contact['title']})\n"
+            f"    Email: {contact['email']}\n"
+            f"    Phone: {contact['phone']}"
+            for contact in data.get("internal_contacts", [])
+        )
+
+        return f"""
+   
+    Minimum Order Value: ${data.get('min_order_value', 0):,.2f}
+    Minimum Order Cases: {data.get('min_order_cases', 0)}
+
+    Special Notes:
+    {data.get('special_notes')}
+
+    Internal Contacts:
+    {internal_contacts}
+    """.strip()
+
+    def _autocomplete_vendor_information(self, flag: str, text: str):
+
+        flags = {
+            '--vendor': self._get_vendors
+        }
+
+        return [option for option in flags.get(flag, [])() if option.startswith(text)]
 
 
     def _get_stores(self):
