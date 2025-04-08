@@ -85,7 +85,12 @@ class BehlogProduceBot(VendorBot, PricingBotMixin):
                 pack_size = self.special_cases[item_sku]['pack']
 
             if row[3] == '' or row[3] == ' ' or row[3]=='sp': continue
-            cost = float(row[3])
+            
+            try:
+                cost = float(row[3])
+            except:
+                continue
+
             if pack_size == '': pack_size = 1
             if item_name not in item_info:
                 item_info[item_name] = {

@@ -19,6 +19,12 @@ import re
 
 from pprint import pprint
 
+
+class SpacedHelpFormatter(argparse.HelpFormatter):
+    def format_help(self):
+        help_text = super().format_help()
+        return f"\n{help_text}\n"
+    
 class CLI:
 
     FLAG_REGEX_PATTERN = r'(--\w[\w-]*)(?:\s+([^\s-][^\s]*))?'
@@ -55,8 +61,7 @@ class CLI:
         readline.parse_and_bind("TAB: complete")
 
         # Command History
-        if CLI_HISTORY_FILE.exists():
-            readline.read_history_file(str(CLI_HISTORY_FILE))
+        if CLI_HISTORY_FILE.exists(): readline.read_history_file(str(CLI_HISTORY_FILE))
         readline.set_history_length(100)
 
     def _completer(self, text: str, state: int) -> Optional[str]:
@@ -201,14 +206,10 @@ class WorkBotCLI(CLI):
 
     def cmd_download_orders(self, args):
         """Handles downloading orders."""
-        parser = argparse.ArgumentParser(prog="download_orders", description="Download orders from vendors.")
-        parser.add_argument("--stores", nargs="+", required=True, help="List of store names.")
-        parser.add_argument("--vendors", nargs="+", help="List of vendors (default: all).")
-        parser.add_argument('--sort', action='store_true', help='Sort orders by vendor after downloading.')
-
-        parser = self.args_download_orders()
-        parsed_args = parser.parse_args(args)
         try:
+            parser = self.args_download_orders()
+            parsed_args = parser.parse_args(args)
+
             self.workbot.download_orders(parsed_args.stores, parsed_args.vendors)
 
             if parsed_args.sort: self.workbot.sort_orders()
@@ -218,7 +219,7 @@ class WorkBotCLI(CLI):
             pass  # Prevent argparse from exiting CLI loop
     
     def args_download_orders(self):
-        parser = argparse.ArgumentParser(prog="download_orders", description="Download orders from vendors.")
+        parser = argparse.ArgumentParser(prog="download_orders", description="Download orders from vendors.", formatter_class=SpacedHelpFormatter)
         parser.add_argument("--stores", nargs="+", required=True, help="List of store names.")
         parser.add_argument("--vendors", nargs="+", help="List of vendors (default: all).")
         parser.add_argument('--sort', action='store_true', help='Sort orders by vendor after downloading.')
@@ -237,12 +238,12 @@ class WorkBotCLI(CLI):
 
 
     def args_sort_orders(self) -> None:
-        return argparse.ArgumentParser(prog='sort_orders', description='Sort the saved orders by vendor.')
+        return argparse.ArgumentParser(prog='sort_orders', description='Sort the saved orders by vendor.', formatter_class=SpacedHelpFormatter)
     
     def cmd_sort_orders(self, args):
-        parser = self.args_sort_orders()
-
+    
         try:    
+            parser = self.args_sort_orders()
             self.workbot.sort_orders()
             print('Orders sorted successfully.')
         except SystemExit:
@@ -252,18 +253,16 @@ class WorkBotCLI(CLI):
 
 
     def args_list_orders(self) -> None:
-        parser = argparse.ArgumentParser(prog='list_orders', description='List the saved orders.')
+        parser = argparse.ArgumentParser(prog='list_orders', description='List the saved orders.', formatter_class=SpacedHelpFormatter)
         parser.add_argument('--stores', nargs='+', required=True, help='List of store names.')
         parser.add_argument('--vendors', nargs='+', help='List of vendors (default: all).')
         parser.add_argument('--show_pricing', action='store_true', help='Display the total estimated price of the order.')
         parser.add_argument('--show_minimums', action='store_true', help='Display the vendor order minimums.')
         return parser
         
-    def cmd_list_orders(self, args):
-
-        parser = self.args_list_orders()
+    def cmd_list_orders(self, args):  
         try:
-
+            parser = self.args_list_orders()
             parsed_args      = parser.parse_args(args)
             
             orders           = self.workbot.get_orders(parsed_args.stores, parsed_args.vendors)
@@ -322,13 +321,14 @@ class WorkBotCLI(CLI):
 
 
     def args_generate_vendor_upload_files(self):
-        parser = argparse.ArgumentParser(prog='generate_vendor_upload_files', description='Generate a vendor-specific upload file.')
+        parser = argparse.ArgumentParser(prog='generate_vendor_upload_files', description='Generate a vendor-specific upload file.', formatter_class=SpacedHelpFormatter)
         parser.add_argument('--vendors', nargs='+', help='List of vendors (default: all).')
         return parser
     
     def cmd_generate_vendor_upload_files(self, args):
-        parser = self.args_generate_vendor_upload_files()
+        
         try:
+            parser = self.args_generate_vendor_upload_files()
             parsed_args = parser.parse_args(args)
 
             for vendor in parsed_args.vendors:
@@ -352,14 +352,15 @@ class WorkBotCLI(CLI):
 
 
     def args_delete_orders(self) -> None:
-        parser = argparse.ArgumentParser(prog='delete_orders', description='Download orders from vendors.')
+        parser = argparse.ArgumentParser(prog='delete_orders', description='Download orders from vendors.', formatter_class=SpacedHelpFormatter)
         parser.add_argument('--stores', nargs='+', required=True, help='List of store names.')
         parser.add_argument('--vendors', nargs='+', help='List of vendors (default: all).')
         return parser
     
     def cmd_delete_orders(self, args):
-        parser = self.args_delete_orders()
+        
         try:
+            parser = self.args_delete_orders()
             parsed_args = parser.parse_args(args)
             self.workbot.delete_orders(parsed_args.stores, parsed_args.vendors)
             
@@ -381,15 +382,13 @@ class WorkBotCLI(CLI):
 
 
     def args_open_directory(self) -> None:
-        parser = argparse.ArgumentParser(prog='open_directory', description='Open the directory of the specified vendor(s).')
+        parser = argparse.ArgumentParser(prog='open_directory', description='Open the directory of the specified vendor(s).', formatter_class=SpacedHelpFormatter)
         parser.add_argument('--vendors', nargs='+', required=True, help='List of vendors.')
         return parser
 
     def cmd_open_directory(self, args) -> None:
-
-        parser = self.args_open_directory()
         try:
-
+            parser = self.args_open_directory()
             parsed_args = parser.parse_args(args)
 
             for vendor in parsed_args.vendors:
@@ -423,15 +422,14 @@ class WorkBotCLI(CLI):
 
 
     def args_combine_orders(self):
-        parser = argparse.ArgumentParser(prog='combine_orders', description='Merge all orders in a specific vendor order directory into a single file.')
+        parser = argparse.ArgumentParser(prog='combine_orders', description='Merge all orders in a specific vendor order directory into a single file.', formatter_class=SpacedHelpFormatter)
         parser.add_argument('--vendors', nargs='+', required=True, help='List of vendors.')
         return parser
     
     def cmd_combine_orders(self, args) -> None:
-
-        parser = self.args_combine_orders()
-        parsed_args = parser.parse_args(args)
         try:
+            parser = self.args_combine_orders()
+            parsed_args = parser.parse_args(args)
             self.workbot.order_manager.combine_orders(parsed_args.vendors)
         except SystemExit:
             pass
@@ -446,38 +444,55 @@ class WorkBotCLI(CLI):
 
 
     def args_vendor_information(self):
-        parser = argparse.ArgumentParser(prog='vendor_information', description='Display the saved information for the specified vendor, if any.')
+        parser = argparse.ArgumentParser(
+            prog='vendor_information', 
+            description='Display the saved information for the specified vendor, if any.', 
+            formatter_class=SpacedHelpFormatter
+        )
         parser.add_argument('--vendor', required=True, help='A single vendor name.')
         return parser
 
     def cmd_vendor_information(self, args):
-        parser = self.args_vendor_information()
-        parsed_args = parser.parse_args(args)
+        
         try:
+            parser = self.args_vendor_information()
+            parsed_args = parser.parse_args(args)
             vendor_info = self.workbot.get_vendor_information(parsed_args.vendor)
-            print(f'\n{self._format_vendor_info(vendor_info)}\n')
+            print(f'\n{parsed_args.vendor}')
+            print(f'{self._format_vendor_info(vendor_info)}\n')
         except SystemExit:
             pass
     
+    from tabulate import tabulate
+
     def _format_vendor_info(self, data: dict) -> str:
-        internal_contacts = "\n".join(
-            f"  - {contact['name']} ({contact['title']})\n"
-            f"    Email: {contact['email']}\n"
-            f"    Phone: {contact['phone']}"
-            for contact in data.get("internal_contacts", [])
-        )
+        # Prepare the top-level vendor info
+        summary_table = [
+            ["Minimum Order Value", f"${data.get('min_order_value', 0):,.2f}"],
+            ["Minimum Order Cases", data.get("min_order_cases", 0)],
+            ["Special Notes", data.get("special_notes") or "None"]
+        ]
+
+        # Prepare internal contacts, if any
+        contacts = data.get("internal_contacts", [])
+        if contacts:
+            contact_table = [
+                [c["name"], c["title"], c["email"], c["phone"]] for c in contacts
+            ]
+            contact_headers = ["Name", "Title", "Email", "Phone"]
+            contact_output = tabulate(contact_table, headers=contact_headers, tablefmt="fancy_grid")
+        else:
+            contact_output = "[No internal contacts listed.]"
 
         return f"""
-   
-    Minimum Order Value: ${data.get('min_order_value', 0):,.2f}
-    Minimum Order Cases: {data.get('min_order_cases', 0)}
+===================
 
-    Special Notes:
-    {data.get('special_notes')}
+{tabulate(summary_table, tablefmt="plain")}
 
-    Internal Contacts:
-    {internal_contacts}
-    """.strip()
+Internal Contacts:
+{contact_output}
+""".strip()
+
 
     def _autocomplete_vendor_information(self, flag: str, text: str):
 

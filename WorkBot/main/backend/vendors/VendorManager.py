@@ -1,11 +1,20 @@
 
 import importlib
-from backend.vendors.vendor_config import get_vendor_information, get_vendor_credentials
+# from backend.vendors.vendor_config import get_vendor_information, get_vendor_credentials
 from backend.helpers.selenium_helpers import create_driver, create_options
 from backend.logger.Logger import Logger
-from config.paths import DOWNLOADS_DIR
-from .vendor_config import get_vendors
 
+from config.paths import DOWNLOADS_DIR, VENDORS_DIR
+# from .vendor_config import get_vendors
+import json, re
+from backend.config import get_env_variable
+
+def load_json(file_path):
+    with open(file_path, "r") as f:
+        return json.load(f)
+
+VENDORS       = load_json(VENDORS_DIR / 'vendors.json')["vendors"]
+VENDOR_GROUPS = load_json(VENDORS_DIR / 'vendor_groups.json')
 
 @Logger.attach_logger
 class VendorManager:
@@ -31,7 +40,7 @@ class VendorManager:
 
     def _load_vendor_info(self, vendor_name: str) -> dict:
         '''Fetches vendor configuration information.'''
-        vendor_info = get_vendor_information(vendor_name)
+        vendor_info = self.get_vendor_information(vendor_name)
         if not vendor_info:
             raise ValueError(f'No vendor configuration found for {vendor_name}')
         return vendor_info
@@ -53,7 +62,7 @@ class VendorManager:
             init_args.append(driver)
 
         if vendor_info.get('requires_credentials', False):
-            credentials = get_vendor_credentials(vendor_name)
+            credentials = self._get_vendor_credentials(vendor_name)
             init_kwargs.update({
                 'username': credentials['username'],
                 'password': credentials['password']
@@ -83,10 +92,25 @@ class VendorManager:
 
     def get_vendor_information(self, vendor_name: str) -> dict:
         self.logger.info(f'Getting information for: {vendor_name}')
-        vendor_info = get_vendor_information(vendor_name)
+        vendor_info = VENDORS.get(vendor_name, {})
         self.logger.info(f'Information found.')
         self.logger.debug(f'{vendor_info}')
         return vendor_info
     
-    def list_vendors(self):
-        return get_vendors()
+    def list_vendors(self, group_name : str = None):
+        return VENDOR_GROUPS.get(group_name, VENDORS.keys()) if group_name else VENDORS.keys()
+    
+    def _sanitize_vendor_name_for_credentials(self, vendor_name: str) -> str:
+        return re.sub(r'[^a-zA-Z0-9]+', '_', vendor_name).upper()
+
+    def _get_vendor_credentials(self, vendor_name: str):
+        '''Returns a dictionary containing the username and password for a given vendor.'''
+        sanitized_vendor_name = self._sanitize_vendor_name_for_credentials(vendor_name)
+
+        username = get_env_variable(f'{sanitized_vendor_name}_USERNAME')
+        password = get_env_variable(f'{sanitized_vendor_name}_PASSWORD')
+
+        if not username or not password:
+            raise ValueError(f"Missing credentials for {vendor_name}. Check your .env file.")
+
+        return {"username": username, "password": password}
