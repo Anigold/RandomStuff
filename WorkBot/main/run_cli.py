@@ -7,6 +7,7 @@ from pathlib import Path
 LOG_FILE = Path('./logs/master.log').absolute().as_posix()
 GIT_BASH_PATH = Path('C:/Program Files/Git/bin/bash.exe')
 
+
 def open_log_terminal():
     """Open a new terminal window and follow the master.logs file."""
     system = platform.system()
@@ -19,11 +20,12 @@ def open_log_terminal():
         ], shell=True)
 
     elif system in ["Linux", "Darwin"]:  # Darwin = macOS
-        # Open a new terminal and run 'tail -f' on the log file
+        #o Open a new terminal and run 'tail -f' on the log file
         subprocess.Popen([
             "x-terminal-emulator", "-e", f"bash -c 'tail -f {LOG_FILE}'"
         ])
     else:
+
         print("Unsupported OS. Unable to open log terminal.")
 
 if __name__ == '__main__':

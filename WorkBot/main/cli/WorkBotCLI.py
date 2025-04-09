@@ -19,12 +19,6 @@ import re
 
 from pprint import pprint
 
-
-class SpacedHelpFormatter(argparse.HelpFormatter):
-    def format_help(self):
-        help_text = super().format_help()
-        return f"\n{help_text}\n"
-    
 class CLI:
 
     FLAG_REGEX_PATTERN = r'(--\w[\w-]*)(?:\s+([^\s-][^\s]*))?'
@@ -61,8 +55,20 @@ class CLI:
         readline.parse_and_bind("TAB: complete")
 
         # Command History
-        if CLI_HISTORY_FILE.exists(): readline.read_history_file(str(CLI_HISTORY_FILE))
+        if CLI_HISTORY_FILE.exists():
+            readline.read_history_file(str(CLI_HISTORY_FILE))
         readline.set_history_length(100)
+
+        self._register_autocomplete()
+        
+    # REGISTER AUTOCOMPLETES
+    def _register_autocomplete(self) -> None:
+        for function_name in dir(self):
+            prefix = '_autocomplete_'
+            if function_name.startswith(prefix):
+                autocomplete_name = function_name[len(prefix):]
+                self.autocomplete_registry[autocomplete_name] = getattr(self, function_name)
+
 
     def _completer(self, text: str, state: int) -> Optional[str]:
         buffer = readline.get_line_buffer().strip()
@@ -185,6 +191,7 @@ class CLI:
                 self._exit(0)
                 break
 
+
 @Logger.attach_logger
 class WorkBotCLI(CLI):
     ''' Interactive CLI for WorkBot '''
@@ -194,22 +201,15 @@ class WorkBotCLI(CLI):
         self.workbot = workbot or WorkBot()
         super().__init__()
 
-        self.register_autocomplete('download_orders', self._autocomplete_download_orders)
-        self.register_autocomplete('delete_orders', self._autocomplete_delete_orders)
-        self.register_autocomplete('combine_orders', self._autocomplete_combine_orders)
-        self.register_autocomplete('list_orders', self._autocomplete_list_orders)
-        self.register_autocomplete('generate_vendor_upload_files', self._autocomplete_generate_vendor_upload_files)
-        self.register_autocomplete('open_directory', self._autocomplete_open_directory)
-        self.register_autocomplete('vendor_information', self._autocomplete_vendor_information)
+        # self.context = CommandContext(workbot=self.workbot)
 
-
-
+    # DOWNLOAD ORDERS
     def cmd_download_orders(self, args):
         """Handles downloading orders."""
-        try:
-            parser = self.args_download_orders()
-            parsed_args = parser.parse_args(args)
 
+        parser = self.args_download_orders()
+        parsed_args = parser.parse_args(args)
+        try:
             self.workbot.download_orders(parsed_args.stores, parsed_args.vendors)
 
             if parsed_args.sort: self.workbot.sort_orders()
@@ -219,7 +219,7 @@ class WorkBotCLI(CLI):
             pass  # Prevent argparse from exiting CLI loop
     
     def args_download_orders(self):
-        parser = argparse.ArgumentParser(prog="download_orders", description="Download orders from vendors.", formatter_class=SpacedHelpFormatter)
+        parser = argparse.ArgumentParser(prog="download_orders", description="Download orders from vendors.")
         parser.add_argument("--stores", nargs="+", required=True, help="List of store names.")
         parser.add_argument("--vendors", nargs="+", help="List of vendors (default: all).")
         parser.add_argument('--sort', action='store_true', help='Sort orders by vendor after downloading.')
@@ -236,33 +236,34 @@ class WorkBotCLI(CLI):
         return [option for option in flags.get(flag, [])() if option.startswith(text)]
 
 
-
+# SORT ORDERS
     def args_sort_orders(self) -> None:
-        return argparse.ArgumentParser(prog='sort_orders', description='Sort the saved orders by vendor.', formatter_class=SpacedHelpFormatter)
+        return argparse.ArgumentParser(prog='sort_orders', description='Sort the saved orders by vendor.')
     
     def cmd_sort_orders(self, args):
-    
+        parser = self.args_sort_orders()
+
         try:    
-            parser = self.args_sort_orders()
             self.workbot.sort_orders()
             print('Orders sorted successfully.')
         except SystemExit:
             pass
 
 
-
-
+# List orders
     def args_list_orders(self) -> None:
-        parser = argparse.ArgumentParser(prog='list_orders', description='List the saved orders.', formatter_class=SpacedHelpFormatter)
+        parser = argparse.ArgumentParser(prog='list_orders', description='List the saved orders.')
         parser.add_argument('--stores', nargs='+', required=True, help='List of store names.')
         parser.add_argument('--vendors', nargs='+', help='List of vendors (default: all).')
         parser.add_argument('--show_pricing', action='store_true', help='Display the total estimated price of the order.')
         parser.add_argument('--show_minimums', action='store_true', help='Display the vendor order minimums.')
         return parser
         
-    def cmd_list_orders(self, args):  
+    def cmd_list_orders(self, args):
+
+        parser = self.args_list_orders()
         try:
-            parser = self.args_list_orders()
+
             parsed_args      = parser.parse_args(args)
             
             orders           = self.workbot.get_orders(parsed_args.stores, parsed_args.vendors)
@@ -319,16 +320,15 @@ class WorkBotCLI(CLI):
         return [option for option in flags.get(flag, [])() if option.startswith(text)]
 
 
-
+# GENERATE VENDOR UPLOAD FILES
     def args_generate_vendor_upload_files(self):
-        parser = argparse.ArgumentParser(prog='generate_vendor_upload_files', description='Generate a vendor-specific upload file.', formatter_class=SpacedHelpFormatter)
+        parser = argparse.ArgumentParser(prog='generate_vendor_upload_files', description='Generate a vendor-specific upload file.')
         parser.add_argument('--vendors', nargs='+', help='List of vendors (default: all).')
         return parser
     
     def cmd_generate_vendor_upload_files(self, args):
-        
+        parser = self.args_generate_vendor_upload_files()
         try:
-            parser = self.args_generate_vendor_upload_files()
             parsed_args = parser.parse_args(args)
 
             for vendor in parsed_args.vendors:
@@ -350,17 +350,16 @@ class WorkBotCLI(CLI):
         return [option for option in flags.get(flag, [])() if option.startswith(text)]
 
 
-
+# DELETE ORDERS
     def args_delete_orders(self) -> None:
-        parser = argparse.ArgumentParser(prog='delete_orders', description='Download orders from vendors.', formatter_class=SpacedHelpFormatter)
+        parser = argparse.ArgumentParser(prog='delete_orders', description='Download orders from vendors.')
         parser.add_argument('--stores', nargs='+', required=True, help='List of store names.')
         parser.add_argument('--vendors', nargs='+', help='List of vendors (default: all).')
         return parser
     
     def cmd_delete_orders(self, args):
-        
+        parser = self.args_delete_orders()
         try:
-            parser = self.args_delete_orders()
             parsed_args = parser.parse_args(args)
             self.workbot.delete_orders(parsed_args.stores, parsed_args.vendors)
             
@@ -379,16 +378,17 @@ class WorkBotCLI(CLI):
         return [option for option in flags.get(flag, [])() if option.startswith(text)]
 
 
-
-
+# OPEN DIRECTORY
     def args_open_directory(self) -> None:
-        parser = argparse.ArgumentParser(prog='open_directory', description='Open the directory of the specified vendor(s).', formatter_class=SpacedHelpFormatter)
+        parser = argparse.ArgumentParser(prog='open_directory', description='Open the directory of the specified vendor(s).')
         parser.add_argument('--vendors', nargs='+', required=True, help='List of vendors.')
         return parser
 
     def cmd_open_directory(self, args) -> None:
+
+        parser = self.args_open_directory()
         try:
-            parser = self.args_open_directory()
+
             parsed_args = parser.parse_args(args)
 
             for vendor in parsed_args.vendors:
@@ -421,15 +421,17 @@ class WorkBotCLI(CLI):
         return [option for option in flags.get(flag, [])() if option.startswith(text)]
 
 
+# COMBINE ORDERS
     def args_combine_orders(self):
-        parser = argparse.ArgumentParser(prog='combine_orders', description='Merge all orders in a specific vendor order directory into a single file.', formatter_class=SpacedHelpFormatter)
+        parser = argparse.ArgumentParser(prog='combine_orders', description='Merge all orders in a specific vendor order directory into a single file.')
         parser.add_argument('--vendors', nargs='+', required=True, help='List of vendors.')
         return parser
     
     def cmd_combine_orders(self, args) -> None:
+
+        parser = self.args_combine_orders()
+        parsed_args = parser.parse_args(args)
         try:
-            parser = self.args_combine_orders()
-            parsed_args = parser.parse_args(args)
             self.workbot.order_manager.combine_orders(parsed_args.vendors)
         except SystemExit:
             pass
@@ -443,14 +445,13 @@ class WorkBotCLI(CLI):
         return [option for option in flags.get(flag, [])() if option.startswith(text)]
 
 
+# VENDOR INFORMATION
     def args_vendor_information(self):
-        parser = argparse.ArgumentParser(
-            prog='vendor_information', 
-            description='Display the saved information for the specified vendor, if any.', 
-            formatter_class=SpacedHelpFormatter
-        )
+        parser = argparse.ArgumentParser(prog='vendor_information', description='Display the saved information for the specified vendor, if any.')
         parser.add_argument('--vendor', required=True, help='A single vendor name.')
         return parser
+
+   
 
     def cmd_vendor_information(self, args):
         
@@ -493,7 +494,6 @@ Internal Contacts:
 {contact_output}
 """.strip()
 
-
     def _autocomplete_vendor_information(self, flag: str, text: str):
 
         flags = {
@@ -501,6 +501,9 @@ Internal Contacts:
         }
 
         return [option for option in flags.get(flag, [])() if option.startswith(text)]
+
+    
+
 
 
     def _get_stores(self):
