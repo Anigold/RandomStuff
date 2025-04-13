@@ -14,11 +14,8 @@ class Emailer:
         '''
 
     def create_email(self, email: Email) -> None:
-        if email not in self.emails:
-            self.emails[email] = self.service.create_email(email)
-        else:
-            self.emails[email].update(self.service.create_email(email)) 
-        return
+        self.emails[email] = self.service.create_email(email)
+
     
     def send_email(self, email: Email) -> None:
         return self.service.send_email(self.emails[email]) if email in self.emails else None

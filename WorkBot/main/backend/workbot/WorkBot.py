@@ -8,6 +8,9 @@ from backend.transferring.TransferManager import TransferManager
 from backend.transferring.Transfer import Transfer, TransferItem
 from backend.craftable_bot.CraftableBot import CraftableBot
 from backend.craftable_bot.helpers import generate_craftablebot_args
+from backend.emailer.Emailer import Emailer, Email
+from backend.emailer.Services.Gmail import GmailService
+from backend.emailer.Services.Outlook import OutlookService
 
 from backend.helpers.DatetimeFormattingHelper import string_to_datetime
 import backend.config as config
@@ -19,6 +22,8 @@ import json
 import shlex
 import sys
 import subprocess
+import socket
+from collections import defaultdict
 
 from tabulate import tabulate
 from termcolor import colored
@@ -41,7 +46,17 @@ class WorkBot:
         self.craft_bot = CraftableBot(driver, username, password, 
                                       order_manager=self.order_manager, 
                                       transfer_manager=self.transfer_manager)
-       
+
+               # Establish host service
+        
+        # Establish emailer service based on which computer we're one.
+        # We will move this to config later.
+        email_host = socket.gethostname()
+        if email_host == 'Purchasing':
+            self.emailer = Emailer(OutlookService())
+        else:
+            self.emailer = Emailer(GmailService())   
+
         self.logger.info('WorkBot initialized successfully.')
 
     def download_orders(self, stores, vendors=[], download_pdf=True, update=True):
@@ -107,6 +122,75 @@ class WorkBot:
 
     def combine_orders(self, vendors: list) -> None:
         self.order_manager.combine_orders(vendors)
+
+    def generate_vendor_order_emails(self, vendors: list[str], stores: list[str] = []) -> list[Email]:
+        # print(f"\n🔍 Gathering orders for vendors: {vendors} and stores: {stores}...")
+        orders = self.get_orders(stores=stores, vendors=vendors)
+
+        if not orders:
+            # print("⚠️  No orders found for the given vendors/stores.")
+            return []
+
+        # Group orders by vendor
+        vendor_orders = defaultdict(list)
+        for order in orders:
+            vendor_orders[order.vendor].append(order)
+
+        emails = []
+
+        for vendor, orders in vendor_orders.items():
+            # print(f"\n📦 Creating consolidated email for vendor: {vendor}")
+            vendor_info = self.get_vendor_information(vendor)
+            to_emails = vendor_info.get("email_contacts", ["default@vendor.com"])
+            # print(f"📨 Sending to: {to_emails}")
+
+            date_str = datetime.now().strftime("%B %d, %Y")
+            subject = f"Orders for {vendor} ({date_str})"
+
+            full_body = [f"Hello {vendor},", "", f"Please find below our orders for {date_str}:"]
+            attachments = []
+
+            for order in orders:
+                full_body.append(f"\nStore: {order.store}")
+                for item in order.items:
+                    full_body.append(f"  - {item.quantity} x {item.name}")
+
+                pdf_dir = self.order_manager.get_vendor_orders_directory(order.vendor)
+                pdf_filename = f"{self.order_manager.generate_filename(order, file_extension='.pdf')}"
+                pdf_path = pdf_dir / pdf_filename
+
+                if pdf_path.exists():
+                    # print(f"📎 Found PDF for {order.store}: {pdf_path}")
+                    attachments.append(str(pdf_path))
+                else:
+                    pass
+                    # print(f"⚠️  Missing PDF for {order.store}: {pdf_path}")
+
+            full_body.extend((
+                "", "Let us know if there are any issues.",
+                "", "Thank you,", "Your Team"
+            ))
+
+            email = Email(
+                to=tuple(to_emails),
+                subject=subject,
+                body="\n".join(full_body),
+                attachments=tuple(attachments) if attachments else None
+            )
+
+            self.emailer.create_email(email)
+            emails.append(email)
+            # print("✅ Consolidated email created.")
+
+        # print(f"\n📬 {len(emails)} consolidated email(s) generated.\n")
+
+        for email in emails:
+            # print("🧾 Displaying email:")
+            self.emailer.display_email(email)
+
+        return emails
+
+
 
     def shutdown(self) -> None:
         """Exits the CLI loop."""

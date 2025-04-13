@@ -15,7 +15,7 @@ from backend.helpers import  FormatItemData
 # from backend.printing.Printer import Printer
 from backend.emailer.Emailer import Emailer
 from backend.emailer.Services.Service import Email
-from backend.emailer.Services.Outlook import Outlook
+from backend.emailer.Services.Outlook import OutlookService
 from backend.emailer.Services.Gmail import GmailService
 
 # from backend.printing.Printer import Printer
@@ -329,22 +329,25 @@ if __name__ == '__main__':
 
 
     # CONVERT ITHACA_BAKERY ORDERS TO TRANSFERS
-    work_bot = WorkBot()
-    transfers_directory = TransferManager.get_transfer_files_directory()
+    # work_bot = WorkBot()
+    # transfers_directory = TransferManager.get_transfer_files_directory()
     
-    ib_orders = work_bot.order_manager.get_vendor_orders('Ithaca Bakery')
+    # ib_orders = work_bot.order_manager.get_vendor_orders('Ithaca Bakery')
 
-    transfers = []
-    for i in ib_orders:
-        # print(i, flush=True)
-        metadata = OrderManager.parse_file_name(i)
-        order = Order(metadata['store'], metadata['vendor'], metadata['date'])
-        order.load_items_from_excel(i)
-        transfer = work_bot.convert_order_to_transfer(order)
-        # if order.store in ['Easthill', 'Collegetown', 'Triphammer',]:
-        #     transfers.append(transfer)
-        transfers.append(transfer)
-    work_bot.input_transfers(transfers)
+    # transfers = []
+    # for i in ib_orders:
+    #     # print(i, flush=True)
+    #     metadata = OrderManager.parse_file_name(i)
+    #     order = Order(metadata['store'], metadata['vendor'], metadata['date'])
+    #     order.load_items_from_excel(i)
+    #     transfer = work_bot.convert_order_to_transfer(order)
+    #     # if order.store in ['Easthill', 'Collegetown', 'Triphammer',]:
+    #     #     transfers.append(transfer)
+    #     transfers.append(transfer)
+    # work_bot.input_transfers(transfers)
+
+    work_bot = WorkBot()
+    work_bot.generate_vendor_order_emails(stores=['Bakery'], vendors=['Equal Exchange', 'Copper Horse Coffee'])
 
 
 

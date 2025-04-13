@@ -10,7 +10,7 @@ except:
 from dataclasses import dataclass
 
 
-class Outlook(Service):
+class OutlookService(Service):
     
     def create_email(self, email: Email):
      

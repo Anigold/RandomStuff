@@ -203,7 +203,7 @@ class WorkBotCLI(CLI):
 
         # self.context = CommandContext(workbot=self.workbot)
 
-    # DOWNLOAD ORDERS
+# DOWNLOAD ORDERS
     def cmd_download_orders(self, args):
         """Handles downloading orders."""
 
@@ -250,7 +250,7 @@ class WorkBotCLI(CLI):
             pass
 
 
-# List orders
+# LIST ORDERS
     def args_list_orders(self) -> None:
         parser = argparse.ArgumentParser(prog='list_orders', description='List the saved orders.')
         parser.add_argument('--stores', nargs='+', required=True, help='List of store names.')
@@ -278,9 +278,9 @@ class WorkBotCLI(CLI):
 
         orders.sort(key=lambda x: x.store)
 
-        headers = ['Store', 'Vendor', 'Date', 'Items']
+        headers = ['Store', 'Vendor', 'Date', 'Items', 'Cases']
 
-        formatted_orders = [[order.store, order.vendor, order.date, len(order.items)] for order in orders]
+        formatted_orders = [[order.store, order.vendor, order.date, len(order.items), sum([int(i.quantity) for i in order.items])] for order in orders]
 
         if show_pricing:
             headers.append('Total Cost')
@@ -451,8 +451,6 @@ class WorkBotCLI(CLI):
         parser.add_argument('--vendor', required=True, help='A single vendor name.')
         return parser
 
-   
-
     def cmd_vendor_information(self, args):
         
         try:
@@ -503,7 +501,29 @@ Internal Contacts:
         return [option for option in flags.get(flag, [])() if option.startswith(text)]
 
     
+# GENERATE ORDER EMAILS
+    def args_generate_vendor_order_emails(self):
+        parser = argparse.ArgumentParser(prog='generate_vendor_email', description='Create an order email for the specified vendors and stores.')
+        parser.add_argument('--stores', nargs='+', required=True, help='List of stores.')
+        parser.add_argument('--vendors', nargs='+', required=True, help='List of vendors.')
+        return parser
 
+    def cmd_generate_vendor_order_emails(self, args):
+        try:
+            parser = self.args_generate_vendor_order_emails()
+            parsed_args = parser.parse_args(args)
+            self.workbot.generate_vendor_order_emails(stores=parsed_args.stores, vendors=parsed_args.vendors)
+            # print("THIS COMMAND HAS NOT BEEN IMPLEMENTED.")
+        except SystemExit:
+            pass
+    
+    def _autocomplete_generate_vendor_order_emails(self, flag: str, text: str):
+        flags = {
+            '--stores': self._get_stores,
+            '--vendors': self._get_vendors
+        }
+        
+        return [option for option in flags.get(flag, [])() if option.startswith(text)]
 
 
     def _get_stores(self):

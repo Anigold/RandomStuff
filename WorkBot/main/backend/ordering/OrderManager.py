@@ -37,7 +37,7 @@ class OrderManager:
         return None
 
     def get_store_orders(self, stores: list, vendors: list = []) -> list:
-
+        self.logger.info(f'Retrieving orders for {stores}')
         orders_dir = self.get_order_files_directory()
 
         orders = []
