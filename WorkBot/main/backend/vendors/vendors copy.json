@@ -1,0 +1,543 @@
+{
+    "vendors": {
+        "A.L. George": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 0,
+            "min_order_cases": 10,
+            "special_notes": "",
+            "internal_contacts": []
+        },
+        "BALKAN BEVERAGE LLC": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 0,
+            "min_order_cases": 10,
+            "special_notes": "",
+            "internal_contacts": []
+        },
+        
+        "BJ's": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 0,
+            "min_order_cases": 0,
+            "special_notes": "No delivery, pickup only.",
+            "internal_contacts": []
+        },
+        "BEHLOG & SON, INC.": {
+            "bot_class": "BehlogProduceBot",
+            "module_path": "backend.vendors.vendor_bots.BehlogProduceBot",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "CSV",
+            "min_order_value": 0,
+            "min_order_cases": 4,
+            "special_notes": "No minimum order requirement.",
+            "internal_contacts": []
+        },
+        "Coca-Cola": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 0,
+            "min_order_cases": 15,
+            "special_notes": "",
+            "internal_contacts": []
+        },
+        "Copper Horse Coffee": {
+            "bot_class": "CopperHorseBot",
+            "module_path": "backend.vendors.vendor_bots.CopperHorseBot",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "CSV",
+            "min_order_value": 50,
+            "min_order_cases": 4,
+            "special_notes": "Orders must be placed by Sunday.",
+            "internal_contacts": [
+                {
+                    "name": "Jesse Harriott",
+                    "title": "Sales Representative",
+                    "email": "copperhorsecoffee@gmail.com",
+                    "phone": "6073425824"
+                }
+            ]
+        },
+        "Cortland Produce Inc.": {
+            "bot_class": "CortlandProduceBot",
+            "module_path": "backend.vendors.vendor_bots.CortlandProduceBot",
+            "uses_selenium": true,
+            "requires_credentials": true,
+            "order_format": "XLSX",
+            "min_order_value": 100,
+            "min_order_cases": 4,
+            "special_notes": "Online ordering only.",
+            "internal_contacts": []
+        },
+        "DUTCH VALLEY FOOD DIST": {
+            "bot_class": "DutchValleyBot",
+            "module_path": "backend.vendors.vendor_bots.DutchValleyBot",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "CSV",
+            "min_order_value": 0,
+            "min_order_cases": 4,
+            "special_notes": "",
+            "internal_contacts": [
+                {
+                    "name": "Doug",
+                    "title": "Sales Representative",
+                    "email": "",
+                    "phone": "7176739547"
+                }
+            ]
+        },
+        "Eurocafe Imports": {
+            "bot_class": "EuroCafeBot",
+            "module_path": "backend.vendors.vendor_bots.EuroCafeBot",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "CSV",
+            "min_order_value": 75,
+            "min_order_cases": 4,
+            "special_notes": "Call before ordering.",
+            "internal_contacts": [
+                {
+                    "name": "Scott Tota",
+                    "title": "Sales Representative",
+                    "email": "",
+                    "phone": "7162818528"
+                }
+            ]
+        },
+        "Equal Exchange": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 0,
+            "min_order_cases": 0,
+            "special_notes": "",
+            "internal_contacts": [
+                {
+                    "name": "Lynsey Miller",
+                    "title": "Sales Representative",
+                    "email": "lmiller@equalexchange.coop",
+                    "phone": ""
+                }
+            ]
+        },
+        "FingerLakes Farms": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 250,
+            "min_order_cases": 0,
+            "special_notes": "",
+            "internal_contacts": []
+        },
+        "Keck's Food Service": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 250,
+            "min_order_cases": 0,
+            "special_notes": "",
+            "internal_contacts": [                
+                {
+                "name": "Jason Peak",
+                "title": "Sales Representative",
+                "email": "jpeak@kecksfoodservice.com",
+                "phone": "6077319476"
+                }
+            ]
+        },
+        "Lentz": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 250,
+            "min_order_cases": 0,
+            "special_notes": "",
+            "internal_contacts": [
+                {
+                    "name": "Mark Ryan",
+                    "title": "Sales Representative",
+                    "email": "Mark.Ryan@Brenntag.com",
+                    "phone": "6077885668"
+                }
+
+            ]
+        },
+        "Hill & Markes": {
+            "bot_class": "HillNMarkesBot",
+            "module_path": "backend.vendors.vendor_bots.HillNMarkesBot",
+            "uses_selenium": true,
+            "requires_credentials": true,
+            "order_format": "XLSX",
+            "min_order_value": 350,
+            "min_order_cases": 0,
+            "special_notes": "",
+            "internal_contacts": [
+                {
+                    "name": "Mike Schoemaker",
+                    "title": "Sales Manager",
+                    "email": "mschoemaker@hillnmarkes.com",
+                    "phone": "3156575562"
+                },
+                {
+                    "name": "Jane Smith",
+                    "title": "Inside Sales Representative",
+                    "email": "",
+                    "phone": ""
+                }
+            ]
+        },
+        "Hillcrest Dairy": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 0,
+            "min_order_cases": 0,
+            "special_notes": "",
+            "internal_contacts": [
+                {
+                    "name": "Dan Ripley",
+                    "title": "Sales Manager",
+                    "email": "dsrip1@verizon.net",
+                    "phone": "6075914537"
+                }
+            ]
+        },
+        "Hillcrest Foods": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 850,
+            "min_order_cases": 0,
+            "special_notes": "",
+            "internal_contacts": [
+                {
+                    "name": "Linda Bye",
+                    "title": "Sales Representative",
+                    "email": "linda.bye@bakemark.com",
+                    "phone": "518-580-1550"
+                },
+                {
+                    "name": "Donna Brayman",
+                    "title": "Inside Sales Representative",
+                    "email": "donna.brayman@bakemark.com",
+                    "phone": "518-450-5870"
+                }
+            ]
+        },
+        "Renzi": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 0,
+            "min_order_cases": 0,
+            "special_notes": "",
+            "internal_contacts": []
+        },
+        "Hoffmire Farms": {
+            "bot_class": "HoffmireFarmsBot",
+            "module_path": "backend.vendors.vendor_bots.HoffmireFarmsBot",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "CSV",
+            "min_order_value": 0,
+            "min_order_cases": 4,
+            "special_notes": "",
+            "internal_contacts": [
+                {
+                    "name": "John Doe",
+                    "title": "Sales Representative",
+                    "email": "johndoe@behlogproduce.com",
+                    "phone": "555-123-4567"
+                },
+                {
+                    "name": "Jane Smith",
+                    "title": "Customer Support",
+                    "email": "support@behlogproduce.com",
+                    "phone": "555-987-6543"
+                }
+            ]
+        },
+        "Johnston Paper": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 250,
+            "min_order_cases": 0,
+            "special_notes": "",
+            "internal_contacts": []
+        },
+        "Peters Supply": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 0,
+            "min_order_cases": 0,
+            "special_notes": "",
+            "internal_contacts": []
+        },
+        "Regional Distributors, Inc.": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 0,
+            "min_order_cases": 0,
+            "special_notes": "",
+            "internal_contacts": []
+        },
+        "SANICO": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 0,
+            "min_order_cases": 0,
+            "special_notes": "",
+            "internal_contacts": []
+        },
+        "Ithaca Bakery": {
+            "bot_class": "IthacaBakeryBot",
+            "module_path": "backend.vendors.vendor_bots.IthacaBakeryBot",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "CSV",
+            "min_order_value": 0,
+            "min_order_cases": 4,
+            "special_notes": "Internal vendor.",
+            "internal_contacts": [
+                {
+                    "name": "Andrew Goldsmith",
+                    "title": "Purchasing Manager",
+                    "email": "purchasing@ithacabakery.com",
+                    "phone": "6072737110"
+                }
+            ]
+        },
+        "Performance Food": {
+            "bot_class": "PerformanceFoodBot",
+            "module_path": "backend.vendors.vendor_bots.PerformanceFoodBot",
+            "uses_selenium": true,
+            "requires_credentials": true,
+            "order_format": "TXT",
+            "min_order_value": 200,
+            "min_order_cases": 4,
+            "special_notes": "Requires 2-step authentication.",
+            "internal_contacts": [
+                {
+                    "name": "John Doe",
+                    "title": "Sales Representative",
+                    "email": "johndoe@behlogproduce.com",
+                    "phone": "555-123-4567"
+                },
+                {
+                    "name": "Jane Smith",
+                    "title": "Customer Support",
+                    "email": "support@behlogproduce.com",
+                    "phone": "555-987-6543"
+                }
+            ]
+        },
+        "Russo Produce": {
+            "bot_class": "RussoProduceBot",
+            "module_path": "backend.vendors.vendor_bots.RussoProduceBot",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "XLSX",
+            "min_order_value": 100,
+            "min_order_cases": 4,
+            "special_notes": "",
+            "internal_contacts": [
+                {
+                    "name": "John Doe",
+                    "title": "Sales Representative",
+                    "email": "johndoe@behlogproduce.com",
+                    "phone": "555-123-4567"
+                },
+                {
+                    "name": "Jane Smith",
+                    "title": "Customer Support",
+                    "email": "support@behlogproduce.com",
+                    "phone": "555-987-6543"
+                }
+            ]
+        },
+        "Sysco": {
+            "bot_class": "SyscoBot",
+            "module_path": "backend.vendors.vendor_bots.SyscoBot",
+            "uses_selenium": true,
+            "requires_credentials": true,
+            "order_format": "CSV",
+            "min_order_value": 500,
+            "min_order_cases": 4,
+            "special_notes": "Sysco account required.",
+            "internal_contacts": [
+                {
+                    "name": "John Doe",
+                    "title": "Sales Representative",
+                    "email": "johndoe@behlogproduce.com",
+                    "phone": "555-123-4567"
+                },
+                {
+                    "name": "Jane Smith",
+                    "title": "Customer Support",
+                    "email": "support@behlogproduce.com",
+                    "phone": "555-987-6543"
+                }
+            ]
+        },
+        "UNFI": {
+            "bot_class": "UNFIBot",
+            "module_path": "backend.vendors.vendor_bots.UNFIBot",
+            "uses_selenium": false,
+            "requires_credentials": true,
+            "order_format": "CSV",
+            "min_order_value": 1500,
+            "min_order_cases": 4,
+            "special_notes": "Minimum order $1,500.",
+            "internal_contacts": [
+                {
+                    "name": "John Doe",
+                    "title": "Sales Representative",
+                    "email": "johndoe@behlogproduce.com",
+                    "phone": "555-123-4567"
+                },
+                {
+                    "name": "Jane Smith",
+                    "title": "Customer Support",
+                    "email": "support@behlogproduce.com",
+                    "phone": "555-987-6543"
+                }
+            ]
+        },
+        "US Foods": {
+            "bot_class": "USFoodsBot",
+            "module_path": "backend.vendors.vendor_bots.USFoodsBot",
+            "uses_selenium": true,
+            "requires_credentials": true,
+            "order_format": "XLSX",
+            "min_order_value": 600,
+            "min_order_cases": 0,
+            "special_notes": "Large orders must be placed 48 hours in advance.",
+            "internal_contacts": [
+                {
+                    "name": "Dawn Morgan",
+                    "title": "Sales Representative",
+                    "email": "dawn.morgan@usfoods.com",
+                    "phone": "315-778-8870"
+                },
+                {
+                    "name": "Liam Lazore",
+                    "title": "Customer Support",
+                    "email": "liam.lazore@usfoods.com",
+                    "phone": "315-955-7314"
+                }
+            ]
+        },
+        "Webstaurant": {
+            "bot_class": "WebstaurantBot",
+            "module_path": "backend.smallwares.WebstaurantBot",
+            "uses_selenium": true,
+            "requires_credentials": true,
+            "order_format": "",
+            "min_order_value": 2900,
+            "min_order_cases": 0,
+            "special_notes": "",
+            "internal_contacts": []
+        },
+        "Worlds Best Cheeses": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 0,
+            "min_order_cases": 0,
+            "special_notes": "",
+            "internal_contacts": []
+        },
+        "Sweet Sam's": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 0,
+            "min_order_cases": 0,
+            "special_notes": "",
+            "internal_contacts": [
+                {
+                    "name": "Jeira Martinez",
+                    "title": "Customer Service Manager",
+                    "email": "service@sweetsams.com",
+                    "phone": "718-822-0599"
+                }
+            ]
+        },
+        "Fingerlakes Artisen Foods": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 0,
+            "min_order_cases": 10,
+            "special_notes": "",
+            "internal_contacts": []
+        },
+        "Kwik Lok": {
+            "bot_class": "",
+            "module_path": "",
+            "uses_selenium": false,
+            "requires_credentials": false,
+            "order_format": "",
+            "min_order_value": 0,
+            "min_order_cases": 1,
+            "special_notes": "",
+            "internal_contacts": [
+                {
+                    "name": "Jane Doe",
+                    "title": "Customer Service",
+                    "email": "ordersnh@kwiklok.com",
+                    "phone": "800-825-5945"
+                }
+            ]
+        }
+    }
+}

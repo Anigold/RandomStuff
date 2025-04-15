@@ -112,7 +112,14 @@ class WorkBot:
         self.craft_bot.close_session()
 
     def welcome_to_work(self) -> None:
-        pass
+        
+        today = self._get_today_date_and_day()
+
+        return f'''
+{today[1]}, {today[0]}
+'''
+        print('Welcome!')
+        print(f'Today is: {today[1]}, {today[0]}')
 
     def get_orders(self, stores: list, vendors: list = []) -> list:
         return self.order_manager.get_store_orders(stores=stores, vendors=vendors)
@@ -197,3 +204,15 @@ class WorkBot:
         self.close_craftable_session()
         print("Exiting WorkBot CLI.")
         exit()
+
+
+
+
+
+    def _get_today_date_and_day(self):
+        today = datetime.today()
+        day_of_week = today.strftime("%A")
+        day = today.day
+        suffix = "th" if 11 <= day <= 13 else {1: "st", 2: "nd", 3: "rd"}.get(day % 10, "th")
+        long_date = today.strftime(f"%B {day}{suffix}, %Y")
+        return long_date, day_of_week

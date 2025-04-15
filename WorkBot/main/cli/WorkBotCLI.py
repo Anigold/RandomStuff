@@ -6,7 +6,15 @@ import argparse
 import shlex
 import sys
 import subprocess
-import readline
+
+try:
+    import readline
+except ImportError:
+    import pyreadline3 as pry
+    import sys
+    sys.modules['readline'] = pry
+    import readline
+
 # import rlcompleter as readline
 
 from tabulate import tabulate
@@ -31,6 +39,7 @@ class CLI:
 
         self.autocomplete_registry = {}
         self._setup_autocomplete()
+
 
     def _register_commands(self) -> None:
         for function_name in dir(self):
@@ -58,6 +67,24 @@ class CLI:
         if CLI_HISTORY_FILE.exists():
             readline.read_history_file(str(CLI_HISTORY_FILE))
         readline.set_history_length(100)
+
+
+
+
+
+        # ADD NEWLINE PLACES AT TOP AND BOTTOM OF AUTOCOMPLETE RESULTS
+        # Save the original method
+        # _original_display_matches = readline.get_completer_delims
+
+        # def patched_display_matches(substitution, matches, longest_match_length):
+        #     print("\n")  # newline BEFORE suggestions
+        #     for match in matches:
+        #         print(match)
+        #     print()  # newline AFTER suggestions
+
+        # readline.set_completion_display_matches_hook(patched_display_matches)
+        
+
 
         self._register_autocomplete()
         
@@ -133,8 +160,8 @@ class CLI:
     def register_autocomplete(self, command: str, handler):
         self.autocomplete_registry[command] = handler
 
-    def start(self) -> None:
-        print('\nWelcome to WorkBot CLI! Type "help" to see available commands.\n')
+    def start(self, welcome_screen: str = '\nWelcome to your CLI. Type "help" to see available commands.\n') -> None:
+        print(welcome_screen)
         self._run()
     
     def cmd_shutdown(self, args):
@@ -161,10 +188,10 @@ class CLI:
 
         # Save command history before exit
       
-        try:
-            readline.write_history_file(str(CLI_HISTORY_FILE))
-        except Exception as e:
-            print(f"Warning: Failed to save history ({e})")
+        # try:
+        #     readline.write_history_file(str(CLI_HISTORY_FILE))
+        # except Exception as e:
+        #     print(f"Warning: Failed to save history ({e})")
 
         sys.exit(0)
 

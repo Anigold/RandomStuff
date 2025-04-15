@@ -29,8 +29,8 @@ from backend.vendors.VendorManager import VendorManager
 
 from backend.vendors.vendor_bots.USFoodsBot import USFoodsBot
 from datetime import date
-
-
+import json
+from config.paths import VENDORS_DIR
 from pathlib import Path
 
 from backend.workbot.WorkBot import WorkBot
@@ -46,6 +46,7 @@ ORDER_FILES_PATH   = SOURCE_PATH / 'ordering' / 'OrderFiles'
 PRICING_FILES_PATH = SOURCE_PATH / 'pricing'
 DOWNLOAD_PATH      = SOURCE_PATH / 'downloads'
 TRANSFER_PATH      = SOURCE_PATH / 'transferring'
+
 
 def get_files(path: str) -> list:
 	return [file for file in listdir(path) if isfile(join(path, file))]
@@ -346,10 +347,19 @@ if __name__ == '__main__':
     #     transfers.append(transfer)
     # work_bot.input_transfers(transfers)
 
-    work_bot = WorkBot()
-    work_bot.generate_vendor_order_emails(stores=['Bakery'], vendors=['Equal Exchange', 'Copper Horse Coffee'])
+    # work_bot = WorkBot()
+    # work_bot.generate_vendor_order_emails(stores=['Bakery'], vendors=['Equal Exchange', 'Copper Horse Coffee'])
 
+    vendor_manager = VendorManager()
+    with open(VENDORS_DIR / 'vendors.json', "r") as f:
+        vendors = json.load(f)
 
+    # Add ordering structure
+    vendors = vendor_manager.add_ordering_template_to_all(vendors)
+
+    # Save back to file
+    with open(VENDORS_DIR / 'vendors.json', "w") as f:
+        json.dump(vendors, f, indent=4)
 
 
     vendor_to_print = [

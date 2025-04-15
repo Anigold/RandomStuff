@@ -114,3 +114,30 @@ class VendorManager:
             raise ValueError(f"Missing credentials for {vendor_name}. Check your .env file.")
 
         return {"username": username, "password": password}
+
+
+    def add_ordering_template_to_all(self, vendors_data: dict) -> dict:
+        """
+        Adds a default 'ordering' block to each vendor with fields to support
+        email, portal, or phone ordering methods.
+        """
+        for vendor_name, vendor_info in vendors_data.get("vendors", {}).items():
+            if "ordering" not in vendor_info:
+                vendor_info["ordering"] = {
+                    "method": [],           # ["email"], ["portal"], ["phone"], etc.
+                    "email": "",
+                    "portal_url": "",
+                    "phone_number": "",
+                    "schedule": [
+                        {
+                            "order_day": "",
+                            "delivery_days": [],
+                            "cutoff_time": ""
+                        }
+                    ]
+                }
+        return vendors_data
+
+
+    
+    

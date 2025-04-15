@@ -30,4 +30,24 @@ def open_log_terminal():
 
 if __name__ == '__main__':
     # open_log_terminal()
-    WorkBotCLI().start()
+
+    workbot_cli = WorkBotCLI()
+    work_bot = workbot_cli.workbot
+
+
+    welcome_screen = rf'''
+    
+ ██╗    ██╗ ██████╗ ██████╗ ██╗  ██╗██████╗  ██████╗ ████████╗
+ ██║    ██║██╔═══██╗██╔══██╗██║ ██╔╝██╔══██╗██╔═══██╗╚══██╔══╝
+ ██║ █╗ ██║██║   ██║██████╔╝█████╔╝ ██████╔╝██║   ██║   ██║   
+ ██║███╗██║██║   ██║██╔══██╗██╔═██╗ ██╔══██╗██║   ██║   ██║   
+ ╚███╔███╔╝╚██████╔╝██║  ██║██║  ██╗██████╔╝╚██████╔╝   ██║   
+  ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝  ╚═════╝    ╚═╝   
+
+                  Welcome to WorkBot CLI
+            Automate Orders. Eliminate Tedium.
+
+{work_bot.welcome_to_work()}
+'''
+
+    workbot_cli.start(welcome_screen)
