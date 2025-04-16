@@ -68,15 +68,20 @@ class WorkBot:
     def delete_orders(self, stores, vendors=[]):
         self.craft_bot.delete_orders(stores, vendors)
 
-    def input_transfers(self, transfers: list):
+    def input_transfers(self):
+        transfer_file_dir = self.transfer_manager.get_transfer_files_directory()
+         
+        transfers = [TransferManager.create_transfer_from_excel(transfer_file) for transfer_file in transfer_file_dir.iterdir() if transfer_file.is_file()]
+
         self.craft_bot.input_transfers(transfers)
 
-    def convert_order_to_transfer(self, order: Order) -> Transfer:
+    def convert_order_to_transfer(self, order_store, vendor, store_to):
         '''This is so niche that we only need to use it once a week, but it removes tedium from my life so it stays.'''
         # print(order.items, flush=True)
 
+        order = self.get_orders(order_store, vendor)[0]
         if order.vendor == 'Ithaca Bakery': 
-            store_from = 'BAKERY'
+            store_from = 'Bakery'
         else:
             store_from = order.vendor
 
@@ -87,12 +92,16 @@ class WorkBot:
 
         order_datetime = string_to_datetime(order.date)
 
-        return Transfer(
+        transfer = Transfer(
             store_from=store_from,
             store_to=order.store,
             date=order_datetime,
             items=transfer_items
             )
+        
+        return self.transfer_manager.save_transfer(transfer=transfer)
+        
+
 
     def generate_vendor_upload_files(self, orders: list):
 

@@ -13,11 +13,29 @@ class TransferItem:
 
 class Transfer:
 
-    def __init__(self, store_from: str, store_to: str, date: datetime, items: set[TransferItem] = None) -> None:
+    def __init__(self, store_from: str, store_to: str, date: datetime, items: list[TransferItem] = None) -> None:
         self.store_from = store_from
         self.store_to   = store_to
         self.items      = items or []
         self.date       = date
+
+    def load_items_from_excel(self, excel_path):
+
+        workbook = load_workbook(excel_path)
+        sheet = workbook.active
+
+        # col_headers = ['SKU', 'Item', 'Quantity', 'Cost Per', 'Total Cost']
+
+        for row in sheet.iter_rows(min_row=2):
+            name, quantity= row[0:2]
+            transfer_item = TransferItem(
+                name=name.value,
+                quantity=quantity.value,
+            )
+            self.items.append(transfer_item)
+            
+        return
+
 
     def to_excel_workbook(self) -> Workbook:
         
@@ -32,8 +50,8 @@ class Transfer:
 
         # Insert item data
         for pos, item in enumerate(self.items):
-            for info_pos, item_info in enumerate(item):
-                sheet.cell(row=pos+2, column=info_pos+1).value = item_info
+            sheet.cell(row=pos+2, column=1).value = item.name
+            sheet.cell(row=pos+2, column=2).value = item.quantity
 
         return workbook
     

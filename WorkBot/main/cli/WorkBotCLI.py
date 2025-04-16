@@ -188,10 +188,10 @@ class CLI:
 
         # Save command history before exit
       
-        # try:
-        #     readline.write_history_file(str(CLI_HISTORY_FILE))
-        # except Exception as e:
-        #     print(f"Warning: Failed to save history ({e})")
+        try:
+            readline.write_history_file(str(CLI_HISTORY_FILE))
+        except Exception as e:
+            print(f"Warning: Failed to save history ({e})")
 
         sys.exit(0)
 
@@ -553,6 +553,45 @@ Internal Contacts:
         return [option for option in flags.get(flag, [])() if option.startswith(text)]
 
 
+# CONVERT ORDER TO TRANSFER
+    def args_convert_order_to_transfer(self):
+        parser = argparse.ArgumentParser(prog='convert_order_to_transfer', description='Find an order active order with the given store and vendor, and then convert it to a transfer.')
+        parser.add_argument('--order_store', required=True, help='The store which the order belongs to.')
+        parser.add_argument('--vendor', required=True, help='A single vendor name.')
+        parser.add_argument('--store_from', required=True, help='The store the transfer should be sent from.')
+        return parser
+    
+    def cmd_convert_order_to_transfer(self, args):
+
+        try:
+            parser = self.args_convert_order_to_transfer()
+            parsed_args = parser.parse_args(args)
+            self.workbot.convert_order_to_transfer(parsed_args.order_store, parsed_args.vendor, parsed_args.store_from)
+        except SystemExit:
+            pass
+
+    def _autocomplete_convert_order_to_transfer(self, flag: str, text: str):
+        flags = {
+            '--order_store': self._get_stores,
+            '--vendor': self._get_vendors,
+            '--store_from': self._get_stores
+        }
+        
+        return [option for option in flags.get(flag, [])() if option.startswith(text)]
+    
+# INPUT TRANSFERS
+    def args_input_transfers(self):
+        parser = argparse.ArgumentParser(prog='input_transfers', description='Input into Craftable all the transfers found in the Transfers Directory.')
+        return parser
+
+    def cmd_input_transfers(self, args):
+
+        try:
+            self.workbot.input_transfers()
+        except SystemExit:
+            pass
+
+        
     def _get_stores(self):
         return [store.name for store in self.workbot.store_manager.list_stores()]
     

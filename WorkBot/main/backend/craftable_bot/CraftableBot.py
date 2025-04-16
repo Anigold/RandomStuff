@@ -428,7 +428,7 @@ class CraftableBot:
         self._input_transfer_items(transfer)
 
         self.logger.info(f'Transfer for {len(transfer.items)} items from {transfer.store_from} to {transfer.store_to} on {transfer.date} completed successfully.')
-        
+        # NEED TO MOVE THE COMPLETED TRANSFER FILE TO THE "COMPLETED" DIRECTORY
         # submit_transfer_button = self.driver.find_element(By.XPATH, './/a[text()="Request"]')
         return
 
