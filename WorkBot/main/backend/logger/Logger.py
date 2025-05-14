@@ -163,13 +163,13 @@ class JsonFormatter(logging.Formatter):
     '''Custom JSON log formatter for structured logging.'''
     def format(self, record):
         return json.dumps({
-            'time': self.formatTime(record),
-            'level': record.levelname,
-            'name': record.name,
-            'message': record.getMessage(),
-            'filename': record.filename,
-            'lineno': record.lineno,
-            'funcName': record.funcName,
+            'time':       self.formatTime(record),
+            'level':      record.levelname,
+            'name':       record.name,
+            'message':    record.getMessage(),
+            'filename':   record.filename,
+            'lineno':     record.lineno,
+            'funcName':   record.funcName,
             'threadName': record.threadName
         })
 

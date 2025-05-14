@@ -101,8 +101,6 @@ class WorkBot:
         
         return self.transfer_manager.save_transfer(transfer=transfer)
         
-
-
     def generate_vendor_upload_files(self, orders: list):
 
         for order in orders:
@@ -206,17 +204,11 @@ class WorkBot:
 
         return emails
 
-
-
     def shutdown(self) -> None:
         """Exits the CLI loop."""
         self.close_craftable_session()
         print("Exiting WorkBot CLI.")
-        exit()
-
-
-
-
+        # exit()
 
     def _get_today_date_and_day(self):
         today = datetime.today()

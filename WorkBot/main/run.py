@@ -10,7 +10,7 @@ from backend.helpers.selenium_helpers import create_driver, create_options
 
 from backend.helpers import  FormatItemData
 
-
+from openpyxl import load_workbook, Workbook
 
 # from backend.printing.Printer import Printer
 from backend.emailer.Emailer import Emailer
@@ -32,6 +32,7 @@ from datetime import date
 import json
 from config.paths import VENDORS_DIR
 from pathlib import Path
+from pprint import pprint
 
 from backend.workbot.WorkBot import WorkBot
 
@@ -51,18 +52,8 @@ TRANSFER_PATH      = SOURCE_PATH / 'transferring'
 def get_files(path: str) -> list:
 	return [file for file in listdir(path) if isfile(join(path, file))]
 
-
-
-
 def get_excel_files(path: Path) -> list[Path]:
 	return [path / file for file in listdir(path) if isfile(join(path, file)) and file.endswith('.xlsx') and '~' not in file]
-
-
-
-
-
-
-
 
 def prepare_email_to_send(email: Email) -> None:
 
@@ -153,7 +144,6 @@ def print_schedule_daily(day: int) -> None:
 
     return printer_object.print_file(f'{path_to_schedules}{schedule[day]}.pdf')
 
-
 def get_day(day_of_week: str):
     days = {
         'Sunday': 0,
@@ -195,7 +185,7 @@ def produce_pricing_and_email(driver) -> None:
     emailer.display_email(email)
     return
 
-def download_pricing_sheets(driver, vendors=['Performance Food', 'US Foods', 'BEHLOG & SON, INC.', 'Russo Produce',], guides=['IBProduce']) -> None:
+def download_pricing_sheets(driver, vendors=['Sysco', 'Performance Food', 'US Foods', 'Russo Produce',], guides=['IBProduce']) -> None:
 
     for vendor in vendors:
 
@@ -205,22 +195,26 @@ def download_pricing_sheets(driver, vendors=['Performance Food', 'US Foods', 'BE
         # print(bot, flush=True)
         for pricing_guide in guides:
 
-            if vendor not in ['US Foods', 'Sysco', 'Performance Food']:
+            if vendor not in [
+                 'US Foods', 
+                #  'Sysco', 
+                #  'Performance Food'
+                ]:
                 file_name = bot.retrieve_pricing_sheet(pricing_guide)
                 # file_name = None
                 new_file_name = PRICING_FILES_PATH / 'VendorSheets' / f'{bot.name}_{pricing_guide}_{date.today()}.{file_name.split(".")[1]}'
 
             elif vendor == 'US Foods':
                 file_name = 'US Foods_IBProduce.csv'
-                new_file_name = PRICING_FILES_PATH / 'VendorSheets' / 'US Foods_IBProduce_2025-03-23.csv'
+                new_file_name = PRICING_FILES_PATH / 'VendorSheets' / 'US Foods_IBProduce_2025-05-11.csv'
             
-            elif vendor == 'Sysco':
-                file_name = 'Sysco_IBProduce.csv'
-                new_file_name = PRICING_FILES_PATH / 'VendorSheets' / 'Sysco_IBProduce_2025-03-23.csv'
+            # elif vendor == 'Sysco':
+            #     file_name = 'Sysco_IBProduce.csv'
+            #     new_file_name = PRICING_FILES_PATH / 'VendorSheets' / 'Sysco_IBProduce_2025-03-23.csv'
             
-            elif vendor == 'Performance Food':
-                file_name = 'Performance Food_IBProduce.xlsx'
-                new_file_name = PRICING_FILES_PATH / 'VendorSheets' / 'Performance Food_IBProduce_2025-03-23.xlsx'
+            # elif vendor == 'Performance Food':
+            #     file_name = 'Performance Food_IBProduce.xlsx'
+            #     new_file_name = PRICING_FILES_PATH / 'VendorSheets' / 'Performance Food_IBProduce_2025-03-23.xlsx'
 
             # new_file_name = PRICING_FILES_PATH / 'VendorSheets' / f'{bot.name}_{pricing_guide}_{date.today()}.{file_name.split(".")[1]}'
 
@@ -231,7 +225,7 @@ def download_pricing_sheets(driver, vendors=['Performance Food', 'US Foods', 'BE
         
     return
 
-def generate_pricing_sheets(vendors=['Sysco', 'Performance Food', 'US Foods', 'BEHLOG & SON, INC.', 'Russo Produce',], guides=['IBProduce']):
+def generate_pricing_sheets(vendors=['Sysco', 'Performance Food', 'US Foods', 'Russo Produce',], guides=['IBProduce']):
         pricer = PriceComparator()
         # pricer.item_skus_file_path = f'{PRICING_FILES_PATH}\\ItemSkus.xlsx'
         for guide in guides:
@@ -245,7 +239,6 @@ def delete_all_files_without_extension(directory: str, extension: str) -> None:
         if isfile(join(directory, file)) and not file.endswith(extension):
             os_remove(f'{directory}\\{file}')
     return
-
 
 def generate_weekly_orders_email(store: str, to: list):
 
@@ -329,37 +322,7 @@ if __name__ == '__main__':
     # gmail_service.send_email(test_email_data)
 
 
-    # CONVERT ITHACA_BAKERY ORDERS TO TRANSFERS
-    # work_bot = WorkBot()
-    # transfers_directory = TransferManager.get_transfer_files_directory()
-    
-    # ib_orders = work_bot.order_manager.get_vendor_orders('Ithaca Bakery')
-
-    # transfers = []
-    # for i in ib_orders:
-    #     # print(i, flush=True)
-    #     metadata = OrderManager.parse_file_name(i)
-    #     order = Order(metadata['store'], metadata['vendor'], metadata['date'])
-    #     order.load_items_from_excel(i)
-    #     transfer = work_bot.convert_order_to_transfer(order)
-    #     # if order.store in ['Easthill', 'Collegetown', 'Triphammer',]:
-    #     #     transfers.append(transfer)
-    #     transfers.append(transfer)
-    # work_bot.input_transfers(transfers)
-
-    # work_bot = WorkBot()
-    # work_bot.generate_vendor_order_emails(stores=['Bakery'], vendors=['Equal Exchange', 'Copper Horse Coffee'])
-
-    vendor_manager = VendorManager()
-    with open(VENDORS_DIR / 'vendors.json', "r") as f:
-        vendors = json.load(f)
-
-    # Add ordering structure
-    vendors = vendor_manager.add_ordering_template_to_all(vendors)
-
-    # Save back to file
-    with open(VENDORS_DIR / 'vendors.json', "w") as f:
-        json.dump(vendors, f, indent=4)
+   
 
 
     vendor_to_print = [
@@ -395,15 +358,9 @@ if __name__ == '__main__':
 
 
     
-    # input('click enter when ready')
-    # setup_emails_for_sunday()
-
 
 
     
-    # milk_orders = tuple([join(f'{ORDER_FILES_PATH}\\Hillcrest Dairy\\', file) for file in listdir(f'{ORDER_FILES_PATH}\\Hillcrest Dairy\\') if isfile(join(f'{ORDER_FILES_PATH}\\Hillcrest Dairy\\', file)) and file.endswith('.pdf')])
-    # milk_email = Email(tuple([getenv('HILLCREST_DAIRY_CONTACT_EMAIL')]), 'Hillcrest Dairy Order', 'Please see attached for orders, thank you!', cc=None, attachments=milk_orders)
-    # prepare_email_to_send(milk_email)
 
 
     
@@ -417,18 +374,105 @@ if __name__ == '__main__':
     # input('Press ENTER to stop waiting.')
     # generate_pricing_sheets()
     
-    '''Smallwares Pricing Sheet Generation'''
-    # work_bot = WorkBot()
 
-    # webstaurant_bot = work_bot.vendor_manager.initialize_vendor('Webstaurant', driver=work_bot.craft_bot.driver)
+
+
+    # NEED A WHITELIST OF ITEMS OTHERWISE ALL ~2500 ITEMS WILL BE LISTED
+    # ANSWER: Use the par list and count only those items with a par above 0.
+    # Use the OrderForm Excel file, it has the pars and ordered amount baked in.
+
+
 
     
+    #{
+    #   item_name: {store_name: {onhand: qty, par: par, ordered: 0}, store_name: quantity}
+    #}
 
-    # undocumented_orders = webstaurant_bot.get_all_undocumented_orders()
+    def load_item_counts(files: list) -> dict:
 
-    # for order in reversed(undocumented_orders): # Go backwards to implicitly sort by ascending date
-    #     order_info = webstaurant_bot.get_order_info(order, download_invoice=True)
-    #     webstaurant_bot.update_pick_list(order_info)
+        item_counts = {}
+        filename_store_map = {
+            'East Hill Plaza': 'Easthill',
+            'Syracuse':        'Syracuse',
+            'College Ave':     'Collegetown',
+            'Triphammer Rd':   'Triphammer',
+            'State St':        'Downtown'
+        }
+
+        for filename in filename_store_map:
+            
+            orderform_path = [i for i in files if filename in i.name][0]
+        
+            orderform_workbook = load_workbook(orderform_path)
+            orderform_sheet = orderform_workbook.active
+
+            store_name = filename_store_map[filename]
+
+            for row in orderform_sheet.iter_rows(min_row=6):
+                item_par = row[2].value
+                if item_par <= 0: continue
+                 
+                item_name  = row[1].value
+                order_qty  = row[5].value
+                onhand_qty = row[3].value
+                
+                if item_name not in item_counts:
+                    item_counts[item_name] = {store_name: {'onhand': onhand_qty, 'par': item_par, 'ordered': order_qty}}
+                else:
+                    if store_name not in item_counts[item_name]:
+                        item_counts[item_name][store_name] = {'onhand': onhand_qty, 'par': item_par, 'ordered': order_qty}
+        
+        return item_counts
+    # pprint(item_counts)
+
+    def item_counts_to_excel_workbook(item_counts) -> Workbook:
+
+        comparison_workbook = Workbook()
+        sheet = comparison_workbook.active
+        stores = []
+        store_col_offset = 3
+        for pos, item in enumerate(item_counts):
+            item_name = item.split(' ')
+            item_unit = item_name[-1]
+            item_name = ' '.join(item_name[:-1])
+
+            item_info = item_counts[item]
+            sheet.cell(row=pos+2, column=1).value = item_name
+            sheet.cell(row=pos+2, column=2).value = item_unit
+            for store in item_info:
+                onhand  = item_info[store]['onhand']
+                ordered = item_info[store]['ordered']
+                par     = item_info[store]['par']
+
+                if store not in stores: stores.append(store)
+                store_index = stores.index(store)
+
+                store_col_pos = (store_index+1) * store_col_offset
+                sheet.cell(row=1, column=store_col_pos).value = store
+                sheet.cell(row=pos+2, column=store_col_pos).value = onhand
+                sheet.cell(row=pos+2, column=store_col_pos+1).value = par
+                sheet.cell(row=pos+2, column=store_col_pos+2).value = ordered
+
+        return comparison_workbook
 
 
+    dir_path = DOWNLOAD_PATH / 'testing'
+    orderform_file_paths = [i for i in dir_path.iterdir() if i.is_file() and 'Order Form' in i.name]
+
+    item_counts = load_item_counts(orderform_file_paths)
+    item_count_workbook = item_counts_to_excel_workbook(item_counts)
+    item_count_workbook.save('testing.xlsx')
+
+
+            
+
+
+            
+
+        # 1. Open audit
+        # 2. Extract necessary item counts
+            # a. Name: Col2, Unit Count: Col4, Total Count: Col-3
+        # 3. Update combine sheet
+            # a. Use order combine function?
+        # 4. Close audit
 

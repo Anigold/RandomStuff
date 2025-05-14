@@ -26,6 +26,7 @@ from config.paths import CLI_HISTORY_FILE
 import re
 
 from pprint import pprint
+import time
 
 class CLI:
 
@@ -164,7 +165,7 @@ class CLI:
         print(welcome_screen)
         self._run()
     
-    def cmd_shutdown(self, args):
+    def cmd_shutdown(self):
         '''Shuts down CLI.'''
         self._exit()
 
@@ -192,7 +193,7 @@ class CLI:
             readline.write_history_file(str(CLI_HISTORY_FILE))
         except Exception as e:
             print(f"Warning: Failed to save history ({e})")
-
+        time.sleep(2)
         sys.exit(0)
 
     def _run(self):
@@ -215,7 +216,7 @@ class CLI:
                 
             except KeyboardInterrupt:
                 print('\nExiting CLI.')
-                self._exit(0)
+                self._exit()
                 break
 
 
@@ -229,6 +230,12 @@ class WorkBotCLI(CLI):
         super().__init__()
 
         # self.context = CommandContext(workbot=self.workbot)
+
+# SHUTDOWN OVERRIDE
+    def cmd_shutdown(self, args):
+        self.workbot.craft_bot.close_session()
+        super().cmd_shutdown()
+
 
 # DOWNLOAD ORDERS
     def cmd_download_orders(self, args):
@@ -578,6 +585,7 @@ Internal Contacts:
         }
         
         return [option for option in flags.get(flag, [])() if option.startswith(text)]
+
     
 # INPUT TRANSFERS
     def args_input_transfers(self):
@@ -591,7 +599,8 @@ Internal Contacts:
         except SystemExit:
             pass
 
-        
+
+# PRIVATE FUNCTIONS    
     def _get_stores(self):
         return [store.name for store in self.workbot.store_manager.list_stores()]
     
@@ -609,3 +618,37 @@ Internal Contacts:
     #     print('  generate_vendor_upload_files --vendors [VENDORS]                    # Generate vendor-specific upload files in the vendors\' order directory.')
     #     print("  help                                                                # Show available commands")
     #     print("  exit                                                                # Exit the CLI\n")
+
+
+# UPDATE SMALLWARES PICKLIST
+    def args_update_smallwares_picklist(self):
+        parser = argparse.ArgumentParser(prog='update_smallwares_picklist', description='Pull orders from Webstaurant history and update pick list.')
+        return parser
+
+    def cmd_update_smallwares_picklist(self, args):
+
+        try:
+            webstaurant_bot = self.workbot.vendor_manager.initialize_vendor('Webstaurant', driver=self.workbot.craft_bot.driver)
+            undocumented_orders = webstaurant_bot.get_all_undocumented_orders()
+
+            for order in reversed(undocumented_orders): # Go backwards to implicitly sort by ascending date
+                order_info = webstaurant_bot.get_order_info(order, download_invoice=True)
+                webstaurant_bot.update_pick_list(order_info)
+            
+            print('\nPicklist updated successfully.\n')
+
+        except SystemExit:
+            pass
+        except Exception as e:
+            print('Something went wrong...')
+            print(f'Here\'s a hint: {e}')
+
+
+# PRINT WEEKLY SCHEDULE
+    def args_print_weekly_schedule(self):
+        parser = argparse.ArgumentParser(prog='print_weekly_schedule', description='Print the standard weekly schedule (1 sheet per day).')
+        return parser
+
+    def cmd_print_weekly_schedule(self, args):
+
+        pass

@@ -152,7 +152,7 @@ class CraftableBot:
         except Exception as e: 
             self.logger.error(f'Error closing WebDriver session: {e}')
 
-        time.sleep(2)
+        self.logger.info('WebDriver session closed.')
         return
     
     '''
@@ -295,21 +295,21 @@ class CraftableBot:
         for store in stores:
             self.logger.info(f'Starting order deletion for store: {store}.')
             
-            if store not in stores:
-                self.logger.warning(f'Invalid store name: {store}, Skipping.')
-                continue
+            # if store not in stores:
+            #     self.logger.warning(f'Invalid store name: {store}, Skipping.')
+            #     continue
 
             store_orders_url = self.get_url('orders_page', store=store)
+            print(store_orders_url)
             self.logger.debug(f'Navigating to: {store_orders_url}')
             self.driver.get(store_orders_url)
             time.sleep(6)
 
-            table_body = self.driver.find_element(By.XPATH, './/tbody')
-            table_rows = table_body.find_elements(By.XPATH, './tr')
-
-            if not table_rows:
+            table_body = self.driver.find_elements(By.XPATH, './/tbody')
+            if not table_body:
                 self.logger.info(f'No orders found for store: {store}. Skipping.')
                 continue
+            table_rows = table_body[0].find_elements(By.XPATH, './tr')
 
             self.logger.info(f'Found {len(table_rows)} orders for deletion.')
 
@@ -596,7 +596,7 @@ class CraftableBot:
         original_file = self.order_manager.get_downloads_directory() / 'Order.pdf'
 
         if not original_file.exists():
-            self.logger.warding(f'Expected file not found: {original_file}')
+            self.logger.warning(f'Expected file not found: {original_file}')
             return
         
         new_filename = self.order_manager.generate_filename(store=store, vendor=vendor, date=date, file_extension='.pdf')
