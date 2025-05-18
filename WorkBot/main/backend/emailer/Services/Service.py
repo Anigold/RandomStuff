@@ -24,3 +24,11 @@ class Service(ABC):
     @abstractmethod
     def display_email(self, email_data: dict) -> None:
         pass
+
+    @abstractmethod
+    def get_recent_messages(self, subject_filter=None, sender_filter=None, max_age_minutes=10):
+        pass
+
+    @abstractmethod
+    def refresh_inbox(self):
+        pass

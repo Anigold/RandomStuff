@@ -34,3 +34,6 @@ def get_vendor_credentials(vendor_name: str):
         raise ValueError(f"Missing credentials for {vendor_name}. Check your .env file.")
 
     return {"username": username, "password": password}
+
+def _add_new_vendor_field(field_name: str, default_value):
+    pass

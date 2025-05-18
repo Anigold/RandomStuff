@@ -26,13 +26,14 @@ from backend.ordering.OrderManager import OrderManager
 from backend.ordering.Order import Order
 from backend.vendors.VendorManager import VendorManager
 
-
-from backend.vendors.vendor_bots.USFoodsBot import USFoodsBot
+# from backend.vendors.vendor_bots.USFoodsBot import USFoodsBot
 from datetime import date
 import json
 from config.paths import VENDORS_DIR
 from pathlib import Path
 from pprint import pprint
+import time
+import re
 
 from backend.workbot.WorkBot import WorkBot
 
@@ -185,7 +186,7 @@ def produce_pricing_and_email(driver) -> None:
     emailer.display_email(email)
     return
 
-def download_pricing_sheets(driver, vendors=['Sysco', 'Performance Food', 'US Foods', 'Russo Produce',], guides=['IBProduce']) -> None:
+def download_pricing_sheets(driver, vendors=['Sysco', 'Performance Food', 'US Foods',], guides=['IBFavorite']) -> None:
 
     for vendor in vendors:
 
@@ -456,18 +457,46 @@ if __name__ == '__main__':
         return comparison_workbook
 
 
-    dir_path = DOWNLOAD_PATH / 'testing'
-    orderform_file_paths = [i for i in dir_path.iterdir() if i.is_file() and 'Order Form' in i.name]
+    # dir_path = DOWNLOAD_PATH / 'testing'
+    # orderform_file_paths = [i for i in dir_path.iterdir() if i.is_file() and 'Order Form' in i.name]
 
-    item_counts = load_item_counts(orderform_file_paths)
-    item_count_workbook = item_counts_to_excel_workbook(item_counts)
-    item_count_workbook.save('testing.xlsx')
-
-
-            
+    # item_counts = load_item_counts(orderform_file_paths)
+    # item_count_workbook = item_counts_to_excel_workbook(item_counts)
+    # item_count_workbook.save('testing.xlsx')
 
 
             
+
+    outlook_service = OutlookService()
+    outlook_service.refresh_inbox()
+    time.sleep(5)
+    # # print(outlook_service.get_recent_messages(subject_filter="Your US Foods one time password", max_age_minutes=60))
+    for message in outlook_service.get_recent_messages(
+                                    subject_filter='Your US Foods one time passcode', 
+                                    max_age_minutes=60):
+        print(message)
+        break
+    
+    # def extract_otp_from_body(body: str) -> str | None:
+    #     match = re.search(r'\b\d{6}\b', body)
+    #     if match:
+    #         return match.group()
+    #     return None
+
+    # inbox = outlook_service.get_inbox()
+    # messages = inbox.Items
+    # messages.Sort("[ReceivedTime]", True)
+    # for pos, i in enumerate(messages):
+    #     if pos > 0: break
+    #     print(i.Subject)
+    #     # print(i.Body)
+    #     otp = extract_otp_from_body(i.Body)
+    #     print(otp)
+
+    # vendor_manager = VendorManager()
+    # us_foods_bot = vendor_manager.initialize_vendor('US Foods')
+    # us_foods_bot.login()
+
 
         # 1. Open audit
         # 2. Extract necessary item counts

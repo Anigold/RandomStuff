@@ -1,4 +1,4 @@
-from .VendorBot import VendorBot, SeleniumBotMixin, PricingBotMixin
+from .VendorBot import VendorBot, SeleniumBotMixin, PricingBotMixin, OTPMixin
 import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
@@ -8,14 +8,52 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from csv import writer, reader
 from pprint import pprint
+from backend.emailer.Emailer import Emailer
+from backend.emailer.Services.Outlook import OutlookService
+import re
 
+class USFoodsOTPProvider:
+
+    def __init__(self, email_service):
+        self.email_service = email_service or OutlookService()
+
+    def __call__(self):
+        print('Expecting OTP Email...refreshing inbox.', flush=True)
+        self.email_service.refresh_inbox()
+        time.sleep(20)
+        # message = self.email_service.get_recent_messages(
+        #     subject_filter='Your US Foods one time passcode',
+        #     max_age_minutes=10
+        # )
+        inbox = self.email_service.get_inbox()
+        messages = inbox.Items
+        messages.Sort("[ReceivedTime]", True)
+        for pos, i in enumerate(messages):
+            if pos > 0: break
+            # print(i.Subject)
+            # print(i.Body)
+            return self.extract_code(i.body)
+
+        # print('Heres the message', flush=True)
+        # print(message, flush=True)
+        # print(next(message), flush=True)
+        # return self.extract_code(message)
+    
+    def extract_code(self, message_body):
+        print('Extracting!', flush=True)
+        print(message_body, flush=True)
+        match = re.search(r'\b\d{6}\b', message_body)
+        return match.group() if match else None
+
+    
 class USFoodsBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
 
-    def __init__(self, driver: webdriver = None, username = None, password = None) -> None:
+    def __init__(self, driver: webdriver = None, username = None, password = None, otp_provider = None) -> None:
         VendorBot.__init__(self)
         SeleniumBotMixin.__init__(self, driver, username, password)
         self.name                 = "US Foods"
         self.minimum_order_amount = 500_00
+        self.otp_provider         = otp_provider(None)
 
         self.store_ids = {
             'BAKERY':      '91602987',
@@ -35,35 +73,68 @@ class USFoodsBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
 		    '88055': {'unit': 'EA', 'pack': 36},
 	    }
 
+        self.site_map = {
+            'home_page': 'https://order.usfoods.com/desktop/search/browse'
+        }
+
     def login(self) -> None:
-	
-        self.driver.get('https://connect.renzifoodservice.com/pnet/eOrder')
+        
+        if self.is_logged_in:
+            return
+        
+
+        self.driver.get(self.site_map['home_page'])
+        # self.driver.get('https://connect.renzifoodservice.com/pnet/eOrder')
+
+        # try:
+        #     WebDriverWait(self.driver, 10).until(EC.alert_is_present())
+        #     self.driver.switch_to.alert.accept()
+        # except:
+        #     pass
+        time.sleep(15)
+        login_button_redirect = self.driver.find_element(By.XPATH, '//ion-button[@data-cy="guest-login-header-button"]')
+        login_button_redirect.click()
 
         try:
-            WebDriverWait(self.driver, 10).until(EC.alert_is_present())
-            self.driver.switch_to.alert.accept()
+            WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.ID, 'signInName-facade')))
         except:
             pass
-        
-        username_input = self.driver.find_element(By.NAME, 'UserName')
-        password_input = self.driver.find_element(By.NAME, 'Password')
+
+        username_input = self.driver.find_element(By.ID, 'signInName-facade')
+        # password_input = self.driver.find_element(By.NAME, 'Password')
 
         username_input.send_keys(self.username)
-        password_input.send_keys(self.password)
+        # password_input.send_keys(self.password)
 
-        submit_button = self.driver.find_element(By.NAME, 'SubmitBtn')
+        submit_button = self.driver.find_element(By.ID, 'next')
         submit_button.click()
 
         try:
-            WebDriverWait(self.driver, 10).until(EC.alert_is_present())
-            self.driver.switch_to.alert.accept()
-        except:
-            pass
+            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.ID, 'Email')))
+            send_otp_email_button = self.driver.find_element(By.ID, 'Email')
+            send_otp_email_button.click()
+            time.sleep(10)
+            otp_code = self.otp_provider()
+            time.sleep(5)
+            print(otp_code, flush=True)
+            
+            
+        except Exception as e:
+            print(f'Something fucked up: {e}')
+
+        # opt_code = USFoodsOTPProvider()
+        # outlook_service = OutlookService()
+        # outlook_service.refresh_inbox()
+        # time.sleep(7)
+        # for message in outlook_service.get_recent_messages(subject_filter="Your US Foods one time password"):
+        #     print(message.Body)
+        #     break
 
         time.sleep(5)
 
         self.is_logged_in = True
         return
+
 
     def logout(self) -> None:
         logout_button = self.driver.find_element(By.XPATH, '//span[@title="Sign Off"]')

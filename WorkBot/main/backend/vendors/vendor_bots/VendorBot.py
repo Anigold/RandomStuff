@@ -245,3 +245,6 @@ class PricingBotMixin(ABC):
     def _special_case_info(self, unit: str, pack: float) -> dict:
         return {'unit': unit, 'pack': pack}
     
+class OTPMixin(ABC):
+    def __init__(self, retrieve_otp_callback):
+        self.retrieve_otp_callback = retrieve_otp_callback

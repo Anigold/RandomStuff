@@ -67,7 +67,14 @@ class VendorManager:
                 'username': credentials['username'],
                 'password': credentials['password']
             })
-            
+        
+        if vendor_info.get('requires_otp', False):
+            otp_module = importlib.import_module(vendor_info['module_path'])
+            provider = getattr(otp_module, f'{vendor_info['bot_class'][0:-3]}OTPProvider')
+            init_kwargs.update({
+                'otp_provider': provider
+            })
+
         return bot_class(*init_args, **init_kwargs)
 
     def get_active_vendor(self, vendor_name):
