@@ -16,10 +16,11 @@ TRANSFERRING_DIR   = BACKEND_DIR / 'transferring'
 TRANSFER_FILES_DIR = TRANSFERRING_DIR / 'TransferFiles'
 DOWNLOADS_DIR      = BACKEND_DIR / 'downloads'
 CREDENTIALS_DIR    = BACKEND_DIR / 'credentials'
+ITEMS_DIR          = BACKEND_DIR / 'items'
 
 # CONSTANT FILE PATHS
 CLI_HISTORY_FILE = BASE_DIR / 'cli' / '.cli_history'
 MASTER_LOG_FILE  = BASE_DIR / 'logs' / 'master.log'
 STORES_DATA_FILE = STORES_DIR / 'stores.json'
-
+ITEMS_DATA_FILE  = ITEMS_DIR / 'items.json'
 

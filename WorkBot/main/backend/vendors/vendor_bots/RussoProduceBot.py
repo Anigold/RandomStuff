@@ -91,7 +91,7 @@ class RussoProduceBot(VendorBot, PricingBotMixin):
             item_sku  = str(row[1])
             item_name = str(row[0])
 
-            if row[3] == None or row[2] == None: continue
+            if row[3] == None or row[2] == None or row[1] == None: continue
 
             # print(row, flush=True)
             pack_size = ''

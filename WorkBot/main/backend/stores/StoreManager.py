@@ -2,12 +2,13 @@ from .Store import Store
 import json
 from pathlib import Path
 from config.paths import STORES_DATA_FILE
+from pprint import pprint
 
 class StoreManager:
 
-    def __init__(self, storage_file: Path = STORES_DATA_FILE):
+    def __init__(self, storage_file: Path):
         self.stores = {}
-        self.storage_file = storage_file
+        self.storage_file = storage_file or STORES_DATA_FILE
         self.load_stores()
 
     def add_store(self, store_id: int, name: str) -> None:

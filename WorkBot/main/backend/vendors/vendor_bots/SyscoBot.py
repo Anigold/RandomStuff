@@ -100,6 +100,7 @@ class SyscoBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
         if not self.is_logged_in:
             self.login()
        
+        time.sleep(10)
         # Make sure we're on the Ithaca Bakery location
         location_dropdown = self.driver.find_element(By.CLASS_NAME, 'account-flyout-opener')
         if location_dropdown.text != self.store_ids['BAKERY']:

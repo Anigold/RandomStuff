@@ -11,20 +11,20 @@
             "special_notes": "",
             "internal_contacts": [
                 {
-                    "name": "Jason McQuaid",
+                    "name": "Garret Wyatt",
                     "title": "Sales Representative",
-                    "email": "jmcquaid@algeorgeco.com",
-                    "phone": "6072151066"
+                    "email": "gwyatt@algeorgeco.com",
+                    "phone": "6072296039"
                 }
             ],
             "ordering": {
                 "method": ["email", "phone"],
-                "email": "jmcquaid@algeorgeco.com",
+                "email": "gwyatt@algeorgeco.com",
                 "portal_url": "",
-                "phone_number": "6072151066",
+                "phone_number": "6072296039",
                 "schedule": [
                     {
-                        "order_day": "monday",
+                        "order_day": "Monday",
                         "delivery_days": ["Tuesday"],
                         "cutoff_time": "3:00 PM"
                     }
@@ -362,7 +362,7 @@
             "uses_selenium": false,
             "requires_credentials": false,
             "order_format": "",
-            "min_order_value": 250,
+            "min_order_value": 850,
             "min_order_cases": 0,
             "special_notes": "",
             "internal_contacts": [
@@ -404,10 +404,10 @@
                     "phone": "3156575562"
                 },
                 {
-                    "name": "Jane Smith",
+                    "name": "Kyleigh Hayner",
                     "title": "Inside Sales Representative",
-                    "email": "",
-                    "phone": ""
+                    "email": "khayner@hillnmarkes.com",
+                    "phone": "5186274507"
                 }
             ],
             "ordering": {
@@ -487,7 +487,7 @@
                     {
                         "order_day": "Monday",
                         "delivery_days": ["Tuesday"],
-                        "cutoff_time": ""
+                        "cutoff_time": "10:00 AM"
                     }
                 ]
             }
@@ -612,15 +612,15 @@
             "special_notes": "",
             "internal_contacts": [],
             "ordering": {
-                "method": [],
+                "method": ["portal"],
                 "email": "",
-                "portal_url": "",
+                "portal_url": "https://catalog.regdist.com",
                 "phone_number": "",
                 "schedule": [
                     {
-                        "order_day": "",
-                        "delivery_days": [],
-                        "cutoff_time": ""
+                        "order_day": "Monday",
+                        "delivery_days": ["Tuesday"],
+                        "cutoff_time": "3:00 PM"
                     }
                 ]
             }
@@ -686,32 +686,26 @@
             "uses_selenium": true,
             "requires_credentials": true,
             "order_format": "TXT",
-            "min_order_value": 200,
-            "min_order_cases": 4,
+            "min_order_value": 0,
+            "min_order_cases": 20,
             "special_notes": "Requires 2-step authentication.",
             "internal_contacts": [
                 {
-                    "name": "John Doe",
+                    "name": "Martin Lasskorn",
                     "title": "Sales Representative",
-                    "email": "johndoe@behlogproduce.com",
-                    "phone": "555-123-4567"
-                },
-                {
-                    "name": "Jane Smith",
-                    "title": "Customer Support",
-                    "email": "support@behlogproduce.com",
-                    "phone": "555-987-6543"
+                    "email": "martin.lasskorn@pfgc.com",
+                    "phone": "6075920475"
                 }
             ],
             "ordering": {
-                "method": [],
+                "method": ["portal"],
                 "email": "",
-                "portal_url": "",
+                "portal_url": "https://www.customerfirstsolutions.com/",
                 "phone_number": "",
                 "schedule": [
                     {
-                        "order_day": "",
-                        "delivery_days": [],
+                        "order_day": "Sunday",
+                        "delivery_days": ["Tuesday"],
                         "cutoff_time": ""
                     }
                 ]
@@ -728,16 +722,10 @@
             "special_notes": "",
             "internal_contacts": [
                 {
-                    "name": "John Doe",
-                    "title": "Sales Representative",
-                    "email": "johndoe@behlogproduce.com",
-                    "phone": "555-123-4567"
-                },
-                {
-                    "name": "Jane Smith",
-                    "title": "Customer Support",
-                    "email": "support@behlogproduce.com",
-                    "phone": "555-987-6543"
+                    "name": "John Russo",
+                    "title": "Owner",
+                    "email": "rusopro@yahoo.com",
+                    "phone": "3154397264"
                 }
             ],
             "ordering": {
@@ -765,16 +753,10 @@
             "special_notes": "Sysco account required.",
             "internal_contacts": [
                 {
-                    "name": "John Doe",
+                    "name": "John Burnette",
                     "title": "Sales Representative",
-                    "email": "johndoe@behlogproduce.com",
-                    "phone": "555-123-4567"
-                },
-                {
-                    "name": "Jane Smith",
-                    "title": "Customer Support",
-                    "email": "support@behlogproduce.com",
-                    "phone": "555-987-6543"
+                    "email": "john.burnette@sysco.com",
+                    "phone": "5857471256"
                 }
             ],
             "ordering": {
@@ -800,20 +782,7 @@
             "min_order_value": 1500,
             "min_order_cases": 4,
             "special_notes": "Minimum order $1,500.",
-            "internal_contacts": [
-                {
-                    "name": "John Doe",
-                    "title": "Sales Representative",
-                    "email": "johndoe@behlogproduce.com",
-                    "phone": "555-123-4567"
-                },
-                {
-                    "name": "Jane Smith",
-                    "title": "Customer Support",
-                    "email": "support@behlogproduce.com",
-                    "phone": "555-987-6543"
-                }
-            ],
+            "internal_contacts": [],
             "ordering": {
                 "method": [],
                 "email": "",
@@ -925,8 +894,8 @@
             "special_notes": "",
             "internal_contacts": [
                 {
-                    "name": "Jeira Martinez",
-                    "title": "Customer Service Manager",
+                    "name": "General Customer Support Agent",
+                    "title": "Customer Service Agent",
                     "email": "service@sweetsams.com",
                     "phone": "718-822-0599"
                 }

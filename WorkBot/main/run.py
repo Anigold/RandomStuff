@@ -56,107 +56,7 @@ def get_files(path: str) -> list:
 def get_excel_files(path: Path) -> list[Path]:
 	return [path / file for file in listdir(path) if isfile(join(path, file)) and file.endswith('.xlsx') and '~' not in file]
 
-def prepare_email_to_send(email: Email) -> None:
 
-    emailer = Emailer(service=Outlook)
-
-    # to           = email['to'] if 'to' in email else None
-    # subject      = email['subject'] if 'subject' in email else None
-    # body         = email['body'] if 'body' in email else None
-    # cc           = email['cc'] if 'cc' in email else None
-    # attachments  = email['attachments'] if 'attachments' in email else None
-
-    # email_object = Email(to, subject, body, cc=cc, attachments=attachments)
-    
-    emailer.create_email(email)
-    return emailer.display_email(email)
-
-def setup_emails_for_sunday() -> None:
-    
-    copper_horse_combined_order_attachment  = tuple([f'{ORDER_FILES_PATH}\\Copper Horse Coffee\\combined_order.xlsx'])
-    equal_exchange_order_attachments        = tuple([join(f'{ORDER_FILES_PATH}\\Equal Exchange\\', file) for file in listdir(f'{ORDER_FILES_PATH}\\Equal Exchange\\') if isfile(join(f'{ORDER_FILES_PATH}\\Equal Exchange\\', file)) and file.endswith('.pdf')])
-    finger_lakes_farms_order_attachments    = tuple([join(f'{ORDER_FILES_PATH}\\FingerLakes Farms\\', file) for file in listdir(f'{ORDER_FILES_PATH}\\FingerLakes Farms\\') if isfile(join(f'{ORDER_FILES_PATH}\\FingerLakes Farms\\', file)) and file.endswith('.pdf')])
-    # euro_cafe_order_attachments             = tuple([join(f'{ORDER_FILES_PATH}\\Eurocafe Imports\\', file) for file in listdir(f'{ORDER_FILES_PATH}\\Eurocafe Imports\\') if isfile(join(f'{ORDER_FILES_PATH}\\Eurocafe Imports\\', file)) and file.endswith('.pdf')])
-    # macro_mamas_order_attachments           = tuple([join(f'{ORDER_FILES_PATH}\\Macro Mamas\\', file) for file in listdir(f'{ORDER_FILES_PATH}\\Macro Mamas\\') if isfile(join(f'{ORDER_FILES_PATH}\\Macro Mamas\\', file)) and file.endswith('.pdf')])
-    
-    sunday_emailer = Emailer(service=Outlook)
-
-    emails = [
-        {
-        'subject': 'Equal Exchange Order',
-        'to': ['orders@equalexchange.coop'],
-        'body': 'Please see attached for orders, thank you!',
-        'attachments': equal_exchange_order_attachments
-        },
-        # {
-        # 'subject': 'Euro Cafe Order',
-        # 'to': ['sales@eurocafeimports.com'],
-        # 'body': 'Please see attached for orders, thank you!',
-        # 'cc': 'scott.tota@eurocafeimports.com',
-        # 'attachments': euro_cafe_order_attachments
-        # },
-        {
-        'subject': 'Fingerlakes Farms Order',
-        'to': ['orders@ilovenyfarms.com'],
-        'body': 'Please see attached for orders, thank you!',
-        'attachments': finger_lakes_farms_order_attachments
-        },
-        # {
-        # 'subject': 'Macro Mama Order',
-        # 'to': ['macromamas@gmail.com'],
-        # 'body': 'Please see attached for orders, thank you!',
-        # 'attachments': macro_mamas_order_attachments
-        # },
-        {
-        'subject': 'Copper Horse Order',
-        'to': ['copperhorsecoffee@gmail.com'],
-        'body': 'Please see attached for orders, thank you!',
-        'attachments': copper_horse_combined_order_attachment
-        }
-    ]
-
-    for email in emails:
-        cc              = email['cc'] if 'cc' in email else None
-        attachments     = email['attachments'] if 'attachments' in email else None
-        email_object    = Email(tuple(email['to']), email['subject'], email['body'], cc=cc, attachments=attachments)
-
-        sunday_emailer.create_email(email_object)
-        sunday_emailer.display_email(email_object)
-
-    return
-
-def print_schedule_daily(day: int) -> None:
-
-    schedule = {
-        0: 'Sunday',
-        1: 'Monday',
-        2: 'Tuesday',
-        3: 'Wednesday',
-        4: 'Thursday',
-        5: 'Friday',
-        6: 'Saturday'
-    }
-
-    if day not in schedule:
-        return None
-    
-    path_to_schedules = 'C:\\Users\\Will\\Desktop\\Andrew\\Projects\\RandomStuff\\WorkBot\\main\\Schedules\\'
-    printer_object = Printer()
-
-    return printer_object.print_file(f'{path_to_schedules}{schedule[day]}.pdf')
-
-def get_day(day_of_week: str):
-    days = {
-        'Sunday': 0,
-        'Monday': 1,
-        'Tuesday': 2,
-        'Wednesday': 3,
-        'Thursday': 4,
-        'Friday': 5,
-        'Saturday': 6
-    }
-
-    return days[day_of_week] if day_of_week in days else None
 
 def produce_pricing_and_email(driver) -> None:
 
@@ -186,7 +86,7 @@ def produce_pricing_and_email(driver) -> None:
     emailer.display_email(email)
     return
 
-def download_pricing_sheets(driver, vendors=['Sysco', 'Performance Food', 'US Foods',], guides=['IBFavorite']) -> None:
+def download_pricing_sheets(driver, vendors=['Russo Produce',], guides=['IBProduce']) -> None:
 
     for vendor in vendors:
 
@@ -207,7 +107,7 @@ def download_pricing_sheets(driver, vendors=['Sysco', 'Performance Food', 'US Fo
 
             elif vendor == 'US Foods':
                 file_name = 'US Foods_IBProduce.csv'
-                new_file_name = PRICING_FILES_PATH / 'VendorSheets' / 'US Foods_IBProduce_2025-05-11.csv'
+                new_file_name = PRICING_FILES_PATH / 'VendorSheets' / f'US Foods_IBProduce_{date.today()}.csv'
             
             # elif vendor == 'Sysco':
             #     file_name = 'Sysco_IBProduce.csv'
@@ -241,23 +141,7 @@ def delete_all_files_without_extension(directory: str, extension: str) -> None:
             os_remove(f'{directory}\\{file}')
     return
 
-def generate_weekly_orders_email(store: str, to: list):
 
-    order_paths_by_store = get_pdfs_by_store(ORDER_FILES_PATH, store)
-    # pprint.pprint(order_paths_by_store)
-    emailer = Emailer(service=Outlook)
-
-    store_orders_path = order_paths_by_store[store]
-    email = Email(
-        tuple(to), 
-        'Weekly Orders', 
-        '',
-        attachments=tuple(store_orders_path)
-    )
-    
-    emailer.create_email(email)
-    emailer.display_email(email)
-    return 
 
 
 if __name__ == '__main__':
@@ -326,39 +210,6 @@ if __name__ == '__main__':
    
 
 
-    vendor_to_print = [
-        'Sysco',
-        'Performance Food',
-        'US Foods',
-        'Renzi',
-        # 'BakeMark',
-        # 'Lentz',
-        # 'Hill & Markes',
-        # 'Johnston Paper',
-        # 'Regional Distributors, Inc.',
-        # 'Peters Supply',
-        # 'SANICO',
-        # 'DUTCH VALLEY FOOD DIST',
-        # 'Eurocafe Imports',
-        # 'Coca-Cola',
-        # 'FingerLakes Farms',
-        # 'Equal Exchange',
-        # 'Copper Horse Coffee',
-        # 'Webstaurant',
-        # 'UNFI',
-        'Ithaca Bakery',
-    ]
-    # printer = Printer()    
-    # for vendor in vendor_to_print:
-    #     for file in get_files(f'{ORDER_FILES_PATH}\\{vendor}'):
-    #         if not file.endswith('pdf'): continue
-    #         printer.print_file(f'{ORDER_FILES_PATH}\\{vendor}\\{file}')
-    #         time.sleep(6)
-        
-
-
-
-    
 
 
     
@@ -368,12 +219,12 @@ if __name__ == '__main__':
 
     
     '''Pricing Sheet Protocol'''
-    # options = create_options(DOWNLOAD_PATH)
-    # driver  = uc.Chrome(options=options, use_subprocess=True)
-    # download_pricing_sheets(driver)
-    # delete_all_files_without_extension(PRICING_FILES_PATH / 'VendorSheets', '.xlsx')
-    # input('Press ENTER to stop waiting.')
-    # generate_pricing_sheets()
+    options = create_options(DOWNLOAD_PATH)
+    driver  = uc.Chrome(options=options, use_subprocess=True)
+    download_pricing_sheets(driver)
+    delete_all_files_without_extension(PRICING_FILES_PATH / 'VendorSheets', '.xlsx')
+    input('Press ENTER to stop waiting.')
+    generate_pricing_sheets()
     
 
 
@@ -467,15 +318,15 @@ if __name__ == '__main__':
 
             
 
-    outlook_service = OutlookService()
-    outlook_service.refresh_inbox()
-    time.sleep(5)
-    # # print(outlook_service.get_recent_messages(subject_filter="Your US Foods one time password", max_age_minutes=60))
-    for message in outlook_service.get_recent_messages(
-                                    subject_filter='Your US Foods one time passcode', 
-                                    max_age_minutes=60):
-        print(message)
-        break
+    # outlook_service = OutlookService()
+    # outlook_service.refresh_inbox()
+    # time.sleep(5)
+    # # # print(outlook_service.get_recent_messages(subject_filter="Your US Foods one time password", max_age_minutes=60))
+    # for message in outlook_service.get_recent_messages(
+    #                                 subject_filter='Your US Foods one time passcode', 
+    #                                 max_age_minutes=60):
+    #     print(message)
+    #     break
     
     # def extract_otp_from_body(body: str) -> str | None:
     #     match = re.search(r'\b\d{6}\b', body)

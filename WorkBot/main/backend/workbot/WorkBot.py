@@ -39,7 +39,7 @@ class WorkBot:
         
         self.vendor_manager   = VendorManager()
         self.order_manager    = OrderManager()
-        self.store_manager    = StoreManager()
+        self.store_manager    = StoreManager(storage_file=None)
         self.transfer_manager = TransferManager()
 
         driver, username, password = generate_craftablebot_args(config.get_full_path('downloads'))
@@ -134,15 +134,18 @@ class WorkBot:
     def get_vendor_information(self, vendor_name: str) -> dict:
         return self.vendor_manager.get_vendor_information(vendor_name)
 
+    def get_store_information(self, store_name: str) -> dict:
+        return self.store_manager.find_store_by_name(store_name=store_name)
+    
     def combine_orders(self, vendors: list) -> None:
         self.order_manager.combine_orders(vendors)
 
     def generate_vendor_order_emails(self, vendors: list[str], stores: list[str] = []) -> list[Email]:
-        # print(f"\n🔍 Gathering orders for vendors: {vendors} and stores: {stores}...")
+        # print(f"\nGathering orders for vendors: {vendors} and stores: {stores}...")
         orders = self.get_orders(stores=stores, vendors=vendors)
 
         if not orders:
-            # print("⚠️  No orders found for the given vendors/stores.")
+            # print("No orders found for the given vendors/stores.")
             return []
 
         # Group orders by vendor
@@ -153,10 +156,10 @@ class WorkBot:
         emails = []
 
         for vendor, orders in vendor_orders.items():
-            # print(f"\n📦 Creating consolidated email for vendor: {vendor}")
+            # print(f"\nCreating consolidated email for vendor: {vendor}")
             vendor_info = self.get_vendor_information(vendor)
             to_emails = vendor_info.get("email_contacts", ["default@vendor.com"])
-            # print(f"📨 Sending to: {to_emails}")
+            # print(f"Sending to: {to_emails}")
 
             date_str = datetime.now().strftime("%B %d, %Y")
             subject = f"Orders for {vendor} ({date_str})"
@@ -174,11 +177,11 @@ class WorkBot:
                 pdf_path = pdf_dir / pdf_filename
 
                 if pdf_path.exists():
-                    # print(f"📎 Found PDF for {order.store}: {pdf_path}")
+                    # print(f"Found PDF for {order.store}: {pdf_path}")
                     attachments.append(str(pdf_path))
                 else:
                     pass
-                    # print(f"⚠️  Missing PDF for {order.store}: {pdf_path}")
+                    # print(f"Missing PDF for {order.store}: {pdf_path}")
 
             full_body.extend((
                 "", "Let us know if there are any issues.",
@@ -194,15 +197,64 @@ class WorkBot:
 
             self.emailer.create_email(email)
             emails.append(email)
-            # print("✅ Consolidated email created.")
+            # print("Consolidated email created.")
 
-        # print(f"\n📬 {len(emails)} consolidated email(s) generated.\n")
+        # print(f"\n{len(emails)} consolidated email(s) generated.\n")
 
         for email in emails:
-            # print("🧾 Displaying email:")
+            # print("Displaying email:")
             self.emailer.display_email(email)
 
         return emails
+
+    def generate_store_order_emails(self, stores: list[str]):
+        orders = self.get_orders(stores=stores)
+        if not orders: return None
+
+        emails = []
+        store_orders_table = {}
+        for order in orders:
+            if order.store not in store_orders_table:
+                store_orders_table[order.store] = [order]
+            else:
+                store_orders_table[order.store].append(order)
+        
+
+        for store in store_orders_table:
+            to_emails = []
+            store_contacts = self.get_store_information(store).contacts
+            
+            for contact in store_contacts:
+                if contact['title'] == 'Inventory Clerk': to_emails.append(contact['email'])
+
+            subject = f'Orders for the Week: {store}'
+            attachments = []
+
+            for store_order in store_orders_table[store]:
+                pdf_dir      = self.order_manager.get_vendor_orders_directory(store_order.vendor)
+                pdf_filename = f"{self.order_manager.generate_filename(store_order, file_extension='.pdf')}"
+                pdf_path     = pdf_dir / pdf_filename
+
+                if pdf_path.exists(): attachments.append(str(pdf_path))
+
+            body = 'Hello, here are the orders you have placed for the week.'
+            
+            # Need to abstract out the CC of operations director
+            cc = ('jennithacabakery@gmail.com')
+            
+            email = Email(
+                to=tuple(to_emails),
+                subject=subject,
+                body=body,
+                cc=cc,
+                attachments=tuple(attachments) if attachments else None
+            )       
+           
+            self.emailer.create_email(email)
+            emails.append(email) 
+          
+        for email in emails: self.emailer.display_email(email)
+
 
     def shutdown(self) -> None:
         """Exits the CLI loop."""

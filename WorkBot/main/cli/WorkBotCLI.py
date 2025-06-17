@@ -643,6 +643,29 @@ Internal Contacts:
             print('Something went wrong...')
             print(f'Here\'s a hint: {e}')
 
+# GENERATE ORDER EMAILS FOR STORES
+    def args_generate_store_order_emails(self):
+        parser = argparse.ArgumentParser(prog='generate_store_order_emails', description='Create an email to send to stores listing out their orders for the week.')
+        parser.add_argument('--stores', nargs='+', required=True, help='List of stores.')
+        return parser
+
+    def cmd_generate_store_order_emails(self, args):
+        try:
+            parser = self.args_generate_store_order_emails()
+            parsed_args = parser.parse_args(args)
+            self.workbot.generate_store_order_emails(stores=parsed_args.stores)
+            print('\nDisplaying Emails\n')
+        except SystemExit:
+            pass
+        except Exception as e:
+            print(e)
+    
+    def _autocomplete_generate_store_order_emails(self, flag: str, text: str):
+        flags = {
+            '--stores': self._get_stores,
+        }
+        
+        return [option for option in flags.get(flag, [])() if option.startswith(text)]
 
 # PRINT WEEKLY SCHEDULE
     def args_print_weekly_schedule(self):
