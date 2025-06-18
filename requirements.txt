@@ -27,7 +27,7 @@ pyreadline3==3.5.4
 PySocks==1.7.1
 python-dotenv==1.0.1
 python-xlib==0.33
-pywin32==310
+pywin32==310; platform_system == "Windows"
 requests==2.32.3
 requests-oauthlib==2.0.0
 rsa==4.9

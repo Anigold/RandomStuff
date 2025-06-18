@@ -207,7 +207,9 @@ if __name__ == '__main__':
     # gmail_service.send_email(test_email_data)
 
 
-   
+    from backend.helpers.XLSXToJSON import xlsx_to_json_flat
+
+    xlsx_to_json_flat('/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/downloads/IthacaBakeryItems.xlsx', '/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/downloads/IthacaBakeryItems.json')
 
 
 
@@ -219,12 +221,12 @@ if __name__ == '__main__':
 
     
     '''Pricing Sheet Protocol'''
-    options = create_options(DOWNLOAD_PATH)
-    driver  = uc.Chrome(options=options, use_subprocess=True)
-    download_pricing_sheets(driver)
-    delete_all_files_without_extension(PRICING_FILES_PATH / 'VendorSheets', '.xlsx')
-    input('Press ENTER to stop waiting.')
-    generate_pricing_sheets()
+    # options = create_options(DOWNLOAD_PATH)
+    # driver  = uc.Chrome(options=options, use_subprocess=True)
+    # download_pricing_sheets(driver)
+    # delete_all_files_without_extension(PRICING_FILES_PATH / 'VendorSheets', '.xlsx')
+    # input('Press ENTER to stop waiting.')
+    # generate_pricing_sheets()
     
 
 
