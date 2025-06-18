@@ -29,11 +29,12 @@ from backend.vendors.VendorManager import VendorManager
 # from backend.vendors.vendor_bots.USFoodsBot import USFoodsBot
 from datetime import date
 import json
-from config.paths import VENDORS_DIR
+from config.paths import VENDORS_DIR, ITEMS_DIR
 from pathlib import Path
 from pprint import pprint
 import time
 import re
+import uuid 
 
 from backend.workbot.WorkBot import WorkBot
 
@@ -209,17 +210,91 @@ if __name__ == '__main__':
 
     from backend.helpers.XLSXToJSON import xlsx_to_json_flat
 
-    xlsx_to_json_flat('/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/downloads/IthacaBakeryItems.xlsx', '/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/downloads/IthacaBakeryItems.json')
+    # xlsx_to_json_flat(DOWNLOAD_PATH / 'IthacaBakeryItems.xlsx', DOWNLOAD_PATH / 'IthacaBakeryItems.json')
 
 
 
+    def overwrite_all_ids(file_path: str) -> None:
+        """
+        Overwrites the 'ID' field in every row of a JSON array with a new UUID.
 
+        Args:
+            file_path (str): Path to the JSON file. The file will be overwritten.
+        """
+        file_path = Path(file_path)
+
+        if not file_path.exists():
+            raise FileNotFoundError(f"File not found: {file_path}")
+
+        with open(file_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        for item in data:
+            item["ID"] = str(uuid.uuid4())
+
+        with open(file_path, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=4, ensure_ascii=False)
+
+        print(f"✅ Overwrote IDs for {len(data)} items in: {file_path}")
     
 
-
+    # overwrite_all_ids(ITEMS_DIR / 'IthacaBakeryItems.json')
     
+    import json
+    from pathlib import Path
+    from uuid import uuid4
 
-    
+    def convert_to_item_first(input_path: str, output_path: str = "items_structured.json") -> None:
+        """
+        Converts a flat item/vendor JSON file into a structured item-first format
+        with vendor information grouped under each item.
+
+        Args:
+            input_path (str): Path to the flat JSON file exported from Excel.
+            output_path (str): Path to save the structured item-first JSON.
+        """
+        input_path = Path(input_path)
+        output_path = Path(output_path)
+
+        with open(input_path, "r", encoding="utf-8") as f:
+            raw_items = json.load(f)
+
+        structured_items = []
+
+        for item in raw_items:
+            item_id = item.get("ID") or str(uuid4())
+            item_name = item.get("ITEM NAME", "").strip()
+
+            vendors = []
+            for i in range(1, 11):
+                vendor = item.get(f"VENDOR NAME {i}")
+                if not vendor:
+                    continue
+
+                vendor_info = {
+                    "vendor": vendor,
+                    "sku": item.get(f"SKU {i}"),
+                    "unit": item.get(f"EDI ORDERING UOM {i}"),
+                    "quantity": item.get(f"QTY {i}"),
+                    "cost": item.get(f"COST (PU) {i}"),
+                    "case_size": item.get(f"PU {i}")
+                }
+                vendors.append(vendor_info)
+
+            structured_items.append({
+                "id": item_id,
+                "name": item_name,
+                "vendors": vendors
+            })
+
+        with open(output_path, "w", encoding="utf-8") as f:
+            json.dump(structured_items, f, indent=4, ensure_ascii=False)
+
+        print(f"✅ Converted {len(structured_items)} items")
+        print(f"📁 Saved to: {output_path}")
+
+
+    convert_to_item_first(ITEMS_DIR / 'IthacaBakeryItems.json', ITEMS_DIR / 'IthacaBakeryItemsITEMFIRST.json')
     '''Pricing Sheet Protocol'''
     # options = create_options(DOWNLOAD_PATH)
     # driver  = uc.Chrome(options=options, use_subprocess=True)

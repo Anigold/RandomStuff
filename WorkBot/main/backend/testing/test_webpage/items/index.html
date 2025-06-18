@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inventory Item Viewer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #f8f9fb;
+      color: #333;
+    }
+
+    header {
+      background-color: #1b6e2a;
+      color: #fff;
+      padding: 16px 24px;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    main {
+      padding: 24px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    th, td {
+      text-align: left;
+      padding: 14px 16px;
+      border-bottom: 1px solid #eee;
+    }
+
+    th {
+      background: #f0f0f0;
+      font-weight: 600;
+    }
+
+    a {
+      color: #0077cc;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Modal Styles */
+    #vendorModal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #modalContent {
+      background: #fff;
+      padding: 24px;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 600px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    #modalContent h2 {
+      margin-top: 0;
+    }
+
+    #modalContent table {
+      width: 100%;
+      margin-top: 10px;
+      border-collapse: collapse;
+    }
+
+    #modalContent th, #modalContent td {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      font-size: 14px;
+    }
+
+    #modalContent button {
+      margin-top: 20px;
+      padding: 10px 16px;
+      background-color: #1b6e2a;
+      border: none;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #modalContent button:hover {
+      background-color: #14501f;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Items List</h1>
+  </header>
+
+  <main>
+    <input type="text" id="searchInput" placeholder="Search items..." oninput="searchItems()" 
+       style="padding: 10px; width: 100%; max-width: 300px; margin-top: 20px; border-radius: 5px; border: 1px solid #ccc;">
+
+    <table id="itemsTable">
+      <thead>
+        <tr>
+          <th onclick="sortByName()" style="cursor:pointer;">Item Name 🔽</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Dynamic Content -->
+      </tbody>
+    </table>
+  </main>
+
+  <!-- Modal -->
+  <div id="vendorModal">
+    <div id="modalContent">
+      <h2 id="modalTitle">Vendor Details</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Vendor</th>
+            <th>SKU</th>
+            <th>Quantity</th>
+            <th>Cost</th>
+            <th>Case Size</th>
+          </tr>
+        </thead>
+        <tbody id="vendorTableBody"></tbody>
+      </table>
+      <button onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

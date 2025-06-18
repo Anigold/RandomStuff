@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Item Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      background: #f8f9fb;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 240px;
+      background-color: #1b6e2a;
+      color: #fff;
+      height: 100vh;
+      padding: 20px;
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .sidebar nav a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 0;
+      display: block;
+    }
+
+    .content {
+      margin-left: 260px;
+      padding: 20px;
+      flex: 1;
+    }
+
+    .filters {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    select {
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .search {
+      margin-bottom: 10px;
+    }
+
+    input[type="text"] {
+      padding: 8px;
+      width: 100%;
+      max-width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 1px solid #eee;
+    }
+
+    th {
+      background: #f0f0f0;
+    }
+
+    .active-check {
+      color: green;
+      font-weight: bold;
+    }
+
+    .item-link {
+      color: #0077cc;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <aside class="sidebar">
+    <h2>CRAFTABLE</h2>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Orders</a>
+      <a href="#">Invoices</a>
+      <a href="#">Inventory</a>
+      <a href="#">Recipes</a>
+      <a href="#">Point of Sale</a>
+      <a href="#">Items & Vendors</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <h1>Items List</h1>
+
+    <div class="filters">
+      <select>
+        <option>All Categories</option>
+        <option>Paper Supplies</option>
+        <option>Pastry</option>
+      </select>
+      <select>
+        <option>All Subcategories</option>
+        <option>Containers</option>
+        <option>Ready Made</option>
+        <option>Bake Ready</option>
+      </select>
+      <select>
+        <option>All Vendors</option>
+      </select>
+      <select>
+        <option>Active</option>
+        <option>Inactive</option>
+      </select>
+    </div>
+
+    <div class="search">
+      <input type="text" id="search" placeholder="Search items..." oninput="filterItems()" />
+    </div>
+
+    <table id="itemsTable">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Inventory</th>
+          <th>Item</th>
+          <th>Category</th>
+          <th>Subcategory</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>IB1</td>
+          <td class="active-check">✔️</td>
+          <td><a href="#" class="item-link">Cup – Portion (2oz) 250ct</a></td>
+          <td>Paper Supplies</td>
+          <td>Containers</td>
+          <td>$2.77</td>
+        </tr>
+        <tr>
+          <td>IB2</td>
+          <td class="active-check">✔️</td>
+          <td><a href="#" class="item-link">Lid – Portion (2oz) 250ct</a></td>
+          <td>Paper Supplies</td>
+          <td>Retail</td>
+          <td>$2.47</td>
+        </tr>
+        <tr>
+          <td>IB3</td>
+          <td class="active-check">✔️</td>
+          <td><a href="#" class="item-link">Java Box (96oz) 25ct</a></td>
+          <td>Paper Supplies</td>
+          <td>Beverage</td>
+          <td>$81.99</td>
+        </tr>
+        <tr>
+          <td>IB5</td>
+          <td class="active-check">✔️</td>
+          <td><a href="#" class="item-link">Boston Coffee Cake – Apple Cinnamon 1ct</a></td>
+          <td>Pastry</td>
+          <td>Ready Made</td>
+          <td>$6.98</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <script>
+    function filterItems() {
+      const input = document.getElementById("search");
+      const filter = input.value.toLowerCase();
+      const table = document.getElementById("itemsTable");
+      const trs = table.getElementsByTagName("tr");
+
+      for (let i = 1; i < trs.length; i++) {
+        const tds = trs[i].getElementsByTagName("td");
+        let match = false;
+        for (let j = 0; j < tds.length; j++) {
+          if (tds[j].innerText.toLowerCase().includes(filter)) {
+            match = true;
+            break;
+          }
+        }
+        trs[i].style.display = match ? "" : "none";
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inventory Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <span class="brand">📦 InvManage</span>
+        <button id="toggleSidebar">⮜</button>
+      </div>
+      <nav class="nav">
+        <a href="#" class="nav-link active"><span class="icon">🏠</span><span class="label">Dashboard</span></a>
+        <a href="#" class="nav-link"><span class="icon">📋</span><span class="label">Items</span></a>
+        <a href="#" class="nav-link"><span class="icon">🏷</span><span class="label">Vendors</span></a>
+        <a href="#" class="nav-link"><span class="icon">📦</span><span class="label">Inventory</span></a>
+        <a href="#" class="nav-link"><span class="icon">📊</span><span class="label">Reports</span></a>
+        <a href="#" class="nav-link"><span class="icon">⚙️</span><span class="label">Settings</span></a>
+      </nav>
+    </aside>
+
+    <main class="main-content" id="mainContent">
+      <header class="header">
+        <h1>Dashboard</h1>
+      </header>
+     <section class="content" id="dashboard-view" data-view>
+      <p>Welcome to your inventory management system!</p>
+      </section>
+
+      <section class="content" id="items-view" data-view style="display: none;">
+        <h2>Items List</h2>
+        <ul id="itemList">
+          <!-- Items will go here -->
+        </ul>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
