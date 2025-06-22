@@ -49,7 +49,7 @@ ORDER_FILES_PATH   = SOURCE_PATH / 'ordering' / 'OrderFiles'
 PRICING_FILES_PATH = SOURCE_PATH / 'pricing'
 DOWNLOAD_PATH      = SOURCE_PATH / 'downloads'
 TRANSFER_PATH      = SOURCE_PATH / 'transferring'
-
+DATABASE_PATH      = SOURCE_PATH / 'database'
 
 def get_files(path: str) -> list:
 	return [file for file in listdir(path) if isfile(join(path, file))]
@@ -87,7 +87,7 @@ def produce_pricing_and_email(driver) -> None:
     emailer.display_email(email)
     return
 
-def download_pricing_sheets(driver, vendors=['Russo Produce',], guides=['IBProduce']) -> None:
+def download_pricing_sheets(driver, vendors=['Sysco', 'Performance Food', 'US Foods', 'Russo Produce',], guides=['IBProduce']) -> None:
 
     for vendor in vendors:
 
@@ -294,7 +294,8 @@ if __name__ == '__main__':
         print(f"📁 Saved to: {output_path}")
 
 
-    convert_to_item_first(ITEMS_DIR / 'IthacaBakeryItems.json', ITEMS_DIR / 'IthacaBakeryItemsITEMFIRST.json')
+    # convert_to_item_first(ITEMS_DIR / 'IthacaBakeryItems.json', ITEMS_DIR / 'IthacaBakeryItemsITEMFIRST.json')
+    
     '''Pricing Sheet Protocol'''
     # options = create_options(DOWNLOAD_PATH)
     # driver  = uc.Chrome(options=options, use_subprocess=True)
@@ -433,3 +434,8 @@ if __name__ == '__main__':
             # a. Use order combine function?
         # 4. Close audit
 
+
+
+    import sqlite3
+
+    def init_db(db_path=)

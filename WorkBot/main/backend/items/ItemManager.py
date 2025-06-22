@@ -95,5 +95,4 @@ class ItemManager:
                     ))
 
                 self.items[item_name] = item
-
-        
+       
