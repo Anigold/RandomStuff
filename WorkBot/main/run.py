@@ -99,8 +99,8 @@ def download_pricing_sheets(driver, vendors=['Sysco', 'Performance Food', 'US Fo
 
             if vendor not in [
                  'US Foods', 
-                #  'Sysco', 
-                #  'Performance Food'
+                 'Sysco', 
+                 'Performance Food'
                 ]:
                 file_name = bot.retrieve_pricing_sheet(pricing_guide)
                 # file_name = None
@@ -110,13 +110,13 @@ def download_pricing_sheets(driver, vendors=['Sysco', 'Performance Food', 'US Fo
                 file_name = 'US Foods_IBProduce.csv'
                 new_file_name = PRICING_FILES_PATH / 'VendorSheets' / f'US Foods_IBProduce_{date.today()}.csv'
             
-            # elif vendor == 'Sysco':
-            #     file_name = 'Sysco_IBProduce.csv'
-            #     new_file_name = PRICING_FILES_PATH / 'VendorSheets' / 'Sysco_IBProduce_2025-03-23.csv'
+            elif vendor == 'Sysco':
+                file_name = 'Sysco_IBProduce.csv'
+                new_file_name = PRICING_FILES_PATH / 'VendorSheets' / f'Sysco_IBProduce_{date.today()}.csv'
             
-            # elif vendor == 'Performance Food':
-            #     file_name = 'Performance Food_IBProduce.xlsx'
-            #     new_file_name = PRICING_FILES_PATH / 'VendorSheets' / 'Performance Food_IBProduce_2025-03-23.xlsx'
+            elif vendor == 'Performance Food':
+                file_name = 'Performance Food_IBProduce.xlsx'
+                new_file_name = PRICING_FILES_PATH / 'VendorSheets' / f'Performance Food_IBProduce_{date.today()}.xlsx'
 
             # new_file_name = PRICING_FILES_PATH / 'VendorSheets' / f'{bot.name}_{pricing_guide}_{date.today()}.{file_name.split(".")[1]}'
 
@@ -297,12 +297,12 @@ if __name__ == '__main__':
     # convert_to_item_first(ITEMS_DIR / 'IthacaBakeryItems.json', ITEMS_DIR / 'IthacaBakeryItemsITEMFIRST.json')
     
     '''Pricing Sheet Protocol'''
-    # options = create_options(DOWNLOAD_PATH)
-    # driver  = uc.Chrome(options=options, use_subprocess=True)
-    # download_pricing_sheets(driver)
-    # delete_all_files_without_extension(PRICING_FILES_PATH / 'VendorSheets', '.xlsx')
-    # input('Press ENTER to stop waiting.')
-    # generate_pricing_sheets()
+    options = create_options(DOWNLOAD_PATH)
+    driver  = uc.Chrome(options=options, use_subprocess=True)
+    download_pricing_sheets(driver)
+    delete_all_files_without_extension(PRICING_FILES_PATH / 'VendorSheets', '.xlsx')
+    input('Press ENTER to stop waiting.')
+    generate_pricing_sheets()
     
 
 
@@ -436,6 +436,18 @@ if __name__ == '__main__':
 
 
 
-    import sqlite3
+    # import sqlite3
 
-    def init_db(db_path=)
+    # def init_db(db_path=f'{DATABASE_PATH}/orders.db'):
+
+    #     conn = sqlite3.connect(db_path)
+    #     cursor = conn.cursor()
+
+    #     cursor.execute('''
+    #     CREATE TABLE IF NOT EXISTS stores (
+    #                    id INTEGER PRIMARY KEY,
+    #                    store_id INTEGER,
+    #                    store_name TEXT UNIQUE,
+    #                    )
+                       
+    #                    ''')

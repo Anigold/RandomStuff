@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block title %}All Orders{% endblock %}
+{% block content %}
+<h2>📦 All Orders</h2>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Date</th>
+      <th>Store</th>
+      <th>Vendor</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for order in orders %}
+    <tr>
+      <td>{{ order['id'] }}</td>
+      <td>{{ order['date'] }}</td>
+      <td>{{ order['store'] }}</td>
+      <td>{{ order['vendor'] }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
