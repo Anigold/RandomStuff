@@ -6831,3 +6831,152 @@ Stacktrace:
 2025-06-30 13:59:41,284 - INFO - CraftableBot - Order download complete.
 2025-06-30 14:03:02,932 - INFO - CraftableBot - Closing WebDriver session.
 2025-06-30 14:03:03,023 - INFO - CraftableBot - WebDriver session closed.
+2025-07-01 07:39:35,004 - INFO - CraftableBot - Closing WebDriver session.
+2025-07-01 07:39:35,082 - INFO - CraftableBot - WebDriver session closed.
+2025-07-01 10:41:29,528 - INFO - CraftableBot - Logging into Craftable.
+2025-07-01 10:41:36,980 - INFO - CraftableBot - Login successful.
+2025-07-01 10:41:36,980 - INFO - CraftableBot - Starting order download protocol.
+2025-07-01 10:41:36,980 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-01 10:41:43,721 - INFO - CraftableBot - Retrieving order for UNFI (06/28/2025).
+2025-07-01 10:41:46,281 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: UNFI, on 20250628.
+2025-07-01 10:41:46,281 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: UNFI_Bakery_20250628.xlsx
+2025-07-01 10:41:46,281 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: UNFI_Bakery_20250628.xlsx
+2025-07-01 10:41:46,301 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for UNFI on 20250628.
+2025-07-01 10:41:46,302 - INFO - CraftableBot - [Order Update] No changes detected for Bakery for UNFI on 20250628. Skipping update protocol.
+2025-07-01 10:41:46,302 - INFO - CraftableBot - Order for UNFI is up-to-date. Skipping.
+2025-07-01 10:41:48,370 - INFO - CraftableBot - Retrieving order for Webstaurant (06/28/2025).
+2025-07-01 10:41:50,154 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Webstaurant, on 20250628.
+2025-07-01 10:41:50,154 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Webstaurant_Bakery_20250628.xlsx
+2025-07-01 10:41:50,155 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: Webstaurant_Bakery_20250628.xlsx
+2025-07-01 10:41:50,169 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for Webstaurant on 20250628.
+2025-07-01 10:41:50,169 - INFO - CraftableBot - [Order Update] Removing outdated order file: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Webstaurant\Webstaurant_Bakery_20250628.xlsx
+2025-07-01 10:41:50,169 - INFO - CraftableBot - [File Cleanup] Attempting to remove file: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Webstaurant\Webstaurant_Bakery_20250628.xlsx
+2025-07-01 10:41:50,170 - INFO - CraftableBot - [File Cleanup] Successfully removed file: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Webstaurant\Webstaurant_Bakery_20250628.xlsx
+2025-07-01 10:41:50,170 - INFO - CraftableBot - [File Cleanup] Attempting to remove file: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Webstaurant\Webstaurant_Bakery_20250628.pdf
+2025-07-01 10:41:50,170 - INFO - CraftableBot - [File Cleanup] Successfully removed file: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Webstaurant\Webstaurant_Bakery_20250628.pdf
+2025-07-01 10:41:50,170 - INFO - CraftableBot - Saving order for Webstaurant.
+2025-07-01 10:41:57,771 - INFO - CraftableBot - Retrieving order for A.L. George (06/28/2025).
+2025-07-01 10:41:59,122 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: A.L. George, on 20250628.
+2025-07-01 10:41:59,122 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: A.L. George_Bakery_20250628.xlsx
+2025-07-01 10:41:59,123 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: A.L. George_Bakery_20250628.xlsx
+2025-07-01 10:41:59,138 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for A.L. George on 20250628.
+2025-07-01 10:41:59,138 - INFO - CraftableBot - [Order Update] No changes detected for Bakery for A.L. George on 20250628. Skipping update protocol.
+2025-07-01 10:41:59,138 - INFO - CraftableBot - Order for A.L. George is up-to-date. Skipping.
+2025-07-01 10:42:01,197 - INFO - CraftableBot - Retrieving order for Sysco (06/28/2025).
+2025-07-01 10:42:03,908 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Sysco, on 20250628.
+2025-07-01 10:42:03,909 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Sysco_Bakery_20250628.xlsx
+2025-07-01 10:42:03,909 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: Sysco_Bakery_20250628.xlsx
+2025-07-01 10:42:03,926 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for Sysco on 20250628.
+2025-07-01 10:42:03,926 - INFO - CraftableBot - [Order Update] No changes detected for Bakery for Sysco on 20250628. Skipping update protocol.
+2025-07-01 10:42:03,926 - INFO - CraftableBot - Order for Sysco is up-to-date. Skipping.
+2025-07-01 10:42:05,990 - INFO - CraftableBot - Retrieving order for FingerLakes Farms (06/28/2025).
+2025-07-01 10:42:07,766 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: FingerLakes Farms, on 20250628.
+2025-07-01 10:42:07,766 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: FingerLakes Farms_Bakery_20250628.xlsx
+2025-07-01 10:42:07,767 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: FingerLakes Farms_Bakery_20250628.xlsx
+2025-07-01 10:42:07,782 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for FingerLakes Farms on 20250628.
+2025-07-01 10:42:07,782 - INFO - CraftableBot - [Order Update] No changes detected for Bakery for FingerLakes Farms on 20250628. Skipping update protocol.
+2025-07-01 10:42:07,782 - INFO - CraftableBot - Order for FingerLakes Farms is up-to-date. Skipping.
+2025-07-01 10:42:09,840 - INFO - CraftableBot - Retrieving order for Hillcrest Dairy (06/28/2025).
+2025-07-01 10:42:10,907 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Hillcrest Dairy, on 20250628.
+2025-07-01 10:42:10,907 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Hillcrest Dairy_Bakery_20250628.xlsx
+2025-07-01 10:42:10,907 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: Hillcrest Dairy_Bakery_20250628.xlsx
+2025-07-01 10:42:10,922 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for Hillcrest Dairy on 20250628.
+2025-07-01 10:42:10,922 - INFO - CraftableBot - [Order Update] No changes detected for Bakery for Hillcrest Dairy on 20250628. Skipping update protocol.
+2025-07-01 10:42:10,922 - INFO - CraftableBot - Order for Hillcrest Dairy is up-to-date. Skipping.
+2025-07-01 10:42:12,981 - INFO - CraftableBot - Retrieving order for Performance Food (06/28/2025).
+2025-07-01 10:42:15,697 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Performance Food, on 20250628.
+2025-07-01 10:42:15,697 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Performance Food_Bakery_20250628.xlsx
+2025-07-01 10:42:15,697 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: Performance Food_Bakery_20250628.xlsx
+2025-07-01 10:42:15,714 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for Performance Food on 20250628.
+2025-07-01 10:42:15,714 - INFO - CraftableBot - [Order Update] No changes detected for Bakery for Performance Food on 20250628. Skipping update protocol.
+2025-07-01 10:42:15,715 - INFO - CraftableBot - Order for Performance Food is up-to-date. Skipping.
+2025-07-01 10:42:17,778 - INFO - CraftableBot - Retrieving order for US Foods (06/29/2025).
+2025-07-01 10:42:20,698 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: US Foods, on 20250629.
+2025-07-01 10:42:20,699 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: US Foods_Bakery_20250629.xlsx
+2025-07-01 10:42:20,699 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: US Foods_Bakery_20250629.xlsx
+2025-07-01 10:42:20,716 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for US Foods on 20250629.
+2025-07-01 10:42:20,716 - INFO - CraftableBot - [Order Update] No changes detected for Bakery for US Foods on 20250629. Skipping update protocol.
+2025-07-01 10:42:20,717 - INFO - CraftableBot - Order for US Foods is up-to-date. Skipping.
+2025-07-01 10:42:22,780 - INFO - CraftableBot - Retrieving order for Keck's Food Service (06/29/2025).
+2025-07-01 10:42:23,942 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Keck's Food Service, on 20250629.
+2025-07-01 10:42:23,942 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Keck's Food Service_Bakery_20250629.xlsx
+2025-07-01 10:42:23,942 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: Keck's Food Service_Bakery_20250629.xlsx
+2025-07-01 10:42:23,957 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for Keck's Food Service on 20250629.
+2025-07-01 10:42:23,957 - INFO - CraftableBot - [Order Update] No changes detected for Bakery for Keck's Food Service on 20250629. Skipping update protocol.
+2025-07-01 10:42:23,957 - INFO - CraftableBot - Order for Keck's Food Service is up-to-date. Skipping.
+2025-07-01 10:42:26,016 - INFO - CraftableBot - Retrieving order for Eurocafe Imports (06/29/2025).
+2025-07-01 10:42:27,164 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Eurocafe Imports, on 20250629.
+2025-07-01 10:42:27,164 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Eurocafe Imports_Bakery_20250629.xlsx
+2025-07-01 10:42:27,165 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: Eurocafe Imports_Bakery_20250629.xlsx
+2025-07-01 10:42:27,179 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for Eurocafe Imports on 20250629.
+2025-07-01 10:42:27,179 - INFO - CraftableBot - [Order Update] No changes detected for Bakery for Eurocafe Imports on 20250629. Skipping update protocol.
+2025-07-01 10:42:27,179 - INFO - CraftableBot - Order for Eurocafe Imports is up-to-date. Skipping.
+2025-07-01 10:42:29,236 - INFO - CraftableBot - Retrieving order for Copper Horse Coffee (06/29/2025).
+2025-07-01 10:42:30,583 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Copper Horse Coffee, on 20250629.
+2025-07-01 10:42:30,583 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Copper Horse Coffee_Bakery_20250629.xlsx
+2025-07-01 10:42:30,584 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: Copper Horse Coffee_Bakery_20250629.xlsx
+2025-07-01 10:42:30,598 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for Copper Horse Coffee on 20250629.
+2025-07-01 10:42:30,598 - INFO - CraftableBot - [Order Update] Removing outdated order file: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Copper Horse Coffee\Copper Horse Coffee_Bakery_20250629.xlsx
+2025-07-01 10:42:30,598 - INFO - CraftableBot - [File Cleanup] Attempting to remove file: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Copper Horse Coffee\Copper Horse Coffee_Bakery_20250629.xlsx
+2025-07-01 10:42:30,599 - INFO - CraftableBot - [File Cleanup] Successfully removed file: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Copper Horse Coffee\Copper Horse Coffee_Bakery_20250629.xlsx
+2025-07-01 10:42:30,599 - INFO - CraftableBot - [File Cleanup] Attempting to remove file: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Copper Horse Coffee\Copper Horse Coffee_Bakery_20250629.pdf
+2025-07-01 10:42:30,599 - INFO - CraftableBot - [File Cleanup] Successfully removed file: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Copper Horse Coffee\Copper Horse Coffee_Bakery_20250629.pdf
+2025-07-01 10:42:30,599 - INFO - CraftableBot - Saving order for Copper Horse Coffee.
+2025-07-01 10:42:38,029 - INFO - CraftableBot - Retrieving order for Equal Exchange (06/29/2025).
+2025-07-01 10:42:39,587 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Equal Exchange, on 20250629.
+2025-07-01 10:42:39,587 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Equal Exchange_Bakery_20250629.xlsx
+2025-07-01 10:42:39,587 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: Equal Exchange_Bakery_20250629.xlsx
+2025-07-01 10:42:39,606 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for Equal Exchange on 20250629.
+2025-07-01 10:42:39,606 - INFO - CraftableBot - [Order Update] No changes detected for Bakery for Equal Exchange on 20250629. Skipping update protocol.
+2025-07-01 10:42:39,606 - INFO - CraftableBot - Order for Equal Exchange is up-to-date. Skipping.
+2025-07-01 10:42:41,667 - INFO - CraftableBot - Retrieving order for Harney and Sons Tea (06/29/2025).
+2025-07-01 10:42:42,927 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Harney and Sons Tea, on 20250629.
+2025-07-01 10:42:42,927 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Harney and Sons Tea_Bakery_20250629.xlsx
+2025-07-01 10:42:42,928 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: Harney and Sons Tea_Bakery_20250629.xlsx
+2025-07-01 10:42:42,945 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for Harney and Sons Tea on 20250629.
+2025-07-01 10:42:42,945 - INFO - CraftableBot - [Order Update] No changes detected for Bakery for Harney and Sons Tea on 20250629. Skipping update protocol.
+2025-07-01 10:42:42,945 - INFO - CraftableBot - Order for Harney and Sons Tea is up-to-date. Skipping.
+2025-07-01 10:42:45,002 - INFO - CraftableBot - Retrieving order for Coca-Cola (06/29/2025).
+2025-07-01 10:42:46,733 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Coca-Cola, on 20250629.
+2025-07-01 10:42:46,733 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Coca-Cola_Bakery_20250629.xlsx
+2025-07-01 10:42:46,733 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: Coca-Cola_Bakery_20250629.xlsx
+2025-07-01 10:42:46,750 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for Coca-Cola on 20250629.
+2025-07-01 10:42:46,751 - INFO - CraftableBot - [Order Update] No changes detected for Bakery for Coca-Cola on 20250629. Skipping update protocol.
+2025-07-01 10:42:46,751 - INFO - CraftableBot - Order for Coca-Cola is up-to-date. Skipping.
+2025-07-01 10:42:48,811 - INFO - CraftableBot - Retrieving order for Regional Distributors, Inc. (06/29/2025).
+2025-07-01 10:42:50,955 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Regional Distributors, Inc., on 20250629.
+2025-07-01 10:42:50,955 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Regional Distributors, Inc._Bakery_20250629.xlsx
+2025-07-01 10:42:50,956 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: Regional Distributors, Inc._Bakery_20250629.xlsx
+2025-07-01 10:42:50,972 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for Regional Distributors, Inc. on 20250629.
+2025-07-01 10:42:50,972 - INFO - CraftableBot - [Order Update] Removing outdated order file: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Regional Distributors, Inc.\Regional Distributors, Inc._Bakery_20250629.xlsx
+2025-07-01 10:42:50,972 - INFO - CraftableBot - [File Cleanup] Attempting to remove file: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Regional Distributors, Inc.\Regional Distributors, Inc._Bakery_20250629.xlsx
+2025-07-01 10:42:50,973 - INFO - CraftableBot - [File Cleanup] Successfully removed file: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Regional Distributors, Inc.\Regional Distributors, Inc._Bakery_20250629.xlsx
+2025-07-01 10:42:50,973 - INFO - CraftableBot - [File Cleanup] Attempting to remove file: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Regional Distributors, Inc.\Regional Distributors, Inc._Bakery_20250629.pdf
+2025-07-01 10:42:50,974 - INFO - CraftableBot - [File Cleanup] Successfully removed file: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Regional Distributors, Inc.\Regional Distributors, Inc._Bakery_20250629.pdf
+2025-07-01 10:42:50,974 - INFO - CraftableBot - Saving order for Regional Distributors, Inc..
+2025-07-01 10:42:58,372 - INFO - CraftableBot - Retrieving order for Paper Rolls .com (07/01/2025).
+2025-07-01 10:42:59,719 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Paper Rolls .com, on 20250701.
+2025-07-01 10:42:59,719 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Paper Rolls .com_Bakery_20250701.xlsx
+2025-07-01 10:42:59,720 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Paper Rolls .com. Proceeding with new download.
+2025-07-01 10:42:59,720 - INFO - CraftableBot - Saving order for Paper Rolls .com.
+2025-07-01 10:43:07,117 - INFO - CraftableBot - Retrieving order for Hill & Markes (07/01/2025).
+2025-07-01 10:43:08,831 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Hill & Markes, on 20250701.
+2025-07-01 10:43:08,831 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Hill & Markes_Bakery_20250701.xlsx
+2025-07-01 10:43:08,832 - INFO - CraftableBot - [Order Update] No existing order file found for Bakery for Hill & Markes on 20250701. Proceeding with new download.
+2025-07-01 10:43:08,832 - INFO - CraftableBot - Saving order for Hill & Markes.
+2025-07-01 10:43:16,233 - INFO - CraftableBot - Retrieving order for Johnston Paper (07/01/2025).
+2025-07-01 10:43:17,655 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Johnston Paper, on 20250701.
+2025-07-01 10:43:17,655 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Johnston Paper_Bakery_20250701.xlsx
+2025-07-01 10:43:17,656 - INFO - CraftableBot - [Order Update] No existing order file found for Bakery for Johnston Paper on 20250701. Proceeding with new download.
+2025-07-01 10:43:17,656 - INFO - CraftableBot - Saving order for Johnston Paper.
+2025-07-01 10:43:25,042 - INFO - CraftableBot - Retrieving order for Peters Supply (07/01/2025).
+2025-07-01 10:43:26,809 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Peters Supply, on 20250701.
+2025-07-01 10:43:26,809 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Peters Supply_Bakery_20250701.xlsx
+2025-07-01 10:43:26,810 - INFO - CraftableBot - [Order Update] No existing order file found for Bakery for Peters Supply on 20250701. Proceeding with new download.
+2025-07-01 10:43:26,810 - INFO - CraftableBot - Saving order for Peters Supply.
+2025-07-01 10:43:34,207 - INFO - CraftableBot - Retrieving order for SANICO (07/01/2025).
+2025-07-01 10:43:35,467 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: SANICO, on 20250701.
+2025-07-01 10:43:35,467 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: SANICO_Bakery_20250701.xlsx
+2025-07-01 10:43:35,467 - INFO - CraftableBot - [Order Update] No existing order file found for Bakery for SANICO on 20250701. Proceeding with new download.
+2025-07-01 10:43:35,467 - INFO - CraftableBot - Saving order for SANICO.
+2025-07-01 10:43:42,809 - INFO - CraftableBot - Order download complete.

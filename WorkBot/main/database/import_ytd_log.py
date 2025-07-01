@@ -112,6 +112,23 @@ def import_purchase_log(xlsx_path, db_path="inventory.db"):
             (item_id, order_id, quantity, int(round(unit_price * 100)))  # convert to cents
         )
 
+        # Add/Update VendorItem for this vendor/item pair
+        cursor.execute("""
+            SELECT id FROM VendorItems
+            WHERE vendor_id = ? AND item_id = ?
+        """, (vendor_id, item_id))
+        vendor_item = cursor.fetchone()
+
+        if not vendor_item:
+            vendor_sku = str(row.get("", f"{vendor_id}-{item_id}"))  # Use real SKU if available
+            price_cents = int(round(unit_price * 100))
+            case_size = 1  # or estimate from quantity later
+            cursor.execute("""
+                INSERT INTO VendorItems (vendor_id, item_id, vendor_sku, price, case_size)
+                VALUES (?, ?, ?, ?, ?)
+            """, (vendor_id, item_id, vendor_sku, price_cents, case_size))
+
+
     conn.commit()
     conn.close()
     print("Purchase log imported successfully.")

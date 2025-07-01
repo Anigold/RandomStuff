@@ -12764,3 +12764,315 @@ Stacktrace:
 2025-06-30 14:00:25,409 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Russo Produce
 2025-06-30 14:03:02,932 - INFO - CraftableBot - Closing WebDriver session.
 2025-06-30 14:03:03,023 - INFO - CraftableBot - WebDriver session closed.
+2025-07-01 06:40:13,586 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 06:40:18,575 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 06:56:44,538 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 06:56:45,132 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 06:56:46,933 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 06:56:47,554 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 07:03:28,102 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 07:03:28,728 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 07:06:09,340 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 07:06:10,065 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 07:39:35,004 - INFO - CraftableBot - Closing WebDriver session.
+2025-07-01 07:39:35,082 - INFO - CraftableBot - WebDriver session closed.
+2025-07-01 07:41:30,804 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 07:41:31,420 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 07:43:46,264 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 07:43:46,906 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 07:47:57,234 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 07:47:57,945 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 07:49:43,596 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 07:49:44,256 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 07:50:24,169 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 07:50:24,814 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 07:50:57,747 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 07:50:58,394 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 07:52:09,845 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 07:52:10,540 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 10:41:21,353 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 10:41:22,190 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 10:41:29,528 - INFO - CraftableBot - Logging into Craftable.
+2025-07-01 10:41:36,980 - INFO - CraftableBot - Login successful.
+2025-07-01 10:41:36,980 - INFO - CraftableBot - Starting order download protocol.
+2025-07-01 10:41:36,980 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-01 10:41:43,721 - INFO - CraftableBot - Retrieving order for UNFI (06/28/2025).
+2025-07-01 10:41:46,281 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: UNFI, on 20250628.
+2025-07-01 10:41:46,281 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: UNFI_Bakery_20250628.xlsx
+2025-07-01 10:41:46,281 - INFO - OrderManager - Looking up directory for: UNFI.
+2025-07-01 10:41:46,281 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\UNFI
+2025-07-01 10:41:46,281 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: UNFI_Bakery_20250628.xlsx
+2025-07-01 10:41:46,301 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for UNFI on 20250628.
+2025-07-01 10:41:46,302 - INFO - CraftableBot - [Order Update] No changes detected for Bakery for UNFI on 20250628. Skipping update protocol.
+2025-07-01 10:41:46,302 - INFO - CraftableBot - Order for UNFI is up-to-date. Skipping.
+2025-07-01 10:41:48,370 - INFO - CraftableBot - Retrieving order for Webstaurant (06/28/2025).
+2025-07-01 10:41:50,154 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Webstaurant, on 20250628.
+2025-07-01 10:41:50,154 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Webstaurant_Bakery_20250628.xlsx
+2025-07-01 10:41:50,154 - INFO - OrderManager - Looking up directory for: Webstaurant.
+2025-07-01 10:41:50,154 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Webstaurant
+2025-07-01 10:41:50,155 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: Webstaurant_Bakery_20250628.xlsx
+2025-07-01 10:41:50,169 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for Webstaurant on 20250628.
+2025-07-01 10:41:50,169 - INFO - CraftableBot - [Order Update] Removing outdated order file: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Webstaurant\Webstaurant_Bakery_20250628.xlsx
+2025-07-01 10:41:50,169 - INFO - CraftableBot - [File Cleanup] Attempting to remove file: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Webstaurant\Webstaurant_Bakery_20250628.xlsx
+2025-07-01 10:41:50,170 - INFO - CraftableBot - [File Cleanup] Successfully removed file: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Webstaurant\Webstaurant_Bakery_20250628.xlsx
+2025-07-01 10:41:50,170 - INFO - CraftableBot - [File Cleanup] Attempting to remove file: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Webstaurant\Webstaurant_Bakery_20250628.pdf
+2025-07-01 10:41:50,170 - INFO - CraftableBot - [File Cleanup] Successfully removed file: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Webstaurant\Webstaurant_Bakery_20250628.pdf
+2025-07-01 10:41:50,170 - INFO - CraftableBot - Saving order for Webstaurant.
+2025-07-01 10:41:57,771 - INFO - CraftableBot - Retrieving order for A.L. George (06/28/2025).
+2025-07-01 10:41:59,122 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: A.L. George, on 20250628.
+2025-07-01 10:41:59,122 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: A.L. George_Bakery_20250628.xlsx
+2025-07-01 10:41:59,123 - INFO - OrderManager - Looking up directory for: A.L. George.
+2025-07-01 10:41:59,123 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\A.L. George
+2025-07-01 10:41:59,123 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: A.L. George_Bakery_20250628.xlsx
+2025-07-01 10:41:59,138 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for A.L. George on 20250628.
+2025-07-01 10:41:59,138 - INFO - CraftableBot - [Order Update] No changes detected for Bakery for A.L. George on 20250628. Skipping update protocol.
+2025-07-01 10:41:59,138 - INFO - CraftableBot - Order for A.L. George is up-to-date. Skipping.
+2025-07-01 10:42:01,197 - INFO - CraftableBot - Retrieving order for Sysco (06/28/2025).
+2025-07-01 10:42:03,908 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Sysco, on 20250628.
+2025-07-01 10:42:03,909 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Sysco_Bakery_20250628.xlsx
+2025-07-01 10:42:03,909 - INFO - OrderManager - Looking up directory for: Sysco.
+2025-07-01 10:42:03,909 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Sysco
+2025-07-01 10:42:03,909 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: Sysco_Bakery_20250628.xlsx
+2025-07-01 10:42:03,926 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for Sysco on 20250628.
+2025-07-01 10:42:03,926 - INFO - CraftableBot - [Order Update] No changes detected for Bakery for Sysco on 20250628. Skipping update protocol.
+2025-07-01 10:42:03,926 - INFO - CraftableBot - Order for Sysco is up-to-date. Skipping.
+2025-07-01 10:42:05,990 - INFO - CraftableBot - Retrieving order for FingerLakes Farms (06/28/2025).
+2025-07-01 10:42:07,766 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: FingerLakes Farms, on 20250628.
+2025-07-01 10:42:07,766 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: FingerLakes Farms_Bakery_20250628.xlsx
+2025-07-01 10:42:07,766 - INFO - OrderManager - Looking up directory for: FingerLakes Farms.
+2025-07-01 10:42:07,766 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\FingerLakes Farms
+2025-07-01 10:42:07,767 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: FingerLakes Farms_Bakery_20250628.xlsx
+2025-07-01 10:42:07,782 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for FingerLakes Farms on 20250628.
+2025-07-01 10:42:07,782 - INFO - CraftableBot - [Order Update] No changes detected for Bakery for FingerLakes Farms on 20250628. Skipping update protocol.
+2025-07-01 10:42:07,782 - INFO - CraftableBot - Order for FingerLakes Farms is up-to-date. Skipping.
+2025-07-01 10:42:09,840 - INFO - CraftableBot - Retrieving order for Hillcrest Dairy (06/28/2025).
+2025-07-01 10:42:10,907 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Hillcrest Dairy, on 20250628.
+2025-07-01 10:42:10,907 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Hillcrest Dairy_Bakery_20250628.xlsx
+2025-07-01 10:42:10,907 - INFO - OrderManager - Looking up directory for: Hillcrest Dairy.
+2025-07-01 10:42:10,907 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Hillcrest Dairy
+2025-07-01 10:42:10,907 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: Hillcrest Dairy_Bakery_20250628.xlsx
+2025-07-01 10:42:10,922 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for Hillcrest Dairy on 20250628.
+2025-07-01 10:42:10,922 - INFO - CraftableBot - [Order Update] No changes detected for Bakery for Hillcrest Dairy on 20250628. Skipping update protocol.
+2025-07-01 10:42:10,922 - INFO - CraftableBot - Order for Hillcrest Dairy is up-to-date. Skipping.
+2025-07-01 10:42:12,981 - INFO - CraftableBot - Retrieving order for Performance Food (06/28/2025).
+2025-07-01 10:42:15,697 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Performance Food, on 20250628.
+2025-07-01 10:42:15,697 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Performance Food_Bakery_20250628.xlsx
+2025-07-01 10:42:15,697 - INFO - OrderManager - Looking up directory for: Performance Food.
+2025-07-01 10:42:15,697 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Performance Food
+2025-07-01 10:42:15,697 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: Performance Food_Bakery_20250628.xlsx
+2025-07-01 10:42:15,714 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for Performance Food on 20250628.
+2025-07-01 10:42:15,714 - INFO - CraftableBot - [Order Update] No changes detected for Bakery for Performance Food on 20250628. Skipping update protocol.
+2025-07-01 10:42:15,715 - INFO - CraftableBot - Order for Performance Food is up-to-date. Skipping.
+2025-07-01 10:42:17,778 - INFO - CraftableBot - Retrieving order for US Foods (06/29/2025).
+2025-07-01 10:42:20,698 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: US Foods, on 20250629.
+2025-07-01 10:42:20,699 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: US Foods_Bakery_20250629.xlsx
+2025-07-01 10:42:20,699 - INFO - OrderManager - Looking up directory for: US Foods.
+2025-07-01 10:42:20,699 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\US Foods
+2025-07-01 10:42:20,699 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: US Foods_Bakery_20250629.xlsx
+2025-07-01 10:42:20,716 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for US Foods on 20250629.
+2025-07-01 10:42:20,716 - INFO - CraftableBot - [Order Update] No changes detected for Bakery for US Foods on 20250629. Skipping update protocol.
+2025-07-01 10:42:20,717 - INFO - CraftableBot - Order for US Foods is up-to-date. Skipping.
+2025-07-01 10:42:22,780 - INFO - CraftableBot - Retrieving order for Keck's Food Service (06/29/2025).
+2025-07-01 10:42:23,942 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Keck's Food Service, on 20250629.
+2025-07-01 10:42:23,942 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Keck's Food Service_Bakery_20250629.xlsx
+2025-07-01 10:42:23,942 - INFO - OrderManager - Looking up directory for: Keck's Food Service.
+2025-07-01 10:42:23,942 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Keck's Food Service
+2025-07-01 10:42:23,942 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: Keck's Food Service_Bakery_20250629.xlsx
+2025-07-01 10:42:23,957 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for Keck's Food Service on 20250629.
+2025-07-01 10:42:23,957 - INFO - CraftableBot - [Order Update] No changes detected for Bakery for Keck's Food Service on 20250629. Skipping update protocol.
+2025-07-01 10:42:23,957 - INFO - CraftableBot - Order for Keck's Food Service is up-to-date. Skipping.
+2025-07-01 10:42:26,016 - INFO - CraftableBot - Retrieving order for Eurocafe Imports (06/29/2025).
+2025-07-01 10:42:27,164 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Eurocafe Imports, on 20250629.
+2025-07-01 10:42:27,164 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Eurocafe Imports_Bakery_20250629.xlsx
+2025-07-01 10:42:27,164 - INFO - OrderManager - Looking up directory for: Eurocafe Imports.
+2025-07-01 10:42:27,165 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Eurocafe Imports
+2025-07-01 10:42:27,165 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: Eurocafe Imports_Bakery_20250629.xlsx
+2025-07-01 10:42:27,179 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for Eurocafe Imports on 20250629.
+2025-07-01 10:42:27,179 - INFO - CraftableBot - [Order Update] No changes detected for Bakery for Eurocafe Imports on 20250629. Skipping update protocol.
+2025-07-01 10:42:27,179 - INFO - CraftableBot - Order for Eurocafe Imports is up-to-date. Skipping.
+2025-07-01 10:42:29,236 - INFO - CraftableBot - Retrieving order for Copper Horse Coffee (06/29/2025).
+2025-07-01 10:42:30,583 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Copper Horse Coffee, on 20250629.
+2025-07-01 10:42:30,583 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Copper Horse Coffee_Bakery_20250629.xlsx
+2025-07-01 10:42:30,583 - INFO - OrderManager - Looking up directory for: Copper Horse Coffee.
+2025-07-01 10:42:30,583 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Copper Horse Coffee
+2025-07-01 10:42:30,584 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: Copper Horse Coffee_Bakery_20250629.xlsx
+2025-07-01 10:42:30,598 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for Copper Horse Coffee on 20250629.
+2025-07-01 10:42:30,598 - INFO - CraftableBot - [Order Update] Removing outdated order file: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Copper Horse Coffee\Copper Horse Coffee_Bakery_20250629.xlsx
+2025-07-01 10:42:30,598 - INFO - CraftableBot - [File Cleanup] Attempting to remove file: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Copper Horse Coffee\Copper Horse Coffee_Bakery_20250629.xlsx
+2025-07-01 10:42:30,599 - INFO - CraftableBot - [File Cleanup] Successfully removed file: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Copper Horse Coffee\Copper Horse Coffee_Bakery_20250629.xlsx
+2025-07-01 10:42:30,599 - INFO - CraftableBot - [File Cleanup] Attempting to remove file: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Copper Horse Coffee\Copper Horse Coffee_Bakery_20250629.pdf
+2025-07-01 10:42:30,599 - INFO - CraftableBot - [File Cleanup] Successfully removed file: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Copper Horse Coffee\Copper Horse Coffee_Bakery_20250629.pdf
+2025-07-01 10:42:30,599 - INFO - CraftableBot - Saving order for Copper Horse Coffee.
+2025-07-01 10:42:38,029 - INFO - CraftableBot - Retrieving order for Equal Exchange (06/29/2025).
+2025-07-01 10:42:39,587 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Equal Exchange, on 20250629.
+2025-07-01 10:42:39,587 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Equal Exchange_Bakery_20250629.xlsx
+2025-07-01 10:42:39,587 - INFO - OrderManager - Looking up directory for: Equal Exchange.
+2025-07-01 10:42:39,587 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Equal Exchange
+2025-07-01 10:42:39,587 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: Equal Exchange_Bakery_20250629.xlsx
+2025-07-01 10:42:39,606 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for Equal Exchange on 20250629.
+2025-07-01 10:42:39,606 - INFO - CraftableBot - [Order Update] No changes detected for Bakery for Equal Exchange on 20250629. Skipping update protocol.
+2025-07-01 10:42:39,606 - INFO - CraftableBot - Order for Equal Exchange is up-to-date. Skipping.
+2025-07-01 10:42:41,667 - INFO - CraftableBot - Retrieving order for Harney and Sons Tea (06/29/2025).
+2025-07-01 10:42:42,927 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Harney and Sons Tea, on 20250629.
+2025-07-01 10:42:42,927 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Harney and Sons Tea_Bakery_20250629.xlsx
+2025-07-01 10:42:42,927 - INFO - OrderManager - Looking up directory for: Harney and Sons Tea.
+2025-07-01 10:42:42,928 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Harney and Sons Tea
+2025-07-01 10:42:42,928 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: Harney and Sons Tea_Bakery_20250629.xlsx
+2025-07-01 10:42:42,945 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for Harney and Sons Tea on 20250629.
+2025-07-01 10:42:42,945 - INFO - CraftableBot - [Order Update] No changes detected for Bakery for Harney and Sons Tea on 20250629. Skipping update protocol.
+2025-07-01 10:42:42,945 - INFO - CraftableBot - Order for Harney and Sons Tea is up-to-date. Skipping.
+2025-07-01 10:42:45,002 - INFO - CraftableBot - Retrieving order for Coca-Cola (06/29/2025).
+2025-07-01 10:42:46,733 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Coca-Cola, on 20250629.
+2025-07-01 10:42:46,733 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Coca-Cola_Bakery_20250629.xlsx
+2025-07-01 10:42:46,733 - INFO - OrderManager - Looking up directory for: Coca-Cola.
+2025-07-01 10:42:46,733 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Coca-Cola
+2025-07-01 10:42:46,733 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: Coca-Cola_Bakery_20250629.xlsx
+2025-07-01 10:42:46,750 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for Coca-Cola on 20250629.
+2025-07-01 10:42:46,751 - INFO - CraftableBot - [Order Update] No changes detected for Bakery for Coca-Cola on 20250629. Skipping update protocol.
+2025-07-01 10:42:46,751 - INFO - CraftableBot - Order for Coca-Cola is up-to-date. Skipping.
+2025-07-01 10:42:48,811 - INFO - CraftableBot - Retrieving order for Regional Distributors, Inc. (06/29/2025).
+2025-07-01 10:42:50,955 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Regional Distributors, Inc., on 20250629.
+2025-07-01 10:42:50,955 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Regional Distributors, Inc._Bakery_20250629.xlsx
+2025-07-01 10:42:50,955 - INFO - OrderManager - Looking up directory for: Regional Distributors, Inc..
+2025-07-01 10:42:50,956 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Regional Distributors, Inc.
+2025-07-01 10:42:50,956 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: Regional Distributors, Inc._Bakery_20250629.xlsx
+2025-07-01 10:42:50,972 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for Regional Distributors, Inc. on 20250629.
+2025-07-01 10:42:50,972 - INFO - CraftableBot - [Order Update] Removing outdated order file: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Regional Distributors, Inc.\Regional Distributors, Inc._Bakery_20250629.xlsx
+2025-07-01 10:42:50,972 - INFO - CraftableBot - [File Cleanup] Attempting to remove file: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Regional Distributors, Inc.\Regional Distributors, Inc._Bakery_20250629.xlsx
+2025-07-01 10:42:50,973 - INFO - CraftableBot - [File Cleanup] Successfully removed file: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Regional Distributors, Inc.\Regional Distributors, Inc._Bakery_20250629.xlsx
+2025-07-01 10:42:50,973 - INFO - CraftableBot - [File Cleanup] Attempting to remove file: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Regional Distributors, Inc.\Regional Distributors, Inc._Bakery_20250629.pdf
+2025-07-01 10:42:50,974 - INFO - CraftableBot - [File Cleanup] Successfully removed file: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Regional Distributors, Inc.\Regional Distributors, Inc._Bakery_20250629.pdf
+2025-07-01 10:42:50,974 - INFO - CraftableBot - Saving order for Regional Distributors, Inc..
+2025-07-01 10:42:58,372 - INFO - CraftableBot - Retrieving order for Paper Rolls .com (07/01/2025).
+2025-07-01 10:42:59,719 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Paper Rolls .com, on 20250701.
+2025-07-01 10:42:59,719 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Paper Rolls .com_Bakery_20250701.xlsx
+2025-07-01 10:42:59,719 - INFO - OrderManager - Looking up directory for: Paper Rolls .com.
+2025-07-01 10:42:59,719 - INFO - OrderManager - Directory not found for: Paper Rolls .com.
+2025-07-01 10:42:59,720 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Paper Rolls .com. Proceeding with new download.
+2025-07-01 10:42:59,720 - INFO - CraftableBot - Saving order for Paper Rolls .com.
+2025-07-01 10:43:07,117 - INFO - CraftableBot - Retrieving order for Hill & Markes (07/01/2025).
+2025-07-01 10:43:08,831 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Hill & Markes, on 20250701.
+2025-07-01 10:43:08,831 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Hill & Markes_Bakery_20250701.xlsx
+2025-07-01 10:43:08,831 - INFO - OrderManager - Looking up directory for: Hill & Markes.
+2025-07-01 10:43:08,832 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Hill & Markes
+2025-07-01 10:43:08,832 - INFO - CraftableBot - [Order Update] No existing order file found for Bakery for Hill & Markes on 20250701. Proceeding with new download.
+2025-07-01 10:43:08,832 - INFO - CraftableBot - Saving order for Hill & Markes.
+2025-07-01 10:43:16,233 - INFO - CraftableBot - Retrieving order for Johnston Paper (07/01/2025).
+2025-07-01 10:43:17,655 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Johnston Paper, on 20250701.
+2025-07-01 10:43:17,655 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Johnston Paper_Bakery_20250701.xlsx
+2025-07-01 10:43:17,655 - INFO - OrderManager - Looking up directory for: Johnston Paper.
+2025-07-01 10:43:17,656 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Johnston Paper
+2025-07-01 10:43:17,656 - INFO - CraftableBot - [Order Update] No existing order file found for Bakery for Johnston Paper on 20250701. Proceeding with new download.
+2025-07-01 10:43:17,656 - INFO - CraftableBot - Saving order for Johnston Paper.
+2025-07-01 10:43:25,042 - INFO - CraftableBot - Retrieving order for Peters Supply (07/01/2025).
+2025-07-01 10:43:26,809 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Peters Supply, on 20250701.
+2025-07-01 10:43:26,809 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Peters Supply_Bakery_20250701.xlsx
+2025-07-01 10:43:26,810 - INFO - OrderManager - Looking up directory for: Peters Supply.
+2025-07-01 10:43:26,810 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Peters Supply
+2025-07-01 10:43:26,810 - INFO - CraftableBot - [Order Update] No existing order file found for Bakery for Peters Supply on 20250701. Proceeding with new download.
+2025-07-01 10:43:26,810 - INFO - CraftableBot - Saving order for Peters Supply.
+2025-07-01 10:43:34,207 - INFO - CraftableBot - Retrieving order for SANICO (07/01/2025).
+2025-07-01 10:43:35,467 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: SANICO, on 20250701.
+2025-07-01 10:43:35,467 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: SANICO_Bakery_20250701.xlsx
+2025-07-01 10:43:35,467 - INFO - OrderManager - Looking up directory for: SANICO.
+2025-07-01 10:43:35,467 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\SANICO
+2025-07-01 10:43:35,467 - INFO - CraftableBot - [Order Update] No existing order file found for Bakery for SANICO on 20250701. Proceeding with new download.
+2025-07-01 10:43:35,467 - INFO - CraftableBot - Saving order for SANICO.
+2025-07-01 10:43:42,809 - INFO - CraftableBot - Order download complete.
+2025-07-01 10:44:07,619 - INFO - OrderManager - Looking up directory for: Hill & Markes.
+2025-07-01 10:44:07,619 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Hill & Markes
+2025-07-01 10:44:07,697 - INFO - VendorManager - Getting information for: Hill & Markes
+2025-07-01 10:44:07,697 - INFO - VendorManager - Information found.
+2025-07-01 10:44:07,701 - INFO - VendorManager - Initialized Hill & Markes bot.
+2025-07-01 10:44:07,702 - INFO - OrderManager - Looking up directory for: Hill & Markes.
+2025-07-01 10:44:07,702 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Hill & Markes
+2025-07-01 10:44:07,718 - INFO - VendorManager - Hill & Markes bot is already initialized.
+2025-07-01 10:44:07,718 - INFO - OrderManager - Looking up directory for: Hill & Markes.
+2025-07-01 10:44:07,718 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Hill & Markes
+2025-07-01 10:44:07,734 - INFO - VendorManager - Hill & Markes bot is already initialized.
+2025-07-01 10:44:07,734 - INFO - OrderManager - Looking up directory for: Hill & Markes.
+2025-07-01 10:44:07,734 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Hill & Markes
+2025-07-01 10:44:07,748 - INFO - VendorManager - Hill & Markes bot is already initialized.
+2025-07-01 10:44:07,749 - INFO - OrderManager - Looking up directory for: Hill & Markes.
+2025-07-01 10:44:07,749 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Hill & Markes
+2025-07-01 10:44:07,763 - INFO - VendorManager - Hill & Markes bot is already initialized.
+2025-07-01 10:44:07,763 - INFO - OrderManager - Looking up directory for: Hill & Markes.
+2025-07-01 10:44:07,764 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Hill & Markes
+2025-07-01 10:46:01,345 - INFO - OrderManager - Retrieving orders for ['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']
+2025-07-01 10:46:01,367 - INFO - VendorManager - Getting information for: Hill & Markes
+2025-07-01 10:46:01,368 - INFO - VendorManager - Information found.
+2025-07-01 10:46:01,368 - INFO - VendorManager - Getting information for: Hill & Markes
+2025-07-01 10:46:01,368 - INFO - VendorManager - Information found.
+2025-07-01 10:46:01,368 - INFO - VendorManager - Getting information for: Hill & Markes
+2025-07-01 10:46:01,368 - INFO - VendorManager - Information found.
+2025-07-01 10:46:01,369 - INFO - VendorManager - Getting information for: Hill & Markes
+2025-07-01 10:46:01,369 - INFO - VendorManager - Information found.
+2025-07-01 10:46:01,369 - INFO - VendorManager - Getting information for: Hill & Markes
+2025-07-01 10:46:01,369 - INFO - VendorManager - Information found.
+2025-07-01 11:38:54,782 - INFO - OrderManager - Retrieving orders for ['Bakery', 'Triphammer', 'Collegetown', 'Easthill', 'Downtown']
+2025-07-01 11:38:54,908 - INFO - VendorManager - Getting information for: Peters Supply
+2025-07-01 11:38:54,909 - INFO - VendorManager - Information found.
+2025-07-01 11:38:54,909 - INFO - OrderManager - Looking up directory for: Peters Supply.
+2025-07-01 11:38:54,909 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Peters Supply
+2025-07-01 11:38:54,909 - INFO - OrderManager - Looking up directory for: Peters Supply.
+2025-07-01 11:38:54,909 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Peters Supply
+2025-07-01 11:38:54,910 - INFO - OrderManager - Looking up directory for: Peters Supply.
+2025-07-01 11:38:54,910 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Peters Supply
+2025-07-01 11:38:54,910 - INFO - OrderManager - Looking up directory for: Peters Supply.
+2025-07-01 11:38:54,910 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Peters Supply
+2025-07-01 11:38:54,910 - INFO - OrderManager - Looking up directory for: Peters Supply.
+2025-07-01 11:38:54,911 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Peters Supply
+2025-07-01 11:38:55,063 - INFO - VendorManager - Getting information for: SANICO
+2025-07-01 11:38:55,064 - INFO - VendorManager - Information found.
+2025-07-01 11:38:55,064 - INFO - OrderManager - Looking up directory for: SANICO.
+2025-07-01 11:38:55,064 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\SANICO
+2025-07-01 11:38:55,064 - INFO - OrderManager - Looking up directory for: SANICO.
+2025-07-01 11:38:55,064 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\SANICO
+2025-07-01 11:38:55,065 - INFO - OrderManager - Looking up directory for: SANICO.
+2025-07-01 11:38:55,065 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\SANICO
+2025-07-01 12:15:39,058 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 12:15:39,663 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 12:15:48,211 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 12:15:48,816 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 12:16:34,907 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 12:16:35,576 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 12:17:04,845 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 12:17:05,533 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 12:18:26,847 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 12:18:27,451 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 12:18:37,091 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 12:18:37,846 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 12:22:22,878 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 12:22:23,434 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 12:24:11,636 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 12:24:12,235 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 12:30:55,451 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 12:30:56,054 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 12:31:09,354 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 12:31:09,987 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 12:34:09,493 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 12:34:10,331 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 12:34:23,189 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 12:34:23,812 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 12:34:32,467 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 12:34:33,130 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 12:34:37,397 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 12:34:38,042 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 12:34:44,960 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 12:34:45,569 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 12:39:00,100 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 12:39:00,760 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 12:39:04,872 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 12:39:05,453 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 12:39:09,676 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 12:39:10,369 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 12:39:18,018 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 12:39:18,697 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 12:52:44,325 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 12:52:45,660 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 12:53:18,723 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 12:53:19,406 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 12:56:55,041 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 12:56:55,696 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-01 12:57:04,206 - INFO - WorkBot - Initializing WorkBot...
+2025-07-01 12:57:04,836 - INFO - WorkBot - WorkBot initialized successfully.
