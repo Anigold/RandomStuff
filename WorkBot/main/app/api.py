@@ -108,7 +108,7 @@ def add_item():
     conn.close()
     return jsonify({"status": "ok"})
 
-@api_blueprint.route("/items/<int:item_id>", methods=["PATCH"])
+@api_blueprint.route("/items/update/<int:item_id>", methods=["PATCH"])
 def update_item(item_id):
     data = request.get_json()
     item_name = data.get("item_name")

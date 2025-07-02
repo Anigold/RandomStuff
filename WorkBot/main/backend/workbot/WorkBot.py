@@ -55,7 +55,7 @@ class WorkBot:
         if email_host == 'Purchasing':
             self.emailer = Emailer(OutlookService())
         else:
-            self.emailer = Emailer(GmailService())   
+            self.emailer = None  
 
         self.logger.info('WorkBot initialized successfully.')
 
