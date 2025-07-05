@@ -5,28 +5,6 @@ from database.db import get_connection
 api_blueprint = Blueprint("api", __name__)
 workbot = WorkBot()  # Uses same DB implicitly
 
-@api_blueprint.route("/orders")
-def list_orders():
-    conn = get_connection()
-    cur = conn.cursor()
-    rows = cur.execute("""
-        SELECT Orders.id, Orders.date, Stores.store_name, Vendors.name AS vendor
-        FROM Orders
-        JOIN Stores ON Orders.store_id = Stores.id
-        JOIN Vendors ON Orders.vendor_id = Vendors.id
-        ORDER BY Orders.date DESC
-    """).fetchall()
-    conn.close()
-
-    return jsonify([
-        {
-            "id": row["id"],
-            "date": row["date"],
-            "store": row["store_name"],
-            "vendor": row["vendor"]
-        }
-        for row in rows
-    ])
 
 @api_blueprint.route('/items')
 def get_items():
@@ -92,6 +70,88 @@ def get_vendors():
     return jsonify(vendors)
 
 
+@api_blueprint.route("/orders")
+def get_orders():
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT o.id, s.store_name, v.name, o.date,
+               COUNT(oi.id) AS item_count,
+               SUM(oi.quantity * oi.cost_per) AS total_cost,
+                o.placed
+        FROM Orders o
+        JOIN Stores s ON o.store_id = s.id
+        JOIN Vendors v ON o.vendor_id = v.id
+        LEFT JOIN OrderItems oi ON oi.order_id = o.id
+        GROUP BY o.id
+        ORDER BY o.date DESC
+        LIMIT 100
+    """)
+    
+    rows = cursor.fetchall()
+    return jsonify([
+        {
+            "id": row[0],
+            "store_name": row[1],
+            "vendor_name": row[2],
+            "date": row[3],
+            "item_count": row[4],
+            "total_cost": row[5] or 0,
+            'placed': bool(row[6])
+        }
+        for row in rows
+    ])
+
+@api_blueprint.route("/orders/<int:order_id>")
+def get_order_summary(order_id):
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT o.id, o.date, o.placed, s.store_name, v.name,
+               SUM(oi.quantity * oi.cost_per) AS total_cost
+        FROM Orders o
+        JOIN Stores s ON o.store_id = s.id
+        JOIN Vendors v ON o.vendor_id = v.id
+        JOIN OrderItems oi ON oi.order_id = o.id
+        WHERE o.id = ?
+    """, (order_id,))
+    
+    row = cursor.fetchone()
+    conn.close()
+
+    if not row:
+        return jsonify({"error": "Order not found"}), 404
+
+    return jsonify({
+        "id": row[0],
+        "date": row[1],
+        "placed": bool(row[2]),
+        "store_name": row[3],
+        "vendor_name": row[4],
+        "total_cost": row[5] or 0
+    })
+
+@api_blueprint.route('/orders/<int:order_id>/items')
+def get_order_items(order_id):
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT i.item_name, oi.quantity, oi.cost_per
+        FROM OrderItems oi
+        JOIN Items i ON oi.item_id = i.id
+        WHERE oi.order_id = ?
+    """, (order_id,))
+
+    items = [
+        {"name": row[0], "quantity": row[1], "cost_per": row[2]}
+        for row in cursor.fetchall()
+    ]
+
+    conn.close()
+    return jsonify(items)
 
 
 @api_blueprint.route("/add_item", methods=["POST"])
@@ -162,3 +222,29 @@ def add_vendor():
     conn.commit()
     conn.close()
     return jsonify({"status": "ok"})
+
+
+@api_blueprint.route("/vendors/<int:vendor_id>/items")
+def get_vendor_items(vendor_id):
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT i.id, i.item_name, vi.vendor_sku, vi.price
+        FROM VendorItems vi
+        JOIN Items i ON vi.item_id = i.id
+        WHERE vi.vendor_id = ?
+    """, (vendor_id,))
+    
+    items = [
+        {
+            "id": row[0],
+            "name": row[1],
+            "sku": row[2],
+            "price": row[3]
+        }
+        for row in cursor.fetchall()
+    ]
+    conn.close()
+    print(jsonify(items))
+    return jsonify(items)

@@ -1,38 +1,48 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import PageLayout from '../ui/PageLayout';
 import Card from '../ui/Card';
-import ItemModal from '../ui/ItemModal';
+import ItemModal from './ItemModal';
 
 export default function ItemsPage() {
   const [items, setItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
   const [itemDetails, setItemDetails] = useState(null);
+  const [search, setSearch] = useState('');
+  const [sortBy, setSortBy] = useState('item_name'); // or 'id'
 
-  // Fetch all items on load
   useEffect(() => {
     fetch('/api/items')
       .then((res) => res.json())
       .then((data) => setItems(data));
   }, []);
 
-  // Fetch item details when selected
+  const filtered = useMemo(() => {
+    let result = [...items];
+
+    if (search.trim()) {
+      const query = search.toLowerCase();
+      result = result.filter((item) =>
+        item.item_name.toLowerCase().includes(query)
+      );
+    }
+
+    result.sort((a, b) => {
+      if (sortBy === 'item_name') {
+        return (a.item_name || '').localeCompare(b.item_name || '');
+      } else {
+        return (a.id || 0) - (b.id || 0);
+      }
+    });
+
+    return result;
+  }, [items, search, sortBy]);
+
   useEffect(() => {
     if (!selectedItem) return;
-  
-    console.log("🧪 Fetching item details for ID:", selectedItem.id);
-  
     fetch(`/api/items/${selectedItem.id}/details`)
-      .then(async (res) => {
-        const text = await res.text();
-        console.log("📦 Raw response from /api/items/:id →", text);
-        return JSON.parse(text);
-      })
-      .then((data) => setItemDetails(data))
-      .catch((err) => {
-        console.error("❌ JSON parse or fetch error:", err);
-      });
+      .then((res) => res.json())
+      .then((data) => setItemDetails(data));
   }, [selectedItem]);
-  
 
   const closeModal = () => {
     setSelectedItem(null);
@@ -41,17 +51,43 @@ export default function ItemsPage() {
 
   return (
     <PageLayout>
-      <h2 className="text-2xl font-semibold text-white mb-4">Items</h2>
-      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {items.map((item) => (
-          <Card key={item.id} onClick={() => setSelectedItem(item)}>
-            <h3 className="text-lg font-medium text-white">{item.name}</h3>
-            <p className="text-sm text-zinc-400">ID: {item.id}</p>
+      <div className="flex items-center justify-between mb-4">
+        <h2 className="text-2xl font-semibold text-white">Items</h2>
+        <div className="flex gap-4">
+          <input
+            type="text"
+            placeholder="Search items..."
+            className="px-3 py-2 rounded bg-zinc-800 border border-zinc-600 text-white"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <select
+            className="px-2 py-2 rounded bg-zinc-800 border border-zinc-600 text-white"
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value)}
+          >
+            <option value="item_name">Sort: Name</option>
+            <option value="id">Sort: ID</option>
+          </select>
+        </div>
+      </div>
+
+      <div className="space-y-3">
+        {filtered.map((item) => (
+          <Card
+            key={item.id}
+            onClick={() => setSelectedItem(item)}
+            className="w-full flex justify-between items-center"
+          >
+            <div>
+              <h3 className="text-lg font-medium text-white">{item.item_name}</h3>
+              <p className="text-sm text-zinc-400">ID: {item.id}</p>
+            </div>
+            <div className="text-sm text-zinc-500 italic">Click to edit</div>
           </Card>
         ))}
       </div>
 
-      {/* Modal */}
       <ItemModal
         selectedItem={selectedItem}
         itemDetails={itemDetails}

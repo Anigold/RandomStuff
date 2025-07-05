@@ -3,6 +3,8 @@ import ItemsPage from './Pages/Items/Items';
 import AdminDashboard from './Pages/Admin/AdminDashboard';
 import VendorsPage from './Pages/Vendors/VendorsPage';
 import SidebarButton from './Pages/ui/SidebarButton';
+import StoresPage from './Pages/Stores/StoresPage';
+import OrdersPage from './Pages/Orders/OrdersPage';
 
 function App() {
   const [page, setPage] = useState("home");
@@ -11,6 +13,9 @@ function App() {
     if (page === "items") return <ItemsPage />;
     if (page === "admin") return <AdminDashboard />;
     if (page === "vendors") return <VendorsPage />;
+    if (page === 'stores') return <StoresPage />;
+    if (page === 'orders') return <OrdersPage />;
+
 
     return (
       <div className="overflow-y-auto max-h-full space-y-2">
@@ -42,6 +47,7 @@ function App() {
                 <SidebarButton label="Items" onClick={() => setPage("items")} />
                 <SidebarButton label="Vendors" onClick={() => setPage("vendors")} />
                 <SidebarButton label="Admin" onClick={() => setPage("admin")} />
+                <SidebarButton label="Stores" onClick={() => setPage("stores")} />
             </ul>
 
           </nav>
