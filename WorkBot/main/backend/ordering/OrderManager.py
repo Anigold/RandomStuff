@@ -6,6 +6,7 @@ from openpyxl import Workbook
 
 from backend.logger.Logger import Logger
 from config.paths import DOWNLOADS_DIR, ORDER_FILES_DIR
+import requests
 
 @Logger.attach_logger
 class OrderManager:
@@ -155,7 +156,28 @@ class OrderManager:
 
         return workbook
 
-                
+    def upload_order_to_api(self, order: Order, api_url="http://localhost:5000/api/import-order"):
+        print(order.items)
+        payload = {
+            "store": order.store,
+            "vendor": order.vendor,
+            "date": order.date,
+            "items": [
+                {
+                    'sku':        item.sku,
+                    'name':       item.name,
+                    'quantity':   item.quantity,
+                    'cost_per':   item.cost_per,
+                    'total_cost': item.total_cost
+                    # "case_size": item.case_size
+                } for item in order.items
+            ]
+        }
+        print(payload, flush=True)
+
+        response = requests.post(api_url, json=payload)
+        response.raise_for_status()
+
 
     @classmethod
     def create_order_from_excel(cls, file_path: Path) -> Order:

@@ -14874,3 +14874,840 @@ Stacktrace:
 2025-07-05 13:47:15,922 - INFO - WorkBot - WorkBot initialized successfully.
 2025-07-05 13:57:16,749 - INFO - CraftableBot - Closing WebDriver session.
 2025-07-05 13:57:16,827 - INFO - CraftableBot - WebDriver session closed.
+2025-07-05 15:27:41,389 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 15:27:43,378 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 15:27:43,756 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 15:27:44,875 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 15:45:57,973 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 15:45:59,203 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 15:50:18,605 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 15:50:19,717 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 15:51:18,476 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 15:51:19,792 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 15:51:35,886 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 15:51:37,025 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 15:52:06,794 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 15:52:07,976 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 15:52:43,929 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 15:52:45,082 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 15:54:04,625 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 15:54:05,954 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 15:54:56,233 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 15:54:57,460 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 15:55:09,419 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 15:55:10,671 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 16:03:44,123 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 16:03:59,487 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 16:03:59,487 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 16:03:59,487 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 16:04:11,878 - INFO - CraftableBot - Logging into Craftable.
+2025-07-05 16:04:19,743 - INFO - CraftableBot - Login successful.
+2025-07-05 16:04:19,744 - INFO - CraftableBot - Starting order download protocol.
+2025-07-05 16:04:19,744 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-05 16:04:26,299 - INFO - CraftableBot - Retrieving order for UNFI (07/05/2025).
+2025-07-05 16:04:28,267 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: UNFI, on 20250705.
+2025-07-05 16:04:28,267 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: UNFI_Bakery_20250705.xlsx
+2025-07-05 16:04:28,267 - INFO - OrderManager - Looking up directory for: UNFI.
+2025-07-05 16:04:28,267 - INFO - OrderManager - Directory found: /home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/ordering/OrderFiles/UNFI
+2025-07-05 16:04:28,267 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: UNFI_Bakery_20250705.xlsx
+2025-07-05 16:04:28,272 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for UNFI on 20250705.
+2025-07-05 16:04:28,272 - INFO - CraftableBot - [Order Update] No changes detected for Bakery for UNFI on 20250705. Skipping update protocol.
+2025-07-05 16:04:28,272 - INFO - CraftableBot - Order for UNFI is up-to-date. Skipping.
+2025-07-05 16:04:30,331 - INFO - CraftableBot - Retrieving order for Webstaurant (07/05/2025).
+2025-07-05 16:04:31,484 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Webstaurant, on 20250705.
+2025-07-05 16:04:31,484 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Webstaurant_Bakery_20250705.xlsx
+2025-07-05 16:04:31,484 - INFO - OrderManager - Looking up directory for: Webstaurant.
+2025-07-05 16:04:31,484 - INFO - OrderManager - Directory found: /home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/ordering/OrderFiles/Webstaurant
+2025-07-05 16:04:31,484 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: Webstaurant_Bakery_20250705.xlsx
+2025-07-05 16:04:31,486 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for Webstaurant on 20250705.
+2025-07-05 16:04:31,486 - INFO - CraftableBot - [Order Update] Removing outdated order file: /home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/ordering/OrderFiles/Webstaurant/Webstaurant_Bakery_20250705.xlsx
+2025-07-05 16:04:31,486 - INFO - CraftableBot - [File Cleanup] Attempting to remove file: /home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/ordering/OrderFiles/Webstaurant/Webstaurant_Bakery_20250705.xlsx
+2025-07-05 16:04:31,486 - INFO - CraftableBot - [File Cleanup] Successfully removed file: /home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/ordering/OrderFiles/Webstaurant/Webstaurant_Bakery_20250705.xlsx
+2025-07-05 16:04:31,487 - INFO - CraftableBot - [File Cleanup] Attempting to remove file: /home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/ordering/OrderFiles/Webstaurant/Webstaurant_Bakery_20250705.pdf
+2025-07-05 16:04:31,487 - INFO - CraftableBot - [File Cleanup] Successfully removed file: /home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/ordering/OrderFiles/Webstaurant/Webstaurant_Bakery_20250705.pdf
+2025-07-05 16:04:31,487 - INFO - CraftableBot - Saving order for Webstaurant.
+2025-07-05 16:04:38,803 - INFO - CraftableBot - Order download complete.
+2025-07-05 16:05:04,179 - INFO - CraftableBot - Closing WebDriver session.
+2025-07-05 16:05:04,233 - INFO - CraftableBot - WebDriver session closed.
+2025-07-05 16:05:08,068 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 16:05:08,068 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 16:05:08,068 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 16:05:12,664 - INFO - CraftableBot - Closing WebDriver session.
+2025-07-05 16:05:14,966 - INFO - CraftableBot - WebDriver session closed.
+2025-07-05 16:05:25,709 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 16:05:25,709 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 16:05:25,709 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 16:05:26,057 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 16:05:26,058 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 16:05:26,058 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 17:16:41,640 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 17:16:41,640 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 17:16:41,640 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 17:57:14,681 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 17:57:14,681 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 17:57:14,681 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 18:08:42,199 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 18:08:42,199 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 18:08:42,199 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 18:08:42,539 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 18:08:42,539 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 18:08:42,539 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 18:10:21,430 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 18:10:21,430 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 18:10:21,430 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 18:10:32,070 - INFO - OrderManager - Looking up directory for: Ithaca Bakery.
+2025-07-05 18:10:32,071 - INFO - OrderManager - Directory found: /home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/ordering/OrderFiles/Ithaca Bakery
+2025-07-05 18:10:32,071 - INFO - WorkBotCLI - Attempting to open directory for: Ithaca Bakery
+2025-07-05 18:10:32,096 - INFO - WorkBotCLI - Directory opened.
+2025-07-05 18:11:06,072 - INFO - CraftableBot - Logging into Craftable.
+2025-07-05 18:11:14,267 - INFO - CraftableBot - Login successful.
+2025-07-05 18:11:14,267 - INFO - CraftableBot - Starting order download protocol.
+2025-07-05 18:11:14,267 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-05 18:11:20,806 - INFO - CraftableBot - Retrieving order for UNFI (07/05/2025).
+2025-07-05 18:11:22,721 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: UNFI, on 20250705.
+2025-07-05 18:11:22,721 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: UNFI_Bakery_20250705.xlsx
+2025-07-05 18:11:22,721 - INFO - OrderManager - Looking up directory for: UNFI.
+2025-07-05 18:11:22,721 - INFO - OrderManager - Directory not found for: UNFI.
+2025-07-05 18:11:22,721 - INFO - CraftableBot - [Order Update] No order directory found for vendor: UNFI. Proceeding with new download.
+2025-07-05 18:11:22,721 - INFO - CraftableBot - Saving order for UNFI.
+2025-07-05 18:11:22,731 - ERROR - CraftableBot - Error in download_orders: 'list' object has no attribute 'name'
+Traceback (most recent call last):
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/logger/Logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 229, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 273, in _process_order_row
+    self.order_manager.upload_order_to_api(order_to_save)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/ordering/OrderManager.py", line 166, in upload_order_to_api
+    "name": item.name,
+            ^^^^^^^^^
+AttributeError: 'list' object has no attribute 'name'
+2025-07-05 18:14:28,458 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 18:14:28,458 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 18:14:28,458 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 18:14:30,369 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 18:14:30,369 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 18:14:30,369 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 18:14:38,836 - INFO - CraftableBot - Logging into Craftable.
+2025-07-05 18:14:47,576 - INFO - CraftableBot - Login successful.
+2025-07-05 18:14:47,576 - INFO - CraftableBot - Starting order download protocol.
+2025-07-05 18:14:47,576 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-05 18:14:54,153 - INFO - CraftableBot - Retrieving order for UNFI (07/05/2025).
+2025-07-05 18:14:56,151 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: UNFI, on 20250705.
+2025-07-05 18:14:56,151 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: UNFI_Bakery_20250705.xlsx
+2025-07-05 18:14:56,151 - INFO - OrderManager - Looking up directory for: UNFI.
+2025-07-05 18:14:56,151 - INFO - OrderManager - Directory not found for: UNFI.
+2025-07-05 18:14:56,151 - INFO - CraftableBot - [Order Update] No order directory found for vendor: UNFI. Proceeding with new download.
+2025-07-05 18:14:56,151 - INFO - CraftableBot - Saving order for UNFI.
+2025-07-05 18:14:56,156 - ERROR - CraftableBot - Error in download_orders: 'list' object has no attribute 'name'
+Traceback (most recent call last):
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/logger/Logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 229, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 273, in _process_order_row
+    self.order_manager.upload_order_to_api(order_to_save)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/ordering/OrderManager.py", line 167, in upload_order_to_api
+    "name": item.name,
+            ^^^^^^^^^
+AttributeError: 'list' object has no attribute 'name'
+2025-07-05 18:16:29,404 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 18:16:29,405 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 18:16:29,405 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 18:16:40,462 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 18:16:40,462 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 18:16:40,462 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 18:16:45,173 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 18:16:45,173 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 18:16:45,173 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 18:17:26,629 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 18:17:26,630 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 18:17:26,630 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 18:17:35,863 - INFO - CraftableBot - Logging into Craftable.
+2025-07-05 18:17:44,024 - INFO - CraftableBot - Login successful.
+2025-07-05 18:17:44,024 - INFO - CraftableBot - Starting order download protocol.
+2025-07-05 18:17:44,025 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-05 18:17:50,660 - INFO - CraftableBot - Retrieving order for UNFI (07/05/2025).
+2025-07-05 18:17:52,613 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: UNFI, on 20250705.
+2025-07-05 18:17:52,613 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: UNFI_Bakery_20250705.xlsx
+2025-07-05 18:17:52,613 - INFO - OrderManager - Looking up directory for: UNFI.
+2025-07-05 18:17:52,613 - INFO - OrderManager - Directory not found for: UNFI.
+2025-07-05 18:17:52,613 - INFO - CraftableBot - [Order Update] No order directory found for vendor: UNFI. Proceeding with new download.
+2025-07-05 18:17:52,613 - INFO - CraftableBot - Saving order for UNFI.
+2025-07-05 18:17:52,614 - ERROR - CraftableBot - Error in download_orders: 'OrderItem' object is not iterable
+Traceback (most recent call last):
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/logger/Logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 229, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 272, in _process_order_row
+    self.order_manager.save_order(order_to_save)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/ordering/OrderManager.py", line 84, in save_order
+    if file_extension in extensions: extensions[file_extension](order)
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/ordering/OrderManager.py", line 90, in _save_as_excel
+    workbook = order.to_excel_workbook()
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/ordering/Order.py", line 86, in to_excel_workbook
+    for info_pos, item_info in enumerate(item):
+                               ~~~~~~~~~^^^^^^
+TypeError: 'OrderItem' object is not iterable
+2025-07-05 18:20:27,932 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 18:20:27,932 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 18:20:27,932 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 18:20:52,348 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 18:20:52,348 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 18:20:52,348 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 18:21:03,792 - INFO - CraftableBot - Logging into Craftable.
+2025-07-05 18:21:11,796 - INFO - CraftableBot - Login successful.
+2025-07-05 18:21:11,796 - INFO - CraftableBot - Starting order download protocol.
+2025-07-05 18:21:11,796 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-05 18:21:18,326 - INFO - CraftableBot - Retrieving order for UNFI (07/05/2025).
+2025-07-05 18:21:20,276 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: UNFI, on 20250705.
+2025-07-05 18:21:20,276 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: UNFI_Bakery_20250705.xlsx
+2025-07-05 18:21:20,276 - INFO - OrderManager - Looking up directory for: UNFI.
+2025-07-05 18:21:20,280 - INFO - OrderManager - Directory not found for: UNFI.
+2025-07-05 18:21:20,280 - INFO - CraftableBot - [Order Update] No order directory found for vendor: UNFI. Proceeding with new download.
+2025-07-05 18:21:20,280 - INFO - CraftableBot - Saving order for UNFI.
+2025-07-05 18:21:20,281 - ERROR - CraftableBot - Error in download_orders: 'OrderItem' object has no attribute 'keys'
+Traceback (most recent call last):
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/logger/Logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 229, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 272, in _process_order_row
+    self.order_manager.save_order(order_to_save)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/ordering/OrderManager.py", line 84, in save_order
+    if file_extension in extensions: extensions[file_extension](order)
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/ordering/OrderManager.py", line 90, in _save_as_excel
+    workbook = order.to_excel_workbook()
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/ordering/Order.py", line 86, in to_excel_workbook
+    for info_pos, item_info in enumerate(item.keys()):
+                                         ^^^^^^^^^
+AttributeError: 'OrderItem' object has no attribute 'keys'
+2025-07-05 18:21:55,331 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 18:21:55,331 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 18:21:55,331 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 18:21:58,111 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 18:21:58,112 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 18:21:58,112 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 18:22:06,629 - INFO - CraftableBot - Logging into Craftable.
+2025-07-05 18:22:14,467 - INFO - CraftableBot - Login successful.
+2025-07-05 18:22:14,467 - INFO - CraftableBot - Starting order download protocol.
+2025-07-05 18:22:14,467 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-05 18:22:21,077 - INFO - CraftableBot - Retrieving order for UNFI (07/05/2025).
+2025-07-05 18:22:23,053 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: UNFI, on 20250705.
+2025-07-05 18:22:23,053 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: UNFI_Bakery_20250705.xlsx
+2025-07-05 18:22:23,054 - INFO - OrderManager - Looking up directory for: UNFI.
+2025-07-05 18:22:23,054 - INFO - OrderManager - Directory not found for: UNFI.
+2025-07-05 18:22:23,054 - INFO - CraftableBot - [Order Update] No order directory found for vendor: UNFI. Proceeding with new download.
+2025-07-05 18:22:23,054 - INFO - CraftableBot - Saving order for UNFI.
+2025-07-05 18:22:23,063 - ERROR - CraftableBot - Error in download_orders: 'OrderItem' object has no attribute 'cost'
+Traceback (most recent call last):
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/logger/Logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 229, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 273, in _process_order_row
+    self.order_manager.upload_order_to_api(order_to_save)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/ordering/OrderManager.py", line 169, in upload_order_to_api
+    "cost": item.cost,
+            ^^^^^^^^^
+AttributeError: 'OrderItem' object has no attribute 'cost'
+2025-07-05 18:23:16,735 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 18:23:16,735 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 18:23:16,735 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:27:45,441 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 19:27:45,441 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:27:45,441 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:27:58,697 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 19:27:58,697 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:27:58,697 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:28:18,105 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 19:28:18,105 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:28:18,105 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:28:26,038 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 19:28:26,038 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:28:26,039 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:29:10,949 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 19:29:10,949 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:29:10,949 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:29:23,517 - INFO - CraftableBot - Logging into Craftable.
+2025-07-05 19:29:31,892 - INFO - CraftableBot - Login successful.
+2025-07-05 19:29:31,893 - INFO - CraftableBot - Starting order download protocol.
+2025-07-05 19:29:31,893 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-05 19:29:38,490 - INFO - CraftableBot - Retrieving order for UNFI (07/05/2025).
+2025-07-05 19:29:40,553 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: UNFI, on 20250705.
+2025-07-05 19:29:40,553 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: UNFI_Bakery_20250705.xlsx
+2025-07-05 19:29:40,553 - INFO - OrderManager - Looking up directory for: UNFI.
+2025-07-05 19:29:40,553 - INFO - OrderManager - Directory not found for: UNFI.
+2025-07-05 19:29:40,553 - INFO - CraftableBot - [Order Update] No order directory found for vendor: UNFI. Proceeding with new download.
+2025-07-05 19:29:40,553 - INFO - CraftableBot - Saving order for UNFI.
+2025-07-05 19:29:40,571 - ERROR - CraftableBot - Error in download_orders: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5000/api/import-order
+Traceback (most recent call last):
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/logger/Logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 229, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 273, in _process_order_row
+    self.order_manager.upload_order_to_api(order_to_save)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/ordering/OrderManager.py", line 178, in upload_order_to_api
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/venv/lib/python3.13/site-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5000/api/import-order
+2025-07-05 19:33:26,249 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 19:33:26,249 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:33:26,249 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:34:11,913 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 19:34:11,913 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:34:11,913 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:34:47,127 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 19:34:47,127 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:34:47,127 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:35:02,358 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 19:35:02,358 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:35:02,358 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:35:08,852 - INFO - CraftableBot - Logging into Craftable.
+2025-07-05 19:35:16,803 - INFO - CraftableBot - Login successful.
+2025-07-05 19:35:16,803 - INFO - CraftableBot - Starting order download protocol.
+2025-07-05 19:35:16,803 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-05 19:35:23,361 - INFO - CraftableBot - Retrieving order for UNFI (07/05/2025).
+2025-07-05 19:35:25,295 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: UNFI, on 20250705.
+2025-07-05 19:35:25,295 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: UNFI_Bakery_20250705.xlsx
+2025-07-05 19:35:25,295 - INFO - OrderManager - Looking up directory for: UNFI.
+2025-07-05 19:35:25,300 - INFO - OrderManager - Directory not found for: UNFI.
+2025-07-05 19:35:25,300 - INFO - CraftableBot - [Order Update] No order directory found for vendor: UNFI. Proceeding with new download.
+2025-07-05 19:35:25,300 - INFO - CraftableBot - Saving order for UNFI.
+2025-07-05 19:35:25,313 - ERROR - CraftableBot - Error in download_orders: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5000/api/import-order
+Traceback (most recent call last):
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/logger/Logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 229, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 273, in _process_order_row
+    self.order_manager.upload_order_to_api(order_to_save)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/ordering/OrderManager.py", line 178, in upload_order_to_api
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/venv/lib/python3.13/site-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5000/api/import-order
+2025-07-05 19:35:54,910 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 19:35:54,910 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:35:54,910 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:36:00,702 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 19:36:00,702 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:36:00,702 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:36:09,991 - INFO - CraftableBot - Logging into Craftable.
+2025-07-05 19:36:17,813 - INFO - CraftableBot - Login successful.
+2025-07-05 19:36:17,813 - INFO - CraftableBot - Starting order download protocol.
+2025-07-05 19:36:17,813 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-05 19:36:24,368 - INFO - CraftableBot - Retrieving order for UNFI (07/05/2025).
+2025-07-05 19:36:26,334 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: UNFI, on 20250705.
+2025-07-05 19:36:26,334 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: UNFI_Bakery_20250705.xlsx
+2025-07-05 19:36:26,334 - INFO - OrderManager - Looking up directory for: UNFI.
+2025-07-05 19:36:26,334 - INFO - OrderManager - Directory not found for: UNFI.
+2025-07-05 19:36:26,334 - INFO - CraftableBot - [Order Update] No order directory found for vendor: UNFI. Proceeding with new download.
+2025-07-05 19:36:26,334 - INFO - CraftableBot - Saving order for UNFI.
+2025-07-05 19:36:26,350 - ERROR - CraftableBot - Error in download_orders: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5000/api/import-order
+Traceback (most recent call last):
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/logger/Logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 229, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 273, in _process_order_row
+    self.order_manager.upload_order_to_api(order_to_save)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/ordering/OrderManager.py", line 179, in upload_order_to_api
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/venv/lib/python3.13/site-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5000/api/import-order
+2025-07-05 19:37:53,588 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 19:37:53,588 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:37:53,588 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:37:53,934 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 19:37:53,934 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:37:53,934 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:38:06,428 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 19:38:06,428 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:38:06,429 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:38:14,568 - INFO - CraftableBot - Logging into Craftable.
+2025-07-05 19:38:22,296 - INFO - CraftableBot - Login successful.
+2025-07-05 19:38:22,296 - INFO - CraftableBot - Starting order download protocol.
+2025-07-05 19:38:22,296 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-05 19:38:28,866 - INFO - CraftableBot - Retrieving order for UNFI (07/05/2025).
+2025-07-05 19:38:30,923 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: UNFI, on 20250705.
+2025-07-05 19:38:30,923 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: UNFI_Bakery_20250705.xlsx
+2025-07-05 19:38:30,923 - INFO - OrderManager - Looking up directory for: UNFI.
+2025-07-05 19:38:30,923 - INFO - OrderManager - Directory not found for: UNFI.
+2025-07-05 19:38:30,923 - INFO - CraftableBot - [Order Update] No order directory found for vendor: UNFI. Proceeding with new download.
+2025-07-05 19:38:30,923 - INFO - CraftableBot - Saving order for UNFI.
+2025-07-05 19:38:30,939 - ERROR - CraftableBot - Error in download_orders: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5000/api/import-order
+Traceback (most recent call last):
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/logger/Logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 229, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 273, in _process_order_row
+    self.order_manager.upload_order_to_api(order_to_save)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/ordering/OrderManager.py", line 179, in upload_order_to_api
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/venv/lib/python3.13/site-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5000/api/import-order
+2025-07-05 19:39:28,817 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 19:39:28,817 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:39:28,817 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:39:37,655 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 19:39:37,655 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:39:37,655 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:39:45,607 - INFO - CraftableBot - Logging into Craftable.
+2025-07-05 19:39:53,458 - INFO - CraftableBot - Login successful.
+2025-07-05 19:39:53,459 - INFO - CraftableBot - Starting order download protocol.
+2025-07-05 19:39:53,459 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-05 19:40:00,074 - INFO - CraftableBot - Retrieving order for UNFI (07/05/2025).
+2025-07-05 19:40:02,058 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: UNFI, on 20250705.
+2025-07-05 19:40:02,058 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: UNFI_Bakery_20250705.xlsx
+2025-07-05 19:40:02,058 - INFO - OrderManager - Looking up directory for: UNFI.
+2025-07-05 19:40:02,058 - INFO - OrderManager - Directory not found for: UNFI.
+2025-07-05 19:40:02,058 - INFO - CraftableBot - [Order Update] No order directory found for vendor: UNFI. Proceeding with new download.
+2025-07-05 19:40:02,058 - INFO - CraftableBot - Saving order for UNFI.
+2025-07-05 19:40:02,074 - ERROR - CraftableBot - Error in download_orders: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5000/api/import-order
+Traceback (most recent call last):
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/logger/Logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 229, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 273, in _process_order_row
+    self.order_manager.upload_order_to_api(order_to_save)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/ordering/OrderManager.py", line 179, in upload_order_to_api
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/venv/lib/python3.13/site-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5000/api/import-order
+2025-07-05 19:41:07,269 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 19:41:07,269 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:41:07,269 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:41:13,239 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 19:41:13,239 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:41:13,239 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:41:20,543 - INFO - CraftableBot - Logging into Craftable.
+2025-07-05 19:41:28,792 - INFO - CraftableBot - Login successful.
+2025-07-05 19:41:28,792 - INFO - CraftableBot - Starting order download protocol.
+2025-07-05 19:41:28,792 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-05 19:41:35,322 - INFO - CraftableBot - Retrieving order for UNFI (07/05/2025).
+2025-07-05 19:41:37,294 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: UNFI, on 20250705.
+2025-07-05 19:41:37,294 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: UNFI_Bakery_20250705.xlsx
+2025-07-05 19:41:37,294 - INFO - OrderManager - Looking up directory for: UNFI.
+2025-07-05 19:41:37,298 - INFO - OrderManager - Directory not found for: UNFI.
+2025-07-05 19:41:37,298 - INFO - CraftableBot - [Order Update] No order directory found for vendor: UNFI. Proceeding with new download.
+2025-07-05 19:41:37,298 - INFO - CraftableBot - Saving order for UNFI.
+2025-07-05 19:41:37,310 - ERROR - CraftableBot - Error in download_orders: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5000/api/import-order
+Traceback (most recent call last):
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/logger/Logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 229, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 273, in _process_order_row
+    self.order_manager.upload_order_to_api(order_to_save)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/ordering/OrderManager.py", line 179, in upload_order_to_api
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/venv/lib/python3.13/site-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5000/api/import-order
+2025-07-05 19:42:07,553 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 19:42:07,554 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:42:07,554 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:42:29,159 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 19:42:29,159 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:42:29,159 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:42:34,237 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 19:42:34,237 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:42:34,237 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 19:42:39,444 - INFO - CraftableBot - Logging into Craftable.
+2025-07-05 19:42:48,341 - INFO - CraftableBot - Login successful.
+2025-07-05 19:42:48,341 - INFO - CraftableBot - Starting order download protocol.
+2025-07-05 19:42:48,341 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-05 19:42:54,913 - INFO - CraftableBot - Retrieving order for UNFI (07/05/2025).
+2025-07-05 19:42:56,885 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: UNFI, on 20250705.
+2025-07-05 19:42:56,886 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: UNFI_Bakery_20250705.xlsx
+2025-07-05 19:42:56,886 - INFO - OrderManager - Looking up directory for: UNFI.
+2025-07-05 19:42:56,886 - INFO - OrderManager - Directory not found for: UNFI.
+2025-07-05 19:42:56,886 - INFO - CraftableBot - [Order Update] No order directory found for vendor: UNFI. Proceeding with new download.
+2025-07-05 19:42:56,886 - INFO - CraftableBot - Saving order for UNFI.
+2025-07-05 19:43:04,423 - INFO - CraftableBot - Retrieving order for Webstaurant (07/05/2025).
+2025-07-05 19:43:05,607 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Webstaurant, on 20250705.
+2025-07-05 19:43:05,607 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Webstaurant_Bakery_20250705.xlsx
+2025-07-05 19:43:05,607 - INFO - OrderManager - Looking up directory for: Webstaurant.
+2025-07-05 19:43:05,607 - INFO - OrderManager - Directory not found for: Webstaurant.
+2025-07-05 19:43:05,607 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Webstaurant. Proceeding with new download.
+2025-07-05 19:43:05,607 - INFO - CraftableBot - Saving order for Webstaurant.
+2025-07-05 19:43:12,927 - INFO - CraftableBot - Retrieving order for Sysco (07/05/2025).
+2025-07-05 19:43:14,155 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Sysco, on 20250705.
+2025-07-05 19:43:14,155 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Sysco_Bakery_20250705.xlsx
+2025-07-05 19:43:14,155 - INFO - OrderManager - Looking up directory for: Sysco.
+2025-07-05 19:43:14,155 - INFO - OrderManager - Directory not found for: Sysco.
+2025-07-05 19:43:14,155 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Sysco. Proceeding with new download.
+2025-07-05 19:43:14,155 - INFO - CraftableBot - Saving order for Sysco.
+2025-07-05 19:43:21,508 - INFO - CraftableBot - Retrieving order for FingerLakes Farms (07/05/2025).
+2025-07-05 19:43:22,938 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: FingerLakes Farms, on 20250705.
+2025-07-05 19:43:22,938 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: FingerLakes Farms_Bakery_20250705.xlsx
+2025-07-05 19:43:22,938 - INFO - OrderManager - Looking up directory for: FingerLakes Farms.
+2025-07-05 19:43:22,939 - INFO - OrderManager - Directory not found for: FingerLakes Farms.
+2025-07-05 19:43:22,939 - INFO - CraftableBot - [Order Update] No order directory found for vendor: FingerLakes Farms. Proceeding with new download.
+2025-07-05 19:43:22,939 - INFO - CraftableBot - Saving order for FingerLakes Farms.
+2025-07-05 19:43:30,381 - INFO - CraftableBot - Retrieving order for Hillcrest Dairy (07/05/2025).
+2025-07-05 19:43:31,492 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Hillcrest Dairy, on 20250705.
+2025-07-05 19:43:31,492 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Hillcrest Dairy_Bakery_20250705.xlsx
+2025-07-05 19:43:31,492 - INFO - OrderManager - Looking up directory for: Hillcrest Dairy.
+2025-07-05 19:43:31,492 - INFO - OrderManager - Directory not found for: Hillcrest Dairy.
+2025-07-05 19:43:31,492 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Hillcrest Dairy. Proceeding with new download.
+2025-07-05 19:43:31,492 - INFO - CraftableBot - Saving order for Hillcrest Dairy.
+2025-07-05 19:43:38,815 - INFO - CraftableBot - Retrieving order for Performance Food (07/05/2025).
+2025-07-05 19:43:39,969 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Performance Food, on 20250705.
+2025-07-05 19:43:39,970 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Performance Food_Bakery_20250705.xlsx
+2025-07-05 19:43:39,970 - INFO - OrderManager - Looking up directory for: Performance Food.
+2025-07-05 19:43:39,970 - INFO - OrderManager - Directory not found for: Performance Food.
+2025-07-05 19:43:39,970 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Performance Food. Proceeding with new download.
+2025-07-05 19:43:39,970 - INFO - CraftableBot - Saving order for Performance Food.
+2025-07-05 19:43:47,309 - INFO - CraftableBot - Order download complete.
+2025-07-05 20:03:11,111 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 20:03:11,112 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:03:11,112 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:03:19,880 - INFO - CraftableBot - Closing WebDriver session.
+2025-07-05 20:03:19,889 - ERROR - CraftableBot - Error closing WebDriver session: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=138.0.7204.92)
+Stacktrace:
+#0 0x55d5f65551da <unknown>
+#1 0x55d5f5fffab0 <unknown>
+#2 0x55d5f5fe4e1e <unknown>
+#3 0x55d5f5fe613f <unknown>
+#4 0x55d5f60003da <unknown>
+#5 0x55d5f5fd4240 <unknown>
+#6 0x55d5f6088255 <unknown>
+#7 0x55d5f6077168 <unknown>
+#8 0x55d5f6043aeb <unknown>
+#9 0x55d5f6044751 <unknown>
+#10 0x55d5f6519aeb <unknown>
+#11 0x55d5f651d8c9 <unknown>
+#12 0x55d5f65008c9 <unknown>
+#13 0x55d5f651e488 <unknown>
+#14 0x55d5f64e507f <unknown>
+#15 0x55d5f6542888 <unknown>
+#16 0x55d5f6542a66 <unknown>
+#17 0x55d5f65544f6 <unknown>
+#18 0x7f033364b609 start_thread
+
+2025-07-05 20:03:19,889 - INFO - CraftableBot - WebDriver session closed.
+2025-07-05 20:06:31,256 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 20:06:31,256 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:06:31,256 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:06:40,111 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 20:06:40,111 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:06:40,111 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:07:20,683 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 20:07:20,683 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:07:20,684 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:07:27,016 - INFO - CraftableBot - Logging into Craftable.
+2025-07-05 20:07:35,004 - INFO - CraftableBot - Login successful.
+2025-07-05 20:07:35,004 - INFO - CraftableBot - Starting order download protocol.
+2025-07-05 20:07:35,004 - INFO - CraftableBot - Accessing order page for Triphammer.
+2025-07-05 20:07:41,549 - INFO - CraftableBot - Retrieving order for Hill & Markes (07/03/2025).
+2025-07-05 20:07:42,864 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer for vendor: Hill & Markes, on 20250703.
+2025-07-05 20:07:42,864 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Hill & Markes_Triphammer_20250703.xlsx
+2025-07-05 20:07:42,864 - INFO - OrderManager - Looking up directory for: Hill & Markes.
+2025-07-05 20:07:42,864 - INFO - OrderManager - Directory not found for: Hill & Markes.
+2025-07-05 20:07:42,864 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Hill & Markes. Proceeding with new download.
+2025-07-05 20:07:42,864 - INFO - CraftableBot - Saving order for Hill & Markes.
+2025-07-05 20:07:42,877 - ERROR - CraftableBot - Error in download_orders: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5000/api/import-order
+Traceback (most recent call last):
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/logger/Logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 229, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 273, in _process_order_row
+    self.order_manager.upload_order_to_api(order_to_save)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/ordering/OrderManager.py", line 179, in upload_order_to_api
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/venv/lib/python3.13/site-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5000/api/import-order
+2025-07-05 20:08:13,347 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 20:08:13,347 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:08:13,347 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:09:45,980 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 20:09:45,981 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:09:45,981 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:09:59,633 - INFO - CraftableBot - Logging into Craftable.
+2025-07-05 20:10:07,437 - INFO - CraftableBot - Login successful.
+2025-07-05 20:10:07,438 - INFO - CraftableBot - Starting order download protocol.
+2025-07-05 20:10:07,438 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-05 20:10:14,017 - INFO - CraftableBot - Retrieving order for UNFI (07/05/2025).
+2025-07-05 20:10:15,933 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: UNFI, on 20250705.
+2025-07-05 20:10:15,933 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: UNFI_Bakery_20250705.xlsx
+2025-07-05 20:10:15,933 - INFO - OrderManager - Looking up directory for: UNFI.
+2025-07-05 20:10:15,933 - INFO - OrderManager - Directory found: /home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/ordering/OrderFiles/UNFI
+2025-07-05 20:10:15,933 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: UNFI_Bakery_20250705.xlsx
+2025-07-05 20:10:15,938 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for UNFI on 20250705.
+2025-07-05 20:10:15,938 - ERROR - CraftableBot - Error in download_orders: 'OrderItem' object is not iterable
+Traceback (most recent call last):
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/logger/Logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 229, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 264, in _process_order_row
+    if update and self._update_existing_order(store, row_vendor_name, row_date_formatted, items):
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 722, in _update_existing_order
+    if set(map(tuple, items)) == set(map(tuple, saved_items)):
+       ~~~^^^^^^^^^^^^^^^^^^^
+TypeError: 'OrderItem' object is not iterable
+2025-07-05 20:14:31,336 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 20:14:31,336 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:14:31,337 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:17:17,433 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 20:17:17,433 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:17:17,433 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:17:29,485 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 20:17:29,485 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:17:29,485 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:23:09,330 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 20:23:09,330 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:23:09,330 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:24:18,209 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 20:24:18,209 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:24:18,209 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:24:31,504 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 20:24:31,504 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:24:31,504 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:24:43,684 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 20:24:43,685 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:24:43,685 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:25:27,041 - INFO - CraftableBot - Logging into Craftable.
+2025-07-05 20:25:34,849 - INFO - CraftableBot - Login successful.
+2025-07-05 20:25:34,849 - INFO - CraftableBot - Starting order download protocol.
+2025-07-05 20:25:34,849 - INFO - CraftableBot - Accessing order page for Triphammer.
+2025-07-05 20:25:41,407 - INFO - CraftableBot - Retrieving order for Hill & Markes (07/03/2025).
+2025-07-05 20:25:42,731 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer for vendor: Hill & Markes, on 20250703.
+2025-07-05 20:25:42,731 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Hill & Markes_Triphammer_20250703.xlsx
+2025-07-05 20:25:42,731 - INFO - OrderManager - Looking up directory for: Hill & Markes.
+2025-07-05 20:25:42,731 - INFO - OrderManager - Directory not found for: Hill & Markes.
+2025-07-05 20:25:42,731 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Hill & Markes. Proceeding with new download.
+2025-07-05 20:25:42,731 - INFO - CraftableBot - Saving order for Hill & Markes.
+2025-07-05 20:25:42,745 - ERROR - CraftableBot - Error in download_orders: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5000/api/import-order
+Traceback (most recent call last):
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/logger/Logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 229, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 273, in _process_order_row
+    self.order_manager.upload_order_to_api(order_to_save)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/ordering/OrderManager.py", line 179, in upload_order_to_api
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/venv/lib/python3.13/site-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5000/api/import-order
+2025-07-05 20:25:56,643 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 20:25:56,643 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:25:56,643 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:26:01,164 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 20:26:01,164 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:26:01,164 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:26:11,763 - INFO - CraftableBot - Logging into Craftable.
+2025-07-05 20:26:19,783 - INFO - CraftableBot - Login successful.
+2025-07-05 20:26:19,783 - INFO - CraftableBot - Starting order download protocol.
+2025-07-05 20:26:19,783 - INFO - CraftableBot - Accessing order page for Triphammer.
+2025-07-05 20:26:26,435 - INFO - CraftableBot - Retrieving order for Hill & Markes (07/03/2025).
+2025-07-05 20:26:27,765 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer for vendor: Hill & Markes, on 20250703.
+2025-07-05 20:26:27,765 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Hill & Markes_Triphammer_20250703.xlsx
+2025-07-05 20:26:27,765 - INFO - OrderManager - Looking up directory for: Hill & Markes.
+2025-07-05 20:26:27,765 - INFO - OrderManager - Directory not found for: Hill & Markes.
+2025-07-05 20:26:27,765 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Hill & Markes. Proceeding with new download.
+2025-07-05 20:26:27,765 - INFO - CraftableBot - Saving order for Hill & Markes.
+2025-07-05 20:26:27,781 - ERROR - CraftableBot - Error in download_orders: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5000/api/import-order
+Traceback (most recent call last):
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/logger/Logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 229, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/craftable_bot/CraftableBot.py", line 273, in _process_order_row
+    self.order_manager.upload_order_to_api(order_to_save)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/ordering/OrderManager.py", line 179, in upload_order_to_api
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/anigold/projects/IthacaBakery/RandomStuff/venv/lib/python3.13/site-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5000/api/import-order
+2025-07-05 20:31:34,483 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 20:31:34,483 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:31:34,483 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:31:34,874 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 20:31:34,874 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:31:34,875 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:32:03,266 - INFO - WorkBot - Initializing WorkBot...
+2025-07-05 20:32:03,266 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:32:03,266 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-05 20:32:10,769 - INFO - CraftableBot - Logging into Craftable.
+2025-07-05 20:32:18,778 - INFO - CraftableBot - Login successful.
+2025-07-05 20:32:18,779 - INFO - CraftableBot - Starting order download protocol.
+2025-07-05 20:32:18,779 - INFO - CraftableBot - Accessing order page for Triphammer.
+2025-07-05 20:32:25,341 - INFO - CraftableBot - Retrieving order for Hill & Markes (07/03/2025).
+2025-07-05 20:32:26,680 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer for vendor: Hill & Markes, on 20250703.
+2025-07-05 20:32:26,680 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Hill & Markes_Triphammer_20250703.xlsx
+2025-07-05 20:32:26,680 - INFO - OrderManager - Looking up directory for: Hill & Markes.
+2025-07-05 20:32:26,680 - INFO - OrderManager - Directory not found for: Hill & Markes.
+2025-07-05 20:32:26,680 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Hill & Markes. Proceeding with new download.
+2025-07-05 20:32:26,680 - INFO - CraftableBot - Saving order for Hill & Markes.
+2025-07-05 20:32:34,047 - INFO - CraftableBot - Retrieving order for Sysco (07/04/2025).
+2025-07-05 20:32:35,656 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer for vendor: Sysco, on 20250704.
+2025-07-05 20:32:35,656 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Sysco_Triphammer_20250704.xlsx
+2025-07-05 20:32:35,656 - INFO - OrderManager - Looking up directory for: Sysco.
+2025-07-05 20:32:35,656 - INFO - OrderManager - Directory found: /home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/ordering/OrderFiles/Sysco
+2025-07-05 20:32:35,656 - INFO - CraftableBot - [Order Update] No existing order file found for Triphammer for Sysco on 20250704. Proceeding with new download.
+2025-07-05 20:32:35,656 - INFO - CraftableBot - Saving order for Sysco.
+2025-07-05 20:32:42,994 - INFO - CraftableBot - Retrieving order for UNFI (07/04/2025).
+2025-07-05 20:32:44,806 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer for vendor: UNFI, on 20250704.
+2025-07-05 20:32:44,806 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: UNFI_Triphammer_20250704.xlsx
+2025-07-05 20:32:44,806 - INFO - OrderManager - Looking up directory for: UNFI.
+2025-07-05 20:32:44,806 - INFO - OrderManager - Directory found: /home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/ordering/OrderFiles/UNFI
+2025-07-05 20:32:44,806 - INFO - CraftableBot - [Order Update] No existing order file found for Triphammer for UNFI on 20250704. Proceeding with new download.
+2025-07-05 20:32:44,806 - INFO - CraftableBot - Saving order for UNFI.
+2025-07-05 20:32:52,194 - INFO - CraftableBot - Retrieving order for Performance Food (07/04/2025).
+2025-07-05 20:32:53,620 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer for vendor: Performance Food, on 20250704.
+2025-07-05 20:32:53,620 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Performance Food_Triphammer_20250704.xlsx
+2025-07-05 20:32:53,620 - INFO - OrderManager - Looking up directory for: Performance Food.
+2025-07-05 20:32:53,620 - INFO - OrderManager - Directory found: /home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/ordering/OrderFiles/Performance Food
+2025-07-05 20:32:53,620 - INFO - CraftableBot - [Order Update] No existing order file found for Triphammer for Performance Food on 20250704. Proceeding with new download.
+2025-07-05 20:32:53,620 - INFO - CraftableBot - Saving order for Performance Food.
+2025-07-05 20:33:01,001 - INFO - CraftableBot - Retrieving order for FingerLakes Farms (07/04/2025).
+2025-07-05 20:33:02,358 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer for vendor: FingerLakes Farms, on 20250704.
+2025-07-05 20:33:02,358 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: FingerLakes Farms_Triphammer_20250704.xlsx
+2025-07-05 20:33:02,358 - INFO - OrderManager - Looking up directory for: FingerLakes Farms.
+2025-07-05 20:33:02,358 - INFO - OrderManager - Directory found: /home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/ordering/OrderFiles/FingerLakes Farms
+2025-07-05 20:33:02,358 - INFO - CraftableBot - [Order Update] No existing order file found for Triphammer for FingerLakes Farms on 20250704. Proceeding with new download.
+2025-07-05 20:33:02,358 - INFO - CraftableBot - Saving order for FingerLakes Farms.
+2025-07-05 20:33:09,736 - INFO - CraftableBot - Retrieving order for Hillcrest Dairy (07/04/2025).
+2025-07-05 20:33:10,965 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer for vendor: Hillcrest Dairy, on 20250704.
+2025-07-05 20:33:10,965 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Hillcrest Dairy_Triphammer_20250704.xlsx
+2025-07-05 20:33:10,965 - INFO - OrderManager - Looking up directory for: Hillcrest Dairy.
+2025-07-05 20:33:10,965 - INFO - OrderManager - Directory found: /home/anigold/projects/IthacaBakery/RandomStuff/WorkBot/main/backend/ordering/OrderFiles/Hillcrest Dairy
+2025-07-05 20:33:10,965 - INFO - CraftableBot - [Order Update] No existing order file found for Triphammer for Hillcrest Dairy on 20250704. Proceeding with new download.
+2025-07-05 20:33:10,965 - INFO - CraftableBot - Saving order for Hillcrest Dairy.
+2025-07-05 20:33:18,328 - INFO - CraftableBot - Retrieving order for Ithaca Bakery (07/04/2025).
+2025-07-05 20:33:20,474 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer for vendor: Ithaca Bakery, on 20250704.
+2025-07-05 20:33:20,474 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Ithaca Bakery_Triphammer_20250704.xlsx
+2025-07-05 20:33:20,474 - INFO - OrderManager - Looking up directory for: Ithaca Bakery.
+2025-07-05 20:33:20,474 - INFO - OrderManager - Directory not found for: Ithaca Bakery.
+2025-07-05 20:33:20,474 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Ithaca Bakery. Proceeding with new download.
+2025-07-05 20:33:20,474 - INFO - CraftableBot - Saving order for Ithaca Bakery.
+2025-07-05 20:33:27,827 - INFO - CraftableBot - Retrieving order for Equal Exchange (07/04/2025).
+2025-07-05 20:33:29,164 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer for vendor: Equal Exchange, on 20250704.
+2025-07-05 20:33:29,164 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Equal Exchange_Triphammer_20250704.xlsx
+2025-07-05 20:33:29,164 - INFO - OrderManager - Looking up directory for: Equal Exchange.
+2025-07-05 20:33:29,164 - INFO - OrderManager - Directory not found for: Equal Exchange.
+2025-07-05 20:33:29,165 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Equal Exchange. Proceeding with new download.
+2025-07-05 20:33:29,165 - INFO - CraftableBot - Saving order for Equal Exchange.
+2025-07-05 20:33:36,491 - INFO - CraftableBot - Retrieving order for Peters Supply (07/04/2025).
+2025-07-05 20:33:37,767 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer for vendor: Peters Supply, on 20250704.
+2025-07-05 20:33:37,767 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Peters Supply_Triphammer_20250704.xlsx
+2025-07-05 20:33:37,767 - INFO - OrderManager - Looking up directory for: Peters Supply.
+2025-07-05 20:33:37,767 - INFO - OrderManager - Directory not found for: Peters Supply.
+2025-07-05 20:33:37,767 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Peters Supply. Proceeding with new download.
+2025-07-05 20:33:37,767 - INFO - CraftableBot - Saving order for Peters Supply.
+2025-07-05 20:33:45,115 - INFO - CraftableBot - Retrieving order for Johnston Paper (07/04/2025).
+2025-07-05 20:33:46,318 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer for vendor: Johnston Paper, on 20250704.
+2025-07-05 20:33:46,318 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Johnston Paper_Triphammer_20250704.xlsx
+2025-07-05 20:33:46,318 - INFO - OrderManager - Looking up directory for: Johnston Paper.
+2025-07-05 20:33:46,318 - INFO - OrderManager - Directory not found for: Johnston Paper.
+2025-07-05 20:33:46,318 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Johnston Paper. Proceeding with new download.
+2025-07-05 20:33:46,318 - INFO - CraftableBot - Saving order for Johnston Paper.
+2025-07-05 20:33:53,652 - INFO - CraftableBot - Retrieving order for Regional Distributors, Inc. (07/04/2025).
+2025-07-05 20:33:54,892 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer for vendor: Regional Distributors, Inc., on 20250704.
+2025-07-05 20:33:54,893 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Regional Distributors, Inc._Triphammer_20250704.xlsx
+2025-07-05 20:33:54,893 - INFO - OrderManager - Looking up directory for: Regional Distributors, Inc..
+2025-07-05 20:33:54,893 - INFO - OrderManager - Directory not found for: Regional Distributors, Inc..
+2025-07-05 20:33:54,893 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Regional Distributors, Inc.. Proceeding with new download.
+2025-07-05 20:33:54,893 - INFO - CraftableBot - Saving order for Regional Distributors, Inc..
+2025-07-05 20:34:02,400 - INFO - CraftableBot - Retrieving order for Copper Horse Coffee (07/04/2025).
+2025-07-05 20:34:03,661 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer for vendor: Copper Horse Coffee, on 20250704.
+2025-07-05 20:34:03,661 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Copper Horse Coffee_Triphammer_20250704.xlsx
+2025-07-05 20:34:03,661 - INFO - OrderManager - Looking up directory for: Copper Horse Coffee.
+2025-07-05 20:34:03,661 - INFO - OrderManager - Directory not found for: Copper Horse Coffee.
+2025-07-05 20:34:03,661 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Copper Horse Coffee. Proceeding with new download.
+2025-07-05 20:34:03,661 - INFO - CraftableBot - Saving order for Copper Horse Coffee.
+2025-07-05 20:34:10,986 - INFO - CraftableBot - Retrieving order for US Foods (07/04/2025).
+2025-07-05 20:34:12,376 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer for vendor: US Foods, on 20250704.
+2025-07-05 20:34:12,376 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: US Foods_Triphammer_20250704.xlsx
+2025-07-05 20:34:12,376 - INFO - OrderManager - Looking up directory for: US Foods.
+2025-07-05 20:34:12,376 - INFO - OrderManager - Directory not found for: US Foods.
+2025-07-05 20:34:12,376 - INFO - CraftableBot - [Order Update] No order directory found for vendor: US Foods. Proceeding with new download.
+2025-07-05 20:34:12,376 - INFO - CraftableBot - Saving order for US Foods.
+2025-07-05 20:34:19,775 - INFO - CraftableBot - Retrieving order for Coca-Cola (07/04/2025).
+2025-07-05 20:34:21,097 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer for vendor: Coca-Cola, on 20250704.
+2025-07-05 20:34:21,097 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Coca-Cola_Triphammer_20250704.xlsx
+2025-07-05 20:34:21,098 - INFO - OrderManager - Looking up directory for: Coca-Cola.
+2025-07-05 20:34:21,098 - INFO - OrderManager - Directory not found for: Coca-Cola.
+2025-07-05 20:34:21,098 - INFO - CraftableBot - [Order Update] No order directory found for vendor: Coca-Cola. Proceeding with new download.
+2025-07-05 20:34:21,098 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-07-05 20:34:28,543 - INFO - CraftableBot - Retrieving order for A.L. George (07/04/2025).
+2025-07-05 20:34:29,782 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer for vendor: A.L. George, on 20250704.
+2025-07-05 20:34:29,782 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: A.L. George_Triphammer_20250704.xlsx
+2025-07-05 20:34:29,782 - INFO - OrderManager - Looking up directory for: A.L. George.
+2025-07-05 20:34:29,782 - INFO - OrderManager - Directory not found for: A.L. George.
+2025-07-05 20:34:29,782 - INFO - CraftableBot - [Order Update] No order directory found for vendor: A.L. George. Proceeding with new download.
+2025-07-05 20:34:29,782 - INFO - CraftableBot - Saving order for A.L. George.
+2025-07-05 20:34:37,113 - INFO - CraftableBot - Retrieving order for DUTCH VALLEY FOOD DIST (07/04/2025).
+2025-07-05 20:34:38,271 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer for vendor: DUTCH VALLEY FOOD DIST, on 20250704.
+2025-07-05 20:34:38,271 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: DUTCH VALLEY FOOD DIST_Triphammer_20250704.xlsx
+2025-07-05 20:34:38,271 - INFO - OrderManager - Looking up directory for: DUTCH VALLEY FOOD DIST.
+2025-07-05 20:34:38,271 - INFO - OrderManager - Directory not found for: DUTCH VALLEY FOOD DIST.
+2025-07-05 20:34:38,271 - INFO - CraftableBot - [Order Update] No order directory found for vendor: DUTCH VALLEY FOOD DIST. Proceeding with new download.
+2025-07-05 20:34:38,271 - INFO - CraftableBot - Saving order for DUTCH VALLEY FOOD DIST.
+2025-07-05 20:34:45,662 - INFO - CraftableBot - Retrieving order for BALKAN BEVERAGE LLC (07/04/2025).
+2025-07-05 20:34:46,781 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer for vendor: BALKAN BEVERAGE LLC, on 20250704.
+2025-07-05 20:34:46,781 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: BALKAN BEVERAGE LLC_Triphammer_20250704.xlsx
+2025-07-05 20:34:46,781 - INFO - OrderManager - Looking up directory for: BALKAN BEVERAGE LLC.
+2025-07-05 20:34:46,781 - INFO - OrderManager - Directory not found for: BALKAN BEVERAGE LLC.
+2025-07-05 20:34:46,781 - INFO - CraftableBot - [Order Update] No order directory found for vendor: BALKAN BEVERAGE LLC. Proceeding with new download.
+2025-07-05 20:34:46,781 - INFO - CraftableBot - Saving order for BALKAN BEVERAGE LLC.
+2025-07-05 20:34:54,143 - INFO - CraftableBot - Order download complete.
+2025-07-05 20:36:11,602 - INFO - CraftableBot - Closing WebDriver session.
+2025-07-05 20:36:11,656 - INFO - CraftableBot - WebDriver session closed.

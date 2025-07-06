@@ -83,7 +83,7 @@ class Order:
 
         # Insert item data
         for pos, item in enumerate(self.items):
-            for info_pos, item_info in enumerate(item):
+            for info_pos, item_info in enumerate(vars(item).keys()):
                 sheet.cell(row=pos+2, column=info_pos+1).value = item_info
 
         return workbook

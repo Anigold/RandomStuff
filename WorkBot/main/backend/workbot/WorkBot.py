@@ -1,52 +1,49 @@
+import backend.config as config
 from backend.logger.Logger import Logger
 
+''' MANAGERS '''
+from backend.craftable_bot.CraftableBot import CraftableBot
 from backend.vendors.VendorManager import VendorManager
 from backend.stores.StoreManager import StoreManager
 from backend.ordering.OrderManager import OrderManager
-from backend.ordering.Order import Order
 from backend.transferring.TransferManager import TransferManager
+
+''' OBJECTS '''
+from backend.ordering.Order import Order
 from backend.transferring.Transfer import Transfer, TransferItem
-from backend.craftable_bot.CraftableBot import CraftableBot
-from backend.craftable_bot.helpers import generate_craftablebot_args
 from backend.emailer.Emailer import Emailer, Email
 from backend.emailer.Services.Gmail import GmailService
 from backend.emailer.Services.Outlook import OutlookService
 
+'''  HELPERS '''
+from backend.craftable_bot.helpers import generate_craftablebot_args
 from backend.helpers.DatetimeFormattingHelper import string_to_datetime
-import backend.config as config
+from backend.helpers.BotMixins import SeleniumBotMixin
 
-from pathlib import Path
+''' STANDARD LIBRARY '''
 from datetime import datetime
-import argparse
-import json
-import shlex
-import sys
-import subprocess
 import socket
 from collections import defaultdict
 
-from tabulate import tabulate
-from termcolor import colored
-
-from pprint import pprint
 
 @Logger.attach_logger
 class WorkBot:
     
     def __init__(self):
-
         self.logger.info('Initializing WorkBot...')
-        
+
         self.vendor_manager   = VendorManager()
         self.order_manager    = OrderManager()
         self.store_manager    = StoreManager(storage_file=None)
         self.transfer_manager = TransferManager()
 
-        driver, username, password = generate_craftablebot_args(config.get_full_path('downloads'))
-        self.craft_bot = CraftableBot(driver, username, password, 
-                                      order_manager=self.order_manager, 
-                                      transfer_manager=self.transfer_manager)
+        downloads_path, username, password = generate_craftablebot_args(config.get_full_path('downloads'))
 
+        self.craft_bot = CraftableBot(downloads_path, username, password,
+                                    order_manager=self.order_manager,
+                                    transfer_manager=self.transfer_manager)
+
+        self.logger.info('WorkBot initialized successfully.')
                # Establish host service
         
         # Establish emailer service based on which computer we're one.

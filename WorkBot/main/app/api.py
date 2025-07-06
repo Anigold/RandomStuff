@@ -248,3 +248,84 @@ def get_vendor_items(vendor_id):
     conn.close()
     print(jsonify(items))
     return jsonify(items)
+
+
+
+@api_blueprint.route('/import-order', methods=['POST'])
+def import_order():
+    data = request.get_json()
+
+    store = data.get('store')
+    vendor = data.get('vendor')
+    date = data.get('date')
+    items = data.get('items')
+
+    if not all([store, vendor, date, items]):
+        return jsonify({'error': 'Missing required fields'}), 400
+
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    # --- Get store_id and vendor_id ---
+    cursor.execute("SELECT id FROM Stores WHERE store_name = ?", (store,))
+    store_row = cursor.fetchone()
+    if not store_row:
+        return jsonify({'error': f'Store not found: {store}'}), 404
+    store_id = store_row['id']
+
+    cursor.execute("SELECT id FROM Vendors WHERE name = ?", (vendor,))
+    vendor_row = cursor.fetchone()
+    if not vendor_row:
+        return jsonify({'error': f'Vendor not found: {vendor}'}), 404
+    vendor_id = vendor_row['id']
+
+    # --- Check for existing order ---
+    cursor.execute("""
+        SELECT id FROM Orders
+        WHERE store_id = ? AND vendor_id = ? AND date = ?
+    """, (store_id, vendor_id, date))
+    existing = cursor.fetchone()
+
+    if existing:
+        order_id = existing['id']
+        cursor.execute("DELETE FROM OrderItems WHERE order_id = ?", (order_id,))
+        cursor.execute("DELETE FROM Orders WHERE id = ?", (order_id,))
+        conn.commit()
+
+    # --- Insert order ---
+    cursor.execute("""
+        INSERT INTO Orders (store_id, vendor_id, date)
+        VALUES (?, ?, ?)
+    """, (store_id, vendor_id, date))
+    order_id = cursor.lastrowid
+
+    skipped = []
+
+    # --- Try resolving item_id from item name ---
+    for item in items:
+        name = item.get("name")
+        quantity = item.get("quantity")
+        cost_per = item.get("cost_per")
+
+        cursor.execute("SELECT id FROM Items WHERE item_name = ?", (name,))
+        item_row = cursor.fetchone()
+
+        if not item_row:
+            skipped.append(name)
+            continue  # Skip this item
+
+        item_id = item_row["id"]
+
+        cursor.execute("""
+            INSERT INTO OrderItems (order_id, item_id, quantity, cost_per)
+            VALUES (?, ?, ?, ?)
+        """, (order_id, item_id, quantity, cost_per))
+
+    conn.commit()
+
+    return jsonify({
+        'message': 'Order imported',
+        'order_id': order_id,
+        'skipped_items': skipped
+    }), 201
+

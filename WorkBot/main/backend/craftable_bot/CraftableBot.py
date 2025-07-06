@@ -6,7 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.chrome.webdriver import WebDriver
-
+from backend.helpers.BotMixins import SeleniumBotMixin
 import time
 from pynput.keyboard import Key, Controller
 import os
@@ -17,7 +17,7 @@ from openpyxl import Workbook, load_workbook
 from backend.transferring import Transfer
 from backend.transferring.TransferManager import TransferManager
 from backend.ordering.OrderManager import OrderManager
-from backend.ordering.Order import Order
+from backend.ordering.Order import Order, OrderItem
 
 from datetime import datetime
 
@@ -48,7 +48,7 @@ def login_necessary(func):
 Craftable Bot utlizes Selenium to interact with the Craftable website. 
 '''
 @Logger.attach_logger
-class CraftableBot:
+class CraftableBot(SeleniumBotMixin):
 
     site_map = {
             'login_page': 'https://app.craftable.com/signin',
@@ -69,12 +69,17 @@ class CraftableBot:
             'Collegetown': '14372',
         }
     
-    def __init__(self, driver: WebDriver, username: str, password: str, 
-                 order_manager: OrderManager = None, transfer_manager: TransferManager = None):
+    def __init__(self, downloads_path: str, username: str, password: str, order_manager=None, transfer_manager=None):
         
-        self.driver           = driver
-        self.username         = username
-        self.password         = password
+        self.order_manager = order_manager
+        self.transfer_manager = transfer_manager
+
+    def __init__(self, downloads_path: str, username: str, password: str, 
+                 order_manager: OrderManager = None, 
+                 transfer_manager: TransferManager = None):
+        
+        super().__init__(downloads_path=downloads_path, username=username, password=password)
+
         self.order_manager    = order_manager or OrderManager()
         self.transfer_manager = transfer_manager or TransferManager()
 
@@ -265,6 +270,7 @@ class CraftableBot:
         self.logger.info(f"Saving order for {row_vendor_name}.")
         order_to_save = Order(store=store, vendor=row_vendor_name, date=row_date_formatted, items=items)
         self.order_manager.save_order(order_to_save)
+        self.order_manager.upload_order_to_api(order_to_save)
 
         # self._save_order_as_excel(items, store=store, vendor=row_vendor_name, date=row_date_formatted)
         time.sleep(1)
@@ -626,7 +632,7 @@ class CraftableBot:
     Scrapes the current page for order data and returns the data 
     as a 2-D list.
     '''
-    def _scrape_order(self) -> list:
+    def _scrape_order(self) -> list[OrderItem]:
         order_table = self.driver.find_element(By.TAG_NAME, 'tbody')
         item_rows   = order_table.find_elements(By.TAG_NAME, 'tr')
 
@@ -640,13 +646,13 @@ class CraftableBot:
             cost_per   = item_info[6].text.replace('$', '').replace(',', '')
             total_cost = item_info[7].text.replace('$', '').replace(',', '')
 
-            items.append([
+            items.append(OrderItem(
                 item_sku, 
                 item_name, 
                 quantity, 
                 cost_per, 
                 total_cost
-                ])
+            ))
             
         return items
     
@@ -712,15 +718,16 @@ class CraftableBot:
         saved_items = [[cell.value for cell in row] for row in sheet.iter_rows(min_row=2)]
         workbook.close()
 
+        items_info = [[i.sku, i.name, i.quantity, i.cost_per, i.total_cost] for i in items.items]
         self.logger.info(f'[Order Update] Comparing new data with the existing file for {store} for {vendor_name} on {date_formatted}.')
-        if set(map(tuple, items)) == set(map(tuple, saved_items)):
+        if set(map(tuple, items_info)) == set(map(tuple, saved_items)): # Compare sets of tuples
             self.logger.info(f'[Order Update] No changes detected for {store} for {vendor_name} on {date_formatted}. Skipping update protocol.')
             return True  # Skip further processing
 
         self.logger.info(f'[Order Update] Removing outdated order file: {preexisting_workbook_path}')
         self._remove_old_file(preexisting_workbook_path)
         self._remove_old_file(preexisting_workbook_path.with_suffix('.pdf'))
-        return False  # Continue with saving new data
+        return False  # Continue saving new data
     
     def _remove_old_file(self, file_path: Path) -> None:
         '''Used to remove outdated order files.'''
