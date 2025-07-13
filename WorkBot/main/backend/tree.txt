@@ -1,0 +1,726 @@
+Folder PATH listing
+Volume serial number is AE9C-D956
+C:.
+|   config.py
+|   tree.txt
+|   __init__.py
+|   
++---craftable_bot
+|   |   CraftableBot.py
+|   |   helpers.py
+|   |   __init__.py
+|   |   
+
+|           
++---credentials
+|   |   .env
+|   |   .gitignore
+|   |   token.pickle
+|   |   
+|   \---GoogleAPI
+|           creds.json
+|           token.pickle
+|           
++---downloads
+|       .gitignore
+|       Behlog Produce_IBProduce - Copy.xlsx
+|       Russo Produce_IBProduce - Copy.xlsx
+|       
++---emailer
+|   |   Emailer.py
+|   |   __init__.py
+|   |   
+|   +---Services
+|   |   |   Gmail.py
+|   |   |   Outlook.py
+|   |   |   Service.py
+|   |   |   __init__.py
+|   |   |      
+|           
++---errors
+|       NoLoginProtocolError.py
+|       __init__.py
+|       
++---events
+|       event_emailer.py
+|       event_manager.py
+|       google_calendar_api.py
+|       recipients.json
+|       __init__.py
+|       
++---helpers
+|   |   BotMixins.py
+|   |   CraftableToUsable.py
+|   |   DatetimeFormattingHelper.py
+|   |   FormatItemData.py
+|   |   selenium_helpers.py
+|   |   UpdateGoogleChrome.py
+|   |   XLSXToJSON.py
+|   |   __init__.py
+|           
++---items
+|       Item.py
+|       ItemManager.py
+|       items.json
+|       IthacaBakeryItems copy.json
+|       IthacaBakeryItems.json
+|       IthacaBakeryItemsITEMFIRST.json
+|       
++---logger
+|   |   Logger.py
+|   |   __init__.py
+|   |   
+|           
++---ordering
+|   |   Order.py
+|   |   OrderManager.py
+|   |   OrderManagerMappings.json
+|   |   __init__.py
+|   \---CompletedOrders
+|   \---OrderFiles
+|   |   
+|           
++---printing
+|   |   Printer.py
+|   |   __init__.py
+|   |   
+|           
++---scheduling
+|   \---Schedules
+|           Friday.pdf
+|           Monday.pdf
+|           Saturday.pdf
+|           Sunday.pdf
+|           Thursday.pdf
+|           Tuesday.pdf
+|           Wednesday.pdf
+|           
++---smallwares
+|   |   PickList.xlsx
+|   |   WebstaurantBot.py
+|   |   ~$PickList.xlsx
+|   |   
+|   +---invoices
+|   |   \---completed
+|   |           100010446.pdf
+|   |           100010487.pdf
+|   |           100011033.pdf
+|   |           100039305.pdf
+|   |           100096691.pdf
+|   |           100100916.pdf
+|   |           100120724.pdf
+|   |           100143299.pdf
+|   |           100144529.pdf
+|   |           100223624.pdf
+|   |           100264607.pdf
+|   |           100318249.pdf
+|   |           100318905.pdf
+|   |           100358436.pdf
+|   |           100394608.pdf
+|   |           100395767.pdf
+|   |           100415101.pdf
+|   |           100417878.pdf
+|   |           100511971.pdf
+|   |           100512315.pdf
+|   |           100514422.pdf
+|   |           100536462.pdf
+|   |           100537920.pdf
+|   |           100600793.pdf
+|   |           100614400.pdf
+|   |           100641297.pdf
+|   |           100654127.pdf
+|   |           100748298.pdf
+|   |           100789451.pdf
+|   |           100827270.pdf
+|   |           100835183.pdf
+|   |           100876361.pdf
+|   |           100876467.pdf
+|   |           100877006.pdf
+|   |           100947010.pdf
+|   |           101021557.pdf
+|   |           101080278.pdf
+|   |           101130695.pdf
+|   |           101236040.pdf
+|   |           101243277.pdf
+|   |           101278207.pdf
+|   |           101283692.pdf
+|   |           101303767.pdf
+|   |           101334956.pdf
+|   |           101335775.pdf
+|   |           101347832.pdf
+|   |           101434887.pdf
+|   |           101437889.pdf
+|   |           101550015.pdf
+|   |           101564653.pdf
+|   |           101571574.pdf
+|   |           101574099.pdf
+|   |           101623740.pdf
+|   |           101634869.pdf
+|   |           101666894.pdf
+|   |           101679644.pdf
+|   |           101740315.pdf
+|   |           101770814.pdf
+|   |           101779730.pdf
+|   |           101785393.pdf
+|   |           101799365.pdf
+|   |           101801807.pdf
+|   |           101805313.pdf
+|   |           101825456.pdf
+|   |           101827625.pdf
+|   |           101827993.pdf
+|   |           101848819.pdf
+|   |           101877517.pdf
+|   |           101916207.pdf
+|   |           101917059.pdf
+|   |           102006986.pdf
+|   |           102046080.pdf
+|   |           102076716.pdf
+|   |           102081799.pdf
+|   |           102118465.pdf
+|   |           102147805.pdf
+|   |           102160482.pdf
+|   |           102208857.pdf
+|   |           102285142.pdf
+|   |           102308756.pdf
+|   |           102312838.pdf
+|   |           102334982.pdf
+|   |           102349244.pdf
+|   |           102353781.pdf
+|   |           102378775.pdf
+|   |           102401123.pdf
+|   |           102418318.pdf
+|   |           102418884.pdf
+|   |           102420660.pdf
+|   |           102461694.pdf
+|   |           102567243.pdf
+|   |           102597816.pdf
+|   |           102615581.pdf
+|   |           102667244.pdf
+|   |           102673453.pdf
+|   |           102705466.pdf
+|   |           102846233.pdf
+|   |           102888450.pdf
+|   |           102935252.pdf
+|   |           103128227.pdf
+|   |           103144950.pdf
+|   |           103188644.pdf
+|   |           103238604.pdf
+|   |           103296931.pdf
+|   |           103392937.pdf
+|   |           103395256.pdf
+|   |           103465766.pdf
+|   |           103496054.pdf
+|   |           103619032.pdf
+|   |           103683216.pdf
+|   |           103727713.pdf
+|   |           103752654.pdf
+|   |           103752753.pdf
+|   |           103810927.pdf
+|   |           103870664.pdf
+|   |           103872621.pdf
+|   |           103878590.pdf
+|   |           103959149.pdf
+|   |           104006038.pdf
+|   |           104187667.pdf
+|   |           104208590.pdf
+|   |           104209288.pdf
+|   |           104312122.pdf
+|   |           104353039.pdf
+|   |           104355761.pdf
+|   |           104453424.pdf
+|   |           104490994.pdf
+|   |           104493583.pdf
+|   |           104612620.pdf
+|   |           104616449.pdf
+|   |           104620185.pdf
+|   |           104691711.pdf
+|   |           104754546.pdf
+|   |           104771148.pdf
+|   |           104787383.pdf
+|   |           104886997.pdf
+|   |           104976735.pdf
+|   |           104979937.pdf
+|   |           105016563.pdf
+|   |           105016757.pdf
+|   |           105020960.pdf
+|   |           105029059.pdf
+|   |           105031496.pdf
+|   |           105089775.pdf
+|   |           105150652.pdf
+|   |           105157639.pdf
+|   |           105196014.pdf
+|   |           105279457.pdf
+|   |           105339828.pdf
+|   |           105360666.pdf
+|   |           105455723.pdf
+|   |           105470234.pdf
+|   |           105473300.pdf
+|   |           105473624.pdf
+|   |           105521622.pdf
+|   |           105656257.pdf
+|   |           105714595.pdf
+|   |           105722102.pdf
+|   |           105732181.pdf
+|   |           105819757.pdf
+|   |           105874776.pdf
+|   |           105901798.pdf
+|   |           105928093.pdf
+|   |           105963330.pdf
+|   |           106078459.pdf
+|   |           106111389.pdf
+|   |           106252270.pdf
+|   |           106295809.pdf
+|   |           106315308.pdf
+|   |           106329303.pdf
+|   |           106366090.pdf
+|   |           106466738.pdf
+|   |           106487858.pdf
+|   |           106513446.pdf
+|   |           106525785.pdf
+|   |           106525966.pdf
+|   |           106567986.pdf
+|   |           106605110.pdf
+|   |           106628844.pdf
+|   |           106677366.pdf
+|   |           106754895.pdf
+|   |           106846058.pdf
+|   |           106850983.pdf
+|   |           106851937.pdf
+|   |           106853448.pdf
+|   |           106885834.pdf
+|   |           106988893.pdf
+|   |           106989215.pdf
+|   |           107032998.pdf
+|   |           107048605.pdf
+|   |           107093283.pdf
+|   |           107175123.pdf
+|   |           107186106.pdf
+|   |           107186107.pdf
+|   |           107212809.pdf
+|   |           107256888.pdf
+|   |           107285840.pdf
+|   |           107368846.pdf
+|   |           107408159.pdf
+|   |           107411726.pdf
+|   |           107443109.pdf
+|   |           107448120.pdf
+|   |           107515756.pdf
+|   |           107533644.pdf
+|   |           107595327.pdf
+|   |           107691314.pdf
+|   |           107701293.pdf
+|   |           107750625.pdf
+|   |           107750760.pdf
+|   |           107786615.pdf
+|   |           107836987.pdf
+|   |           107965562.pdf
+|   |           108078832.pdf
+|   |           108082685.pdf
+|   |           108099526.pdf
+|   |           108121876.pdf
+|   |           108209838.pdf
+|   |           108236412.pdf
+|   |           108306423.pdf
+|   |           108331763.pdf
+|   |           108376182.pdf
+|   |           108379159.pdf
+|   |           108538134.pdf
+|   |           108542341.pdf
+|   |           108603925.pdf
+|   |           108642953.pdf
+|   |           108647724.pdf
+|   |           108650013.pdf
+|   |           108750569.pdf
+|   |           108755893.pdf
+|   |           108770982.pdf
+|   |           108778477.pdf
+|   |           108805220.pdf
+|   |           108919232.pdf
+|   |           108929702.pdf
+|   |           109047218.pdf
+|   |           109072000.pdf
+|   |           109124391.pdf
+|   |           109140461.pdf
+|   |           109140582.pdf
+|   |           109175342.pdf
+|   |           109193895.pdf
+|   |           109231519.pdf
+|   |           109312954.pdf
+|   |           109320678.pdf
+|   |           109352110.pdf
+|   |           109361281.pdf
+|   |           109411896.pdf
+|   |           109420441.pdf
+|   |           109468249.pdf
+|   |           109603356.pdf
+|   |           109630489.pdf
+|   |           109650945.pdf
+|   |           109687830.pdf
+|   |           109751349.pdf
+|   |           109829840.pdf
+|   |           109858349.pdf
+|   |           110000453.pdf
+|   |           110015708.pdf
+|   |           110031700.pdf
+|   |           110031760.pdf
+|   |           110160002.pdf
+|   |           110179554.pdf
+|   |           110205362.pdf
+|   |           110230282.pdf
+|   |           110232295.pdf
+|   |           110277106.pdf
+|   |           110281089.pdf
+|   |           110282745.pdf
+|   |           110302512.pdf
+|   |           110368648.pdf
+|   |           110410556.pdf
+|   |           110459713.pdf
+|   |           110474748.pdf
+|   |           110487505.pdf
+|   |           110535364.pdf
+|   |           110702936.pdf
+|   |           110758107.pdf
+|   |           110758134.pdf
+|   |           110766276.pdf
+|   |           110784150.pdf
+|   |           110812270.pdf
+|   |           110823052.pdf
+|   |           110871838.pdf
+|   |           110875860.pdf
+|   |           110996024.pdf
+|   |           110996027.pdf
+|   |           111001024.pdf
+|   |           111123619.pdf
+|   |           111237443.pdf
+|   |           111294844.pdf
+|   |           111363498.pdf
+|   |           111393137.pdf
+|   |           111469997.pdf
+|   |           91401748.pdf
+|   |           91555031.pdf
+|   |           91569516.pdf
+|   |           91631903.pdf
+|   |           91726855.pdf
+|   |           91816091.pdf
+|   |           91820893.pdf
+|   |           91963429.pdf
+|   |           92020688.pdf
+|   |           92070556.pdf
+|   |           92104085.pdf
+|   |           92120438.pdf
+|   |           92192589.pdf
+|   |           92229826.pdf
+|   |           92274416.pdf
+|   |           92290180.pdf
+|   |           92310576.pdf
+|   |           92428923.pdf
+|   |           92439627.pdf
+|   |           92459406.pdf
+|   |           92525395.pdf
+|   |           92677266.pdf
+|   |           92690526.pdf
+|   |           92757260.pdf
+|   |           92796706.pdf
+|   |           92803560.pdf
+|   |           92819503.pdf
+|   |           92898727.pdf
+|   |           92939661.pdf
+|   |           92940305.pdf
+|   |           93016531.pdf
+|   |           93017197.pdf
+|   |           93059180.pdf
+|   |           93085978.pdf
+|   |           93147552.pdf
+|   |           93218729.pdf
+|   |           93218802.pdf
+|   |           93287101.pdf
+|   |           93480836.pdf
+|   |           93484790.pdf
+|   |           93625785.pdf
+|   |           93627450.pdf
+|   |           93690191.pdf
+|   |           93704888.pdf
+|   |           93744701.pdf
+|   |           93862555.pdf
+|   |           93934011.pdf
+|   |           94078048.pdf
+|   |           94079295.pdf
+|   |           94117881.pdf
+|   |           94177784.pdf
+|   |           94180703.pdf
+|   |           94185784.pdf
+|   |           94311358.pdf
+|   |           94373473.pdf
+|   |           94392832.pdf
+|   |           94432468.pdf
+|   |           94536505.pdf
+|   |           94594488.pdf
+|   |           94706132.pdf
+|   |           94745111.pdf
+|   |           94803161.pdf
+|   |           94938825.pdf
+|   |           95045495.pdf
+|   |           95277576.pdf
+|   |           95297137.pdf
+|   |           95297816.pdf
+|   |           95299017.pdf
+|   |           95320895.pdf
+|   |           95322015.pdf
+|   |           95388023.pdf
+|   |           95420226.pdf
+|   |           95528180.pdf
+|   |           95535798.pdf
+|   |           95547220.pdf
+|   |           95687630.pdf
+|   |           95716996.pdf
+|   |           95800335.pdf
+|   |           95919605.pdf
+|   |           96026180.pdf
+|   |           96042157.pdf
+|   |           96073806.pdf
+|   |           96093710.pdf
+|   |           96243314.pdf
+|   |           96310668.pdf
+|   |           96477628.pdf
+|   |           96487831.pdf
+|   |           96513679.pdf
+|   |           96513697.pdf
+|   |           96529528.pdf
+|   |           96558442.pdf
+|   |           96564129.pdf
+|   |           96564176.pdf
+|   |           96565882.pdf
+|   |           96607469.pdf
+|   |           96687634.pdf
+|   |           96728583.pdf
+|   |           96773787.pdf
+|   |           96816752.pdf
+|   |           96817463.pdf
+|   |           96831797.pdf
+|   |           96842815.pdf
+|   |           96879365.pdf
+|   |           96880104.pdf
+|   |           96940538.pdf
+|   |           96945166.pdf
+|   |           97042115.pdf
+|   |           97084021.pdf
+|   |           97102532.pdf
+|   |           97102598.pdf
+|   |           97162364.pdf
+|   |           97206995.pdf
+|   |           97234018.pdf
+|   |           97252029.pdf
+|   |           97277366.pdf
+|   |           97277580.pdf
+|   |           97346407.pdf
+|   |           97359004.pdf
+|   |           97370661.pdf
+|   |           97412339.pdf
+|   |           97493806.pdf
+|   |           97523659.pdf
+|   |           97564217.pdf
+|   |           97582158.pdf
+|   |           97609509.pdf
+|   |           97728561.pdf
+|   |           97729268.pdf
+|   |           97730982.pdf
+|   |           97731369.pdf
+|   |           97754113.pdf
+|   |           97794515.pdf
+|   |           97865337.pdf
+|   |           97890894.pdf
+|   |           97904547.pdf
+|   |           97973645.pdf
+|   |           97991688.pdf
+|   |           98016250.pdf
+|   |           98052345.pdf
+|   |           98057873.pdf
+|   |           98133615.pdf
+|   |           98199126.pdf
+|   |           98223046.pdf
+|   |           98252848.pdf
+|   |           98279427.pdf
+|   |           98295805.pdf
+|   |           98296698.pdf
+|   |           98306952.pdf
+|   |           98496479.pdf
+|   |           98545574.pdf
+|   |           98590776.pdf
+|   |           98604775.pdf
+|   |           98660139.pdf
+|   |           98661588.pdf
+|   |           98760002.pdf
+|   |           98767083.pdf
+|   |           98784844.pdf
+|   |           98815459.pdf
+|   |           98867566.pdf
+|   |           98874672.pdf
+|   |           99027687.pdf
+|   |           99039457.pdf
+|   |           99049844.pdf
+|   |           99049948.pdf
+|   |           99131570.pdf
+|   |           99178108.pdf
+|   |           99205995.pdf
+|   |           99301584.pdf
+|   |           99323642.pdf
+|   |           99325780.pdf
+|   |           99369726.pdf
+|   |           99384822.pdf
+|   |           99412729.pdf
+|   |           99535385.pdf
+|   |           99576054.pdf
+|   |           99596346.pdf
+|   |           99622192.pdf
+|   |           99683795.pdf
+|   |           99813708.pdf
+|   |           99820803.pdf
+|   |           99866500.pdf
+|   |           99940701.pdf
+|   |           99949564.pdf
+|   |           99950771.pdf
+|   |           
+|   \---__pycache__
+|           WebstaurantBot.cpython-311.pyc
+|           WebstaurantBot.cpython-312.pyc
+|           WebstaurantBot.cpython-313.pyc
+|           
++---stores
+|   |   Store.py
+|   |   StoreManager.py
+|   |   stores.json
+|   |   store_groups.json
+|   |   __init__.py
+|   |   
+|   \---__pycache__
+|           Store.cpython-311.pyc
+|           Store.cpython-313.pyc
+|           Store.cpython-38.pyc
+|           StoreManager.cpython-311.pyc
+|           StoreManager.cpython-313.pyc
+|           StoreManager.cpython-38.pyc
+|           __init__.cpython-311.pyc
+|           __init__.cpython-313.pyc
+|           __init__.cpython-38.pyc
+|           
++---testing
+|   |   price_tracking.py
+|   |   printthis!.pdf
+|   |   send_to_printer.py
+|   |   test_webpage.html
+|   |   
+|   \---test_webpage
+|       +---homepage
+|       |       app.js
+|       |       index.html
+|       |       style.css
+|       |       
+|       \---items
+|               index.html
+|               items.json
+|               script.js
+|               
++---transferring
+|   |   Transfer.py
+|   |   TransferManager.py
+|   |   __init__.py
+|   |   
+|   +---TransferFiles
+|   |   |   Bakery to Collegetown 20250606.xlsx
+|   |   |   Bakery to Downtown 20250606.xlsx
+|   |   |   Bakery to Easthill 20250606.xlsx
+|   |   |   Bakery to Triphammer 20250606.xlsx
+|   |   |   
+|   |   \---Completed
+|   |           Bakery to Collegetown 20250411.xlsx
+|   |           Bakery to Collegetown 20250418.xlsx
+|   |           Bakery to Collegetown 20250425.xlsx
+|   |           Bakery to Collegetown 20250502.xlsx
+|   |           Bakery to Collegetown 20250509.xlsx
+|   |           Bakery to Collegetown 20250516.xlsx
+|   |           Bakery to Collegetown 20250523.xlsx
+|   |           Bakery to Collegetown 20250530.xlsx
+|   |           Bakery to Collegetown 20250613.xlsx
+|   |           Bakery to Downtown 20250411.xlsx
+|   |           Bakery to Downtown 20250418.xlsx
+|   |           Bakery to Downtown 20250425.xlsx
+|   |           Bakery to Downtown 20250502.xlsx
+|   |           Bakery to Downtown 20250509.xlsx
+|   |           Bakery to Downtown 20250516.xlsx
+|   |           Bakery to Downtown 20250523.xlsx
+|   |           Bakery to Downtown 20250530.xlsx
+|   |           Bakery to Downtown 20250613.xlsx
+|   |           Bakery to Easthill 20250411.xlsx
+|   |           Bakery to Easthill 20250418.xlsx
+|   |           Bakery to Easthill 20250425.xlsx
+|   |           Bakery to Easthill 20250502.xlsx
+|   |           Bakery to Easthill 20250509.xlsx
+|   |           Bakery to Easthill 20250515.xlsx
+|   |           Bakery to Easthill 20250522.xlsx
+|   |           Bakery to Easthill 20250529.xlsx
+|   |           Bakery to Easthill 20250612.xlsx
+|   |           Bakery to Triphammer 20250411.xlsx
+|   |           Bakery to Triphammer 20250418.xlsx
+|   |           Bakery to Triphammer 20250425.xlsx
+|   |           Bakery to Triphammer 20250502.xlsx
+|   |           Bakery to Triphammer 20250509.xlsx
+|   |           Bakery to Triphammer 20250516.xlsx
+|   |           Bakery to Triphammer 20250523.xlsx
+|   |           Bakery to Triphammer 20250530.xlsx
+|   |           Bakery to Triphammer 20250613.xlsx
+|   |           
+|   \---__pycache__
+|           Transfer.cpython-311.pyc
+|           Transfer.cpython-312.pyc
+|           Transfer.cpython-313.pyc
+|           Transfer.cpython-38.pyc
+|           TransferManager.cpython-313.pyc
+|           __init__.cpython-311.pyc
+|           __init__.cpython-312.pyc
+|           __init__.cpython-313.pyc
+|           __init__.cpython-38.pyc
+|           
++---vendors
+|   |   backupvendors.json
+|   |   VendorManager.py
+|   |   vendors copy.json
+|   |   vendors.json
+|   |   vendor_config.py
+|   |   vendor_groups.json
+|   |   __init__.py
+|   |   
+|   +---vendor_bots
+|   |   |   BehlogProduceBot.py
+|   |   |   CopperHorseBot.py
+|   |   |   CortlandProduceBot.py
+|   |   |   DutchValleyBot.py
+|   |   |   EuroCafeBot.py
+|   |   |   HillNMarkesBot.py
+|   |   |   HoffmireFarmsBot.py
+|   |   |   IthacaBakeryBot.py
+|   |   |   PerformanceFoodBot.py
+|   |   |   RussoProduceBot.py
+|   |   |   SyscoBot.py
+|   |   |   UNFIBot.py
+|   |   |   USFoodsBot.py
+|   |   |   VendorBot.py
+|   |   |   VendorFactory.py
+|   |   |   __init__.py
+|   |   |   
+|   |           
+|           
++---workbot
+|   |   WorkBot.py
+|   |   __init__.py
+|   |   
+|   \---__pycache__
+|           WorkBot.cpython-312.pyc
+|           WorkBot.cpython-313.pyc
+|           WorkBot.cpython-38.pyc
+|           WorkBotCLI.cpython-312.pyc
+|           WorkBotCLI.cpython-313.pyc
+|           __init__.cpython-312.pyc
+|           __init__.cpython-313.pyc
+|           __init__.cpython-38.pyc
+|           
+

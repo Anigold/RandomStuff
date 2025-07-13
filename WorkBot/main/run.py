@@ -87,7 +87,7 @@ def produce_pricing_and_email(driver) -> None:
     emailer.display_email(email)
     return
 
-def download_pricing_sheets(driver, vendors=['Sysco', 'Performance Food', 'US Foods', 'Russo Produce',], guides=['IBProduce']) -> None:
+def download_pricing_sheets(driver, vendors=['Performance Food',], guides=['IBProduce']) -> None:
 
     for vendor in vendors:
 
@@ -118,7 +118,7 @@ def download_pricing_sheets(driver, vendors=['Sysco', 'Performance Food', 'US Fo
                 file_name = 'Performance Food_IBProduce.xlsx'
                 new_file_name = PRICING_FILES_PATH / 'VendorSheets' / f'Performance Food_IBProduce_{date.today()}.xlsx'
 
-            # new_file_name = PRICING_FILES_PATH / 'VendorSheets' / f'{bot.name}_{pricing_guide}_{date.today()}.{file_name.split(".")[1]}'
+            new_file_name = PRICING_FILES_PATH / 'VendorSheets' / f'{bot.name}_{pricing_guide}_{date.today()}.{file_name.split(".")[1]}'
 
             
             # new_file_name = PRICING_FILES_PATH / 'VendorSheets' / 'US Foods_IBProduce_2025-03-10.csv'

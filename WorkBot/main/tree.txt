@@ -1,0 +1,141 @@
+Folder PATH listing
+Volume serial number is AE9C-D956
+C:.
+|   new_requirements.txt
+|   run.py
+|   run_cli.py
+|   run_flask.py
+|   tree.txt
+|   __init__.py
+|   
++---api
+|   |   api.py
+|   |   routes.py
+|   |   __init__.py
+|   |   
+|   +---templates
+|   |       layout.html
+|   |       orders.html
+|   |       
+|   \---__pycache__
+|           api.cpython-313.pyc
+|           routes.cpython-313.pyc
+|           __init__.cpython-313.pyc
+|           
++---backend
+|       
++---database
+|   |   backfill_vendor_items.py
+|   |   clear_table_data.py
+|   |   create_database.py
+|   |   db.py
+|   |   db_schema.xml
+|   |   import_vendors_json.py
+|   |   import_ytd_log.py
+|   |   init_db_schema.py
+|   |   inventory.db
+|   |   purchase_log.xlsx
+|   |   store_inventory.db
+|   |   temp_command.py
+|   |   
+|   +---commands
+|   |       clear_table.py
+|   |       view_database.py
+|   |       view_order_details.py
+|   |       view_table.py
+|   |       
+|   \---__pycache__
+|           db.cpython-313.pyc
+|           
++---frontend
+|   |   .gitignore
+|   |   package-lock.json
+|   |   package.json
+|   |   README.md
+|   |   tailwind.config.js
+|   |   
+|   +---node_modules
+|    
+|   +---public
+|   |       favicon.ico
+|   |       index.html
+|   |       logo192.png
+|   |       logo512.png
+|   |       manifest.json
+|   |       robots.txt
+|   |       
+|   \---src
+|       |   App.css
+|       |   App.js
+|       |   App.test.js
+|       |   index.css
+|       |   index.js
+|       |   logo.svg
+|       |   reportWebVitals.js
+|       |   setupTests.js
+|       |   
+|       \---Pages
+|           +---Admin
+|           |       AdminDashboard.jsx
+|           |       ItemsForm.jsx
+|           |       StoresForm.jsx
+|           |       VendorsForm.jsx
+|           |       
+|           +---Items
+|           |       ItemModal.jsx
+|           |       Items.css
+|           |       Items.jsx
+|           |       
+|           +---Orders
+|           |       EditOrderItemModal.jsx
+|           |       OrderCard.jsx
+|           |       OrderModal.jsx
+|           |       OrdersPage.jsx
+|           |       Toolbar.jsx
+|           |       
+|           +---Stores
+|           |       StoresPage.jsx
+|           |       
+|           +---ui
+|           |       Button.jsx
+|           |       buttonVariants.jsx
+|           |       Card.jsx
+|           |       Modal.jsx
+|           |       PageLayout.jsx
+|           |       SidebarButton.jsx
+|           |       
+|           \---Vendors
+|                   VendorsPage.css
+|                   VendorsPage.jsx
+|                   
++---logs
+|       CraftableBot.log
+|       CraftableBot.log.1
+|       CraftableBot.log.2
+|       CraftableBot.log.3
+|       CraftableBot.log.4
+|       CraftableBot.log.5
+|       master.log
+|       OrderManager.log
+|       OrderManager.log.1
+|       OrderManager.log.2
+|       VendorManager.log
+|       WorkBot.log
+|       WorkBotCLI.log
+|       
++---testing
+|   |   app.py
+|   |   
+|   +---static
+|   |       style.css
+|   |       
+|   +---templates
+|   |       index.html
+|   |       
+|   \---__pycache__
+|           app.cpython-313.pyc
+|           
+\---__pycache__
+        run_flask.cpython-313.pyc
+        __init__.cpython-313.pyc
+        
