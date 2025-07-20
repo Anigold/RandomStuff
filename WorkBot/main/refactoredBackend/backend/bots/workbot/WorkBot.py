@@ -119,11 +119,7 @@ class WorkBot:
         
         today = self._get_today_date_and_day()
 
-        return f'''
-{today[1]}, {today[0]}
-'''
-        print('Welcome!')
-        print(f'Today is: {today[1]}, {today[0]}')
+        return f'''\n{today[1]}, {today[0]}'''
 
     def get_orders(self, stores: list, vendors: list = []) -> list:
         return self.order_manager.get_store_orders(stores=stores, vendors=vendors)

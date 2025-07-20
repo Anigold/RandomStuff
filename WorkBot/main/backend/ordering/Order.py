@@ -22,6 +22,10 @@ class OrderItem:
             'total_cost': self.total_cost
         }
     
+    def __repr__(self):
+        return f'< OrderItem sku={self.sku}, name={self.name}, quantity={self.quantity}, cost_per={self.cost_per}, total_cost={self.total_cost} >'
+
+
 class Order:
 
     def __init__(self, store: str, vendor: str, date: str, items: list[OrderItem] = None) -> None:
@@ -50,16 +54,18 @@ class Order:
         sheet = workbook.active
 
         # col_headers = ['SKU', 'Item', 'Quantity', 'Cost Per', 'Total Cost']
-
         for row in sheet.iter_rows(min_row=2):
-            sku, name, quantity, cost_per, total_cost = row[0:5]
+            
+            item_sku, item_name, item_quantity, item_cost_per, item_total_cost = row[0:5]
+            # print([item_sku.value, item_name.value, item_quantity.value, item_cost_per.value, item_total_cost.value])
             order_item = OrderItem(
-                sku=sku.value,
-                name=name.value,
-                quantity=quantity.value,
-                cost_per=cost_per.value,
-                total_cost=total_cost.value
+                sku=item_sku.value,
+                name=item_name.value,
+                quantity=item_quantity.value,
+                cost_per=item_cost_per.value,
+                total_cost=item_total_cost.value
             )
+            # print(order_item)
             self.items.append(order_item)
             
         return
@@ -81,10 +87,13 @@ class Order:
         for pos, header in enumerate(col_headers):
             sheet.cell(row=1, column=pos+1).value = header
 
-        # Insert item data
         for pos, item in enumerate(self.items):
-            for info_pos, item_info in enumerate(vars(item).keys()):
-                sheet.cell(row=pos+2, column=info_pos+1).value = item_info
+            sheet.cell(row=pos+2, column=1).value = item.sku
+            sheet.cell(row=pos+2, column=2).value = item.name
+            sheet.cell(row=pos+2, column=3).value = item.quantity
+            sheet.cell(row=pos+2, column=4).value = item.cost_per
+            sheet.cell(row=pos+2, column=5).value = item.total_cost
+
 
         return workbook
     

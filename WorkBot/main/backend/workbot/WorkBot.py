@@ -1,5 +1,8 @@
 import backend.config as config
 from backend.logger.Logger import Logger
+from pathlib import Path
+from openpyxl import load_workbook
+
 
 ''' MANAGERS '''
 from backend.craftable_bot.CraftableBot import CraftableBot
@@ -253,6 +256,43 @@ class WorkBot:
         for email in emails: self.emailer.display_email(email)
 
 
+
+    def split_natalies(self) -> None:
+        natalies_excel_path = Path('C:/Users/Will/Desktop/Natalies.xlsx')
+        natalie_flavors = []
+
+        workbook = load_workbook(natalies_excel_path)
+        sheet = workbook.active
+        for row in sheet.iter_rows():
+            if row[0] not in ["", None, ' '] and row[0] is not None:
+                natalie_flavors.append(row[0].value)
+        flavors = [i for i in natalie_flavors if i is not None]
+        print(flavors)
+
+        perf_orders = self.order_manager.get_vendor_orders('Performance Food')
+        flf_orders = self.order_manager.get_vendor_orders('FingerLakes Farms')
+
+        orders = perf_orders + flf_orders
+
+
+
+        store_indices = {
+            'Collegetown': 2,
+            'Downtown': 5,
+            'Easthill': 8,
+            'Triphammer': 11,
+            'Bakery': 14
+        }
+
+        for order_path in orders:
+            order = OrderManager.create_order_from_excel(order_path)
+            print(order)
+            for item in order.items:
+                if 'Natalie' in item.name and item.name.split(' - ')[1] in flavors:
+                    flavor = item.name.split(' - ')[1]
+                    sheet.cell(row=flavors.index(flavor)+4, column=store_indices[order.store]).value = item.quantity
+
+        workbook.save('C:/Users/Will/Desktop/Natalies.xlsx')
     def shutdown(self) -> None:
         """Exits the CLI loop."""
         self.close_craftable_session()

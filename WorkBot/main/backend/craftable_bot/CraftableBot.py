@@ -270,7 +270,7 @@ class CraftableBot(SeleniumBotMixin):
         self.logger.info(f"Saving order for {row_vendor_name}.")
         order_to_save = Order(store=store, vendor=row_vendor_name, date=row_date_formatted, items=items)
         self.order_manager.save_order(order_to_save)
-        self.order_manager.upload_order_to_api(order_to_save)
+        # self.order_manager.upload_order_to_api(order_to_save)
 
         # self._save_order_as_excel(items, store=store, vendor=row_vendor_name, date=row_date_formatted)
         time.sleep(1)
@@ -718,7 +718,7 @@ class CraftableBot(SeleniumBotMixin):
         saved_items = [[cell.value for cell in row] for row in sheet.iter_rows(min_row=2)]
         workbook.close()
 
-        items_info = [[i.sku, i.name, i.quantity, i.cost_per, i.total_cost] for i in items.items]
+        items_info = [[i.sku, i.name, i.quantity, i.cost_per, i.total_cost] for i in items]
         self.logger.info(f'[Order Update] Comparing new data with the existing file for {store} for {vendor_name} on {date_formatted}.')
         if set(map(tuple, items_info)) == set(map(tuple, saved_items)): # Compare sets of tuples
             self.logger.info(f'[Order Update] No changes detected for {store} for {vendor_name} on {date_formatted}. Skipping update protocol.')
