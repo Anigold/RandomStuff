@@ -297,12 +297,12 @@ if __name__ == '__main__':
     # convert_to_item_first(ITEMS_DIR / 'IthacaBakeryItems.json', ITEMS_DIR / 'IthacaBakeryItemsITEMFIRST.json')
     
     '''Pricing Sheet Protocol'''
-    options = create_options(DOWNLOAD_PATH)
-    driver  = uc.Chrome(options=options, use_subprocess=True)
-    download_pricing_sheets(driver)
-    delete_all_files_without_extension(PRICING_FILES_PATH / 'VendorSheets', '.xlsx')
-    input('Press ENTER to stop waiting.')
-    generate_pricing_sheets()
+    # options = create_options(DOWNLOAD_PATH)
+    # driver  = uc.Chrome(options=options, use_subprocess=True)
+    # download_pricing_sheets(driver)
+    # delete_all_files_without_extension(PRICING_FILES_PATH / 'VendorSheets', '.xlsx')
+    # input('Press ENTER to stop waiting.')
+    # generate_pricing_sheets()
     
 
 
@@ -451,3 +451,12 @@ if __name__ == '__main__':
     #                    )
                        
     #                    ''')
+
+
+
+
+
+
+    workbot = WorkBot()
+    workbot.split_natalies()
+    
