@@ -3,3 +3,5 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 DATABASE_PATH = BASE_DIR / "data" / "inventory.db"
+ORDERS_FILE_PATH = BASE_DIR / 'data' / 'Orders'
+CLI_HISTORY_FILE = BASE_DIR / 'data' / 'cli' / '.cli_history'

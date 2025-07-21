@@ -2,6 +2,7 @@ from storage.file.OrderFileHandler import OrderFileHandler
 from storage.database.OrderDatabaseHandler import OrderDatabaseHandler
 from parsers.OrderParser import OrderParser
 from models.Order import Order
+from exporters import get_exporter
 
 class OrderCoordinator:
     def __init__(self):
@@ -16,8 +17,8 @@ class OrderCoordinator:
     #         self.db_handler.upsert_order(order)
 
 
-    def save_order_file(self, order: Order):
-        self.file_handler.save_order(order)
+    def save_order_file(self, order: Order, format: str = 'excel'):
+        self.file_handler.save_order(order, format)
 
     def get_orders_from_file(self, store_names=None, vendor_names=None):
         return self.file_handler.get_orders(store_names, vendor_names)

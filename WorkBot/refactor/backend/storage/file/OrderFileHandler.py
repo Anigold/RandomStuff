@@ -1,29 +1,47 @@
 # backend/ordering/storage/order_file_handler.py
 
-from config.paths import ORDER_FILES_DIR
-from backend.storage.file_handler import FileHandler
+from ..config.paths import ORDER_FILES_DIR
+from storage.file.FileHandler import FileHandler
 from models.Order import Order
 from parsers.OrderParser import OrderParser
 from pathlib import Path
 import re
-
+from openpyxl import Workbook
+from typing import Any
+from exporters import get_exporter
 
 class OrderFileHandler(FileHandler):
     file_pattern = re.compile(r"^(?P<vendor>.+?)_(?P<store>.+?)_(?P<date>\d{8})")
-
+    order_files_path = Path(ORDER_FILES_DIR)
+    
     def __init__(self, base_dir=ORDER_FILES_DIR):
         super().__init__(base_dir)
         self.parser = OrderParser()
+        
 
-    def save_order(self, order: Order):
-        path = self.get_order_path(order)
-        path.parent.mkdir(parents=True, exist_ok=True)
-        workbook = order.to_excel_workbook()
-        workbook.save(path)
+    def _generate_file_name(self, order: Order, format: str) -> str:
+        ext = self.extension_map.get(format, 'xlsx')
+        return f'{order.vendor}_{order.store}_{order.date}.{ext}'
+    
+    def save_order(self, order: Order, format: str) -> None:
 
-    def get_order_path(self, order: Order) -> Path:
-        filename = f"{order.vendor}_{order.store}_{order.date}.xlsx"
-        return self.base_path / order.vendor / filename
+        exporter = get_exporter(Order, format)
+        file_data_to_save = exporter.export(order)
+
+        file_name = self._generate_file_name(order, format)
+
+        self._write_data(format, file_data_to_save, ORDER_FILES_DIR / file_name)
+
+    def _write_data(self, format: str, data: Any, file_path: Path) -> None:
+        try:
+            save_func = self._save_strategies[format]
+        except KeyError:
+            raise ValueError(f"Unsupported format: {format}")
+        save_func(data, file_path)
+
+    # def get_order_path(self, order: Order) -> Path:
+    #     filename = f"{order.vendor}_{order.store}_{order.date}.xlsx"
+    #     return self.base_path / order.vendor / filename
 
     def get_orders(self, stores: list = None, vendors: list = None):
         orders = []
@@ -42,3 +60,4 @@ class OrderFileHandler(FileHandler):
     def parse_filename(self, filename: str) -> dict:
         match = self.file_pattern.match(Path(filename).stem)
         return match.groupdict() if match else {}
+    
