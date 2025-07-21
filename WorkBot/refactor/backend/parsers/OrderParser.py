@@ -1,11 +1,14 @@
-from models.Order import Order, OrderItem
-from openpyxl import load_workbook
+from models.Order import Order
+from models.OrderItem import OrderItem
+from openpyxl import load_workbook, Workbook
 from pathlib import Path
 
 class OrderParser:
+
     def parse_excel(self, file_path: Path) -> Order:
         stem = file_path.stem
         vendor, store, date = stem.split("_")
+
         order = Order(store=store, vendor=vendor, date=date)
 
         wb = load_workbook(file_path, read_only=True)
@@ -17,3 +20,16 @@ class OrderParser:
             order.items.append(item)
         
         return order
+
+    def to_excel_workbook(self, order: Order) -> 'Workbook':
+        wb = Workbook()
+        ws = wb.active
+        ws.title = "Order"
+
+        headers = ["SKU", "Name", "Quantity", "Cost Per", "Total Cost"]
+        ws.append(headers)
+
+        for item in order.items:
+            ws.append([item.sku, item.name, item.quantity, item.cost_per, item.total_cost])
+
+        return wb

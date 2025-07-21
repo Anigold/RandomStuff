@@ -14,10 +14,13 @@ import os
 
 from openpyxl import Workbook, load_workbook
 
-from backend.transferring import Transfer
-from backend.transferring.TransferManager import TransferManager
-from backend.ordering.OrderManager import OrderManager
-from backend.ordering.Order import Order, OrderItem
+from models.Item import Item
+from models.Order import Order
+from models.OrderItem import OrderItem
+from models.Transfer import Transfer
+from coordinators.OrderCoordinator import OrderCoordinator
+from coordinators.TransferCoordinator import TransferCoordinator
+
 
 from datetime import datetime
 
@@ -69,19 +72,14 @@ class CraftableBot(SeleniumBotMixin):
             'Collegetown': '14372',
     }
     
-    def __init__(self, downloads_path: str, username: str, password: str, order_manager=None, transfer_manager=None):
-        
-        self.order_manager = order_manager
-        self.transfer_manager = transfer_manager
-
     def __init__(self, downloads_path: str, username: str, password: str, 
-                 order_manager: OrderManager = None, 
-                 transfer_manager: TransferManager = None):
+                 order_coordinator: OrderCoordinator = None, 
+                 transfer_coordinator: TransferCoordinator = None):
         
         super().__init__(downloads_path=downloads_path, username=username, password=password)
 
-        self.order_manager    = order_manager or OrderManager()
-        self.transfer_manager = transfer_manager or TransferManager()
+        self.order_manager    = order_coordinator or OrderCoordinator()
+        self.transfer_manager = transfer_coordinator or TransferCoordinator()
 
         self.is_logged_in = False
 
@@ -269,8 +267,9 @@ class CraftableBot(SeleniumBotMixin):
 
         self.logger.info(f"Saving order for {row_vendor_name}.")
         order_to_save = Order(store=store, vendor=row_vendor_name, date=row_date_formatted, items=items)
-        self.order_manager.save_order(order_to_save)
-        self.order_manager.upload_order_to_api(order_to_save)
+        self.order_coordinator.save_order_file(order_to_save)
+        # self.order_manager.save_order(order_to_save)
+        # self.order_manager.upload_order_to_api(order_to_save)
 
         # self._save_order_as_excel(items, store=store, vendor=row_vendor_name, date=row_date_formatted)
         time.sleep(1)

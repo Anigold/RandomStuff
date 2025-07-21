@@ -33,6 +33,7 @@ class OrderDatabaseHandler(DatabaseHandler):
     #     result = self.query("SELECT id FROM Items WHERE name = ?", (name,), fetchone=True)
     #     return result["id"] if result else None
 
+
     def get_all_orders_summary(self, limit: int = 100) -> list[dict]:
         query = """
             SELECT o.id, s.store_name, v.name, o.date,
