@@ -4,7 +4,7 @@ import sqlite3
 from contextlib import contextmanager
 from typing import Any, Generator, Optional
 
-from config import DATABASE_PATH
+from config.paths import DATABASE_PATH
 
 class DatabaseHandler:
     """Base class for SQLite database interactions."""

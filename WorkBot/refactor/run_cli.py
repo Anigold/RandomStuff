@@ -4,6 +4,8 @@ import sys
 import platform
 from pathlib import Path
 
+from backend.exporters.load_exporters import load_exporters
+
 LOG_FILE = Path('./logs/master.log').absolute().as_posix()
 GIT_BASH_PATH = Path('C:/Program Files/Git/bin/bash.exe')
 
@@ -30,7 +32,7 @@ def open_log_terminal():
 
 if __name__ == '__main__':
     # open_log_terminal()
-
+    load_exporters()
     workbot_cli = WorkBotCLI()
     work_bot = workbot_cli.workbot
 

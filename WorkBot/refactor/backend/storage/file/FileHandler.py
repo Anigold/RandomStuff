@@ -4,6 +4,8 @@ from typing import Union, Any
 import os
 from openpyxl import Workbook
 from config.paths import DOWNLOADS_PATH
+import tempfile
+import shutil
 
 class FileHandler:
     def __init__(self, base_dir: Union[str, Path]):
@@ -15,9 +17,11 @@ class FileHandler:
             'excel': 'xlsx',
             'csv':   'csv',
             'json':  'json',
-            'text':  'txt'
+            'text':  'txt',
+            'pdf':   'pdf',
+            'PDF':   'pdf'
         }
-        self.save_strategies = {
+        self._save_strategies = {
             'excel': self._save_excel,
             'csv': self._save_csv
         }
@@ -35,7 +39,7 @@ class FileHandler:
     def file_exists(self, file_path: Union[str, Path]) -> bool:
         return self._resolve_path(file_path).exists()
 
-    def delete_file(self, file_path: Union[str, Path]) -> None:
+    def remove_file(self, file_path: Union[str, Path]) -> None:
         path = self._resolve_path(file_path)
         if path.exists():
             path.unlink()
@@ -50,10 +54,30 @@ class FileHandler:
         return p if p.is_absolute() else self.base_dir / p
 
     def _save_excel(self, workbook: Workbook, file_path: Path) -> None:
-        return workbook.save(file_path)
-    
+        with tempfile.NamedTemporaryFile(suffix=".xlsx", delete=False) as tmp:
+            tmp_path = Path(tmp.name)
+            workbook.save(tmp_path)  # safe write
+            tmp.close()
+            file_path.parent.mkdir(parents=True, exist_ok=True)
+            if file_path.exists():
+                file_path.unlink()
+            shutil.move(tmp_path, file_path)
+        
     def _save_csv(self, csv_string: str, file_path: Path) -> None:
         with open(file_path, 'w') as f:
             f.write(csv_string)
 
-    
+
+    def move_file(self, src: Path, dest: Path ,overwrite: bool = False) -> None:
+        if not src.exists():
+            raise FileNotFoundError(f"Source file does not exist: {src}")
+        
+        dest.parent.mkdir(parents=True, exist_ok=True)
+
+        if dest.exists():
+            if overwrite:
+                dest.unlink()
+            else:
+                raise FileExistsError(f"{dest} already exists.")
+            
+        src.rename(dest)

@@ -3,6 +3,10 @@
 import os
 from dotenv import load_dotenv
 
+def get_env_variable(var_name: str, default=None):
+    '''Fetches an environment variable, returns default if not found.'''
+    return os.getenv(var_name, default)
+
 load_dotenv()
 
 class Secrets:

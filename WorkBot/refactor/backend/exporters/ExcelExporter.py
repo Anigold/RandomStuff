@@ -1,8 +1,9 @@
-from exporters import Exporter, register_exporter
-from models import Order, Item
+from backend.exporters.Exporter import Exporter
+from backend.models.Order import Order
+from backend.models.Item import Item
 from openpyxl import Workbook
 
-@register_exporter(Order, "excel")
+@Exporter.register_exporter(Order, "excel")
 class ExcelOrderExporter(Exporter):
     def export(self, order: Order) -> Workbook:
         wb = Workbook()
@@ -16,7 +17,7 @@ class ExcelOrderExporter(Exporter):
 
         return wb
 
-@register_exporter(Item, "excel")
+@Exporter.register_exporter(Item, "excel")
 class ExcelItemExporter(Exporter):
     def export(self, item: Item) -> Workbook:
         wb = Workbook()

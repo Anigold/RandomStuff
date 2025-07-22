@@ -5,7 +5,7 @@ import threading
 from logging.handlers import RotatingFileHandler
 from functools import wraps
 
-from config import MASTER_LOG_FILE
+from config.paths import MASTER_LOG_FILE
 
 class Logger:
     '''Centralized logging class with per-module loggers, rotating files, and optional JSON formatting.'''

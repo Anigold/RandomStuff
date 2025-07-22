@@ -1,8 +1,10 @@
-from exporters import Exporter, register_exporter
-from models import Order, Item
+from backend.exporters.Exporter import Exporter
+from backend.models.Order import Order
+from backend.models.Item import Item
 from openpyxl import Workbook
 
-@register_exporter(Order, 'csv')
+@Exporter.register_exporter(Order, 'csv')
 class CSVOrderExporter(Exporter):
 
-    pass
+    def export(self) -> None:
+        pass

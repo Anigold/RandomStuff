@@ -3,7 +3,7 @@ from pathlib import Path
 import os
 import time
 
-from config import DOWNLOADS_PATH
+from config.paths import DOWNLOADS_PATH
 
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -263,7 +263,8 @@ class CraftableBot(SeleniumBotMixin):
         WebDriverWait(self.driver, 45).until(EC.element_to_be_clickable((By.TAG_NAME, 'table')))
         items = self._scrape_order()
 
-        if update and self._update_existing_order(store, row_vendor_name, row_date_formatted, items):
+        order_to_check_update = Order(store=store, vendor=row_vendor_name, date=row_date_formatted, items=items)
+        if update and self._update_existing_order(order_to_check_update):
             self.logger.info(f"Order for {row_vendor_name} is up-to-date. Skipping.")
             self.driver.back()
             time.sleep(2)
@@ -275,13 +276,12 @@ class CraftableBot(SeleniumBotMixin):
         # self.order_manager.save_order(order_to_save)
         # self.order_manager.upload_order_to_api(order_to_save)
 
-        # self._save_order_as_excel(items, store=store, vendor=row_vendor_name, date=row_date_formatted)
         time.sleep(1)
 
+
         if download_pdf:
+            self.order_coordinator.expect_downloaded_pdf(order_to_save)
             self._download_order_pdf()
-            time.sleep(3)
-            self._rename_new_order_file(store=store, vendor=row_vendor_name, date=row_date_formatted)
 
         self.driver.back()
         time.sleep(3)
@@ -602,20 +602,6 @@ class CraftableBot(SeleniumBotMixin):
 
 
     '''HELPER FUNCTIONS'''
-
-    def _rename_new_order_file(self, store: str, vendor: str, date: str) -> None:
-
-        original_file = self.order_coordinator.get_downloads_directory() / 'Order.pdf'
-
-        if not original_file.exists():
-            self.logger.warning(f'Expected file not found: {original_file}')
-            return
-        
-        new_filename = self.order_coordinator.generate_filename(store=store, vendor=vendor, date=date, file_extension='.pdf')
-        new_filepath = self.order_coordinator.get_order_files_directory() / new_filename
-        
-        original_file.rename(new_filepath)
-        return
     
     def _run_save_protocol() -> None:
         keyboard = Controller()
@@ -671,89 +657,23 @@ class CraftableBot(SeleniumBotMixin):
         download_button = self.driver.find_element(By.CLASS_NAME, 'fa-download')
         ActionChains(self.driver).key_down(Keys.CONTROL).click(download_button).perform()
         return
+       
+
+    def _update_existing_order(self, order: Order) -> bool:
+        """
+        Requests that the OrderCoordinator handle the update check and replacement
+        if the new order differs from the existing one.
+
+        Returns True if the file is identical (no update needed),
+        False if the new file should be written.
+        """
+        self.logger.info(f'[Order Update] Initiating update protocol for {order.store} / {order.vendor} / {order.date}.')
+        return self.order_coordinator.check_and_update_order(order)
+
+
+
+
     
-    def _save_order_as_excel(self, item_data, store: str, vendor: str, date: str) -> None:
-
-        self.order_coordinator.save_order()
-        new_filename = self.order_coordinator.generate_filename(store=store, vendor=vendor, date=date, file_extension='.xlsx')
-        new_filepath = self.order_coordinator.get_order_files_directory() / new_filename
-        
-        self.logger.info(f'Saving order as Excel file: {new_filename}')
-        order = Order(store, vendor, date, items=item_data)
-     
-        order_as_workbook = order.to_excel_workbook()
-
-        order_as_workbook.save(new_filepath)
-        order_as_workbook.close()
-        
-        return
-    
-    def _delete_order_protocol(self) -> None:
-        pass
-        
-    def _extract_order_table_rows(self, row) -> tuple:
-        pass
-
-    def _update_existing_order(self, store, vendor_name, date_formatted, items) -> bool:
-
-        """Handles the update protocol for checking existing orders and removing outdated files."""
-
-        self.logger.info(f'[Order Update] Initiating update protocol for {store} for vendor: {vendor_name}, on {date_formatted}.')
-
-        preexisting_workbook_filename = self.order_coordinator.generate_filename(
-            store=store, 
-            vendor=vendor_name, 
-            date=date_formatted, 
-            file_extension='.xlsx'
-        )
-        
-        self.logger.info(f'[Order Update] Checking for pre-existing order file: {preexisting_workbook_filename}')
-        preexisting_workbook_path = self.order_coordinator.get_order_files_directory() / vendor_name / preexisting_workbook_filename
-        preexisting_file_exists   = preexisting_workbook_path.exists()
-        
-        if not self.order_coordinator.get_vendor_orders_directory(vendor_name): 
-            self.logger.info(f'[Order Update] No order directory found for vendor: {vendor_name}. Proceeding with new download.')
-            return False
-        if not preexisting_file_exists: 
-            self.logger.info(f'[Order Update] No existing order file found for {store} for {vendor_name} on {date_formatted}. Proceeding with new download.')
-            return False
-        
-        self.logger.info(f'[Order Update] Extracting data from existing order file: {preexisting_workbook_filename}')
-        workbook    = load_workbook(preexisting_workbook_path, read_only=True)
-        sheet       = workbook.active
-        saved_items = [[cell.value for cell in row] for row in sheet.iter_rows(min_row=2)]
-        workbook.close()
-
-        items_info = [[i.sku, i.name, i.quantity, i.cost_per, i.total_cost] for i in items.items]
-        self.logger.info(f'[Order Update] Comparing new data with the existing file for {store} for {vendor_name} on {date_formatted}.')
-        if set(map(tuple, items_info)) == set(map(tuple, saved_items)): # Compare sets of tuples
-            self.logger.info(f'[Order Update] No changes detected for {store} for {vendor_name} on {date_formatted}. Skipping update protocol.')
-            return True  # Skip further processing
-
-        self.logger.info(f'[Order Update] Removing outdated order file: {preexisting_workbook_path}')
-        self._remove_old_file(preexisting_workbook_path)
-        self._remove_old_file(preexisting_workbook_path.with_suffix('.pdf'))
-        return False  # Continue saving new data
-    
-    def _remove_old_file(self, file_path: Path) -> None:
-        '''Used to remove outdated order files.'''
-        try:
-
-            
-            self.logger.info(f'[File Cleanup] Attempting to remove file: {file_path}')
-
-            if file_path.is_file():
-                os.remove(file_path)
-                self.logger.info(f'[File Cleanup] Successfully removed file: {file_path}')
-            else:
-                self.logger.warning(f'[File Cleanup] File does not exist: {file_path}')
-
-        except OSError as e:
-            self.logger.error(f'[File Cleanup] Error removing file: {e}')
-
-            if e.errno == 13:
-                self.logger.warning(f'[File Cleanup] File is in use by another program. Aborting deletion.')
-            
     def _change_calendar_date(self, transfer_datetime: datetime) -> None:
        
         try:

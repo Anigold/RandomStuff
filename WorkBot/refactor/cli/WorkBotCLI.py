@@ -1,5 +1,5 @@
 from backend.utils.logger import Logger
-from backend.bots.workbot import WorkBot
+from backend.bots.workbot.WorkBot import WorkBot
 
 
 # from backend.ordering.OrderManager import OrderManager
@@ -23,7 +23,7 @@ from tabulate import tabulate
 from termcolor import colored
 
 from typing import Optional
-from config import CLI_HISTORY_FILE
+from config.paths import CLI_HISTORY_FILE
 
 import re
 
@@ -357,33 +357,33 @@ class WorkBotCLI(CLI):
 
 
 # GENERATE VENDOR UPLOAD FILES
-    # def args_generate_vendor_upload_files(self):
-    #     parser = argparse.ArgumentParser(prog='generate_vendor_upload_files', description='Generate a vendor-specific upload file.')
-    #     parser.add_argument('--vendors', nargs='+', help='List of vendors (default: all).')
-    #     return parser
+    def args_generate_vendor_upload_files(self):
+        parser = argparse.ArgumentParser(prog='generate_vendor_upload_files', description='Generate a vendor-specific upload file.')
+        parser.add_argument('--vendors', nargs='+', help='List of vendors (default: all).')
+        return parser
     
-    # def cmd_generate_vendor_upload_files(self, args):
-    #     parser = self.args_generate_vendor_upload_files()
-    #     try:
-    #         parsed_args = parser.parse_args(args)
+    def cmd_generate_vendor_upload_files(self, args):
+        parser = self.args_generate_vendor_upload_files()
+        try:
+            parsed_args = parser.parse_args(args)
 
-    #         for vendor in parsed_args.vendors:
-    #             vendor_order_paths = self.workbot.order_manager.get_vendor_orders(vendor)
+            for vendor in parsed_args.vendors:
+                vendor_order_paths = self.workbot.order_manager.get_vendor_orders(vendor)
 
-    #             orders = [OrderManager.create_order_from_excel(vendor_order_path) for vendor_order_path in vendor_order_paths]
+                orders = [OrderManager.create_order_from_excel(vendor_order_path) for vendor_order_path in vendor_order_paths]
 
-    #             self.workbot.generate_vendor_upload_files(orders)
+                self.workbot.generate_vendor_upload_files(orders)
 
-    #     except SystemExit:
-    #         pass
+        except SystemExit:
+            pass
 
-    # def _autocomplete_generate_vendor_upload_files(self, flag: str, text: str):
+    def _autocomplete_generate_vendor_upload_files(self, flag: str, text: str):
         
-    #     flags = {
-    #         '--vendors': self._get_vendors
-    #     }
+        flags = {
+            '--vendors': self._get_vendors
+        }
         
-    #     return [option for option in flags.get(flag, [])() if option.startswith(text)]
+        return [option for option in flags.get(flag, [])() if option.startswith(text)]
 
 
 # DELETE ORDERS
@@ -604,7 +604,7 @@ Internal Contacts:
 
 # PRIVATE FUNCTIONS    
     def _get_stores(self):
-        return [store.name for store in self.workbot.store_manager.list_stores()]
+        return [store.name for store in self.workbot.store_coordinator.list_stores()]
     
     def _get_vendors(self):
         return sorted(self.workbot.vendor_manager.list_vendors())

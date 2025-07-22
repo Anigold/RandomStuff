@@ -1,4 +1,4 @@
-from config.secrets import get_env_variable
+from config.secrets.env_loader import get_env_variable
 
 
 def generate_craftablebot_args():

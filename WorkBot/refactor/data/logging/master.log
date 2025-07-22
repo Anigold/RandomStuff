@@ -1,0 +1,1283 @@
+2025-07-22 06:19:06,926 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 06:19:45,116 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 06:19:58,843 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 06:20:28,831 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 06:20:43,305 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 06:21:53,887 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 06:21:53,888 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 06:21:53,888 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 06:22:47,572 - INFO - CraftableBot - Closing WebDriver session.
+2025-07-22 06:22:47,573 - ERROR - CraftableBot - Error closing WebDriver session: No module named 'bots'
+2025-07-22 06:22:47,574 - INFO - CraftableBot - WebDriver session closed.
+2025-07-22 06:22:56,256 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 06:22:56,257 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 06:22:56,257 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 06:27:10,553 - INFO - CraftableBot - Closing WebDriver session.
+2025-07-22 06:27:10,554 - ERROR - CraftableBot - Error closing WebDriver session: No module named 'bots'
+2025-07-22 06:27:10,554 - INFO - CraftableBot - WebDriver session closed.
+2025-07-22 06:28:12,053 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 06:28:24,733 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 06:29:02,331 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 06:29:29,515 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 06:29:29,516 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 06:29:29,516 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 06:29:36,479 - INFO - CraftableBot - Logging into Craftable.
+2025-07-22 06:29:36,480 - ERROR - CraftableBot - Error in login: No module named 'bots'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 118, in login
+    self.driver.get(self.site_map['login_page'])
+    ^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\BotMixins.py", line 19, in driver
+    from bots.craftable_bot.helpers import create_driver, create_options
+ModuleNotFoundError: No module named 'bots'
+2025-07-22 06:29:58,803 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 06:29:58,803 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 06:29:58,804 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 06:30:05,015 - INFO - CraftableBot - Logging into Craftable.
+2025-07-22 06:30:05,015 - ERROR - CraftableBot - Error in login: cannot import name 'create_driver' from 'backend.bots.craftable_bot.helpers' (C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\helpers.py)
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 118, in login
+    self.driver.get(self.site_map['login_page'])
+    ^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\BotMixins.py", line 19, in driver
+    from backend.bots.craftable_bot.helpers import create_driver, create_options
+ImportError: cannot import name 'create_driver' from 'backend.bots.craftable_bot.helpers' (C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\helpers.py)
+2025-07-22 06:30:54,384 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 06:30:54,385 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 06:30:54,385 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 06:31:02,006 - INFO - CraftableBot - Logging into Craftable.
+2025-07-22 06:31:13,212 - INFO - CraftableBot - Login successful.
+2025-07-22 06:31:13,212 - INFO - CraftableBot - Starting order download protocol.
+2025-07-22 06:31:13,212 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-22 06:31:19,938 - INFO - CraftableBot - Retrieving order for UNFI (07/19/2025).
+2025-07-22 06:31:22,590 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: UNFI, on 20250719.
+2025-07-22 06:31:22,590 - ERROR - CraftableBot - Error in download_orders: 'OrderCoordinator' object has no attribute 'generate_filename'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 232, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 266, in _process_order_row
+    if update and self._update_existing_order(store, row_vendor_name, row_date_formatted, items):
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 703, in _update_existing_order
+    preexisting_workbook_filename = self.order_coordinator.generate_filename(
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'OrderCoordinator' object has no attribute 'generate_filename'
+2025-07-22 07:57:54,591 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 07:57:54,592 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 07:57:54,592 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 07:58:00,954 - INFO - CraftableBot - Logging into Craftable.
+2025-07-22 07:58:11,489 - INFO - CraftableBot - Login successful.
+2025-07-22 07:58:11,489 - INFO - CraftableBot - Starting order download protocol.
+2025-07-22 07:58:11,489 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-22 07:58:18,167 - INFO - CraftableBot - Retrieving order for UNFI (07/19/2025).
+2025-07-22 07:58:20,640 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / UNFI / 20250719.
+2025-07-22 07:58:20,640 - ERROR - CraftableBot - Error in download_orders: 'OrderCoordinator' object has no attribute 'logger'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 232, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 267, in _process_order_row
+    if update and self._update_existing_order(order_to_check_update):
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 749, in _update_existing_order
+    return self.order_coordinator.check_and_update_order(order)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\OrderCoordinator.py", line 38, in check_and_update_order
+    self.logger.info(f'[Order Update] No existing file at {file_path}. Proceeding with save.')
+    ^^^^^^^^^^^
+AttributeError: 'OrderCoordinator' object has no attribute 'logger'
+2025-07-22 07:58:48,277 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 07:58:48,278 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 07:58:48,278 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 07:58:54,273 - INFO - CraftableBot - Logging into Craftable.
+2025-07-22 07:59:04,883 - INFO - CraftableBot - Login successful.
+2025-07-22 07:59:04,883 - INFO - CraftableBot - Starting order download protocol.
+2025-07-22 07:59:04,883 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-22 07:59:11,542 - INFO - CraftableBot - Retrieving order for UNFI (07/19/2025).
+2025-07-22 07:59:14,068 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / UNFI / 20250719.
+2025-07-22 07:59:14,068 - ERROR - CraftableBot - Error in download_orders: 'OrderCoordinator' object has no attribute 'logger'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 232, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 267, in _process_order_row
+    if update and self._update_existing_order(order_to_check_update):
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 749, in _update_existing_order
+    return self.order_coordinator.check_and_update_order(order)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\OrderCoordinator.py", line 38, in check_and_update_order
+    self.logger.info(f'[Order Update] No existing file at {file_path}. Proceeding with save.')
+    ^^^^^^^^^^^
+AttributeError: 'OrderCoordinator' object has no attribute 'logger'
+2025-07-22 08:00:33,649 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 08:00:33,650 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 08:00:33,650 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 08:00:39,897 - INFO - CraftableBot - Logging into Craftable.
+2025-07-22 08:00:50,218 - INFO - CraftableBot - Login successful.
+2025-07-22 08:00:50,218 - INFO - CraftableBot - Starting order download protocol.
+2025-07-22 08:00:50,219 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-22 08:00:56,955 - INFO - CraftableBot - Retrieving order for UNFI (07/19/2025).
+2025-07-22 08:00:59,473 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / UNFI / 20250719.
+2025-07-22 08:00:59,473 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\UNFI\UNFI_Bakery_20250719.xlsx. Proceeding with save.
+2025-07-22 08:00:59,474 - INFO - CraftableBot - Saving order for UNFI.
+2025-07-22 08:00:59,474 - ERROR - CraftableBot - Error in download_orders: No exporter for type to excel
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 232, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 275, in _process_order_row
+    self.order_coordinator.save_order_file(order_to_save)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\OrderCoordinator.py", line 23, in save_order_file
+    self.file_handler.save_order(order, format)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\storage\file\OrderFileHandler.py", line 30, in save_order
+    exporter = get_exporter(Order, format)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\exporters\__init__.py", line 14, in get_exporter
+    raise ValueError(f"No exporter for {type(obj).__name__} to {fmt}")
+ValueError: No exporter for type to excel
+2025-07-22 08:01:49,017 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 08:01:49,018 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 08:01:49,018 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 08:01:56,576 - INFO - CraftableBot - Logging into Craftable.
+2025-07-22 08:02:07,378 - INFO - CraftableBot - Login successful.
+2025-07-22 08:02:07,378 - INFO - CraftableBot - Starting order download protocol.
+2025-07-22 08:02:07,378 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-22 08:02:14,030 - INFO - CraftableBot - Retrieving order for UNFI (07/19/2025).
+2025-07-22 08:02:16,520 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / UNFI / 20250719.
+2025-07-22 08:02:16,520 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\UNFI\UNFI_Bakery_20250719.xlsx. Proceeding with save.
+2025-07-22 08:02:16,520 - INFO - CraftableBot - Saving order for UNFI.
+2025-07-22 08:02:16,521 - ERROR - CraftableBot - Error in download_orders: No exporter for type to excel
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 232, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 275, in _process_order_row
+    self.order_coordinator.save_order_file(order_to_save)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\OrderCoordinator.py", line 23, in save_order_file
+    self.file_handler.save_order(order, format)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\storage\file\OrderFileHandler.py", line 30, in save_order
+    exporter = get_exporter(Order, format)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\exporters\__init__.py", line 14, in get_exporter
+    raise ValueError(f"No exporter for {type(obj).__name__} to {fmt}")
+ValueError: No exporter for type to excel
+2025-07-22 08:11:46,082 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 08:11:46,083 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 08:11:46,083 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 08:11:52,268 - INFO - CraftableBot - Logging into Craftable.
+2025-07-22 08:12:03,775 - INFO - CraftableBot - Login successful.
+2025-07-22 08:12:03,775 - INFO - CraftableBot - Starting order download protocol.
+2025-07-22 08:12:03,776 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-22 08:12:10,429 - INFO - CraftableBot - Retrieving order for UNFI (07/19/2025).
+2025-07-22 08:12:12,970 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / UNFI / 20250719.
+2025-07-22 08:12:12,971 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\UNFI\UNFI_Bakery_20250719.xlsx. Proceeding with save.
+2025-07-22 08:12:12,971 - INFO - CraftableBot - Saving order for UNFI.
+2025-07-22 08:12:12,971 - ERROR - CraftableBot - Error in download_orders: No exporter for type to excel
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 232, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 275, in _process_order_row
+    self.order_coordinator.save_order_file(order_to_save)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\OrderCoordinator.py", line 22, in save_order_file
+    self.file_handler.save_order(order, format)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\storage\file\OrderFileHandler.py", line 30, in save_order
+    exporter = Exporter.get_exporter(Order, format)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\exporters\__init__.py", line 32, in get_exporter
+    raise ValueError(f"No exporter for {type(obj).__name__} to {fmt}")
+ValueError: No exporter for type to excel
+2025-07-22 08:16:41,967 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 08:16:41,968 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 08:16:41,968 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 08:16:49,041 - INFO - CraftableBot - Logging into Craftable.
+2025-07-22 08:16:59,636 - INFO - CraftableBot - Login successful.
+2025-07-22 08:16:59,636 - INFO - CraftableBot - Starting order download protocol.
+2025-07-22 08:16:59,636 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-22 08:17:06,345 - INFO - CraftableBot - Retrieving order for UNFI (07/19/2025).
+2025-07-22 08:17:08,849 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / UNFI / 20250719.
+2025-07-22 08:17:08,849 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\UNFI\UNFI_Bakery_20250719.xlsx. Proceeding with save.
+2025-07-22 08:17:08,849 - INFO - CraftableBot - Saving order for UNFI.
+2025-07-22 08:17:08,850 - ERROR - CraftableBot - Error in download_orders: No exporter for Order to excel
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 232, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 275, in _process_order_row
+    self.order_coordinator.save_order_file(order_to_save)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\OrderCoordinator.py", line 22, in save_order_file
+    self.file_handler.save_order(order, format)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\storage\file\OrderFileHandler.py", line 30, in save_order
+    exporter = Exporter.get_exporter(Order, format)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\exporters\__init__.py", line 32, in get_exporter
+    raise ValueError(f"No exporter for {domain_cls.__name__} to {fmt}")
+ValueError: No exporter for Order to excel
+2025-07-22 08:18:16,196 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 08:18:16,197 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 08:18:16,197 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 08:18:22,145 - INFO - CraftableBot - Logging into Craftable.
+2025-07-22 08:18:33,029 - INFO - CraftableBot - Login successful.
+2025-07-22 08:18:33,029 - INFO - CraftableBot - Starting order download protocol.
+2025-07-22 08:18:33,029 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-22 08:18:39,701 - INFO - CraftableBot - Retrieving order for UNFI (07/19/2025).
+2025-07-22 08:18:42,188 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / UNFI / 20250719.
+2025-07-22 08:18:42,189 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\UNFI\UNFI_Bakery_20250719.xlsx. Proceeding with save.
+2025-07-22 08:18:42,189 - INFO - CraftableBot - Saving order for UNFI.
+2025-07-22 08:18:42,189 - ERROR - CraftableBot - Error in download_orders: No exporter for Order to excel
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 232, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 275, in _process_order_row
+    self.order_coordinator.save_order_file(order_to_save)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\OrderCoordinator.py", line 22, in save_order_file
+    self.file_handler.save_order(order, format)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\storage\file\OrderFileHandler.py", line 30, in save_order
+    exporter = Exporter.get_exporter(Order, format)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\exporters\__init__.py", line 32, in get_exporter
+    raise ValueError(f"No exporter for {domain_cls.__name__} to {fmt}")
+ValueError: No exporter for Order to excel
+2025-07-22 08:24:23,157 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 08:24:23,157 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 08:24:23,158 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 08:24:31,014 - INFO - CraftableBot - Logging into Craftable.
+2025-07-22 08:24:41,791 - INFO - CraftableBot - Login successful.
+2025-07-22 08:24:41,791 - INFO - CraftableBot - Starting order download protocol.
+2025-07-22 08:24:41,791 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-22 08:24:48,450 - INFO - CraftableBot - Retrieving order for UNFI (07/19/2025).
+2025-07-22 08:24:50,711 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / UNFI / 20250719.
+2025-07-22 08:24:50,711 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\UNFI\UNFI_Bakery_20250719.xlsx. Proceeding with save.
+2025-07-22 08:24:50,711 - INFO - CraftableBot - Saving order for UNFI.
+2025-07-22 08:24:50,711 - ERROR - CraftableBot - Error in download_orders: No exporter for Order to excel
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 232, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 275, in _process_order_row
+    self.order_coordinator.save_order_file(order_to_save)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\OrderCoordinator.py", line 22, in save_order_file
+    self.file_handler.save_order(order, format)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\storage\file\OrderFileHandler.py", line 30, in save_order
+    exporter = Exporter.get_exporter(Order, format)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\exporters\Exporter.py", line 19, in get_exporter
+    raise ValueError(f"No exporter for {domain_cls.__name__} to {fmt}")
+ValueError: No exporter for Order to excel
+2025-07-22 08:41:06,512 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 08:41:06,522 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 08:41:06,522 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 08:41:11,518 - INFO - CraftableBot - Logging into Craftable.
+2025-07-22 08:41:23,193 - INFO - CraftableBot - Login successful.
+2025-07-22 08:41:23,193 - INFO - CraftableBot - Starting order download protocol.
+2025-07-22 08:41:23,193 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-22 08:41:29,696 - INFO - CraftableBot - Retrieving order for UNFI (07/19/2025).
+2025-07-22 08:41:32,165 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / UNFI / 20250719.
+2025-07-22 08:41:32,166 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\UNFI\UNFI_Bakery_20250719.xlsx. Proceeding with save.
+2025-07-22 08:41:32,166 - INFO - CraftableBot - Saving order for UNFI.
+2025-07-22 08:41:32,168 - ERROR - CraftableBot - Error in download_orders: 'OrderFileHandler' object has no attribute '_save_strategies'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 232, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 275, in _process_order_row
+    self.order_coordinator.save_order_file(order_to_save)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\OrderCoordinator.py", line 22, in save_order_file
+    self.file_handler.save_order(order, format)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\storage\file\OrderFileHandler.py", line 35, in save_order
+    self._write_data(format, file_data_to_save, self.BASE_DIR / file_name)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\storage\file\OrderFileHandler.py", line 39, in _write_data
+    save_func = self._save_strategies[format]
+                ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'OrderFileHandler' object has no attribute '_save_strategies'. Did you mean: 'save_strategies'?
+2025-07-22 08:42:19,498 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 08:42:19,499 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 08:42:19,499 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 08:42:27,383 - INFO - CraftableBot - Logging into Craftable.
+2025-07-22 08:42:37,625 - INFO - CraftableBot - Login successful.
+2025-07-22 08:42:37,626 - INFO - CraftableBot - Starting order download protocol.
+2025-07-22 08:42:37,626 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-22 08:42:44,230 - INFO - CraftableBot - Retrieving order for UNFI (07/19/2025).
+2025-07-22 08:42:46,884 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / UNFI / 20250719.
+2025-07-22 08:42:46,885 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\UNFI\UNFI_Bakery_20250719.xlsx. Proceeding with save.
+2025-07-22 08:42:46,885 - INFO - CraftableBot - Saving order for UNFI.
+2025-07-22 08:42:51,240 - ERROR - CraftableBot - Error in download_orders: 'OrderCoordinator' object has no attribute 'get_downloads_directory'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 232, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 285, in _process_order_row
+    self._rename_new_order_file(store=store, vendor=row_vendor_name, date=row_date_formatted)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 609, in _rename_new_order_file
+    original_file = self.order_coordinator.get_downloads_directory() / 'Order.pdf'
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'OrderCoordinator' object has no attribute 'get_downloads_directory'
+2025-07-22 09:25:00,524 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 09:25:56,370 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 09:26:12,812 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 09:26:12,821 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 09:26:12,821 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 09:26:23,011 - INFO - CraftableBot - Logging into Craftable.
+2025-07-22 09:26:34,447 - INFO - CraftableBot - Login successful.
+2025-07-22 09:26:34,447 - INFO - CraftableBot - Starting order download protocol.
+2025-07-22 09:26:34,447 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-22 09:26:41,124 - INFO - CraftableBot - Retrieving order for UNFI (07/19/2025).
+2025-07-22 09:26:43,636 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / UNFI / 20250719.
+2025-07-22 09:26:43,636 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\UNFI\UNFI_Bakery_20250719.xlsx. Proceeding with save.
+2025-07-22 09:26:43,636 - INFO - CraftableBot - Saving order for UNFI.
+2025-07-22 09:26:46,175 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\UNFI\UNFI_Bakery_20250719.pdf
+2025-07-22 09:26:48,093 - INFO - CraftableBot - Retrieving order for Webstaurant (07/19/2025).
+2025-07-22 09:26:49,514 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Webstaurant / 20250719.
+2025-07-22 09:26:49,514 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Webstaurant\Webstaurant_Bakery_20250719.xlsx. Proceeding with save.
+2025-07-22 09:26:49,514 - INFO - CraftableBot - Saving order for Webstaurant.
+2025-07-22 09:26:51,537 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Webstaurant\Webstaurant_Bakery_20250719.pdf
+2025-07-22 09:26:53,911 - INFO - CraftableBot - Retrieving order for BJ's (07/19/2025).
+2025-07-22 09:26:55,122 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / BJ's / 20250719.
+2025-07-22 09:26:55,123 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\BJ's\BJ's_Bakery_20250719.xlsx. Proceeding with save.
+2025-07-22 09:26:55,123 - INFO - CraftableBot - Saving order for BJ's.
+2025-07-22 09:26:57,150 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\BJ's\BJ's_Bakery_20250719.pdf
+2025-07-22 09:26:59,516 - INFO - CraftableBot - Retrieving order for Sysco (07/19/2025).
+2025-07-22 09:27:02,339 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Sysco / 20250719.
+2025-07-22 09:27:02,339 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Sysco\Sysco_Bakery_20250719.xlsx. Proceeding with save.
+2025-07-22 09:27:02,339 - INFO - CraftableBot - Saving order for Sysco.
+2025-07-22 09:27:04,366 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Sysco\Sysco_Bakery_20250719.pdf
+2025-07-22 09:27:06,734 - INFO - CraftableBot - Retrieving order for FingerLakes Farms (07/19/2025).
+2025-07-22 09:27:08,739 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / FingerLakes Farms / 20250719.
+2025-07-22 09:27:08,739 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\FingerLakes Farms\FingerLakes Farms_Bakery_20250719.xlsx. Proceeding with save.
+2025-07-22 09:27:08,739 - INFO - CraftableBot - Saving order for FingerLakes Farms.
+2025-07-22 09:27:11,263 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\FingerLakes Farms\FingerLakes Farms_Bakery_20250719.pdf
+2025-07-22 09:27:13,132 - INFO - CraftableBot - Retrieving order for Hillcrest Dairy (07/19/2025).
+2025-07-22 09:27:14,605 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Hillcrest Dairy / 20250719.
+2025-07-22 09:27:14,605 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Dairy\Hillcrest Dairy_Bakery_20250719.xlsx. Proceeding with save.
+2025-07-22 09:27:14,605 - INFO - CraftableBot - Saving order for Hillcrest Dairy.
+2025-07-22 09:27:17,129 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Dairy\Hillcrest Dairy_Bakery_20250719.pdf
+2025-07-22 09:27:18,999 - INFO - CraftableBot - Retrieving order for Performance Food (07/19/2025).
+2025-07-22 09:27:21,970 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Performance Food / 20250719.
+2025-07-22 09:27:21,970 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Performance Food\Performance Food_Bakery_20250719.xlsx. Proceeding with save.
+2025-07-22 09:27:21,970 - INFO - CraftableBot - Saving order for Performance Food.
+2025-07-22 09:27:24,497 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Performance Food\Performance Food_Bakery_20250719.pdf
+2025-07-22 09:27:26,408 - INFO - CraftableBot - Retrieving order for US Foods (07/20/2025).
+2025-07-22 09:27:29,544 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / US Foods / 20250720.
+2025-07-22 09:27:29,544 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\US Foods\US Foods_Bakery_20250720.xlsx. Proceeding with save.
+2025-07-22 09:27:29,544 - INFO - CraftableBot - Saving order for US Foods.
+2025-07-22 09:27:31,569 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\US Foods\US Foods_Bakery_20250720.pdf
+2025-07-22 09:27:33,934 - INFO - CraftableBot - Retrieving order for Keck's Food Service (07/20/2025).
+2025-07-22 09:27:35,545 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Keck's Food Service / 20250720.
+2025-07-22 09:27:35,546 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Keck's Food Service\Keck's Food Service_Bakery_20250720.xlsx. Proceeding with save.
+2025-07-22 09:27:35,546 - INFO - CraftableBot - Saving order for Keck's Food Service.
+2025-07-22 09:27:38,069 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Keck's Food Service\Keck's Food Service_Bakery_20250720.pdf
+2025-07-22 09:27:39,955 - INFO - CraftableBot - Retrieving order for Jade Leaf Matcha (07/20/2025).
+2025-07-22 09:27:41,129 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Jade Leaf Matcha / 20250720.
+2025-07-22 09:27:41,130 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Jade Leaf Matcha\Jade Leaf Matcha_Bakery_20250720.xlsx. Proceeding with save.
+2025-07-22 09:27:41,130 - INFO - CraftableBot - Saving order for Jade Leaf Matcha.
+2025-07-22 09:27:43,651 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Jade Leaf Matcha\Jade Leaf Matcha_Bakery_20250720.pdf
+2025-07-22 09:27:45,503 - INFO - CraftableBot - Retrieving order for Equal Exchange (07/20/2025).
+2025-07-22 09:27:47,044 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Equal Exchange / 20250720.
+2025-07-22 09:27:47,045 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Equal Exchange\Equal Exchange_Bakery_20250720.xlsx. Proceeding with save.
+2025-07-22 09:27:47,045 - INFO - CraftableBot - Saving order for Equal Exchange.
+2025-07-22 09:27:49,666 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Equal Exchange\Equal Exchange_Bakery_20250720.pdf
+2025-07-22 09:27:51,428 - INFO - CraftableBot - Retrieving order for Copper Horse Coffee (07/20/2025).
+2025-07-22 09:27:52,803 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Copper Horse Coffee / 20250720.
+2025-07-22 09:27:52,803 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Copper Horse Coffee\Copper Horse Coffee_Bakery_20250720.xlsx. Proceeding with save.
+2025-07-22 09:27:52,804 - INFO - CraftableBot - Saving order for Copper Horse Coffee.
+2025-07-22 09:27:55,325 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Copper Horse Coffee\Copper Horse Coffee_Bakery_20250720.pdf
+2025-07-22 09:27:57,253 - INFO - CraftableBot - Retrieving order for Eurocafe Imports (07/20/2025).
+2025-07-22 09:27:58,478 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Eurocafe Imports / 20250720.
+2025-07-22 09:27:58,478 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Eurocafe Imports\Eurocafe Imports_Bakery_20250720.xlsx. Proceeding with save.
+2025-07-22 09:27:58,478 - INFO - CraftableBot - Saving order for Eurocafe Imports.
+2025-07-22 09:28:00,499 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Eurocafe Imports\Eurocafe Imports_Bakery_20250720.pdf
+2025-07-22 09:28:02,861 - INFO - CraftableBot - Retrieving order for Coca-Cola (07/20/2025).
+2025-07-22 09:28:04,675 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Coca-Cola / 20250720.
+2025-07-22 09:28:04,676 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Coca-Cola\Coca-Cola_Bakery_20250720.xlsx. Proceeding with save.
+2025-07-22 09:28:04,676 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-07-22 09:28:07,203 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Coca-Cola\Coca-Cola_Bakery_20250720.pdf
+2025-07-22 09:28:09,088 - INFO - CraftableBot - Retrieving order for Regional Distributors, Inc. (07/21/2025).
+2025-07-22 09:28:10,871 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Regional Distributors, Inc. / 20250721.
+2025-07-22 09:28:10,871 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Regional Distributors, Inc.\Regional Distributors, Inc._Bakery_20250721.xlsx. Proceeding with save.
+2025-07-22 09:28:10,871 - INFO - CraftableBot - Saving order for Regional Distributors, Inc..
+2025-07-22 09:28:12,895 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Regional Distributors, Inc.\Regional Distributors, Inc._Bakery_20250721.pdf
+2025-07-22 09:28:15,265 - INFO - CraftableBot - Retrieving order for Hill & Markes (07/21/2025).
+2025-07-22 09:28:16,432 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Hill & Markes / 20250721.
+2025-07-22 09:28:16,433 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hill & Markes\Hill & Markes_Bakery_20250721.xlsx. Proceeding with save.
+2025-07-22 09:28:16,433 - INFO - CraftableBot - Saving order for Hill & Markes.
+2025-07-22 09:28:18,453 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hill & Markes\Hill & Markes_Bakery_20250721.pdf
+2025-07-22 09:28:20,829 - INFO - CraftableBot - Retrieving order for Hillcrest Foods (07/21/2025).
+2025-07-22 09:28:22,814 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Hillcrest Foods / 20250721.
+2025-07-22 09:28:22,815 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Foods\Hillcrest Foods_Bakery_20250721.xlsx. Proceeding with save.
+2025-07-22 09:28:22,815 - INFO - CraftableBot - Saving order for Hillcrest Foods.
+2025-07-22 09:28:24,840 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Foods\Hillcrest Foods_Bakery_20250721.pdf
+2025-07-22 09:28:27,197 - INFO - CraftableBot - Retrieving order for Lentz (07/21/2025).
+2025-07-22 09:28:28,718 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Lentz / 20250721.
+2025-07-22 09:28:28,719 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Lentz\Lentz_Bakery_20250721.xlsx. Proceeding with save.
+2025-07-22 09:28:28,719 - INFO - CraftableBot - Saving order for Lentz.
+2025-07-22 09:28:30,739 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Lentz\Lentz_Bakery_20250721.pdf
+2025-07-22 09:28:33,105 - INFO - CraftableBot - Retrieving order for BALKAN BEVERAGE LLC (07/21/2025).
+2025-07-22 09:28:34,427 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / BALKAN BEVERAGE LLC / 20250721.
+2025-07-22 09:28:34,427 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\BALKAN BEVERAGE LLC\BALKAN BEVERAGE LLC_Bakery_20250721.xlsx. Proceeding with save.
+2025-07-22 09:28:34,427 - INFO - CraftableBot - Saving order for BALKAN BEVERAGE LLC.
+2025-07-22 09:28:36,447 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\BALKAN BEVERAGE LLC\BALKAN BEVERAGE LLC_Bakery_20250721.pdf
+2025-07-22 09:28:38,805 - INFO - CraftableBot - Retrieving order for A.L. George (07/21/2025).
+2025-07-22 09:28:40,278 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / A.L. George / 20250721.
+2025-07-22 09:28:40,278 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\A.L. George\A.L. George_Bakery_20250721.xlsx. Proceeding with save.
+2025-07-22 09:28:40,278 - INFO - CraftableBot - Saving order for A.L. George.
+2025-07-22 09:28:42,799 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\A.L. George\A.L. George_Bakery_20250721.pdf
+2025-07-22 09:28:44,675 - INFO - CraftableBot - Retrieving order for ACE ENDICO (07/21/2025).
+2025-07-22 09:28:45,835 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / ACE ENDICO / 20250721.
+2025-07-22 09:28:45,835 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\ACE ENDICO\ACE ENDICO_Bakery_20250721.xlsx. Proceeding with save.
+2025-07-22 09:28:45,835 - INFO - CraftableBot - Saving order for ACE ENDICO.
+2025-07-22 09:28:47,854 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\ACE ENDICO\ACE ENDICO_Bakery_20250721.pdf
+2025-07-22 09:28:50,297 - INFO - CraftableBot - Retrieving order for Dawn (07/21/2025).
+2025-07-22 09:28:51,520 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Dawn / 20250721.
+2025-07-22 09:28:51,521 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Dawn\Dawn_Bakery_20250721.xlsx. Proceeding with save.
+2025-07-22 09:28:51,521 - INFO - CraftableBot - Saving order for Dawn.
+2025-07-22 09:28:53,542 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Dawn\Dawn_Bakery_20250721.pdf
+2025-07-22 09:28:55,904 - INFO - CraftableBot - Retrieving order for Side Hill Acres (07/21/2025).
+2025-07-22 09:28:57,070 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Side Hill Acres / 20250721.
+2025-07-22 09:28:57,070 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Side Hill Acres\Side Hill Acres_Bakery_20250721.xlsx. Proceeding with save.
+2025-07-22 09:28:57,070 - INFO - CraftableBot - Saving order for Side Hill Acres.
+2025-07-22 09:28:59,590 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Side Hill Acres\Side Hill Acres_Bakery_20250721.pdf
+2025-07-22 09:29:01,517 - INFO - CraftableBot - Order download complete.
+2025-07-22 09:29:21,993 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 09:29:21,993 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 09:29:21,993 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 09:29:33,579 - INFO - CraftableBot - Logging into Craftable.
+2025-07-22 09:29:43,940 - INFO - CraftableBot - Login successful.
+2025-07-22 09:29:43,940 - INFO - CraftableBot - Starting order download protocol.
+2025-07-22 09:29:43,940 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-22 09:29:50,618 - INFO - CraftableBot - Retrieving order for UNFI (07/19/2025).
+2025-07-22 09:29:53,095 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / UNFI / 20250719.
+2025-07-22 09:29:53,096 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\UNFI\UNFI_Bakery_20250719.xlsx. Proceeding with save.
+2025-07-22 09:29:53,096 - INFO - CraftableBot - Saving order for UNFI.
+2025-07-22 09:29:53,098 - ERROR - CraftableBot - Error in download_orders: [Errno 2] No such file or directory: 'C:\\Users\\andrew\\Desktop\\Andrew\\Projects\\IthacaBakery\\RandomStuff\\WorkBot\\refactor\\data\\orders\\UNFI\\UNFI_Bakery_20250719.xlsx'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 232, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 275, in _process_order_row
+    self.order_coordinator.save_order_file(order_to_save)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\OrderCoordinator.py", line 25, in save_order_file
+    self.file_handler.save_order(order, format)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\storage\file\OrderFileHandler.py", line 35, in save_order
+    self._write_data(format, file_data_to_save, self.BASE_DIR / order.vendor / file_name)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\storage\file\OrderFileHandler.py", line 42, in _write_data
+    save_func(data, file_path)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\storage\file\FileHandler.py", line 55, in _save_excel
+    return workbook.save(file_path)
+           ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\openpyxl\workbook\workbook.py", line 386, in save
+    save_workbook(self, filename)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\openpyxl\writer\excel.py", line 291, in save_workbook
+    archive = ZipFile(filename, 'w', ZIP_DEFLATED, allowZip64=True)
+  File "C:\Users\Will\AppData\Local\Programs\Python\Python313\Lib\zipfile\__init__.py", line 1367, in __init__
+    self.fp = io.open(file, filemode)
+              ~~~~~~~^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\andrew\\Desktop\\Andrew\\Projects\\IthacaBakery\\RandomStuff\\WorkBot\\refactor\\data\\orders\\UNFI\\UNFI_Bakery_20250719.xlsx'
+2025-07-22 09:33:20,681 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 09:33:20,681 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 09:33:20,682 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 09:33:31,859 - INFO - CraftableBot - Logging into Craftable.
+2025-07-22 09:33:42,461 - INFO - CraftableBot - Login successful.
+2025-07-22 09:33:42,462 - INFO - CraftableBot - Starting order download protocol.
+2025-07-22 09:33:42,462 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-22 09:33:49,136 - INFO - CraftableBot - Retrieving order for UNFI (07/19/2025).
+2025-07-22 09:33:51,637 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / UNFI / 20250719.
+2025-07-22 09:33:51,637 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\UNFI\UNFI_Bakery_20250719.xlsx. Proceeding with save.
+2025-07-22 09:33:51,637 - INFO - CraftableBot - Saving order for UNFI.
+2025-07-22 09:33:53,663 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\UNFI\UNFI_Bakery_20250719.pdf
+2025-07-22 09:33:56,039 - INFO - CraftableBot - Retrieving order for Webstaurant (07/19/2025).
+2025-07-22 09:33:57,434 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Webstaurant / 20250719.
+2025-07-22 09:33:57,434 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Webstaurant\Webstaurant_Bakery_20250719.xlsx. Proceeding with save.
+2025-07-22 09:33:57,434 - INFO - CraftableBot - Saving order for Webstaurant.
+2025-07-22 09:33:59,446 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Webstaurant\Webstaurant_Bakery_20250719.pdf
+2025-07-22 09:34:01,815 - INFO - CraftableBot - Retrieving order for BJ's (07/19/2025).
+2025-07-22 09:34:03,034 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / BJ's / 20250719.
+2025-07-22 09:34:03,034 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\BJ's\BJ's_Bakery_20250719.xlsx. Proceeding with save.
+2025-07-22 09:34:03,034 - INFO - CraftableBot - Saving order for BJ's.
+2025-07-22 09:34:05,546 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\BJ's\BJ's_Bakery_20250719.pdf
+2025-07-22 09:34:07,532 - INFO - CraftableBot - Retrieving order for Sysco (07/19/2025).
+2025-07-22 09:34:10,347 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Sysco / 20250719.
+2025-07-22 09:34:10,348 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Sysco\Sysco_Bakery_20250719.xlsx. Proceeding with save.
+2025-07-22 09:34:10,348 - INFO - CraftableBot - Saving order for Sysco.
+2025-07-22 09:34:12,369 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Sysco\Sysco_Bakery_20250719.pdf
+2025-07-22 09:34:14,741 - INFO - CraftableBot - Retrieving order for FingerLakes Farms (07/19/2025).
+2025-07-22 09:34:16,248 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / FingerLakes Farms / 20250719.
+2025-07-22 09:34:16,248 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\FingerLakes Farms\FingerLakes Farms_Bakery_20250719.xlsx. Proceeding with save.
+2025-07-22 09:34:16,248 - INFO - CraftableBot - Saving order for FingerLakes Farms.
+2025-07-22 09:34:18,262 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\FingerLakes Farms\FingerLakes Farms_Bakery_20250719.pdf
+2025-07-22 09:34:20,628 - INFO - CraftableBot - Retrieving order for Hillcrest Dairy (07/19/2025).
+2025-07-22 09:34:22,109 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Hillcrest Dairy / 20250719.
+2025-07-22 09:34:22,110 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Dairy\Hillcrest Dairy_Bakery_20250719.xlsx. Proceeding with save.
+2025-07-22 09:34:22,110 - INFO - CraftableBot - Saving order for Hillcrest Dairy.
+2025-07-22 09:34:24,121 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Dairy\Hillcrest Dairy_Bakery_20250719.pdf
+2025-07-22 09:34:26,484 - INFO - CraftableBot - Retrieving order for Performance Food (07/19/2025).
+2025-07-22 09:34:29,342 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Performance Food / 20250719.
+2025-07-22 09:34:29,342 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Performance Food\Performance Food_Bakery_20250719.xlsx. Proceeding with save.
+2025-07-22 09:34:29,342 - INFO - CraftableBot - Saving order for Performance Food.
+2025-07-22 09:34:31,367 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Performance Food\Performance Food_Bakery_20250719.pdf
+2025-07-22 09:34:33,743 - INFO - CraftableBot - Retrieving order for US Foods (07/20/2025).
+2025-07-22 09:34:36,716 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / US Foods / 20250720.
+2025-07-22 09:34:36,716 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\US Foods\US Foods_Bakery_20250720.xlsx. Proceeding with save.
+2025-07-22 09:34:36,716 - INFO - CraftableBot - Saving order for US Foods.
+2025-07-22 09:34:38,740 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\US Foods\US Foods_Bakery_20250720.pdf
+2025-07-22 09:34:41,114 - INFO - CraftableBot - Retrieving order for Keck's Food Service (07/20/2025).
+2025-07-22 09:34:42,626 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Keck's Food Service / 20250720.
+2025-07-22 09:34:42,627 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Keck's Food Service\Keck's Food Service_Bakery_20250720.xlsx. Proceeding with save.
+2025-07-22 09:34:42,627 - INFO - CraftableBot - Saving order for Keck's Food Service.
+2025-07-22 09:34:45,145 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Keck's Food Service\Keck's Food Service_Bakery_20250720.pdf
+2025-07-22 09:34:47,017 - INFO - CraftableBot - Retrieving order for Jade Leaf Matcha (07/20/2025).
+2025-07-22 09:34:48,175 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Jade Leaf Matcha / 20250720.
+2025-07-22 09:34:48,175 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Jade Leaf Matcha\Jade Leaf Matcha_Bakery_20250720.xlsx. Proceeding with save.
+2025-07-22 09:34:48,175 - INFO - CraftableBot - Saving order for Jade Leaf Matcha.
+2025-07-22 09:34:50,187 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Jade Leaf Matcha\Jade Leaf Matcha_Bakery_20250720.pdf
+2025-07-22 09:34:52,548 - INFO - CraftableBot - Retrieving order for Equal Exchange (07/20/2025).
+2025-07-22 09:34:54,108 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Equal Exchange / 20250720.
+2025-07-22 09:34:54,108 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Equal Exchange\Equal Exchange_Bakery_20250720.xlsx. Proceeding with save.
+2025-07-22 09:34:54,109 - INFO - CraftableBot - Saving order for Equal Exchange.
+2025-07-22 09:34:56,121 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Equal Exchange\Equal Exchange_Bakery_20250720.pdf
+2025-07-22 09:34:58,492 - INFO - CraftableBot - Retrieving order for Copper Horse Coffee (07/20/2025).
+2025-07-22 09:34:59,854 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Copper Horse Coffee / 20250720.
+2025-07-22 09:34:59,855 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Copper Horse Coffee\Copper Horse Coffee_Bakery_20250720.xlsx. Proceeding with save.
+2025-07-22 09:34:59,855 - INFO - CraftableBot - Saving order for Copper Horse Coffee.
+2025-07-22 09:35:01,868 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Copper Horse Coffee\Copper Horse Coffee_Bakery_20250720.pdf
+2025-07-22 09:35:04,226 - INFO - CraftableBot - Retrieving order for Eurocafe Imports (07/20/2025).
+2025-07-22 09:35:05,434 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Eurocafe Imports / 20250720.
+2025-07-22 09:35:05,434 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Eurocafe Imports\Eurocafe Imports_Bakery_20250720.xlsx. Proceeding with save.
+2025-07-22 09:35:05,434 - INFO - CraftableBot - Saving order for Eurocafe Imports.
+2025-07-22 09:35:07,454 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Eurocafe Imports\Eurocafe Imports_Bakery_20250720.pdf
+2025-07-22 09:35:09,814 - INFO - CraftableBot - Retrieving order for Coca-Cola (07/20/2025).
+2025-07-22 09:35:11,627 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Coca-Cola / 20250720.
+2025-07-22 09:35:11,627 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Coca-Cola\Coca-Cola_Bakery_20250720.xlsx. Proceeding with save.
+2025-07-22 09:35:11,628 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-07-22 09:35:14,140 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Coca-Cola\Coca-Cola_Bakery_20250720.pdf
+2025-07-22 09:35:16,010 - INFO - CraftableBot - Retrieving order for Regional Distributors, Inc. (07/21/2025).
+2025-07-22 09:35:17,852 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Regional Distributors, Inc. / 20250721.
+2025-07-22 09:35:17,853 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Regional Distributors, Inc.\Regional Distributors, Inc._Bakery_20250721.xlsx. Proceeding with save.
+2025-07-22 09:35:17,853 - INFO - CraftableBot - Saving order for Regional Distributors, Inc..
+2025-07-22 09:35:19,865 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Regional Distributors, Inc.\Regional Distributors, Inc._Bakery_20250721.pdf
+2025-07-22 09:35:22,225 - INFO - CraftableBot - Retrieving order for Hill & Markes (07/21/2025).
+2025-07-22 09:35:23,384 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Hill & Markes / 20250721.
+2025-07-22 09:35:23,384 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hill & Markes\Hill & Markes_Bakery_20250721.xlsx. Proceeding with save.
+2025-07-22 09:35:23,384 - INFO - CraftableBot - Saving order for Hill & Markes.
+2025-07-22 09:35:25,396 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hill & Markes\Hill & Markes_Bakery_20250721.pdf
+2025-07-22 09:35:27,754 - INFO - CraftableBot - Retrieving order for Hillcrest Foods (07/21/2025).
+2025-07-22 09:35:29,812 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Hillcrest Foods / 20250721.
+2025-07-22 09:35:29,812 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Foods\Hillcrest Foods_Bakery_20250721.xlsx. Proceeding with save.
+2025-07-22 09:35:29,812 - INFO - CraftableBot - Saving order for Hillcrest Foods.
+2025-07-22 09:35:31,825 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Foods\Hillcrest Foods_Bakery_20250721.pdf
+2025-07-22 09:35:34,202 - INFO - CraftableBot - Retrieving order for Lentz (07/21/2025).
+2025-07-22 09:35:35,716 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Lentz / 20250721.
+2025-07-22 09:35:35,716 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Lentz\Lentz_Bakery_20250721.xlsx. Proceeding with save.
+2025-07-22 09:35:35,716 - INFO - CraftableBot - Saving order for Lentz.
+2025-07-22 09:35:37,729 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Lentz\Lentz_Bakery_20250721.pdf
+2025-07-22 09:35:40,101 - INFO - CraftableBot - Retrieving order for BALKAN BEVERAGE LLC (07/21/2025).
+2025-07-22 09:35:41,060 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / BALKAN BEVERAGE LLC / 20250721.
+2025-07-22 09:35:41,060 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\BALKAN BEVERAGE LLC\BALKAN BEVERAGE LLC_Bakery_20250721.xlsx. Proceeding with save.
+2025-07-22 09:35:41,060 - INFO - CraftableBot - Saving order for BALKAN BEVERAGE LLC.
+2025-07-22 09:35:43,572 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\BALKAN BEVERAGE LLC\BALKAN BEVERAGE LLC_Bakery_20250721.pdf
+2025-07-22 09:35:45,446 - INFO - CraftableBot - Retrieving order for A.L. George (07/21/2025).
+2025-07-22 09:35:46,942 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / A.L. George / 20250721.
+2025-07-22 09:35:46,942 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\A.L. George\A.L. George_Bakery_20250721.xlsx. Proceeding with save.
+2025-07-22 09:35:46,942 - INFO - CraftableBot - Saving order for A.L. George.
+2025-07-22 09:35:48,956 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\A.L. George\A.L. George_Bakery_20250721.pdf
+2025-07-22 09:35:51,325 - INFO - CraftableBot - Retrieving order for ACE ENDICO (07/21/2025).
+2025-07-22 09:35:52,484 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / ACE ENDICO / 20250721.
+2025-07-22 09:35:52,484 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\ACE ENDICO\ACE ENDICO_Bakery_20250721.xlsx. Proceeding with save.
+2025-07-22 09:35:52,484 - INFO - CraftableBot - Saving order for ACE ENDICO.
+2025-07-22 09:35:54,498 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\ACE ENDICO\ACE ENDICO_Bakery_20250721.pdf
+2025-07-22 09:35:56,954 - INFO - CraftableBot - Retrieving order for Dawn (07/21/2025).
+2025-07-22 09:35:58,180 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Dawn / 20250721.
+2025-07-22 09:35:58,181 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Dawn\Dawn_Bakery_20250721.xlsx. Proceeding with save.
+2025-07-22 09:35:58,181 - INFO - CraftableBot - Saving order for Dawn.
+2025-07-22 09:36:00,192 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Dawn\Dawn_Bakery_20250721.pdf
+2025-07-22 09:36:02,551 - INFO - CraftableBot - Retrieving order for Side Hill Acres (07/21/2025).
+2025-07-22 09:36:03,719 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Side Hill Acres / 20250721.
+2025-07-22 09:36:03,719 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Side Hill Acres\Side Hill Acres_Bakery_20250721.xlsx. Proceeding with save.
+2025-07-22 09:36:03,720 - INFO - CraftableBot - Saving order for Side Hill Acres.
+2025-07-22 09:36:05,732 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Side Hill Acres\Side Hill Acres_Bakery_20250721.pdf
+2025-07-22 09:36:08,063 - INFO - CraftableBot - Accessing order page for Triphammer.
+2025-07-22 09:36:14,550 - INFO - CraftableBot - Retrieving order for Sysco (07/18/2025).
+2025-07-22 09:36:17,664 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer / Sysco / 20250718.
+2025-07-22 09:36:17,664 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Sysco\Sysco_Triphammer_20250718.xlsx. Proceeding with save.
+2025-07-22 09:36:17,664 - INFO - CraftableBot - Saving order for Sysco.
+2025-07-22 09:36:19,690 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Sysco\Sysco_Triphammer_20250718.pdf
+2025-07-22 09:36:22,059 - INFO - CraftableBot - Retrieving order for Performance Food (07/18/2025).
+2025-07-22 09:36:25,603 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer / Performance Food / 20250718.
+2025-07-22 09:36:25,604 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Performance Food\Performance Food_Triphammer_20250718.xlsx. Proceeding with save.
+2025-07-22 09:36:25,604 - INFO - CraftableBot - Saving order for Performance Food.
+2025-07-22 09:36:27,643 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Performance Food\Performance Food_Triphammer_20250718.pdf
+2025-07-22 09:36:30,000 - INFO - CraftableBot - Retrieving order for FingerLakes Farms (07/18/2025).
+2025-07-22 09:36:31,743 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer / FingerLakes Farms / 20250718.
+2025-07-22 09:36:31,743 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\FingerLakes Farms\FingerLakes Farms_Triphammer_20250718.xlsx. Proceeding with save.
+2025-07-22 09:36:31,743 - INFO - CraftableBot - Saving order for FingerLakes Farms.
+2025-07-22 09:36:33,766 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\FingerLakes Farms\FingerLakes Farms_Triphammer_20250718.pdf
+2025-07-22 09:36:36,126 - INFO - CraftableBot - Retrieving order for Hillcrest Dairy (07/18/2025).
+2025-07-22 09:36:37,545 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer / Hillcrest Dairy / 20250718.
+2025-07-22 09:36:37,546 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Dairy\Hillcrest Dairy_Triphammer_20250718.xlsx. Proceeding with save.
+2025-07-22 09:36:37,546 - INFO - CraftableBot - Saving order for Hillcrest Dairy.
+2025-07-22 09:36:39,569 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Dairy\Hillcrest Dairy_Triphammer_20250718.pdf
+2025-07-22 09:36:41,930 - INFO - CraftableBot - Retrieving order for UNFI (07/18/2025).
+2025-07-22 09:36:43,803 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer / UNFI / 20250718.
+2025-07-22 09:36:43,804 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\UNFI\UNFI_Triphammer_20250718.xlsx. Proceeding with save.
+2025-07-22 09:36:43,804 - INFO - CraftableBot - Saving order for UNFI.
+2025-07-22 09:36:45,832 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\UNFI\UNFI_Triphammer_20250718.pdf
+2025-07-22 09:36:48,200 - INFO - CraftableBot - Retrieving order for Ithaca Bakery (07/18/2025).
+2025-07-22 09:36:51,199 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer / Ithaca Bakery / 20250718.
+2025-07-22 09:36:51,200 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Ithaca Bakery\Ithaca Bakery_Triphammer_20250718.xlsx. Proceeding with save.
+2025-07-22 09:36:51,200 - INFO - CraftableBot - Saving order for Ithaca Bakery.
+2025-07-22 09:36:53,726 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Ithaca Bakery\Ithaca Bakery_Triphammer_20250718.pdf
+2025-07-22 09:36:55,601 - INFO - CraftableBot - Retrieving order for Peters Supply (07/18/2025).
+2025-07-22 09:36:57,005 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer / Peters Supply / 20250718.
+2025-07-22 09:36:57,005 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Peters Supply\Peters Supply_Triphammer_20250718.xlsx. Proceeding with save.
+2025-07-22 09:36:57,005 - INFO - CraftableBot - Saving order for Peters Supply.
+2025-07-22 09:36:59,027 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Peters Supply\Peters Supply_Triphammer_20250718.pdf
+2025-07-22 09:37:01,399 - INFO - CraftableBot - Retrieving order for Regional Distributors, Inc. (07/18/2025).
+2025-07-22 09:37:03,072 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer / Regional Distributors, Inc. / 20250718.
+2025-07-22 09:37:03,073 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Regional Distributors, Inc.\Regional Distributors, Inc._Triphammer_20250718.xlsx. Proceeding with save.
+2025-07-22 09:37:03,073 - INFO - CraftableBot - Saving order for Regional Distributors, Inc..
+2025-07-22 09:37:05,099 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Regional Distributors, Inc.\Regional Distributors, Inc._Triphammer_20250718.pdf
+2025-07-22 09:37:07,470 - INFO - CraftableBot - Retrieving order for Hill & Markes (07/18/2025).
+2025-07-22 09:37:09,401 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer / Hill & Markes / 20250718.
+2025-07-22 09:37:09,401 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hill & Markes\Hill & Markes_Triphammer_20250718.xlsx. Proceeding with save.
+2025-07-22 09:37:09,401 - INFO - CraftableBot - Saving order for Hill & Markes.
+2025-07-22 09:37:11,424 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hill & Markes\Hill & Markes_Triphammer_20250718.pdf
+2025-07-22 09:37:13,786 - INFO - CraftableBot - Retrieving order for Copper Horse Coffee (07/18/2025).
+2025-07-22 09:37:15,168 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer / Copper Horse Coffee / 20250718.
+2025-07-22 09:37:15,169 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Copper Horse Coffee\Copper Horse Coffee_Triphammer_20250718.xlsx. Proceeding with save.
+2025-07-22 09:37:15,169 - INFO - CraftableBot - Saving order for Copper Horse Coffee.
+2025-07-22 09:37:17,194 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Copper Horse Coffee\Copper Horse Coffee_Triphammer_20250718.pdf
+2025-07-22 09:37:19,550 - INFO - CraftableBot - Retrieving order for US Foods (07/18/2025).
+2025-07-22 09:37:22,452 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer / US Foods / 20250718.
+2025-07-22 09:37:22,453 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\US Foods\US Foods_Triphammer_20250718.xlsx. Proceeding with save.
+2025-07-22 09:37:22,453 - INFO - CraftableBot - Saving order for US Foods.
+2025-07-22 09:37:24,976 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\US Foods\US Foods_Triphammer_20250718.pdf
+2025-07-22 09:37:26,843 - INFO - CraftableBot - Retrieving order for Equal Exchange (07/18/2025).
+2025-07-22 09:37:28,148 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer / Equal Exchange / 20250718.
+2025-07-22 09:37:28,148 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Equal Exchange\Equal Exchange_Triphammer_20250718.xlsx. Proceeding with save.
+2025-07-22 09:37:28,148 - INFO - CraftableBot - Saving order for Equal Exchange.
+2025-07-22 09:37:30,181 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Equal Exchange\Equal Exchange_Triphammer_20250718.pdf
+2025-07-22 09:37:32,540 - INFO - CraftableBot - Retrieving order for Johnston Paper (07/18/2025).
+2025-07-22 09:37:33,854 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer / Johnston Paper / 20250718.
+2025-07-22 09:37:33,854 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Johnston Paper\Johnston Paper_Triphammer_20250718.xlsx. Proceeding with save.
+2025-07-22 09:37:33,855 - INFO - CraftableBot - Saving order for Johnston Paper.
+2025-07-22 09:37:36,379 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Johnston Paper\Johnston Paper_Triphammer_20250718.pdf
+2025-07-22 09:37:38,256 - INFO - CraftableBot - Retrieving order for Coca-Cola (07/18/2025).
+2025-07-22 09:37:39,855 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer / Coca-Cola / 20250718.
+2025-07-22 09:37:39,855 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Coca-Cola\Coca-Cola_Triphammer_20250718.xlsx. Proceeding with save.
+2025-07-22 09:37:39,855 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-07-22 09:37:41,881 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Coca-Cola\Coca-Cola_Triphammer_20250718.pdf
+2025-07-22 09:37:44,230 - INFO - CraftableBot - Retrieving order for A.L. George (07/18/2025).
+2025-07-22 09:37:45,489 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer / A.L. George / 20250718.
+2025-07-22 09:37:45,489 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\A.L. George\A.L. George_Triphammer_20250718.xlsx. Proceeding with save.
+2025-07-22 09:37:45,489 - INFO - CraftableBot - Saving order for A.L. George.
+2025-07-22 09:37:47,515 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\A.L. George\A.L. George_Triphammer_20250718.pdf
+2025-07-22 09:37:49,875 - INFO - CraftableBot - Retrieving order for Russo Produce (07/20/2025).
+2025-07-22 09:37:51,969 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer / Russo Produce / 20250720.
+2025-07-22 09:37:51,969 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Russo Produce\Russo Produce_Triphammer_20250720.xlsx. Proceeding with save.
+2025-07-22 09:37:51,970 - INFO - CraftableBot - Saving order for Russo Produce.
+2025-07-22 09:37:53,999 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Russo Produce\Russo Produce_Triphammer_20250720.pdf
+2025-07-22 09:37:56,364 - INFO - CraftableBot - Retrieving order for Webstaurant (07/21/2025).
+2025-07-22 09:37:57,531 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer / Webstaurant / 20250721.
+2025-07-22 09:37:57,531 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Webstaurant\Webstaurant_Triphammer_20250721.xlsx. Proceeding with save.
+2025-07-22 09:37:57,531 - INFO - CraftableBot - Saving order for Webstaurant.
+2025-07-22 09:37:59,557 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Webstaurant\Webstaurant_Triphammer_20250721.pdf
+2025-07-22 09:38:01,885 - INFO - CraftableBot - Accessing order page for Easthill.
+2025-07-22 09:38:08,380 - INFO - CraftableBot - Retrieving order for Equal Exchange (07/17/2025).
+2025-07-22 09:38:09,744 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Equal Exchange / 20250717.
+2025-07-22 09:38:09,745 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Equal Exchange\Equal Exchange_Easthill_20250717.xlsx. Proceeding with save.
+2025-07-22 09:38:09,745 - INFO - CraftableBot - Saving order for Equal Exchange.
+2025-07-22 09:38:11,766 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Equal Exchange\Equal Exchange_Easthill_20250717.pdf
+2025-07-22 09:38:14,139 - INFO - CraftableBot - Retrieving order for Performance Food (07/17/2025).
+2025-07-22 09:38:16,119 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Performance Food / 20250717.
+2025-07-22 09:38:16,119 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Performance Food\Performance Food_Easthill_20250717.xlsx. Proceeding with save.
+2025-07-22 09:38:16,119 - INFO - CraftableBot - Saving order for Performance Food.
+2025-07-22 09:38:18,144 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Performance Food\Performance Food_Easthill_20250717.pdf
+2025-07-22 09:38:20,515 - INFO - CraftableBot - Retrieving order for Sysco (07/17/2025).
+2025-07-22 09:38:22,694 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Sysco / 20250717.
+2025-07-22 09:38:22,694 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Sysco\Sysco_Easthill_20250717.xlsx. Proceeding with save.
+2025-07-22 09:38:22,694 - INFO - CraftableBot - Saving order for Sysco.
+2025-07-22 09:38:24,717 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Sysco\Sysco_Easthill_20250717.pdf
+2025-07-22 09:38:27,078 - INFO - CraftableBot - Retrieving order for Peters Supply (07/17/2025).
+2025-07-22 09:38:28,389 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Peters Supply / 20250717.
+2025-07-22 09:38:28,389 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Peters Supply\Peters Supply_Easthill_20250717.xlsx. Proceeding with save.
+2025-07-22 09:38:28,390 - INFO - CraftableBot - Saving order for Peters Supply.
+2025-07-22 09:38:30,416 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Peters Supply\Peters Supply_Easthill_20250717.pdf
+2025-07-22 09:38:32,772 - INFO - CraftableBot - Retrieving order for Ithaca Bakery (07/17/2025).
+2025-07-22 09:38:36,293 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Ithaca Bakery / 20250717.
+2025-07-22 09:38:36,293 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Ithaca Bakery\Ithaca Bakery_Easthill_20250717.xlsx. Proceeding with save.
+2025-07-22 09:38:36,294 - INFO - CraftableBot - Saving order for Ithaca Bakery.
+2025-07-22 09:38:38,322 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Ithaca Bakery\Ithaca Bakery_Easthill_20250717.pdf
+2025-07-22 09:38:40,679 - INFO - CraftableBot - Retrieving order for Regional Distributors, Inc. (07/17/2025).
+2025-07-22 09:38:42,191 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Regional Distributors, Inc. / 20250717.
+2025-07-22 09:38:42,191 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Regional Distributors, Inc.\Regional Distributors, Inc._Easthill_20250717.xlsx. Proceeding with save.
+2025-07-22 09:38:42,191 - INFO - CraftableBot - Saving order for Regional Distributors, Inc..
+2025-07-22 09:38:44,214 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Regional Distributors, Inc.\Regional Distributors, Inc._Easthill_20250717.pdf
+2025-07-22 09:38:46,588 - INFO - CraftableBot - Retrieving order for Bo's Bones (07/17/2025).
+2025-07-22 09:38:47,882 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Bo's Bones / 20250717.
+2025-07-22 09:38:47,882 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Bo's Bones\Bo's Bones_Easthill_20250717.xlsx. Proceeding with save.
+2025-07-22 09:38:47,882 - INFO - CraftableBot - Saving order for Bo's Bones.
+2025-07-22 09:38:49,904 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Bo's Bones\Bo's Bones_Easthill_20250717.pdf
+2025-07-22 09:38:52,274 - INFO - CraftableBot - Retrieving order for Copper Horse Coffee (07/17/2025).
+2025-07-22 09:38:53,639 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Copper Horse Coffee / 20250717.
+2025-07-22 09:38:53,639 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Copper Horse Coffee\Copper Horse Coffee_Easthill_20250717.xlsx. Proceeding with save.
+2025-07-22 09:38:53,639 - INFO - CraftableBot - Saving order for Copper Horse Coffee.
+2025-07-22 09:38:55,662 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Copper Horse Coffee\Copper Horse Coffee_Easthill_20250717.pdf
+2025-07-22 09:38:58,027 - INFO - CraftableBot - Retrieving order for Hill & Markes (07/17/2025).
+2025-07-22 09:38:59,436 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Hill & Markes / 20250717.
+2025-07-22 09:38:59,437 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hill & Markes\Hill & Markes_Easthill_20250717.xlsx. Proceeding with save.
+2025-07-22 09:38:59,437 - INFO - CraftableBot - Saving order for Hill & Markes.
+2025-07-22 09:39:01,461 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hill & Markes\Hill & Markes_Easthill_20250717.pdf
+2025-07-22 09:39:03,820 - INFO - CraftableBot - Retrieving order for US Foods (07/17/2025).
+2025-07-22 09:39:05,803 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / US Foods / 20250717.
+2025-07-22 09:39:05,804 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\US Foods\US Foods_Easthill_20250717.xlsx. Proceeding with save.
+2025-07-22 09:39:05,804 - INFO - CraftableBot - Saving order for US Foods.
+2025-07-22 09:39:07,840 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\US Foods\US Foods_Easthill_20250717.pdf
+2025-07-22 09:39:10,193 - INFO - CraftableBot - Retrieving order for Hillcrest Dairy (07/17/2025).
+2025-07-22 09:39:11,565 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Hillcrest Dairy / 20250717.
+2025-07-22 09:39:11,565 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Dairy\Hillcrest Dairy_Easthill_20250717.xlsx. Proceeding with save.
+2025-07-22 09:39:11,566 - INFO - CraftableBot - Saving order for Hillcrest Dairy.
+2025-07-22 09:39:13,587 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Dairy\Hillcrest Dairy_Easthill_20250717.pdf
+2025-07-22 09:39:15,949 - INFO - CraftableBot - Retrieving order for FingerLakes Farms (07/17/2025).
+2025-07-22 09:39:17,628 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / FingerLakes Farms / 20250717.
+2025-07-22 09:39:17,629 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\FingerLakes Farms\FingerLakes Farms_Easthill_20250717.xlsx. Proceeding with save.
+2025-07-22 09:39:17,629 - INFO - CraftableBot - Saving order for FingerLakes Farms.
+2025-07-22 09:39:19,652 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\FingerLakes Farms\FingerLakes Farms_Easthill_20250717.pdf
+2025-07-22 09:39:22,011 - INFO - CraftableBot - Retrieving order for UNFI (07/17/2025).
+2025-07-22 09:39:24,622 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / UNFI / 20250717.
+2025-07-22 09:39:24,623 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\UNFI\UNFI_Easthill_20250717.xlsx. Proceeding with save.
+2025-07-22 09:39:24,623 - INFO - CraftableBot - Saving order for UNFI.
+2025-07-22 09:39:26,646 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\UNFI\UNFI_Easthill_20250717.pdf
+2025-07-22 09:39:29,011 - INFO - CraftableBot - Retrieving order for Coca-Cola (07/18/2025).
+2025-07-22 09:39:30,477 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Coca-Cola / 20250718.
+2025-07-22 09:39:30,477 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Coca-Cola\Coca-Cola_Easthill_20250718.xlsx. Proceeding with save.
+2025-07-22 09:39:30,477 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-07-22 09:39:32,498 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Coca-Cola\Coca-Cola_Easthill_20250718.pdf
+2025-07-22 09:39:34,858 - INFO - CraftableBot - Retrieving order for Johnston Paper (07/18/2025).
+2025-07-22 09:39:36,019 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Johnston Paper / 20250718.
+2025-07-22 09:39:36,020 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Johnston Paper\Johnston Paper_Easthill_20250718.xlsx. Proceeding with save.
+2025-07-22 09:39:36,020 - INFO - CraftableBot - Saving order for Johnston Paper.
+2025-07-22 09:39:38,042 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Johnston Paper\Johnston Paper_Easthill_20250718.pdf
+2025-07-22 09:39:40,406 - INFO - CraftableBot - Retrieving order for BALKAN BEVERAGE LLC (07/18/2025).
+2025-07-22 09:39:41,572 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / BALKAN BEVERAGE LLC / 20250718.
+2025-07-22 09:39:41,572 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\BALKAN BEVERAGE LLC\BALKAN BEVERAGE LLC_Easthill_20250718.xlsx. Proceeding with save.
+2025-07-22 09:39:41,572 - INFO - CraftableBot - Saving order for BALKAN BEVERAGE LLC.
+2025-07-22 09:39:43,593 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\BALKAN BEVERAGE LLC\BALKAN BEVERAGE LLC_Easthill_20250718.pdf
+2025-07-22 09:39:45,955 - INFO - CraftableBot - Retrieving order for Stonewall Kitchen (07/18/2025).
+2025-07-22 09:39:47,212 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Stonewall Kitchen / 20250718.
+2025-07-22 09:39:47,213 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Stonewall Kitchen\Stonewall Kitchen_Easthill_20250718.xlsx. Proceeding with save.
+2025-07-22 09:39:47,213 - INFO - CraftableBot - Saving order for Stonewall Kitchen.
+2025-07-22 09:39:49,740 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Stonewall Kitchen\Stonewall Kitchen_Easthill_20250718.pdf
+2025-07-22 09:39:51,624 - INFO - CraftableBot - Retrieving order for Sauce Crafters Inc (07/18/2025).
+2025-07-22 09:39:52,783 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Sauce Crafters Inc / 20250718.
+2025-07-22 09:39:52,784 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Sauce Crafters Inc\Sauce Crafters Inc_Easthill_20250718.xlsx. Proceeding with save.
+2025-07-22 09:39:52,784 - INFO - CraftableBot - Saving order for Sauce Crafters Inc.
+2025-07-22 09:39:54,806 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Sauce Crafters Inc\Sauce Crafters Inc_Easthill_20250718.pdf
+2025-07-22 09:39:57,133 - INFO - CraftableBot - Accessing order page for Downtown.
+2025-07-22 09:40:03,618 - INFO - CraftableBot - Retrieving order for Hillcrest Dairy (07/18/2025).
+2025-07-22 09:40:04,940 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / Hillcrest Dairy / 20250718.
+2025-07-22 09:40:04,940 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Dairy\Hillcrest Dairy_Downtown_20250718.xlsx. Proceeding with save.
+2025-07-22 09:40:04,940 - INFO - CraftableBot - Saving order for Hillcrest Dairy.
+2025-07-22 09:40:06,964 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Dairy\Hillcrest Dairy_Downtown_20250718.pdf
+2025-07-22 09:40:09,362 - INFO - CraftableBot - Retrieving order for Performance Food (07/18/2025).
+2025-07-22 09:40:11,002 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / Performance Food / 20250718.
+2025-07-22 09:40:11,003 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Performance Food\Performance Food_Downtown_20250718.xlsx. Proceeding with save.
+2025-07-22 09:40:11,003 - INFO - CraftableBot - Saving order for Performance Food.
+2025-07-22 09:40:13,024 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Performance Food\Performance Food_Downtown_20250718.pdf
+2025-07-22 09:40:15,391 - INFO - CraftableBot - Retrieving order for Ithaca Bakery (07/18/2025).
+2025-07-22 09:40:18,686 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / Ithaca Bakery / 20250718.
+2025-07-22 09:40:18,686 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Ithaca Bakery\Ithaca Bakery_Downtown_20250718.xlsx. Proceeding with save.
+2025-07-22 09:40:18,686 - INFO - CraftableBot - Saving order for Ithaca Bakery.
+2025-07-22 09:40:20,713 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Ithaca Bakery\Ithaca Bakery_Downtown_20250718.pdf
+2025-07-22 09:40:23,152 - INFO - CraftableBot - Retrieving order for Equal Exchange (07/18/2025).
+2025-07-22 09:40:24,636 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / Equal Exchange / 20250718.
+2025-07-22 09:40:24,636 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Equal Exchange\Equal Exchange_Downtown_20250718.xlsx. Proceeding with save.
+2025-07-22 09:40:24,636 - INFO - CraftableBot - Saving order for Equal Exchange.
+2025-07-22 09:40:27,171 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Equal Exchange\Equal Exchange_Downtown_20250718.pdf
+2025-07-22 09:40:29,141 - INFO - CraftableBot - Retrieving order for FingerLakes Farms (07/18/2025).
+2025-07-22 09:40:30,868 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / FingerLakes Farms / 20250718.
+2025-07-22 09:40:30,868 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\FingerLakes Farms\FingerLakes Farms_Downtown_20250718.xlsx. Proceeding with save.
+2025-07-22 09:40:30,868 - INFO - CraftableBot - Saving order for FingerLakes Farms.
+2025-07-22 09:40:33,396 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\FingerLakes Farms\FingerLakes Farms_Downtown_20250718.pdf
+2025-07-22 09:40:35,282 - INFO - CraftableBot - Retrieving order for US Foods (07/18/2025).
+2025-07-22 09:40:37,047 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / US Foods / 20250718.
+2025-07-22 09:40:37,047 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\US Foods\US Foods_Downtown_20250718.xlsx. Proceeding with save.
+2025-07-22 09:40:37,047 - INFO - CraftableBot - Saving order for US Foods.
+2025-07-22 09:40:39,071 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\US Foods\US Foods_Downtown_20250718.pdf
+2025-07-22 09:40:41,430 - INFO - CraftableBot - Retrieving order for Regional Distributors, Inc. (07/18/2025).
+2025-07-22 09:40:43,116 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / Regional Distributors, Inc. / 20250718.
+2025-07-22 09:40:43,116 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Regional Distributors, Inc.\Regional Distributors, Inc._Downtown_20250718.xlsx. Proceeding with save.
+2025-07-22 09:40:43,116 - INFO - CraftableBot - Saving order for Regional Distributors, Inc..
+2025-07-22 09:40:45,638 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Regional Distributors, Inc.\Regional Distributors, Inc._Downtown_20250718.pdf
+2025-07-22 09:40:47,559 - INFO - CraftableBot - Retrieving order for Sysco (07/18/2025).
+2025-07-22 09:40:49,538 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / Sysco / 20250718.
+2025-07-22 09:40:49,538 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Sysco\Sysco_Downtown_20250718.xlsx. Proceeding with save.
+2025-07-22 09:40:49,538 - INFO - CraftableBot - Saving order for Sysco.
+2025-07-22 09:40:51,573 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Sysco\Sysco_Downtown_20250718.pdf
+2025-07-22 09:40:53,930 - INFO - CraftableBot - Retrieving order for SANICO (07/18/2025).
+2025-07-22 09:40:55,143 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / SANICO / 20250718.
+2025-07-22 09:40:55,143 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\SANICO\SANICO_Downtown_20250718.xlsx. Proceeding with save.
+2025-07-22 09:40:55,143 - INFO - CraftableBot - Saving order for SANICO.
+2025-07-22 09:40:57,663 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\SANICO\SANICO_Downtown_20250718.pdf
+2025-07-22 09:40:59,552 - INFO - CraftableBot - Retrieving order for Coca-Cola (07/18/2025).
+2025-07-22 09:41:01,112 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / Coca-Cola / 20250718.
+2025-07-22 09:41:01,112 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Coca-Cola\Coca-Cola_Downtown_20250718.xlsx. Proceeding with save.
+2025-07-22 09:41:01,112 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-07-22 09:41:03,137 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Coca-Cola\Coca-Cola_Downtown_20250718.pdf
+2025-07-22 09:41:05,500 - INFO - CraftableBot - Retrieving order for Peters Supply (07/18/2025).
+2025-07-22 09:41:06,964 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / Peters Supply / 20250718.
+2025-07-22 09:41:06,964 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Peters Supply\Peters Supply_Downtown_20250718.xlsx. Proceeding with save.
+2025-07-22 09:41:06,964 - INFO - CraftableBot - Saving order for Peters Supply.
+2025-07-22 09:41:08,992 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Peters Supply\Peters Supply_Downtown_20250718.pdf
+2025-07-22 09:41:11,346 - INFO - CraftableBot - Retrieving order for Hill & Markes (07/18/2025).
+2025-07-22 09:41:12,718 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / Hill & Markes / 20250718.
+2025-07-22 09:41:12,719 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hill & Markes\Hill & Markes_Downtown_20250718.xlsx. Proceeding with save.
+2025-07-22 09:41:12,719 - INFO - CraftableBot - Saving order for Hill & Markes.
+2025-07-22 09:41:14,749 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hill & Markes\Hill & Markes_Downtown_20250718.pdf
+2025-07-22 09:41:17,103 - INFO - CraftableBot - Retrieving order for Johnston Paper (07/18/2025).
+2025-07-22 09:41:18,260 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / Johnston Paper / 20250718.
+2025-07-22 09:41:18,260 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Johnston Paper\Johnston Paper_Downtown_20250718.xlsx. Proceeding with save.
+2025-07-22 09:41:18,260 - INFO - CraftableBot - Saving order for Johnston Paper.
+2025-07-22 09:41:20,280 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Johnston Paper\Johnston Paper_Downtown_20250718.pdf
+2025-07-22 09:41:22,634 - INFO - CraftableBot - Retrieving order for UNFI (07/18/2025).
+2025-07-22 09:41:25,584 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / UNFI / 20250718.
+2025-07-22 09:41:25,584 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\UNFI\UNFI_Downtown_20250718.xlsx. Proceeding with save.
+2025-07-22 09:41:25,585 - INFO - CraftableBot - Saving order for UNFI.
+2025-07-22 09:41:27,611 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\UNFI\UNFI_Downtown_20250718.pdf
+2025-07-22 09:41:29,984 - INFO - CraftableBot - Retrieving order for Copper Horse Coffee (07/18/2025).
+2025-07-22 09:41:31,145 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / Copper Horse Coffee / 20250718.
+2025-07-22 09:41:31,146 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Copper Horse Coffee\Copper Horse Coffee_Downtown_20250718.xlsx. Proceeding with save.
+2025-07-22 09:41:31,146 - INFO - CraftableBot - Saving order for Copper Horse Coffee.
+2025-07-22 09:41:33,167 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Copper Horse Coffee\Copper Horse Coffee_Downtown_20250718.pdf
+2025-07-22 09:41:35,547 - INFO - CraftableBot - Retrieving order for BALKAN BEVERAGE LLC (07/18/2025).
+2025-07-22 09:41:36,771 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / BALKAN BEVERAGE LLC / 20250718.
+2025-07-22 09:41:36,771 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\BALKAN BEVERAGE LLC\BALKAN BEVERAGE LLC_Downtown_20250718.xlsx. Proceeding with save.
+2025-07-22 09:41:36,771 - INFO - CraftableBot - Saving order for BALKAN BEVERAGE LLC.
+2025-07-22 09:41:38,800 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\BALKAN BEVERAGE LLC\BALKAN BEVERAGE LLC_Downtown_20250718.pdf
+2025-07-22 09:41:41,161 - INFO - CraftableBot - Retrieving order for Worlds Best Cheeses (07/19/2025).
+2025-07-22 09:41:42,401 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / Worlds Best Cheeses / 20250719.
+2025-07-22 09:41:42,401 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Worlds Best Cheeses\Worlds Best Cheeses_Downtown_20250719.xlsx. Proceeding with save.
+2025-07-22 09:41:42,402 - INFO - CraftableBot - Saving order for Worlds Best Cheeses.
+2025-07-22 09:41:44,443 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Worlds Best Cheeses\Worlds Best Cheeses_Downtown_20250719.pdf
+2025-07-22 09:41:46,799 - INFO - CraftableBot - Retrieving order for Wegmans (07/19/2025).
+2025-07-22 09:41:48,077 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / Wegmans / 20250719.
+2025-07-22 09:41:48,078 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Wegmans\Wegmans_Downtown_20250719.xlsx. Proceeding with save.
+2025-07-22 09:41:48,078 - INFO - CraftableBot - Saving order for Wegmans.
+2025-07-22 09:41:50,601 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Wegmans\Wegmans_Downtown_20250719.pdf
+2025-07-22 09:41:52,504 - INFO - CraftableBot - Retrieving order for DUTCH VALLEY FOOD DIST (07/19/2025).
+2025-07-22 09:41:53,795 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / DUTCH VALLEY FOOD DIST / 20250719.
+2025-07-22 09:41:53,795 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\DUTCH VALLEY FOOD DIST\DUTCH VALLEY FOOD DIST_Downtown_20250719.xlsx. Proceeding with save.
+2025-07-22 09:41:53,795 - INFO - CraftableBot - Saving order for DUTCH VALLEY FOOD DIST.
+2025-07-22 09:41:56,319 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\DUTCH VALLEY FOOD DIST\DUTCH VALLEY FOOD DIST_Downtown_20250719.pdf
+2025-07-22 09:41:58,168 - INFO - CraftableBot - Accessing order page for Collegetown.
+2025-07-22 09:42:04,715 - INFO - CraftableBot - Retrieving order for Sysco (07/18/2025).
+2025-07-22 09:42:06,679 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / Sysco / 20250718.
+2025-07-22 09:42:06,679 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Sysco\Sysco_Collegetown_20250718.xlsx. Proceeding with save.
+2025-07-22 09:42:06,679 - INFO - CraftableBot - Saving order for Sysco.
+2025-07-22 09:42:08,701 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Sysco\Sysco_Collegetown_20250718.pdf
+2025-07-22 09:42:11,061 - INFO - CraftableBot - Retrieving order for Ithaca Bakery (07/18/2025).
+2025-07-22 09:42:15,130 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / Ithaca Bakery / 20250718.
+2025-07-22 09:42:15,131 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Ithaca Bakery\Ithaca Bakery_Collegetown_20250718.xlsx. Proceeding with save.
+2025-07-22 09:42:15,131 - INFO - CraftableBot - Saving order for Ithaca Bakery.
+2025-07-22 09:42:17,656 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Ithaca Bakery\Ithaca Bakery_Collegetown_20250718.pdf
+2025-07-22 09:42:19,533 - INFO - CraftableBot - Retrieving order for Regional Distributors, Inc. (07/18/2025).
+2025-07-22 09:42:21,288 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / Regional Distributors, Inc. / 20250718.
+2025-07-22 09:42:21,289 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Regional Distributors, Inc.\Regional Distributors, Inc._Collegetown_20250718.xlsx. Proceeding with save.
+2025-07-22 09:42:21,289 - INFO - CraftableBot - Saving order for Regional Distributors, Inc..
+2025-07-22 09:42:23,317 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Regional Distributors, Inc.\Regional Distributors, Inc._Collegetown_20250718.pdf
+2025-07-22 09:42:25,700 - INFO - CraftableBot - Retrieving order for Hill & Markes (07/18/2025).
+2025-07-22 09:42:27,057 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / Hill & Markes / 20250718.
+2025-07-22 09:42:27,057 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hill & Markes\Hill & Markes_Collegetown_20250718.xlsx. Proceeding with save.
+2025-07-22 09:42:27,057 - INFO - CraftableBot - Saving order for Hill & Markes.
+2025-07-22 09:42:29,079 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hill & Markes\Hill & Markes_Collegetown_20250718.pdf
+2025-07-22 09:42:31,427 - INFO - CraftableBot - Retrieving order for Peters Supply (07/18/2025).
+2025-07-22 09:42:32,873 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / Peters Supply / 20250718.
+2025-07-22 09:42:32,874 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Peters Supply\Peters Supply_Collegetown_20250718.xlsx. Proceeding with save.
+2025-07-22 09:42:32,874 - INFO - CraftableBot - Saving order for Peters Supply.
+2025-07-22 09:42:34,897 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Peters Supply\Peters Supply_Collegetown_20250718.pdf
+2025-07-22 09:42:37,260 - INFO - CraftableBot - Retrieving order for Coca-Cola (07/18/2025).
+2025-07-22 09:42:38,573 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / Coca-Cola / 20250718.
+2025-07-22 09:42:38,573 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Coca-Cola\Coca-Cola_Collegetown_20250718.xlsx. Proceeding with save.
+2025-07-22 09:42:38,573 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-07-22 09:42:40,599 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Coca-Cola\Coca-Cola_Collegetown_20250718.pdf
+2025-07-22 09:42:42,967 - INFO - CraftableBot - Retrieving order for Johnston Paper (07/18/2025).
+2025-07-22 09:42:44,127 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / Johnston Paper / 20250718.
+2025-07-22 09:42:44,127 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Johnston Paper\Johnston Paper_Collegetown_20250718.xlsx. Proceeding with save.
+2025-07-22 09:42:44,127 - INFO - CraftableBot - Saving order for Johnston Paper.
+2025-07-22 09:42:46,138 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Johnston Paper\Johnston Paper_Collegetown_20250718.pdf
+2025-07-22 09:42:48,497 - INFO - CraftableBot - Retrieving order for Equal Exchange (07/18/2025).
+2025-07-22 09:42:49,860 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / Equal Exchange / 20250718.
+2025-07-22 09:42:49,860 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Equal Exchange\Equal Exchange_Collegetown_20250718.xlsx. Proceeding with save.
+2025-07-22 09:42:49,860 - INFO - CraftableBot - Saving order for Equal Exchange.
+2025-07-22 09:42:51,898 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Equal Exchange\Equal Exchange_Collegetown_20250718.pdf
+2025-07-22 09:42:54,259 - INFO - CraftableBot - Retrieving order for US Foods (07/18/2025).
+2025-07-22 09:42:56,102 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / US Foods / 20250718.
+2025-07-22 09:42:56,102 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\US Foods\US Foods_Collegetown_20250718.xlsx. Proceeding with save.
+2025-07-22 09:42:56,102 - INFO - CraftableBot - Saving order for US Foods.
+2025-07-22 09:42:58,129 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\US Foods\US Foods_Collegetown_20250718.pdf
+2025-07-22 09:43:00,498 - INFO - CraftableBot - Retrieving order for Performance Food (07/18/2025).
+2025-07-22 09:43:02,623 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / Performance Food / 20250718.
+2025-07-22 09:43:02,623 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Performance Food\Performance Food_Collegetown_20250718.xlsx. Proceeding with save.
+2025-07-22 09:43:02,623 - INFO - CraftableBot - Saving order for Performance Food.
+2025-07-22 09:43:04,648 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Performance Food\Performance Food_Collegetown_20250718.pdf
+2025-07-22 09:43:07,076 - INFO - CraftableBot - Retrieving order for Hillcrest Dairy (07/18/2025).
+2025-07-22 09:43:08,442 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / Hillcrest Dairy / 20250718.
+2025-07-22 09:43:08,442 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Dairy\Hillcrest Dairy_Collegetown_20250718.xlsx. Proceeding with save.
+2025-07-22 09:43:08,442 - INFO - CraftableBot - Saving order for Hillcrest Dairy.
+2025-07-22 09:43:10,965 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Dairy\Hillcrest Dairy_Collegetown_20250718.pdf
+2025-07-22 09:43:12,859 - INFO - CraftableBot - Retrieving order for UNFI (07/18/2025).
+2025-07-22 09:43:14,481 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / UNFI / 20250718.
+2025-07-22 09:43:14,482 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\UNFI\UNFI_Collegetown_20250718.xlsx. Proceeding with save.
+2025-07-22 09:43:14,482 - INFO - CraftableBot - Saving order for UNFI.
+2025-07-22 09:43:16,521 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\UNFI\UNFI_Collegetown_20250718.pdf
+2025-07-22 09:43:18,855 - INFO - CraftableBot - Retrieving order for A.L. George (07/18/2025).
+2025-07-22 09:43:20,264 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / A.L. George / 20250718.
+2025-07-22 09:43:20,265 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\A.L. George\A.L. George_Collegetown_20250718.xlsx. Proceeding with save.
+2025-07-22 09:43:20,265 - INFO - CraftableBot - Saving order for A.L. George.
+2025-07-22 09:43:22,286 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\A.L. George\A.L. George_Collegetown_20250718.pdf
+2025-07-22 09:43:24,645 - INFO - CraftableBot - Retrieving order for FingerLakes Farms (07/18/2025).
+2025-07-22 09:43:26,314 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / FingerLakes Farms / 20250718.
+2025-07-22 09:43:26,314 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\FingerLakes Farms\FingerLakes Farms_Collegetown_20250718.xlsx. Proceeding with save.
+2025-07-22 09:43:26,314 - INFO - CraftableBot - Saving order for FingerLakes Farms.
+2025-07-22 09:43:28,343 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\FingerLakes Farms\FingerLakes Farms_Collegetown_20250718.pdf
+2025-07-22 09:43:30,706 - INFO - CraftableBot - Retrieving order for BALKAN BEVERAGE LLC (07/18/2025).
+2025-07-22 09:43:31,917 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / BALKAN BEVERAGE LLC / 20250718.
+2025-07-22 09:43:31,918 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\BALKAN BEVERAGE LLC\BALKAN BEVERAGE LLC_Collegetown_20250718.xlsx. Proceeding with save.
+2025-07-22 09:43:31,918 - INFO - CraftableBot - Saving order for BALKAN BEVERAGE LLC.
+2025-07-22 09:43:33,943 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\BALKAN BEVERAGE LLC\BALKAN BEVERAGE LLC_Collegetown_20250718.pdf
+2025-07-22 09:43:36,261 - INFO - CraftableBot - Order download complete.
+2025-07-22 09:50:44,508 - INFO - CraftableBot - Starting order download protocol.
+2025-07-22 09:50:44,508 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-22 09:50:52,173 - INFO - CraftableBot - Retrieving order for Hill & Markes (07/21/2025).
+2025-07-22 09:50:53,417 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Hill & Markes / 20250721.
+2025-07-22 09:50:53,417 - WARNING - OrderCoordinator - [Order Update] Failed to read existing order file: 'OrderFileHandler' object has no attribute 'read_order'. Proceeding with overwrite.
+2025-07-22 09:50:53,418 - INFO - CraftableBot - Saving order for Hill & Markes.
+2025-07-22 09:50:58,034 - INFO - CraftableBot - Order download complete.
+2025-07-22 10:23:32,897 - INFO - CraftableBot - Closing WebDriver session.
+2025-07-22 10:23:32,966 - INFO - CraftableBot - WebDriver session closed.
+2025-07-22 10:23:43,657 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 10:23:43,658 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 10:23:43,658 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 10:23:56,185 - INFO - CraftableBot - Logging into Craftable.
+2025-07-22 10:24:07,039 - INFO - CraftableBot - Login successful.
+2025-07-22 10:24:07,039 - INFO - CraftableBot - Starting order download protocol.
+2025-07-22 10:24:07,039 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-22 10:24:14,304 - INFO - CraftableBot - Retrieving order for Hill & Markes (07/21/2025).
+2025-07-22 10:24:15,519 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Hill & Markes / 20250721.
+2025-07-22 10:24:15,535 - INFO - OrderCoordinator - [Order Update] Order is unchanged. Skipping overwrite.
+2025-07-22 10:24:15,536 - INFO - CraftableBot - Order for Hill & Markes is up-to-date. Skipping.
+2025-07-22 10:24:17,811 - INFO - CraftableBot - Order download complete.
+2025-07-22 10:33:33,026 - INFO - CraftableBot - Closing WebDriver session.
+2025-07-22 10:33:33,092 - INFO - CraftableBot - WebDriver session closed.
+2025-07-22 10:33:44,377 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 10:33:44,378 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 10:33:44,378 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 10:34:30,024 - INFO - CraftableBot - Logging into Craftable.
+2025-07-22 10:34:40,523 - INFO - CraftableBot - Login successful.
+2025-07-22 10:34:40,523 - INFO - CraftableBot - Starting order download protocol.
+2025-07-22 10:34:40,523 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-22 10:34:47,722 - INFO - CraftableBot - Retrieving order for Hill & Markes (07/21/2025).
+2025-07-22 10:34:48,939 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Hill & Markes / 20250721.
+2025-07-22 10:34:48,943 - INFO - OrderCoordinator - [Order Update] Order is unchanged. Skipping overwrite.
+2025-07-22 10:34:48,943 - INFO - CraftableBot - Order for Hill & Markes is up-to-date. Skipping.
+2025-07-22 10:34:51,223 - INFO - CraftableBot - Order download complete.
+2025-07-22 10:41:00,220 - INFO - CraftableBot - Closing WebDriver session.
+2025-07-22 10:41:00,293 - INFO - CraftableBot - WebDriver session closed.
+2025-07-22 10:41:15,151 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 10:41:15,160 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 10:41:15,160 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 10:41:35,043 - INFO - CraftableBot - Logging into Craftable.
+2025-07-22 10:41:46,410 - INFO - CraftableBot - Login successful.
+2025-07-22 10:41:46,410 - INFO - CraftableBot - Starting order download protocol.
+2025-07-22 10:41:46,410 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-22 10:41:53,603 - INFO - CraftableBot - Retrieving order for Hill & Markes (07/21/2025).
+2025-07-22 10:41:54,832 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Hill & Markes / 20250721.
+2025-07-22 10:41:54,832 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hill & Markes\Hill & Markes_Bakery_20250721.xlsx. Proceeding with save.
+2025-07-22 10:41:54,832 - INFO - CraftableBot - Saving order for Hill & Markes.
+2025-07-22 10:41:56,863 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hill & Markes\Hill & Markes_Bakery_20250721.pdf
+2025-07-22 10:41:59,472 - INFO - CraftableBot - Order download complete.
+2025-07-22 10:43:08,970 - INFO - CraftableBot - Starting order download protocol.
+2025-07-22 10:43:08,970 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-22 10:43:16,015 - INFO - CraftableBot - Retrieving order for Hill & Markes (07/21/2025).
+2025-07-22 10:43:17,218 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Hill & Markes / 20250721.
+2025-07-22 10:43:17,222 - INFO - OrderCoordinator - [Order Update] Order has changed. Removing old file.
+2025-07-22 10:43:17,223 - ERROR - CraftableBot - Error in download_orders: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\andrew\\Desktop\\Andrew\\Projects\\IthacaBakery\\RandomStuff\\WorkBot\\refactor\\data\\orders\\Hill & Markes\\Hill & Markes_Bakery_20250721.xlsx'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 232, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 267, in _process_order_row
+    if update and self._update_existing_order(order_to_check_update):
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 748, in _update_existing_order
+    return self.order_coordinator.check_and_update_order(order)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\OrderCoordinator.py", line 56, in check_and_update_order
+    self.file_handler.remove_file(file_path)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\storage\file\FileHandler.py", line 45, in remove_file
+    path.unlink()
+    ~~~~~~~~~~~^^
+  File "C:\Users\Will\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 746, in unlink
+    os.unlink(self)
+    ~~~~~~~~~^^^^^^
+PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\andrew\\Desktop\\Andrew\\Projects\\IthacaBakery\\RandomStuff\\WorkBot\\refactor\\data\\orders\\Hill & Markes\\Hill & Markes_Bakery_20250721.xlsx'
+2025-07-22 10:43:37,055 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 10:43:37,056 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 10:43:37,056 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 10:43:38,714 - INFO - CraftableBot - Logging into Craftable.
+2025-07-22 10:43:49,304 - INFO - CraftableBot - Login successful.
+2025-07-22 10:43:49,305 - INFO - CraftableBot - Starting order download protocol.
+2025-07-22 10:43:49,305 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-22 10:43:56,542 - INFO - CraftableBot - Retrieving order for Hill & Markes (07/21/2025).
+2025-07-22 10:43:57,770 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Hill & Markes / 20250721.
+2025-07-22 10:43:57,774 - INFO - OrderCoordinator - [Order Update] Order has changed. Removing old file.
+2025-07-22 10:43:57,774 - ERROR - CraftableBot - Error in download_orders: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\andrew\\Desktop\\Andrew\\Projects\\IthacaBakery\\RandomStuff\\WorkBot\\refactor\\data\\orders\\Hill & Markes\\Hill & Markes_Bakery_20250721.xlsx'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 232, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 267, in _process_order_row
+    if update and self._update_existing_order(order_to_check_update):
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 748, in _update_existing_order
+    return self.order_coordinator.check_and_update_order(order)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\OrderCoordinator.py", line 56, in check_and_update_order
+    self.file_handler.remove_file(file_path)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\storage\file\FileHandler.py", line 45, in remove_file
+    path.unlink()
+    ~~~~~~~~~~~^^
+  File "C:\Users\Will\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 746, in unlink
+    os.unlink(self)
+    ~~~~~~~~~^^^^^^
+PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\andrew\\Desktop\\Andrew\\Projects\\IthacaBakery\\RandomStuff\\WorkBot\\refactor\\data\\orders\\Hill & Markes\\Hill & Markes_Bakery_20250721.xlsx'
+2025-07-22 10:45:15,795 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 10:45:15,796 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 10:45:15,796 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 10:45:17,313 - INFO - CraftableBot - Logging into Craftable.
+2025-07-22 10:45:27,641 - INFO - CraftableBot - Login successful.
+2025-07-22 10:45:27,641 - INFO - CraftableBot - Starting order download protocol.
+2025-07-22 10:45:27,641 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-22 10:45:34,835 - INFO - CraftableBot - Retrieving order for Hill & Markes (07/21/2025).
+2025-07-22 10:45:36,066 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Hill & Markes / 20250721.
+2025-07-22 10:45:36,070 - INFO - OrderCoordinator - [Order Update] Order has changed. Removing old file.
+2025-07-22 10:45:36,070 - ERROR - CraftableBot - Error in download_orders: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\andrew\\Desktop\\Andrew\\Projects\\IthacaBakery\\RandomStuff\\WorkBot\\refactor\\data\\orders\\Hill & Markes\\Hill & Markes_Bakery_20250721.xlsx'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 232, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 267, in _process_order_row
+    if update and self._update_existing_order(order_to_check_update):
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\CraftableBot.py", line 748, in _update_existing_order
+    return self.order_coordinator.check_and_update_order(order)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\OrderCoordinator.py", line 56, in check_and_update_order
+    self.file_handler.remove_file(file_path)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\storage\file\FileHandler.py", line 45, in remove_file
+    path.unlink()
+    ~~~~~~~~~~~^^
+  File "C:\Users\Will\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 746, in unlink
+    os.unlink(self)
+    ~~~~~~~~~^^^^^^
+PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\andrew\\Desktop\\Andrew\\Projects\\IthacaBakery\\RandomStuff\\WorkBot\\refactor\\data\\orders\\Hill & Markes\\Hill & Markes_Bakery_20250721.xlsx'
+2025-07-22 10:49:58,290 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 10:49:58,291 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 10:49:58,291 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 10:50:01,340 - INFO - CraftableBot - Logging into Craftable.
+2025-07-22 10:50:12,018 - INFO - CraftableBot - Login successful.
+2025-07-22 10:50:12,018 - INFO - CraftableBot - Starting order download protocol.
+2025-07-22 10:50:12,018 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-22 10:50:19,203 - INFO - CraftableBot - Retrieving order for Hill & Markes (07/21/2025).
+2025-07-22 10:50:20,427 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Hill & Markes / 20250721.
+2025-07-22 10:50:20,427 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hill & Markes\Hill & Markes_Bakery_20250721.xlsx. Proceeding with save.
+2025-07-22 10:50:20,428 - INFO - CraftableBot - Saving order for Hill & Markes.
+2025-07-22 10:50:22,451 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hill & Markes\Hill & Markes_Bakery_20250721.pdf
+2025-07-22 10:50:25,030 - INFO - CraftableBot - Order download complete.
+2025-07-22 10:50:55,457 - INFO - CraftableBot - Starting order download protocol.
+2025-07-22 10:50:55,458 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-22 10:51:02,430 - INFO - CraftableBot - Retrieving order for Hill & Markes (07/21/2025).
+2025-07-22 10:51:03,610 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Hill & Markes / 20250721.
+2025-07-22 10:51:03,627 - INFO - OrderCoordinator - [Order Update] Order has changed. Removing old file.
+2025-07-22 10:51:03,628 - INFO - CraftableBot - Saving order for Hill & Markes.
+2025-07-22 10:51:05,644 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hill & Markes\Hill & Markes_Bakery_20250721.pdf
+2025-07-22 10:51:08,249 - INFO - CraftableBot - Order download complete.
+2025-07-22 12:01:57,582 - INFO - CraftableBot - Starting order download protocol.
+2025-07-22 12:01:57,582 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-22 12:02:04,783 - INFO - CraftableBot - Retrieving order for UNFI (07/19/2025).
+2025-07-22 12:02:07,349 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / UNFI / 20250719.
+2025-07-22 12:02:07,371 - INFO - OrderCoordinator - [Order Update] Order is unchanged. Skipping overwrite.
+2025-07-22 12:02:07,371 - INFO - CraftableBot - Order for UNFI is up-to-date. Skipping.
+2025-07-22 12:02:09,437 - INFO - CraftableBot - Retrieving order for Webstaurant (07/19/2025).
+2025-07-22 12:02:11,220 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Webstaurant / 20250719.
+2025-07-22 12:02:11,235 - INFO - OrderCoordinator - [Order Update] Order has changed. Removing old file.
+2025-07-22 12:02:11,237 - INFO - CraftableBot - Saving order for Webstaurant.
+2025-07-22 12:02:13,771 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Webstaurant\Webstaurant_Bakery_20250719.pdf
+2025-07-22 12:02:15,651 - INFO - CraftableBot - Retrieving order for BJ's (07/19/2025).
+2025-07-22 12:02:16,851 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / BJ's / 20250719.
+2025-07-22 12:02:16,866 - INFO - OrderCoordinator - [Order Update] Order has changed. Removing old file.
+2025-07-22 12:02:16,867 - INFO - CraftableBot - Saving order for BJ's.
+2025-07-22 12:02:18,895 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\BJ's\BJ's_Bakery_20250719.pdf
+2025-07-22 12:02:21,258 - INFO - CraftableBot - Retrieving order for Sysco (07/19/2025).
+2025-07-22 12:02:24,008 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Sysco / 20250719.
+2025-07-22 12:02:24,026 - INFO - OrderCoordinator - [Order Update] Order is unchanged. Skipping overwrite.
+2025-07-22 12:02:24,026 - INFO - CraftableBot - Order for Sysco is up-to-date. Skipping.
+2025-07-22 12:02:26,092 - INFO - CraftableBot - Retrieving order for FingerLakes Farms (07/19/2025).
+2025-07-22 12:02:27,866 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / FingerLakes Farms / 20250719.
+2025-07-22 12:02:27,883 - INFO - OrderCoordinator - [Order Update] Order is unchanged. Skipping overwrite.
+2025-07-22 12:02:27,883 - INFO - CraftableBot - Order for FingerLakes Farms is up-to-date. Skipping.
+2025-07-22 12:02:29,943 - INFO - CraftableBot - Retrieving order for Hillcrest Dairy (07/19/2025).
+2025-07-22 12:02:31,334 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Hillcrest Dairy / 20250719.
+2025-07-22 12:02:31,350 - INFO - OrderCoordinator - [Order Update] Order is unchanged. Skipping overwrite.
+2025-07-22 12:02:31,350 - INFO - CraftableBot - Order for Hillcrest Dairy is up-to-date. Skipping.
+2025-07-22 12:02:33,408 - INFO - CraftableBot - Retrieving order for Performance Food (07/19/2025).
+2025-07-22 12:02:36,204 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Performance Food / 20250719.
+2025-07-22 12:02:36,222 - INFO - OrderCoordinator - [Order Update] Order is unchanged. Skipping overwrite.
+2025-07-22 12:02:36,222 - INFO - CraftableBot - Order for Performance Food is up-to-date. Skipping.
+2025-07-22 12:02:38,284 - INFO - CraftableBot - Retrieving order for US Foods (07/20/2025).
+2025-07-22 12:02:41,180 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / US Foods / 20250720.
+2025-07-22 12:02:41,198 - INFO - OrderCoordinator - [Order Update] Order is unchanged. Skipping overwrite.
+2025-07-22 12:02:41,199 - INFO - CraftableBot - Order for US Foods is up-to-date. Skipping.
+2025-07-22 12:02:43,267 - INFO - CraftableBot - Retrieving order for Keck's Food Service (07/20/2025).
+2025-07-22 12:02:44,755 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Keck's Food Service / 20250720.
+2025-07-22 12:02:44,771 - INFO - OrderCoordinator - [Order Update] Order is unchanged. Skipping overwrite.
+2025-07-22 12:02:44,771 - INFO - CraftableBot - Order for Keck's Food Service is up-to-date. Skipping.
+2025-07-22 12:02:46,832 - INFO - CraftableBot - Retrieving order for Jade Leaf Matcha (07/20/2025).
+2025-07-22 12:02:47,989 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Jade Leaf Matcha / 20250720.
+2025-07-22 12:02:48,004 - INFO - OrderCoordinator - [Order Update] Order is unchanged. Skipping overwrite.
+2025-07-22 12:02:48,005 - INFO - CraftableBot - Order for Jade Leaf Matcha is up-to-date. Skipping.
+2025-07-22 12:02:50,064 - INFO - CraftableBot - Retrieving order for Equal Exchange (07/20/2025).
+2025-07-22 12:02:51,635 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Equal Exchange / 20250720.
+2025-07-22 12:02:51,651 - INFO - OrderCoordinator - [Order Update] Order is unchanged. Skipping overwrite.
+2025-07-22 12:02:51,651 - INFO - CraftableBot - Order for Equal Exchange is up-to-date. Skipping.
+2025-07-22 12:02:53,712 - INFO - CraftableBot - Retrieving order for Copper Horse Coffee (07/20/2025).
+2025-07-22 12:02:55,116 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Copper Horse Coffee / 20250720.
+2025-07-22 12:02:55,132 - INFO - OrderCoordinator - [Order Update] Order has changed. Removing old file.
+2025-07-22 12:02:55,133 - INFO - CraftableBot - Saving order for Copper Horse Coffee.
+2025-07-22 12:02:57,157 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Copper Horse Coffee\Copper Horse Coffee_Bakery_20250720.pdf
+2025-07-22 12:02:59,524 - INFO - CraftableBot - Retrieving order for Eurocafe Imports (07/20/2025).
+2025-07-22 12:03:00,720 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Eurocafe Imports / 20250720.
+2025-07-22 12:03:00,736 - INFO - OrderCoordinator - [Order Update] Order is unchanged. Skipping overwrite.
+2025-07-22 12:03:00,736 - INFO - CraftableBot - Order for Eurocafe Imports is up-to-date. Skipping.
+2025-07-22 12:03:02,791 - INFO - CraftableBot - Retrieving order for Coca-Cola (07/20/2025).
+2025-07-22 12:03:04,595 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Coca-Cola / 20250720.
+2025-07-22 12:03:04,611 - INFO - OrderCoordinator - [Order Update] Order is unchanged. Skipping overwrite.
+2025-07-22 12:03:04,611 - INFO - CraftableBot - Order for Coca-Cola is up-to-date. Skipping.
+2025-07-22 12:03:06,671 - INFO - CraftableBot - Retrieving order for Regional Distributors, Inc. (07/21/2025).
+2025-07-22 12:03:08,436 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Regional Distributors, Inc. / 20250721.
+2025-07-22 12:03:08,452 - INFO - OrderCoordinator - [Order Update] Order is unchanged. Skipping overwrite.
+2025-07-22 12:03:08,452 - INFO - CraftableBot - Order for Regional Distributors, Inc. is up-to-date. Skipping.
+2025-07-22 12:03:10,512 - INFO - CraftableBot - Retrieving order for Hill & Markes (07/21/2025).
+2025-07-22 12:03:12,848 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Hill & Markes / 20250721.
+2025-07-22 12:03:12,855 - INFO - OrderCoordinator - [Order Update] Order has changed. Removing old file.
+2025-07-22 12:03:12,856 - INFO - CraftableBot - Saving order for Hill & Markes.
+2025-07-22 12:03:15,379 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hill & Markes\Hill & Markes_Bakery_20250721.pdf
+2025-07-22 12:03:17,267 - INFO - CraftableBot - Retrieving order for Hillcrest Foods (07/21/2025).
+2025-07-22 12:03:19,019 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Hillcrest Foods / 20250721.
+2025-07-22 12:03:19,038 - INFO - OrderCoordinator - [Order Update] Order is unchanged. Skipping overwrite.
+2025-07-22 12:03:19,038 - INFO - CraftableBot - Order for Hillcrest Foods is up-to-date. Skipping.
+2025-07-22 12:03:21,111 - INFO - CraftableBot - Retrieving order for Lentz (07/21/2025).
+2025-07-22 12:03:22,619 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Lentz / 20250721.
+2025-07-22 12:03:22,637 - INFO - OrderCoordinator - [Order Update] Order is unchanged. Skipping overwrite.
+2025-07-22 12:03:22,637 - INFO - CraftableBot - Order for Lentz is up-to-date. Skipping.
+2025-07-22 12:03:24,698 - INFO - CraftableBot - Retrieving order for BALKAN BEVERAGE LLC (07/21/2025).
+2025-07-22 12:03:26,020 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / BALKAN BEVERAGE LLC / 20250721.
+2025-07-22 12:03:26,043 - INFO - OrderCoordinator - [Order Update] Order is unchanged. Skipping overwrite.
+2025-07-22 12:03:26,043 - INFO - CraftableBot - Order for BALKAN BEVERAGE LLC is up-to-date. Skipping.
+2025-07-22 12:03:28,112 - INFO - CraftableBot - Retrieving order for A.L. George (07/21/2025).
+2025-07-22 12:03:29,520 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / A.L. George / 20250721.
+2025-07-22 12:03:29,538 - INFO - OrderCoordinator - [Order Update] Order is unchanged. Skipping overwrite.
+2025-07-22 12:03:29,539 - INFO - CraftableBot - Order for A.L. George is up-to-date. Skipping.
+2025-07-22 12:03:31,608 - INFO - CraftableBot - Retrieving order for ACE ENDICO (07/21/2025).
+2025-07-22 12:03:32,763 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / ACE ENDICO / 20250721.
+2025-07-22 12:03:32,778 - INFO - OrderCoordinator - [Order Update] Order is unchanged. Skipping overwrite.
+2025-07-22 12:03:32,778 - INFO - CraftableBot - Order for ACE ENDICO is up-to-date. Skipping.
+2025-07-22 12:03:34,835 - INFO - CraftableBot - Retrieving order for Dawn (07/21/2025).
+2025-07-22 12:03:36,044 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Dawn / 20250721.
+2025-07-22 12:03:36,059 - INFO - OrderCoordinator - [Order Update] Order is unchanged. Skipping overwrite.
+2025-07-22 12:03:36,059 - INFO - CraftableBot - Order for Dawn is up-to-date. Skipping.
+2025-07-22 12:03:38,117 - INFO - CraftableBot - Retrieving order for Side Hill Acres (07/21/2025).
+2025-07-22 12:03:39,276 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Side Hill Acres / 20250721.
+2025-07-22 12:03:39,291 - INFO - OrderCoordinator - [Order Update] Order is unchanged. Skipping overwrite.
+2025-07-22 12:03:39,291 - INFO - CraftableBot - Order for Side Hill Acres is up-to-date. Skipping.
+2025-07-22 12:03:41,352 - INFO - CraftableBot - Retrieving order for Paper Rolls .com (07/22/2025).
+2025-07-22 12:03:42,575 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Paper Rolls .com / 20250722.
+2025-07-22 12:03:42,575 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Paper Rolls .com\Paper Rolls .com_Bakery_20250722.xlsx. Proceeding with save.
+2025-07-22 12:03:42,575 - INFO - CraftableBot - Saving order for Paper Rolls .com.
+2025-07-22 12:03:44,602 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Paper Rolls .com\Paper Rolls .com_Bakery_20250722.pdf
+2025-07-22 12:03:46,950 - INFO - CraftableBot - Retrieving order for Johnston Paper (07/22/2025).
+2025-07-22 12:03:48,348 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Johnston Paper / 20250722.
+2025-07-22 12:03:48,348 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Johnston Paper\Johnston Paper_Bakery_20250722.xlsx. Proceeding with save.
+2025-07-22 12:03:48,348 - INFO - CraftableBot - Saving order for Johnston Paper.
+2025-07-22 12:03:50,870 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Johnston Paper\Johnston Paper_Bakery_20250722.pdf
+2025-07-22 12:03:52,755 - INFO - CraftableBot - Retrieving order for Peters Supply (07/22/2025).
+2025-07-22 12:03:54,181 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Peters Supply / 20250722.
+2025-07-22 12:03:54,182 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Peters Supply\Peters Supply_Bakery_20250722.xlsx. Proceeding with save.
+2025-07-22 12:03:54,182 - INFO - CraftableBot - Saving order for Peters Supply.
+2025-07-22 12:03:56,204 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Peters Supply\Peters Supply_Bakery_20250722.pdf
+2025-07-22 12:03:58,567 - INFO - CraftableBot - Retrieving order for SANICO (07/22/2025).
+2025-07-22 12:03:59,785 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / SANICO / 20250722.
+2025-07-22 12:03:59,786 - INFO - OrderCoordinator - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\SANICO\SANICO_Bakery_20250722.xlsx. Proceeding with save.
+2025-07-22 12:03:59,786 - INFO - CraftableBot - Saving order for SANICO.
+2025-07-22 12:04:01,808 - INFO - OrderCoordinator - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\SANICO\SANICO_Bakery_20250722.pdf
+2025-07-22 12:04:04,137 - INFO - CraftableBot - Order download complete.
+2025-07-22 12:04:56,689 - INFO - CraftableBot - Closing WebDriver session.
+2025-07-22 12:04:56,759 - INFO - CraftableBot - WebDriver session closed.
+2025-07-22 12:05:54,500 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 12:05:54,501 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 12:05:54,501 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 15:32:59,934 - INFO - CraftableBot - Closing WebDriver session.
+2025-07-22 15:33:04,188 - INFO - CraftableBot - WebDriver session closed.

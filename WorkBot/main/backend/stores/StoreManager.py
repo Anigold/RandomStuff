@@ -6,7 +6,7 @@ from pprint import pprint
 
 class StoreManager:
 
-    def __init__(self, storage_file: Path):
+    def __init__(self, storage_file: Path = None):
         self.stores = {}
         self.storage_file = storage_file or STORES_DATA_FILE
         self.load_stores()

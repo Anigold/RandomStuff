@@ -1,6 +1,6 @@
 # backend/config/settings.py
 
-from secrets.env_loader import get_env_var
+from config.secrets.env_loader import get_env_var
 
 # Craftable Credentials
 CRAFTABLE_USERNAME = get_env_var("CRAFTABLE_USERNAME")

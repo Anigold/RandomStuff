@@ -3,10 +3,10 @@
 from backend.utils.logger import Logger
 
 ''' MANAGERS '''
-from backend.bots.craftable_bot import CraftableBot
+from backend.bots.craftable_bot.CraftableBot import CraftableBot
 from backend.coordinators.VendorCoordinator import VendorCoordinator
 from backend.coordinators.StoreCoordinator import StoreCoordinator
-from backend.coordinators import OrderCoordinator
+from backend.coordinators.OrderCoordinator import OrderCoordinator
 from backend.coordinators.TransferCoordinator import TransferCoordinator
 
 ''' OBJECTS '''
@@ -41,16 +41,16 @@ class WorkBot:
     def __init__(self):
         self.logger.info('Initializing WorkBot...')
 
-        self.vendor_manager   = VendorCoordinator()
-        self.order_manager    = OrderCoordinator()
-        self.store_manager    = StoreCoordinator(storage_file=None)
-        self.transfer_manager = TransferCoordinator()
+        self.vendor_coordinator   = VendorCoordinator()
+        self.order_coordinator    = OrderCoordinator()
+        self.store_coordinator    = StoreCoordinator()
+        self.transfer_coordinator = TransferCoordinator()
 
         username, password = get_craftable_username_password()
 
         self.craft_bot = CraftableBot(username, password,
-                                    order_manager=self.order_manager,
-                                    transfer_manager=self.transfer_manager)
+                                    order_coordinator=self.order_coordinator,
+                                    transfer_coordinator=self.transfer_coordinator)
 
         self.logger.info('WorkBot initialized successfully.')
                # Establish host service
@@ -69,13 +69,13 @@ class WorkBot:
         self.craft_bot.download_orders(stores, vendors, download_pdf=download_pdf, update=update)
     
     def sort_orders(self):
-        self.order_manager.sort_orders()
+        self.order_coordinator.sort_orders()
 
     def delete_orders(self, stores, vendors=[]):
         self.craft_bot.delete_orders(stores, vendors)
 
     def input_transfers(self):
-        transfer_file_dir = self.transfer_manager.get_transfer_files_directory()
+        transfer_file_dir = self.transfer_coordinator.get_transfer_files_directory()
          
         transfers = [TransferCoordinator.create_transfer_from_excel(transfer_file) for transfer_file in transfer_file_dir.iterdir() if transfer_file.is_file()]
 
@@ -105,18 +105,18 @@ class WorkBot:
             items=transfer_items
             )
         
-        return self.transfer_manager.save_transfer(transfer=transfer)
+        return self.transfer_coordinator.save_transfer(transfer=transfer)
         
     def generate_vendor_upload_files(self, orders: list):
 
         for order in orders:
-            vendor_bot = self.vendor_manager.initialize_vendor(order.vendor, driver=self.craft_bot.driver)
+            vendor_bot = self.vendor_coordinator.initialize_vendor(order.vendor, driver=self.craft_bot.driver)
 
             # Need to deconstruct the OrderItem objects to pass into the vendor bot
             order_items = [order_item.to_dict() for order_item in order.items]
             
-            formatted_file_prefix = self.order_manager.FILE_PREFIXES['formatted']
-            save_path = self.order_manager.get_vendor_orders_directory(order.vendor) / f'{formatted_file_prefix}{self.order_manager.generate_filename(order)}'
+            formatted_file_prefix = self.order_coordinator.FILE_PREFIXES['formatted']
+            save_path = self.order_coordinator.get_vendor_orders_directory(order.vendor) / f'{formatted_file_prefix}{self.order_coordinator.generate_filename(order)}'
             vendor_bot.format_for_file_upload(order_items, save_path, order.store)
 
         return
@@ -131,16 +131,16 @@ class WorkBot:
         return f'''\n{today[1]}, {today[0]}'''
 
     def get_orders(self, stores: list, vendors: list = []) -> list:
-        return self.order_manager.get_store_orders(stores=stores, vendors=vendors)
+        return self.order_coordinator.get_store_orders(stores=stores, vendors=vendors)
 
     def get_vendor_information(self, vendor_name: str) -> dict:
-        return self.vendor_manager.get_vendor_information(vendor_name)
+        return self.vendor_coordinator.get_vendor_information(vendor_name)
 
     def get_store_information(self, store_name: str) -> dict:
-        return self.store_manager.find_store_by_name(store_name=store_name)
+        return self.store_coordinator.find_store_by_name(store_name=store_name)
     
     def combine_orders(self, vendors: list) -> None:
-        self.order_manager.combine_orders(vendors)
+        self.order_coordinator.combine_orders(vendors)
 
     def generate_vendor_order_emails(self, vendors: list[str], stores: list[str] = []) -> list[Email]:
         # print(f"\nGathering orders for vendors: {vendors} and stores: {stores}...")
@@ -174,8 +174,8 @@ class WorkBot:
                 for item in order.items:
                     full_body.append(f"  - {item.quantity} x {item.name}")
 
-                pdf_dir = self.order_manager.get_vendor_orders_directory(order.vendor)
-                pdf_filename = f"{self.order_manager.generate_filename(order, file_extension='.pdf')}"
+                pdf_dir = self.order_coordinator.get_vendor_orders_directory(order.vendor)
+                pdf_filename = f"{self.order_coordinator.generate_filename(order, file_extension='.pdf')}"
                 pdf_path = pdf_dir / pdf_filename
 
                 if pdf_path.exists():
@@ -233,8 +233,8 @@ class WorkBot:
             attachments = []
 
             for store_order in store_orders_table[store]:
-                pdf_dir      = self.order_manager.get_vendor_orders_directory(store_order.vendor)
-                pdf_filename = f"{self.order_manager.generate_filename(store_order, file_extension='.pdf')}"
+                pdf_dir      = self.order_coordinator.get_vendor_orders_directory(store_order.vendor)
+                pdf_filename = f"{self.order_coordinator.generate_filename(store_order, file_extension='.pdf')}"
                 pdf_path     = pdf_dir / pdf_filename
 
                 if pdf_path.exists(): attachments.append(str(pdf_path))

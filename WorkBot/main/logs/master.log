@@ -17606,3 +17606,83 @@ AttributeError: 'list' object has no attribute 'items'
 2025-07-21 14:58:24,896 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\A.L. George
 2025-07-21 14:58:24,896 - INFO - CraftableBot - [Order Update] No existing order file found for Bakery for A.L. George on 20250721. Proceeding with new download.
 2025-07-21 14:58:24,896 - INFO - CraftableBot - Saving order for A.L. George.
+2025-07-22 06:10:40,992 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 06:10:41,002 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 06:10:41,002 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 06:10:50,376 - INFO - CraftableBot - Logging into Craftable.
+2025-07-22 06:11:02,383 - INFO - CraftableBot - Login successful.
+2025-07-22 06:11:02,383 - INFO - CraftableBot - Starting order download protocol.
+2025-07-22 06:11:02,383 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-22 06:11:09,320 - INFO - CraftableBot - Retrieving order for UNFI (07/19/2025).
+2025-07-22 06:11:11,845 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: UNFI, on 20250719.
+2025-07-22 06:11:11,845 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: UNFI_Bakery_20250719.xlsx
+2025-07-22 06:11:11,845 - INFO - OrderManager - Looking up directory for: UNFI.
+2025-07-22 06:11:11,846 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\UNFI
+2025-07-22 06:11:11,846 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: UNFI_Bakery_20250719.xlsx
+2025-07-22 06:11:11,864 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for UNFI on 20250719.
+2025-07-22 06:11:11,864 - INFO - CraftableBot - [Order Update] No changes detected for Bakery for UNFI on 20250719. Skipping update protocol.
+2025-07-22 06:11:11,864 - INFO - CraftableBot - Order for UNFI is up-to-date. Skipping.
+2025-07-22 06:11:13,935 - INFO - CraftableBot - Retrieving order for Webstaurant (07/19/2025).
+2025-07-22 06:11:15,323 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Webstaurant, on 20250719.
+2025-07-22 06:11:15,324 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Webstaurant_Bakery_20250719.xlsx
+2025-07-22 06:11:15,324 - INFO - OrderManager - Looking up directory for: Webstaurant.
+2025-07-22 06:11:15,324 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Webstaurant
+2025-07-22 06:11:15,324 - INFO - CraftableBot - [Order Update] No existing order file found for Bakery for Webstaurant on 20250719. Proceeding with new download.
+2025-07-22 06:11:15,324 - INFO - CraftableBot - Saving order for Webstaurant.
+2025-07-22 06:11:19,680 - ERROR - CraftableBot - Error in download_orders: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\andrew\\Desktop\\Andrew\\Projects\\IthacaBakery\\RandomStuff\\WorkBot\\main\\backend\\downloads\\Order.pdf' -> 'C:\\Users\\andrew\\Desktop\\Andrew\\Projects\\IthacaBakery\\RandomStuff\\WorkBot\\main\\backend\\ordering\\OrderFiles\\Webstaurant_Bakery_20250719.pdf'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 229, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 281, in _process_order_row
+    self._rename_new_order_file(store=store, vendor=row_vendor_name, date=row_date_formatted)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 611, in _rename_new_order_file
+    original_file.rename(new_filepath)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Will\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 767, in rename
+    os.rename(self, target)
+    ~~~~~~~~~^^^^^^^^^^^^^^
+FileExistsError: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\andrew\\Desktop\\Andrew\\Projects\\IthacaBakery\\RandomStuff\\WorkBot\\main\\backend\\downloads\\Order.pdf' -> 'C:\\Users\\andrew\\Desktop\\Andrew\\Projects\\IthacaBakery\\RandomStuff\\WorkBot\\main\\backend\\ordering\\OrderFiles\\Webstaurant_Bakery_20250719.pdf'
+2025-07-22 06:13:25,790 - INFO - WorkBot - Initializing WorkBot...
+2025-07-22 06:13:25,791 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 06:13:25,791 - INFO - WorkBot - WorkBot initialized successfully.
+2025-07-22 06:13:27,486 - INFO - CraftableBot - Logging into Craftable.
+2025-07-22 06:13:37,673 - INFO - CraftableBot - Login successful.
+2025-07-22 06:13:37,673 - INFO - CraftableBot - Starting order download protocol.
+2025-07-22 06:13:37,673 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-22 06:13:44,318 - INFO - CraftableBot - Retrieving order for UNFI (07/19/2025).
+2025-07-22 06:13:46,850 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: UNFI, on 20250719.
+2025-07-22 06:13:46,850 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: UNFI_Bakery_20250719.xlsx
+2025-07-22 06:13:46,850 - INFO - OrderManager - Looking up directory for: UNFI.
+2025-07-22 06:13:46,851 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\UNFI
+2025-07-22 06:13:46,851 - INFO - CraftableBot - [Order Update] Extracting data from existing order file: UNFI_Bakery_20250719.xlsx
+2025-07-22 06:13:46,857 - INFO - CraftableBot - [Order Update] Comparing new data with the existing file for Bakery for UNFI on 20250719.
+2025-07-22 06:13:46,857 - INFO - CraftableBot - [Order Update] No changes detected for Bakery for UNFI on 20250719. Skipping update protocol.
+2025-07-22 06:13:46,857 - INFO - CraftableBot - Order for UNFI is up-to-date. Skipping.
+2025-07-22 06:13:48,930 - INFO - CraftableBot - Retrieving order for Webstaurant (07/19/2025).
+2025-07-22 06:13:50,335 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery for vendor: Webstaurant, on 20250719.
+2025-07-22 06:13:50,335 - INFO - CraftableBot - [Order Update] Checking for pre-existing order file: Webstaurant_Bakery_20250719.xlsx
+2025-07-22 06:13:50,335 - INFO - OrderManager - Looking up directory for: Webstaurant.
+2025-07-22 06:13:50,335 - INFO - OrderManager - Directory found: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\backend\ordering\OrderFiles\Webstaurant
+2025-07-22 06:13:50,336 - INFO - CraftableBot - [Order Update] No existing order file found for Bakery for Webstaurant on 20250719. Proceeding with new download.
+2025-07-22 06:13:50,336 - INFO - CraftableBot - Saving order for Webstaurant.
+2025-07-22 06:13:54,657 - ERROR - CraftableBot - Error in download_orders: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\andrew\\Desktop\\Andrew\\Projects\\IthacaBakery\\RandomStuff\\WorkBot\\main\\backend\\downloads\\Order.pdf' -> 'C:\\Users\\andrew\\Desktop\\Andrew\\Projects\\IthacaBakery\\RandomStuff\\WorkBot\\main\\backend\\ordering\\OrderFiles\\Webstaurant_Bakery_20250719.pdf'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\backend\logger\Logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 229, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 281, in _process_order_row
+    self._rename_new_order_file(store=store, vendor=row_vendor_name, date=row_date_formatted)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\backend\craftable_bot\CraftableBot.py", line 611, in _rename_new_order_file
+    original_file.rename(new_filepath)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Will\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 767, in rename
+    os.rename(self, target)
+    ~~~~~~~~~^^^^^^^^^^^^^^
+FileExistsError: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\andrew\\Desktop\\Andrew\\Projects\\IthacaBakery\\RandomStuff\\WorkBot\\main\\backend\\downloads\\Order.pdf' -> 'C:\\Users\\andrew\\Desktop\\Andrew\\Projects\\IthacaBakery\\RandomStuff\\WorkBot\\main\\backend\\ordering\\OrderFiles\\Webstaurant_Bakery_20250719.pdf'

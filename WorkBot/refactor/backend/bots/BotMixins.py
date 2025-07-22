@@ -16,7 +16,7 @@ class SeleniumBotMixin(ABC):
     @property
     def driver(self):
         if not self._driver_initialized:
-            from bots.craftable_bot.helpers import create_driver, create_options
+            from backend.bots.helpers import create_driver, create_options
             options                  = create_options(self.downloads_path)
             self._driver             = create_driver(options)
             self._driver_initialized = True

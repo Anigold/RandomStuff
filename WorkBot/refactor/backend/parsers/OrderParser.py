@@ -19,6 +19,7 @@ class OrderParser:
             item = OrderItem(sku, name, quantity, cost_per, total_cost)
             order.items.append(item)
         
+        wb.close()
         return order
 
     def to_excel_workbook(self, order: Order) -> 'Workbook':
@@ -31,5 +32,5 @@ class OrderParser:
 
         for item in order.items:
             ws.append([item.sku, item.name, item.quantity, item.cost_per, item.total_cost])
-
+        
         return wb
