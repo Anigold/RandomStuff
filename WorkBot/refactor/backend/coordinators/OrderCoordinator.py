@@ -1,8 +1,8 @@
-from storage.file.OrderFileHandler import OrderFileHandler
-from storage.database.OrderDatabaseHandler import OrderDatabaseHandler
-from parsers.OrderParser import OrderParser
-from models.Order import Order
-from exporters import get_exporter
+from backend.storage.file.OrderFileHandler import OrderFileHandler
+from backend.storage.database.OrderDatabaseHandler import OrderDatabaseHandler
+from backend.parsers.OrderParser import OrderParser
+from backend.models.Order import Order
+from backend.exporters import get_exporter
 
 class OrderCoordinator:
     def __init__(self):

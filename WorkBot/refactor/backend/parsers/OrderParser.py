@@ -1,5 +1,5 @@
-from models.Order import Order
-from models.OrderItem import OrderItem
+from backend.models.Order import Order
+from backend.models.OrderItem import OrderItem
 from openpyxl import load_workbook, Workbook
 from pathlib import Path
 

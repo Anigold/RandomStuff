@@ -38,8 +38,8 @@ def convert_date_format(date_str: str, input_format: str, output_format: str) ->
         Converts a date string from one format to another.
 
         Args:
-            date_str (str): The date string to be converted.
-            input_format (str): The format of the input date string (e.g., "%m/%d/%Y").
+            date_str (str):      The date string to be converted.
+            input_format (str):  The format of the input date string (e.g., "%m/%d/%Y").
             output_format (str): The desired output format (e.g., "%Y%m%d").
 
         Returns:

@@ -1,24 +1,33 @@
-import backend.config as config
-from backend.logger.Logger import Logger
+# import backend.config as config
+
+from backend.utils.logger import Logger
 
 ''' MANAGERS '''
-from backend.craftable_bot.CraftableBot import CraftableBot
-from backend.vendors.VendorManager import VendorManager
-from backend.stores.StoreManager import StoreManager
-from backend.ordering.OrderManager import OrderManager
-from backend.transferring.TransferManager import TransferManager
+from backend.bots.craftable_bot import CraftableBot
+from backend.coordinators.VendorCoordinator import VendorCoordinator
+from backend.coordinators.StoreCoordinator import StoreCoordinator
+from backend.coordinators import OrderCoordinator
+from backend.coordinators.TransferCoordinator import TransferCoordinator
 
 ''' OBJECTS '''
-from backend.ordering.Order import Order
-from backend.transferring.Transfer import Transfer, TransferItem
-from backend.emailer.Emailer import Emailer, Email
-from backend.emailer.Services.Gmail import GmailService
-from backend.emailer.Services.Outlook import OutlookService
+from backend.models.Order import Order
+from backend.models.Transfer import Transfer
+from backend.models.TransferItem import TransferItem
+
+from backend.utils.emailer.Emailer import Emailer, Email
+from backend.utils.emailer.services.Gmail import GmailService
+from backend.utils.emailer.services.Outlook import OutlookService
+
+# from backend.transferring.Transfer import Transfer, TransferItem
+# from backend.emailer.Emailer import Emailer, Email
+# from backend.emailer.Services.Gmail import GmailService
+# from backend.emailer.Services.Outlook import OutlookService
 
 '''  HELPERS '''
-from backend.craftable_bot.helpers import generate_craftablebot_args
-from backend.helpers.DatetimeFormattingHelper import string_to_datetime
-from backend.helpers.BotMixins import SeleniumBotMixin
+from backend.bots.craftable_bot.helpers import get_craftable_username_password
+from backend.utils.helpers import string_to_datetime
+
+from backend.bots.BotMixins import SeleniumBotMixin
 
 ''' STANDARD LIBRARY '''
 from datetime import datetime
@@ -32,14 +41,14 @@ class WorkBot:
     def __init__(self):
         self.logger.info('Initializing WorkBot...')
 
-        self.vendor_manager   = VendorManager()
-        self.order_manager    = OrderManager()
-        self.store_manager    = StoreManager(storage_file=None)
-        self.transfer_manager = TransferManager()
+        self.vendor_manager   = VendorCoordinator()
+        self.order_manager    = OrderCoordinator()
+        self.store_manager    = StoreCoordinator(storage_file=None)
+        self.transfer_manager = TransferCoordinator()
 
-        downloads_path, username, password = generate_craftablebot_args(config.get_full_path('downloads'))
+        username, password = get_craftable_username_password()
 
-        self.craft_bot = CraftableBot(downloads_path, username, password,
+        self.craft_bot = CraftableBot(username, password,
                                     order_manager=self.order_manager,
                                     transfer_manager=self.transfer_manager)
 
@@ -68,7 +77,7 @@ class WorkBot:
     def input_transfers(self):
         transfer_file_dir = self.transfer_manager.get_transfer_files_directory()
          
-        transfers = [TransferManager.create_transfer_from_excel(transfer_file) for transfer_file in transfer_file_dir.iterdir() if transfer_file.is_file()]
+        transfers = [TransferCoordinator.create_transfer_from_excel(transfer_file) for transfer_file in transfer_file_dir.iterdir() if transfer_file.is_file()]
 
         self.craft_bot.input_transfers(transfers)
 

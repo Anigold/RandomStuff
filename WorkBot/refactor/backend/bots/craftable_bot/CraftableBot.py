@@ -1,3 +1,10 @@
+from datetime import datetime
+from pathlib import Path
+import os
+import time
+
+from config import DOWNLOADS_PATH
+
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains 
@@ -6,28 +13,23 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.chrome.webdriver import WebDriver
-from backend.helpers.BotMixins import SeleniumBotMixin
-import time
+
 from pynput.keyboard import Key, Controller
-import os
-
-
 from openpyxl import Workbook, load_workbook
 
-from models.Item import Item
-from models.Order import Order
-from models.OrderItem import OrderItem
-from models.Transfer import Transfer
-from coordinators.OrderCoordinator import OrderCoordinator
-from coordinators.TransferCoordinator import TransferCoordinator
+from backend.models.Item import Item 
+from backend.models.Order import Order
+from backend.models.OrderItem import OrderItem
+from backend.models.Transfer import Transfer
 
+from backend.coordinators.OrderCoordinator import OrderCoordinator
+from backend.coordinators.TransferCoordinator import TransferCoordinator
 
-from datetime import datetime
+from backend.utils.logger import Logger
+from backend.utils.helpers import convert_date_format
 
-from pathlib import Path
+from backend.bots.BotMixins import SeleniumBotMixin
 
-from backend.logger.Logger import Logger
-from backend.helpers.DatetimeFormattingHelper import convert_date_format
 
 
 def temporary_login(func):
@@ -72,17 +74,18 @@ class CraftableBot(SeleniumBotMixin):
             'Collegetown': '14372',
     }
     
-    def __init__(self, downloads_path: str, username: str, password: str, 
+    def __init__(self, username: str, password: str, 
                  order_coordinator: OrderCoordinator = None, 
                  transfer_coordinator: TransferCoordinator = None):
         
-        super().__init__(downloads_path=downloads_path, username=username, password=password)
+        
+        super().__init__(DOWNLOADS_PATH, username=username, password=password)
 
-        self.order_manager    = order_coordinator or OrderCoordinator()
-        self.transfer_manager = transfer_coordinator or TransferCoordinator()
+        self.order_coordinator    = order_coordinator or OrderCoordinator()
+        self.transfer_coordinator = transfer_coordinator or TransferCoordinator()
 
         self.is_logged_in = False
-
+        
     # def __enter__(self):
     #     self.logger.info('Starting CraftableBot session.')
     #     self.login()
@@ -192,10 +195,10 @@ class CraftableBot(SeleniumBotMixin):
 
     ARGS
 
-    stores: a list of stores for which to retrieve orders.
-    vendors: a list of vendors to retrieve orders of. If none supplied, then all possible orders are retrieved.
+    stores:       a list of stores for which to retrieve orders.
+    vendors:      a list of vendors to retrieve orders of. If none supplied, then all possible orders are retrieved.
     download_pdf: a boolean of whether to download an accompanying PDF file.
-    update: a boolean of whether to overwrite currently saved order data.
+    update:       a boolean of whether to overwrite currently saved order data.
 
     RETURN
 
@@ -204,11 +207,13 @@ class CraftableBot(SeleniumBotMixin):
     Will scrape the Craftable order page for each store and selected vendors, download and generate the appropriate
     files, and save in the ORDER_FILES_PATH.
 
+    i. Assumes the bot is currrently logged in.
+
     '''
     @login_necessary
     @Logger.log_exceptions
     def download_orders(self, stores: list, vendors=list, download_pdf=True, update=True) -> None:
-
+       
         self.logger.info('Starting order download protocol.')
         for store in stores:
             
@@ -220,7 +225,7 @@ class CraftableBot(SeleniumBotMixin):
             table_rows = self._get_order_table_rows()
             if not table_rows:
                 self.logger.info(f'No more orders found for {store}. Moving to next store.')
-                break  # Exit while loop and move to the next store
+                break 
 
             for pos in range(len(table_rows)):
                 stale_reference_table_rows = self._get_order_table_rows() # Refresh to avoid stale references
@@ -255,7 +260,6 @@ class CraftableBot(SeleniumBotMixin):
 
         row_data[2].click()
         
-
         WebDriverWait(self.driver, 45).until(EC.element_to_be_clickable((By.TAG_NAME, 'table')))
         items = self._scrape_order()
 
@@ -293,6 +297,7 @@ class CraftableBot(SeleniumBotMixin):
                 return row
         return None
     
+
     @login_necessary
     @Logger.log_exceptions
     def delete_orders(self, stores: list[str], vendors: list[str] = None) -> None:
@@ -384,6 +389,7 @@ class CraftableBot(SeleniumBotMixin):
             time.sleep(5)
         except Exception as e:
             self.logger.error(f"Failed to confirm deletion: {e}")
+
 
     @classmethod
     @Logger.log_exceptions
@@ -593,19 +599,20 @@ class CraftableBot(SeleniumBotMixin):
 
             
         return
-            
+
+
     '''HELPER FUNCTIONS'''
 
     def _rename_new_order_file(self, store: str, vendor: str, date: str) -> None:
 
-        original_file = self.order_manager.get_downloads_directory() / 'Order.pdf'
+        original_file = self.order_coordinator.get_downloads_directory() / 'Order.pdf'
 
         if not original_file.exists():
             self.logger.warning(f'Expected file not found: {original_file}')
             return
         
-        new_filename = self.order_manager.generate_filename(store=store, vendor=vendor, date=date, file_extension='.pdf')
-        new_filepath = self.order_manager.get_order_files_directory() / new_filename
+        new_filename = self.order_coordinator.generate_filename(store=store, vendor=vendor, date=date, file_extension='.pdf')
+        new_filepath = self.order_coordinator.get_order_files_directory() / new_filename
         
         original_file.rename(new_filepath)
         return
@@ -667,9 +674,9 @@ class CraftableBot(SeleniumBotMixin):
     
     def _save_order_as_excel(self, item_data, store: str, vendor: str, date: str) -> None:
 
-        self.order_manager.save_order()
-        new_filename = self.order_manager.generate_filename(store=store, vendor=vendor, date=date, file_extension='.xlsx')
-        new_filepath = self.order_manager.get_order_files_directory() / new_filename
+        self.order_coordinator.save_order()
+        new_filename = self.order_coordinator.generate_filename(store=store, vendor=vendor, date=date, file_extension='.xlsx')
+        new_filepath = self.order_coordinator.get_order_files_directory() / new_filename
         
         self.logger.info(f'Saving order as Excel file: {new_filename}')
         order = Order(store, vendor, date, items=item_data)
@@ -693,7 +700,7 @@ class CraftableBot(SeleniumBotMixin):
 
         self.logger.info(f'[Order Update] Initiating update protocol for {store} for vendor: {vendor_name}, on {date_formatted}.')
 
-        preexisting_workbook_filename = self.order_manager.generate_filename(
+        preexisting_workbook_filename = self.order_coordinator.generate_filename(
             store=store, 
             vendor=vendor_name, 
             date=date_formatted, 
@@ -701,10 +708,10 @@ class CraftableBot(SeleniumBotMixin):
         )
         
         self.logger.info(f'[Order Update] Checking for pre-existing order file: {preexisting_workbook_filename}')
-        preexisting_workbook_path = self.order_manager.get_order_files_directory() / vendor_name / preexisting_workbook_filename
+        preexisting_workbook_path = self.order_coordinator.get_order_files_directory() / vendor_name / preexisting_workbook_filename
         preexisting_file_exists   = preexisting_workbook_path.exists()
         
-        if not self.order_manager.get_vendor_orders_directory(vendor_name): 
+        if not self.order_coordinator.get_vendor_orders_directory(vendor_name): 
             self.logger.info(f'[Order Update] No order directory found for vendor: {vendor_name}. Proceeding with new download.')
             return False
         if not preexisting_file_exists: 

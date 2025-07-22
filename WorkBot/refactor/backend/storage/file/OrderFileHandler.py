@@ -1,24 +1,21 @@
-# backend/ordering/storage/order_file_handler.py
-
-from ..config.paths import ORDER_FILES_DIR
-from storage.file.FileHandler import FileHandler
-from models.Order import Order
-from parsers.OrderParser import OrderParser
+from config.paths import ORDER_FILES_PATH
+from backend.storage.file.FileHandler import FileHandler
+from backend.models.Order import Order
+from backend.parsers.OrderParser import OrderParser
 from pathlib import Path
 import re
 from openpyxl import Workbook
 from typing import Any
-from exporters import get_exporter
+from backend.exporters import get_exporter
 
 class OrderFileHandler(FileHandler):
     file_pattern = re.compile(r"^(?P<vendor>.+?)_(?P<store>.+?)_(?P<date>\d{8})")
-    order_files_path = Path(ORDER_FILES_DIR)
+    order_files_path = Path(ORDER_FILES_PATH)
     
-    def __init__(self, base_dir=ORDER_FILES_DIR):
+    def __init__(self, base_dir=ORDER_FILES_PATH):
         super().__init__(base_dir)
         self.parser = OrderParser()
         
-
     def _generate_file_name(self, order: Order, format: str) -> str:
         ext = self.extension_map.get(format, 'xlsx')
         return f'{order.vendor}_{order.store}_{order.date}.{ext}'
@@ -30,7 +27,7 @@ class OrderFileHandler(FileHandler):
 
         file_name = self._generate_file_name(order, format)
 
-        self._write_data(format, file_data_to_save, ORDER_FILES_DIR / file_name)
+        self._write_data(format, file_data_to_save, ORDER_FILES_PATH / file_name)
 
     def _write_data(self, format: str, data: Any, file_path: Path) -> None:
         try:

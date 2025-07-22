@@ -1,5 +1,5 @@
-from backend.items.handlers.item_file_handler import ItemFileHandler
-from backend.items.models.item import Item
+from storage.file import ItemFileHandler
+from models.Item import Item
 from typing import Dict, List
 
 class ItemCoordinator:
@@ -26,3 +26,7 @@ class ItemCoordinator:
 
     def load_items(self) -> None:
         self.items = self.file_handler.load_items()
+
+    def get_downloads_path(self) -> str:
+        from config import DOWNLOADS_PATH
+        return DOWNLOADS_PATH

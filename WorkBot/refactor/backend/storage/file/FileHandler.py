@@ -3,16 +3,19 @@ import json
 from typing import Union, Any
 import os
 from openpyxl import Workbook
+from config.paths import DOWNLOADS_PATH
 
 class FileHandler:
     def __init__(self, base_dir: Union[str, Path]):
         self.base_dir = Path(base_dir)
         self.base_dir.mkdir(parents=True, exist_ok=True)
+        self.downloads_path = Path(DOWNLOADS_PATH)
+
         self.extension_map = {
             'excel': 'xlsx',
-            'csv': 'csv',
-            'json': 'json',
-            'text': 'txt'
+            'csv':   'csv',
+            'json':  'json',
+            'text':  'txt'
         }
         self.save_strategies = {
             'excel': self._save_excel,
@@ -52,3 +55,5 @@ class FileHandler:
     def _save_csv(self, csv_string: str, file_path: Path) -> None:
         with open(file_path, 'w') as f:
             f.write(csv_string)
+
+    
