@@ -1,5 +1,5 @@
-from .DatabaseHandler import DatabaseHandler
-from backend.models.Order import Order
+from .database_handler import DatabaseHandler
+from backend.models.order import Order
 
 class OrderDatabaseHandler(DatabaseHandler):
     # def upsert_order(self, order: Order):

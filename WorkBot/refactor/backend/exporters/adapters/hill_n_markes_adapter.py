@@ -1,6 +1,4 @@
-# backend/exporters/adapters/hillnmarkes.py
-
-from backend.exporters.adapters.Adapter import ExportAdapter
+from WorkBot.refactor.backend.exporters.adapters.exporter_adapter import ExportAdapter
 
 @ExportAdapter.register("Hill & Markes")
 class HillNMarkesAdapter(ExportAdapter):

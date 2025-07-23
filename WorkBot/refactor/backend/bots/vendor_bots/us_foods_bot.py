@@ -1,4 +1,4 @@
-from .VendorBot import VendorBot, SeleniumBotMixin, PricingBotMixin, OTPMixin
+from .vendor_bot import VendorBot, SeleniumBotMixin, PricingBotMixin, OTPMixin
 import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select

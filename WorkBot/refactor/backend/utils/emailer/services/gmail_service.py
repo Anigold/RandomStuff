@@ -6,7 +6,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 import pickle
 import os
-from .Service import Service, Email
+from .service import Service, Email
 from config.paths import CREDENTIALS_DIR
 
 GOOGLE_API_CREDS_DIR = CREDENTIALS_DIR / 'GoogleAPI'

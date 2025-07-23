@@ -1,7 +1,7 @@
-from backend.storage.database.DatabaseHandler import DatabaseHandler
-from backend.models.Item import Item
-from backend.models.VendorItemInfo import VendorItemInfo
-from backend.models.StoreItemInfo import StoreItemInfo
+from WorkBot.refactor.backend.storage.database.database_handler import DatabaseHandler
+from backend.models.item import Item
+from WorkBot.refactor.backend.models.vendor_item_info import VendorItemInfo
+from WorkBot.refactor.backend.models.store_item_info import StoreItemInfo
 from typing import Dict, List
 
 

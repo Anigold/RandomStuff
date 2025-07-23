@@ -1,5 +1,5 @@
-from .services.Service import Service, Email
-from .services.Gmail import GmailService
+from .services.service import Service, Email
+from .services.gmail_service import GmailService
 from pprint import pprint
 
 class Emailer:

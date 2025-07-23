@@ -1,9 +1,7 @@
-# backend/items/storage/item_file_handler.py
-
 from typing import Dict
-from backend.items.models.item import Item, VendorItemInfo, StoreItemInfo
+from backend.models.item import Item, VendorItemInfo, StoreItemInfo
 from config.paths import ITEMS_DATA_FILE
-from backend.storage.file_handler import FileHandler
+from backend.storage.file.file_handler import FileHandler
 
 class ItemFileHandler(FileHandler):
     def __init__(self, file_path=ITEMS_DATA_FILE):

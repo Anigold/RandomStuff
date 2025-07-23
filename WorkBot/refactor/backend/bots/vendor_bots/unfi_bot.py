@@ -1,4 +1,4 @@
-from .VendorBot import VendorBot, SeleniumBotMixin
+from .vendor_bot import VendorBot, SeleniumBotMixin
 from csv import writer
 class UNFIBot(VendorBot, SeleniumBotMixin):
 

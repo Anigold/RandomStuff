@@ -19,16 +19,16 @@ from openpyxl import Workbook, load_workbook
 
 from backend.models.Item import Item 
 from backend.models.Order import Order
-from backend.models.OrderItem import OrderItem
+from WorkBot.refactor.backend.models.order_item import OrderItem
 from backend.models.Transfer import Transfer
 
-from backend.coordinators.OrderCoordinator import OrderCoordinator
-from backend.coordinators.TransferCoordinator import TransferCoordinator
+from WorkBot.refactor.backend.coordinators.order_coordinator import OrderCoordinator
+from WorkBot.refactor.backend.coordinators.transfer_coordinator import TransferCoordinator
 
 from backend.utils.logger import Logger
 from backend.utils.helpers import convert_date_format
 
-from backend.bots.BotMixins import SeleniumBotMixin
+from WorkBot.refactor.backend.bots.bot_mixins import SeleniumBotMixin
 
 
 

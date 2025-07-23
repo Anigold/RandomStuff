@@ -1,9 +1,9 @@
 # Eager-load known adapters so they're registered at import time
-from .HillNMarkesExporter import HillNMarkesAdapter
+from .hill_n_markes_adapter import HillNMarkesAdapter
 # Add more:
 # from . import sysco
 # from . import dutchvalley
 
-from .Adapter import ExportAdapter
+from .exporter_adapter import ExportAdapter
 
 __all__ = ["ExportAdapter"]

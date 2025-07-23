@@ -1,8 +1,10 @@
-from backend.storage.file.OrderFileHandler import OrderFileHandler
-from backend.storage.file.DownloadHandler import DownloadHandler
-from backend.storage.database.OrderDatabaseHandler import OrderDatabaseHandler
-from backend.parsers.OrderParser import OrderParser
-from backend.models.Order import Order
+from WorkBot.refactor.backend.storage.file.order_file_handler import OrderFileHandler
+from WorkBot.refactor.backend.storage.file.download_handler import DownloadHandler
+from WorkBot.refactor.backend.storage.database.order_database_handler import OrderDatabaseHandler
+from backend.exporters.exporter import Exporter
+from WorkBot.refactor.backend.exporters.adapters.exporter_adapter import ExportAdapter
+from WorkBot.refactor.backend.parsers.order_parser import OrderParser
+from backend.models.order import Order
 from backend.utils.logger import Logger
 from pathlib import Path
 
@@ -58,7 +60,6 @@ class OrderCoordinator:
 
         return False
 
-
     def _orders_are_equal(self, order1: Order, order2: Order) -> bool:
         """
         Compares two Order objects by metadata and item content.
@@ -101,3 +102,14 @@ class OrderCoordinator:
             timeout=10
         )
 
+    def generate_vendor_upload_file(self, order: Order, format: str = 'excel') -> None:
+        
+        exporter = Exporter.get_exporter(Order, format)
+        adapter = ExportAdapter.get_adapter(order.vendor)
+
+        file_data = exporter.export(order, adapter=adapter)
+
+        output_path = self._build_upload_file_path(order, format)
+        self.file_handler._write_data(format, file_data, output_path)
+
+        return output_path

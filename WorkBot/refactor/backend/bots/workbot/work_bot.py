@@ -3,20 +3,20 @@
 from backend.utils.logger import Logger
 
 ''' MANAGERS '''
-from backend.bots.craftable_bot.CraftableBot import CraftableBot
-from backend.coordinators.VendorCoordinator import VendorCoordinator
-from backend.coordinators.StoreCoordinator import StoreCoordinator
-from backend.coordinators.OrderCoordinator import OrderCoordinator
-from backend.coordinators.TransferCoordinator import TransferCoordinator
+from WorkBot.refactor.backend.bots.craftable_bot.craftable_bot import CraftableBot
+from WorkBot.refactor.backend.coordinators.vendor_coordinator import VendorCoordinator
+from WorkBot.refactor.backend.coordinators.store_coordinator import StoreCoordinator
+from WorkBot.refactor.backend.coordinators.order_coordinator import OrderCoordinator
+from WorkBot.refactor.backend.coordinators.transfer_coordinator import TransferCoordinator
 
 ''' OBJECTS '''
-from backend.models.Order import Order
-from backend.models.Transfer import Transfer
-from backend.models.TransferItem import TransferItem
+from backend.models.order import Order
+from backend.models.transfer import Transfer
+from WorkBot.refactor.backend.models.transfer_item import TransferItem
 
-from backend.utils.emailer.Emailer import Emailer, Email
-from backend.utils.emailer.services.Gmail import GmailService
-from backend.utils.emailer.services.Outlook import OutlookService
+from backend.utils.emailer.emailer import Emailer, Email
+from WorkBot.refactor.backend.utils.emailer.services.gmail_service import GmailService
+from WorkBot.refactor.backend.utils.emailer.services.outlook_service import OutlookService
 
 # from backend.transferring.Transfer import Transfer, TransferItem
 # from backend.emailer.Emailer import Emailer, Email
@@ -27,7 +27,7 @@ from backend.utils.emailer.services.Outlook import OutlookService
 from backend.bots.craftable_bot.helpers import get_craftable_username_password
 from backend.utils.helpers import string_to_datetime
 
-from backend.bots.BotMixins import SeleniumBotMixin
+from WorkBot.refactor.backend.bots.bot_mixins import SeleniumBotMixin
 
 ''' STANDARD LIBRARY '''
 from datetime import datetime

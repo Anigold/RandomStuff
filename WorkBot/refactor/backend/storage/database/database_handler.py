@@ -1,5 +1,3 @@
-# backend/storage/database_handler.py
-
 import sqlite3
 from contextlib import contextmanager
 from typing import Any, Generator, Optional

@@ -1,4 +1,4 @@
-from .Service import Service, Email
+from .service import Service, Email
 
 try:
     import win32com.client

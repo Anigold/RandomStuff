@@ -1,4 +1,4 @@
-from .VendorBot import VendorBot, SeleniumBotMixin, PricingBotMixin
+from .vendor_bot import VendorBot, SeleniumBotMixin, PricingBotMixin
 import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -10,7 +10,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from csv import writer
 from datetime import date
 from pprint import pprint
-from ..craftable_bot import CraftableBot
+from ..craftable_bot import craftable_bot
 
 class HoffmireFarmsBot(VendorBot, SeleniumBotMixin):
 
@@ -29,7 +29,7 @@ class HoffmireFarmsBot(VendorBot, SeleniumBotMixin):
         }
 
     def login(self):
-        with CraftableBot(self.driver, self.username, self.password) as craft_bot:
+        with craftable_bot(self.driver, self.username, self.password) as craft_bot:
             craft_bot.login()
 
     def retrieve_pricing_sheet(self, guide_name: str) -> None:

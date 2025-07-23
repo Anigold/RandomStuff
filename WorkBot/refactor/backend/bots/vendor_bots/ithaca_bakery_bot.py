@@ -1,4 +1,4 @@
-from .VendorBot import VendorBot
+from .vendor_bot import VendorBot
 import os
 from pprint import pprint
 from openpyxl import Workbook, load_workbook

@@ -1,4 +1,4 @@
-from .VendorBot import VendorBot, SeleniumBotMixin
+from .vendor_bot import VendorBot, SeleniumBotMixin
 from selenium.webdriver.common.by import By
 import time
 from pprint import pprint

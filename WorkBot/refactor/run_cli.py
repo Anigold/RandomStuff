@@ -1,4 +1,4 @@
-from cli.WorkBotCLI import WorkBotCLI
+from WorkBot.refactor.cli.workbot_cli import WorkBotCLI
 import subprocess
 import sys
 import platform

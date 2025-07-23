@@ -1,9 +1,9 @@
-from storage.file import ItemFileHandler
-from models.Item import Item
+from WorkBot.refactor.backend.storage.file import item_file_handler
+from backend.models.item import Item
 from typing import Dict, List
 
 class ItemCoordinator:
-    def __init__(self, file_handler: ItemFileHandler):
+    def __init__(self, file_handler: item_file_handler):
         self.file_handler = file_handler
         self.items: Dict[str, Item] = {}
 

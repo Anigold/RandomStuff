@@ -2,8 +2,8 @@ import uuid
 from typing import Dict, List, Optional
 from dataclasses import dataclass, field
 
-from .VendorItemInfo import VendorItemInfo
-from .StoreItemInfo import StoreItemInfo
+from .vendor_item_info import VendorItemInfo
+from .store_item_info import StoreItemInfo
 
 
 @dataclass
