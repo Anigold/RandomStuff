@@ -1,4 +1,4 @@
-from backend.models.Transfer import Transfer
+from backend.models.transfer import Transfer
 
 class TransferCoordinator:
     def __init__(self, transfer_manager = None, order_manager = None):

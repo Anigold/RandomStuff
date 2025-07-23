@@ -1,5 +1,5 @@
 from backend.models.order import Order
-from WorkBot.refactor.backend.models.order_item import OrderItem
+from backend.models.order_item import OrderItem
 from pathlib import Path
 
 class ExcelOrderParser:

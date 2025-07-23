@@ -1,12 +1,12 @@
 from config.paths import ORDER_FILES_PATH
-from WorkBot.refactor.backend.storage.file.file_handler import FileHandler
+from backend.storage.file.file_handler import FileHandler
 from backend.models.order import Order
-from WorkBot.refactor.backend.parsers.order_parser import OrderParser
+from backend.parsers.order_parser import OrderParser
 from pathlib import Path
 import re
 from openpyxl import Workbook
 from typing import Any
-from WorkBot.refactor.backend.exporters.excel_exporter import Exporter
+from backend.exporters.excel_exporter import Exporter
 from backend.storage.file.helpers.filename_strategies.order_filename_strategy import OrderFilenameStrategy
 from backend.utils.logger import Logger
 

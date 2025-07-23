@@ -1,4 +1,4 @@
-from WorkBot.refactor.backend.storage.file import item_file_handler
+from backend.storage.file import item_file_handler
 from backend.models.item import Item
 from typing import Dict, List
 

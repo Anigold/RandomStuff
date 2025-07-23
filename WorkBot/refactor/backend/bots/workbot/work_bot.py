@@ -3,20 +3,20 @@
 from backend.utils.logger import Logger
 
 ''' MANAGERS '''
-from WorkBot.refactor.backend.bots.craftable_bot.craftable_bot import CraftableBot
-from WorkBot.refactor.backend.coordinators.vendor_coordinator import VendorCoordinator
-from WorkBot.refactor.backend.coordinators.store_coordinator import StoreCoordinator
-from WorkBot.refactor.backend.coordinators.order_coordinator import OrderCoordinator
-from WorkBot.refactor.backend.coordinators.transfer_coordinator import TransferCoordinator
+from backend.bots.craftable_bot.craftable_bot import CraftableBot
+from backend.coordinators.vendor_coordinator import VendorCoordinator
+from backend.coordinators.store_coordinator import StoreCoordinator
+from backend.coordinators.order_coordinator import OrderCoordinator
+from backend.coordinators.transfer_coordinator import TransferCoordinator
 
 ''' OBJECTS '''
 from backend.models.order import Order
 from backend.models.transfer import Transfer
-from WorkBot.refactor.backend.models.transfer_item import TransferItem
+from backend.models.transfer_item import TransferItem
 
 from backend.utils.emailer.emailer import Emailer, Email
-from WorkBot.refactor.backend.utils.emailer.services.gmail_service import GmailService
-from WorkBot.refactor.backend.utils.emailer.services.outlook_service import OutlookService
+from backend.utils.emailer.services.gmail_service import GmailService
+from backend.utils.emailer.services.outlook_service import OutlookService
 
 # from backend.transferring.Transfer import Transfer, TransferItem
 # from backend.emailer.Emailer import Emailer, Email
@@ -27,7 +27,7 @@ from WorkBot.refactor.backend.utils.emailer.services.outlook_service import Outl
 from backend.bots.craftable_bot.helpers import get_craftable_username_password
 from backend.utils.helpers import string_to_datetime
 
-from WorkBot.refactor.backend.bots.bot_mixins import SeleniumBotMixin
+from backend.bots.bot_mixins import SeleniumBotMixin
 
 ''' STANDARD LIBRARY '''
 from datetime import datetime

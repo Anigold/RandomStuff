@@ -17,18 +17,18 @@ from selenium.webdriver.chrome.webdriver import WebDriver
 from pynput.keyboard import Key, Controller
 from openpyxl import Workbook, load_workbook
 
-from backend.models.Item import Item 
-from backend.models.Order import Order
-from WorkBot.refactor.backend.models.order_item import OrderItem
-from backend.models.Transfer import Transfer
+from backend.models.item import Item 
+from backend.models.order import Order
+from backend.models.order_item import OrderItem
+from backend.models.transfer import Transfer
 
-from WorkBot.refactor.backend.coordinators.order_coordinator import OrderCoordinator
-from WorkBot.refactor.backend.coordinators.transfer_coordinator import TransferCoordinator
+from backend.coordinators.order_coordinator import OrderCoordinator
+from backend.coordinators.transfer_coordinator import TransferCoordinator
 
 from backend.utils.logger import Logger
 from backend.utils.helpers import convert_date_format
 
-from WorkBot.refactor.backend.bots.bot_mixins import SeleniumBotMixin
+from backend.bots.bot_mixins import SeleniumBotMixin
 
 
 

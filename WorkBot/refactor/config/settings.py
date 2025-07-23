@@ -1,5 +1,3 @@
-# backend/config/settings.py
-
 from config.secrets.env_loader import get_env_var
 
 # Craftable Credentials

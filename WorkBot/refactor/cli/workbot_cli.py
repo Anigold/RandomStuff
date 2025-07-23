@@ -1,5 +1,5 @@
 from backend.utils.logger import Logger
-from WorkBot.refactor.backend.bots.workbot.work_bot import WorkBot
+from backend.bots.workbot.work_bot import WorkBot
 
 
 # from backend.ordering.OrderManager import OrderManager

@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 from config.paths import STORES_DATA_FILE
 from pprint import pprint
-from backend.models.Store import Store
+from backend.models.store import Store
 class StoreCoordinator:
 
     def __init__(self, storage_file: Path = None):
