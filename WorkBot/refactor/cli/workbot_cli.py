@@ -359,7 +359,10 @@ class WorkBotCLI(CLI):
 # GENERATE VENDOR UPLOAD FILES
     def args_generate_vendor_upload_files(self):
         parser = argparse.ArgumentParser(prog='generate_vendor_upload_files', description='Generate a vendor-specific upload file.')
+        parser.add_argument('--stores', nargs='+', help='List of store names (default: all).')       
         parser.add_argument('--vendors', nargs='+', help='List of vendors (default: all).')
+        parser.add_argument('--start_date', help='Start of date range for lookup (yyyy-mm-dd)')
+        parser.add_argument('--end_date', help='End of date range for lookup (yyyy-mm-dd)')
         return parser
     
     def cmd_generate_vendor_upload_files(self, args):
@@ -367,13 +370,13 @@ class WorkBotCLI(CLI):
         try:
             parsed_args = parser.parse_args(args)
 
-            for vendor in parsed_args.vendors:
-                vendor_order_paths = self.workbot.order_manager.get_vendor_orders(vendor)
-
-                orders = [OrderManager.create_order_from_excel(vendor_order_path) for vendor_order_path in vendor_order_paths]
-
-                self.workbot.generate_vendor_upload_files(orders)
-
+            paths = self.workbot.generate_vendor_upload_files(
+                stores=parsed_args.stores,
+                vendors=parsed_args.vendors,
+                start_date=parsed_args.start_date,
+                end_date=parsed_args.end_date
+            )
+            print(paths)
         except SystemExit:
             pass
 

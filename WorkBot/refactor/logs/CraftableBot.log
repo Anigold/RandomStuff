@@ -910,3 +910,795 @@ PermissionError: [WinError 32] The process cannot access the file because it is 
 2025-07-22 12:04:56,759 - INFO - CraftableBot - WebDriver session closed.
 2025-07-22 15:32:59,934 - INFO - CraftableBot - Closing WebDriver session.
 2025-07-22 15:33:04,188 - INFO - CraftableBot - WebDriver session closed.
+2025-07-23 06:23:33,256 - INFO - CraftableBot - Logging into Craftable.
+2025-07-23 06:23:45,091 - INFO - CraftableBot - Login successful.
+2025-07-23 06:23:45,092 - INFO - CraftableBot - Starting order download protocol.
+2025-07-23 06:23:45,092 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-23 06:23:51,591 - WARNING - CraftableBot - Failed to retrieve order table: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//tbody"}
+  (Session info: chrome=138.0.7204.158); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x0xd21af3+62339]
+	GetHandleVerifier [0x0xd21b34+62404]
+	(No symbol) [0x0xb62123]
+	(No symbol) [0x0xbaa86e]
+	(No symbol) [0x0xbaac0b]
+	(No symbol) [0x0xbf2f72]
+	(No symbol) [0x0xbcf404]
+	(No symbol) [0x0xbf07a3]
+	(No symbol) [0x0xbcf1b6]
+	(No symbol) [0x0xb9e7a2]
+	(No symbol) [0x0xb9f644]
+	GetHandleVerifier [0x0xf96683+2637587]
+	GetHandleVerifier [0x0xf91a8a+2618138]
+	GetHandleVerifier [0x0xd4856a+220666]
+	GetHandleVerifier [0x0xd38998+156200]
+	GetHandleVerifier [0x0xd3f12d+182717]
+	GetHandleVerifier [0x0xd29a38+94920]
+	GetHandleVerifier [0x0xd29bc2+95314]
+	GetHandleVerifier [0x0xd14d0a+9626]
+	BaseThreadInitThunk [0x0x775bfcc9+25]
+	RtlGetAppContainerNamedObjectPath [0x0x77cd82ae+286]
+	RtlGetAppContainerNamedObjectPath [0x0x77cd827e+238]
+
+2025-07-23 06:23:51,592 - INFO - CraftableBot - No more orders found for Bakery. Moving to next store.
+2025-07-23 06:23:51,592 - INFO - CraftableBot - Order download complete.
+2025-07-23 06:26:05,288 - INFO - CraftableBot - Closing WebDriver session.
+2025-07-23 06:26:05,352 - INFO - CraftableBot - WebDriver session closed.
+2025-07-23 06:26:30,864 - INFO - CraftableBot - Logging into Craftable.
+2025-07-23 06:26:41,479 - INFO - CraftableBot - Login successful.
+2025-07-23 06:26:41,479 - INFO - CraftableBot - Starting order download protocol.
+2025-07-23 06:26:41,479 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-23 06:26:48,147 - INFO - CraftableBot - Retrieving order for UNFI (07/19/2025).
+2025-07-23 06:26:50,670 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / UNFI / 20250719.
+2025-07-23 06:26:50,691 - INFO - CraftableBot - Order for UNFI is up-to-date. Skipping.
+2025-07-23 06:26:52,761 - INFO - CraftableBot - Retrieving order for Webstaurant (07/19/2025).
+2025-07-23 06:26:54,559 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Webstaurant / 20250719.
+2025-07-23 06:26:54,577 - INFO - CraftableBot - Order for Webstaurant is up-to-date. Skipping.
+2025-07-23 06:26:56,638 - INFO - CraftableBot - Retrieving order for BJ's (07/19/2025).
+2025-07-23 06:26:57,837 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / BJ's / 20250719.
+2025-07-23 06:26:57,854 - INFO - CraftableBot - Saving order for BJ's.
+2025-07-23 06:27:02,255 - INFO - CraftableBot - Retrieving order for Sysco (07/19/2025).
+2025-07-23 06:27:05,103 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Sysco / 20250719.
+2025-07-23 06:27:05,124 - INFO - CraftableBot - Order for Sysco is up-to-date. Skipping.
+2025-07-23 06:27:07,192 - INFO - CraftableBot - Retrieving order for FingerLakes Farms (07/19/2025).
+2025-07-23 06:27:08,982 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / FingerLakes Farms / 20250719.
+2025-07-23 06:27:09,004 - INFO - CraftableBot - Order for FingerLakes Farms is up-to-date. Skipping.
+2025-07-23 06:27:11,066 - INFO - CraftableBot - Retrieving order for Hillcrest Dairy (07/19/2025).
+2025-07-23 06:27:12,531 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Hillcrest Dairy / 20250719.
+2025-07-23 06:27:12,550 - INFO - CraftableBot - Order for Hillcrest Dairy is up-to-date. Skipping.
+2025-07-23 06:27:14,612 - INFO - CraftableBot - Retrieving order for Performance Food (07/19/2025).
+2025-07-23 06:27:17,349 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Performance Food / 20250719.
+2025-07-23 06:27:17,368 - INFO - CraftableBot - Order for Performance Food is up-to-date. Skipping.
+2025-07-23 06:27:19,435 - INFO - CraftableBot - Retrieving order for US Foods (07/20/2025).
+2025-07-23 06:27:22,284 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / US Foods / 20250720.
+2025-07-23 06:27:22,303 - INFO - CraftableBot - Order for US Foods is up-to-date. Skipping.
+2025-07-23 06:27:24,368 - INFO - CraftableBot - Retrieving order for Keck's Food Service (07/20/2025).
+2025-07-23 06:27:25,871 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Keck's Food Service / 20250720.
+2025-07-23 06:27:25,888 - INFO - CraftableBot - Order for Keck's Food Service is up-to-date. Skipping.
+2025-07-23 06:27:27,948 - INFO - CraftableBot - Retrieving order for Jade Leaf Matcha (07/20/2025).
+2025-07-23 06:27:29,111 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Jade Leaf Matcha / 20250720.
+2025-07-23 06:27:29,128 - INFO - CraftableBot - Order for Jade Leaf Matcha is up-to-date. Skipping.
+2025-07-23 06:27:31,184 - INFO - CraftableBot - Retrieving order for Equal Exchange (07/20/2025).
+2025-07-23 06:27:32,780 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Equal Exchange / 20250720.
+2025-07-23 06:27:32,797 - INFO - CraftableBot - Order for Equal Exchange is up-to-date. Skipping.
+2025-07-23 06:27:34,860 - INFO - CraftableBot - Retrieving order for Copper Horse Coffee (07/20/2025).
+2025-07-23 06:27:36,196 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Copper Horse Coffee / 20250720.
+2025-07-23 06:27:36,213 - INFO - CraftableBot - Saving order for Copper Horse Coffee.
+2025-07-23 06:27:40,594 - INFO - CraftableBot - Retrieving order for Eurocafe Imports (07/20/2025).
+2025-07-23 06:27:41,795 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Eurocafe Imports / 20250720.
+2025-07-23 06:27:41,815 - INFO - CraftableBot - Order for Eurocafe Imports is up-to-date. Skipping.
+2025-07-23 06:27:43,874 - INFO - CraftableBot - Retrieving order for Coca-Cola (07/20/2025).
+2025-07-23 06:27:45,677 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Coca-Cola / 20250720.
+2025-07-23 06:27:45,695 - INFO - CraftableBot - Order for Coca-Cola is up-to-date. Skipping.
+2025-07-23 06:27:47,759 - INFO - CraftableBot - Retrieving order for Regional Distributors, Inc. (07/21/2025).
+2025-07-23 06:27:49,504 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Regional Distributors, Inc. / 20250721.
+2025-07-23 06:27:49,522 - INFO - CraftableBot - Order for Regional Distributors, Inc. is up-to-date. Skipping.
+2025-07-23 06:27:51,582 - INFO - CraftableBot - Retrieving order for Hill & Markes (07/21/2025).
+2025-07-23 06:27:53,893 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Hill & Markes / 20250721.
+2025-07-23 06:27:53,915 - INFO - CraftableBot - Order for Hill & Markes is up-to-date. Skipping.
+2025-07-23 06:27:55,977 - INFO - CraftableBot - Retrieving order for Hillcrest Foods (07/21/2025).
+2025-07-23 06:27:57,912 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Hillcrest Foods / 20250721.
+2025-07-23 06:27:57,930 - INFO - CraftableBot - Order for Hillcrest Foods is up-to-date. Skipping.
+2025-07-23 06:27:59,991 - INFO - CraftableBot - Retrieving order for Lentz (07/21/2025).
+2025-07-23 06:28:01,513 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Lentz / 20250721.
+2025-07-23 06:28:01,531 - INFO - CraftableBot - Order for Lentz is up-to-date. Skipping.
+2025-07-23 06:28:03,590 - INFO - CraftableBot - Retrieving order for BALKAN BEVERAGE LLC (07/21/2025).
+2025-07-23 06:28:04,887 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / BALKAN BEVERAGE LLC / 20250721.
+2025-07-23 06:28:04,904 - INFO - CraftableBot - Order for BALKAN BEVERAGE LLC is up-to-date. Skipping.
+2025-07-23 06:28:06,963 - INFO - CraftableBot - Retrieving order for A.L. George (07/21/2025).
+2025-07-23 06:28:08,353 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / A.L. George / 20250721.
+2025-07-23 06:28:08,370 - INFO - CraftableBot - Order for A.L. George is up-to-date. Skipping.
+2025-07-23 06:28:10,428 - INFO - CraftableBot - Retrieving order for ACE ENDICO (07/21/2025).
+2025-07-23 06:28:11,587 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / ACE ENDICO / 20250721.
+2025-07-23 06:28:11,606 - INFO - CraftableBot - Order for ACE ENDICO is up-to-date. Skipping.
+2025-07-23 06:28:13,665 - INFO - CraftableBot - Retrieving order for Dawn (07/21/2025).
+2025-07-23 06:28:14,873 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Dawn / 20250721.
+2025-07-23 06:28:14,891 - INFO - CraftableBot - Order for Dawn is up-to-date. Skipping.
+2025-07-23 06:28:16,955 - INFO - CraftableBot - Retrieving order for Side Hill Acres (07/21/2025).
+2025-07-23 06:28:18,116 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Side Hill Acres / 20250721.
+2025-07-23 06:28:18,133 - INFO - CraftableBot - Order for Side Hill Acres is up-to-date. Skipping.
+2025-07-23 06:28:20,193 - INFO - CraftableBot - Retrieving order for Paper Rolls .com (07/22/2025).
+2025-07-23 06:28:21,426 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Paper Rolls .com / 20250722.
+2025-07-23 06:28:21,445 - INFO - CraftableBot - Saving order for Paper Rolls .com.
+2025-07-23 06:28:25,828 - INFO - CraftableBot - Retrieving order for Johnston Paper (07/22/2025).
+2025-07-23 06:28:27,215 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Johnston Paper / 20250722.
+2025-07-23 06:28:27,233 - INFO - CraftableBot - Order for Johnston Paper is up-to-date. Skipping.
+2025-07-23 06:28:29,293 - INFO - CraftableBot - Retrieving order for Peters Supply (07/22/2025).
+2025-07-23 06:28:30,706 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Peters Supply / 20250722.
+2025-07-23 06:28:30,723 - INFO - CraftableBot - Order for Peters Supply is up-to-date. Skipping.
+2025-07-23 06:28:32,786 - INFO - CraftableBot - Retrieving order for SANICO (07/22/2025).
+2025-07-23 06:28:34,001 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / SANICO / 20250722.
+2025-07-23 06:28:34,018 - INFO - CraftableBot - Order for SANICO is up-to-date. Skipping.
+2025-07-23 06:28:36,038 - INFO - CraftableBot - Accessing order page for Easthill.
+2025-07-23 06:28:42,548 - INFO - CraftableBot - Retrieving order for Equal Exchange (07/17/2025).
+2025-07-23 06:28:43,903 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Equal Exchange / 20250717.
+2025-07-23 06:28:43,920 - INFO - CraftableBot - Order for Equal Exchange is up-to-date. Skipping.
+2025-07-23 06:28:45,982 - INFO - CraftableBot - Retrieving order for Performance Food (07/17/2025).
+2025-07-23 06:28:47,908 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Performance Food / 20250717.
+2025-07-23 06:28:47,926 - INFO - CraftableBot - Order for Performance Food is up-to-date. Skipping.
+2025-07-23 06:28:49,988 - INFO - CraftableBot - Retrieving order for Sysco (07/17/2025).
+2025-07-23 06:28:52,108 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Sysco / 20250717.
+2025-07-23 06:28:52,127 - INFO - CraftableBot - Order for Sysco is up-to-date. Skipping.
+2025-07-23 06:28:54,191 - INFO - CraftableBot - Retrieving order for Peters Supply (07/17/2025).
+2025-07-23 06:28:55,483 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Peters Supply / 20250717.
+2025-07-23 06:28:55,500 - INFO - CraftableBot - Order for Peters Supply is up-to-date. Skipping.
+2025-07-23 06:28:57,558 - INFO - CraftableBot - Retrieving order for Ithaca Bakery (07/17/2025).
+2025-07-23 06:29:01,006 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Ithaca Bakery / 20250717.
+2025-07-23 06:29:01,029 - INFO - CraftableBot - Saving order for Ithaca Bakery.
+2025-07-23 06:29:05,418 - INFO - CraftableBot - Retrieving order for Regional Distributors, Inc. (07/17/2025).
+2025-07-23 06:29:06,909 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Regional Distributors, Inc. / 20250717.
+2025-07-23 06:29:06,927 - INFO - CraftableBot - Order for Regional Distributors, Inc. is up-to-date. Skipping.
+2025-07-23 06:29:08,987 - INFO - CraftableBot - Retrieving order for Bo's Bones (07/17/2025).
+2025-07-23 06:29:10,239 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Bo's Bones / 20250717.
+2025-07-23 06:29:10,256 - INFO - CraftableBot - Saving order for Bo's Bones.
+2025-07-23 06:29:14,641 - INFO - CraftableBot - Retrieving order for Copper Horse Coffee (07/17/2025).
+2025-07-23 06:29:16,115 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Copper Horse Coffee / 20250717.
+2025-07-23 06:29:16,135 - INFO - CraftableBot - Saving order for Copper Horse Coffee.
+2025-07-23 06:29:20,520 - INFO - CraftableBot - Retrieving order for Hill & Markes (07/17/2025).
+2025-07-23 06:29:21,924 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Hill & Markes / 20250717.
+2025-07-23 06:29:21,941 - INFO - CraftableBot - Order for Hill & Markes is up-to-date. Skipping.
+2025-07-23 06:29:24,002 - INFO - CraftableBot - Retrieving order for US Foods (07/17/2025).
+2025-07-23 06:29:25,957 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / US Foods / 20250717.
+2025-07-23 06:29:25,975 - INFO - CraftableBot - Order for US Foods is up-to-date. Skipping.
+2025-07-23 06:29:28,035 - INFO - CraftableBot - Retrieving order for Hillcrest Dairy (07/17/2025).
+2025-07-23 06:29:29,398 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Hillcrest Dairy / 20250717.
+2025-07-23 06:29:29,416 - INFO - CraftableBot - Order for Hillcrest Dairy is up-to-date. Skipping.
+2025-07-23 06:29:31,473 - INFO - CraftableBot - Retrieving order for FingerLakes Farms (07/17/2025).
+2025-07-23 06:29:32,960 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / FingerLakes Farms / 20250717.
+2025-07-23 06:29:32,977 - INFO - CraftableBot - Order for FingerLakes Farms is up-to-date. Skipping.
+2025-07-23 06:29:35,037 - INFO - CraftableBot - Retrieving order for UNFI (07/17/2025).
+2025-07-23 06:29:37,596 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / UNFI / 20250717.
+2025-07-23 06:29:37,615 - INFO - CraftableBot - Order for UNFI is up-to-date. Skipping.
+2025-07-23 06:29:39,675 - INFO - CraftableBot - Retrieving order for Coca-Cola (07/18/2025).
+2025-07-23 06:29:41,106 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Coca-Cola / 20250718.
+2025-07-23 06:29:41,123 - INFO - CraftableBot - Order for Coca-Cola is up-to-date. Skipping.
+2025-07-23 06:29:43,182 - INFO - CraftableBot - Retrieving order for Johnston Paper (07/18/2025).
+2025-07-23 06:29:44,336 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Johnston Paper / 20250718.
+2025-07-23 06:29:44,352 - INFO - CraftableBot - Order for Johnston Paper is up-to-date. Skipping.
+2025-07-23 06:29:46,412 - INFO - CraftableBot - Retrieving order for BALKAN BEVERAGE LLC (07/18/2025).
+2025-07-23 06:29:47,569 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / BALKAN BEVERAGE LLC / 20250718.
+2025-07-23 06:29:47,585 - INFO - CraftableBot - Order for BALKAN BEVERAGE LLC is up-to-date. Skipping.
+2025-07-23 06:29:49,641 - INFO - CraftableBot - Retrieving order for Stonewall Kitchen (07/18/2025).
+2025-07-23 06:29:50,844 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Stonewall Kitchen / 20250718.
+2025-07-23 06:29:50,861 - INFO - CraftableBot - Order for Stonewall Kitchen is up-to-date. Skipping.
+2025-07-23 06:29:52,918 - INFO - CraftableBot - Retrieving order for Sauce Crafters Inc (07/18/2025).
+2025-07-23 06:29:54,071 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Sauce Crafters Inc / 20250718.
+2025-07-23 06:29:54,089 - INFO - CraftableBot - Saving order for Sauce Crafters Inc.
+2025-07-23 06:29:58,424 - INFO - CraftableBot - Accessing order page for Collegetown.
+2025-07-23 06:30:04,845 - INFO - CraftableBot - Retrieving order for Sysco (07/18/2025).
+2025-07-23 06:30:06,799 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / Sysco / 20250718.
+2025-07-23 06:30:06,820 - INFO - CraftableBot - Order for Sysco is up-to-date. Skipping.
+2025-07-23 06:30:08,887 - INFO - CraftableBot - Retrieving order for Ithaca Bakery (07/18/2025).
+2025-07-23 06:30:12,553 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / Ithaca Bakery / 20250718.
+2025-07-23 06:30:12,577 - INFO - CraftableBot - Saving order for Ithaca Bakery.
+2025-07-23 06:30:16,976 - INFO - CraftableBot - Retrieving order for Regional Distributors, Inc. (07/18/2025).
+2025-07-23 06:30:18,719 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / Regional Distributors, Inc. / 20250718.
+2025-07-23 06:30:18,738 - INFO - CraftableBot - Order for Regional Distributors, Inc. is up-to-date. Skipping.
+2025-07-23 06:30:20,807 - INFO - CraftableBot - Retrieving order for Hill & Markes (07/18/2025).
+2025-07-23 06:30:22,164 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / Hill & Markes / 20250718.
+2025-07-23 06:30:22,181 - INFO - CraftableBot - Order for Hill & Markes is up-to-date. Skipping.
+2025-07-23 06:30:24,239 - INFO - CraftableBot - Retrieving order for Peters Supply (07/18/2025).
+2025-07-23 06:30:25,675 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / Peters Supply / 20250718.
+2025-07-23 06:30:25,693 - INFO - CraftableBot - Order for Peters Supply is up-to-date. Skipping.
+2025-07-23 06:30:27,754 - INFO - CraftableBot - Retrieving order for Coca-Cola (07/18/2025).
+2025-07-23 06:30:29,042 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / Coca-Cola / 20250718.
+2025-07-23 06:30:29,059 - INFO - CraftableBot - Order for Coca-Cola is up-to-date. Skipping.
+2025-07-23 06:30:31,115 - INFO - CraftableBot - Retrieving order for Johnston Paper (07/18/2025).
+2025-07-23 06:30:32,270 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / Johnston Paper / 20250718.
+2025-07-23 06:30:32,286 - INFO - CraftableBot - Order for Johnston Paper is up-to-date. Skipping.
+2025-07-23 06:30:34,343 - INFO - CraftableBot - Retrieving order for Equal Exchange (07/18/2025).
+2025-07-23 06:30:35,690 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / Equal Exchange / 20250718.
+2025-07-23 06:30:35,707 - INFO - CraftableBot - Order for Equal Exchange is up-to-date. Skipping.
+2025-07-23 06:30:37,766 - INFO - CraftableBot - Retrieving order for US Foods (07/18/2025).
+2025-07-23 06:30:39,536 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / US Foods / 20250718.
+2025-07-23 06:30:39,557 - INFO - CraftableBot - Order for US Foods is up-to-date. Skipping.
+2025-07-23 06:30:41,619 - INFO - CraftableBot - Retrieving order for Performance Food (07/18/2025).
+2025-07-23 06:30:43,683 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / Performance Food / 20250718.
+2025-07-23 06:30:43,701 - INFO - CraftableBot - Order for Performance Food is up-to-date. Skipping.
+2025-07-23 06:30:45,760 - INFO - CraftableBot - Retrieving order for Hillcrest Dairy (07/18/2025).
+2025-07-23 06:30:47,106 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / Hillcrest Dairy / 20250718.
+2025-07-23 06:30:47,123 - INFO - CraftableBot - Order for Hillcrest Dairy is up-to-date. Skipping.
+2025-07-23 06:30:49,181 - INFO - CraftableBot - Retrieving order for UNFI (07/18/2025).
+2025-07-23 06:30:50,705 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / UNFI / 20250718.
+2025-07-23 06:30:50,722 - INFO - CraftableBot - Order for UNFI is up-to-date. Skipping.
+2025-07-23 06:30:52,780 - INFO - CraftableBot - Retrieving order for A.L. George (07/18/2025).
+2025-07-23 06:30:54,165 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / A.L. George / 20250718.
+2025-07-23 06:30:54,183 - INFO - CraftableBot - Order for A.L. George is up-to-date. Skipping.
+2025-07-23 06:30:56,242 - INFO - CraftableBot - Retrieving order for FingerLakes Farms (07/18/2025).
+2025-07-23 06:30:57,884 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / FingerLakes Farms / 20250718.
+2025-07-23 06:30:57,901 - INFO - CraftableBot - Order for FingerLakes Farms is up-to-date. Skipping.
+2025-07-23 06:30:59,959 - INFO - CraftableBot - Retrieving order for BALKAN BEVERAGE LLC (07/18/2025).
+2025-07-23 06:31:01,178 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / BALKAN BEVERAGE LLC / 20250718.
+2025-07-23 06:31:01,195 - INFO - CraftableBot - Order for BALKAN BEVERAGE LLC is up-to-date. Skipping.
+2025-07-23 06:31:03,217 - INFO - CraftableBot - Accessing order page for Downtown.
+2025-07-23 06:31:09,703 - INFO - CraftableBot - Retrieving order for Hillcrest Dairy (07/18/2025).
+2025-07-23 06:31:11,048 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / Hillcrest Dairy / 20250718.
+2025-07-23 06:31:11,066 - INFO - CraftableBot - Order for Hillcrest Dairy is up-to-date. Skipping.
+2025-07-23 06:31:13,129 - INFO - CraftableBot - Retrieving order for Performance Food (07/18/2025).
+2025-07-23 06:31:14,801 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / Performance Food / 20250718.
+2025-07-23 06:31:14,823 - INFO - CraftableBot - Order for Performance Food is up-to-date. Skipping.
+2025-07-23 06:31:16,886 - INFO - CraftableBot - Retrieving order for Ithaca Bakery (07/18/2025).
+2025-07-23 06:31:20,075 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / Ithaca Bakery / 20250718.
+2025-07-23 06:31:20,097 - INFO - CraftableBot - Saving order for Ithaca Bakery.
+2025-07-23 06:31:24,563 - INFO - CraftableBot - Retrieving order for Equal Exchange (07/18/2025).
+2025-07-23 06:31:25,876 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / Equal Exchange / 20250718.
+2025-07-23 06:31:25,935 - INFO - CraftableBot - Order for Equal Exchange is up-to-date. Skipping.
+2025-07-23 06:31:27,999 - INFO - CraftableBot - Retrieving order for FingerLakes Farms (07/18/2025).
+2025-07-23 06:31:29,716 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / FingerLakes Farms / 20250718.
+2025-07-23 06:31:29,735 - INFO - CraftableBot - Order for FingerLakes Farms is up-to-date. Skipping.
+2025-07-23 06:31:31,797 - INFO - CraftableBot - Retrieving order for US Foods (07/18/2025).
+2025-07-23 06:31:33,562 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / US Foods / 20250718.
+2025-07-23 06:31:33,580 - INFO - CraftableBot - Order for US Foods is up-to-date. Skipping.
+2025-07-23 06:31:35,639 - INFO - CraftableBot - Retrieving order for Regional Distributors, Inc. (07/18/2025).
+2025-07-23 06:31:37,272 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / Regional Distributors, Inc. / 20250718.
+2025-07-23 06:31:37,289 - INFO - CraftableBot - Order for Regional Distributors, Inc. is up-to-date. Skipping.
+2025-07-23 06:31:39,349 - INFO - CraftableBot - Retrieving order for Sysco (07/18/2025).
+2025-07-23 06:31:41,215 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / Sysco / 20250718.
+2025-07-23 06:31:41,233 - INFO - CraftableBot - Order for Sysco is up-to-date. Skipping.
+2025-07-23 06:31:43,296 - INFO - CraftableBot - Retrieving order for SANICO (07/18/2025).
+2025-07-23 06:31:44,447 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / SANICO / 20250718.
+2025-07-23 06:31:44,463 - INFO - CraftableBot - Order for SANICO is up-to-date. Skipping.
+2025-07-23 06:31:46,518 - INFO - CraftableBot - Retrieving order for Coca-Cola (07/18/2025).
+2025-07-23 06:31:48,008 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / Coca-Cola / 20250718.
+2025-07-23 06:31:48,026 - INFO - CraftableBot - Order for Coca-Cola is up-to-date. Skipping.
+2025-07-23 06:31:50,085 - INFO - CraftableBot - Retrieving order for Peters Supply (07/18/2025).
+2025-07-23 06:31:51,521 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / Peters Supply / 20250718.
+2025-07-23 06:31:51,538 - INFO - CraftableBot - Order for Peters Supply is up-to-date. Skipping.
+2025-07-23 06:31:53,596 - INFO - CraftableBot - Retrieving order for Hill & Markes (07/18/2025).
+2025-07-23 06:31:54,968 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / Hill & Markes / 20250718.
+2025-07-23 06:31:54,987 - INFO - CraftableBot - Order for Hill & Markes is up-to-date. Skipping.
+2025-07-23 06:31:57,050 - INFO - CraftableBot - Retrieving order for Johnston Paper (07/18/2025).
+2025-07-23 06:31:58,228 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / Johnston Paper / 20250718.
+2025-07-23 06:31:58,246 - INFO - CraftableBot - Order for Johnston Paper is up-to-date. Skipping.
+2025-07-23 06:32:00,304 - INFO - CraftableBot - Retrieving order for UNFI (07/18/2025).
+2025-07-23 06:32:02,951 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / UNFI / 20250718.
+2025-07-23 06:32:02,971 - INFO - CraftableBot - Order for UNFI is up-to-date. Skipping.
+2025-07-23 06:32:05,033 - INFO - CraftableBot - Retrieving order for Copper Horse Coffee (07/18/2025).
+2025-07-23 06:32:06,187 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / Copper Horse Coffee / 20250718.
+2025-07-23 06:32:06,204 - INFO - CraftableBot - Saving order for Copper Horse Coffee.
+2025-07-23 06:32:10,577 - INFO - CraftableBot - Retrieving order for BALKAN BEVERAGE LLC (07/18/2025).
+2025-07-23 06:32:11,809 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / BALKAN BEVERAGE LLC / 20250718.
+2025-07-23 06:32:11,826 - INFO - CraftableBot - Order for BALKAN BEVERAGE LLC is up-to-date. Skipping.
+2025-07-23 06:32:13,884 - INFO - CraftableBot - Retrieving order for Worlds Best Cheeses (07/19/2025).
+2025-07-23 06:32:15,086 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / Worlds Best Cheeses / 20250719.
+2025-07-23 06:32:15,108 - INFO - CraftableBot - Saving order for Worlds Best Cheeses.
+2025-07-23 06:32:19,497 - INFO - CraftableBot - Retrieving order for Wegmans (07/19/2025).
+2025-07-23 06:32:20,339 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / Wegmans / 20250719.
+2025-07-23 06:32:20,360 - INFO - CraftableBot - Saving order for Wegmans.
+2025-07-23 06:32:24,747 - INFO - CraftableBot - Retrieving order for DUTCH VALLEY FOOD DIST (07/19/2025).
+2025-07-23 06:32:25,957 - INFO - CraftableBot - [Order Update] Initiating update protocol for Downtown / DUTCH VALLEY FOOD DIST / 20250719.
+2025-07-23 06:32:25,974 - INFO - CraftableBot - Order for DUTCH VALLEY FOOD DIST is up-to-date. Skipping.
+2025-07-23 06:32:27,996 - INFO - CraftableBot - Accessing order page for Easthill.
+2025-07-23 06:32:34,468 - INFO - CraftableBot - Retrieving order for Equal Exchange (07/17/2025).
+2025-07-23 06:32:35,817 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Equal Exchange / 20250717.
+2025-07-23 06:32:35,821 - INFO - CraftableBot - Order for Equal Exchange is up-to-date. Skipping.
+2025-07-23 06:32:37,884 - INFO - CraftableBot - Retrieving order for Performance Food (07/17/2025).
+2025-07-23 06:32:39,812 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Performance Food / 20250717.
+2025-07-23 06:32:39,817 - INFO - CraftableBot - Order for Performance Food is up-to-date. Skipping.
+2025-07-23 06:32:41,934 - INFO - CraftableBot - Retrieving order for Sysco (07/17/2025).
+2025-07-23 06:32:44,056 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Sysco / 20250717.
+2025-07-23 06:32:44,061 - INFO - CraftableBot - Order for Sysco is up-to-date. Skipping.
+2025-07-23 06:32:46,123 - INFO - CraftableBot - Retrieving order for Peters Supply (07/17/2025).
+2025-07-23 06:32:47,425 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Peters Supply / 20250717.
+2025-07-23 06:32:47,429 - INFO - CraftableBot - Order for Peters Supply is up-to-date. Skipping.
+2025-07-23 06:32:49,490 - INFO - CraftableBot - Retrieving order for Ithaca Bakery (07/17/2025).
+2025-07-23 06:32:52,926 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Ithaca Bakery / 20250717.
+2025-07-23 06:32:52,948 - INFO - CraftableBot - Saving order for Ithaca Bakery.
+2025-07-23 06:32:57,346 - INFO - CraftableBot - Retrieving order for Regional Distributors, Inc. (07/17/2025).
+2025-07-23 06:32:58,839 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Regional Distributors, Inc. / 20250717.
+2025-07-23 06:32:58,844 - INFO - CraftableBot - Order for Regional Distributors, Inc. is up-to-date. Skipping.
+2025-07-23 06:33:00,906 - INFO - CraftableBot - Retrieving order for Bo's Bones (07/17/2025).
+2025-07-23 06:33:02,154 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Bo's Bones / 20250717.
+2025-07-23 06:33:02,170 - INFO - CraftableBot - Saving order for Bo's Bones.
+2025-07-23 06:33:06,539 - INFO - CraftableBot - Retrieving order for Copper Horse Coffee (07/17/2025).
+2025-07-23 06:33:07,879 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Copper Horse Coffee / 20250717.
+2025-07-23 06:33:07,897 - INFO - CraftableBot - Saving order for Copper Horse Coffee.
+2025-07-23 06:33:12,282 - INFO - CraftableBot - Retrieving order for Hill & Markes (07/17/2025).
+2025-07-23 06:33:13,681 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Hill & Markes / 20250717.
+2025-07-23 06:33:13,685 - INFO - CraftableBot - Order for Hill & Markes is up-to-date. Skipping.
+2025-07-23 06:33:15,752 - INFO - CraftableBot - Retrieving order for US Foods (07/17/2025).
+2025-07-23 06:33:17,832 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / US Foods / 20250717.
+2025-07-23 06:33:17,837 - INFO - CraftableBot - Order for US Foods is up-to-date. Skipping.
+2025-07-23 06:33:19,899 - INFO - CraftableBot - Retrieving order for Hillcrest Dairy (07/17/2025).
+2025-07-23 06:33:21,236 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Hillcrest Dairy / 20250717.
+2025-07-23 06:33:21,242 - INFO - CraftableBot - Order for Hillcrest Dairy is up-to-date. Skipping.
+2025-07-23 06:33:23,301 - INFO - CraftableBot - Retrieving order for FingerLakes Farms (07/17/2025).
+2025-07-23 06:33:24,849 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / FingerLakes Farms / 20250717.
+2025-07-23 06:33:24,853 - INFO - CraftableBot - Order for FingerLakes Farms is up-to-date. Skipping.
+2025-07-23 06:33:26,914 - INFO - CraftableBot - Retrieving order for UNFI (07/17/2025).
+2025-07-23 06:33:29,461 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / UNFI / 20250717.
+2025-07-23 06:33:29,468 - INFO - CraftableBot - Order for UNFI is up-to-date. Skipping.
+2025-07-23 06:33:31,534 - INFO - CraftableBot - Retrieving order for Coca-Cola (07/18/2025).
+2025-07-23 06:33:33,053 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Coca-Cola / 20250718.
+2025-07-23 06:33:33,058 - INFO - CraftableBot - Order for Coca-Cola is up-to-date. Skipping.
+2025-07-23 06:33:35,126 - INFO - CraftableBot - Retrieving order for Johnston Paper (07/18/2025).
+2025-07-23 06:33:36,280 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Johnston Paper / 20250718.
+2025-07-23 06:33:36,284 - INFO - CraftableBot - Order for Johnston Paper is up-to-date. Skipping.
+2025-07-23 06:33:38,349 - INFO - CraftableBot - Retrieving order for BALKAN BEVERAGE LLC (07/18/2025).
+2025-07-23 06:33:39,507 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / BALKAN BEVERAGE LLC / 20250718.
+2025-07-23 06:33:39,511 - INFO - CraftableBot - Order for BALKAN BEVERAGE LLC is up-to-date. Skipping.
+2025-07-23 06:33:41,570 - INFO - CraftableBot - Retrieving order for Stonewall Kitchen (07/18/2025).
+2025-07-23 06:33:42,774 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Stonewall Kitchen / 20250718.
+2025-07-23 06:33:42,778 - INFO - CraftableBot - Order for Stonewall Kitchen is up-to-date. Skipping.
+2025-07-23 06:33:44,839 - INFO - CraftableBot - Retrieving order for Sauce Crafters Inc (07/18/2025).
+2025-07-23 06:33:45,992 - INFO - CraftableBot - [Order Update] Initiating update protocol for Easthill / Sauce Crafters Inc / 20250718.
+2025-07-23 06:33:46,012 - INFO - CraftableBot - Saving order for Sauce Crafters Inc.
+2025-07-23 06:33:50,343 - INFO - CraftableBot - Order download complete.
+2025-07-23 06:35:16,022 - INFO - CraftableBot - Closing WebDriver session.
+2025-07-23 06:35:16,093 - INFO - CraftableBot - WebDriver session closed.
+2025-07-23 06:35:40,462 - INFO - CraftableBot - Logging into Craftable.
+2025-07-23 06:35:51,024 - INFO - CraftableBot - Login successful.
+2025-07-23 06:35:51,024 - INFO - CraftableBot - Starting order deletion for store: Triphammer.
+2025-07-23 06:35:57,656 - INFO - CraftableBot - Found 17 orders for deletion.
+2025-07-23 06:35:57,688 - INFO - CraftableBot - Deleting order: Webstaurant (07/21/2025)
+2025-07-23 06:35:59,489 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:36:04,531 - INFO - CraftableBot - Deleting order: Russo Produce (07/20/2025)
+2025-07-23 06:36:06,312 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:36:11,351 - INFO - CraftableBot - Deleting order: A.L. George (07/18/2025)
+2025-07-23 06:36:13,099 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:36:18,138 - INFO - CraftableBot - Deleting order: Coca-Cola (07/18/2025)
+2025-07-23 06:36:19,910 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:36:24,950 - INFO - CraftableBot - Deleting order: Johnston Paper (07/18/2025)
+2025-07-23 06:36:26,708 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:36:31,748 - INFO - CraftableBot - Deleting order: Equal Exchange (07/18/2025)
+2025-07-23 06:36:33,489 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:36:38,528 - INFO - CraftableBot - Deleting order: US Foods (07/18/2025)
+2025-07-23 06:36:40,295 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:36:45,337 - INFO - CraftableBot - Deleting order: Copper Horse Coffee (07/18/2025)
+2025-07-23 06:36:47,162 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:36:52,199 - INFO - CraftableBot - Deleting order: Hill & Markes (07/18/2025)
+2025-07-23 06:36:53,967 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:36:59,008 - INFO - CraftableBot - Deleting order: Regional Distributors, Inc. (07/18/2025)
+2025-07-23 06:37:00,777 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:37:05,818 - INFO - CraftableBot - Deleting order: Peters Supply (07/18/2025)
+2025-07-23 06:37:07,621 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:37:12,659 - INFO - CraftableBot - Deleting order: Ithaca Bakery (07/18/2025)
+2025-07-23 06:37:14,432 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:37:19,472 - INFO - CraftableBot - Deleting order: UNFI (07/18/2025)
+2025-07-23 06:37:21,245 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:37:26,285 - INFO - CraftableBot - Deleting order: Hillcrest Dairy (07/18/2025)
+2025-07-23 06:37:28,103 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:37:33,143 - INFO - CraftableBot - Deleting order: FingerLakes Farms (07/18/2025)
+2025-07-23 06:37:34,973 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:37:40,013 - INFO - CraftableBot - Deleting order: Performance Food (07/18/2025)
+2025-07-23 06:37:41,782 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:37:46,822 - INFO - CraftableBot - Deleting order: Sysco (07/18/2025)
+2025-07-23 06:37:48,604 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:37:53,614 - INFO - CraftableBot - No orders table found. All orders deleted.
+2025-07-23 06:37:53,614 - INFO - CraftableBot - Finished deleting orders for store: Triphammer.
+2025-07-23 06:37:53,614 - INFO - CraftableBot - Starting order deletion for store: Collegetown.
+2025-07-23 06:38:00,069 - INFO - CraftableBot - Found 15 orders for deletion.
+2025-07-23 06:38:00,093 - INFO - CraftableBot - Deleting order: BALKAN BEVERAGE LLC (07/18/2025)
+2025-07-23 06:38:01,862 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:38:06,901 - INFO - CraftableBot - Deleting order: FingerLakes Farms (07/18/2025)
+2025-07-23 06:38:08,708 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:38:13,750 - INFO - CraftableBot - Deleting order: A.L. George (07/18/2025)
+2025-07-23 06:38:15,542 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:38:20,583 - INFO - CraftableBot - Deleting order: UNFI (07/18/2025)
+2025-07-23 06:38:22,384 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:38:27,424 - INFO - CraftableBot - Deleting order: Hillcrest Dairy (07/18/2025)
+2025-07-23 06:38:29,183 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:38:34,223 - INFO - CraftableBot - Deleting order: Performance Food (07/18/2025)
+2025-07-23 06:38:35,995 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:38:41,034 - INFO - CraftableBot - Deleting order: US Foods (07/18/2025)
+2025-07-23 06:38:42,812 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:38:47,851 - INFO - CraftableBot - Deleting order: Equal Exchange (07/18/2025)
+2025-07-23 06:38:49,664 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:38:54,707 - INFO - CraftableBot - Deleting order: Johnston Paper (07/18/2025)
+2025-07-23 06:38:56,464 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:39:01,505 - INFO - CraftableBot - Deleting order: Coca-Cola (07/18/2025)
+2025-07-23 06:39:03,261 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:39:08,303 - INFO - CraftableBot - Deleting order: Peters Supply (07/18/2025)
+2025-07-23 06:39:10,054 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:39:15,094 - INFO - CraftableBot - Deleting order: Hill & Markes (07/18/2025)
+2025-07-23 06:39:16,853 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:39:21,893 - INFO - CraftableBot - Deleting order: Regional Distributors, Inc. (07/18/2025)
+2025-07-23 06:39:23,658 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:39:28,695 - INFO - CraftableBot - Deleting order: Ithaca Bakery (07/18/2025)
+2025-07-23 06:39:30,481 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:39:35,522 - INFO - CraftableBot - Deleting order: Sysco (07/18/2025)
+2025-07-23 06:39:37,288 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:39:42,299 - INFO - CraftableBot - No orders table found. All orders deleted.
+2025-07-23 06:39:42,299 - INFO - CraftableBot - Finished deleting orders for store: Collegetown.
+2025-07-23 06:39:42,299 - INFO - CraftableBot - Starting order deletion for store: Downtown.
+2025-07-23 06:39:48,762 - INFO - CraftableBot - Found 19 orders for deletion.
+2025-07-23 06:39:48,784 - INFO - CraftableBot - Deleting order: DUTCH VALLEY FOOD DIST (07/19/2025)
+2025-07-23 06:39:50,556 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:39:55,597 - INFO - CraftableBot - Deleting order: Wegmans (07/19/2025)
+2025-07-23 06:39:57,344 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:40:02,384 - INFO - CraftableBot - Deleting order: Worlds Best Cheeses (07/19/2025)
+2025-07-23 06:40:04,145 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:40:09,187 - INFO - CraftableBot - Deleting order: BALKAN BEVERAGE LLC (07/18/2025)
+2025-07-23 06:40:10,978 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:40:16,018 - INFO - CraftableBot - Deleting order: Copper Horse Coffee (07/18/2025)
+2025-07-23 06:40:17,775 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:40:22,815 - INFO - CraftableBot - Deleting order: UNFI (07/18/2025)
+2025-07-23 06:40:24,603 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:40:29,644 - INFO - CraftableBot - Deleting order: Johnston Paper (07/18/2025)
+2025-07-23 06:40:31,399 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:40:36,442 - INFO - CraftableBot - Deleting order: Hill & Markes (07/18/2025)
+2025-07-23 06:40:38,194 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:40:43,235 - INFO - CraftableBot - Deleting order: Peters Supply (07/18/2025)
+2025-07-23 06:40:44,992 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:40:50,032 - INFO - CraftableBot - Deleting order: Coca-Cola (07/18/2025)
+2025-07-23 06:40:51,791 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:40:56,832 - INFO - CraftableBot - Deleting order: SANICO (07/18/2025)
+2025-07-23 06:40:58,688 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:41:03,728 - INFO - CraftableBot - Deleting order: Sysco (07/18/2025)
+2025-07-23 06:41:05,544 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:41:10,584 - INFO - CraftableBot - Deleting order: Regional Distributors, Inc. (07/18/2025)
+2025-07-23 06:41:12,350 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:41:17,389 - INFO - CraftableBot - Deleting order: US Foods (07/18/2025)
+2025-07-23 06:41:19,153 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:41:24,199 - INFO - CraftableBot - Deleting order: FingerLakes Farms (07/18/2025)
+2025-07-23 06:41:25,976 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:41:31,017 - INFO - CraftableBot - Deleting order: Equal Exchange (07/18/2025)
+2025-07-23 06:41:32,790 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:41:37,830 - INFO - CraftableBot - Deleting order: Ithaca Bakery (07/18/2025)
+2025-07-23 06:41:39,601 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:41:44,641 - INFO - CraftableBot - Deleting order: Performance Food (07/18/2025)
+2025-07-23 06:41:46,414 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:41:51,453 - INFO - CraftableBot - Deleting order: Hillcrest Dairy (07/18/2025)
+2025-07-23 06:41:53,204 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:41:58,214 - INFO - CraftableBot - No orders table found. All orders deleted.
+2025-07-23 06:41:58,214 - INFO - CraftableBot - Finished deleting orders for store: Downtown.
+2025-07-23 06:41:58,214 - INFO - CraftableBot - Starting order deletion for store: Easthill.
+2025-07-23 06:42:04,667 - INFO - CraftableBot - Found 18 orders for deletion.
+2025-07-23 06:42:04,691 - INFO - CraftableBot - Deleting order: Sauce Crafters Inc (07/18/2025)
+2025-07-23 06:42:06,461 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:42:11,502 - INFO - CraftableBot - Deleting order: Stonewall Kitchen (07/18/2025)
+2025-07-23 06:42:13,259 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:42:18,300 - INFO - CraftableBot - Deleting order: BALKAN BEVERAGE LLC (07/18/2025)
+2025-07-23 06:42:20,044 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:42:25,083 - INFO - CraftableBot - Deleting order: Johnston Paper (07/18/2025)
+2025-07-23 06:42:26,842 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:42:31,881 - INFO - CraftableBot - Deleting order: Coca-Cola (07/18/2025)
+2025-07-23 06:42:33,648 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:42:38,690 - INFO - CraftableBot - Deleting order: UNFI (07/17/2025)
+2025-07-23 06:42:40,466 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:42:45,505 - INFO - CraftableBot - Deleting order: FingerLakes Farms (07/17/2025)
+2025-07-23 06:42:47,257 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:42:52,295 - INFO - CraftableBot - Deleting order: Hillcrest Dairy (07/17/2025)
+2025-07-23 06:42:54,047 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:42:59,086 - INFO - CraftableBot - Deleting order: US Foods (07/17/2025)
+2025-07-23 06:43:00,849 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:43:05,888 - INFO - CraftableBot - Deleting order: Hill & Markes (07/17/2025)
+2025-07-23 06:43:07,690 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:43:12,729 - INFO - CraftableBot - Deleting order: Copper Horse Coffee (07/17/2025)
+2025-07-23 06:43:14,487 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:43:19,526 - INFO - CraftableBot - Deleting order: Bo's Bones (07/17/2025)
+2025-07-23 06:43:21,272 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:43:26,311 - INFO - CraftableBot - Deleting order: Regional Distributors, Inc. (07/17/2025)
+2025-07-23 06:43:28,076 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:43:33,115 - INFO - CraftableBot - Deleting order: Ithaca Bakery (07/17/2025)
+2025-07-23 06:43:34,895 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:43:39,933 - INFO - CraftableBot - Deleting order: Peters Supply (07/17/2025)
+2025-07-23 06:43:41,811 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:43:46,849 - INFO - CraftableBot - Deleting order: Sysco (07/17/2025)
+2025-07-23 06:43:48,614 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:43:53,654 - INFO - CraftableBot - Deleting order: Performance Food (07/17/2025)
+2025-07-23 06:43:55,432 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:44:00,472 - INFO - CraftableBot - Deleting order: Equal Exchange (07/17/2025)
+2025-07-23 06:44:02,232 - INFO - CraftableBot - Order deletion confirmed.
+2025-07-23 06:44:07,241 - INFO - CraftableBot - No orders table found. All orders deleted.
+2025-07-23 06:44:07,241 - INFO - CraftableBot - Finished deleting orders for store: Easthill.
+2025-07-23 11:03:13,156 - INFO - CraftableBot - Closing WebDriver session.
+2025-07-23 11:03:13,295 - INFO - CraftableBot - WebDriver session closed.
+2025-07-23 11:48:18,409 - INFO - CraftableBot - Logging into Craftable.
+2025-07-23 11:48:30,081 - INFO - CraftableBot - Login successful.
+2025-07-23 11:48:30,081 - INFO - CraftableBot - Starting order download protocol.
+2025-07-23 11:48:30,081 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-23 11:48:37,231 - INFO - CraftableBot - Retrieving order for Hill & Markes (07/21/2025).
+2025-07-23 11:48:39,663 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Hill & Markes / 20250721.
+2025-07-23 11:48:39,664 - INFO - CraftableBot - Saving order for Hill & Markes.
+2025-07-23 11:48:44,664 - INFO - CraftableBot - Order download complete.
+2025-07-23 14:49:54,467 - INFO - CraftableBot - Logging into Craftable.
+2025-07-23 14:50:06,780 - INFO - CraftableBot - Login successful.
+2025-07-23 14:50:06,780 - INFO - CraftableBot - Starting order download protocol.
+2025-07-23 14:50:06,780 - INFO - CraftableBot - Accessing order page for Collegetown.
+2025-07-23 14:50:13,488 - INFO - CraftableBot - Retrieving order for Sysco (07/23/2025).
+2025-07-23 14:50:15,107 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / Sysco / 20250723.
+2025-07-23 14:50:15,108 - INFO - CraftableBot - Saving order for Sysco.
+2025-07-23 14:50:19,546 - INFO - CraftableBot - Retrieving order for Performance Food (07/23/2025).
+2025-07-23 14:50:21,213 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / Performance Food / 20250723.
+2025-07-23 14:50:21,213 - INFO - CraftableBot - Saving order for Performance Food.
+2025-07-23 14:50:25,633 - INFO - CraftableBot - Retrieving order for US Foods (07/23/2025).
+2025-07-23 14:50:26,810 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / US Foods / 20250723.
+2025-07-23 14:50:26,810 - INFO - CraftableBot - Saving order for US Foods.
+2025-07-23 14:50:31,221 - INFO - CraftableBot - Retrieving order for Ithaca Bakery (07/23/2025).
+2025-07-23 14:50:32,405 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / Ithaca Bakery / 20250723.
+2025-07-23 14:50:32,405 - INFO - CraftableBot - Saving order for Ithaca Bakery.
+2025-07-23 14:50:36,802 - INFO - CraftableBot - Retrieving order for FingerLakes Farms (07/23/2025).
+2025-07-23 14:50:38,231 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / FingerLakes Farms / 20250723.
+2025-07-23 14:50:38,232 - INFO - CraftableBot - Saving order for FingerLakes Farms.
+2025-07-23 14:50:42,628 - INFO - CraftableBot - Accessing order page for Triphammer.
+2025-07-23 14:50:49,150 - INFO - CraftableBot - Retrieving order for Sysco (07/23/2025).
+2025-07-23 14:50:51,819 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer / Sysco / 20250723.
+2025-07-23 14:50:51,820 - INFO - CraftableBot - Saving order for Sysco.
+2025-07-23 14:50:56,229 - INFO - CraftableBot - Retrieving order for Performance Food (07/23/2025).
+2025-07-23 14:50:59,434 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer / Performance Food / 20250723.
+2025-07-23 14:50:59,435 - INFO - CraftableBot - Saving order for Performance Food.
+2025-07-23 14:51:03,854 - INFO - CraftableBot - Retrieving order for US Foods (07/23/2025).
+2025-07-23 14:51:05,741 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer / US Foods / 20250723.
+2025-07-23 14:51:05,742 - INFO - CraftableBot - Saving order for US Foods.
+2025-07-23 14:51:10,170 - INFO - CraftableBot - Retrieving order for Ithaca Bakery (07/23/2025).
+2025-07-23 14:51:11,617 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer / Ithaca Bakery / 20250723.
+2025-07-23 14:51:11,618 - INFO - CraftableBot - Saving order for Ithaca Bakery.
+2025-07-23 14:51:16,029 - INFO - CraftableBot - Retrieving order for Hillcrest Foods (07/23/2025).
+2025-07-23 14:51:17,213 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer / Hillcrest Foods / 20250723.
+2025-07-23 14:51:17,214 - INFO - CraftableBot - Saving order for Hillcrest Foods.
+2025-07-23 14:51:21,607 - INFO - CraftableBot - Retrieving order for Russo Produce (07/23/2025).
+2025-07-23 14:51:23,674 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer / Russo Produce / 20250723.
+2025-07-23 14:51:23,674 - INFO - CraftableBot - Saving order for Russo Produce.
+2025-07-23 14:51:28,050 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-23 14:51:34,561 - INFO - CraftableBot - Retrieving order for UNFI (07/19/2025).
+2025-07-23 14:51:37,332 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / UNFI / 20250719.
+2025-07-23 14:51:37,332 - INFO - CraftableBot - Saving order for UNFI.
+2025-07-23 14:51:41,795 - INFO - CraftableBot - Retrieving order for Webstaurant (07/19/2025).
+2025-07-23 14:51:43,672 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Webstaurant / 20250719.
+2025-07-23 14:51:43,672 - INFO - CraftableBot - Saving order for Webstaurant.
+2025-07-23 14:51:48,081 - INFO - CraftableBot - Retrieving order for BJ's (07/19/2025).
+2025-07-23 14:51:49,309 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / BJ's / 20250719.
+2025-07-23 14:51:49,309 - INFO - CraftableBot - Saving order for BJ's.
+2025-07-23 14:51:53,781 - INFO - CraftableBot - Retrieving order for Hillcrest Dairy (07/19/2025).
+2025-07-23 14:51:55,338 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Hillcrest Dairy / 20250719.
+2025-07-23 14:51:55,339 - INFO - CraftableBot - Saving order for Hillcrest Dairy.
+2025-07-23 14:51:59,759 - INFO - CraftableBot - Retrieving order for Keck's Food Service (07/20/2025).
+2025-07-23 14:52:01,328 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Keck's Food Service / 20250720.
+2025-07-23 14:52:01,328 - INFO - CraftableBot - Saving order for Keck's Food Service.
+2025-07-23 14:52:05,799 - INFO - CraftableBot - Retrieving order for Jade Leaf Matcha (07/20/2025).
+2025-07-23 14:52:06,975 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Jade Leaf Matcha / 20250720.
+2025-07-23 14:52:06,976 - INFO - CraftableBot - Saving order for Jade Leaf Matcha.
+2025-07-23 14:52:11,373 - INFO - CraftableBot - Retrieving order for Equal Exchange (07/20/2025).
+2025-07-23 14:52:12,981 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Equal Exchange / 20250720.
+2025-07-23 14:52:12,982 - INFO - CraftableBot - Saving order for Equal Exchange.
+2025-07-23 14:52:17,392 - INFO - CraftableBot - Retrieving order for Copper Horse Coffee (07/20/2025).
+2025-07-23 14:52:18,833 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Copper Horse Coffee / 20250720.
+2025-07-23 14:52:18,834 - INFO - CraftableBot - Saving order for Copper Horse Coffee.
+2025-07-23 14:52:23,217 - INFO - CraftableBot - Retrieving order for Eurocafe Imports (07/20/2025).
+2025-07-23 14:52:24,450 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Eurocafe Imports / 20250720.
+2025-07-23 14:52:24,451 - INFO - CraftableBot - Saving order for Eurocafe Imports.
+2025-07-23 14:52:28,877 - INFO - CraftableBot - Retrieving order for Coca-Cola (07/20/2025).
+2025-07-23 14:52:30,739 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Coca-Cola / 20250720.
+2025-07-23 14:52:30,739 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-07-23 14:52:35,158 - INFO - CraftableBot - Retrieving order for Regional Distributors, Inc. (07/21/2025).
+2025-07-23 14:52:36,988 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Regional Distributors, Inc. / 20250721.
+2025-07-23 14:52:36,988 - INFO - CraftableBot - Saving order for Regional Distributors, Inc..
+2025-07-23 14:52:41,392 - INFO - CraftableBot - Retrieving order for Hill & Markes (07/21/2025).
+2025-07-23 14:52:43,900 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Hill & Markes / 20250721.
+2025-07-23 14:52:43,907 - INFO - CraftableBot - Saving order for Hill & Markes.
+2025-07-23 14:52:48,299 - INFO - CraftableBot - Retrieving order for Hillcrest Foods (07/21/2025).
+2025-07-23 14:52:50,072 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Hillcrest Foods / 20250721.
+2025-07-23 14:52:50,072 - INFO - CraftableBot - Saving order for Hillcrest Foods.
+2025-07-23 14:52:54,474 - INFO - CraftableBot - Retrieving order for Lentz (07/21/2025).
+2025-07-23 14:52:56,043 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Lentz / 20250721.
+2025-07-23 14:52:56,044 - INFO - CraftableBot - Saving order for Lentz.
+2025-07-23 14:53:00,444 - INFO - CraftableBot - Retrieving order for BALKAN BEVERAGE LLC (07/21/2025).
+2025-07-23 14:53:01,872 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / BALKAN BEVERAGE LLC / 20250721.
+2025-07-23 14:53:01,873 - INFO - CraftableBot - Saving order for BALKAN BEVERAGE LLC.
+2025-07-23 14:53:06,286 - INFO - CraftableBot - Retrieving order for A.L. George (07/21/2025).
+2025-07-23 14:53:07,744 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / A.L. George / 20250721.
+2025-07-23 14:53:07,745 - INFO - CraftableBot - Saving order for A.L. George.
+2025-07-23 14:53:12,161 - INFO - CraftableBot - Retrieving order for ACE ENDICO (07/21/2025).
+2025-07-23 14:53:13,358 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / ACE ENDICO / 20250721.
+2025-07-23 14:53:13,359 - INFO - CraftableBot - Saving order for ACE ENDICO.
+2025-07-23 14:53:17,756 - INFO - CraftableBot - Retrieving order for Dawn (07/21/2025).
+2025-07-23 14:53:18,996 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Dawn / 20250721.
+2025-07-23 14:53:18,997 - INFO - CraftableBot - Saving order for Dawn.
+2025-07-23 14:53:23,411 - INFO - CraftableBot - Retrieving order for Side Hill Acres (07/21/2025).
+2025-07-23 14:53:24,597 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Side Hill Acres / 20250721.
+2025-07-23 14:53:24,598 - INFO - CraftableBot - Saving order for Side Hill Acres.
+2025-07-23 14:53:29,041 - INFO - CraftableBot - Retrieving order for Paper Rolls .com (07/22/2025).
+2025-07-23 14:53:30,274 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Paper Rolls .com / 20250722.
+2025-07-23 14:53:30,275 - INFO - CraftableBot - Saving order for Paper Rolls .com.
+2025-07-23 14:53:34,666 - INFO - CraftableBot - Retrieving order for Johnston Paper (07/22/2025).
+2025-07-23 14:53:36,081 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Johnston Paper / 20250722.
+2025-07-23 14:53:36,081 - INFO - CraftableBot - Saving order for Johnston Paper.
+2025-07-23 14:53:40,478 - INFO - CraftableBot - Retrieving order for Peters Supply (07/22/2025).
+2025-07-23 14:53:41,950 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Peters Supply / 20250722.
+2025-07-23 14:53:41,951 - INFO - CraftableBot - Saving order for Peters Supply.
+2025-07-23 14:53:46,376 - INFO - CraftableBot - Retrieving order for SANICO (07/22/2025).
+2025-07-23 14:53:47,720 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / SANICO / 20250722.
+2025-07-23 14:53:47,721 - INFO - CraftableBot - Saving order for SANICO.
+2025-07-23 14:53:52,130 - INFO - CraftableBot - Retrieving order for Sysco (07/23/2025).
+2025-07-23 14:53:54,916 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Sysco / 20250723.
+2025-07-23 14:53:54,917 - INFO - CraftableBot - Saving order for Sysco.
+2025-07-23 14:53:59,411 - INFO - CraftableBot - Retrieving order for FingerLakes Farms (07/23/2025).
+2025-07-23 14:54:01,256 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / FingerLakes Farms / 20250723.
+2025-07-23 14:54:01,256 - INFO - CraftableBot - Saving order for FingerLakes Farms.
+2025-07-23 14:54:05,669 - INFO - CraftableBot - Retrieving order for Performance Food (07/23/2025).
+2025-07-23 14:54:08,789 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Performance Food / 20250723.
+2025-07-23 14:54:08,789 - INFO - CraftableBot - Saving order for Performance Food.
+2025-07-23 14:54:13,198 - INFO - CraftableBot - Retrieving order for US Foods (07/23/2025).
+2025-07-23 14:54:15,511 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / US Foods / 20250723.
+2025-07-23 14:54:15,512 - INFO - CraftableBot - Saving order for US Foods.
+2025-07-23 14:54:19,915 - INFO - CraftableBot - Retrieving order for DUTCH VALLEY FOOD DIST (07/23/2025).
+2025-07-23 14:54:21,396 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / DUTCH VALLEY FOOD DIST / 20250723.
+2025-07-23 14:54:21,397 - INFO - CraftableBot - Saving order for DUTCH VALLEY FOOD DIST.
+2025-07-23 14:54:25,745 - INFO - CraftableBot - Order download complete.
+2025-07-23 14:55:21,018 - INFO - CraftableBot - Closing WebDriver session.
+2025-07-23 14:55:21,090 - INFO - CraftableBot - WebDriver session closed.
+2025-07-23 14:55:55,009 - INFO - CraftableBot - Logging into Craftable.
+2025-07-23 14:56:05,869 - INFO - CraftableBot - Login successful.
+2025-07-23 14:56:05,869 - INFO - CraftableBot - Starting order download protocol.
+2025-07-23 14:56:05,869 - INFO - CraftableBot - Accessing order page for Collegetown.
+2025-07-23 14:56:12,573 - INFO - CraftableBot - Retrieving order for Sysco (07/23/2025).
+2025-07-23 14:56:14,084 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / Sysco / 20250723.
+2025-07-23 14:56:14,085 - INFO - CraftableBot - Saving order for Sysco.
+2025-07-23 14:56:18,529 - INFO - CraftableBot - Retrieving order for Performance Food (07/23/2025).
+2025-07-23 14:56:20,130 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / Performance Food / 20250723.
+2025-07-23 14:56:20,150 - INFO - CraftableBot - Saving order for Performance Food.
+2025-07-23 14:56:24,545 - INFO - CraftableBot - Retrieving order for US Foods (07/23/2025).
+2025-07-23 14:56:25,724 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / US Foods / 20250723.
+2025-07-23 14:56:25,744 - INFO - CraftableBot - Saving order for US Foods.
+2025-07-23 14:56:30,168 - INFO - CraftableBot - Accessing order page for Triphammer.
+2025-07-23 14:56:36,590 - INFO - CraftableBot - Retrieving order for Sysco (07/23/2025).
+2025-07-23 14:56:39,274 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer / Sysco / 20250723.
+2025-07-23 14:56:39,274 - INFO - CraftableBot - Saving order for Sysco.
+2025-07-23 14:56:43,703 - INFO - CraftableBot - Retrieving order for Performance Food (07/23/2025).
+2025-07-23 14:56:46,858 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer / Performance Food / 20250723.
+2025-07-23 14:56:46,879 - INFO - CraftableBot - Saving order for Performance Food.
+2025-07-23 14:56:51,293 - INFO - CraftableBot - Retrieving order for US Foods (07/23/2025).
+2025-07-23 14:56:53,154 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer / US Foods / 20250723.
+2025-07-23 14:56:53,173 - INFO - CraftableBot - Saving order for US Foods.
+2025-07-23 14:56:57,635 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-23 14:57:04,984 - INFO - CraftableBot - Retrieving order for Sysco (07/23/2025).
+2025-07-23 14:57:07,516 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Sysco / 20250723.
+2025-07-23 14:57:07,517 - INFO - CraftableBot - Saving order for Sysco.
+2025-07-23 14:57:11,959 - INFO - CraftableBot - Retrieving order for Performance Food (07/23/2025).
+2025-07-23 14:57:14,908 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Performance Food / 20250723.
+2025-07-23 14:57:14,930 - INFO - CraftableBot - Saving order for Performance Food.
+2025-07-23 14:57:19,338 - INFO - CraftableBot - Retrieving order for US Foods (07/23/2025).
+2025-07-23 14:57:21,559 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / US Foods / 20250723.
+2025-07-23 14:57:21,579 - INFO - CraftableBot - Saving order for US Foods.
+2025-07-23 14:57:26,048 - INFO - CraftableBot - Order download complete.
+2025-07-23 14:58:52,201 - INFO - CraftableBot - Logging into Craftable.
+2025-07-23 14:59:02,676 - INFO - CraftableBot - Login successful.
+2025-07-23 14:59:02,677 - INFO - CraftableBot - Starting order download protocol.
+2025-07-23 14:59:02,677 - INFO - CraftableBot - Accessing order page for Collegetown.
+2025-07-23 14:59:09,349 - INFO - CraftableBot - Retrieving order for Sysco (07/23/2025).
+2025-07-23 14:59:10,843 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / Sysco / 20250723.
+2025-07-23 14:59:10,844 - INFO - CraftableBot - Saving order for Sysco.
+2025-07-23 14:59:15,233 - INFO - CraftableBot - Retrieving order for Performance Food (07/23/2025).
+2025-07-23 14:59:16,817 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / Performance Food / 20250723.
+2025-07-23 14:59:16,818 - INFO - CraftableBot - Saving order for Performance Food.
+2025-07-23 14:59:21,243 - INFO - CraftableBot - Retrieving order for US Foods (07/23/2025).
+2025-07-23 14:59:22,407 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / US Foods / 20250723.
+2025-07-23 14:59:22,408 - INFO - CraftableBot - Saving order for US Foods.
+2025-07-23 14:59:26,786 - INFO - CraftableBot - Retrieving order for Ithaca Bakery (07/23/2025).
+2025-07-23 14:59:27,954 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / Ithaca Bakery / 20250723.
+2025-07-23 14:59:27,954 - INFO - CraftableBot - Saving order for Ithaca Bakery.
+2025-07-23 14:59:32,341 - INFO - CraftableBot - Retrieving order for FingerLakes Farms (07/23/2025).
+2025-07-23 14:59:33,656 - INFO - CraftableBot - [Order Update] Initiating update protocol for Collegetown / FingerLakes Farms / 20250723.
+2025-07-23 14:59:33,656 - INFO - CraftableBot - Saving order for FingerLakes Farms.
+2025-07-23 14:59:38,005 - INFO - CraftableBot - Accessing order page for Triphammer.
+2025-07-23 14:59:44,507 - INFO - CraftableBot - Retrieving order for Sysco (07/23/2025).
+2025-07-23 14:59:47,224 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer / Sysco / 20250723.
+2025-07-23 14:59:47,224 - INFO - CraftableBot - Saving order for Sysco.
+2025-07-23 14:59:51,645 - INFO - CraftableBot - Retrieving order for Performance Food (07/23/2025).
+2025-07-23 14:59:54,797 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer / Performance Food / 20250723.
+2025-07-23 14:59:54,798 - INFO - CraftableBot - Saving order for Performance Food.
+2025-07-23 14:59:59,207 - INFO - CraftableBot - Retrieving order for US Foods (07/23/2025).
+2025-07-23 15:00:01,058 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer / US Foods / 20250723.
+2025-07-23 15:00:01,059 - INFO - CraftableBot - Saving order for US Foods.
+2025-07-23 15:00:05,436 - INFO - CraftableBot - Retrieving order for Ithaca Bakery (07/23/2025).
+2025-07-23 15:00:06,973 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer / Ithaca Bakery / 20250723.
+2025-07-23 15:00:06,973 - INFO - CraftableBot - Saving order for Ithaca Bakery.
+2025-07-23 15:00:11,375 - INFO - CraftableBot - Retrieving order for Hillcrest Foods (07/23/2025).
+2025-07-23 15:00:12,535 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer / Hillcrest Foods / 20250723.
+2025-07-23 15:00:12,536 - INFO - CraftableBot - Saving order for Hillcrest Foods.
+2025-07-23 15:00:16,920 - INFO - CraftableBot - Retrieving order for Russo Produce (07/23/2025).
+2025-07-23 15:00:18,987 - INFO - CraftableBot - [Order Update] Initiating update protocol for Triphammer / Russo Produce / 20250723.
+2025-07-23 15:00:18,988 - INFO - CraftableBot - Saving order for Russo Produce.
+2025-07-23 15:00:23,343 - INFO - CraftableBot - Accessing order page for Bakery.
+2025-07-23 15:00:29,882 - INFO - CraftableBot - Retrieving order for UNFI (07/19/2025).
+2025-07-23 15:00:33,257 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / UNFI / 20250719.
+2025-07-23 15:00:33,257 - INFO - CraftableBot - Saving order for UNFI.
+2025-07-23 15:00:37,671 - INFO - CraftableBot - Retrieving order for Webstaurant (07/19/2025).
+2025-07-23 15:00:39,517 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Webstaurant / 20250719.
+2025-07-23 15:00:39,518 - INFO - CraftableBot - Saving order for Webstaurant.
+2025-07-23 15:00:43,913 - INFO - CraftableBot - Retrieving order for BJ's (07/19/2025).
+2025-07-23 15:00:45,130 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / BJ's / 20250719.
+2025-07-23 15:00:45,130 - INFO - CraftableBot - Saving order for BJ's.
+2025-07-23 15:00:49,546 - INFO - CraftableBot - Retrieving order for Hillcrest Dairy (07/19/2025).
+2025-07-23 15:00:51,014 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Hillcrest Dairy / 20250719.
+2025-07-23 15:00:51,015 - INFO - CraftableBot - Saving order for Hillcrest Dairy.
+2025-07-23 15:00:55,397 - INFO - CraftableBot - Retrieving order for Keck's Food Service (07/20/2025).
+2025-07-23 15:00:56,960 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Keck's Food Service / 20250720.
+2025-07-23 15:00:56,960 - INFO - CraftableBot - Saving order for Keck's Food Service.
+2025-07-23 15:01:01,362 - INFO - CraftableBot - Retrieving order for Jade Leaf Matcha (07/20/2025).
+2025-07-23 15:01:02,532 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Jade Leaf Matcha / 20250720.
+2025-07-23 15:01:02,532 - INFO - CraftableBot - Saving order for Jade Leaf Matcha.
+2025-07-23 15:01:06,921 - INFO - CraftableBot - Retrieving order for Equal Exchange (07/20/2025).
+2025-07-23 15:01:08,483 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Equal Exchange / 20250720.
+2025-07-23 15:01:08,484 - INFO - CraftableBot - Saving order for Equal Exchange.
+2025-07-23 15:01:12,878 - INFO - CraftableBot - Retrieving order for Copper Horse Coffee (07/20/2025).
+2025-07-23 15:01:14,255 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Copper Horse Coffee / 20250720.
+2025-07-23 15:01:14,256 - INFO - CraftableBot - Saving order for Copper Horse Coffee.
+2025-07-23 15:01:18,641 - INFO - CraftableBot - Retrieving order for Eurocafe Imports (07/20/2025).
+2025-07-23 15:01:19,865 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Eurocafe Imports / 20250720.
+2025-07-23 15:01:19,866 - INFO - CraftableBot - Saving order for Eurocafe Imports.
+2025-07-23 15:01:24,247 - INFO - CraftableBot - Retrieving order for Coca-Cola (07/20/2025).
+2025-07-23 15:01:26,113 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Coca-Cola / 20250720.
+2025-07-23 15:01:26,113 - INFO - CraftableBot - Saving order for Coca-Cola.
+2025-07-23 15:01:30,490 - INFO - CraftableBot - Retrieving order for Regional Distributors, Inc. (07/21/2025).
+2025-07-23 15:01:32,312 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Regional Distributors, Inc. / 20250721.
+2025-07-23 15:01:32,312 - INFO - CraftableBot - Saving order for Regional Distributors, Inc..
+2025-07-23 15:01:36,701 - INFO - CraftableBot - Retrieving order for Hill & Markes (07/21/2025).
+2025-07-23 15:01:39,151 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Hill & Markes / 20250721.
+2025-07-23 15:01:39,152 - INFO - CraftableBot - Saving order for Hill & Markes.
+2025-07-23 15:01:43,548 - INFO - CraftableBot - Retrieving order for Hillcrest Foods (07/21/2025).
+2025-07-23 15:01:45,242 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Hillcrest Foods / 20250721.
+2025-07-23 15:01:45,243 - INFO - CraftableBot - Saving order for Hillcrest Foods.
+2025-07-23 15:01:49,630 - INFO - CraftableBot - Retrieving order for Lentz (07/21/2025).
+2025-07-23 15:01:51,191 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Lentz / 20250721.
+2025-07-23 15:01:51,191 - INFO - CraftableBot - Saving order for Lentz.
+2025-07-23 15:01:55,585 - INFO - CraftableBot - Retrieving order for BALKAN BEVERAGE LLC (07/21/2025).
+2025-07-23 15:01:56,924 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / BALKAN BEVERAGE LLC / 20250721.
+2025-07-23 15:01:56,925 - INFO - CraftableBot - Saving order for BALKAN BEVERAGE LLC.
+2025-07-23 15:02:01,311 - INFO - CraftableBot - Retrieving order for A.L. George (07/21/2025).
+2025-07-23 15:02:02,754 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / A.L. George / 20250721.
+2025-07-23 15:02:02,754 - INFO - CraftableBot - Saving order for A.L. George.
+2025-07-23 15:02:07,142 - INFO - CraftableBot - Retrieving order for ACE ENDICO (07/21/2025).
+2025-07-23 15:02:08,313 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / ACE ENDICO / 20250721.
+2025-07-23 15:02:08,314 - INFO - CraftableBot - Saving order for ACE ENDICO.
+2025-07-23 15:02:12,724 - INFO - CraftableBot - Retrieving order for Dawn (07/21/2025).
+2025-07-23 15:02:13,983 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Dawn / 20250721.
+2025-07-23 15:02:13,983 - INFO - CraftableBot - Saving order for Dawn.
+2025-07-23 15:02:18,370 - INFO - CraftableBot - Retrieving order for Side Hill Acres (07/21/2025).
+2025-07-23 15:02:19,607 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Side Hill Acres / 20250721.
+2025-07-23 15:02:19,608 - INFO - CraftableBot - Saving order for Side Hill Acres.
+2025-07-23 15:02:23,994 - INFO - CraftableBot - Retrieving order for Paper Rolls .com (07/22/2025).
+2025-07-23 15:02:25,222 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Paper Rolls .com / 20250722.
+2025-07-23 15:02:25,223 - INFO - CraftableBot - Saving order for Paper Rolls .com.
+2025-07-23 15:02:29,595 - INFO - CraftableBot - Retrieving order for Johnston Paper (07/22/2025).
+2025-07-23 15:02:31,002 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Johnston Paper / 20250722.
+2025-07-23 15:02:31,002 - INFO - CraftableBot - Saving order for Johnston Paper.
+2025-07-23 15:02:35,391 - INFO - CraftableBot - Retrieving order for Peters Supply (07/22/2025).
+2025-07-23 15:02:36,858 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Peters Supply / 20250722.
+2025-07-23 15:02:36,859 - INFO - CraftableBot - Saving order for Peters Supply.
+2025-07-23 15:02:41,248 - INFO - CraftableBot - Retrieving order for SANICO (07/22/2025).
+2025-07-23 15:02:42,476 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / SANICO / 20250722.
+2025-07-23 15:02:42,477 - INFO - CraftableBot - Saving order for SANICO.
+2025-07-23 15:02:46,871 - INFO - CraftableBot - Retrieving order for Sysco (07/23/2025).
+2025-07-23 15:02:49,417 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Sysco / 20250723.
+2025-07-23 15:02:49,417 - INFO - CraftableBot - Saving order for Sysco.
+2025-07-23 15:02:53,886 - INFO - CraftableBot - Retrieving order for FingerLakes Farms (07/23/2025).
+2025-07-23 15:02:55,785 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / FingerLakes Farms / 20250723.
+2025-07-23 15:02:55,786 - INFO - CraftableBot - Saving order for FingerLakes Farms.
+2025-07-23 15:03:00,177 - INFO - CraftableBot - Retrieving order for Performance Food (07/23/2025).
+2025-07-23 15:03:03,027 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / Performance Food / 20250723.
+2025-07-23 15:03:03,028 - INFO - CraftableBot - Saving order for Performance Food.
+2025-07-23 15:03:07,435 - INFO - CraftableBot - Retrieving order for US Foods (07/23/2025).
+2025-07-23 15:03:09,697 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / US Foods / 20250723.
+2025-07-23 15:03:09,697 - INFO - CraftableBot - Saving order for US Foods.
+2025-07-23 15:03:14,090 - INFO - CraftableBot - Retrieving order for DUTCH VALLEY FOOD DIST (07/23/2025).
+2025-07-23 15:03:15,579 - INFO - CraftableBot - [Order Update] Initiating update protocol for Bakery / DUTCH VALLEY FOOD DIST / 20250723.
+2025-07-23 15:03:15,579 - INFO - CraftableBot - Saving order for DUTCH VALLEY FOOD DIST.
+2025-07-23 15:03:19,934 - INFO - CraftableBot - Order download complete.
+2025-07-23 15:21:40,953 - INFO - CraftableBot - Closing WebDriver session.
+2025-07-23 15:21:44,575 - INFO - CraftableBot - WebDriver session closed.
+2025-07-23 15:23:42,408 - INFO - CraftableBot - Closing WebDriver session.
+2025-07-23 15:23:45,991 - INFO - CraftableBot - WebDriver session closed.
+2025-07-23 17:15:35,558 - INFO - CraftableBot - Closing WebDriver session.
+2025-07-23 17:15:36,345 - INFO - CraftableBot - WebDriver session closed.

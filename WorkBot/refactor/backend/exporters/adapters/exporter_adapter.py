@@ -1,7 +1,8 @@
-
 class ExportAdapter:
 
     _ADAPTER_REGISTRY = {}
+
+    preferred_format: str = 'excel' # Default file format
 
     @classmethod
     def register(cls, vendor: str):
@@ -22,3 +23,8 @@ class ExportAdapter:
 
     def modify_workbook(self, workbook: object) -> None:
         pass
+
+    @classmethod
+    def get_preferred_format(cls, vendor: str) -> str:
+        adapter = cls.get_adapter(vendor)
+        return getattr(adapter, 'preferred_format', 'excel')

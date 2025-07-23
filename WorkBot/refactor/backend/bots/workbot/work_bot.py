@@ -33,7 +33,7 @@ from backend.bots.bot_mixins import SeleniumBotMixin
 from datetime import datetime
 import socket
 from collections import defaultdict
-
+from pathlib import Path
 
 @Logger.attach_logger
 class WorkBot:
@@ -107,19 +107,23 @@ class WorkBot:
         
         return self.transfer_coordinator.save_transfer(transfer=transfer)
         
-    def generate_vendor_upload_files(self, orders: list):
-
-        for order in orders:
-            vendor_bot = self.vendor_coordinator.initialize_vendor(order.vendor, driver=self.craft_bot.driver)
-
-            # Need to deconstruct the OrderItem objects to pass into the vendor bot
-            order_items = [order_item.to_dict() for order_item in order.items]
-            
-            formatted_file_prefix = self.order_coordinator.FILE_PREFIXES['formatted']
-            save_path = self.order_coordinator.get_vendor_orders_directory(order.vendor) / f'{formatted_file_prefix}{self.order_coordinator.generate_filename(order)}'
-            vendor_bot.format_for_file_upload(order_items, save_path, order.store)
-
-        return
+    def generate_vendor_upload_files(
+        self,
+        stores: list[str],
+        vendors: list[str],
+        start_date: str = None,
+        end_date: str = None
+    ) -> list[Path]:
+        """
+        Entrypoint for generating vendor upload files for the given filters.
+        Delegates to the OrderCoordinator.
+        """
+        return self.order_coordinator.generate_vendor_upload_files(
+            stores=stores,
+            vendors=vendors,
+            start_date=start_date,
+            end_date=end_date
+        )
 
     def close_craftable_session(self):
         self.craft_bot.close_session()

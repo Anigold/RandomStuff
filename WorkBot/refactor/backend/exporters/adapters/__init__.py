@@ -1,5 +1,7 @@
 # Eager-load known adapters so they're registered at import time
 from .hill_n_markes_adapter import HillNMarkesAdapter
+from .sysco_adapter import SyscoAdapter
+from .performance_food_adapter import PerformanceFoodAdapter
 # Add more:
 # from . import sysco
 # from . import dutchvalley

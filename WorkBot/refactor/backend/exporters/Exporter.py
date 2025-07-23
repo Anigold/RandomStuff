@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import Any
+from .adapters import ExportAdapter
 
 class Exporter(ABC):
 
@@ -20,5 +21,5 @@ class Exporter(ABC):
         return cls._EXPORTER_REGISTRY[key]
     
     @abstractmethod
-    def export(self, obj) -> Any:
+    def export(self, obj, adapter: ExportAdapter = None) -> Any:
         pass

@@ -27,7 +27,7 @@ class OrderCoordinator:
         self.file_handler.save_order(order, format)
 
     def get_orders_from_file(self, store_names=None, vendor_names=None):
-        return self.file_handler.get_orders(store_names, vendor_names)
+        return self.file_handler.get_order_files(store_names, vendor_names)
 
     def get_orders_from_db(self, store, vendor):
         return self.db_handler.get_orders(store, vendor)
@@ -102,14 +102,48 @@ class OrderCoordinator:
             timeout=10
         )
 
-    def generate_vendor_upload_file(self, order: Order, format: str = 'excel') -> None:
-        
-        exporter = Exporter.get_exporter(Order, format)
+    def read_order_file(self, file_path: Path) -> Order:
+        return self.file_handler.read_order(file_path)
+    
+    def generate_vendor_upload_file(self, order: Order) -> Path:
+        """
+        Generates and saves a vendor-specific upload file for the given order.
+        Returns the path to the saved file.
+        """
         adapter = ExportAdapter.get_adapter(order.vendor)
+        format = adapter.preferred_format
 
+        exporter = Exporter.get_exporter(Order, format)
         file_data = exporter.export(order, adapter=adapter)
 
-        output_path = self._build_upload_file_path(order, format)
+        output_path = self.file_handler.get_upload_files_path(order, format)
         self.file_handler._write_data(format, file_data, output_path)
 
         return output_path
+    
+    def generate_vendor_upload_files(
+        self,
+        stores: list[str],
+        vendors: list[str],
+        start_date: str = None,
+        end_date: str = None
+    ) -> list[Path]:
+        """
+        Finds all matching orders and generates vendor-specific upload files for each.
+        Returns the list of output file paths.
+        """
+        file_paths = self.file_handler.get_order_files(
+            stores=stores,
+            vendors=vendors,
+            start_date=start_date,
+            end_date=end_date
+        )
+
+        output_paths = []
+        for file_path in file_paths:
+
+            order = self.read_order_file(file_path)
+            output_path = self.generate_vendor_upload_file(order)
+            output_paths.append(output_path)
+
+        return output_paths
