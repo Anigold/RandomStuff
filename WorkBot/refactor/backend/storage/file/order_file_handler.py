@@ -120,15 +120,16 @@ class OrderFileHandler(FileHandler):
     def get_upload_files_path(self, order: Order, format: str = 'excel') -> Path:
         return self.VENDOR_UPLOAD_FILES_PATH / order.vendor / self._generate_file_name(order, format=format)
 
-    def archive_order_file(self, order: Order, format: str = 'excel') -> None:
+    def archive_order_file(self, order: Order) -> None:
         """
-        Moves all files related to the given order into the vendor's CompletedOrders/ archive folder.
+        Moves all files related to the given order into the vendor's CompletedOrders archive folder.
+        Matches based on filename prefix (vendor_store_date).
         """
-        vendor_dir = self.base_path / order.vendor
+        vendor_dir = self.ORDER_FILES_PATH / order.vendor
         archive_dir = vendor_dir / "CompletedOrders"
         archive_dir.mkdir(parents=True, exist_ok=True)
 
-        filename_prefix = self.filename_strategy.base_name(order.vendor, order.store, order.date)
+        filename_prefix = self.filename_strategy.prefix(order)
 
         for file in vendor_dir.iterdir():
             if not file.is_file():
@@ -136,9 +137,9 @@ class OrderFileHandler(FileHandler):
             if not file.name.startswith(filename_prefix):
                 continue
 
-            destination = archive_dir / file.name
+            dest = archive_dir / file.name
             try:
-                file.rename(destination)
-                self.logger.info(f"Archived file: {file.name}")
+                file.rename(dest)
+                self.logger.info(f"Archived order file: {file.name}")
             except Exception as e:
-                self.logger.warning(f"Failed to archive file {file.name}: {e}")
+                self.logger.warning(f"Failed to archive {file.name}: {e}")

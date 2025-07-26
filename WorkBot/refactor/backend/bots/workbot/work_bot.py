@@ -275,3 +275,23 @@ class WorkBot:
         suffix = "th" if 11 <= day <= 13 else {1: "st", 2: "nd", 3: "rd"}.get(day % 10, "th")
         long_date = today.strftime(f"%B {day}{suffix}, %Y")
         return long_date, day_of_week
+    
+    def archive_all_current_orders(self, stores: list[str] = None, vendors: list[str] = None) -> None:
+        """
+        Archives all current (non-completed) orders.
+        If no vendors are supplied, all vendor directories are searched.
+        """
+        vendors = vendors or []  # Treat None as empty list (i.e., all vendors)
+
+        # Get current (non-archived) order files
+        order_files = self.order_coordinator.get_orders_from_file(
+            stores=stores or [],
+            vendors=vendors
+        )
+
+        for file_path in order_files:
+            try:
+                order = self.order_coordinator.read_order_file(file_path)
+                self.order_coordinator.archive_order_file(order)
+            except Exception as e:
+                self.logger.warning(f"[Archive] Skipped {file_path.name}: {e}")

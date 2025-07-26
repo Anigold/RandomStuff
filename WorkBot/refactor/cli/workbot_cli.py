@@ -376,13 +376,15 @@ class WorkBotCLI(CLI):
                 start_date=parsed_args.start_date,
                 end_date=parsed_args.end_date
             )
-            print(paths)
+
+            print('\nUpload files generated successfully.\n')
         except SystemExit:
             pass
 
     def _autocomplete_generate_vendor_upload_files(self, flag: str, text: str):
         
         flags = {
+            '--stores': self._get_stores,
             '--vendors': self._get_vendors
         }
         
@@ -604,13 +606,38 @@ Internal Contacts:
         except SystemExit:
             pass
 
+# ARCHIVE ORDERS
+    def args_archive_orders(self):
+        parser = argparse.ArgumentParser(prog='archive_orders', description='Archives all current, un-archived orders.')
+        parser.add_argument('--stores', nargs='+', required=True, help='List of stores.')
+        parser.add_argument('--vendors', nargs='+', help='List of vendors.')
+        return parser
+    
+    def cmd_archive_orders(self, args):
 
+        try:
+            parser = self.args_archive_orders()
+            parsed_args = parser.parse_args(args)
+            self.workbot.archive_all_current_orders(parsed_args.stores, parsed_args.vendors)
+        except SystemExit:
+            pass
+
+    def _autocomplete_archive_orders(self, flag: str, text: str):
+        flags = {
+            '--stores': self._get_stores,
+            '--vendors': self._get_vendors
+        }
+        
+        return [option for option in flags.get(flag, [])() if option.startswith(text)]
+
+
+    
 # PRIVATE FUNCTIONS    
     def _get_stores(self):
         return [store.name for store in self.workbot.store_coordinator.list_stores()]
     
     def _get_vendors(self):
-        return sorted(self.workbot.vendor_manager.list_vendors())
+        return sorted(self.workbot.store_coordinator.list_vendors())
 
     # def show_help(self, args):
     #     """Displays available commands."""

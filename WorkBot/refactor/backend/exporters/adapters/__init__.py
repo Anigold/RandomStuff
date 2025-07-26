@@ -2,6 +2,7 @@
 from .hill_n_markes_adapter import HillNMarkesAdapter
 from .sysco_adapter import SyscoAdapter
 from .performance_food_adapter import PerformanceFoodAdapter
+from .unfi_adapter import UNFIAdapter
 # Add more:
 # from . import sysco
 # from . import dutchvalley

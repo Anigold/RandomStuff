@@ -26,8 +26,8 @@ class OrderCoordinator:
     def save_order_file(self, order: Order, format: str = 'excel'):
         self.file_handler.save_order(order, format)
 
-    def get_orders_from_file(self, store_names=None, vendor_names=None):
-        return self.file_handler.get_order_files(store_names, vendor_names)
+    def get_orders_from_file(self, stores=None, vendors=None):
+        return self.file_handler.get_order_files(stores, vendors)
 
     def get_orders_from_db(self, store, vendor):
         return self.db_handler.get_orders(store, vendor)
@@ -147,3 +147,7 @@ class OrderCoordinator:
             output_paths.append(output_path)
 
         return output_paths
+    
+
+    def archive_order_file(self, order: Order) -> None:
+        self.file_handler.archive_order_file(order)

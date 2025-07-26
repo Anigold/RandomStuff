@@ -41,3 +41,15 @@ class OrderFilenameStrategy:
             raise ValueError(f"Invalid date in filename: {filename}")
         
         return {'vendor': vendor, 'store': store, 'date': date_str}
+    
+    def prefix(self, order: Order):
+        try:
+            date_obj = datetime.strptime(order.date, '%Y-%m-%d')
+        except ValueError:
+            try:
+                date_obj = datetime.strptime(order.date, '%Y%m%d')
+            except ValueError:
+                raise ValueError(f'Unrecognized date format: {order.date}')
+
+        formatted_date = date_obj.strftime('%Y-%m-%d')
+        return f'{order.vendor}_{order.store}_{formatted_date}'
