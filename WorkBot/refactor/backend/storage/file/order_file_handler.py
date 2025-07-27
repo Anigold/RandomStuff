@@ -1,4 +1,4 @@
-from config.paths import ORDER_FILES_PATH, UPLOAD_FILES_DIR
+from config.paths import ORDER_FILES_DIR, UPLOAD_FILES_DIR
 from backend.storage.file.file_handler import FileHandler
 from backend.models.order import Order
 from backend.parsers.order_parser import OrderParser
@@ -14,11 +14,11 @@ from datetime import datetime
 @Logger.attach_logger
 class OrderFileHandler(FileHandler):
     
-    ORDER_FILES_PATH = Path(ORDER_FILES_PATH)
+    ORDER_FILES_DIR = Path(ORDER_FILES_DIR)
     VENDOR_UPLOAD_FILES_PATH = Path(UPLOAD_FILES_DIR)
 
     def __init__(self):
-        super().__init__(self.ORDER_FILES_PATH)
+        super().__init__(self.ORDER_FILES_DIR)
         self.parser = OrderParser()
         self.filename_strategy = OrderFilenameStrategy()
         
@@ -33,7 +33,7 @@ class OrderFileHandler(FileHandler):
 
         file_name = self._generate_file_name(order, format)
 
-        self._write_data(format, file_data_to_save, self.ORDER_FILES_PATH / order.vendor / file_name)
+        self._write_data(format, file_data_to_save, self.ORDER_FILES_DIR / order.vendor / file_name)
 
     def _write_data(self, format: str, data: Any, file_path: Path) -> None:
         try:
@@ -43,24 +43,6 @@ class OrderFileHandler(FileHandler):
         
         file_path.parent.mkdir(parents=True, exist_ok=True)
         save_func(data, file_path)
-
-    # def get_order_path(self, order: Order) -> Path:
-    #     filename = f"{order.vendor}_{order.store}_{order.date}.xlsx"
-    #     return self.base_path / order.vendor / filename
-
-    # def get_orders(self, stores: list = None, vendors: list = None):
-    #     orders = []
-    #     for vendor_dir in self.ORDER_FILES_PATH.iterdir():
-    #         if not vendor_dir.is_dir():
-    #             continue
-    #         if vendors and vendor_dir.name not in vendors:
-    #             continue
-    #         for file in vendor_dir.glob("*.xlsx"):
-    #             meta = self.parse_filename(file.name)
-    #             if stores and meta.get('store') not in stores:
-    #                 continue
-    #             orders.append(self.parser.parse_excel(file))
-    #     return orders
 
     def get_order_files(
             self, 
@@ -93,7 +75,7 @@ class OrderFileHandler(FileHandler):
 
         matched_files = []
 
-        for vendor_dir in self.ORDER_FILES_PATH.iterdir():
+        for vendor_dir in self.ORDER_FILES_DIR.iterdir():
             if not vendor_dir.is_dir():
                 continue
             if vendors and vendor_dir.name not in vendors:
@@ -109,10 +91,11 @@ class OrderFileHandler(FileHandler):
 
         return matched_files
 
-
+    def get_order_directory(self) -> Path:
+        return self.ORDER_FILES_DIR
     
     def get_order_file_path(self, order: Order, format: str = 'excel') -> Path:
-        return self.base_dir / order.vendor / self._generate_file_name(order, format)
+        return self.ORDER_FILES_DIR / order.vendor / self._generate_file_name(order, format)
 
     def read_order(self, file_path: Path) -> Order:
         return self.parser.parse_excel(file_path)
@@ -125,7 +108,7 @@ class OrderFileHandler(FileHandler):
         Moves all files related to the given order into the vendor's CompletedOrders archive folder.
         Matches based on filename prefix (vendor_store_date).
         """
-        vendor_dir = self.ORDER_FILES_PATH / order.vendor
+        vendor_dir = self.ORDER_FILES_DIR / order.vendor
         archive_dir = vendor_dir / "CompletedOrders"
         archive_dir.mkdir(parents=True, exist_ok=True)
 

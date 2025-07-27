@@ -705,5 +705,18 @@ Internal Contacts:
         return parser
 
     def cmd_print_weekly_schedule(self, args):
-
         pass
+
+
+
+    def args_split_natalies(self) -> None:
+        return argparse.ArgumentParser(prog='sort_orders', description='Sort the saved orders by vendor.')
+    
+    def cmd_split_natalies(self, args):
+        parser = self.args_sort_orders()
+
+        try:    
+            self.workbot.split_natalies()
+            print('All Natalie Juices split.')
+        except SystemExit:
+            pass

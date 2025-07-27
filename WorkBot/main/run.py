@@ -127,7 +127,7 @@ def download_pricing_sheets(driver, vendors=['Performance Food',], guides=['IBPr
         
     return
 
-def generate_pricing_sheets(vendors=['Sysco', 'Performance Food', 'US Foods', 'Russo Produce',], guides=['IBProduce']):
+def generate_pricing_sheets(vendors=[], guides=['IBProduce']):
         pricer = PriceComparator()
         # pricer.item_skus_file_path = f'{PRICING_FILES_PATH}\\ItemSkus.xlsx'
         for guide in guides:
@@ -297,12 +297,12 @@ if __name__ == '__main__':
     # convert_to_item_first(ITEMS_DIR / 'IthacaBakeryItems.json', ITEMS_DIR / 'IthacaBakeryItemsITEMFIRST.json')
     
     '''Pricing Sheet Protocol'''
-    # options = create_options(DOWNLOAD_PATH)
-    # driver  = uc.Chrome(options=options, use_subprocess=True)
-    # download_pricing_sheets(driver)
-    # delete_all_files_without_extension(PRICING_FILES_PATH / 'VendorSheets', '.xlsx')
-    # input('Press ENTER to stop waiting.')
-    # generate_pricing_sheets()
+    options = create_options(DOWNLOAD_PATH)
+    driver  = uc.Chrome(options=options, use_subprocess=True)
+    download_pricing_sheets(driver)
+    delete_all_files_without_extension(PRICING_FILES_PATH / 'VendorSheets', '.xlsx')
+    input('Press ENTER to stop waiting.')
+    generate_pricing_sheets()
     
 
 
@@ -457,6 +457,6 @@ if __name__ == '__main__':
 
 
 
-    workbot = WorkBot()
-    workbot.split_natalies()
+    # workbot = WorkBot()
+    # workbot.split_natalies()
     

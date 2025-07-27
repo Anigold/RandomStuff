@@ -21,16 +21,26 @@ class OrderCoordinator:
     #         self.file_handler.save_order(order)
     #     if persist_db:
     #         self.db_handler.upsert_order(order)
-
+    def get_orders_directory(self) -> Path:
+        return self.file_handler.get_order_directory()
 
     def save_order_file(self, order: Order, format: str = 'excel'):
         self.file_handler.save_order(order, format)
 
+    def parse_order_file(self, order_file_path: Path) -> Order:
+        return self.file_handler.read_order(order_file_path)
+
     def get_orders_from_file(self, stores=None, vendors=None):
         return self.file_handler.get_order_files(stores, vendors)
 
+    def generate_order_file_name(self, order: Order, format: str = 'excel') -> str:
+        return self.file_handler._generate_file_name(order, format='pdf')
+    
     def get_orders_from_db(self, store, vendor):
         return self.db_handler.get_orders(store, vendor)
+    
+    def get_order_file_path(self, order: Order, format: str = 'excel') -> Path:
+        return self.file_handler.get_order_file_path(order, format=format)
 
     def check_and_update_order(self, order: Order) -> bool:
         """
@@ -105,7 +115,7 @@ class OrderCoordinator:
     def read_order_file(self, file_path: Path) -> Order:
         return self.file_handler.read_order(file_path)
     
-    def generate_vendor_upload_file(self, order: Order) -> Path:
+    def generate_vendor_upload_file(self, order: Order, context: dict = None) -> Path:
         """
         Generates and saves a vendor-specific upload file for the given order.
         Returns the path to the saved file.
@@ -114,7 +124,7 @@ class OrderCoordinator:
         format = adapter.preferred_format
 
         exporter = Exporter.get_exporter(Order, format)
-        file_data = exporter.export(order, adapter=adapter)
+        file_data = exporter.export(order, adapter=adapter, context=context)
 
         output_path = self.file_handler.get_upload_files_path(order, format)
         self.file_handler._write_data(format, file_data, output_path)
@@ -126,7 +136,8 @@ class OrderCoordinator:
         stores: list[str],
         vendors: list[str],
         start_date: str = None,
-        end_date: str = None
+        end_date: str = None,
+        context_map: dict[str, dict] = None
     ) -> list[Path]:
         """
         Finds all matching orders and generates vendor-specific upload files for each.
@@ -143,11 +154,11 @@ class OrderCoordinator:
         for file_path in file_paths:
 
             order = self.read_order_file(file_path)
-            output_path = self.generate_vendor_upload_file(order)
+            context = context_map.get(str(file_path), {}) if context_map else {}
+            output_path = self.generate_vendor_upload_file(order, context)
             output_paths.append(output_path)
 
         return output_paths
     
-
     def archive_order_file(self, order: Order) -> None:
         self.file_handler.archive_order_file(order)

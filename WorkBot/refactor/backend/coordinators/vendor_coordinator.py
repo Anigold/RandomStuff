@@ -37,6 +37,26 @@
 #         self.active_vendors[vendor_name] = bot_class(driver, **kwargs)
 #         return self.active_vendors[vendor_name]
 
+from backend.storage.file.vendor_file_handler import VendorFileHandler
+from pathlib import Path
+from config.paths import VENDOR_FILES_DIR
+
 class VendorCoordinator:
-    def __init__(self):
-        self.active_vendors = {}
+
+    def __init__(self,):
+        self.file_handler = VendorFileHandler()
+        self.catalog = self.file_handler.load_all()  # defaults to vendors.yaml
+        print(self.catalog, flush=True)
+
+    def get_vendor_information(self, vendor_name: str):
+        return self.catalog[vendor_name]
+
+    # def get_bot(self, name: str):
+    #     return create_vendor_bot(name, self.driver, self.username, self.password)
+
+
+    # def retrieve_pricing_info(self, vendor: str, path_to_sheet: str):
+    #     bot = self.get_bot(vendor)
+    #     if isinstance(bot, PricingBotMixin):
+    #         return bot.get_pricing_info_from_sheet(path_to_sheet)
+    #     raise ValueError(f"{vendor} does not support pricing extraction.")

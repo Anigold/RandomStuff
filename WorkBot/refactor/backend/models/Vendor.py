@@ -1,11 +1,38 @@
-class Vendor:
-    def __init__(self, name, address, contact_info):
-        self.name = name
-        self.address = address
-        self.contact_info = contact_info
+from dataclasses import dataclass, field
+from typing import List, Optional
 
-    def __str__(self):
-        return f"Vendor(name={self.name}, address={self.address}, contact_info={self.contact_info})"
 
-    def __repr__(self):
-        return self.__str__()
+@dataclass
+class ContactInfo:
+    name:  str
+    title: str
+    email: str
+    phone: str
+
+
+@dataclass
+class ScheduleEntry:
+    order_day:    str
+    delivery_days: List[str]
+    cutoff_time:  str
+
+
+@dataclass
+class OrderingInfo:
+    method:          List[str] = field(default_factory=list)
+    email:           str = ""
+    portal_url:      str = ""
+    phone_number:    str = ""
+    schedule:        List[ScheduleEntry] = field(default_factory=list)
+    
+
+@dataclass
+class VendorInfo:
+    name:                 str
+    order_format:         str = ""
+    special_notes:        str = ""
+    min_order_value:      float = 0
+    min_order_cases:      int = 0
+    internal_contacts:    List[ContactInfo] = field(default_factory=list)
+    ordering:             OrderingInfo = field(default_factory=OrderingInfo)
+    store_ids:            dict[str, str] = field(default_factory=dict)

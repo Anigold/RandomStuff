@@ -6,7 +6,7 @@ from .adapters import ExportAdapter
 
 @Exporter.register_exporter(Order, "excel")
 class ExcelOrderExporter(Exporter):
-    def export(self, order: Order, adapter: ExportAdapter = None) -> Workbook:
+    def export(self, order: Order, adapter: ExportAdapter = None, context: dict = None) -> Workbook:
         wb = Workbook()
         ws = wb.active
 
@@ -14,15 +14,20 @@ class ExcelOrderExporter(Exporter):
         default_headers = ["SKU", "Name", "Quantity", "Cost Per", "Total Cost"]
         default_row_fn = lambda item: [item.sku, item.name, item.quantity, item.cost_per, item.total_cost]
 
-        # Use adapter if available
-        headers = adapter.modify_headers(default_headers) if adapter else default_headers
+        # Use adapter to modify headers (with context if needed)
+        headers = adapter.modify_headers(default_headers, context=context) if adapter else default_headers
+
+
         ws.append(headers)
 
         for item in order.items:
-            row = adapter.modify_row(default_row_fn(item), item) if adapter else default_row_fn(item)
+            row = default_row_fn(item)
+            if adapter:
+                row = adapter.modify_row(row, item=item, context=context)
             ws.append(row)
 
         return wb
+
 
 @Exporter.register_exporter(Item, "excel")
 class ExcelItemExporter(Exporter):
