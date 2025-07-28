@@ -28,15 +28,15 @@ class USFoodsAdapter(ExportAdapter):
             store_id = vendor_info.store_ids.get(store_name, "000000")
 
         return [
-            store_id,         # CUSTOMER NUMBER
-            '2195',           # DISTRIBUTOR
-            '0',              # DEPARTMENT
-            date_str,         # DATE
-            store_name,       # PO NUMBER
-            item.sku,         # PRODUCT NUMBER
-            '', '', '', '',   # CUST PROD #, DESCRIPTION, BRAND, PACK SIZE
-            '', '',           # CS PRICE, EA PRICE
+            store_id,            # CUSTOMER NUMBER
+            '2195',              # DISTRIBUTOR
+            '0',                 # DEPARTMENT
+            date_str,            # DATE
+            store_name,          # PO NUMBER
+            item.sku,            # PRODUCT NUMBER
+            '', '', '', '',      # CUST PROD #, DESCRIPTION, BRAND, PACK SIZE
+            '', '',              # CS PRICE, EA PRICE
             int(item.quantity),  # CS
-            '0',              # EA
-            '', '', '', ''    # EXTENDED PRICE, ORDER #, STOCK STATUS, etc.
+            '0',                 # EA
+            '', '', '', ''       # EXTENDED PRICE, ORDER #, STOCK STATUS, etc.
         ]

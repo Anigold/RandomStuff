@@ -1,9 +1,22 @@
+# region ─── Handler Imports ─────────────────────────────────────────────
+
 from backend.storage.file.order_file_handler import OrderFileHandler
 from backend.storage.file.download_handler import DownloadHandler
 from backend.storage.database.order_database_handler import OrderDatabaseHandler
+
+# endregion
+
+# region ─── Exporter Imports ────────────────────────────────────────────
+
 from backend.exporters.exporter import Exporter
 from backend.exporters.adapters.exporter_adapter import ExportAdapter
+
+# endregion
+
+# region ─── Parser Imports ──────────────────────────────────────────────
 from backend.parsers.order_parser import OrderParser
+# endregion
+
 from backend.models.order import Order
 from backend.utils.logger import Logger
 from pathlib import Path
@@ -16,32 +29,95 @@ class OrderCoordinator:
         self.parser           = OrderParser()
         self.download_handler = DownloadHandler()
 
-    # def import_order(self, order: Order, save_excel=True, persist_db=True) -> None:
-    #     if save_excel:
-    #         self.file_handler.save_order(order)
-    #     if persist_db:
-    #         self.db_handler.upsert_order(order)
+    # region ─── File Paths and Directories ─────────────────────────────
+
     def get_orders_directory(self) -> Path:
         return self.file_handler.get_order_directory()
+
+    def get_order_file_path(self, order: Order, format: str = 'excel') -> Path:
+        return self.file_handler.get_order_file_path(order, format=format)
+
+    def generate_order_file_name(self, order: Order, format: str = 'excel') -> str:
+        return self.file_handler._generate_file_name(order, format=format)
+    
+    # endregion
+
+    # region ─── Reading and Saving Orders ──────────────────────────────
+    
+    def parse_order_file(self, order_file_path: Path) -> Order:
+        return self.file_handler.read_order(order_file_path)
+
+    def read_order_file(self, file_path: Path) -> Order:
+        return self.file_handler.read_order(file_path)
 
     def save_order_file(self, order: Order, format: str = 'excel'):
         self.file_handler.save_order(order, format)
 
-    def parse_order_file(self, order_file_path: Path) -> Order:
-        return self.file_handler.read_order(order_file_path)
+    def archive_order_file(self, order: Order) -> None:
+        self.file_handler.archive_order_file(order)
+    
+    # endregion
 
+    # region ─── Order Retrieval ────────────────────────────────────────
+    
     def get_orders_from_file(self, stores=None, vendors=None):
         return self.file_handler.get_order_files(stores, vendors)
 
-    def generate_order_file_name(self, order: Order, format: str = 'excel') -> str:
-        return self.file_handler._generate_file_name(order, format='pdf')
-    
     def get_orders_from_db(self, store, vendor):
         return self.db_handler.get_orders(store, vendor)
     
-    def get_order_file_path(self, order: Order, format: str = 'excel') -> Path:
-        return self.file_handler.get_order_file_path(order, format=format)
+    # endregion
 
+    # region ─── Vendor Upload File Generation ──────────────────────────
+    
+    def generate_vendor_upload_file(self, order: Order, context: dict = None) -> Path:
+        """
+        Generates and saves a vendor-specific upload file for the given order.
+        Returns the path to the saved file.
+        """
+        adapter = ExportAdapter.get_adapter(order.vendor)
+        format = adapter.preferred_format
+
+        exporter = Exporter.get_exporter(Order, format)
+        file_data = exporter.export(order, adapter=adapter, context=context)
+
+        output_path = self.file_handler.get_upload_files_path(order, format)
+        self.file_handler._write_data(format, file_data, output_path)
+
+        return output_path
+
+    def generate_vendor_upload_files(
+        self,
+        stores: list[str],
+        vendors: list[str],
+        start_date: str = None,
+        end_date: str = None,
+        context_map: dict[str, dict] = None
+    ) -> list[Path]:
+        """
+        Finds all matching orders and generates vendor-specific upload files for each.
+        Returns the list of output file paths.
+        """
+        file_paths = self.file_handler.get_order_files(
+            stores=stores,
+            vendors=vendors,
+            start_date=start_date,
+            end_date=end_date
+        )
+
+        output_paths = []
+        for file_path in file_paths:
+            order = self.read_order_file(file_path)
+            context = context_map.get(str(file_path), {}) if context_map else {}
+            output_path = self.generate_vendor_upload_file(order, context)
+            output_paths.append(output_path)
+
+        return output_paths
+    
+    # endregion
+
+    # region ─── File Validation and Diffing ────────────────────────────
+    
     def check_and_update_order(self, order: Order) -> bool:
         """
         If the given order differs from the existing one on file,
@@ -96,7 +172,11 @@ class OrderCoordinator:
         items2 = set(map(item_to_tuple, order2.items))
 
         return items1 == items2
+    
+    # endregion
 
+    # region ─── Download Watcher ───────────────────────────────────────
+    
     def expect_downloaded_pdf(self, order: Order) -> None:
         """
         Registers a one-time callback for when the PDF download completes.
@@ -111,54 +191,5 @@ class OrderCoordinator:
             callback=handle_downloaded_file,
             timeout=10
         )
-
-    def read_order_file(self, file_path: Path) -> Order:
-        return self.file_handler.read_order(file_path)
     
-    def generate_vendor_upload_file(self, order: Order, context: dict = None) -> Path:
-        """
-        Generates and saves a vendor-specific upload file for the given order.
-        Returns the path to the saved file.
-        """
-        adapter = ExportAdapter.get_adapter(order.vendor)
-        format = adapter.preferred_format
-
-        exporter = Exporter.get_exporter(Order, format)
-        file_data = exporter.export(order, adapter=adapter, context=context)
-
-        output_path = self.file_handler.get_upload_files_path(order, format)
-        self.file_handler._write_data(format, file_data, output_path)
-
-        return output_path
-    
-    def generate_vendor_upload_files(
-        self,
-        stores: list[str],
-        vendors: list[str],
-        start_date: str = None,
-        end_date: str = None,
-        context_map: dict[str, dict] = None
-    ) -> list[Path]:
-        """
-        Finds all matching orders and generates vendor-specific upload files for each.
-        Returns the list of output file paths.
-        """
-        file_paths = self.file_handler.get_order_files(
-            stores=stores,
-            vendors=vendors,
-            start_date=start_date,
-            end_date=end_date
-        )
-
-        output_paths = []
-        for file_path in file_paths:
-
-            order = self.read_order_file(file_path)
-            context = context_map.get(str(file_path), {}) if context_map else {}
-            output_path = self.generate_vendor_upload_file(order, context)
-            output_paths.append(output_path)
-
-        return output_paths
-    
-    def archive_order_file(self, order: Order) -> None:
-        self.file_handler.archive_order_file(order)
+    # endregion

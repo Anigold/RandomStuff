@@ -46,7 +46,6 @@ class VendorCoordinator:
     def __init__(self,):
         self.file_handler = VendorFileHandler()
         self.catalog = self.file_handler.load_all()  # defaults to vendors.yaml
-        print(self.catalog, flush=True)
 
     def get_vendor_information(self, vendor_name: str):
         return self.catalog[vendor_name]

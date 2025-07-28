@@ -1,27 +1,38 @@
-# import backend.config as config
+# region Imports
+
+# region Utilities
 
 from backend.utils.logger import Logger
 
+# endregion
+
+# region Managers
 ''' MANAGERS '''
 from backend.bots.craftable_bot.craftable_bot import CraftableBot
 from backend.coordinators.vendor_coordinator import VendorCoordinator
 from backend.coordinators.store_coordinator import StoreCoordinator
 from backend.coordinators.order_coordinator import OrderCoordinator
 from backend.coordinators.transfer_coordinator import TransferCoordinator
+# endregion
+
+# region Models
 
 ''' OBJECTS '''
 from backend.models.order import Order
 from backend.models.transfer import Transfer
 from backend.models.transfer_item import TransferItem
 
+# endregion
+
+# region Emailer
+
 from backend.utils.emailer.emailer import Emailer, Email
 from backend.utils.emailer.services.gmail_service import GmailService
 from backend.utils.emailer.services.outlook_service import OutlookService
 
-# from backend.transferring.Transfer import Transfer, TransferItem
-# from backend.emailer.Emailer import Emailer, Email
-# from backend.emailer.Services.Gmail import GmailService
-# from backend.emailer.Services.Outlook import OutlookService
+# endregion
+
+# region Helpers
 
 '''  HELPERS '''
 from backend.bots.craftable_bot.helpers import get_craftable_username_password
@@ -29,16 +40,30 @@ from backend.utils.helpers import string_to_datetime
 
 from backend.bots.bot_mixins import SeleniumBotMixin
 
+# endregion
+
+# region Standard Library
+
 ''' STANDARD LIBRARY '''
 from datetime import datetime
 import socket
 from collections import defaultdict
 from pathlib import Path
 
+# endregion
+
+# region Third-Party Imports
+
 from openpyxl import load_workbook
+
+# endregion
+
+#endregion
 
 @Logger.attach_logger
 class WorkBot:
+    
+    # region ---- Initialization ------
     
     def __init__(self):
         self.logger.info('Initializing WorkBot...')
@@ -67,6 +92,10 @@ class WorkBot:
 
         self.logger.info('WorkBot initialized successfully.')
 
+    # endregion
+    
+    # region ---- Order Management ----
+    
     def download_orders(self, stores, vendors=[], download_pdf=True, update=True):
         self.craft_bot.download_orders(stores, vendors, download_pdf=download_pdf, update=update)
     
@@ -83,6 +112,8 @@ class WorkBot:
 
         self.craft_bot.input_transfers(transfers)
 
+    # endregion
+    
     def convert_order_to_transfer(self, order_store, vendor, store_to):
         '''This is so niche that we only need to use it once a week, but it removes tedium from my life so it stays.'''
         # print(order.items, flush=True)
@@ -167,6 +198,7 @@ class WorkBot:
     def combine_orders(self, vendors: list) -> None:
         self.order_coordinator.combine_orders(vendors)
   
+# region Generate Vendor Order Emails
 
     def generate_vendor_order_emails(self, vendors: list[str], stores: list[str] = []) -> list[Email]:
         orders = self.get_orders(stores=stores, vendors=vendors)
@@ -251,6 +283,7 @@ class WorkBot:
 
         return attachments
 
+# endregion
 
     def generate_store_order_emails(self, stores: list[str]):
         orders = self.get_orders(stores=stores)

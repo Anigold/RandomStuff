@@ -55,6 +55,8 @@ Craftable Bot utlizes Selenium to interact with the Craftable website.
 @Logger.attach_logger
 class CraftableBot(SeleniumBotMixin):
 
+# region ---- Global Class Variables --------------------
+
     site_map = {
             'login_page': 'https://app.craftable.com/signin',
             'orders_page': 'https://app.craftable.com/buyer/2/{store_id}/orders/list',
@@ -74,6 +76,8 @@ class CraftableBot(SeleniumBotMixin):
             'Collegetown': '14372',
     }
     
+# endregion
+
     def __init__(self, username: str, password: str, 
                  order_coordinator: OrderCoordinator = None, 
                  transfer_coordinator: TransferCoordinator = None):
@@ -86,6 +90,7 @@ class CraftableBot(SeleniumBotMixin):
 
         self.is_logged_in = False
         
+# region ---- Legacy Code -------------------------------
     # def __enter__(self):
     #     self.logger.info('Starting CraftableBot session.')
     #     self.login()
@@ -100,6 +105,9 @@ class CraftableBot(SeleniumBotMixin):
 
     #     time.sleep(2) # Prevents race condition with OS program manager
     #     return True
+# endregion
+
+# region ---- Session Page Control ----------------------
     
     '''
     Login to the Craftable website using the standard landing page.
@@ -190,6 +198,28 @@ class CraftableBot(SeleniumBotMixin):
         #WebDriverWait(self.driver, 45).until(EC.element_to_be_clickable((By.CLASS_NAME, 'row home-cards-orders-invoices')))
         time.sleep(5)
         return
+
+    @classmethod
+    @Logger.log_exceptions
+    def get_url(cls, key: str, store: str = None) -> str:
+
+        cls.logger.debug('Retrieving URL from site map.')
+
+        if key not in cls.site_map:
+            cls.logger.error(f'Invalid site map key: {key}')
+            return ''
+        
+        if '{store_id}' in cls.site_map[key]:
+            if store not in cls.stores:
+                cls.logger.error(f'Invalid store name: {store}')
+                return ''
+            return cls.site_map[key].format(store_id=cls.stores[store])
+        
+        return cls.site_map[key]
+   
+# endregion 
+
+# region ---- Order Downloading -------------------------
     
     ''' Download orders from Craftable.
 
@@ -298,6 +328,9 @@ class CraftableBot(SeleniumBotMixin):
         return None
     
 
+# endregion
+   
+# region ---- Order Deletion ----------------------------
     @login_necessary
     @Logger.log_exceptions
     def delete_orders(self, stores: list[str], vendors: list[str] = None) -> None:
@@ -391,24 +424,9 @@ class CraftableBot(SeleniumBotMixin):
             self.logger.error(f"Failed to confirm deletion: {e}")
 
 
-    @classmethod
-    @Logger.log_exceptions
-    def get_url(cls, key: str, store: str = None) -> str:
+   # endregion
 
-        cls.logger.debug('Retrieving URL from site map.')
-
-        if key not in cls.site_map:
-            cls.logger.error(f'Invalid site map key: {key}')
-            return ''
-        
-        if '{store_id}' in cls.site_map[key]:
-            if store not in cls.stores:
-                cls.logger.error(f'Invalid store name: {store}')
-                return ''
-            return cls.site_map[key].format(store_id=cls.stores[store])
-        
-        return cls.site_map[key]
-    
+# region ---- Order Transfers ---------------------------
     @temporary_login
     @Logger.log_exceptions
     def input_transfers(self, transfers: list) -> None:
@@ -600,6 +618,7 @@ class CraftableBot(SeleniumBotMixin):
             
         return
 
+# endregion
 
     '''HELPER FUNCTIONS'''
     
@@ -658,7 +677,6 @@ class CraftableBot(SeleniumBotMixin):
         ActionChains(self.driver).key_down(Keys.CONTROL).click(download_button).perform()
         return
        
-
     def _update_existing_order(self, order: Order) -> bool:
         """
         Requests that the OrderCoordinator handle the update check and replacement
@@ -670,10 +688,6 @@ class CraftableBot(SeleniumBotMixin):
         self.logger.info(f'[Order Update] Initiating update protocol for {order.store} / {order.vendor} / {order.date}.')
         return self.order_coordinator.check_and_update_order(order)
 
-
-
-
-    
     def _change_calendar_date(self, transfer_datetime: datetime) -> None:
        
         try:

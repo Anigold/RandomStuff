@@ -13,9 +13,7 @@ class VendorFileHandler(FileHandler):
 
 
     def load_all(self) -> dict[str, VendorInfo]:
-        print("Loading vendor catalog...", flush=True)
         file_path = self.VENDOR_FILES_DIR / "vendors.yaml"
-        print(file_path, flush=True)
 
         with open(file_path, 'r', encoding='utf-8') as f:
             raw_data = yaml.safe_load(f)
@@ -53,7 +51,6 @@ class VendorFileHandler(FileHandler):
                     store_ids=entry.get("store_ids", {})
                 )
             except Exception as e:
-                print(f"⚠️ Failed to load vendor '{name}': {e}", flush=True)
+                print(f"Failed to load vendor '{name}': {e}", flush=True)
 
-        print(f"...completed! Loaded {len(catalog)} vendors.", flush=True)
         return catalog
