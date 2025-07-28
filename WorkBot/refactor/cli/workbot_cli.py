@@ -473,7 +473,7 @@ class WorkBotCLI(CLI):
         parser = self.args_combine_orders()
         parsed_args = parser.parse_args(args)
         try:
-            self.workbot.order_manager.combine_orders(parsed_args.vendors)
+            self.workbot.combine_orders(parsed_args.vendors)
         except SystemExit:
             pass
 

@@ -4,12 +4,13 @@ from backend.models.order import Order
 from backend.parsers.order_parser import OrderParser
 from pathlib import Path
 import re
-from openpyxl import Workbook
+from openpyxl import Workbook, load_workbook
 from typing import Any
 from backend.exporters.excel_exporter import Exporter
 from backend.storage.file.helpers.filename_strategies.order_filename_strategy import OrderFilenameStrategy
 from backend.utils.logger import Logger
 from datetime import datetime
+from collections import defaultdict
 
 @Logger.attach_logger
 class OrderFileHandler(FileHandler):
@@ -126,3 +127,43 @@ class OrderFileHandler(FileHandler):
                 self.logger.info(f"Archived order file: {file.name}")
             except Exception as e:
                 self.logger.warning(f"Failed to archive {file.name}: {e}")
+
+    def combine_orders_by_store(self, vendors: list[str]) -> None:
+        
+        for vendor in vendors:
+            order_paths = self.get_order_files(stores=[], vendors=[vendor])
+
+            if not order_paths:
+                continue
+
+            orders = [self.read_order(p) for p in order_paths]
+            
+            combined = defaultdict(lambda: defaultdict(float))
+            for order in orders:
+                store = order.store.upper()
+                for item in order.items:
+                    combined[item.name][store] += float(item.quantity)
+
+            workbook = self._create_combined_orders_excel(combined)
+            output_path = self.get_order_directory() / vendor / "combined_orders.xlsx"
+            self._write_data('excel', workbook, output_path)
+
+    def _create_combined_orders_excel(self, combined_orders: dict[str, dict[str, float]]) -> Workbook:
+        """
+        Constructs a workbook from combined order data.
+        Format: Item | STORE_A | STORE_B | ...
+        """
+        workbook = Workbook()
+        sheet = workbook.active
+
+        # Dynamically extract and sort store names
+        store_names = sorted({store for stores in combined_orders.values() for store in stores})
+        headers = ['Item'] + store_names
+        sheet.append(headers)
+
+        # Write each row
+        for item_name, store_quantities in sorted(combined_orders.items()):
+            row = [item_name] + [store_quantities.get(store, '') for store in store_names]
+            sheet.append(row)
+
+        return workbook
