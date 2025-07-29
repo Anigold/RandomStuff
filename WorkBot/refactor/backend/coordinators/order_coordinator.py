@@ -63,33 +63,6 @@ class OrderCoordinator:
         """
         self.logger.info(f"Combining orders for {len(vendors)} vendors.")
         return self.file_handler.combine_orders_by_store(vendors)
-        for vendor in vendors:
-            self.logger.info(f"Combining orders for: {vendor}")
-
-            # Step 1: Get order files for this vendor
-            order_paths = self.file_handler.get_order_files(stores=[], vendors=[vendor])
-            self.logger.info(f"{len(order_paths)} order files found.")
-
-            if not order_paths:
-                continue
-
-            # Step 2: Parse into Order objects
-            orders = [self.file_handler.read_order(p) for p in order_paths]
-
-            return self.file_handler.combine_orders(orders)
-            # Step 3: Aggregate quantities per item per store
-            combined = defaultdict(lambda: defaultdict(float))
-            for order in orders:
-                store = order.store.upper()
-                for item in order.items:
-                    combined[item.name][store] += float(item.quantity)
-
-            # Step 4: Create and save combined Excel workbook
-            workbook = self.file_handler._create_combined_orders_excel(combined)
-            output_path = self.file_handler.get_order_directory() / vendor / "combined_orders.xlsx"
-            self.file_handler._save_excel(workbook, output_path)
-
-            self.logger.info(f"Combined orders saved for {vendor} at {output_path}")
     
     # endregion
 
