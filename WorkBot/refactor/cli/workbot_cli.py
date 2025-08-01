@@ -30,19 +30,317 @@ import re
 from pprint import pprint
 import time
 
+# class CLI:
+
+#     FLAG_REGEX_PATTERN = r'(--\w[\w-]*)(?:\s+([^\s-][^\s]*))?'
+
+#     def __init__(self) -> None:
+
+#         self.commands = {}
+
+#         self._register_commands()
+
+#         self.autocomplete_registry = {}
+#         self._setup_autocomplete()
+
+
+#     def _register_commands(self) -> None:
+#         for function_name in dir(self):
+#             if function_name.startswith('cmd_'):
+#                 command_name = function_name[4:]
+#                 self.commands[command_name] = getattr(self, function_name)
+
+#     def _setup_autocomplete(self) -> None:
+
+#         # Autocomplete
+#         readline.set_completer(self._completer)
+
+#         # We need to remove the hyphen as a word delimiter to enable the usage of flags (e.g. "command --flag 'Flag value').
+#         delimiters = readline.get_completer_delims().replace('-', '')
+#         readline.set_completer_delims(delimiters + ' ') # Possible Bug: on startup there is a chance the blank space is not present in the default delims.
+        
+
+#         readline.parse_and_bind("set completion-ignore-case on")        # Ignore case sensitivity
+#         readline.parse_and_bind("set show-all-if-ambiguous on")         # List all matches if ambiguous
+#         readline.parse_and_bind("set menu-complete-display-prefix on")  # Show common prefix in list
+#         readline.parse_and_bind("set skip-completed-text on")
+#         readline.parse_and_bind("TAB: complete")
+
+#         # Command History
+#         if CLI_HISTORY_FILE.exists():
+#             readline.read_history_file(str(CLI_HISTORY_FILE))
+#         readline.set_history_length(100)
+
+
+
+
+
+#         # ADD NEWLINE PLACES AT TOP AND BOTTOM OF AUTOCOMPLETE RESULTS
+#         # Save the original method
+#         # _original_display_matches = readline.get_completer_delims
+
+#         # def patched_display_matches(substitution, matches, longest_match_length):
+#         #     print("\n")  # newline BEFORE suggestions
+#         #     for match in matches:
+#         #         print(match)
+#         #     print()  # newline AFTER suggestions
+
+#         # readline.set_completion_display_matches_hook(patched_display_matches)
+        
+
+
+#         self._register_autocomplete()
+        
+#     # REGISTER AUTOCOMPLETES
+#     def _register_autocomplete(self) -> None:
+#         for function_name in dir(self):
+#             prefix = '_autocomplete_'
+#             if function_name.startswith(prefix):
+#                 autocomplete_name = function_name[len(prefix):]
+#                 self.autocomplete_registry[autocomplete_name] = getattr(self, function_name)
+
+
+
+
+
+#     def _completer(self, text: str, state: int) -> Optional[str]:
+#         buffer = readline.get_line_buffer().strip()
+        
+#         if not buffer:
+#             options = self._complete_commands(text)
+#         elif " " not in buffer:
+#             options = self._complete_commands(text)
+#         else:
+#             options = self._complete_arguments(buffer, text)
+
+#         return options[state] if state < len(options) else None
+
+#     def _complete_commands(self, text: str) -> list[str]:
+#         return [cmd for cmd in self.commands.keys() if cmd.startswith(text)]
+    
+#     def _complete_arguments(self, buffer: str, text: str) -> list[str]:
+#         try:
+#             tokens = shlex.split(buffer)
+#         except ValueError:
+#             tokens = buffer.split()
+
+#         if not tokens:
+#             return []
+
+#         command = tokens[0]
+#         if command not in self.commands:
+#             return []
+
+#         possible_flags = self._get_command_args(command, text)
+#         matches = re.findall(self.FLAG_REGEX_PATTERN, buffer)
+
+#         last_token = tokens[-1] if tokens else ""
+#         last_flag = self._get_last_valid_flag(matches, possible_flags)
+
+#         # Case 1: Typing or completing a flag
+#         if last_token.startswith("--") or (buffer.endswith(" ") and not last_flag):
+#             return [f for f in possible_flags if f.startswith(text)]
+
+#         # Case 2: After a complete flag, expecting a value
+#         elif last_flag and (last_token == last_flag or buffer.endswith(" ")):
+#             return self._get_autocomplete_values(command, last_flag, text)
+
+#         # Case 3: Inside a value for a known flag
+#         elif last_flag and last_token not in possible_flags:
+#             return self._get_autocomplete_values(command, last_flag, text)
+
+#         # Case 4: First flag after command
+#         elif len(tokens) == 2:
+#             return [f for f in possible_flags if f.startswith(text)]
+
+#         return []
+
+        
+#     def _get_last_valid_flag(self, matches: list[tuple], possible_flags: list[str]) -> Optional[str]:
+#         for flag, _ in reversed(matches):
+#             if flag in possible_flags:
+#                 return flag
+#         return None
+    
+#     def _get_autocomplete_values(self, command: str, flag: str, text: str) -> list[str]:
+#         handler_name = f"_autocomplete_{command}"
+#         if hasattr(self, handler_name):
+#             handler = getattr(self, handler_name)
+#             return handler(flag, text)
+#         return []
+
+
+
+
+#     # def _completer(self, text: str, state: int) -> Optional[str]:
+#     #     buffer = readline.get_line_buffer().strip()
+
+
+#     #     FLAG_REGEX = re.compile(self.FLAG_REGEX_PATTERN)
+
+#     #     if not buffer:  # Nothing typed
+#     #         options = list(self.commands.keys())
+#     #     elif " " not in buffer:  # Typing command
+#     #         options = [cmd for cmd in self.commands.keys() if cmd.startswith(buffer)]
+#     #     else:
+#     #         command = buffer.split()[0]
+#     #         if command not in self.commands:
+#     #             return None
+
+#     #         possible_flags = self._get_command_args(command, "")
+
+#     #         # Find all flag matches
+#     #         matches = FLAG_REGEX.findall(buffer)
+
+#     #         if matches:
+#     #             last_flag = None  # Track the most recent flag
+
+#     #             # Iterate over matches to determine the last flag in the buffer
+#     #             for flag, _ in matches:  
+#     #                 if flag in possible_flags:
+#     #                     last_flag = flag  # Store last valid flag
+
+#     #             last_token = buffer.split()[-1]
+
+#     #             # Case 1: Typing a new flag (`--`)
+#     #             if last_token.startswith("--"):
+#     #                 options = [f for f in possible_flags if f.startswith(text)]
+
+#     #             # Case 2: Pressing TAB **after** a flag (should show values)
+#     #             elif last_flag and (last_token == last_flag or buffer.endswith(" ")):
+#     #                 if last_flag in possible_flags and command in self.autocomplete_registry:
+#     #                     handler = self.autocomplete_registry[command]
+#     #                     options = handler(last_flag, text)
+
+#     #             # Case 3: Typing within a flag value (autocomplete values)
+#     #             elif last_flag and last_token not in possible_flags:
+#     #                 if command in self.autocomplete_registry:
+#     #                     handler = self.autocomplete_registry[command]
+#     #                     options = handler(last_flag, text)
+
+#     #             # Case 4: Something weird happens and Cases 1 - 3 aren't reached
+#     #             else:
+#     #                 options = []
+#     #         else:
+#     #             options = possible_flags if buffer.count(" ") == 1 else []
+
+#     #     return options[state] if state < len(options) else None
+   
+#     def _get_command_args(self, command: str, text: str):
+#         if hasattr(self, f'args_{command}'):
+#             parser = getattr(self, f'args_{command}')()
+#             return [arg for arg in parser._option_string_actions.keys() if arg.startswith(text)]
+#         return []
+
+#     def register_autocomplete(self, command: str, handler):
+#         self.autocomplete_registry[command] = handler
+
+#     def start(self, welcome_screen: str = '\nWelcome to your CLI. Type "help" to see available commands.\n') -> None:
+#         print(welcome_screen)
+#         self._run()
+    
+#     def cmd_shutdown(self):
+#         '''Shuts down CLI.'''
+#         self._exit()
+
+#     def cmd_help(self, args) -> None:
+#         '''Displays available commands'''
+#         print("\nAvailable Commands:")
+#         for command in sorted(self.commands.keys()):
+#             print(f"  {command}")
+#         print('\nType "command --help" for more details.\n')
+
+#     def cmd_clear_history(self, args) -> None:
+#         try:
+#             open(CLI_HISTORY_FILE, "w").close()  # Overwrite history file
+#             readline.clear_history()  # Clear in-memory history
+#             print("Command history cleared.")
+#         except Exception as e:
+#             print(f"Error: Failed to clear history ({e})")
+
+#     def _exit(self):
+#         '''Place holder for later shutdown needs.'''
+
+#         # Save command history before exit
+      
+#         try:
+#             readline.write_history_file(str(CLI_HISTORY_FILE))
+#         except Exception as e:
+#             print(f"Warning: Failed to save history ({e})")
+#         time.sleep(2)
+#         sys.exit(0)
+
+#     def _run(self):
+#         while True:
+#             try:
+#                 user_input = input('WorkBot> ').strip()
+
+#                 if not user_input: continue
+
+#                 args         = shlex.split(user_input)
+#                 command      = args[0]
+#                 command_args = args[1:]
+
+#                 if command in self.commands:
+#                     self.commands[command](command_args)
+#                 else:
+#                     print(f'Unknown command: "{command}". Type "help" for available commands.')
+
+#                 readline.write_history_file(str(CLI_HISTORY_FILE))
+                
+#             except KeyboardInterrupt:
+#                 print('\nExiting CLI.')
+#                 self._exit()
+#                 break
+
+import argparse
+import shlex
+import sys
+import subprocess
+import time
+import re
+from typing import Optional
+from config.paths import CLI_HISTORY_FILE
+
+try:
+    import readline
+except ImportError:
+    import pyreadline3 as pry
+    sys.modules['readline'] = pry
+    import readline
+
+
+import argparse
+import shlex
+import sys
+import subprocess
+import time
+import re
+from typing import Optional
+from config.paths import CLI_HISTORY_FILE
+
+try:
+    import readline
+except ImportError:
+    import pyreadline3 as pry
+    sys.modules['readline'] = pry
+    import readline
+
+
 class CLI:
 
     FLAG_REGEX_PATTERN = r'(--\w[\w-]*)(?:\s+([^\s-][^\s]*))?'
 
     def __init__(self) -> None:
-
         self.commands = {}
-
         self._register_commands()
 
         self.autocomplete_registry = {}
         self._setup_autocomplete()
 
+    # ---------------------------------------
+    # Command and Autocomplete Registration
+    # ---------------------------------------
 
     def _register_commands(self) -> None:
         for function_name in dir(self):
@@ -50,48 +348,6 @@ class CLI:
                 command_name = function_name[4:]
                 self.commands[command_name] = getattr(self, function_name)
 
-    def _setup_autocomplete(self) -> None:
-
-        # Autocomplete
-        readline.set_completer(self._completer)
-
-        # We need to remove the hyphen as a word delimiter to enable the usage of flags (e.g. "command --flag 'Flag value').
-        delimiters = readline.get_completer_delims().replace('-', '')
-        readline.set_completer_delims(delimiters + ' ') # Possible Bug: on startup there is a chance the blank space is not present in the default delims.
-        
-
-        readline.parse_and_bind("set completion-ignore-case on")        # Ignore case sensitivity
-        readline.parse_and_bind("set show-all-if-ambiguous on")         # List all matches if ambiguous
-        readline.parse_and_bind("set menu-complete-display-prefix on")  # Show common prefix in list
-        readline.parse_and_bind("set skip-completed-text on")
-        readline.parse_and_bind("TAB: complete")
-
-        # Command History
-        if CLI_HISTORY_FILE.exists():
-            readline.read_history_file(str(CLI_HISTORY_FILE))
-        readline.set_history_length(100)
-
-
-
-
-
-        # ADD NEWLINE PLACES AT TOP AND BOTTOM OF AUTOCOMPLETE RESULTS
-        # Save the original method
-        # _original_display_matches = readline.get_completer_delims
-
-        # def patched_display_matches(substitution, matches, longest_match_length):
-        #     print("\n")  # newline BEFORE suggestions
-        #     for match in matches:
-        #         print(match)
-        #     print()  # newline AFTER suggestions
-
-        # readline.set_completion_display_matches_hook(patched_display_matches)
-        
-
-
-        self._register_autocomplete()
-        
-    # REGISTER AUTOCOMPLETES
     def _register_autocomplete(self) -> None:
         for function_name in dir(self):
             prefix = '_autocomplete_'
@@ -99,114 +355,147 @@ class CLI:
                 autocomplete_name = function_name[len(prefix):]
                 self.autocomplete_registry[autocomplete_name] = getattr(self, function_name)
 
+    # ---------------------------------------
+    # Autocomplete Setup
+    # ---------------------------------------
+
+    def _setup_autocomplete(self) -> None:
+        readline.set_completer(self._completer)
+
+        # Fix hyphen behavior in flag completion
+        delimiters = readline.get_completer_delims().replace('-', '')
+        readline.set_completer_delims(delimiters + ' ')
+
+        # Readline behavior tuning
+        readline.parse_and_bind("set completion-ignore-case on")
+        readline.parse_and_bind("set show-all-if-ambiguous on")
+        readline.parse_and_bind("set menu-complete-display-prefix on")
+        readline.parse_and_bind("set skip-completed-text on")
+        readline.parse_and_bind("TAB: complete")
+
+        # History
+        if CLI_HISTORY_FILE.exists():
+            readline.read_history_file(str(CLI_HISTORY_FILE))
+        readline.set_history_length(100)
+
+        self._register_autocomplete()
+
+    # ---------------------------------------
+    # Autocompletion Core
+    # ---------------------------------------
 
     def _completer(self, text: str, state: int) -> Optional[str]:
         buffer = readline.get_line_buffer().strip()
 
+        # print(f'[DEBUG] This is the buffer: {buffer}', flush=True)
 
-        FLAG_REGEX = re.compile(self.FLAG_REGEX_PATTERN)
-
-        if not buffer:  # Nothing typed
-            options = list(self.commands.keys())
-        elif " " not in buffer:  # Typing command
-            options = [cmd for cmd in self.commands.keys() if cmd.startswith(buffer)]
+        if not buffer:
+            options = self._complete_commands(text)
+        elif " " not in buffer:
+            options = self._complete_commands(text)
         else:
-            command = buffer.split()[0]
-            if command not in self.commands:
-                return None
-
-            possible_flags = self._get_command_args(command, "")
-
-            # Find all flag matches
-            matches = FLAG_REGEX.findall(buffer)
-
-            if matches:
-                last_flag = None  # Track the most recent flag
-
-                # Iterate over matches to determine the last flag in the buffer
-                for flag, _ in matches:  
-                    if flag in possible_flags:
-                        last_flag = flag  # Store last valid flag
-
-                last_token = buffer.split()[-1]
-
-                # Case 1: Typing a new flag (`--`)
-                if last_token.startswith("--"):
-                    options = [f for f in possible_flags if f.startswith(text)]
-
-                # Case 2: Pressing TAB **after** a flag (should show values)
-                elif last_flag and (last_token == last_flag or buffer.endswith(" ")):
-                    if last_flag in possible_flags and command in self.autocomplete_registry:
-                        handler = self.autocomplete_registry[command]
-                        options = handler(last_flag, text)
-
-                # Case 3: Typing within a flag value (autocomplete values)
-                elif last_flag and last_token not in possible_flags:
-                    if command in self.autocomplete_registry:
-                        handler = self.autocomplete_registry[command]
-                        options = handler(last_flag, text)
-
-                # Case 4: Something weird happens and Cases 1 - 3 aren't reached
-                else:
-                    options = []
-            else:
-                options = possible_flags if buffer.count(" ") == 1 else []
+            options = self._complete_arguments(buffer, text)
 
         return options[state] if state < len(options) else None
-   
-    def _get_command_args(self, command: str, text: str):
+
+    def _complete_commands(self, text: str) -> list[str]:
+        return [cmd for cmd in self.commands.keys() if cmd.startswith(text)]
+
+    def _complete_arguments(self, buffer: str, text: str) -> list[str]:
+        
+        tokens = None
+        try:
+            tokens = shlex.split(buffer)
+            quote_wrapped = False
+
+        except ValueError:
+            tokens = buffer.split()
+            quote_wrapped = True
+    
+        if not tokens:
+            return []
+
+        command = tokens[0]
+        if command not in self.commands:
+            return []
+
+        possible_flags = self._get_command_args(command, text)
+        matches = re.findall(self.FLAG_REGEX_PATTERN, buffer)
+
+        last_token = tokens[-1] if tokens else ""
+        last_token_stripped = last_token.strip('"').strip("'")
+        last_flag = self._get_last_valid_flag(matches, possible_flags)
+        
+        # Case 1: Typing or completing a flag
+        if last_token.startswith("--") or (buffer.endswith(" ") and not last_flag):
+            return [f for f in possible_flags if f.startswith(text)]
+
+        # Case 2: After a complete flag, expecting a value
+        elif last_flag and (last_token == last_flag or buffer.endswith(" ")):
+            return self._get_autocomplete_values(command, last_flag, text)
+
+        # Case 3: Inside a value for a known flag
+        elif last_flag and (last_token_stripped not in possible_flags):
+            return self._get_autocomplete_values(command, last_flag, text)
+
+        # Case 4: First argument after command
+        elif len(tokens) == 2:
+            return [f for f in possible_flags if f.startswith(text)]
+
+        return []
+
+
+    def _get_last_valid_flag(self, matches: list[tuple], possible_flags: list[str]) -> Optional[str]:
+        for flag, _ in reversed(matches):
+            if flag in possible_flags:
+                return flag
+        return None
+
+    def _get_autocomplete_values(self, command: str, flag: str, text: str) -> list[str]:
+        if command in self.autocomplete_registry:
+            handler = self.autocomplete_registry[command]
+
+            is_quoted = text.startswith(("'", '"'))
+            stripped = text.strip('"').strip("'")
+
+            completions = handler(flag, stripped)
+
+            if is_quoted:
+                quote = text[0]
+                return [f'{quote}{match}{quote}' for match in completions]
+
+            return completions
+
+        return []
+
+
+    def _get_command_flags(self, command: str, text: str = "") -> list[str]:
         if hasattr(self, f'args_{command}'):
             parser = getattr(self, f'args_{command}')()
-            return [arg for arg in parser._option_string_actions.keys() if arg.startswith(text)]
+            return list(parser._option_string_actions.keys())
         return []
 
     def register_autocomplete(self, command: str, handler):
         self.autocomplete_registry[command] = handler
 
+    # ---------------------------------------
+    # CLI Loop
+    # ---------------------------------------
+
     def start(self, welcome_screen: str = '\nWelcome to your CLI. Type "help" to see available commands.\n') -> None:
         print(welcome_screen)
         self._run()
-    
-    def cmd_shutdown(self):
-        '''Shuts down CLI.'''
-        self._exit()
-
-    def cmd_help(self, args) -> None:
-        '''Displays available commands'''
-        print("\nAvailable Commands:")
-        for command in sorted(self.commands.keys()):
-            print(f"  {command}")
-        print('\nType "command --help" for more details.\n')
-
-    def cmd_clear_history(self, args) -> None:
-        try:
-            open(CLI_HISTORY_FILE, "w").close()  # Overwrite history file
-            readline.clear_history()  # Clear in-memory history
-            print("Command history cleared.")
-        except Exception as e:
-            print(f"Error: Failed to clear history ({e})")
-
-    def _exit(self):
-        '''Place holder for later shutdown needs.'''
-
-        # Save command history before exit
-      
-        try:
-            readline.write_history_file(str(CLI_HISTORY_FILE))
-        except Exception as e:
-            print(f"Warning: Failed to save history ({e})")
-        time.sleep(2)
-        sys.exit(0)
 
     def _run(self):
         while True:
             try:
                 user_input = input('WorkBot> ').strip()
 
-                if not user_input: continue
+                if not user_input:
+                    continue
 
-                args         = shlex.split(user_input)
-                command      = args[0]
+                args = shlex.split(user_input)
+                command = args[0]
                 command_args = args[1:]
 
                 if command in self.commands:
@@ -215,11 +504,42 @@ class CLI:
                     print(f'Unknown command: "{command}". Type "help" for available commands.')
 
                 readline.write_history_file(str(CLI_HISTORY_FILE))
-                
+
             except KeyboardInterrupt:
                 print('\nExiting CLI.')
                 self._exit()
                 break
+
+    # ---------------------------------------
+    # Utility Commands
+    # ---------------------------------------
+
+    def cmd_shutdown(self, args=None):
+        """Shuts down CLI."""
+        self._exit()
+
+    def cmd_help(self, args=None) -> None:
+        """Displays available commands"""
+        print("\nAvailable Commands:")
+        for command in sorted(self.commands.keys()):
+            print(f"  {command}")
+        print('\nType "command --help" for more details.\n')
+
+    def cmd_clear_history(self, args=None) -> None:
+        try:
+            open(CLI_HISTORY_FILE, "w").close()
+            readline.clear_history()
+            print("Command history cleared.")
+        except Exception as e:
+            print(f"Error: Failed to clear history ({e})")
+
+    def _exit(self):
+        try:
+            readline.write_history_file(str(CLI_HISTORY_FILE))
+        except Exception as e:
+            print(f"Warning: Failed to save history ({e})")
+        time.sleep(1)
+        sys.exit(0)
 
 
 @Logger.attach_logger
