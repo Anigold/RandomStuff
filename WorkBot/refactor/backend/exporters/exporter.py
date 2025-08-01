@@ -21,5 +21,5 @@ class Exporter(ABC):
         return cls._EXPORTER_REGISTRY[key]
     
     @abstractmethod
-    def export(self, obj, adapter: ExportAdapter = None, context: dict = None) -> Any:
+    def export(self, obj, adapter: ExportAdapter = None) -> Any:
         pass

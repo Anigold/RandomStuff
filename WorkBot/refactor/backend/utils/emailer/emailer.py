@@ -26,7 +26,7 @@ class Emailer:
     #             self.service.delete_email(self.emails.pop(self.emails.index(saved_email)))
     #     return
     
-    def get_email(self, email: Email) -> dict:
+    def get_email(self, email: Email) -> dict | None:
         return {email: self.emails[email]} if email in self.emails else None
         
     def display_email(self, email: Email) -> None:

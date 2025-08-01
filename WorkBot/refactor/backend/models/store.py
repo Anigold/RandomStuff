@@ -1,3 +1,4 @@
+#asd
 class Store:
     def __init__(self, store_id: str, name: str, address: str, contacts: list[dict]):
         self.store_id = store_id
