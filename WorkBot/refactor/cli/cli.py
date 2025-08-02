@@ -1,5 +1,7 @@
 # region ---- Imports ----
 
+from backend.utils.logger import Logger
+
 import shlex
 import sys
 from typing import Optional
@@ -13,8 +15,19 @@ except ImportError:
     sys.modules['readline'] = pry
     import readline
 
-# endregion
+from backend.errors import (
+    WorkBotError,
+    CLIInputError,
+    VendorBotError,
+    SeleniumError,
+    VendorLoginError,
+    OrderError,
+    PricingError,
+    FileAccessError,
+)
 
+# endregion
+@Logger.attach_logger
 class CLI:
 
     FLAG_REGEX_PATTERN = r'(--\w[\w-]*)(?:\s+([^\s-][^\s]*))?'
@@ -348,6 +361,7 @@ class CLI:
     def _cleanup(self) -> None:
         """Performs any necessary cleanup before exiting."""
         # Placeholder for any cleanup logic (e.g., closing files, releasing resources)
+        # Overwrite for functionality.  
         pass
 
     def _exit(self) -> None:

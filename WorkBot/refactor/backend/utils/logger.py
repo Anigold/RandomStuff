@@ -129,7 +129,7 @@ class Logger:
     #         # function reference above another function and don't necessarily know if a logger is available
     #         # to pass down.
 
-    #         # This is dumb because we can run the risk of a namespace collision. So we won't be doing this.
+    #         # This is dumb because we can run the risk of a hidden namespace collision, n-files deep. So we won't be doing this.
     #         # A nice exercise though.
 
     #         # nonlocal logger 
@@ -144,20 +144,34 @@ class Logger:
     #             raise  
     #     return wrapper
  
-    def attach_logger(cls):
-        '''Decorator to automatically attach a class-specific logger.'''
-        
-        log_file = f'logs/{cls.__name__}.log'
-        cls.logger = Logger.get_logger(cls.__name__, log_file=log_file)
+@staticmethod
+def attach_logger(cls):
+    """
+    Decorator that attaches a class-specific logger based on its full module path.
+    
+    Example:
+        backend.orders.OrderCoordinator → logs/backend/orders/OrderCoordinator.log
+        frontend.cli.WorkBotCLI         → logs/frontend/cli/WorkBotCLI.log
+    """
+    module_path = cls.__module__.replace('.', '/')
+    log_file    = f'logs/{module_path}/{cls.__name__}.log'
+    logger_name = f'{cls.__module__}.{cls.__name__}'
 
-        orig_init = cls.__init__  # Store original __init__
+    # Ensure directory exists
+    os.makedirs(os.path.dirname(log_file), exist_ok=True)
 
-        def new_init(self, *args, **kwargs):
-            self.logger = Logger.get_logger(cls.__name__, log_file=log_file)  # Attach class-specific logger
-            orig_init(self, *args, **kwargs)  # Call original __init__
+    cls.logger = Logger.get_logger(logger_name, log_file=log_file)
 
-        cls.__init__ = new_init  # Replace __init__
-        return cls
+    # Patch __init__ to attach to instances as well
+    orig_init = cls.__init__
+
+    def new_init(self, *args, **kwargs):
+        self.logger = Logger.get_logger(logger_name, log_file=log_file)
+        orig_init(self, *args, **kwargs)
+
+    cls.__init__ = new_init
+    return cls
+
     
 class JsonFormatter(logging.Formatter):
     '''Custom JSON log formatter for structured logging.'''
