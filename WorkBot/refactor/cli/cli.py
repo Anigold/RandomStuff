@@ -15,18 +15,19 @@ except ImportError:
     sys.modules['readline'] = pry
     import readline
 
-from backend.errors import (
-    WorkBotError,
-    CLIInputError,
-    VendorBotError,
-    SeleniumError,
-    VendorLoginError,
-    OrderError,
-    PricingError,
-    FileAccessError,
-)
+# from backend.errors import (
+#     WorkBotError,
+#     CLIInputError,
+#     VendorBotError,
+#     SeleniumError,
+#     VendorLoginError,
+#     OrderError,
+#     PricingError,
+#     FileAccessError,
+# )
 
 # endregion
+
 @Logger.attach_logger
 class CLI:
 

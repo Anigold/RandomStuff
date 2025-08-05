@@ -144,35 +144,35 @@ class Logger:
     #             raise  
     #     return wrapper
  
-@staticmethod
-def attach_logger(cls):
-    """
-    Decorator that attaches a class-specific logger based on its full module path.
-    
-    Example:
-        backend.orders.OrderCoordinator → logs/backend/orders/OrderCoordinator.log
-        frontend.cli.WorkBotCLI         → logs/frontend/cli/WorkBotCLI.log
-    """
-    module_path = cls.__module__.replace('.', '/')
-    log_file    = f'logs/{module_path}/{cls.__name__}.log'
-    logger_name = f'{cls.__module__}.{cls.__name__}'
+    @staticmethod
+    def attach_logger(cls):
+        """
+        Decorator that attaches a class-specific logger based on its full module path.
+        
+        Example:
+            backend.orders.OrderCoordinator → logs/backend/orders/OrderCoordinator.log
+            frontend.cli.WorkBotCLI         → logs/frontend/cli/WorkBotCLI.log
+        """
+        module_path = cls.__module__.replace('.', '/')
+        log_file    = f'logs/{module_path}/{cls.__name__}.log'
+        logger_name = f'{cls.__module__}.{cls.__name__}'
 
-    # Ensure directory exists
-    os.makedirs(os.path.dirname(log_file), exist_ok=True)
+        # Ensure directory exists
+        os.makedirs(os.path.dirname(log_file), exist_ok=True)
 
-    cls.logger = Logger.get_logger(logger_name, log_file=log_file)
+        cls.logger = Logger.get_logger(logger_name, log_file=log_file)
 
-    # Patch __init__ to attach to instances as well
-    orig_init = cls.__init__
+        # Patch __init__ to attach to instances as well
+        orig_init = cls.__init__
 
-    def new_init(self, *args, **kwargs):
-        self.logger = Logger.get_logger(logger_name, log_file=log_file)
-        orig_init(self, *args, **kwargs)
+        def new_init(self, *args, **kwargs):
+            self.logger = Logger.get_logger(logger_name, log_file=log_file)
+            orig_init(self, *args, **kwargs)
 
-    cls.__init__ = new_init
-    return cls
+        cls.__init__ = new_init
+        return cls
 
-    
+        
 class JsonFormatter(logging.Formatter):
     '''Custom JSON log formatter for structured logging.'''
     def format(self, record):

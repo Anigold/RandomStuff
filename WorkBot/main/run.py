@@ -87,7 +87,7 @@ def produce_pricing_and_email(driver) -> None:
     emailer.display_email(email)
     return
 
-def download_pricing_sheets(driver, vendors=['Performance Food',], guides=['IBProduce']) -> None:
+def download_pricing_sheets(driver, vendors=['Russo Produce'], guides=['IBProduce']) -> None:
 
     for vendor in vendors:
 
@@ -127,7 +127,7 @@ def download_pricing_sheets(driver, vendors=['Performance Food',], guides=['IBPr
         
     return
 
-def generate_pricing_sheets(vendors=[], guides=['IBProduce']):
+def generate_pricing_sheets(vendors=['Sysco', 'US Foods', 'Russo Produce', 'Performance Food',], guides=['IBProduce']):
         pricer = PriceComparator()
         # pricer.item_skus_file_path = f'{PRICING_FILES_PATH}\\ItemSkus.xlsx'
         for guide in guides:

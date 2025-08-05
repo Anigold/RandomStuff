@@ -1,4 +1,3 @@
-from backend.errors import WorkBotError
 from backend.utils.logger import Logger
 
 @Logger.attach_logger

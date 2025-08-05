@@ -40,7 +40,9 @@
 from backend.storage.file.vendor_file_handler import VendorFileHandler
 from pathlib import Path
 from config.paths import VENDOR_FILES_DIR
+from backend.utils.logger import Logger
 
+@Logger.attach_logger
 class VendorCoordinator:
 
     def __init__(self,):

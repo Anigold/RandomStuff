@@ -23,6 +23,7 @@ from pathlib import Path
 
 @Logger.attach_logger
 class OrderCoordinator:
+    
     def __init__(self):
         self.file_handler     = OrderFileHandler()
         self.db_handler       = OrderDatabaseHandler()
@@ -48,6 +49,7 @@ class OrderCoordinator:
         return self.file_handler.read_order(order_file_path)
 
     def read_order_file(self, file_path: Path) -> Order:
+        self.logger.info(f"Reading order file: {file_path}")
         return self.file_handler.read_order(file_path)
 
     def save_order_file(self, order: Order, format: str = 'excel'):
@@ -115,8 +117,8 @@ class OrderCoordinator:
 
         output_paths = []
         for file_path in file_paths:
-            order = self.read_order_file(file_path)
-            context = context_map.get(str(file_path), {}) if context_map else {}
+            order       = self.read_order_file(file_path)
+            context     = context_map.get(str(file_path), {}) if context_map else {}
             output_path = self.generate_vendor_upload_file(order, context)
             output_paths.append(output_path)
 

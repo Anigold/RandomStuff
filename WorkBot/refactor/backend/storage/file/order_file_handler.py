@@ -3,8 +3,7 @@ from backend.storage.file.file_handler import FileHandler
 from backend.models.order import Order
 from backend.parsers.order_parser import OrderParser
 from pathlib import Path
-import re
-from openpyxl import Workbook, load_workbook
+from openpyxl import Workbook
 from typing import Any
 from backend.exporters.excel_exporter import Exporter
 from backend.storage.file.helpers.filename_strategies.order_filename_strategy import OrderFilenameStrategy
@@ -28,22 +27,11 @@ class OrderFileHandler(FileHandler):
         return self.filename_strategy.format(order, extension=ext)
         
     def save_order(self, order: Order, format: str) -> None:
-
-        exporter = Exporter.get_exporter(Order, format)
-        file_data_to_save = exporter.export(order)
-
+        exporter  = Exporter.get_exporter(Order, format)
+        file_data = exporter.export(order)
         file_name = self._generate_file_name(order, format)
-
-        self._write_data(format, file_data_to_save, self.ORDER_FILES_DIR / order.vendor / file_name)
-
-    def _write_data(self, format: str, data: Any, file_path: Path) -> None:
-        try:
-            save_func = self._save_strategies[format]
-        except KeyError:
-            raise ValueError(f"Unsupported format: {format}")
-        
-        file_path.parent.mkdir(parents=True, exist_ok=True)
-        save_func(data, file_path)
+        file_path = self.ORDER_FILES_DIR / order.vendor / file_name
+        self._write_data(format, file_data, file_path)
 
     def get_order_files(
             self, 
@@ -107,7 +95,7 @@ class OrderFileHandler(FileHandler):
     def archive_order_file(self, order: Order) -> None:
         """
         Moves all files related to the given order into the vendor's CompletedOrders archive folder.
-        Matches based on filename prefix (vendor_store_date).
+        Matches based on filename prefix (vendor_store_date). Overwrites files in the archive if they already exist.
         """
         vendor_dir = self.ORDER_FILES_DIR / order.vendor
         archive_dir = vendor_dir / "CompletedOrders"
@@ -116,13 +104,13 @@ class OrderFileHandler(FileHandler):
         filename_prefix = self.filename_strategy.prefix(order)
 
         for file in vendor_dir.iterdir():
-            if not file.is_file():
-                continue
-            if not file.name.startswith(filename_prefix):
+            if not file.is_file() or not file.name.startswith(filename_prefix):
                 continue
 
             dest = archive_dir / file.name
             try:
+                if dest.exists():
+                    dest.unlink()  # Remove the existing file to allow overwrite
                 file.rename(dest)
                 self.logger.info(f"Archived order file: {file.name}")
             except Exception as e:

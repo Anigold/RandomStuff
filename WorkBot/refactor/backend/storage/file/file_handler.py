@@ -8,6 +8,7 @@ import tempfile
 import shutil
 
 class FileHandler:
+
     def __init__(self, base_dir: Union[str, Path]):
         self.base_dir = Path(base_dir)
         self.base_dir.mkdir(parents=True, exist_ok=True)
@@ -23,8 +24,18 @@ class FileHandler:
         }
         self._save_strategies = {
             'excel': self._save_excel,
-            'csv': self._save_csv
+            'csv': self._save_csv,
+            'json': self._save_json
         }
+
+    def _write_data(self, format: str, data: Any, file_path: Path) -> None:
+        try:
+            save_func = self._save_strategies[format]
+        except KeyError:
+            raise ValueError(f"Unsupported format: {format}")
+        
+        file_path.parent.mkdir(parents=True, exist_ok=True)
+        save_func(data, file_path)
 
     def read_json(self, file_path: Union[str, Path]) -> Any:
         path = self._resolve_path(file_path)
@@ -67,6 +78,9 @@ class FileHandler:
         with open(file_path, 'w') as f:
             f.write(csv_string)
 
+    def _save_json(self, json_data: dict, file_path: Path) -> None:
+        with open(file_path, 'w', encoding='utf-8') as f:
+            json.dump(json_data, f, indent=2)
 
     def move_file(self, src: Path, dest: Path ,overwrite: bool = False) -> None:
         if not src.exists():

@@ -151,15 +151,20 @@ class WorkBot:
         Entrypoint for generating vendor upload files for the given filters.
         Delegates to the OrderCoordinator.
         """
+
+        self.logger.info(f"Generating vendor upload files for stores={stores}, vendors={vendors}, "
+                        f"start_date={start_date}, end_date={end_date}")
+        
         order_file_paths = self.order_coordinator.get_orders_from_file(
             stores=stores,
             vendors=vendors
         )
 
-       
+        self.logger.info(f"Found {len(order_file_paths)} order files to process.")
 
         context_map = {}
         for file_path in order_file_paths:
+            self.logger.info(f"Reading order file: {file_path}")
             order = self.order_coordinator.read_order_file(file_path)
             vendor_info = self.vendor_coordinator.get_vendor_information(order.vendor)
 
@@ -169,13 +174,19 @@ class WorkBot:
                 "date_str": order.date,
             }
 
-        return self.order_coordinator.generate_vendor_upload_files(
+        self.logger.debug(f"Context map built with {len(context_map)} entries. Delegating to OrderCoordinator.")
+
+        result_paths = self.order_coordinator.generate_vendor_upload_files(
             stores=stores,
             vendors=vendors,
             start_date=start_date,
             end_date=end_date,
             context_map=context_map
         )
+
+        self.logger.info(f"Vendor upload file generation complete. {len(result_paths)} files created.")
+
+        return result_paths
 
     def close_craftable_session(self):
         self.craft_bot.close_session()
@@ -363,7 +374,7 @@ class WorkBot:
         for file_path in order_files:
             try:
                 order = self.order_coordinator.read_order_file(file_path)
-                self.order_coordinator(order)
+                self.order_coordinator.archive_order_file(order)
             except Exception as e:
                 self.logger.warning(f"[Archive] Skipped {file_path.name}: {e}")
 
