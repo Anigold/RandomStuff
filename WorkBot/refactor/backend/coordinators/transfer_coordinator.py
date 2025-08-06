@@ -34,16 +34,36 @@ class TransferCoordinator:
         raw_data = self.file_handler.read_transfer_file(path)
         return self.parser.parse_transfer(raw_data)
 
-    def get_transfers_from_file(self, stores: list[str], start_date=None, end_date=None) -> list[Transfer]:
+    def get_transfers_from_file(
+        self,
+        stores: list[str] = None,
+        start_date: str = None,
+        end_date: str = None
+    ) -> list[Transfer]:
         """
-        Get a list of Transfer domain objects based on file search criteria.
-        """
-        transfer_files = self.file_handler.list_transfer_files(stores, start_date, end_date)
-        transfers = []
+        Retrieves and parses all saved transfer files matching the given filters.
 
-        for path in transfer_files:
-            raw_data = self.file_handler.read_transfer_file(path)
-            transfer = self.parser.parse_transfer(raw_data)
-            transfers.append(transfer)
+        Args:
+            stores (list[str], optional): List of store names to filter by.
+            start_date (str, optional): Filter transfers from this date forward (YYYY-MM-DD).
+            end_date (str, optional): Filter transfers up to this date (YYYY-MM-DD).
+
+        Returns:
+            list[Transfer]: List of parsed Transfer domain objects.
+        """
+        file_paths = self.file_handler.get_transfer_files(
+            stores=stores,
+            start_date=start_date,
+            end_date=end_date
+        )
+        
+        transfers = []
+        for path in file_paths:
+            try:
+                transfer = self.file_handler.read_transfer_file(path)
+                transfers.append(transfer)
+            except Exception as e:
+                self.logger.warning(f"Failed to read transfer from {path.name}: {e}")
 
         return transfers
+

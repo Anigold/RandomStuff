@@ -86,7 +86,7 @@ class OrderFileHandler(FileHandler):
     def get_order_file_path(self, order: Order, format: str = 'excel') -> Path:
         return self.ORDER_FILES_DIR / order.vendor / self._generate_file_name(order, format)
 
-    def read_order(self, file_path: Path) -> Order:
+    def get_order_from_file(self, file_path: Path) -> Order:
         return self.parser.parse_excel(file_path)
     
     def get_upload_files_path(self, order: Order, format: str = 'excel') -> Path:

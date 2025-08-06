@@ -46,18 +46,20 @@ class TransferFileHandler(FileHandler):
         end   = datetime.strptime(end_date, "%Y-%m-%d") if end_date else None
 
         def matches_filters(meta: dict) -> bool:
-            if not meta or "date" not in meta:
+           
+            if not meta or "transfer_date" not in meta:
                 return False
-            if stores and not (meta.get("store_from") in stores or meta.get("store_to") in stores):
+            if stores and not (meta.get("origin") in stores or meta.get("destination") in stores):
                 return False
             try:
-                file_date = datetime.strptime(meta["date"], "%Y-%m-%d")
+                file_date = datetime.strptime(meta["transfer_date"], "%Y-%m-%d")
             except ValueError:
                 return False
             if start and file_date < start:
                 return False
             if end and file_date > end:
                 return False
+     
             return True
 
         matched_files = []
@@ -69,7 +71,7 @@ class TransferFileHandler(FileHandler):
             meta = self.filename_strategy.parse(file.name)
             if matches_filters(meta):
                 matched_files.append(file)
-
+ 
         return matched_files
 
     def archive_transfer_file(self, transfer: Transfer) -> None:

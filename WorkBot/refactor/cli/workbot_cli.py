@@ -36,7 +36,7 @@ class WorkBotCLI(CLI):
         parser = self.args_download_orders()
         parsed_args = parser.parse_args(args)
         try:
-            self.workbot.download_orders(parsed_args.stores, parsed_args.vendors)
+            self.workbot.download_craftable_orders(parsed_args.stores, parsed_args.vendors)
 
             if parsed_args.sort: self.workbot.sort_orders()
             
@@ -192,7 +192,7 @@ class WorkBotCLI(CLI):
         parser = self.args_delete_orders()
         try:
             parsed_args = parser.parse_args(args)
-            self.workbot.delete_orders(parsed_args.stores, parsed_args.vendors)
+            self.workbot.delete_craftable_orders(parsed_args.stores, parsed_args.vendors)
             
             print("Orders deleted successfully.")
         except SystemExit:
@@ -392,7 +392,7 @@ Internal Contacts:
     def cmd_input_transfers(self, args):
 
         try:
-            self.workbot.input_transfers()
+            self.workbot.input_craftable_transfers()
         except SystemExit:
             pass
 

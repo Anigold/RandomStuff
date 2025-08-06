@@ -441,12 +441,12 @@ class CraftableBot(SeleniumBotMixin):
     def input_transfer(self, transfer: Transfer) -> None:
         
             
-        self.logger.info(f'Starting transfer protocol for {len(transfer.items)} items from {transfer.store_from} to {transfer.store_to} on {transfer.date}')
+        self.logger.info(f'Starting transfer protocol for {len(transfer.transfer_items)} items from {transfer.origin} to {transfer.destination} on {transfer.transfer_date}')
         if not self.is_logged_in: self.login()
 
         time.sleep(3)
 
-        transfer_url = self.get_url('transfer_page', store=transfer.store_from)
+        transfer_url = self.get_url('transfer_page', store=transfer.origin)
         self.driver.get(transfer_url)
 
         time.sleep(5)
@@ -456,7 +456,7 @@ class CraftableBot(SeleniumBotMixin):
         self._submit_transfer()
         self._input_transfer_items(transfer)
 
-        self.logger.info(f'Transfer for {len(transfer.items)} items from {transfer.store_from} to {transfer.store_to} on {transfer.date} completed successfully.')
+        self.logger.info(f'Transfer for {len(transfer.transfer_items)} items from {transfer.origin} to {transfer.destination} on {transfer.transfer_date} completed successfully.')
         # NEED TO MOVE THE COMPLETED TRANSFER FILE TO THE "COMPLETED" DIRECTORY
         # submit_transfer_button = self.driver.find_element(By.XPATH, './/a[text()="Request"]')
         return
@@ -472,7 +472,7 @@ class CraftableBot(SeleniumBotMixin):
     
     def _enter_transfer_details(self, transfer: Transfer) -> None:
 
-        self.logger.info(f'Entering transfer details: {transfer.store_from} to {transfer.store_to} on {transfer.date}')
+        self.logger.info(f'Entering transfer details: {transfer.origin} to {transfer.destination} on {transfer.transfer_date}')
 
         transfer_modal = self.driver.find_element(By.ID, 'transferNewModal')
 
@@ -494,8 +494,10 @@ class CraftableBot(SeleniumBotMixin):
         # calendar_current_year_input.send_keys('2025')
 
         # NEED TO UPDATE SO IT CAN CHOOSE THE CORRECT MONTH!!!!!
-        self.logger.info(f'Selecting calendar date: {transfer.date}')
-        self._change_calendar_date(transfer.date)
+        self.logger.info(f'Selecting calendar date: {transfer.transfer_date}')
+        transfer_date_obj = datetime.strptime(transfer.transfer_date, '%Y-%m-%d') 
+
+        self._change_calendar_date(transfer_date_obj)
 
         # calendar = self.driver.find_element(By.CLASS_NAME, 'dayContainer')
         # print(transfer.date.day)
@@ -513,7 +515,7 @@ class CraftableBot(SeleniumBotMixin):
         transfer_form = transfer_modal.find_element(By.XPATH, './/form')
         transfer_form_inputs = transfer_form.find_elements(By.XPATH, './div')
 
-        self.logger.info(f'Selecting outbound store: {transfer.store_to}')
+        self.logger.info(f'Selecting outbound store: {transfer.destination}')
         store_to_select = transfer_form_inputs[2].find_element(By.XPATH, './/div[@class="search ember-view input-select-searchable"]')
         store_to_select.click()
 
@@ -523,7 +525,7 @@ class CraftableBot(SeleniumBotMixin):
         for option in options:
             choice_id_full = option.get_attribute('data-select2-id')
             choice_id = choice_id_full.split('-')[-1]
-            if choice_id == self.stores[transfer.store_to]:
+            if choice_id == self.stores[transfer.destination]:
                 choice = self.driver.find_element(By.XPATH, f'//li[@data-select2-id="{choice_id_full}"]')
                 choice.click()
                 break
@@ -544,9 +546,9 @@ class CraftableBot(SeleniumBotMixin):
         return
     
     def _input_transfer_items(self, transfer: Transfer) -> None:
-        self.logger.info(f'Starting input for {len(transfer.items)} transfer items.')
+        self.logger.info(f'Starting input for {len(transfer.transfer_items)} transfer items.')
 
-        for item in transfer.items:
+        for item in transfer.transfer_items:
             if float(item.quantity) <= 0: return # Skip items that weren't transferred.
             try:
                 self.logger.info(f'Adding transfer item: {item.name} ({item.quantity})')

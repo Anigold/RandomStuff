@@ -14,7 +14,7 @@ class TransferParser:
         stem = file_path.stem
         store_from, store_to, date = stem.split("_")
 
-        transfer = Transfer(store_from=store_from, store_to=store_to, date=date)
+        transfer = Transfer(origin=store_from, destination=store_to, transfer_date=date, transfer_items=[])
 
         wb = load_workbook(file_path, read_only=True)
         sheet = wb.active

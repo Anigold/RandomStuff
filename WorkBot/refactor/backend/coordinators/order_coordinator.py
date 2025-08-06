@@ -27,7 +27,6 @@ class OrderCoordinator:
     def __init__(self):
         self.file_handler     = OrderFileHandler()
         self.db_handler       = OrderDatabaseHandler()
-        self.parser           = OrderParser()
         self.download_handler = DownloadHandler()
 
     # region ─── File Paths and Directories ─────────────────────────────
@@ -44,14 +43,18 @@ class OrderCoordinator:
     # endregion ─────────────────────────────────────────────────────────
 
     # region ─── Reading and Saving Orders ──────────────────────────────
-    
-    def parse_order_file(self, order_file_path: Path) -> Order:
-        return self.file_handler.read_order(order_file_path)
 
-    def read_order_file(self, file_path: Path) -> Order:
+    def read_order_from_file(self, file_path: Path) -> Order:
         self.logger.info(f"Reading order file: {file_path}")
-        return self.file_handler.read_order(file_path)
+        return self.file_handler.get_order_from_file(file_path)
 
+    def read_orders_from_files(self, file_paths: list[Path]) -> list[Order]:
+        self.logger.info(f'Reading {len(file_paths)} order files.')
+        return [self.read_order_from_file(file_path) for file_path in file_paths]
+    
+    def get_order_files(self, stores: list[str], vendors: list[str] = []) -> list[Path]:
+        return self.file_handler.get_order_files(stores, vendors)
+    
     def save_order_file(self, order: Order, format: str = 'excel'):
         self.file_handler.save_order(order, format)
 
@@ -70,9 +73,6 @@ class OrderCoordinator:
 
     # region ─── Order Retrieval ────────────────────────────────────────
     
-    def get_orders_from_file(self, stores=None, vendors=None) -> list[Order]:
-        return [self.parser.parse_excel(order) for order in self.file_handler.get_order_files(stores, vendors)]
-
     def get_orders_from_db(self, store, vendor):
         return self.db_handler.get_orders(store, vendor)
     
@@ -117,7 +117,7 @@ class OrderCoordinator:
 
         output_paths = []
         for file_path in file_paths:
-            order       = self.read_order_file(file_path)
+            order       = self.read_order_from_file(file_path)
             context     = context_map.get(str(file_path), {}) if context_map else {}
             output_path = self.generate_vendor_upload_file(order, context)
             output_paths.append(output_path)
