@@ -38,7 +38,7 @@ class OrderFileHandler(FileHandler):
             stores: list[str], 
             vendors: list[str], 
             start_date: str = None, 
-            end_date: str = None
+            end_date: str = None,
         ) -> list[Path]:
         """
         Returns all order files whose parsed metadata falls within the given vendor, store, and date range filters.

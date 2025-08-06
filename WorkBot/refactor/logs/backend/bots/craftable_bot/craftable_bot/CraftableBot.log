@@ -1008,3 +1008,213 @@ PermissionError: [WinError 32] The process cannot access the file because it is 
 2025-08-05 11:03:31,493 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - Order download complete.
 2025-08-05 13:11:26,112 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - Closing WebDriver session.
 2025-08-05 13:11:26,209 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - WebDriver session closed.
+2025-08-05 18:13:56,142 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - Closing WebDriver session.
+2025-08-05 18:14:05,363 - ERROR - backend.bots.craftable_bot.craftable_bot.CraftableBot - Error closing WebDriver session: Message: session not created: cannot connect to chrome at 127.0.0.1:55941
+from session not created: This version of ChromeDriver only supports Chrome version 139
+Current browser version is 138.0.7204.184
+Stacktrace:
+	GetHandleVerifier [0x0xe5fd23+62915]
+	GetHandleVerifier [0x0xe5fd64+62980]
+	(No symbol) [0x0xc93e13]
+	(No symbol) [0x0xccdf5b]
+	(No symbol) [0x0xcccf69]
+	(No symbol) [0x0xcc32cf]
+	(No symbol) [0x0xcc3106]
+	(No symbol) [0x0xd0ce32]
+	(No symbol) [0x0xd0c74a]
+	(No symbol) [0x0xd011d6]
+	(No symbol) [0x0xcd0833]
+	(No symbol) [0x0xcd16a4]
+	GetHandleVerifier [0x0x10c8d13+2590131]
+	GetHandleVerifier [0x0x10c3f5a+2570234]
+	GetHandleVerifier [0x0xe859da+217722]
+	GetHandleVerifier [0x0xe76048+153832]
+	GetHandleVerifier [0x0xe7c4ad+179533]
+	GetHandleVerifier [0x0xe67728+94152]
+	GetHandleVerifier [0x0xe678b2+94546]
+	GetHandleVerifier [0x0xe52bca+9322]
+	BaseThreadInitThunk [0x0x766b5d49+25]
+	RtlInitializeExceptionChain [0x0x76ecd1ab+107]
+	RtlGetAppContainerNamedObjectPath [0x0x76ecd131+561]
+
+2025-08-05 18:14:05,364 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - WebDriver session closed.
+2025-08-05 18:18:11,991 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - Closing WebDriver session.
+2025-08-05 18:18:19,339 - ERROR - backend.bots.craftable_bot.craftable_bot.CraftableBot - Error closing WebDriver session: Message: session not created: cannot connect to chrome at 127.0.0.1:55985
+from session not created: This version of ChromeDriver only supports Chrome version 139
+Current browser version is 138.0.7204.184
+Stacktrace:
+	GetHandleVerifier [0x0x83fd23+62915]
+	GetHandleVerifier [0x0x83fd64+62980]
+	(No symbol) [0x0x673e13]
+	(No symbol) [0x0x6adf5b]
+	(No symbol) [0x0x6acf69]
+	(No symbol) [0x0x6a32cf]
+	(No symbol) [0x0x6a3106]
+	(No symbol) [0x0x6ece32]
+	(No symbol) [0x0x6ec74a]
+	(No symbol) [0x0x6e11d6]
+	(No symbol) [0x0x6b0833]
+	(No symbol) [0x0x6b16a4]
+	GetHandleVerifier [0x0xaa8d13+2590131]
+	GetHandleVerifier [0x0xaa3f5a+2570234]
+	GetHandleVerifier [0x0x8659da+217722]
+	GetHandleVerifier [0x0x856048+153832]
+	GetHandleVerifier [0x0x85c4ad+179533]
+	GetHandleVerifier [0x0x847728+94152]
+	GetHandleVerifier [0x0x8478b2+94546]
+	GetHandleVerifier [0x0x832bca+9322]
+	BaseThreadInitThunk [0x0x766b5d49+25]
+	RtlInitializeExceptionChain [0x0x76ecd1ab+107]
+	RtlGetAppContainerNamedObjectPath [0x0x76ecd131+561]
+
+2025-08-05 18:18:19,341 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - WebDriver session closed.
+2025-08-05 18:19:08,204 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - Closing WebDriver session.
+2025-08-05 18:19:15,522 - ERROR - backend.bots.craftable_bot.craftable_bot.CraftableBot - Error closing WebDriver session: Message: session not created: cannot connect to chrome at 127.0.0.1:56022
+from session not created: This version of ChromeDriver only supports Chrome version 139
+Current browser version is 138.0.7204.184
+Stacktrace:
+	GetHandleVerifier [0x0xa8fd23+62915]
+	GetHandleVerifier [0x0xa8fd64+62980]
+	(No symbol) [0x0x8c3e13]
+	(No symbol) [0x0x8fdf5b]
+	(No symbol) [0x0x8fcf69]
+	(No symbol) [0x0x8f32cf]
+	(No symbol) [0x0x8f3106]
+	(No symbol) [0x0x93ce32]
+	(No symbol) [0x0x93c74a]
+	(No symbol) [0x0x9311d6]
+	(No symbol) [0x0x900833]
+	(No symbol) [0x0x9016a4]
+	GetHandleVerifier [0x0xcf8d13+2590131]
+	GetHandleVerifier [0x0xcf3f5a+2570234]
+	GetHandleVerifier [0x0xab59da+217722]
+	GetHandleVerifier [0x0xaa6048+153832]
+	GetHandleVerifier [0x0xaac4ad+179533]
+	GetHandleVerifier [0x0xa97728+94152]
+	GetHandleVerifier [0x0xa978b2+94546]
+	GetHandleVerifier [0x0xa82bca+9322]
+	BaseThreadInitThunk [0x0x766b5d49+25]
+	RtlInitializeExceptionChain [0x0x76ecd1ab+107]
+	RtlGetAppContainerNamedObjectPath [0x0x76ecd131+561]
+
+2025-08-05 18:19:15,523 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - WebDriver session closed.
+2025-08-05 18:22:35,722 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - Closing WebDriver session.
+2025-08-05 18:22:43,814 - ERROR - backend.bots.craftable_bot.craftable_bot.CraftableBot - Error closing WebDriver session: Message: session not created: cannot connect to chrome at 127.0.0.1:56075
+from session not created: This version of ChromeDriver only supports Chrome version 139
+Current browser version is 138.0.7204.184
+Stacktrace:
+	GetHandleVerifier [0x0x64fd23+62915]
+	GetHandleVerifier [0x0x64fd64+62980]
+	(No symbol) [0x0x483e13]
+	(No symbol) [0x0x4bdf5b]
+	(No symbol) [0x0x4bcf69]
+	(No symbol) [0x0x4b32cf]
+	(No symbol) [0x0x4b3106]
+	(No symbol) [0x0x4fce32]
+	(No symbol) [0x0x4fc74a]
+	(No symbol) [0x0x4f11d6]
+	(No symbol) [0x0x4c0833]
+	(No symbol) [0x0x4c16a4]
+	GetHandleVerifier [0x0x8b8d13+2590131]
+	GetHandleVerifier [0x0x8b3f5a+2570234]
+	GetHandleVerifier [0x0x6759da+217722]
+	GetHandleVerifier [0x0x666048+153832]
+	GetHandleVerifier [0x0x66c4ad+179533]
+	GetHandleVerifier [0x0x657728+94152]
+	GetHandleVerifier [0x0x6578b2+94546]
+	GetHandleVerifier [0x0x642bca+9322]
+	BaseThreadInitThunk [0x0x766b5d49+25]
+	RtlInitializeExceptionChain [0x0x76ecd1ab+107]
+	RtlGetAppContainerNamedObjectPath [0x0x76ecd131+561]
+
+2025-08-05 18:22:43,815 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - WebDriver session closed.
+2025-08-05 18:23:44,114 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - Closing WebDriver session.
+2025-08-05 18:23:51,784 - ERROR - backend.bots.craftable_bot.craftable_bot.CraftableBot - Error closing WebDriver session: Message: session not created: cannot connect to chrome at 127.0.0.1:56110
+from session not created: This version of ChromeDriver only supports Chrome version 139
+Current browser version is 138.0.7204.184
+Stacktrace:
+	GetHandleVerifier [0x0x3dfd23+62915]
+	GetHandleVerifier [0x0x3dfd64+62980]
+	(No symbol) [0x0x213e13]
+	(No symbol) [0x0x24df5b]
+	(No symbol) [0x0x24cf69]
+	(No symbol) [0x0x2432cf]
+	(No symbol) [0x0x243106]
+	(No symbol) [0x0x28ce32]
+	(No symbol) [0x0x28c74a]
+	(No symbol) [0x0x2811d6]
+	(No symbol) [0x0x250833]
+	(No symbol) [0x0x2516a4]
+	GetHandleVerifier [0x0x648d13+2590131]
+	GetHandleVerifier [0x0x643f5a+2570234]
+	GetHandleVerifier [0x0x4059da+217722]
+	GetHandleVerifier [0x0x3f6048+153832]
+	GetHandleVerifier [0x0x3fc4ad+179533]
+	GetHandleVerifier [0x0x3e7728+94152]
+	GetHandleVerifier [0x0x3e78b2+94546]
+	GetHandleVerifier [0x0x3d2bca+9322]
+	BaseThreadInitThunk [0x0x766b5d49+25]
+	RtlInitializeExceptionChain [0x0x76ecd1ab+107]
+	RtlGetAppContainerNamedObjectPath [0x0x76ecd131+561]
+
+2025-08-05 18:23:51,785 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - WebDriver session closed.
+2025-08-05 18:33:12,035 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - Closing WebDriver session.
+2025-08-05 18:33:19,386 - ERROR - backend.bots.craftable_bot.craftable_bot.CraftableBot - Error closing WebDriver session: Message: session not created: cannot connect to chrome at 127.0.0.1:56199
+from session not created: This version of ChromeDriver only supports Chrome version 139
+Current browser version is 138.0.7204.184
+Stacktrace:
+	GetHandleVerifier [0x0xc4fd23+62915]
+	GetHandleVerifier [0x0xc4fd64+62980]
+	(No symbol) [0x0xa83e13]
+	(No symbol) [0x0xabdf5b]
+	(No symbol) [0x0xabcf69]
+	(No symbol) [0x0xab32cf]
+	(No symbol) [0x0xab3106]
+	(No symbol) [0x0xafce32]
+	(No symbol) [0x0xafc74a]
+	(No symbol) [0x0xaf11d6]
+	(No symbol) [0x0xac0833]
+	(No symbol) [0x0xac16a4]
+	GetHandleVerifier [0x0xeb8d13+2590131]
+	GetHandleVerifier [0x0xeb3f5a+2570234]
+	GetHandleVerifier [0x0xc759da+217722]
+	GetHandleVerifier [0x0xc66048+153832]
+	GetHandleVerifier [0x0xc6c4ad+179533]
+	GetHandleVerifier [0x0xc57728+94152]
+	GetHandleVerifier [0x0xc578b2+94546]
+	GetHandleVerifier [0x0xc42bca+9322]
+	BaseThreadInitThunk [0x0x766b5d49+25]
+	RtlInitializeExceptionChain [0x0x76ecd1ab+107]
+	RtlGetAppContainerNamedObjectPath [0x0x76ecd131+561]
+
+2025-08-05 18:33:19,387 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - WebDriver session closed.
+2025-08-05 19:23:41,612 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - Closing WebDriver session.
+2025-08-05 19:23:51,611 - ERROR - backend.bots.craftable_bot.craftable_bot.CraftableBot - Error closing WebDriver session: Message: session not created: cannot connect to chrome at 127.0.0.1:56287
+from session not created: This version of ChromeDriver only supports Chrome version 139
+Current browser version is 138.0.7204.184
+Stacktrace:
+	GetHandleVerifier [0x0x89fd23+62915]
+	GetHandleVerifier [0x0x89fd64+62980]
+	(No symbol) [0x0x6d3e13]
+	(No symbol) [0x0x70df5b]
+	(No symbol) [0x0x70cf69]
+	(No symbol) [0x0x7032cf]
+	(No symbol) [0x0x703106]
+	(No symbol) [0x0x74ce32]
+	(No symbol) [0x0x74c74a]
+	(No symbol) [0x0x7411d6]
+	(No symbol) [0x0x710833]
+	(No symbol) [0x0x7116a4]
+	GetHandleVerifier [0x0xb08d13+2590131]
+	GetHandleVerifier [0x0xb03f5a+2570234]
+	GetHandleVerifier [0x0x8c59da+217722]
+	GetHandleVerifier [0x0x8b6048+153832]
+	GetHandleVerifier [0x0x8bc4ad+179533]
+	GetHandleVerifier [0x0x8a7728+94152]
+	GetHandleVerifier [0x0x8a78b2+94546]
+	GetHandleVerifier [0x0x892bca+9322]
+	BaseThreadInitThunk [0x0x766b5d49+25]
+	RtlInitializeExceptionChain [0x0x76ecd1ab+107]
+	RtlGetAppContainerNamedObjectPath [0x0x76ecd131+561]
+
+2025-08-05 19:23:51,612 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - WebDriver session closed.

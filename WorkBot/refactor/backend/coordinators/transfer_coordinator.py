@@ -1,6 +1,6 @@
 from backend.utils.logger import Logger
 from backend.models.transfer import Transfer
-from WorkBot.refactor.backend.storage.file.transfer_file_handler import TransferFileHandler
+from backend.storage.file.transfer_file_handler import TransferFileHandler
 from backend.parsers.transfer_parser import TransferParser
 # from backend.database_handlers.transfer_db_handler import TransferDatabaseHandler  # Optional
 from backend.storage.file.download_handler import DownloadHandler
@@ -25,7 +25,7 @@ class TransferCoordinator:
         self.file_handler.save_transfer(transfer)
 
         # Optional: save to database
-        self.db_handler.upsert_transfer(transfer)
+        # self.db_handler.upsert_transfer(transfer)
 
     def load_transfer(self, path: str) -> Transfer:
         """

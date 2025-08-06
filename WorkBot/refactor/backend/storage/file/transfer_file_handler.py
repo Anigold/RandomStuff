@@ -4,6 +4,7 @@ from backend.models.transfer import Transfer
 from backend.parsers.transfer_parser import TransferParser
 from backend.utils.logger import Logger
 from backend.storage.file.helpers.filename_strategies.transfer_filename_strategy import TransferFilenameStrategy
+from backend.exporters.excel_exporter import Exporter
 
 from openpyxl import Workbook
 from pathlib import Path
@@ -26,7 +27,7 @@ class TransferFileHandler(FileHandler):
         return self.filename_strategy.format(transfer, extension=ext)
 
     def save_transfer(self, transfer: Transfer, format: str = 'excel') -> None:
-        exporter          = self._get_exporter(Transfer, format)
+        exporter          = Exporter.get_exporter(Transfer, format)
         file_data_to_save = exporter.export(transfer)
         file_path         = self.TRANSFER_FILES_DIR / self._generate_file_name(transfer, format)
         self._write_data(format, file_data_to_save, file_path)

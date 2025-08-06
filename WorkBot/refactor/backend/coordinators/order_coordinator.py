@@ -70,8 +70,8 @@ class OrderCoordinator:
 
     # region ─── Order Retrieval ────────────────────────────────────────
     
-    def get_orders_from_file(self, stores=None, vendors=None):
-        return self.file_handler.get_order_files(stores, vendors)
+    def get_orders_from_file(self, stores=None, vendors=None) -> list[Order]:
+        return [self.parser.parse_excel(order) for order in self.file_handler.get_order_files(stores, vendors)]
 
     def get_orders_from_db(self, store, vendor):
         return self.db_handler.get_orders(store, vendor)

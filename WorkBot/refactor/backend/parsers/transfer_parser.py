@@ -22,7 +22,7 @@ class TransferParser:
         for row in sheet.iter_rows(min_row=2, values_only=True):
             name, quantity = row
             item = TransferItem(name=name, quantity=quantity)
-            transfer.items.append(item)
+            transfer.transfer_items.append(item)
 
         wb.close()
         return transfer
@@ -38,7 +38,7 @@ class TransferParser:
         headers = ["Name", "Quantity"]
         ws.append(headers)
 
-        for item in transfer.items:
+        for item in transfer.transfer_items:
             ws.append([item.name, item.quantity])
 
         return wb

@@ -1,5 +1,5 @@
 from .order_item import OrderItem
-#asd
+
 class Order:
 
     def __init__(self, store: str, vendor: str, date: str, items: list[OrderItem] = None) -> None:
