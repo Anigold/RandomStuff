@@ -15,6 +15,8 @@ class FileHandler:
         self.downloads_path = Path(DOWNLOADS_PATH)
 
         self.extension_map = {
+            'xlsx':  'xlsx',
+            'xls':   'xls',
             'excel': 'xlsx',
             'csv':   'csv',
             'json':  'json',
@@ -24,8 +26,8 @@ class FileHandler:
         }
         self._save_strategies = {
             'excel': self._save_excel,
-            'csv': self._save_csv,
-            'json': self._save_json
+            'csv':   self._save_csv,
+            'json':  self._save_json
         }
 
     def _write_data(self, format: str, data: Any, file_path: Path) -> None:

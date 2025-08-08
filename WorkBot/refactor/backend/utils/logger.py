@@ -45,7 +45,10 @@ class Logger:
             console_handler.setLevel(logging.WARNING)
 
             # Formatters
-            formatter = JsonFormatter() if json_format else logging.Formatter('%(asctime)s - %(levelname)s - %(name)s - %(message)s')
+            formatter = (
+                JsonFormatter() if json_format
+                else logging.Formatter('%(asctime)s - %(levelname)s - %(name)s - (%(filename)s:%(lineno)d) - %(message)s')
+            )
 
             file_handler.setFormatter(formatter)
             master_handler.setFormatter(formatter)

@@ -116,6 +116,9 @@ class OrderFileHandler(FileHandler):
             output_path = self.get_order_directory() / vendor / "combined_orders.xlsx"
             self._write_data("excel", workbook, output_path)
 
+    def _generate_filename(self, order: Order, format: str) -> str:
+        return self.filename_strategy.format(order, extension=self.extension_map.get(format, 'excel'))
+    
     def _create_combined_orders_excel(self, combined_orders: dict[str, dict[str, float]]) -> Workbook:
         workbook = Workbook()
         sheet = workbook.active

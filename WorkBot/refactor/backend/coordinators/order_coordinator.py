@@ -38,7 +38,7 @@ class OrderCoordinator:
         return self.file_handler.get_order_file_path(order, format=format)
 
     def generate_order_file_name(self, order: Order, format: str = 'excel') -> str:
-        return self.file_handler._generate_file_name(order, format=format)
+        return self.file_handler._generate_filename(order, format=format)
     
     # endregion ─────────────────────────────────────────────────────────
 
@@ -73,8 +73,8 @@ class OrderCoordinator:
 
     # region ─── Order Retrieval ────────────────────────────────────────
     
-    def get_orders_from_db(self, store, vendor):
-        return self.db_handler.get_orders(store, vendor)
+    # def get_orders_from_db(self, store, vendor):
+    #     return self.db_handler.get_orders(store, vendor)
     
     # endregion
 
@@ -141,7 +141,7 @@ class OrderCoordinator:
             return False
 
         try:
-            existing_order = self.file_handler.read_order(file_path)
+            existing_order = self.file_handler.get_order_from_file(file_path)
         except Exception as e:
             self.logger.warning(f'[Order Update] Failed to read existing order file: {e}. Proceeding with overwrite.')
             return False

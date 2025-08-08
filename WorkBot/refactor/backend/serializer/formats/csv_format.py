@@ -1,9 +1,5 @@
-import csv
-from pathlib import Path
-from typing import Any
-from io import StringIO
-from .base_format import BaseFormat
-
+@BaseFormat.register("Sysco")
+@BaseFormat.register("Performance Food")
 class CSVFormat(BaseFormat):
     default_suffix = ".csv"
 
