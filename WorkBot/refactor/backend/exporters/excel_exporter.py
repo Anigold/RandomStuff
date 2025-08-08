@@ -16,8 +16,8 @@ class ExcelOrderExporter(Exporter):
         default_row_fn = lambda item: [item.sku, item.name, item.quantity, item.cost_per, item.total_cost]
 
         # Use adapter to modify headers (with context if needed)
+        # Not finished
         headers = adapter.modify_headers(default_headers, context=context) if adapter else default_headers
-
 
         ws.append(headers)
 

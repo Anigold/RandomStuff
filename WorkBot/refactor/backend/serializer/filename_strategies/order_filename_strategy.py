@@ -24,7 +24,7 @@ class OrderFilenameStrategy:
         formatted_date = date_obj.strftime("%Y-%m-%d")
         return f"{order.vendor}_{order.store}_{formatted_date}.{extension}"
 
-    def parse(self, filename: str) -> dict[str: str, str: str, str: str]:
+    def parse(self, filename: str) -> dict[str, str]:
         stem = Path(filename).stem  # removes .xlsx, .csv, etc.
         match = self.FILENAME_PATTERN.match(stem)
         if not match:
@@ -42,14 +42,10 @@ class OrderFilenameStrategy:
         
         return {'vendor': vendor, 'store': store, 'date': date_str}
     
-    def prefix(self, order: Order):
+    def prefix(self, order: Order) -> str:
         try:
-            date_obj = datetime.strptime(order.date, '%Y-%m-%d')
+            date_obj = datetime.strptime(order.date, "%Y-%m-%d")
         except ValueError:
-            try:
-                date_obj = datetime.strptime(order.date, '%Y%m%d')
-            except ValueError:
-                raise ValueError(f'Unrecognized date format: {order.date}')
-
-        formatted_date = date_obj.strftime('%Y-%m-%d')
+            date_obj = datetime.strptime(order.date, "%Y%m%d")
+        formatted_date = date_obj.strftime("%Y-%m-%d")
         return f'{order.vendor}_{order.store}_{formatted_date}'

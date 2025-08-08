@@ -2703,3 +2703,308 @@ Stacktrace:
 2025-08-06 14:03:34,972 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - Closing WebDriver session.
 2025-08-06 15:27:20,764 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - Closing WebDriver session.
 2025-08-06 15:27:27,051 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - WebDriver session closed.
+2025-08-06 20:56:23,461 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - Logging into Craftable.
+2025-08-06 20:56:32,427 - ERROR - backend.bots.craftable_bot.craftable_bot.CraftableBot - Error in login: Message: session not created: cannot connect to chrome at 127.0.0.1:60485
+from session not created: This version of ChromeDriver only supports Chrome version 139
+Current browser version is 138.0.7204.184
+Stacktrace:
+	GetHandleVerifier [0x0x10afd23+62915]
+	GetHandleVerifier [0x0x10afd64+62980]
+	(No symbol) [0x0xee3e13]
+	(No symbol) [0x0xf1df5b]
+	(No symbol) [0x0xf1cf69]
+	(No symbol) [0x0xf132cf]
+	(No symbol) [0x0xf13106]
+	(No symbol) [0x0xf5ce32]
+	(No symbol) [0x0xf5c74a]
+	(No symbol) [0x0xf511d6]
+	(No symbol) [0x0xf20833]
+	(No symbol) [0x0xf216a4]
+	GetHandleVerifier [0x0x1318d13+2590131]
+	GetHandleVerifier [0x0x1313f5a+2570234]
+	GetHandleVerifier [0x0x10d59da+217722]
+	GetHandleVerifier [0x0x10c6048+153832]
+	GetHandleVerifier [0x0x10cc4ad+179533]
+	GetHandleVerifier [0x0x10b7728+94152]
+	GetHandleVerifier [0x0x10b78b2+94546]
+	GetHandleVerifier [0x0x10a2bca+9322]
+	BaseThreadInitThunk [0x0x766b5d49+25]
+	RtlInitializeExceptionChain [0x0x76ecd1ab+107]
+	RtlGetAppContainerNamedObjectPath [0x0x76ecd131+561]
+Traceback (most recent call last):
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 126, in login
+    self.driver.get(self.site_map['login_page'])
+    ^^^^^^^^^^^
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\bot_mixins.py", line 21, in driver
+    self._driver             = create_driver(options)
+                               ~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\helpers.py", line 19, in create_driver
+    return uc.Chrome(options=options, use_subprocess=True)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\undetected_chromedriver\__init__.py", line 466, in __init__
+    super(Chrome, self).__init__(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        service=service,
+        ^^^^^^^^^^^^^^^^
+        options=options,
+        ^^^^^^^^^^^^^^^^
+        keep_alive=keep_alive,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 45, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        browser_name=DesiredCapabilities.CHROME["browserName"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        keep_alive=keep_alive,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\chromium\webdriver.py", line 66, in __init__
+    super().__init__(command_executor=executor, options=options)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 250, in __init__
+    self.start_session(capabilities)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\undetected_chromedriver\__init__.py", line 724, in start_session
+    super(selenium.webdriver.chrome.webdriver.WebDriver, self).start_session(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        capabilities
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 342, in start_session
+    response = self.execute(Command.NEW_SESSION, caps)["value"]
+               ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 429, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.SessionNotCreatedException: Message: session not created: cannot connect to chrome at 127.0.0.1:60485
+from session not created: This version of ChromeDriver only supports Chrome version 139
+Current browser version is 138.0.7204.184
+Stacktrace:
+	GetHandleVerifier [0x0x10afd23+62915]
+	GetHandleVerifier [0x0x10afd64+62980]
+	(No symbol) [0x0xee3e13]
+	(No symbol) [0x0xf1df5b]
+	(No symbol) [0x0xf1cf69]
+	(No symbol) [0x0xf132cf]
+	(No symbol) [0x0xf13106]
+	(No symbol) [0x0xf5ce32]
+	(No symbol) [0x0xf5c74a]
+	(No symbol) [0x0xf511d6]
+	(No symbol) [0x0xf20833]
+	(No symbol) [0x0xf216a4]
+	GetHandleVerifier [0x0x1318d13+2590131]
+	GetHandleVerifier [0x0x1313f5a+2570234]
+	GetHandleVerifier [0x0x10d59da+217722]
+	GetHandleVerifier [0x0x10c6048+153832]
+	GetHandleVerifier [0x0x10cc4ad+179533]
+	GetHandleVerifier [0x0x10b7728+94152]
+	GetHandleVerifier [0x0x10b78b2+94546]
+	GetHandleVerifier [0x0x10a2bca+9322]
+	BaseThreadInitThunk [0x0x766b5d49+25]
+	RtlInitializeExceptionChain [0x0x76ecd1ab+107]
+	RtlGetAppContainerNamedObjectPath [0x0x76ecd131+561]
+
+2025-08-06 20:58:18,820 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - Logging into Craftable.
+2025-08-06 20:58:36,961 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - Login successful.
+2025-08-06 20:58:36,962 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - Starting order download protocol.
+2025-08-06 20:58:36,962 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - Accessing order page for Bakery.
+2025-08-06 20:58:43,851 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - Retrieving order for Atlantic Spice Company (08/04/2025).
+2025-08-06 20:58:45,237 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - [Order Update] Initiating update protocol for Bakery / Atlantic Spice Company / 20250804.
+2025-08-06 20:58:45,238 - ERROR - backend.bots.craftable_bot.craftable_bot.CraftableBot - Error in download_orders: 'OrderFilenameStrategy' object has no attribute 'filename'
+Traceback (most recent call last):
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 262, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 297, in _process_order_row
+    if update and self._update_existing_order(order_to_check_update):
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 691, in _update_existing_order
+    return self.order_coordinator.check_and_update_order(order)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\order_coordinator.py", line 137, in check_and_update_order
+    file_path = self.file_handler.get_order_file_path(order)
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\storage\file\order_file_handler.py", line 41, in get_order_file_path
+    return self.ORDER_FILES_DIR / order.vendor / self.filename_strategy.filename(order, suffix=suffix)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'OrderFilenameStrategy' object has no attribute 'filename'
+2025-08-06 21:05:36,272 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - Logging into Craftable.
+2025-08-06 21:06:18,299 - ERROR - backend.bots.craftable_bot.craftable_bot.CraftableBot - Error in login: Message: 
+Stacktrace:
+	GetHandleVerifier [0x0xa0fd23+62915]
+	GetHandleVerifier [0x0xa0fd64+62980]
+	(No symbol) [0x0x843e13]
+	(No symbol) [0x0x88c89e]
+	(No symbol) [0x0x88cc3b]
+	(No symbol) [0x0x8d4ec2]
+	(No symbol) [0x0x8b1424]
+	(No symbol) [0x0x8d26ea]
+	(No symbol) [0x0x8b11d6]
+	(No symbol) [0x0x880833]
+	(No symbol) [0x0x8816a4]
+	GetHandleVerifier [0x0xc78d13+2590131]
+	GetHandleVerifier [0x0xc73f5a+2570234]
+	GetHandleVerifier [0x0xa359da+217722]
+	GetHandleVerifier [0x0xa26048+153832]
+	GetHandleVerifier [0x0xa2c4ad+179533]
+	GetHandleVerifier [0x0xa17728+94152]
+	GetHandleVerifier [0x0xa178b2+94546]
+	GetHandleVerifier [0x0xa02bca+9322]
+	BaseThreadInitThunk [0x0x766b5d49+25]
+	RtlInitializeExceptionChain [0x0x76ecd1ab+107]
+	RtlGetAppContainerNamedObjectPath [0x0x76ecd131+561]
+Traceback (most recent call last):
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 128, in login
+    WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, './/form')))
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\support\wait.py", line 146, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+	GetHandleVerifier [0x0xa0fd23+62915]
+	GetHandleVerifier [0x0xa0fd64+62980]
+	(No symbol) [0x0x843e13]
+	(No symbol) [0x0x88c89e]
+	(No symbol) [0x0x88cc3b]
+	(No symbol) [0x0x8d4ec2]
+	(No symbol) [0x0x8b1424]
+	(No symbol) [0x0x8d26ea]
+	(No symbol) [0x0x8b11d6]
+	(No symbol) [0x0x880833]
+	(No symbol) [0x0x8816a4]
+	GetHandleVerifier [0x0xc78d13+2590131]
+	GetHandleVerifier [0x0xc73f5a+2570234]
+	GetHandleVerifier [0x0xa359da+217722]
+	GetHandleVerifier [0x0xa26048+153832]
+	GetHandleVerifier [0x0xa2c4ad+179533]
+	GetHandleVerifier [0x0xa17728+94152]
+	GetHandleVerifier [0x0xa178b2+94546]
+	GetHandleVerifier [0x0xa02bca+9322]
+	BaseThreadInitThunk [0x0x766b5d49+25]
+	RtlInitializeExceptionChain [0x0x76ecd1ab+107]
+	RtlGetAppContainerNamedObjectPath [0x0x76ecd131+561]
+
+2025-08-06 21:06:49,737 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - Logging into Craftable.
+2025-08-06 21:07:21,991 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - Logging into Craftable.
+2025-08-06 21:07:51,794 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - Login successful.
+2025-08-06 21:07:51,795 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - Starting order download protocol.
+2025-08-06 21:07:51,795 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - Accessing order page for Bakery.
+2025-08-06 21:07:59,959 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - Retrieving order for  ().
+2025-08-06 21:08:14,223 - ERROR - backend.bots.craftable_bot.craftable_bot.CraftableBot - Error in download_orders: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//a"}
+  (Session info: chrome=139.0.7258.67); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x0xd7fd23+62915]
+	GetHandleVerifier [0x0xd7fd64+62980]
+	(No symbol) [0x0xbb3e13]
+	(No symbol) [0x0xbfc89e]
+	(No symbol) [0x0xbfcc3b]
+	(No symbol) [0x0xbf20d1]
+	(No symbol) [0x0xc21424]
+	(No symbol) [0x0xbf1ff4]
+	(No symbol) [0x0xc21654]
+	(No symbol) [0x0xc426ea]
+	(No symbol) [0x0xc211d6]
+	(No symbol) [0x0xbf0833]
+	(No symbol) [0x0xbf16a4]
+	GetHandleVerifier [0x0xfe8d13+2590131]
+	GetHandleVerifier [0x0xfe3f5a+2570234]
+	GetHandleVerifier [0x0xda59da+217722]
+	GetHandleVerifier [0x0xd96048+153832]
+	GetHandleVerifier [0x0xd9c4ad+179533]
+	GetHandleVerifier [0x0xd87728+94152]
+	GetHandleVerifier [0x0xd878b2+94546]
+	GetHandleVerifier [0x0xd72bca+9322]
+	BaseThreadInitThunk [0x0x766b5d49+25]
+	RtlInitializeExceptionChain [0x0x76ecd1ab+107]
+	RtlGetAppContainerNamedObjectPath [0x0x76ecd131+561]
+Traceback (most recent call last):
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 262, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 294, in _process_order_row
+    items = self._scrape_order()
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 657, in _scrape_order
+    item_name  = item_info[3].find_element(By.XPATH, './/a').text
+                 ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 599, in find_element
+    return self._execute(Command.FIND_CHILD_ELEMENT, {"using": by, "value": value})["value"]
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 570, in _execute
+    return self._parent.execute(command, params)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 429, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//a"}
+  (Session info: chrome=139.0.7258.67); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x0xd7fd23+62915]
+	GetHandleVerifier [0x0xd7fd64+62980]
+	(No symbol) [0x0xbb3e13]
+	(No symbol) [0x0xbfc89e]
+	(No symbol) [0x0xbfcc3b]
+	(No symbol) [0x0xbf20d1]
+	(No symbol) [0x0xc21424]
+	(No symbol) [0x0xbf1ff4]
+	(No symbol) [0x0xc21654]
+	(No symbol) [0x0xc426ea]
+	(No symbol) [0x0xc211d6]
+	(No symbol) [0x0xbf0833]
+	(No symbol) [0x0xbf16a4]
+	GetHandleVerifier [0x0xfe8d13+2590131]
+	GetHandleVerifier [0x0xfe3f5a+2570234]
+	GetHandleVerifier [0x0xda59da+217722]
+	GetHandleVerifier [0x0xd96048+153832]
+	GetHandleVerifier [0x0xd9c4ad+179533]
+	GetHandleVerifier [0x0xd87728+94152]
+	GetHandleVerifier [0x0xd878b2+94546]
+	GetHandleVerifier [0x0xd72bca+9322]
+	BaseThreadInitThunk [0x0x766b5d49+25]
+	RtlInitializeExceptionChain [0x0x76ecd1ab+107]
+	RtlGetAppContainerNamedObjectPath [0x0x76ecd131+561]
+
+2025-08-06 21:08:22,663 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - Closing WebDriver session.
+2025-08-06 21:08:22,733 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - WebDriver session closed.
+2025-08-06 21:13:14,997 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - Logging into Craftable.
+2025-08-06 21:13:32,656 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - Login successful.
+2025-08-06 21:13:32,656 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - Starting order download protocol.
+2025-08-06 21:13:32,656 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - Accessing order page for Bakery.
+2025-08-06 21:13:39,546 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - Retrieving order for Atlantic Spice Company (08/04/2025).
+2025-08-06 21:13:40,843 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - [Order Update] Initiating update protocol for Bakery / Atlantic Spice Company / 20250804.
+2025-08-06 21:13:40,843 - ERROR - backend.bots.craftable_bot.craftable_bot.CraftableBot - Error in download_orders: 'OrderFilenameStrategy' object has no attribute 'filename'
+Traceback (most recent call last):
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\logger.py", line 102, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 262, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 297, in _process_order_row
+    if update and self._update_existing_order(order_to_check_update):
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 691, in _update_existing_order
+    return self.order_coordinator.check_and_update_order(order)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\order_coordinator.py", line 137, in check_and_update_order
+    file_path = self.file_handler.get_order_file_path(order)
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\storage\file\order_file_handler.py", line 41, in get_order_file_path
+    return self.ORDER_FILES_DIR / order.vendor / self.filename_strategy.filename(order, suffix=suffix)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'OrderFilenameStrategy' object has no attribute 'filename'
+2025-08-06 21:16:27,067 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - Closing WebDriver session.
+2025-08-06 21:16:27,135 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - WebDriver session closed.
