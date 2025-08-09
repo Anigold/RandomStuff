@@ -1,30 +1,42 @@
+# backend/serializer/adapters/base_adapter.py
+from __future__ import annotations
+from typing import Type, Dict, Iterable
+
 class BaseAdapter:
+    """Adapters tweak tabular data only—no workbook or IO concerns."""
+    _REGISTRY: Dict[str, Type["BaseAdapter"]] = {}
+    preferred_format: str = "excel"  # "excel" | "csv" | ...
 
-    _ADAPTER_REGISTRY = {}
-
-    preferred_format: str = 'excel' # Default file format
-
+    # ── Registration (store CLASS; instantiate on get) ───────────────────
     @classmethod
     def register(cls, vendor: str):
-        def decorator(adapter_cls):
-            cls._ADAPTER_REGISTRY[vendor.lower()] = adapter_cls()
+        def deco(adapter_cls: Type["BaseAdapter"]):
+            cls._REGISTRY[cls._vn(vendor)] = adapter_cls
             return adapter_cls
-        return decorator
+        return deco
 
     @classmethod
-    def get_adapter(cls, vendor: str):
-        return cls._ADAPTER_REGISTRY.get(vendor.lower(), None)
+    def get_adapter(cls, vendor: str) -> "BaseAdapter | None":
+        klass = cls._REGISTRY.get(cls._vn(vendor))
+        return klass() if klass else None
 
+    @staticmethod
+    def _vn(s: str) -> str:
+        return " ".join(s.split()).strip().lower()
+
+    @classmethod
+    def vendors(cls) -> Iterable[str]:
+        return tuple(sorted(cls._REGISTRY.keys()))
+
+    # ── Data-shaping hooks (override as needed) ──────────────────────────
     def modify_headers(self, headers: list[str]) -> list[str]:
         return headers
 
-    def modify_row(self, row: list, item: object = None) -> list:
+    def modify_row(self, row: list, item: object | None = None) -> list:
         return row
 
-    def modify_workbook(self, workbook: object) -> None:
-        pass
-
+    # Convenience
     @classmethod
     def get_preferred_format(cls, vendor: str) -> str:
-        adapter = cls.get_adapter(vendor)
-        return getattr(adapter, 'preferred_format', 'excel')
+        a = cls.get_adapter(vendor)
+        return a.preferred_format if a else "excel"

@@ -1,0 +1,459 @@
+refactor/
+├── api
+│   ├── __pycache__
+│   │   ├── __init__.cpython-313.pyc
+│   │   └── app.cpython-313.pyc
+│   ├── routes
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-313.pyc
+│   │   │   ├── items.cpython-313.pyc
+│   │   │   └── orders.cpython-313.pyc
+│   │   ├── __init__.py
+│   │   ├── items.py
+│   │   ├── orders.py
+│   │   └── vendors.py
+│   ├── __init__.py
+│   └── app.py
+├── backend
+│   ├── bots
+│   │   ├── __pycache__
+│   │   │   ├── bot_mixins.cpython-313.pyc
+│   │   │   ├── BotMixins.cpython-313.pyc
+│   │   │   └── helpers.cpython-313.pyc
+│   │   ├── craftable_bot
+│   │   │   ├── __pycache__
+│   │   │   ├── __init__.py
+│   │   │   ├── craftable_bot.py
+│   │   │   └── helpers.py
+│   │   ├── vendor_bots
+│   │   │   ├── __pycache__
+│   │   │   ├── __init__.py
+│   │   │   ├── behlog_produce_bot.py
+│   │   │   ├── copperhorse_coffee_bot.py
+│   │   │   ├── cortland_produce_bot.py
+│   │   │   ├── dutch_valley_bot.py
+│   │   │   ├── euro_cafe_bot.py
+│   │   │   ├── hill_n_markes_bot.py
+│   │   │   ├── hoffmire_farms_bot.py
+│   │   │   ├── ithaca_bakery_bot.py
+│   │   │   ├── performance_food_bot.py
+│   │   │   ├── russo_produce_bot.py
+│   │   │   ├── sysco_bot.py
+│   │   │   ├── unfi_bot.py
+│   │   │   ├── us_foods_bot.py
+│   │   │   ├── vendor_bot.py
+│   │   │   └── vendor_factory.py
+│   │   ├── workbot
+│   │   │   ├── __pycache__
+│   │   │   ├── __init__.py
+│   │   │   └── work_bot.py
+│   │   ├── bot_mixins.py
+│   │   └── helpers.py
+│   ├── coordinators
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-313.pyc
+│   │   │   ├── order_coordinator.cpython-313.pyc
+│   │   │   ├── OrderCoordinator.cpython-313.pyc
+│   │   │   ├── store_coordinator.cpython-313.pyc
+│   │   │   ├── StoreCoordinator.cpython-313.pyc
+│   │   │   ├── transfer_coordinator.cpython-313.pyc
+│   │   │   ├── TransferCoordinator.cpython-313.pyc
+│   │   │   ├── vendor_coordinator.cpython-313.pyc
+│   │   │   └── VendorCoordinator.cpython-313.pyc
+│   │   ├── __init__.py
+│   │   ├── item_coordinator.py
+│   │   ├── order_coordinator.py
+│   │   ├── store_coordinator.py
+│   │   ├── transfer_coordinator.py
+│   │   └── vendor_coordinator.py
+│   ├── models
+│   │   ├── __init__.py
+│   │   ├── item.py
+│   │   ├── order.py
+│   │   ├── order_item.py
+│   │   ├── store.py
+│   │   ├── store_item_info.py
+│   │   ├── transfer.py
+│   │   ├── transfer_item.py
+│   │   ├── vendor.py
+│   │   └── vendor_item_info.py
+│   ├── parsers
+│   │   ├── __init__.py
+│   │   ├── excel_parser.py
+│   │   ├── item_parser.py
+│   │   ├── order_parser.py
+│   │   └── transfer_parser.py
+│   ├── serializer
+│   │   ├── adapters
+│   │   │   ├── __pycache__
+│   │   │   ├── base_adapter.py
+│   │   │   ├── hill_n_markes_adapter.py
+│   │   │   ├── performance_food_adapter.py
+│   │   │   ├── sysco_adapter.py
+│   │   │   ├── unfi_adapter.py
+│   │   │   └── us_foods_adapter.py
+│   │   ├── factories
+│   │   │   └── vendor_upload_factory.py
+│   │   ├── filename_strategies
+│   │   │   ├── __pycache__
+│   │   │   ├── order_filename_strategy.py
+│   │   │   └── transfer_filename_strategy.py
+│   │   ├── formats
+│   │   │   ├── __pycache__
+│   │   │   ├── __init__.py
+│   │   │   ├── base_format.py
+│   │   │   ├── csv_format.py
+│   │   │   ├── excel_format.py
+│   │   │   └── json_format.py
+│   │   ├── registries
+│   │   │   ├── adapter_registry.py
+│   │   │   ├── format_registry.py
+│   │   │   └── serializer_registry.py
+│   │   └── serializers
+│   │       ├── __pycache__
+│   │       ├── base_serializer.py
+│   │       ├── item_serializer.py
+│   │       ├── order_serializer.py
+│   │       └── transfer_serializer.py
+│   ├── storage
+│   │   ├── database
+│   │   │   ├── __pycache__
+│   │   │   ├── __init__.py
+│   │   │   ├── database_handler.py
+│   │   │   ├── item_database_handler.py
+│   │   │   ├── order_database_handler.py
+│   │   │   └── transfer_database_handler.py
+│   │   ├── file
+│   │   │   ├── __pycache__
+│   │   │   ├── __init__.py
+│   │   │   ├── download_handler.py
+│   │   │   ├── file_handler.py
+│   │   │   ├── item_file_handler.py
+│   │   │   ├── order_file_handler.py
+│   │   │   ├── transfer_file_handler.py
+│   │   │   └── vendor_file_handler.py
+│   │   └── __init__.py
+│   └── utils
+│       ├── emailer
+│       │   ├── __pycache__
+│       │   ├── services
+│       │   ├── __init__.py
+│       │   └── emailer.py
+│       ├── errors
+│       │   └── error_handler.py
+│       ├── __init__.py
+│       ├── helpers.py
+│       ├── logger.py
+│       └── pack_size_parser.py
+├── cli
+│   ├── commands
+│   │   ├── command.py
+│   │   └── download_orders.py
+│   ├── .cli_history
+│   ├── __init__.py
+│   ├── cli.py
+│   ├── cli_helpers.py
+│   └── workbot_cli.py
+├── config
+│   ├── secrets
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-313.pyc
+│   │   │   └── env_loader.cpython-313.pyc
+│   │   ├── __init__.py
+│   │   └── env_loader.py
+│   ├── __init__.py
+│   ├── paths.py
+│   └── settings.py
+├── data
+│   ├── cli
+│   │   └── .cli_history
+│   ├── downloads
+│   ├── logging
+│   │   └── master.log
+│   ├── orders
+│   │   ├── A.L. George
+│   │   │   ├── CompletedOrders
+│   │   │   ├── A.L. George_Collegetown_2025-08-08.pdf
+│   │   │   ├── A.L. George_Collegetown_2025-08-08.xlsx
+│   │   │   ├── A.L. George_Triphammer_2025-08-07.pdf
+│   │   │   └── A.L. George_Triphammer_2025-08-07.xlsx
+│   │   ├── ACE ENDICO
+│   │   │   └── CompletedOrders
+│   │   ├── Atlantic Spice Company
+│   │   │   └── CompletedOrders
+│   │   ├── BALKAN BEVERAGE LLC
+│   │   │   ├── CompletedOrders
+│   │   │   ├── BALKAN BEVERAGE LLC_Collegetown_2025-08-08.pdf
+│   │   │   ├── BALKAN BEVERAGE LLC_Collegetown_2025-08-08.xlsx
+│   │   │   ├── BALKAN BEVERAGE LLC_Downtown_2025-08-08.pdf
+│   │   │   └── BALKAN BEVERAGE LLC_Downtown_2025-08-08.xlsx
+│   │   ├── BEHLOG & SON, INC
+│   │   │   └── CompletedOrders
+│   │   ├── BJ's
+│   │   │   └── CompletedOrders
+│   │   ├── Bo's Bones
+│   │   │   ├── CompletedOrders
+│   │   │   ├── Bo's Bones_Downtown_2025-08-08.pdf
+│   │   │   └── Bo's Bones_Downtown_2025-08-08.xlsx
+│   │   ├── Coca-Cola
+│   │   │   ├── CompletedOrders
+│   │   │   ├── Coca-Cola_Collegetown_2025-08-08.pdf
+│   │   │   ├── Coca-Cola_Collegetown_2025-08-08.xlsx
+│   │   │   ├── Coca-Cola_Downtown_2025-08-08.pdf
+│   │   │   ├── Coca-Cola_Downtown_2025-08-08.xlsx
+│   │   │   ├── Coca-Cola_Easthill_2025-08-08.pdf
+│   │   │   ├── Coca-Cola_Easthill_2025-08-08.xlsx
+│   │   │   ├── Coca-Cola_Triphammer_2025-08-07.pdf
+│   │   │   └── Coca-Cola_Triphammer_2025-08-07.xlsx
+│   │   ├── Copper Horse Coffee
+│   │   │   ├── CompletedOrders
+│   │   │   ├── Copper Horse Coffee_Collegetown_2025-08-08.pdf
+│   │   │   ├── Copper Horse Coffee_Collegetown_2025-08-08.xlsx
+│   │   │   ├── Copper Horse Coffee_Downtown_2025-08-08.pdf
+│   │   │   ├── Copper Horse Coffee_Downtown_2025-08-08.xlsx
+│   │   │   ├── Copper Horse Coffee_Triphammer_2025-08-07.pdf
+│   │   │   └── Copper Horse Coffee_Triphammer_2025-08-07.xlsx
+│   │   ├── Dawn
+│   │   │   └── CompletedOrders
+│   │   ├── DUTCH VALLEY FOOD DIST
+│   │   │   ├── CompletedOrders
+│   │   │   ├── DUTCH VALLEY FOOD DIST_Collegetown_2025-08-08.pdf
+│   │   │   └── DUTCH VALLEY FOOD DIST_Collegetown_2025-08-08.xlsx
+│   │   ├── Equal Exchange
+│   │   │   ├── CompletedOrders
+│   │   │   ├── Equal Exchange_Collegetown_2025-08-08.pdf
+│   │   │   ├── Equal Exchange_Collegetown_2025-08-08.xlsx
+│   │   │   ├── Equal Exchange_Downtown_2025-08-08.pdf
+│   │   │   ├── Equal Exchange_Downtown_2025-08-08.xlsx
+│   │   │   ├── Equal Exchange_Easthill_2025-08-08.pdf
+│   │   │   ├── Equal Exchange_Easthill_2025-08-08.xlsx
+│   │   │   ├── Equal Exchange_Triphammer_2025-08-07.pdf
+│   │   │   └── Equal Exchange_Triphammer_2025-08-07.xlsx
+│   │   ├── Eurocafe Imports
+│   │   │   └── CompletedOrders
+│   │   ├── Farmer Ground Flour
+│   │   │   └── CompletedOrders
+│   │   ├── FingerLakes Farms
+│   │   │   ├── CompletedOrders
+│   │   │   ├── FingerLakes Farms_Collegetown_2025-08-08.pdf
+│   │   │   ├── FingerLakes Farms_Collegetown_2025-08-08.xlsx
+│   │   │   ├── FingerLakes Farms_Downtown_2025-08-08.pdf
+│   │   │   ├── FingerLakes Farms_Downtown_2025-08-08.xlsx
+│   │   │   ├── FingerLakes Farms_Easthill_2025-08-08.pdf
+│   │   │   ├── FingerLakes Farms_Easthill_2025-08-08.xlsx
+│   │   │   ├── FingerLakes Farms_Triphammer_2025-08-07.pdf
+│   │   │   └── FingerLakes Farms_Triphammer_2025-08-07.xlsx
+│   │   ├── Harney and Sons Tea
+│   │   │   └── CompletedOrders
+│   │   ├── Hen of the Woods
+│   │   │   └── CompletedOrders
+│   │   ├── Hill & Markes
+│   │   │   ├── CompletedOrders
+│   │   │   ├── Hill & Markes_Collegetown_2025-08-08.pdf
+│   │   │   ├── Hill & Markes_Collegetown_2025-08-08.xlsx
+│   │   │   ├── Hill & Markes_Downtown_2025-08-08.pdf
+│   │   │   ├── Hill & Markes_Downtown_2025-08-08.xlsx
+│   │   │   ├── Hill & Markes_Easthill_2025-08-08.pdf
+│   │   │   ├── Hill & Markes_Easthill_2025-08-08.xlsx
+│   │   │   ├── Hill & Markes_Triphammer_2025-08-07.pdf
+│   │   │   └── Hill & Markes_Triphammer_2025-08-07.xlsx
+│   │   ├── Hillcrest Dairy
+│   │   │   ├── CompletedOrders
+│   │   │   ├── Hillcrest Dairy_Collegetown_2025-08-08.pdf
+│   │   │   ├── Hillcrest Dairy_Collegetown_2025-08-08.xlsx
+│   │   │   ├── Hillcrest Dairy_Downtown_2025-08-08.pdf
+│   │   │   ├── Hillcrest Dairy_Downtown_2025-08-08.xlsx
+│   │   │   ├── Hillcrest Dairy_Easthill_2025-08-08.pdf
+│   │   │   ├── Hillcrest Dairy_Easthill_2025-08-08.xlsx
+│   │   │   ├── Hillcrest Dairy_Triphammer_2025-08-07.pdf
+│   │   │   └── Hillcrest Dairy_Triphammer_2025-08-07.xlsx
+│   │   ├── Hillcrest Foods
+│   │   │   └── CompletedOrders
+│   │   ├── Ithaca Bakery
+│   │   │   ├── CompletedOrders
+│   │   │   ├── Ithaca Bakery_Collegetown_2025-08-08.pdf
+│   │   │   ├── Ithaca Bakery_Collegetown_2025-08-08.xlsx
+│   │   │   ├── Ithaca Bakery_Downtown_2025-08-08.pdf
+│   │   │   ├── Ithaca Bakery_Downtown_2025-08-08.xlsx
+│   │   │   ├── Ithaca Bakery_Easthill_2025-08-08.pdf
+│   │   │   ├── Ithaca Bakery_Easthill_2025-08-08.xlsx
+│   │   │   ├── Ithaca Bakery_Triphammer_2025-08-07.pdf
+│   │   │   └── Ithaca Bakery_Triphammer_2025-08-07.xlsx
+│   │   ├── Jade Leaf Matcha
+│   │   │   └── CompletedOrders
+│   │   ├── Johnston Paper
+│   │   │   ├── CompletedOrders
+│   │   │   ├── Johnston Paper_Collegetown_2025-08-08.pdf
+│   │   │   ├── Johnston Paper_Collegetown_2025-08-08.xlsx
+│   │   │   ├── Johnston Paper_Downtown_2025-08-08.pdf
+│   │   │   ├── Johnston Paper_Downtown_2025-08-08.xlsx
+│   │   │   ├── Johnston Paper_Triphammer_2025-08-07.pdf
+│   │   │   └── Johnston Paper_Triphammer_2025-08-07.xlsx
+│   │   ├── Katz Specialty Food Group, LLC
+│   │   │   └── CompletedOrders
+│   │   ├── Keck's Food Service
+│   │   │   └── CompletedOrders
+│   │   ├── Lentz
+│   │   │   └── CompletedOrders
+│   │   ├── Mapleland Farms
+│   │   │   └── CompletedOrders
+│   │   ├── NAT'S NUTS
+│   │   │   └── CompletedOrders
+│   │   ├── OLBRO DISTRIBUTORS
+│   │   │   └── CompletedOrders
+│   │   ├── Palmer
+│   │   │   └── CompletedOrders
+│   │   ├── Paper Rolls .com
+│   │   │   └── CompletedOrders
+│   │   ├── Performance Food
+│   │   │   ├── CompletedOrders
+│   │   │   ├── Performance Food_Collegetown_2025-08-08.pdf
+│   │   │   ├── Performance Food_Collegetown_2025-08-08.xlsx
+│   │   │   ├── Performance Food_Downtown_2025-08-08.pdf
+│   │   │   ├── Performance Food_Downtown_2025-08-08.xlsx
+│   │   │   ├── Performance Food_Easthill_2025-08-08.pdf
+│   │   │   ├── Performance Food_Easthill_2025-08-08.xlsx
+│   │   │   ├── Performance Food_Triphammer_2025-08-07.pdf
+│   │   │   └── Performance Food_Triphammer_2025-08-07.xlsx
+│   │   ├── Peters Supply
+│   │   │   ├── CompletedOrders
+│   │   │   ├── Peters Supply_Collegetown_2025-08-08.pdf
+│   │   │   ├── Peters Supply_Collegetown_2025-08-08.xlsx
+│   │   │   ├── Peters Supply_Downtown_2025-08-08.pdf
+│   │   │   ├── Peters Supply_Downtown_2025-08-08.xlsx
+│   │   │   ├── Peters Supply_Easthill_2025-08-08.pdf
+│   │   │   ├── Peters Supply_Easthill_2025-08-08.xlsx
+│   │   │   ├── Peters Supply_Triphammer_2025-08-07.pdf
+│   │   │   └── Peters Supply_Triphammer_2025-08-07.xlsx
+│   │   ├── Regional Distributors, Inc
+│   │   │   ├── CompletedOrders
+│   │   │   ├── Regional Distributors, Inc._Collegetown_2025-08-08.pdf
+│   │   │   ├── Regional Distributors, Inc._Collegetown_2025-08-08.xlsx
+│   │   │   ├── Regional Distributors, Inc._Downtown_2025-08-08.pdf
+│   │   │   ├── Regional Distributors, Inc._Downtown_2025-08-08.xlsx
+│   │   │   ├── Regional Distributors, Inc._Easthill_2025-08-08.pdf
+│   │   │   ├── Regional Distributors, Inc._Easthill_2025-08-08.xlsx
+│   │   │   ├── Regional Distributors, Inc._Triphammer_2025-08-07.pdf
+│   │   │   └── Regional Distributors, Inc._Triphammer_2025-08-07.xlsx
+│   │   ├── Russo Produce
+│   │   │   └── CompletedOrders
+│   │   ├── SANICO
+│   │   │   ├── CompletedOrders
+│   │   │   ├── SANICO_Downtown_2025-08-08.pdf
+│   │   │   └── SANICO_Downtown_2025-08-08.xlsx
+│   │   ├── Side Hill Acres
+│   │   │   └── CompletedOrders
+│   │   ├── Stonewall Kitchen
+│   │   │   └── CompletedOrders
+│   │   ├── Sweet Sam's Baking Company, LLC
+│   │   │   └── CompletedOrders
+│   │   ├── Sysco
+│   │   │   ├── CompletedOrders
+│   │   │   ├── Sysco_Collegetown_2025-08-08.pdf
+│   │   │   ├── Sysco_Collegetown_2025-08-08.xlsx
+│   │   │   ├── Sysco_Downtown_2025-08-08.pdf
+│   │   │   ├── Sysco_Downtown_2025-08-08.xlsx
+│   │   │   ├── Sysco_Easthill_2025-08-08.pdf
+│   │   │   ├── Sysco_Easthill_2025-08-08.xlsx
+│   │   │   ├── Sysco_Triphammer_2025-08-07.pdf
+│   │   │   └── Sysco_Triphammer_2025-08-07.xlsx
+│   │   ├── UNFI
+│   │   │   ├── CompletedOrders
+│   │   │   ├── UNFI_Bakery_2025-08-09.pdf
+│   │   │   ├── UNFI_Bakery_2025-08-09.xlsx
+│   │   │   ├── UNFI_Collegetown_2025-08-08.pdf
+│   │   │   ├── UNFI_Collegetown_2025-08-08.xlsx
+│   │   │   ├── UNFI_Downtown_2025-08-08.pdf
+│   │   │   ├── UNFI_Downtown_2025-08-08.xlsx
+│   │   │   ├── UNFI_Easthill_2025-08-08.pdf
+│   │   │   ├── UNFI_Easthill_2025-08-08.xlsx
+│   │   │   ├── UNFI_Triphammer_2025-08-07.pdf
+│   │   │   └── UNFI_Triphammer_2025-08-07.xlsx
+│   │   ├── US Foods
+│   │   │   ├── CompletedOrders
+│   │   │   ├── US Foods_Collegetown_2025-08-08.pdf
+│   │   │   ├── US Foods_Collegetown_2025-08-08.xlsx
+│   │   │   ├── US Foods_Downtown_2025-08-08.pdf
+│   │   │   ├── US Foods_Downtown_2025-08-08.xlsx
+│   │   │   ├── US Foods_Easthill_2025-08-08.pdf
+│   │   │   ├── US Foods_Easthill_2025-08-08.xlsx
+│   │   │   ├── US Foods_Triphammer_2025-08-07.pdf
+│   │   │   └── US Foods_Triphammer_2025-08-07.xlsx
+│   │   ├── Webstaurant
+│   │   │   ├── CompletedOrders
+│   │   │   ├── Webstaurant_Triphammer_2025-08-08.pdf
+│   │   │   └── Webstaurant_Triphammer_2025-08-08.xlsx
+│   │   ├── Wegmans
+│   │   │   └── CompletedOrders
+│   │   └── Worlds Best Cheeses
+│   │       └── CompletedOrders
+│   ├── stores
+│   │   └── stores.json
+│   ├── transfers
+│   │   ├── Bakery_Collegetown_2025-08-01.xlsx
+│   │   ├── Bakery_Downtown_2025-08-01.xlsx
+│   │   ├── Bakery_Easthill_2025-08-01.xlsx
+│   │   └── Bakery_Triphammer_2025-08-01.xlsx
+│   ├── upload_files
+│   ├── vendors
+│   │   └── vendors.yaml
+│   └── inventory.db
+├── frontend
+│   ├── public
+│   │   ├── favicon.ico
+│   │   ├── index.html
+│   │   ├── logo192.png
+│   │   ├── logo512.png
+│   │   ├── manifest.json
+│   │   └── robots.txt
+│   ├── src
+│   │   ├── Pages
+│   │   │   ├── Admin
+│   │   │   ├── Items
+│   │   │   ├── Orders
+│   │   │   ├── Stores
+│   │   │   ├── ui
+│   │   │   └── Vendors
+│   │   ├── App.css
+│   │   ├── App.js
+│   │   ├── App.test.js
+│   │   ├── index.css
+│   │   ├── index.js
+│   │   ├── logo.svg
+│   │   ├── reportWebVitals.js
+│   │   └── setupTests.js
+│   ├── .gitignore
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── README.md
+│   └── tailwind.config.js
+├── logs
+│   ├── backend
+│   │   ├── bots
+│   │   │   ├── craftable_bot
+│   │   │   └── workbot
+│   │   ├── coordinators
+│   │   │   ├── order_coordinator
+│   │   │   ├── transfer_coordinator
+│   │   │   └── vendor_coordinator
+│   │   └── storage
+│   │       └── file
+│   ├── cli
+│   │   ├── cli
+│   │   │   └── CLI.log
+│   │   └── workbot_cli
+│   │       └── WorkBotCLI.log
+│   ├── app.log
+│   ├── CraftableBot.log
+│   ├── DownloadHandler.log
+│   ├── OrderCoordinator.log
+│   ├── OrderFileHandler.log
+│   ├── WorkBot.log
+│   └── WorkBotCLI.log
+├── .env
+├── build_tree.py
+├── README.md
+├── requirements.txt
+├── run_cli.py
+├── run_flask.py
+└── workbot.zip

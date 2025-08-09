@@ -85,16 +85,18 @@ class OrderCoordinator:
         Generates and saves a vendor-specific upload file for the given order.
         Returns the path to the saved file.
         """
-        adapter = ExportAdapter.get_adapter(order.vendor)
-        format = adapter.preferred_format
+        return self.file_handler.generate_vendor_upload_file(order, context=context)
+        # adapter = ExportAdapter.get_adapter(order.vendor)
+        # format = adapter.preferred_format
 
-        exporter = Exporter.get_exporter(Order, format)
-        file_data = exporter.export(order, adapter=adapter, context=context)
+        # exporter = Exporter.get_exporter(Order, format)
+        # file_data = exporter.export(order, adapter=adapter, context=context)
 
-        output_path = self.file_handler.get_upload_files_path(order, format)
-        self.file_handler._write_data(format, file_data, output_path)
+        # output_path = self.file_handler.get_upload_files_path(order, format)
+        # self.file_handler._write_data(format, file_data, output_path)
 
-        return output_path
+        # self.file_handler.gen
+        # return output_path
 
     def generate_vendor_upload_files(
         self,
@@ -108,11 +110,9 @@ class OrderCoordinator:
         Finds all matching orders and generates vendor-specific upload files for each.
         Returns the list of output file paths.
         """
-        file_paths = self.file_handler.get_order_files(
+        file_paths = self.get_order_files(
             stores=stores,
-            vendors=vendors,
-            start_date=start_date,
-            end_date=end_date
+            vendors=vendors
         )
 
         output_paths = []

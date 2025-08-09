@@ -1,7 +1,7 @@
 from config.paths import ORDER_FILES_DIR, UPLOAD_FILES_DIR
 from backend.storage.file.file_handler import FileHandler
 from backend.models.order import Order
-from backend.serializer.formats.excel_format import ExcelFormat
+from backend.serializer.formats import get_format, FORMATS
 from backend.serializer.serializers.order_serializer import OrderSerializer
 from backend.serializer.filename_strategies.order_filename_strategy import OrderFilenameStrategy
 from backend.utils.logger import Logger
@@ -9,6 +9,8 @@ from pathlib import Path
 from datetime import datetime
 from openpyxl import Workbook
 from collections import defaultdict
+from backend.serializer.adapters import get_adapter
+
 
 @Logger.attach_logger
 class OrderFileHandler(FileHandler):
@@ -18,22 +20,24 @@ class OrderFileHandler(FileHandler):
 
     def __init__(self):
         super().__init__(self.ORDER_FILES_DIR)
-        self.serializer = OrderSerializer()
-        self.format = ExcelFormat()
+        self.serializer        = OrderSerializer()
         self.filename_strategy = OrderFilenameStrategy()
 
     def save_order(self, order: Order, format: str = "excel") -> Path:
-        headers = self.serializer.get_headers()
-        rows = self.serializer.to_rows(order)
-        data = self.format.write(headers, rows)
+        headers   = self.serializer.get_headers()
+        rows      = self.serializer.to_rows(order)
+        formatter = get_format(format)
+        data      = formatter.write(headers, rows)
 
         file_path = self.get_order_file_path(order, format)
         self._write_data(format, data, file_path)
         return file_path
 
     def get_order_from_file(self, file_path: Path) -> Order:
-        rows = self.format.read(file_path)
-        meta = self.filename_strategy.parse(file_path.name)
+        ext       = file_path.suffix.lstrip(".").lower()
+        formatter = get_format(ext)
+        rows      = formatter.read(file_path)
+        meta      = self.filename_strategy.parse(file_path.name)
         return self.serializer.from_rows(rows, metadata=meta)
 
     def get_order_file_path(self, order: Order, format: str = 'excel') -> Path:
@@ -70,7 +74,7 @@ class OrderFileHandler(FileHandler):
             if not vendor_dir.is_dir() or (vendors and vendor_dir.name not in vendors):
                 continue
             for file in vendor_dir.iterdir():
-                if not file.is_file() or file.suffix != '.xlsx':
+                if not file.is_file() or file.suffix.lower() not in set(self.extension_map.values()):
                     continue
                 meta = self.filename_strategy.parse(file.name)
                 if matches_filters(meta):
@@ -115,9 +119,73 @@ class OrderFileHandler(FileHandler):
             workbook = self._create_combined_orders_excel(combined)
             output_path = self.get_order_directory() / vendor / "combined_orders.xlsx"
             self._write_data("excel", workbook, output_path)
+    
 
+    def generate_vendor_upload_file(self, order: Order, context: dict | None = None) -> Path:
+        """Serialize an order for a vendor and persist it using the vendor's preferred format."""
+        ctx = context or {}
+
+        # 1) Resolve adapter (vendor-specific tweaks) and formatter (csv/excel)
+        adapter = get_adapter(order.vendor)
+        if not adapter:
+            self.logger.error(f"[upload] Unknown vendor: {order.vendor}")
+            raise ValueError(f"Unknown vendor: {order.vendor}")
+
+        fmt_name  = getattr(adapter, "preferred_format", "excel").lower()
+        formatter = get_format(fmt_name)  # ABC-backed instance
+
+        # 2) Produce tabular data (serializer -> headers/rows), then let adapter tweak
+        headers = self.serializer.get_headers()
+        headers = adapter.modify_headers(headers)
+
+        base_rows = self.serializer.to_rows(order, context=ctx)  # returns list[list[Any]]
+        rows = [adapter.modify_row(r) for r in base_rows]
+
+        # Optional sanity check (keeps bugs obvious)
+        if not isinstance(headers, list) or any(not isinstance(r, list) for r in rows):
+            self.logger.error(f"[upload] Bad tabular output for {order.vendor}: headers/rows malformed")
+            raise ValueError("Serializer/adapter produced malformed tabular data")
+
+        # 3) Render via formatter
+        file_data = formatter.write(headers, rows)
+
+        # 4) Build output path using formatter’s primary extension
+        # ext = (formatter.extensions[0] if getattr(formatter, "extensions", ()) else ".xlsx").lstrip(".")
+        output_path = self.get_upload_files_path(order, format=fmt_name)  # uses fmt_name -> ext internally
+        # If your path builder expects an extension string instead of a name:
+        # output_path = self.get_upload_files_path(order, format=ext)
+
+        # 5) Persist
+        self._write_data(fmt_name, file_data, output_path)
+
+        self.logger.info(f"[upload] {order.vendor} | {order.store} | {order.date} -> {output_path}")
+        return output_path
+
+
+    
+    def generate_vendor_upload_files(
+        self,
+        orders: list[Order],
+        context_map: dict[str, dict] = None,
+    ) -> list[Path]:
+        results: list[Path] = []
+        for order in orders:
+            # Use a stable domain key if you prefer (vendor|store|date); keeping path-prekey for now.
+            fmt = self._peek_preferred_format(order)
+            prekey_path = self.get_upload_files_path(order, format=fmt)
+            ctx = (context_map or {}).get(str(prekey_path), {})
+            results.append(self.generate_vendor_upload_file(order, context=ctx))
+        return results
+    
+    def _peek_preferred_format(self, order: Order) -> str:
+        adapter = BaseAdapter.get_adapter(order.vendor)
+        return getattr(adapter, "preferred_format", "excel").lower() if adapter else "excel"
+    
     def _generate_filename(self, order: Order, format: str) -> str:
-        return self.filename_strategy.format(order, extension=self.extension_map.get(format, 'excel'))
+        formatter = get_format(format)
+        suffix = self.extension_map.get(format, 'xlsx')
+        filename = self.filename_strategy.format(order, extension=suffix.lstrip('.'))
+        return filename
     
     def _create_combined_orders_excel(self, combined_orders: dict[str, dict[str, float]]) -> Workbook:
         workbook = Workbook()

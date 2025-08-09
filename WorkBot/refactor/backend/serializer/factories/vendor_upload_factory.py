@@ -6,12 +6,9 @@ from backend.serializer.serializers.order_serializer import OrderSerializer
 from backend.storage.file.file_handler import FileHandler
 from pathlib import Path
 
-class VendorUploadFactory:
+class VendorUploadFileFactory:
     def __init__(self, file_handler: FileHandler, output_dir: Path):
         self.file_handler      = file_handler or OrderFileHandler()
-        self.filename_strategy = OrderFilenameStrategy()
-        self.output_dir        = Path(output_dir)
-        self.output_dir.mkdir(parents=True, exist_ok=True)
 
     def generate_upload_file(self, file_path: Path) -> Path:
         order = self.file_handler.get_order_from_file(file_path)

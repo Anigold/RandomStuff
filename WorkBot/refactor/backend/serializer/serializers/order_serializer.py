@@ -3,6 +3,7 @@ from backend.models.order import Order, OrderItem
 from .base_serializer import BaseSerializer
 
 class OrderSerializer(BaseSerializer):
+    
     DEFAULT_HEADERS = ["SKU", "Name", "Quantity", "Cost Per", "Total Cost"]
 
     def __init__(self, adapter: BaseSerializer = None):

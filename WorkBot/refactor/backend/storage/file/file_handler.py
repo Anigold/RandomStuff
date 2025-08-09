@@ -24,6 +24,7 @@ class FileHandler:
             'pdf':   'pdf',
             'PDF':   'pdf'
         }
+        
         self._save_strategies = {
             'excel': self._save_excel,
             'csv':   self._save_csv,
