@@ -1,6 +1,5 @@
 from backend.serializer.adapters.base_adapter import BaseAdapter
 
-@BaseAdapter.register("Performance Food")
 class PerformanceFoodAdapter(BaseAdapter):
     preferred_format = "csv"
     preferred_delimiter = ","

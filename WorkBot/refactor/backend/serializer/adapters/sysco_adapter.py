@@ -1,6 +1,5 @@
 from backend.serializer.adapters.base_adapter import BaseAdapter
 
-@BaseAdapter.register("Sysco")
 class SyscoAdapter(BaseAdapter):
 
     preferred_format = "csv"

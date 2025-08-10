@@ -19,15 +19,28 @@ export default function OrdersPage() {
   });
 
   const [expandedGroups, setExpandedGroups] = useState({});
+  const toYMD = (s) => (s ? String(s).slice(0, 10) : "");
+
+  const fromCompactDate = (str) => {
+    if (!str) return "";
+    const s = String(str);
+    return `${s.slice(0,4)}-${s.slice(4,6)}-${s.slice(6,8)}`;
+  };
+
+
 
   useEffect(() => {
     fetch('/api/orders')
-      .then((res) => res.json())
-      .then((data) => {
-        setOrders(data);
+      .then(res => res.json())
+      .then(data => {
+        const normalized = data.map(o => ({
+          ...o,
+          date: fromCompactDate(o.date) // normalize all dates
+        }));
+        setOrders(normalized);
 
         const initialGroups = {};
-        data.forEach((order) => {
+        normalized.forEach(order => {
           const key =
             groupBy === 'vendor'
               ? order.vendor_name
@@ -39,6 +52,7 @@ export default function OrdersPage() {
         setExpandedGroups(initialGroups);
       });
   }, []);
+  
 
   const toggleAllGroups = () => {
     const allKeys = new Set();
@@ -63,8 +77,9 @@ export default function OrdersPage() {
   
   const filteredOrders = orders.filter((order) => {
     if (filters.hidePlaced && order.placed) return false;
-    if (filters.startDate && order.date < filters.startDate) return false;
-    if (filters.endDate && order.date > filters.endDate) return false;
+    const d = order.date;                         // already normalized
+    if (filters.startDate && d < filters.startDate) return false;
+    if (filters.endDate   && d > filters.endDate)   return false;
     return true;
   });
 

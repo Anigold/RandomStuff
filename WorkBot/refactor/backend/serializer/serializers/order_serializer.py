@@ -6,20 +6,15 @@ class OrderSerializer(BaseSerializer):
     
     DEFAULT_HEADERS = ["SKU", "Name", "Quantity", "Cost Per", "Total Cost"]
 
-    def __init__(self, adapter: BaseSerializer = None):
-        self.adapter = adapter
-
-    def get_headers(self) -> list[str]:
-        if self.adapter:
-            return self.adapter.modify_headers(self.DEFAULT_HEADERS)
+    def get_headers(self, adapter = None) -> list[str]:
+        if adapter:
+            return adapter.modify_headers(self.DEFAULT_HEADERS)
         return self.DEFAULT_HEADERS
 
     def to_rows(self, order: Order) -> list[list[Any]]:
         rows = []
         for item in order.items:
             row = [item.sku, item.name, item.quantity, item.cost_per, item.total_cost]
-            if self.adapter:
-                row = self.adapter.modify_row(row, item=item)
             rows.append(row)
         return rows
 

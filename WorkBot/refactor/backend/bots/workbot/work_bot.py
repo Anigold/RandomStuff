@@ -86,11 +86,11 @@ class WorkBot:
     def delete_craftable_orders(self, stores, vendors=[]):
         self.craft_bot.delete_orders(stores, vendors)
 
-    def get_order_files(self, stores: list, vendors: list = []) -> list[Path]:
-        return self.order_coordinator.get_order_files(stores=stores, vendors=vendors)
+    def get_order_files(self, stores: list, vendors: list = [], formats: list[str] = None) -> list[Path]:
+        return self.order_coordinator.get_order_files(stores=stores, vendors=vendors, formats=formats)
 
-    def get_orders(self, stores: list[str], vendors: list[str]) -> list[Order]:
-        order_files = self.get_order_files(stores, vendors)
+    def get_orders(self, stores: list[str], vendors: list[str], formats: list[str] = None) -> list[Order]:
+        order_files = self.get_order_files(stores, vendors, formats=formats)
         return self.order_coordinator.read_orders_from_files(order_files)
 
     def archive_all_current_orders(self, stores: list[str] = None, vendors: list[str] = None) -> None:
@@ -167,7 +167,7 @@ class WorkBot:
         self.logger.info(f"Generating vendor upload files for stores={stores}, vendors={vendors}, "
                          f"start_date={start_date}, end_date={end_date}")
 
-        order_file_paths = self.get_order_files(stores=stores, vendors=vendors)
+        order_file_paths = self.get_order_files(stores=stores, vendors=vendors, formats=['xlsx'])
         self.logger.info(f"Found {len(order_file_paths)} order files to process.")
 
         context_map = {}
@@ -176,9 +176,9 @@ class WorkBot:
             vendor_info = self.vendor_coordinator.get_vendor_information(order.vendor)
 
             context_map[str(file_path)] = {
-                "store": order.store,
+                "store":       order.store,
                 "vendor_info": vendor_info,
-                "date_str": order.date,
+                "date_str":    order.date,
             }
 
         self.logger.debug(f"Context map built with {len(context_map)} entries. Delegating to OrderCoordinator.")
@@ -200,7 +200,7 @@ class WorkBot:
     # region ---- Emailing: Vendor-Facing ----
 
     def generate_vendor_order_emails(self, vendors: list[str], stores: list[str] = []) -> list[Email]:
-        orders = self.get_orders(stores=stores, vendors=vendors)
+        orders = self.get_orders(stores=stores, vendors=vendors, formats=['xlsx'])
         if not orders:
             return []
 
@@ -284,13 +284,15 @@ class WorkBot:
     # region ---- Emailing: Store-Facing ----
 
     def generate_store_order_emails(self, stores: list[str]):
-        orders = self.get_orders(stores=stores)
+        orders = self.get_order_files(stores=stores, vendors=[], formats=['pdf'])
+   
         if not orders: return None
 
         emails = []
         store_orders_table = defaultdict(list)
         for order in orders:
-            store_orders_table[order.store].append(order)
+            order_meta_data = self.order_coordinator.parse_filename_for_metadata(order.name)
+            store_orders_table[order_meta_data['store']].append(order)
 
         for store, store_orders in store_orders_table.items():
             to_emails = [
@@ -300,15 +302,7 @@ class WorkBot:
             ]
 
             subject = f'Orders for the Week: {store}'
-            attachments = []
-
-            for store_order in store_orders:
-                pdf_dir      = self.order_coordinator.get_vendor_orders_directory(store_order.vendor)
-                pdf_filename = self.order_coordinator.generate_filename(store_order, file_extension='.pdf')
-                pdf_path     = pdf_dir / pdf_filename
-
-                if pdf_path.exists():
-                    attachments.append(str(pdf_path))
+            attachments = [store_order for store_order in store_orders]
 
             body = 'Hello, here are the orders you have placed for the week.'
 
@@ -323,6 +317,7 @@ class WorkBot:
             self.emailer.create_email(email)
             emails.append(email)
 
+        
         for email in emails:
             self.emailer.display_email(email)
 
@@ -369,9 +364,13 @@ class WorkBot:
             if row[0].value and row[0].value.strip()
         ]
 
-        orders = self.order_coordinator.get_orders_from_file(
-            vendors=['Performance Food', 'FingerLakes Farms']
+        orders_files = self.order_coordinator.get_order_files(
+            stores=['Bakery', 'Easthill', 'Collegetown', 'Triphammer', 'Downtown'],
+            vendors=['Performance Food', 'FingerLakes Farms'],
+            formats=['xlsx']
         )
+
+        orders = [self.order_coordinator.read_order_from_file(order) for order in orders_files]
 
         store_indices = {
             'Collegetown': 2,
@@ -381,8 +380,8 @@ class WorkBot:
             'Bakery': 14
         }
 
-        for order_path in orders:
-            order = self.order_coordinator.parse_order_file(order_path)
+        for order in orders:
+            # order = self.order_coordinator.parse_filename_for_metadata(order_path.name)
             for item in order.items:
                 if 'Natalie' in item.name:
                     flavor = item.name.split(' - ')[1]

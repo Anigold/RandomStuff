@@ -8,13 +8,13 @@ from backend.storage.database.order_database_handler import OrderDatabaseHandler
 
 # region ─── Exporter Imports ────────────────────────────────────────────
 
-from backend.exporters.exporter import Exporter
-from backend.exporters.adapters.exporter_adapter import ExportAdapter
+# from backend.exporters.exporter import Exporter
+# from backend.exporters.adapters.exporter_adapter import ExportAdapter
 
 # endregion
 
 # region ─── Parser Imports ──────────────────────────────────────────────
-from backend.parsers.order_parser import OrderParser
+# from backend.parsers.order_parser import OrderParser
 # endregion
 
 from backend.models.order import Order
@@ -52,15 +52,67 @@ class OrderCoordinator:
         self.logger.info(f'Reading {len(file_paths)} order files.')
         return [self.read_order_from_file(file_path) for file_path in file_paths]
     
-    def get_order_files(self, stores: list[str], vendors: list[str] = []) -> list[Path]:
-        return self.file_handler.get_order_files(stores, vendors)
+    def get_order_files(self, stores: list[str], vendors: list[str] = [], formats: list[str] = None) -> list[Path]:
+        return self.file_handler.get_order_files(stores, vendors, formats=formats)
     
     def save_order_file(self, order: Order, format: str = 'excel'):
         self.file_handler.save_order(order, format)
 
+    def save_order_to_db(self, order: Order) -> int:
+        return self.db_handler.save_order(order)
+        """Persist an Order domain object into the database and return its ID."""
+        store_id = self.db_handler.fetch_one(
+            "SELECT id FROM Stores WHERE store_name = ?", (order.store,)
+        )
+        if not store_id:
+            store_id = self.db_handler.execute(
+                "INSERT INTO Stores (store_name, address) VALUES (?, ?)", (order.store, b"")
+            )
+        else:
+            store_id = store_id["id"]
+
+        vendor_id = self.db_handler.fetch_one(
+            "SELECT id FROM Vendors WHERE name = ?", (order.vendor,)
+        )
+        if not vendor_id:
+            vendor_id = self.db_handler.execute(
+                "INSERT INTO Vendors (name, minimum_order_cost, minimum_order_cases) VALUES (?, ?, ?)",
+                (order.vendor, 0, 0)
+            )
+        else:
+            vendor_id = vendor_id["id"]
+
+        order_id = self.db_handler.create_order(store_id, vendor_id, order.date)
+
+        items_payload = []
+        for item in order.items:
+            item_id = self.db_handler.fetch_one(
+                "SELECT id FROM Items WHERE item_name = ?", (item.name,)
+            )
+            if not item_id:
+                item_id = self.db_handler.execute(
+                    "INSERT INTO Items (item_name) VALUES (?)", (item.name,)
+                )
+            else:
+                item_id = item_id["id"]
+
+            items_payload.append({
+                "item_id": item_id,
+                "quantity": float(item.quantity),
+                "cost_per": float(getattr(item, "cost_per", 0.0))
+            })
+
+        if items_payload:
+            self.db_handler.add_order_items(order_id, items_payload)
+
+        return order_id
+
     def archive_order_file(self, order: Order) -> None:
         self.file_handler.archive_order_file(order)
 
+    def parse_filename_for_metadata(self, file_name: str) -> dict:
+        return self.file_handler.parse_filename_for_metadata(file_name=file_name)
+    
     def combine_orders(self, vendors: list[str]) -> None:
         """
         Combines all orders for each given vendor into a single spreadsheet grouped by item and store.
@@ -112,12 +164,14 @@ class OrderCoordinator:
         """
         file_paths = self.get_order_files(
             stores=stores,
-            vendors=vendors
+            vendors=vendors,
+            formats=['xlsx']
         )
 
         output_paths = []
         for file_path in file_paths:
             order       = self.read_order_from_file(file_path)
+            print(f'[Coord] {order}', flush=True)
             context     = context_map.get(str(file_path), {}) if context_map else {}
             output_path = self.generate_vendor_upload_file(order, context)
             output_paths.append(output_path)

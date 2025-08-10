@@ -78,7 +78,7 @@ class FileHandler:
             shutil.move(tmp_path, file_path)
         
     def _save_csv(self, csv_string: str, file_path: Path) -> None:
-        with open(file_path, 'w') as f:
+        with open(file_path, 'w', newline='') as f:
             f.write(csv_string)
 
     def _save_json(self, json_data: dict, file_path: Path) -> None:

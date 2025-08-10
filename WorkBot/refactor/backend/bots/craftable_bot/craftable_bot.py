@@ -303,6 +303,7 @@ class CraftableBot(SeleniumBotMixin):
         self.logger.info(f"Saving order for {row_vendor_name}.")
         order_to_save = Order(store=store, vendor=row_vendor_name, date=row_date_formatted, items=items)
         self.order_coordinator.save_order_file(order_to_save)
+        self.order_coordinator.save_order_to_db(order_to_save)
         # self.order_manager.save_order(order_to_save)
         # self.order_manager.upload_order_to_api(order_to_save)
 

@@ -1,6 +1,5 @@
 from backend.serializer.adapters.base_adapter import BaseAdapter
 
-@BaseAdapter.register("Hill & Markes")
 class HillNMarkesAdapter(BaseAdapter):
 
     preferred_format = 'excel'

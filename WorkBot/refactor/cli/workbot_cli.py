@@ -502,8 +502,8 @@ Internal Contacts:
     def args_split_natalies(self) -> None:
         return argparse.ArgumentParser(prog='sort_orders', description='Sort the saved orders by vendor.')
     
-    def cmd_split_natalies(self, args):
-        parser = self.args_sort_orders()
+    def cmd_split_natalies(self):
+        parser = self.args_split_natalies()
 
         try:    
             self.workbot.split_natalies()

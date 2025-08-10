@@ -1,7 +1,7 @@
 from backend.utils.logger import Logger
 from backend.models.transfer import Transfer
 from backend.storage.file.transfer_file_handler import TransferFileHandler
-from backend.parsers.transfer_parser import TransferParser
+# from backend.parsers.transfer_parser import TransferParser
 # from backend.database_handlers.transfer_db_handler import TransferDatabaseHandler  # Optional
 from backend.storage.file.download_handler import DownloadHandler
 
@@ -14,7 +14,7 @@ class TransferCoordinator:
     def __init__(self, file_handler=None, db_handler=None, parser=None):
         self.file_handler = file_handler or TransferFileHandler()
         # self.db_handler   = db_handler or TransferDatabaseHandler()
-        self.parser       = parser or TransferParser()
+        # self.parser       = parser or TransferParser()
         self.download_handler = DownloadHandler()
 
     def save_transfer(self, transfer: Transfer) -> None:

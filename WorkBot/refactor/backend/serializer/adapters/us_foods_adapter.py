@@ -3,7 +3,6 @@
 from .base_adapter import BaseAdapter
 from datetime import datetime
 
-@BaseAdapter.register("US Foods")
 class USFoodsAdapter(BaseAdapter):
 
     preferred_format = 'csv'
@@ -17,11 +16,11 @@ class USFoodsAdapter(BaseAdapter):
         ]
 
 
-    def modify_row(self, row: list = None, item: object = None, context: dict = None) -> list:
-        store_name = context.get("store", "")
+    def modify_row(self, row: list = None, item: object = None, context: dict = None) -> list:      
+        store_name  = context.get("store", "")
         vendor_info = context.get("vendor_info", None)
-        date_str = context.get("date_str", datetime.now().strftime('%m/%d/%Y'))
-
+        date_str    = context.get("date_str", datetime.now().strftime('%m/%d/%Y'))
+        
         # Lookup store_id from vendor_info if possible
         store_id = "000000"
         if vendor_info and hasattr(vendor_info, "store_ids"):
