@@ -5,7 +5,7 @@ from typing import Type, Dict, Iterable
 class BaseAdapter:
     """Adapters tweak tabular data only—no workbook or IO concerns."""
     _REGISTRY: Dict[str, Type["BaseAdapter"]] = {}
-    preferred_format: str = "excel"  # "excel" | "csv" | ...
+    preferred_format: str = 'excel'  # "excel" | "csv" | ...
 
     # ── Registration (store CLASS; instantiate on get) ───────────────────
     @classmethod

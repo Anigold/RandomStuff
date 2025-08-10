@@ -345,10 +345,10 @@ class CLI:
         self._exit()
 
     def cmd_help(self) -> None:
-        """Displays available commands"""
-        print("\nAvailable Commands:")
+        '''Displays available commands'''
+        print('\nAvailable Commands:')
         for command in sorted(self.commands.keys()):
-            print(f"  {command}")
+            print(f'  {command}')
         print('\nType "command --help" for more details.\n')
 
     def cmd_clear_history(self) -> None:
@@ -382,12 +382,13 @@ class CLI:
             return None, []
         
     def _dispatch_command(self, command: str, args: list[str]) -> None:
+        
         if command not in self.commands:
             print(f'Unknown command: "{command}". Type "help" for available commands.')
             return
 
         try:
-            self.commands[command](args)
+            self.commands[command](args) if args else self.commands[command]()
         except Exception as e:
             self._handle_error(command, e)
 

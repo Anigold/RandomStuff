@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from WorkBot.refactor.backend.storage.database.order_database_handler import OrderDatabaseHandler
+from backend.storage.database.order_database_handler import OrderDatabaseHandler
 
 orders_bp = Blueprint("orders_bp", __name__, url_prefix="/api")
 db_handler = OrderDatabaseHandler()
