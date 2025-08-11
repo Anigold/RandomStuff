@@ -3,7 +3,7 @@ import sqlite3
 from pathlib import Path
 from config.paths import DATABASE_PATH
 
-SCHEMA = """
+SCHEMA = '''
 PRAGMA foreign_keys = ON;
 
 -- ── Core tables ─────────────────────────────────────────────────────────
@@ -96,7 +96,7 @@ CREATE INDEX IF NOT EXISTS idx_orderitems_item       ON OrderItems(item_id);
 CREATE INDEX IF NOT EXISTS idx_vendoritems_vendor    ON VendorItems(vendor_id);
 CREATE INDEX IF NOT EXISTS idx_vendoritems_item      ON VendorItems(item_id);
 CREATE INDEX IF NOT EXISTS idx_storeitems_store_item ON StoreItems(store_id, item_id);
-"""
+'''
 
 def ensure_schema(db_path: str | Path = DATABASE_PATH) -> None:
     '''Ensure required tables/indexes exist. Safe to run every startup.'''

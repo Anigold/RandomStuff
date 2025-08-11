@@ -22,7 +22,7 @@ class VendorUploadFileFactory:
         file_data = fmt.write(headers, rows)
 
         # override default suffix for special cases like Performance Food
-        extension = "txt" if order.vendor == "Performance Food" else fmt.default_suffix.strip(".")
+        extension = 'txt' if order.vendor == 'Performance Food' else fmt.default_suffix.strip('.')
         filename = self.filename_strategy.format(order, extension=extension)
         output_path = self.output_dir / order.vendor / filename
 

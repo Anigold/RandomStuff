@@ -102,7 +102,7 @@ class WorkBot:
             try:
                 self.order_coordinator.archive_order_file(order)
             except Exception as e:
-                self.logger.warning(f"[Archive] Skipped {order}: {e}")
+                self.logger.warning(f'[Archive] Skipped {order}: {e}')
 
     def combine_orders(self, vendors: list) -> None:
         self.order_coordinator.combine_orders(vendors)
@@ -112,7 +112,7 @@ class WorkBot:
     # region ---- Transfer Management ----
 
     def get_transfers(self, stores: list[str] = None, start_date: str = None, end_date: str = None) -> list[Transfer]:
-        """
+        '''
         Retrieves saved transfer objects from file based on optional filters.
 
         Args:
@@ -122,7 +122,7 @@ class WorkBot:
 
         Returns:
             list[Transfer]: List of parsed transfer domain objects.
-        """
+        '''
         return self.transfer_coordinator.get_transfers_from_file(
             stores=stores,
             start_date=start_date,
@@ -164,11 +164,11 @@ class WorkBot:
         end_date: str = None
     ) -> list[Path]:
 
-        self.logger.info(f"Generating vendor upload files for stores={stores}, vendors={vendors}, "
-                         f"start_date={start_date}, end_date={end_date}")
+        self.logger.info(f'Generating vendor upload files for stores={stores}, vendors={vendors}, '
+                         f'start_date={start_date}, end_date={end_date}')
 
         order_file_paths = self.get_order_files(stores=stores, vendors=vendors, formats=['xlsx'])
-        self.logger.info(f"Found {len(order_file_paths)} order files to process.")
+        self.logger.info(f'Found {len(order_file_paths)} order files to process.')
 
         context_map = {}
         for file_path in order_file_paths:
@@ -176,12 +176,12 @@ class WorkBot:
             vendor_info = self.vendor_coordinator.get_vendor_information(order.vendor)
 
             context_map[str(file_path)] = {
-                "store":       order.store,
-                "vendor_info": vendor_info,
-                "date_str":    order.date,
+                'store':       order.store,
+                'vendor_info': vendor_info,
+                'date_str':    order.date,
             }
 
-        self.logger.debug(f"Context map built with {len(context_map)} entries. Delegating to OrderCoordinator.")
+        self.logger.debug(f'Context map built with {len(context_map)} entries. Delegating to OrderCoordinator.')
 
         result_paths = self.order_coordinator.generate_vendor_upload_files(
             stores=stores,
@@ -191,7 +191,7 @@ class WorkBot:
             context_map=context_map
         )
 
-        self.logger.info(f"Vendor upload file generation complete. {len(result_paths)} files created.")
+        self.logger.info(f'Vendor upload file generation complete. {len(result_paths)} files created.')
 
         return result_paths
 
@@ -233,8 +233,8 @@ class WorkBot:
         return grouped
 
     def _build_email_subject(self, vendor_name: str) -> str:
-        date_str = datetime.now().strftime("%B %d, %Y")
-        return f"Orders for {vendor_name} ({date_str})"
+        date_str = datetime.now().strftime('%B %d, %Y')
+        return f'Orders for {vendor_name} ({date_str})'
 
     def _get_vendor_recipients(self, vendor_name: str) -> list[str]:
         try:
@@ -243,31 +243,31 @@ class WorkBot:
                 return [vendor_info.ordering.email]
         except Exception:
             pass
-        return ["default@vendor.com"]
+        return ['default@vendor.com']
 
     def _build_vendor_email_body(self, vendor_name: str, orders: list) -> str:
-        date_str = datetime.now().strftime("%B %d, %Y")
+        date_str = datetime.now().strftime('%B %d, %Y')
         lines = [
-            f"Hello {vendor_name},",
-            "",
-            f"Please find below our orders for {date_str}:"
+            f'Hello {vendor_name},',
+            '',
+            f'Please find below our orders for {date_str}:'
         ]
 
         for order in orders:
-            lines.append(f"\nStore: {order.store}")
+            lines.append(f'\nStore: {order.store}')
             for item in order.items:
-                lines.append(f"  - {item.quantity} x {item.name}")
+                lines.append(f'  - {item.quantity} x {item.name}')
 
         lines += [
-            "", "Let us know if there are any issues.",
-            "", "Thank you!", 
+            '', 'Let us know if there are any issues.',
+            '', 'Thank you!', 
             '---',
-            "Andrew Goldsmith", 
+            'Andrew Goldsmith', 
             'Purchasing Manager', 
             'Ithaca Bakery', 
             '(607) 273-7110'
         ]
-        return "\n".join(lines)
+        return '\n'.join(lines)
 
     def _get_email_attachments(self, orders: list[Order]) -> list[str]:
         attachments = []
@@ -340,14 +340,14 @@ class WorkBot:
 
     def shutdown(self) -> None:
         self.close_craftable_session()
-        print("Exiting WorkBot CLI.")
+        print('Exiting WorkBot CLI.')
 
     def _get_today_date_and_day(self):
         today = datetime.today()
-        day_of_week = today.strftime("%A")
+        day_of_week = today.strftime('%A')
         day = today.day
-        suffix = "th" if 11 <= day <= 13 else {1: "st", 2: "nd", 3: "rd"}.get(day % 10, "th")
-        long_date = today.strftime(f"%B {day}{suffix}, %Y")
+        suffix = 'th' if 11 <= day <= 13 else {1: 'st', 2: 'nd', 3: 'rd'}.get(day % 10, 'th')
+        long_date = today.strftime(f'%B {day}{suffix}, %Y')
         return long_date, day_of_week
 
     # endregion

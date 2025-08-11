@@ -45,7 +45,7 @@ class OrderCoordinator:
     # region ─── Reading and Saving Orders ──────────────────────────────
 
     def read_order_from_file(self, file_path: Path) -> Order:
-        self.logger.info(f"Reading order file: {file_path}")
+        self.logger.info(f'Reading order file: {file_path}')
         return self.file_handler.get_order_from_file(file_path)
 
     def read_orders_from_files(self, file_paths: list[Path]) -> list[Order]:
@@ -60,46 +60,46 @@ class OrderCoordinator:
 
     def save_order_to_db(self, order: Order) -> int:
         return self.db_handler.save_order(order)
-        """Persist an Order domain object into the database and return its ID."""
+        '''Persist an Order domain object into the database and return its ID.'''
         store_id = self.db_handler.fetch_one(
-            "SELECT id FROM Stores WHERE store_name = ?", (order.store,)
+            'SELECT id FROM Stores WHERE store_name = ?', (order.store,)
         )
         if not store_id:
             store_id = self.db_handler.execute(
-                "INSERT INTO Stores (store_name, address) VALUES (?, ?)", (order.store, b"")
+                'INSERT INTO Stores (store_name, address) VALUES (?, ?)', (order.store, b'')
             )
         else:
-            store_id = store_id["id"]
+            store_id = store_id['id']
 
         vendor_id = self.db_handler.fetch_one(
-            "SELECT id FROM Vendors WHERE name = ?", (order.vendor,)
+            'SELECT id FROM Vendors WHERE name = ?', (order.vendor,)
         )
         if not vendor_id:
             vendor_id = self.db_handler.execute(
-                "INSERT INTO Vendors (name, minimum_order_cost, minimum_order_cases) VALUES (?, ?, ?)",
+                'INSERT INTO Vendors (name, minimum_order_cost, minimum_order_cases) VALUES (?, ?, ?)',
                 (order.vendor, 0, 0)
             )
         else:
-            vendor_id = vendor_id["id"]
+            vendor_id = vendor_id['id']
 
         order_id = self.db_handler.create_order(store_id, vendor_id, order.date)
 
         items_payload = []
         for item in order.items:
             item_id = self.db_handler.fetch_one(
-                "SELECT id FROM Items WHERE item_name = ?", (item.name,)
+                'SELECT id FROM Items WHERE item_name = ?', (item.name,)
             )
             if not item_id:
                 item_id = self.db_handler.execute(
-                    "INSERT INTO Items (item_name) VALUES (?)", (item.name,)
+                    'INSERT INTO Items (item_name) VALUES (?)', (item.name,)
                 )
             else:
-                item_id = item_id["id"]
+                item_id = item_id['id']
 
             items_payload.append({
-                "item_id": item_id,
-                "quantity": float(item.quantity),
-                "cost_per": float(getattr(item, "cost_per", 0.0))
+                'item_id': item_id,
+                'quantity': float(item.quantity),
+                'cost_per': float(getattr(item, 'cost_per', 0.0))
             })
 
         if items_payload:
@@ -114,11 +114,11 @@ class OrderCoordinator:
         return self.file_handler.parse_filename_for_metadata(file_name=file_name)
     
     def combine_orders(self, vendors: list[str]) -> None:
-        """
+        '''
         Combines all orders for each given vendor into a single spreadsheet grouped by item and store.
         Saves the result as 'combined_orders.xlsx' in each vendor's directory.
-        """
-        self.logger.info(f"Combining orders for {len(vendors)} vendors.")
+        '''
+        self.logger.info(f'Combining orders for {len(vendors)} vendors.')
         return self.file_handler.combine_orders_by_store(vendors)
     
     # endregion
@@ -133,10 +133,10 @@ class OrderCoordinator:
     # region ─── Vendor Upload File Generation ──────────────────────────
     
     def generate_vendor_upload_file(self, order: Order, context: dict = None) -> Path:
-        """
+        '''
         Generates and saves a vendor-specific upload file for the given order.
         Returns the path to the saved file.
-        """
+        '''
         return self.file_handler.generate_vendor_upload_file(order, context=context)
         # adapter = ExportAdapter.get_adapter(order.vendor)
         # format = adapter.preferred_format
@@ -158,10 +158,10 @@ class OrderCoordinator:
         end_date: str = None,
         context_map: dict[str, dict] = None
     ) -> list[Path]:
-        """
+        '''
         Finds all matching orders and generates vendor-specific upload files for each.
         Returns the list of output file paths.
-        """
+        '''
         file_paths = self.get_order_files(
             stores=stores,
             vendors=vendors,
@@ -183,11 +183,11 @@ class OrderCoordinator:
     # region ─── File Validation and Diffing ────────────────────────────
     
     def check_and_update_order(self, order: Order) -> bool:
-        """
+        '''
         If the given order differs from the existing one on file,
         remove the existing file and return False (new save required).
         Return True if the file already exists and is identical.
-        """
+        '''
         file_path = self.file_handler.get_order_file_path(order)
 
         if not file_path.exists():
@@ -211,11 +211,11 @@ class OrderCoordinator:
         return False
 
     def _orders_are_equal(self, order1: Order, order2: Order) -> bool:
-        """
+        '''
         Compares two Order objects by metadata and item content.
         - store, vendor, and date must match exactly
         - item lists must contain the same elements (ignoring order)
-        """
+        '''
         if (
             order1.store != order2.store or
             order1.vendor != order2.vendor or
@@ -242,16 +242,16 @@ class OrderCoordinator:
     # region ─── Download Watcher ───────────────────────────────────────
     
     def expect_downloaded_pdf(self, order: Order) -> None:
-        """
+        '''
         Registers a one-time callback for when the PDF download completes.
-        """
+        '''
         def handle_downloaded_file(file: Path):
             dest = self.file_handler.get_order_file_path(order, format='pdf')
             self.file_handler.move_file(file, dest, overwrite=True)
-            self.logger.info(f"Moved downloaded PDF to: {dest}")
+            self.logger.info(f'Moved downloaded PDF to: {dest}')
 
         self.download_handler.on_download_once(
-            match_fn=lambda f: f.name == "Order.pdf",
+            match_fn=lambda f: f.name == 'Order.pdf',
             callback=handle_downloaded_file,
             timeout=10
         )

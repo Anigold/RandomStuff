@@ -5,7 +5,7 @@ class ErrorHandler:
 
     registry = {}
 
-    def __init__(self, context: str = "CLI", debug: bool = False):
+    def __init__(self, context: str = 'CLI', debug: bool = False):
         self.context = context
         self.debug = debug
 
@@ -16,15 +16,15 @@ class ErrorHandler:
         return self._default_handler(error)
 
     def _default_handler(self, error: Exception):
-        self.logger.error(f"[{self.context}] Unhandled error: {error}")
-        print(f"[Unhandled Error] {error}")
+        self.logger.error(f'[{self.context}] Unhandled error: {error}')
+        print(f'[Unhandled Error] {error}')
         if self.debug:
             import traceback
             traceback.print_exc()
 
     @classmethod
     def register(cls, exc_type):
-        """Decorator for registering a handler function for a given exception type."""
+        '''Decorator for registering a handler function for a given exception type.'''
         def decorator(func):
             cls.registry[exc_type] = func
             return func

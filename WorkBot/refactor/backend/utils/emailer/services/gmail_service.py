@@ -36,7 +36,7 @@ class GmailService(Service):
     def create_email(self, email: Email) -> dict:
 
         if not email.to or not all(email.to):
-            raise ValueError("Email must have at least one valid 'to' address.")
+            raise ValueError('Email must have at least one valid "to" address.')
 
         msg = MIMEMultipart()
         msg['To'] = ', '.join(addr.strip().rstrip(',') for addr in email.to)
@@ -55,9 +55,9 @@ class GmailService(Service):
 
 
     def send_email(self, email_data: dict) -> None:
-        self.service.users().messages().send(userId="me", body={"raw": email_data['raw']}).execute()
+        self.service.users().messages().send(userId='me', body={'raw': email_data['raw']}).execute()
 
     def display_email(self, email_data: dict) -> None:
-        print("Base64 Encoded Message:")
+        print('Base64 Encoded Message:')
         print(email_data['to'])
         print(email_data['raw'])

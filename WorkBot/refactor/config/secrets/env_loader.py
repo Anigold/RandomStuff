@@ -10,11 +10,11 @@ def get_env_variable(var_name: str, default=None):
 load_dotenv()
 
 class Secrets:
-    """
+    '''
     Dynamically loads all uppercase .env variables as attributes.
     Optional: restrict to a prefix like SECRET_ or CRAFTABLE_.
-    """
-    def __init__(self, prefix: str = ""):
+    '''
+    def __init__(self, prefix: str = ''):
         for key, value in os.environ.items():
             if key.isupper() and key.startswith(prefix):
                 setattr(self, key, value)
@@ -24,5 +24,5 @@ class Secrets:
 
     def __repr__(self):
         secrets = {k: v for k, v in self.__dict__.items()}
-        return f"<Secrets {secrets}>"
+        return f'<Secrets {secrets}>'
 

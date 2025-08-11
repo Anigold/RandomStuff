@@ -18,10 +18,10 @@ class DownloadHandler:
         callback: Callable[[Path], None],
         poll_interval: float = 0.5
     ) -> None:
-        """
+        '''
         Starts a persistent background watcher. Calls `callback(file_path)` 
         whenever a new matching, stable file appears.
-        """
+        '''
         def watcher():
             seen: Set[Path] = set(self.download_dir.iterdir())
             while True:
@@ -44,9 +44,9 @@ class DownloadHandler:
         timeout: float = 10.0,
         poll_interval: float = 0.5
     ) -> None:
-        """
+        '''
         One-shot download watcher. Calls `callback(file_path)` once for a match.
-        """
+        '''
         def single_watch():
             seen: Set[Path] = set(self.download_dir.iterdir())
             start_time = time.time()
@@ -68,10 +68,10 @@ class DownloadHandler:
 
     def move_file(self, src: Path, dest: Path, overwrite: bool = False) -> None:
         if not src.exists():
-            raise FileNotFoundError(f"Source file does not exist: {src}")
+            raise FileNotFoundError(f'Source file does not exist: {src}')
         dest.parent.mkdir(parents=True, exist_ok=True)
         if dest.exists() and not overwrite:
-            raise FileExistsError(f"Destination file already exists: {dest}")
+            raise FileExistsError(f'Destination file already exists: {dest}')
         src.rename(dest)
 
     def _is_stable(self, path: Path, duration: float = 0.5) -> bool:

@@ -38,35 +38,35 @@ class SeleniumBotMixin(ABC):
 class PricingBotMixin(ABC):
 
     UNIT_NORMALIZATION = {
-        "#": "LB",
-        "LB": "LB",
-        "LBS": "LB",
-        "OZ": "OZ",
-        "GAL": "GAL",
-        "GALLON": "GAL",
-        "EA": "EA",
-        "EACH": "EA",
-        "CT": "EA",
-        "CNT": "EA",
-        "DOZ": "DZ",
-        "PT": "PT",
-        "QT": "QT",
-        "HD": "EA",
-        "HEAD": "EA",
-        "CS": "CS",
-        "CASE": "CS",
+        '#': 'LB',
+        'LB': 'LB',
+        'LBS': 'LB',
+        'OZ': 'OZ',
+        'GAL': 'GAL',
+        'GALLON': 'GAL',
+        'EA': 'EA',
+        'EACH': 'EA',
+        'CT': 'EA',
+        'CNT': 'EA',
+        'DOZ': 'DZ',
+        'PT': 'PT',
+        'QT': 'QT',
+        'HD': 'EA',
+        'HEAD': 'EA',
+        'CS': 'CS',
+        'CASE': 'CS',
     }
 
     PACK_SIZE_PATTERN = re.compile(
-        r"""
+        r'''
         ^(?:                                    # Start match
-            (?P<packs>\d+)[/x]\s*               # Pack multiplier (e.g. "4/", "2x") (optional)
+            (?P<packs>\d+)[/x]\s*               # Pack multiplier (e.g. '4/', '2x') (optional)
         )?
-        (?P<low>(?:\d+)?(?:\.\d+)?|\d+)         # Main quantity (to the tenth of a unit, ".1))
-        (?:-(?P<high>(?:\d+)?(?:\.\d+)?|\d+))?  # Optional range (to the tenth of a unit, ".1")
+        (?P<low>(?:\d+)?(?:\.\d+)?|\d+)         # Main quantity (to the tenth of a unit, '.1))
+        (?:-(?P<high>(?:\d+)?(?:\.\d+)?|\d+))?  # Optional range (to the tenth of a unit, '.1')
         \s*
-        (?P<unit>[a-zA-Z#]+)                    # Unit of measure (e.g. "LB", "EA", "QT")
-        """,
+        (?P<unit>[a-zA-Z#]+)                    # Unit of measure (e.g. 'LB', 'EA', 'QT')
+        ''',
         re.VERBOSE,
     )
 
@@ -162,17 +162,17 @@ class PricingBotMixin(ABC):
         if not pack_size_str:
             return None, None
         
-        # Ensure space exists between number and unit (e.g., "10Gal" → "10 Gal")
-        pack_size_str = re.sub(r"(?<=\d)(?=[A-Za-z#])", " ", pack_size_str)
+        # Ensure space exists between number and unit (e.g., '10Gal' → '10 Gal')
+        pack_size_str = re.sub(r'(?<=\d)(?=[A-Za-z#])', ' ', pack_size_str)
 
         match = cls.PACK_SIZE_PATTERN.search(pack_size_str)
         if not match:
             return None, None  # Return None if no valid match is found
 
-        packs = int(match.group("packs")) if match.group("packs") else 1
-        low   = float(match.group("low")) if match.group("low") else 1
-        high  = float(match.group("high")) if match.group("high") else low
-        unit  = match.group("unit").upper()
+        packs = int(match.group('packs')) if match.group('packs') else 1
+        low   = float(match.group('low')) if match.group('low') else 1
+        high  = float(match.group('high')) if match.group('high') else low
+        unit  = match.group('unit').upper()
 
         # Normalize the unit
         unit = cls.UNIT_NORMALIZATION.get(unit, unit)
@@ -191,7 +191,7 @@ class PricingBotMixin(ABC):
 	# 	# 	try:
 	# 	# 		pack = float(pack)
 	# 	# 	except:
-	# 	# 		raise Exception("Pack size is unable to be coerced to float.")
+	# 	# 		raise Exception('Pack size is unable to be coerced to float.')
 
 	# 	# Split value and units from size
     #     unit_string = ''

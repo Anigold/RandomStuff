@@ -5,7 +5,7 @@ from typing import Any, Generator, Optional
 from config.paths import DATABASE_PATH
 
 class DatabaseHandler:
-    """Base class for SQLite database interactions."""
+    '''Base class for SQLite database interactions.'''
 
     def __init__(self, db_path: str = DATABASE_PATH):
         self.db_path = db_path

@@ -7,9 +7,9 @@ from backend.storage.file.download_handler import DownloadHandler
 
 @Logger.attach_logger
 class TransferCoordinator:
-    """
+    '''
     Handles high-level operations for Transfer domain objects.
-    """
+    '''
     
     def __init__(self, file_handler=None, db_handler=None, parser=None):
         self.file_handler = file_handler or TransferFileHandler()
@@ -18,9 +18,9 @@ class TransferCoordinator:
         self.download_handler = DownloadHandler()
 
     def save_transfer(self, transfer: Transfer) -> None:
-        """
+        '''
         Saves the transfer to both file and database storage layers.
-        """
+        '''
         # Save to file
         self.file_handler.save_transfer(transfer)
 
@@ -28,9 +28,9 @@ class TransferCoordinator:
         # self.db_handler.upsert_transfer(transfer)
 
     def load_transfer(self, path: str) -> Transfer:
-        """
+        '''
         Load a transfer from a file path.
-        """
+        '''
         raw_data = self.file_handler.read_transfer_file(path)
         return self.parser.parse_transfer(raw_data)
 
@@ -40,7 +40,7 @@ class TransferCoordinator:
         start_date: str = None,
         end_date: str = None
     ) -> list[Transfer]:
-        """
+        '''
         Retrieves and parses all saved transfer files matching the given filters.
 
         Args:
@@ -50,7 +50,7 @@ class TransferCoordinator:
 
         Returns:
             list[Transfer]: List of parsed Transfer domain objects.
-        """
+        '''
         file_paths = self.file_handler.get_transfer_files(
             stores=stores,
             start_date=start_date,
@@ -63,7 +63,7 @@ class TransferCoordinator:
                 transfer = self.file_handler.read_transfer_file(path)
                 transfers.append(transfer)
             except Exception as e:
-                self.logger.warning(f"Failed to read transfer from {path.name}: {e}")
+                self.logger.warning(f'Failed to read transfer from {path.name}: {e}')
 
         return transfers
 

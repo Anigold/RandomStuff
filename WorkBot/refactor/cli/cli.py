@@ -71,11 +71,11 @@ class CLI:
         readline.set_completer_delims(delimiters + ' ')
 
         # Readline behavior tuning
-        readline.parse_and_bind("set completion-ignore-case on")
-        readline.parse_and_bind("set show-all-if-ambiguous on")
-        readline.parse_and_bind("set menu-complete-display-prefix on")
-        readline.parse_and_bind("set skip-completed-text on")
-        readline.parse_and_bind("TAB: complete")
+        readline.parse_and_bind('set completion-ignore-case on')
+        readline.parse_and_bind('set show-all-if-ambiguous on')
+        readline.parse_and_bind('set menu-complete-display-prefix on')
+        readline.parse_and_bind('set skip-completed-text on')
+        readline.parse_and_bind('TAB: complete')
 
         # History
         if CLI_HISTORY_FILE.exists():
@@ -89,7 +89,7 @@ class CLI:
     # region ---- Autocompletion Core ----
     
     def _completer(self, text: str, state: int) -> Optional[str]:
-        """Autocompletion entry point registered with readline.
+        '''Autocompletion entry point registered with readline.
 
         This method is invoked repeatedly by the readline library during TAB completion.
         It is responsible for returning the nth matching completion for the given `text`.
@@ -123,9 +123,9 @@ class CLI:
         - `_complete_arguments()` for argument-level parsing and completion
 
         Example:
-            Input:  "download_orders --sto"
-            text:   "--sto"
-            state:  0 → returns "--stores"
+            Input:  'download_orders --sto'
+            text:   '--sto'
+            state:  0 → returns '--stores'
             state:  1 → returns None (if no more matches)
 
         Integration:
@@ -136,13 +136,13 @@ class CLI:
             - This function must be side-effect free.
             - It must not modify internal state.
             - It should execute quickly since it's called repeatedly per TAB press.
-        """
+        '''
 
         buffer = readline.get_line_buffer().strip()
 
         if not buffer:
             options = self._complete_commands(text)
-        elif " " not in buffer:
+        elif ' ' not in buffer:
             options = self._complete_commands(text)
         else:
             options = self._complete_arguments(buffer, text)
@@ -153,7 +153,7 @@ class CLI:
         return [cmd for cmd in self.commands.keys() if cmd.startswith(text)]
 
     def _complete_arguments(self, buffer: str, text: str) -> list[str]:
-        """Determines context-aware autocompletion suggestions for a given command buffer.
+        '''Determines context-aware autocompletion suggestions for a given command buffer.
 
         This method is invoked by `_completer()` when the user has typed beyond a single command.
         It attempts to infer whether the user is typing a flag or a flag's argument, and routes
@@ -161,9 +161,9 @@ class CLI:
 
         Parameters:
             buffer (str): The full raw input line from the user, as retrieved from `readline`.
-                        Example: 'download_orders --stores "Dow'
+                        Example: 'download_orders --stores 'Dow'
             text (str):   The current word fragment under the cursor. Typically the word being typed
-                        (e.g., "Dow", "--ven", etc.) and used to match completions.
+                        (e.g., 'Dow', '--ven', etc.) and used to match completions.
 
         Returns:
             list[str]: A list of string completions that match the inferred context, suitable
@@ -171,8 +171,8 @@ class CLI:
 
         Completion Cases Handled:
         --------------------------
-        1. Typing a flag (e.g., "--ven" → suggests `--vendors`)
-        2. Typing a value for a known flag (e.g., `--stores "Dow` → suggests `Downtown`)
+        1. Typing a flag (e.g., '--ven' → suggests `--vendors`)
+        2. Typing a value for a known flag (e.g., `--stores 'Dow` → suggests `Downtown`)
         3. Typing inside a partially-quoted flag value
         4. Single flag position after command (fallback case)
         5. Fallback to empty list when context is not understood or ambiguous
@@ -186,13 +186,13 @@ class CLI:
         - Delegates value suggestions to `_get_autocomplete_values()` if appropriate.
 
         Example:
-            buffer = 'download_orders --stores "Dow'
+            buffer = 'download_orders --stores 'Dow'
             text   = 'Dow'
             returns → ['Downtown']
 
         Performance:
             Fast and stateless; avoids mutation and heavy parsing.
-        """
+        '''
         
         tokens = None
         try:
@@ -210,16 +210,16 @@ class CLI:
         possible_flags = self._get_command_flags(command)
         matches = re.findall(self.FLAG_REGEX_PATTERN, buffer)
 
-        last_token = tokens[-1] if tokens else ""
-        last_token_stripped = last_token.strip('"').strip("'")
+        last_token = tokens[-1] if tokens else ''
+        last_token_stripped = last_token.strip(''').strip(''')
         last_flag = self._get_last_valid_flag(matches, possible_flags)
         
         # Case 1: Typing or completing a flag
-        if last_token.startswith("--") or (buffer.endswith(" ") and not last_flag):
+        if last_token.startswith('--') or (buffer.endswith(' ') and not last_flag):
             return [f for f in possible_flags if f.startswith(text)]
 
         # Case 2: After a complete flag, expecting a value
-        elif last_flag and (last_token == last_flag or buffer.endswith(" ")):
+        elif last_flag and (last_token == last_flag or buffer.endswith(' ')):
             return self._get_autocomplete_values(command, last_flag, text)
 
         # Case 3: Inside a value for a known flag
@@ -239,22 +239,22 @@ class CLI:
         return None
 
     def _get_autocomplete_values(self, command: str, flag: str, text: str) -> list[str]:
-        """Invokes the appropriate autocomplete handler for a given command and flag.
+        '''Invokes the appropriate autocomplete handler for a given command and flag.
 
         This method is responsible for routing value completions (e.g. store names,
         vendor names) to the correct handler defined by the subclass (e.g. `_autocomplete_download_orders`).
 
         Parameters:
-            command (str): The command being executed (e.g. "download_orders").
-            flag (str):    The specific flag for which the value is being completed (e.g. "--stores").
-            text (str):    The partially typed value to match against (e.g. "Dow").
+            command (str): The command being executed (e.g. 'download_orders').
+            flag (str):    The specific flag for which the value is being completed (e.g. '--stores').
+            text (str):    The partially typed value to match against (e.g. 'Dow').
 
         Returns:
             list[str]: A list of strings representing possible completions for the given flag.
 
         Quoted Value Handling:
         ----------------------
-        - If `text` appears to be quoted (e.g., '"Dow'), it is unwrapped before being passed to the handler.
+        - If `text` appears to be quoted (e.g., ''Dow'), it is unwrapped before being passed to the handler.
         - Returned completions will be re-wrapped in matching quotes to preserve shell safety.
 
         Assumptions:
@@ -269,17 +269,17 @@ class CLI:
                     return [s for s in ['Downtown', 'Collegetown'] if s.startswith(text)]
 
         Example:
-            _get_autocomplete_values("download_orders", "--stores", "Dow")
+            _get_autocomplete_values('download_orders', '--stores', 'Dow')
             → ['Downtown']
 
         Returns an empty list if no handler is found or an error occurs.
-        """
+        '''
         
         if command in self.autocomplete_registry:
             handler = self.autocomplete_registry[command]
 
-            is_quoted = text.startswith(("'", '"'))
-            stripped = text.strip('"').strip("'")
+            is_quoted = text.startswith((''', '''))
+            stripped = text.strip(''').strip(''')
 
             completions = handler(flag, stripped)
 
@@ -309,7 +309,7 @@ class CLI:
         self._run()
 
     def _run(self):
-        prompt = "WorkBot> "
+        prompt = 'WorkBot> '
 
         while True:
             try:
@@ -321,13 +321,13 @@ class CLI:
                 if not command:
                     continue
 
-                if command in ("exit", "quit"):
+                if command in ('exit', 'quit'):
                     break
 
                 self._dispatch_command(command, args)
 
             except (KeyboardInterrupt, EOFError):
-                print("\nExiting CLI.")
+                print('\nExiting CLI.')
                 break
 
             finally:
@@ -340,7 +340,7 @@ class CLI:
     # region ---- Utility Commands ----
     
     def cmd_shutdown(self):
-        """Shuts down CLI."""
+        '''Shuts down CLI.'''
         self._cleanup()
         self._exit()
 
@@ -353,14 +353,14 @@ class CLI:
 
     def cmd_clear_history(self) -> None:
         try:
-            open(CLI_HISTORY_FILE, "w").close()
+            open(CLI_HISTORY_FILE, 'w').close()
             readline.clear_history()
-            print("Command history cleared.")
+            print('Command history cleared.')
         except Exception as e:
-            print(f"Error: Failed to clear history ({e})")
+            print(f'Error: Failed to clear history ({e})')
 
     def _cleanup(self) -> None:
-        """Performs any necessary cleanup before exiting."""
+        '''Performs any necessary cleanup before exiting.'''
         # Placeholder for any cleanup logic (e.g., closing files, releasing resources)
         # Overwrite for functionality.  
         pass
@@ -369,7 +369,7 @@ class CLI:
         try:
             readline.write_history_file(str(CLI_HISTORY_FILE))
         except Exception as e:
-            print(f"Warning: Failed to save history ({e})")
+            print(f'Warning: Failed to save history ({e})')
         time.sleep(1)
         sys.exit(0)
 
@@ -378,7 +378,7 @@ class CLI:
             args = shlex.split(user_input)
             return args[0], args[1:]
         except ValueError as ve:
-            print(f"Error parsing input: {ve}")
+            print(f'Error parsing input: {ve}')
             return None, []
         
     def _dispatch_command(self, command: str, args: list[str]) -> None:
@@ -393,14 +393,14 @@ class CLI:
             self._handle_error(command, e)
 
     def _handle_error(self, context: str, exception: Exception) -> None:
-        print(f"[Error] {context}: {exception}")
+        print(f'[Error] {context}: {exception}')
         # Optionally log to file or stderr
-        # self.logger.error(f"{context} failed: {exception}")
+        # self.logger.error(f'{context} failed: {exception}')
 
     def _persist_history(self) -> None:
         try:
             readline.write_history_file(str(CLI_HISTORY_FILE))
         except Exception as e:
-            self._handle_error("History Save", e)
+            self._handle_error('History Save', e)
         
     # endregion

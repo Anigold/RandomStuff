@@ -20,6 +20,7 @@ class FileHandler:
             'excel': 'xlsx',
             'csv':   'csv',
             'json':  'json',
+            'txt':   'txt',
             'text':  'txt',
             'pdf':   'pdf',
             'PDF':   'pdf'
@@ -35,7 +36,7 @@ class FileHandler:
         try:
             save_func = self._save_strategies[format]
         except KeyError:
-            raise ValueError(f"Unsupported format: {format}")
+            raise ValueError(f'Unsupported format: {format}')
         
         file_path.parent.mkdir(parents=True, exist_ok=True)
         save_func(data, file_path)
@@ -68,7 +69,7 @@ class FileHandler:
         return p if p.is_absolute() else self.base_dir / p
 
     def _save_excel(self, workbook: Workbook, file_path: Path) -> None:
-        with tempfile.NamedTemporaryFile(suffix=".xlsx", delete=False) as tmp:
+        with tempfile.NamedTemporaryFile(suffix='.xlsx', delete=False) as tmp:
             tmp_path = Path(tmp.name)
             workbook.save(tmp_path)  # safe write
             tmp.close()
@@ -87,7 +88,7 @@ class FileHandler:
 
     def move_file(self, src: Path, dest: Path ,overwrite: bool = False) -> None:
         if not src.exists():
-            raise FileNotFoundError(f"Source file does not exist: {src}")
+            raise FileNotFoundError(f'Source file does not exist: {src}')
         
         dest.parent.mkdir(parents=True, exist_ok=True)
 
@@ -95,6 +96,6 @@ class FileHandler:
             if overwrite:
                 dest.unlink()
             else:
-                raise FileExistsError(f"{dest} already exists.")
+                raise FileExistsError(f'{dest} already exists.')
             
         src.rename(dest)

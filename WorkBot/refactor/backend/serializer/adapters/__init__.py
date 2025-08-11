@@ -7,21 +7,21 @@ from .unfi_adapter import UNFIAdapter
 from .us_foods_adapter import USFoodsAdapter
 
 _ADAPTERS = {
-  "unfi": UNFIAdapter,
-  "sysco": SyscoAdapter,
-  "us foods": USFoodsAdapter,
+  'unfi': UNFIAdapter,
+  'sysco': SyscoAdapter,
+  'us foods': USFoodsAdapter,
   'performance food': PerformanceFoodAdapter,
   'hill & markes': HillNMarkesAdapter
 }
 
 _ALIASES = {
-  "unfi llc": "unfi",
-  "usfoods": "us foods",
-  "sysco, inc.": "sysco",
+  'unfi llc': 'unfi',
+  'usfoods': 'us foods',
+  'sysco, inc.': 'sysco',
 }
 
 def _norm(s: str) -> str:
-    return " ".join(s.split()).strip().lower()
+    return ' '.join(s.split()).strip().lower()
 
 def get_adapter(vendor_name: str):
     key = _norm(vendor_name)
@@ -30,10 +30,10 @@ def get_adapter(vendor_name: str):
     return cls() if cls else None
 
 def get_vendor_context(vendor_name: str, **overrides: Any) -> Optional[dict]:
-    """
+    '''
     Returns a context dict like:
-      {"adapter": <BaseAdapter>, "preferred_format": "excel", ...overrides}
+      {'adapter': <BaseAdapter>, 'preferred_format': 'excel', ...overrides}
     or None if vendor unknown.
-    """
+    '''
     adapter = get_adapter(vendor_name)
     return adapter.to_context(**overrides) if adapter else None

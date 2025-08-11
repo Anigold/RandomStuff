@@ -23,7 +23,7 @@ class OrderFileHandler(FileHandler):
         self.serializer        = OrderSerializer()
         self.filename_strategy = OrderFilenameStrategy()
 
-    def save_order(self, order: Order, format: str = "excel") -> Path:
+    def save_order(self, order: Order, format: str = 'excel') -> Path:
         headers   = self.serializer.get_headers()
         rows      = self.serializer.to_rows(order)
         formatter = get_format(format)
@@ -34,20 +34,20 @@ class OrderFileHandler(FileHandler):
         return file_path
 
     def get_order_from_file(self, file_path: Path) -> Order:
-        ext       = file_path.suffix.lstrip(".").lower()
+        ext       = file_path.suffix.lstrip('.').lower()
         formatter = get_format(ext)
         rows      = formatter.read(file_path)
         meta      = self.filename_strategy.parse(file_path.name)
         return self.serializer.from_rows(rows, metadata=meta)
 
     def get_order_file_path(self, order: Order, format: str = 'excel') -> Path:
-        suffix = f".{self.extension_map.get(format, 'xlsx')}"
+        suffix = f'.{self.extension_map.get(format, 'xlsx')}'
         filename = self.filename_strategy.format(order, extension=suffix.strip('.'))
         return self.ORDER_FILES_DIR / order.vendor / filename
 
     def get_upload_files_path(self, order: Order, format: str = 'excel') -> Path:
-        suffix = f".{self.extension_map.get(format, 'xlsx')}"
-        filename = self.filename_strategy.format(order, extension=suffix.strip('.'))
+        suffix = self.extension_map.get(format, 'xlsx')
+        filename = self.filename_strategy.format(order, extension=suffix)
         return self.VENDOR_UPLOAD_FILES_PATH / order.vendor / filename
 
     def get_order_files(
@@ -56,7 +56,7 @@ class OrderFileHandler(FileHandler):
         vendors: list[str] | None,
         start_date: str | None = None,
         end_date: str | None = None,
-        formats: list[str] | None = ['xlsx'],       # e.g. ["pdf"] or ["excel","csv"]; None=all
+        formats: list[str] | None = ['xlsx'],       # e.g. ['pdf'] or ['excel','csv']; None=all
     ) -> list[Path]:
         
         stores_set  = {s.strip().lower() for s in (stores or []) if s and s.strip()}
@@ -64,23 +64,23 @@ class OrderFileHandler(FileHandler):
         want_all_vendors = len(vendors_set) == 0
 
         # Build allowed ext set
-        if formats:  # names like "excel","csv","pdf"
-            # extension_map may contain values like "xlsx","csv","pdf"
+        if formats:  # names like 'excel','csv','pdf'
+            # extension_map may contain values like 'xlsx','csv','pdf'
             ext_from_name = lambda name: self.extension_map.get(name.lower(), name).lower()
-            allowed_exts = {ext_from_name(n).lstrip(".") for n in formats}
+            allowed_exts = {ext_from_name(n).lstrip('.') for n in formats}
         else:
-            allowed_exts = {ext.lower().lstrip(".") for ext in self.extension_map.values()}
+            allowed_exts = {ext.lower().lstrip('.') for ext in self.extension_map.values()}
 
-        start = datetime.strptime(start_date, "%Y-%m-%d") if start_date else None
-        end   = datetime.strptime(end_date,   "%Y-%m-%d") if end_date   else None
+        start = datetime.strptime(start_date, '%Y-%m-%d') if start_date else None
+        end   = datetime.strptime(end_date,   '%Y-%m-%d') if end_date   else None
 
         def matches_filters(meta: dict) -> bool:
-            if not meta or "date" not in meta:
+            if not meta or 'date' not in meta:
                 return False
-            if stores_set and (meta.get("store","").strip().lower() not in stores_set):
+            if stores_set and (meta.get('store','').strip().lower() not in stores_set):
                 return False
             try:
-                file_date = datetime.strptime(meta["date"], "%Y-%m-%d")
+                file_date = datetime.strptime(meta['date'], '%Y-%m-%d')
             except Exception:
                 return False
             if start and file_date < start: return False
@@ -97,7 +97,7 @@ class OrderFileHandler(FileHandler):
             for file in vendor_dir.iterdir():
                 if not file.is_file():
                     continue
-                suffix = file.suffix.lower().lstrip(".")  # ".XLSX" -> "xlsx"
+                suffix = file.suffix.lower().lstrip('.')  # '.XLSX' -> 'xlsx'
                 if suffix not in allowed_exts:
                     continue
                 meta = self.filename_strategy.parse(file.name)
@@ -112,7 +112,7 @@ class OrderFileHandler(FileHandler):
 
     def archive_order_file(self, order: Order) -> None:
         vendor_dir = self.ORDER_FILES_DIR / order.vendor
-        archive_dir = vendor_dir / "CompletedOrders"
+        archive_dir = vendor_dir / 'CompletedOrders'
         archive_dir.mkdir(parents=True, exist_ok=True)
 
         filename_prefix = self.filename_strategy.prefix(order)
@@ -124,9 +124,9 @@ class OrderFileHandler(FileHandler):
             dest = archive_dir / file.name
             try:
                 self.move_file(file, dest, overwrite=True)
-                self.logger.info(f"Archived order file: {file.name}")
+                self.logger.info(f'Archived order file: {file.name}')
             except Exception as e:
-                self.logger.warning(f"Failed to archive {file.name}: {e}")
+                self.logger.warning(f'Failed to archive {file.name}: {e}')
 
     def combine_orders_by_store(self, vendors: list[str]) -> None:
         for vendor in vendors:
@@ -142,20 +142,20 @@ class OrderFileHandler(FileHandler):
                     combined[item.name][store] += float(item.quantity)
 
             workbook = self._create_combined_orders_excel(combined)
-            output_path = self.get_order_directory() / vendor / "combined_orders.xlsx"
-            self._write_data("excel", workbook, output_path)
+            output_path = self.get_order_directory() / vendor / 'combined_orders.xlsx'
+            self._write_data('excel', workbook, output_path)
     
     def generate_vendor_upload_file(self, order: Order, context: dict | None = None) -> Path:
-        """Serialize an order for a vendor and persist it using the vendor's preferred format."""
+        '''Serialize an order for a vendor and persist it using the vendor's preferred format.'''
         ctx = context or {}
 
         # 1) Resolve adapter (vendor-specific tweaks) and formatter (csv/excel)
         adapter = get_adapter(order.vendor)
         if not adapter:
-            self.logger.error(f"[upload] Unknown vendor: {order.vendor}")
-            raise ValueError(f"Unknown vendor: {order.vendor}")
+            self.logger.error(f'[upload] Unknown vendor: {order.vendor}')
+            raise ValueError(f'Unknown vendor: {order.vendor}')
 
-        fmt_name  = getattr(adapter, "preferred_format", "excel").lower()
+        fmt_name  = getattr(adapter, 'preferred_format', 'excel').lower()
         formatter = get_format(fmt_name)  # ABC-backed instance
 
         # 2) Produce tabular data (serializer -> headers/rows), then let adapter tweak
@@ -173,22 +173,22 @@ class OrderFileHandler(FileHandler):
 
         # Optional sanity check (keeps bugs obvious)
         if not isinstance(headers, list) or any(not isinstance(r, list) for r in rows):
-            self.logger.error(f"[upload] Bad tabular output for {order.vendor}: headers/rows malformed")
-            raise ValueError("Serializer/adapter produced malformed tabular data")
+            self.logger.error(f'[upload] Bad tabular output for {order.vendor}: headers/rows malformed')
+            raise ValueError('Serializer/adapter produced malformed tabular data')
+
 
         # 3) Render via formatter
         file_data = formatter.write(headers, rows)
         
+        ext_override = adapter.resolve_extension(context=ctx) or fmt_name
+
         # 4) Build output path using formatter’s primary extension
-        # ext = (formatter.extensions[0] if getattr(formatter, "extensions", ()) else ".xlsx").lstrip(".")
-        output_path = self.get_upload_files_path(order, format=fmt_name)  # uses fmt_name -> ext internally
-        # If your path builder expects an extension string instead of a name:
-        # output_path = self.get_upload_files_path(order, format=ext)
+        output_path = self.get_upload_files_path(order, format=ext_override)  # uses fmt_name -> ext internally
 
         # 5) Persist
         self._write_data(fmt_name, file_data, output_path)
 
-        self.logger.info(f"[upload] {order.vendor} | {order.store} | {order.date} -> {output_path}")
+        self.logger.info(f'[upload] {order.vendor} | {order.store} | {order.date} -> {output_path}')
         return output_path
  
     def generate_vendor_upload_files(
@@ -208,7 +208,7 @@ class OrderFileHandler(FileHandler):
     
     def _peek_preferred_format(self, order: Order) -> str:
         adapter = BaseAdapter.get_adapter(order.vendor)
-        return getattr(adapter, "preferred_format", "excel").lower() if adapter else "excel"
+        return getattr(adapter, 'preferred_format', 'excel').lower() if adapter else 'excel'
 
     def parse_filename_for_metadata(self, file_name: str) -> dict:
         return self.filename_strategy.parse(filename=file_name)

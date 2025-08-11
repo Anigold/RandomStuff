@@ -6,12 +6,13 @@ from io import StringIO
 
 class CSVFormat(BaseFormat):
     
-    default_suffix = ".csv"
+    default_suffix = 'csv'
 
     def write(self, headers: list[str], rows: list[list[Any]]) -> str:
         output = StringIO()
         writer = csv.writer(output)
-        writer.writerow(headers)
+        if headers:
+            writer.writerow(headers)
         writer.writerows(rows)
         return output.getvalue()
 

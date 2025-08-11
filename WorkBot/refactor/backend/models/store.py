@@ -8,15 +8,15 @@ class Store:
 
     def to_dict(self):
         return {
-            "store_id": self.store_id,
-            "name":     self.name,
-            "address":  self.address,
-            "contacts": self.contacts
+            'store_id': self.store_id,
+            'name':     self.name,
+            'address':  self.address,
+            'contacts': self.contacts
         }
     
     @classmethod
     def from_dict(cls, data):
-        return cls(data["store_id"], data["name"], data.get("address"), data.get('contacts'))
+        return cls(data['store_id'], data['name'], data.get('address'), data.get('contacts'))
 
     def __repr__(self):
-        return f"Store({self.store_id}, {self.name}, {self.address})"
+        return f'Store({self.store_id}, {self.name}, {self.address})'

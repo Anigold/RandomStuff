@@ -24,30 +24,28 @@ class WorkBotCLI(CLI):
         # self.context = CommandContext(workbot=self.workbot)
 
 # SHUTDOWN OVERRIDE
-    def cmd_shutdown(self, args):
+    def cmd_shutdown(self):
         self.workbot.craft_bot.close_session()
         super().cmd_shutdown()
 
 
 # DOWNLOAD ORDERS
     def cmd_download_orders(self, args):
-        """Handles downloading orders."""
+        '''Handles downloading orders.'''
 
         parser = self.args_download_orders()
         parsed_args = parser.parse_args(args)
         try:
             self.workbot.download_craftable_orders(parsed_args.stores, parsed_args.vendors)
-
-            if parsed_args.sort: self.workbot.sort_orders()
-            
-            print('\nOrders downloaded successfully.\n')
         except SystemExit:
             pass  # Prevent argparse from exiting CLI loop
+
+        print('\nOrders downloaded successfully.\n')
     
     def args_download_orders(self):
-        parser = argparse.ArgumentParser(prog="download_orders", description="Download orders from vendors.")
-        parser.add_argument("--stores", nargs="+", required=True, help="List of store names.")
-        parser.add_argument("--vendors", nargs="+", help="List of vendors (default: all).")
+        parser = argparse.ArgumentParser(prog='download_orders', description='Download orders from vendors.')
+        parser.add_argument('--stores', nargs='+', required=True, help='List of store names.')
+        parser.add_argument('--vendors', nargs='+', help='List of vendors (default: all).')
         parser.add_argument('--sort', action='store_true', help='Sort orders by vendor after downloading.')
         return parser
     
@@ -111,7 +109,7 @@ class WorkBotCLI(CLI):
         if show_pricing:
             headers.append('Total Cost')
             for pos, order in enumerate(orders):
-                total_cost = sum(float(item.total_cost) for item in order.items if item.total_cost) if show_pricing else "N/A"
+                total_cost = sum(float(item.total_cost) for item in order.items if item.total_cost) if show_pricing else 'N/A'
                 formatted_orders[pos].append(f'${total_cost:.2f}')
         
         if show_minimums:
@@ -122,19 +120,19 @@ class WorkBotCLI(CLI):
                 min_order_price = vendor_information['min_order_value'] if 'min_order_value' in vendor_information else ''
                 min_order_cases = vendor_information['min_order_cases'] if 'min_order_cases' in vendor_information else ''
                 
-                total_cost = sum(float(item.total_cost) for item in order.items if item.total_cost) if show_pricing else "N/A"
+                total_cost = sum(float(item.total_cost) for item in order.items if item.total_cost) if show_pricing else 'N/A'
                 
                 # Check if the order meets vendor minimums
                 # below_min_value = total_cost < min_order_price
                 # below_min_cases = len(order.items) < min_order_cases
 
-                # total_cost_str = colored(f"${total_cost:.2f}", "red") if below_min_value else f"${total_cost:.2f}"
-                # min_order_value_str = colored(f"${min_order_price:.2f}", "red") if below_min_value else f"${min_order_price:.2f}"
-                # min_order_cases_str = colored(str(min_order_cases), "red") if below_min_cases else str(min_order_cases)
+                # total_cost_str = colored(f'${total_cost:.2f}', 'red') if below_min_value else f'${total_cost:.2f}'
+                # min_order_value_str = colored(f'${min_order_price:.2f}', 'red') if below_min_value else f'${min_order_price:.2f}'
+                # min_order_cases_str = colored(str(min_order_cases), 'red') if below_min_cases else str(min_order_cases)
 
                 formatted_orders[pos].extend([min_order_price, min_order_cases])
 
-        return tabulate(formatted_orders, headers=headers, tablefmt="grid")
+        return tabulate(formatted_orders, headers=headers, tablefmt='grid')
 
     def _autocomplete_list_orders(self, flag: str, text: str):
         
@@ -194,7 +192,7 @@ class WorkBotCLI(CLI):
             parsed_args = parser.parse_args(args)
             self.workbot.delete_craftable_orders(parsed_args.stores, parsed_args.vendors)
             
-            print("Orders deleted successfully.")
+            print('Orders deleted successfully.')
         except SystemExit:
             pass  # Prevent argparse from exiting CLI loop
 
@@ -228,16 +226,16 @@ class WorkBotCLI(CLI):
 
                 try:
                     self.logger.info(f'Attempting to open directory for: {vendor}')
-                    if sys.platform.startswith("win"):
-                        # subprocess.run(["explorer", directory_path], check=True)
+                    if sys.platform.startswith('win'):
+                        # subprocess.run(['explorer', directory_path], check=True)
                         subprocess.Popen(['explorer', directory_path], shell=True)
-                    elif sys.platform.startswith("darwin"):  # macOS
-                        subprocess.run(["open", directory_path], check=True)
+                    elif sys.platform.startswith('darwin'):  # macOS
+                        subprocess.run(['open', directory_path], check=True)
                     else:  # Linux and other UNIX-like systems
-                        subprocess.run(["xdg-open", directory_path], check=True)
+                        subprocess.run(['xdg-open', directory_path], check=True)
 
                 except Exception as e:
-                    print(f"Error opening file explorer: {e}")
+                    print(f'Error opening file explorer: {e}')
 
                 self.logger.info(f'Directory opened.')
         except SystemExit:
@@ -298,30 +296,30 @@ class WorkBotCLI(CLI):
     def _format_vendor_info(self, data: dict) -> str:
         # Prepare the top-level vendor info
         summary_table = [
-            ["Minimum Order Value", f"${data.get('min_order_value', 0):,.2f}"],
-            ["Minimum Order Cases", data.get("min_order_cases", 0)],
-            ["Special Notes", data.get("special_notes") or "None"]
+            ['Minimum Order Value', f'${data.get('min_order_value', 0):,.2f}'],
+            ['Minimum Order Cases', data.get('min_order_cases', 0)],
+            ['Special Notes', data.get('special_notes') or 'None']
         ]
 
         # Prepare internal contacts, if any
-        contacts = data.get("internal_contacts", [])
+        contacts = data.get('internal_contacts', [])
         if contacts:
             contact_table = [
-                [c["name"], c["title"], c["email"], c["phone"]] for c in contacts
+                [c['name'], c['title'], c['email'], c['phone']] for c in contacts
             ]
-            contact_headers = ["Name", "Title", "Email", "Phone"]
-            contact_output = tabulate(contact_table, headers=contact_headers, tablefmt="fancy_grid")
+            contact_headers = ['Name', 'Title', 'Email', 'Phone']
+            contact_output = tabulate(contact_table, headers=contact_headers, tablefmt='fancy_grid')
         else:
-            contact_output = "[No internal contacts listed.]"
+            contact_output = '[No internal contacts listed.]'
 
-        return f"""
+        return f'''
 ===================
 
-{tabulate(summary_table, tablefmt="plain")}
+{tabulate(summary_table, tablefmt='plain')}
 
 Internal Contacts:
 {contact_output}
-""".strip()
+'''.strip()
 
     def _autocomplete_vendor_information(self, flag: str, text: str):
 
@@ -344,7 +342,7 @@ Internal Contacts:
             parser = self.args_generate_vendor_order_emails()
             parsed_args = parser.parse_args(args)
             self.workbot.generate_vendor_order_emails(stores=parsed_args.stores, vendors=parsed_args.vendors)
-            # print("THIS COMMAND HAS NOT BEEN IMPLEMENTED.")
+            # print('THIS COMMAND HAS NOT BEEN IMPLEMENTED.')
         except SystemExit:
             pass
     
@@ -430,16 +428,16 @@ Internal Contacts:
         return sorted(self.workbot.store_coordinator.list_vendors())
 
     # def show_help(self, args):
-    #     """Displays available commands."""
-    #     print("\nAvailable Commands:")
-    #     print("  download_orders --stores [STORE_NAMES] --vendors [VENDORS] --sort   # Download orders from Craftable for specific stores/vendors")
+    #     '''Displays available commands.'''
+    #     print('\nAvailable Commands:')
+    #     print('  download_orders --stores [STORE_NAMES] --vendors [VENDORS] --sort   # Download orders from Craftable for specific stores/vendors')
     #     print('  open_directory --vendors [VENDORS]                                  # Open the directory of the specified vendor(s).')
     #     print('  list_orders --stores [STORE_NAMES] --vendors [VENDORS]              # Display orders for specific stores/vendors')
     #     print('  sort_orders                                                         # Sort order files by vendor')
     #     print('  delete_orders --stores [STORE NAMES] --vendors [VENDORS]            # Delete orders from Craftable for specific stores/vendors.')
     #     print('  generate_vendor_upload_files --vendors [VENDORS]                    # Generate vendor-specific upload files in the vendors\' order directory.')
-    #     print("  help                                                                # Show available commands")
-    #     print("  exit                                                                # Exit the CLI\n")
+    #     print('  help                                                                # Show available commands')
+    #     print('  exit                                                                # Exit the CLI\n')
 
 
 # UPDATE SMALLWARES PICKLIST

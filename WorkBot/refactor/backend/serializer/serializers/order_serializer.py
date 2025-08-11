@@ -4,7 +4,7 @@ from .base_serializer import BaseSerializer
 
 class OrderSerializer(BaseSerializer):
     
-    DEFAULT_HEADERS = ["SKU", "Name", "Quantity", "Cost Per", "Total Cost"]
+    DEFAULT_HEADERS = ['SKU', 'Name', 'Quantity', 'Cost Per', 'Total Cost']
 
     def get_headers(self, adapter = None) -> list[str]:
         if adapter:
@@ -20,9 +20,9 @@ class OrderSerializer(BaseSerializer):
 
     def from_rows(self, rows: list[list[Any]], metadata: dict = None) -> Order:
         metadata = metadata or {}
-        vendor = metadata.get("vendor")
-        store = metadata.get("store")
-        date = metadata.get("date")
+        vendor = metadata.get('vendor')
+        store = metadata.get('store')
+        date = metadata.get('date')
 
         order = Order(store=store, vendor=vendor, date=date)
         for row in rows:

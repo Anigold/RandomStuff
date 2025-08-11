@@ -116,13 +116,13 @@ class Logger:
     #     @wraps(func)
     #     def wrapper(*args, **kwargs):
 
-    #         # TIL: "nonlocal" references a variable from the outer scope from the in-line reference.  
+    #         # TIL: 'nonlocal' references a variable from the outer scope from the in-line reference.  
     #         # I have found contradicting information whether it is exactly one scope up, or the first
     #         # instance of the variable before arriving at the global scope.
     #         # I should test, but I won't...
 
     #         # Okay, I tested it. It unravels the scope until it finds the variable.
-    #         # It is impossible to call "nonlocal" on a variable which doesn't exist, or one that exists
+    #         # It is impossible to call 'nonlocal' on a variable which doesn't exist, or one that exists
     #         # in the global scope.
 
     #         # Now ask me why we shouldn't instead just use depedency injection for the variable state.
@@ -149,13 +149,13 @@ class Logger:
  
     @staticmethod
     def attach_logger(cls):
-        """
+        '''
         Decorator that attaches a class-specific logger based on its full module path.
         
         Example:
             backend.orders.OrderCoordinator → logs/backend/orders/OrderCoordinator.log
             frontend.cli.WorkBotCLI         → logs/frontend/cli/WorkBotCLI.log
-        """
+        '''
         module_path = cls.__module__.replace('.', '/')
         log_file    = f'logs/{module_path}/{cls.__name__}.log'
         logger_name = f'{cls.__module__}.{cls.__name__}'

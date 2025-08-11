@@ -15,13 +15,13 @@ class ItemFileHandler(FileHandler):
         data = self.read_json(self.base_path)
         items: Dict[str, Item] = {}
         for name, item_data in data.items():
-            item = Item(name=item_data["name"], item_id=item_data["id"])
+            item = Item(name=item_data['name'], item_id=item_data['id'])
 
-            for vendor, infos in item_data.get("vendors", {}).items():
+            for vendor, infos in item_data.get('vendors', {}).items():
                 for info in infos:
                     item.add_vendor_info(vendor, VendorItemInfo(**info))
 
-            for store, info in item_data.get("stores", {}).items():
+            for store, info in item_data.get('stores', {}).items():
                 item.add_store_info(store, StoreItemInfo(**info))
 
             items[name] = item

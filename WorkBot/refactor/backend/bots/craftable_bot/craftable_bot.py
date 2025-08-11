@@ -261,21 +261,21 @@ class CraftableBot(SeleniumBotMixin):
                 stale_reference_table_rows = self._get_order_table_rows() # Refresh to avoid stale references
                 self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
 
-        self.logger.info("Order download complete.")
+        self.logger.info('Order download complete.')
 
         return
    
     def _get_order_table_rows(self) -> list:
-        """Returns all order rows in the table, handling stale references."""
+        '''Returns all order rows in the table, handling stale references.'''
         try:
             table_body = self.driver.find_element(By.XPATH, './/tbody')
             return table_body.find_elements(By.XPATH, './tr')
         except Exception as e:
-            self.logger.warning(f"Failed to retrieve order table: {e}")
+            self.logger.warning(f'Failed to retrieve order table: {e}')
             return []
     
     def _process_order_row(self, store: str, row, vendors: list, download_pdf: bool, update: bool) -> None:
-        """Processes a single order row: extracts data, downloads order, and saves it."""
+        '''Processes a single order row: extracts data, downloads order, and saves it.'''
 
         row_data = row.find_elements(By.XPATH, './td')
         row_date_text = row_data[2].text
@@ -283,10 +283,10 @@ class CraftableBot(SeleniumBotMixin):
         row_date_formatted = convert_date_format(row_date_text, '%m/%d/%Y', '%Y%m%d')
 
         if vendors and row_vendor_name not in vendors:
-            self.logger.debug(f"Skipping vendor {row_vendor_name}.")
+            self.logger.debug(f'Skipping vendor {row_vendor_name}.')
             return 
 
-        self.logger.info(f"Retrieving order for {row_vendor_name} ({row_date_text}).")
+        self.logger.info(f'Retrieving order for {row_vendor_name} ({row_date_text}).')
 
         row_data[2].click()
         
@@ -295,12 +295,12 @@ class CraftableBot(SeleniumBotMixin):
 
         order_to_check_update = Order(store=store, vendor=row_vendor_name, date=row_date_formatted, items=items)
         if update and self._update_existing_order(order_to_check_update):
-            self.logger.info(f"Order for {row_vendor_name} is up-to-date. Skipping.")
+            self.logger.info(f'Order for {row_vendor_name} is up-to-date. Skipping.')
             self.driver.back()
             time.sleep(2)
             return 
 
-        self.logger.info(f"Saving order for {row_vendor_name}.")
+        self.logger.info(f'Saving order for {row_vendor_name}.')
         order_to_save = Order(store=store, vendor=row_vendor_name, date=row_date_formatted, items=items)
         self.order_coordinator.save_order_file(order_to_save)
         self.order_coordinator.save_order_to_db(order_to_save)
@@ -319,7 +319,7 @@ class CraftableBot(SeleniumBotMixin):
         return 
 
     def _find_order_row(self, table_rows, vendor_name, date_text):
-        """Finds the correct order row by vendor name and order date."""
+        '''Finds the correct order row by vendor name and order date.'''
         for row in table_rows:
             row_data = row.find_elements(By.XPATH, './td')
             if len(row_data) < 4:
@@ -365,11 +365,11 @@ class CraftableBot(SeleniumBotMixin):
 
                 # If vendors list is provided, only delete matching vendor orders
                 if vendors and row_vendor_name not in vendors:
-                    self.logger.debug(f"Skipping order from vendor: {row_vendor_name}.")
+                    self.logger.debug(f'Skipping order from vendor: {row_vendor_name}.')
                     table_rows.pop()
                     continue
 
-                self.logger.info(f"Deleting order: {row_vendor_name} ({row_date_text})")
+                self.logger.info(f'Deleting order: {row_vendor_name} ({row_date_text})')
                 self._delete_order(row)
                 
                 # self.driver.back()
@@ -382,36 +382,36 @@ class CraftableBot(SeleniumBotMixin):
                     self.logger.info('No orders table found. All orders deleted.')
                     break
 
-            self.logger.info(f"Finished deleting orders for store: {store}.")
+            self.logger.info(f'Finished deleting orders for store: {store}.')
 
     def _delete_order(self, row) -> None:
-        """Handles the deletion of a single order."""
+        '''Handles the deletion of a single order.'''
         try:
             row.find_elements(By.XPATH, './td')[2].click()
             WebDriverWait(self.driver, 35).until(EC.element_to_be_clickable((By.CLASS_NAME, 'btn-danger')))
         except Exception as e:
-            self.logger.warning(f"Could not open order details: {e}")
+            self.logger.warning(f'Could not open order details: {e}')
             return
 
         self._click_delete_button()
         self._confirm_delete()
 
     def _click_delete_button(self) -> None:
-        """Clicks the delete button within the order page."""
+        '''Clicks the delete button within the order page.'''
         for attempt in range(3):
             try:
                 delete_button = self.driver.find_element(By.CLASS_NAME, 'btn-danger')
                 delete_button.click()
-                self.logger.debug("Delete button clicked.")
+                self.logger.debug('Delete button clicked.')
                 return
             except Exception as e:
-                self.logger.warning(f"Attempt {attempt+1} failed to click delete button: {e}")
+                self.logger.warning(f'Attempt {attempt+1} failed to click delete button: {e}')
                 time.sleep(2)
 
-        self.logger.error("Failed to click delete button after 3 attempts.")
+        self.logger.error('Failed to click delete button after 3 attempts.')
 
     def _confirm_delete(self) -> None:
-        """Handles confirming the deletion of an order."""
+        '''Handles confirming the deletion of an order.'''
         try:
             WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.ID, 'confirmOrderDeleteModal')))
             confirm_modal = self.driver.find_element(By.ID, 'confirmOrderDeleteModal')
@@ -419,10 +419,10 @@ class CraftableBot(SeleniumBotMixin):
             delete_button = modal_footer.find_elements(By.TAG_NAME, 'button')[1]
 
             delete_button.click()
-            self.logger.info("Order deletion confirmed.")
+            self.logger.info('Order deletion confirmed.')
             time.sleep(5)
         except Exception as e:
-            self.logger.error(f"Failed to confirm deletion: {e}")
+            self.logger.error(f'Failed to confirm deletion: {e}')
 
 
    # endregion
@@ -458,8 +458,8 @@ class CraftableBot(SeleniumBotMixin):
         self._input_transfer_items(transfer)
 
         self.logger.info(f'Transfer for {len(transfer.transfer_items)} items from {transfer.origin} to {transfer.destination} on {transfer.transfer_date} completed successfully.')
-        # NEED TO MOVE THE COMPLETED TRANSFER FILE TO THE "COMPLETED" DIRECTORY
-        # submit_transfer_button = self.driver.find_element(By.XPATH, './/a[text()="Request"]')
+        # NEED TO MOVE THE COMPLETED TRANSFER FILE TO THE 'COMPLETED' DIRECTORY
+        # submit_transfer_button = self.driver.find_element(By.XPATH, './/a[text()='Request']')
         return
 
     def _start_new_transfer(self) -> None:
@@ -502,7 +502,7 @@ class CraftableBot(SeleniumBotMixin):
 
         # calendar = self.driver.find_element(By.CLASS_NAME, 'dayContainer')
         # print(transfer.date.day)
-        # today = calendar.find_element(By.XPATH, f'.//span[@class="flatpickr-day "][text()="{transfer.date.day}"]')
+        # today = calendar.find_element(By.XPATH, f'.//span[@class='flatpickr-day '][text()='{transfer.date.day}']')
         # today.click()
         
         self.logger.info('Marking transfer as "Out".')
@@ -576,7 +576,7 @@ class CraftableBot(SeleniumBotMixin):
         item_input = self.driver.find_element(By.ID, 'typeahead')
         item_input.send_keys(item.name)
 
-        # WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, './/div[@class="input-group input-typeahead-container input-group-merge"]')))
+        # WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, './/div[@class='input-group input-typeahead-container input-group-merge']')))
         time.sleep(6)
         # Select the item from the dropdown
 
@@ -614,7 +614,7 @@ class CraftableBot(SeleniumBotMixin):
             except Exception as e:
                 self.logger.info(f'Attempt {attempt+1} failed for {item.name}: {e}')
                 # self.logger.info('Closing add-item window and trying again.')
-                # back_button = self.driver.find_element(By.XPATH, './/button[text()="Back"]')
+                # back_button = self.driver.find_element(By.XPATH, './/button[text()='Back']')
                 # back_button.click()
 
 
@@ -681,13 +681,13 @@ class CraftableBot(SeleniumBotMixin):
         return
        
     def _update_existing_order(self, order: Order) -> bool:
-        """
+        '''
         Requests that the OrderCoordinator handle the update check and replacement
         if the new order differs from the existing one.
 
         Returns True if the file is identical (no update needed),
         False if the new file should be written.
-        """
+        '''
         self.logger.info(f'[Order Update] Initiating update protocol for {order.store} / {order.vendor} / {order.date}.')
         return self.order_coordinator.check_and_update_order(order)
 

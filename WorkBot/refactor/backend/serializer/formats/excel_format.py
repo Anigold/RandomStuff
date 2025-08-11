@@ -5,7 +5,7 @@ from .base_format import BaseFormat
 
 class ExcelFormat(BaseFormat):
     
-    default_suffix = ".xlsx"
+    default_suffix = '.xlsx'
 
     def write(self, headers: list[str], rows: list[list[Any]]) -> Workbook:
         wb = Workbook()

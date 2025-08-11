@@ -20,17 +20,17 @@ class ScheduleEntry:
 @dataclass
 class OrderingInfo:
     method:          List[str] = field(default_factory=list)
-    email:           str = ""
-    portal_url:      str = ""
-    phone_number:    str = ""
+    email:           str = ''
+    portal_url:      str = ''
+    phone_number:    str = ''
     schedule:        List[ScheduleEntry] = field(default_factory=list)
     
 
 @dataclass
 class VendorInfo:
     name:                 str
-    order_format:         str = ""
-    special_notes:        str = ""
+    order_format:         str = ''
+    special_notes:        str = ''
     min_order_value:      float = 0
     min_order_cases:      int = 0
     internal_contacts:    List[ContactInfo] = field(default_factory=list)

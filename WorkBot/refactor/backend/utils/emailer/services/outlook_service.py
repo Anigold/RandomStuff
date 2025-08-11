@@ -14,7 +14,7 @@ class OutlookService(Service):
     
     def create_email(self, email: Email):
      
-        obj = win32com.client.Dispatch("Outlook.Application")
+        obj = win32com.client.Dispatch('Outlook.Application')
         new_email = obj.CreateItem(0x0)
 
         new_email.Subject = email.subject
@@ -39,15 +39,15 @@ class OutlookService(Service):
         return email_to_display.display()
     
     def get_inbox(self):
-        outlook = win32com.client.Dispatch("Outlook.Application").GetNamespace("MAPI")
+        outlook = win32com.client.Dispatch('Outlook.Application').GetNamespace('MAPI')
         return outlook.GetDefaultFolder(6)  # 6 = Inbox
     
     def refresh_inbox(self):
-        """
+        '''
         Nudges Outlook to refresh the Inbox by accessing the last item.
-        """
-        outlook = win32com.client.Dispatch("Outlook.Application")
-        namespace = outlook.GetNamespace("MAPI")
+        '''
+        outlook = win32com.client.Dispatch('Outlook.Application')
+        namespace = outlook.GetNamespace('MAPI')
         inbox = namespace.GetDefaultFolder(6)  # Inbox
 
         # Force a send/receive for all accounts
@@ -58,7 +58,7 @@ class OutlookService(Service):
         MAIL_ITEM = 43
         inbox = self.get_inbox()
         messages = inbox.Items
-        messages.Sort("[ReceivedTime]", True)
+        messages.Sort('[ReceivedTime]', True)
 
         # time_limit = datetime.now() - timedelta(minutes=max_age_minutes)
         time_limit = datetime.now(timezone.utc) - timedelta(minutes=max_age_minutes)

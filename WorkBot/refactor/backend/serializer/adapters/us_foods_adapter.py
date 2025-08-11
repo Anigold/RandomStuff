@@ -17,14 +17,14 @@ class USFoodsAdapter(BaseAdapter):
 
 
     def modify_row(self, row: list = None, item: object = None, context: dict = None) -> list:      
-        store_name  = context.get("store", "")
-        vendor_info = context.get("vendor_info", None)
-        date_str    = context.get("date_str", datetime.now().strftime('%m/%d/%Y'))
+        store_name  = context.get('store', '')
+        vendor_info = context.get('vendor_info', None)
+        date_str    = context.get('date_str', datetime.now().strftime('%m/%d/%Y'))
         
         # Lookup store_id from vendor_info if possible
-        store_id = "000000"
-        if vendor_info and hasattr(vendor_info, "store_ids"):
-            store_id = vendor_info.store_ids.get(store_name, "000000")
+        store_id = '000000'
+        if vendor_info and hasattr(vendor_info, 'store_ids'):
+            store_id = vendor_info.store_ids.get(store_name, '000000')
 
         return [
             store_id,            # CUSTOMER NUMBER
