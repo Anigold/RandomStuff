@@ -7,8 +7,6 @@ except:
     pass
 
 
-from dataclasses import dataclass
-
 
 class OutlookService(Service):
     

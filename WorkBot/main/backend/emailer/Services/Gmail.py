@@ -53,7 +53,6 @@ class GmailService(Service):
             'to': email.to,
         }
 
-
     def send_email(self, email_data: dict) -> None:
         self.service.users().messages().send(userId="me", body={"raw": email_data['raw']}).execute()
 

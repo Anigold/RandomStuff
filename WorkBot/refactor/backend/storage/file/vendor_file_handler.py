@@ -53,6 +53,6 @@ class VendorFileHandler(FileHandler):
                     store_ids=entry.get('store_ids', {})
                 )
             except Exception as e:
-                print(f'Failed to load vendor '{name}': {e}', flush=True)
+                print(f'Failed to load vendor "{name}": {e}', flush=True)
 
         return catalog
