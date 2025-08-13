@@ -10,9 +10,8 @@ class TransferSerializer(BaseSerializer):
 
     def to_rows(self, transfer: Transfer) -> list[list[Any]]:
         rows = []
-        for item in transfer.items:
+        for item in transfer.transfer_items:
             rows.append([
-                item.sku,
                 item.name,
                 item.quantity,
                 transfer.origin,
@@ -26,10 +25,10 @@ class TransferSerializer(BaseSerializer):
         destination = metadata.get('destination')
         transfer_date = metadata.get('transfer_date')
 
-        transfer = Transfer(origin=origin, destination=destination, transfer_date=transfer_date)
+        transfer = Transfer(origin=origin, destination=destination, transfer_date=transfer_date, transfer_items=[])
         for row in rows:
-            sku, name, quantity, *_ = row
-            item = TransferItem(sku, name, quantity)
-            transfer.items.append(item)
+            name, quantity, *_ = row
+            item = TransferItem(name, quantity)
+            transfer.transfer_items.append(item)
 
         return transfer

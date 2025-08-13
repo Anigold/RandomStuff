@@ -53,6 +53,7 @@ class OrderCoordinator:
         return [self.read_order_from_file(file_path) for file_path in file_paths]
     
     def get_order_files(self, stores: list[str], vendors: list[str] = [], formats: list[str] = None) -> list[Path]:
+        
         return self.file_handler.get_order_files(stores, vendors, formats=formats)
     
     def save_order_file(self, order: Order, format: str = 'excel'):

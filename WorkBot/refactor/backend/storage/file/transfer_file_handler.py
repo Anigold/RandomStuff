@@ -34,8 +34,8 @@ class TransferFileHandler(FileHandler):
         return self.serializer.from_rows(rows, metadata=meta)
 
     def get_transfer_file_path(self, transfer: Transfer, format: str = 'excel') -> Path:
-        suffix = f'.{self.extension_map.get(format, 'xlsx')}'
-        return self.TRANSFER_FILES_DIR / self.filename_strategy.filename(transfer, suffix=suffix)
+        suffix = f'{self.extension_map.get(format, 'xlsx')}'
+        return self.TRANSFER_FILES_DIR / self.filename_strategy.format(transfer, suffix)
 
     def get_transfer_files(self, stores: list[str], start_date: str = None, end_date: str = None) -> list[Path]:
         start = datetime.strptime(start_date, '%Y-%m-%d') if start_date else None

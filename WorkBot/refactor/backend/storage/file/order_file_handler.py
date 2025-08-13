@@ -62,7 +62,7 @@ class OrderFileHandler(FileHandler):
         stores_set  = {s.strip().lower() for s in (stores or []) if s and s.strip()}
         vendors_set = {v.strip().lower() for v in (vendors or []) if v and v.strip()}
         want_all_vendors = len(vendors_set) == 0
-
+        self.logger.info(f'Retrieving order files: stores=[{stores}], vendors=[{'All vendors' if want_all_vendors else vendors}], formats={formats}')
         # Build allowed ext set
         if formats:  # names like 'excel','csv','pdf'
             # extension_map may contain values like 'xlsx','csv','pdf'
@@ -89,22 +89,22 @@ class OrderFileHandler(FileHandler):
 
         matched: list[Path] = []
         for vendor_dir in self.ORDER_FILES_DIR.iterdir():
-            if not vendor_dir.is_dir():
-                continue
-            if not want_all_vendors and vendor_dir.name.strip().lower() not in vendors_set:
-                continue
-
+            
+            if not vendor_dir.is_dir(): continue
+            if not want_all_vendors and vendor_dir.name.strip().lower() not in vendors_set: continue
+           
             for file in vendor_dir.iterdir():
-                if not file.is_file():
-                    continue
+                
+                if not file.is_file(): continue
+
                 suffix = file.suffix.lower().lstrip('.')  # '.XLSX' -> 'xlsx'
-                if suffix not in allowed_exts:
-                    continue
+                if suffix not in allowed_exts: continue
+
                 meta = self.filename_strategy.parse(file.name)
-                if matches_filters(meta):
-                    matched.append(file)
+                if matches_filters(meta): matched.append(file)
 
         matched.sort(key=lambda p: (p.stat().st_mtime, p.name), reverse=True)
+        self.logger.info(f'Retrieved {len(matched)} order files.')
         return matched
     
     def get_order_directory(self) -> Path:

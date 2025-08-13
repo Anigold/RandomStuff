@@ -87,16 +87,18 @@ class WorkBot:
         self.craft_bot.delete_orders(stores, vendors)
 
     def get_order_files(self, stores: list, vendors: list = [], formats: list[str] = None) -> list[Path]:
+        self.logger.info(f'Retrieving order files for: stores=[{stores}], vendors=[{vendors}], formats=[{formats}]')
         return self.order_coordinator.get_order_files(stores=stores, vendors=vendors, formats=formats)
 
     def get_orders(self, stores: list[str], vendors: list[str], formats: list[str] = None) -> list[Order]:
+        self.logger.info(f'Retrieving orders for: stores=[{stores}], vendors=[{vendors}], formats=[{formats}]')
         order_files = self.get_order_files(stores, vendors, formats=formats)
         return self.order_coordinator.read_orders_from_files(order_files)
 
     def archive_all_current_orders(self, stores: list[str] = None, vendors: list[str] = None) -> None:
         vendors = vendors or []
 
-        orders = self.get_orders(stores, vendors)
+        orders = self.get_orders(stores, vendors, formats=['xlsx'])
 
         for order in orders:
             try:
@@ -134,8 +136,9 @@ class WorkBot:
 
         self.craft_bot.input_transfers(transfers)
 
-    def convert_order_to_transfer(self, order_store, vendor, origin):
-        order = self.get_orders(order_store, vendor)[0]
+    def convert_order_to_transfer(self, destination, vendor, origin):
+        self.logger.info(f'Beginning order-transfer conversion: {destination}-{vendor} -> {origin}')
+        order = self.get_orders([destination], [vendor], formats=['xlsx'])[0]
         origin = 'Bakery' if order.vendor == 'Ithaca Bakery' else order.vendor # YOU NEED TO FIX THIS FOR WHEN YOU HAVE TO DO IT FOR A DIFFERENT STORE
 
         transfer_items = [
