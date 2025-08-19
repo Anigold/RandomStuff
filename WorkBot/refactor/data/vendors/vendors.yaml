@@ -1,4 +1,5 @@
 vendors:
+  
   US Foods:
     min_order_value: 600
     min_order_cases: 0
@@ -102,6 +103,7 @@ vendors:
       Triphammer: ""
       Easthill: ""
       Downtown: ""
+  
   UNFI:
     min_order_value: 1000
     min_order_cases: 0
@@ -126,3 +128,115 @@ vendors:
       Triphammer: ""
       Easthill: ""
       Downtown: ""
+  
+  Hillcrest Foods:
+    min_order_value: 850
+    min_order_cases: 0
+    special_notes: Send orders to Linda Bye and CC Donna Brayman.
+    internal_contacts:
+      - name: Linda Bye
+        title: Sales Representative
+        email: linda.bye@bakemark.com
+        phone: 518-580-1550
+      - name: Donna Brayman
+        title: Inside Sales Representative
+        email: donna.brayman@bakemark.com
+        phone: 518-450-5870
+    ordering:
+      method: ['email']
+      email: 'linda-bye@bakemark.com'
+      portal_url: ''
+      phone_number: '518-580-1550'
+      schedule:
+        - order_day: 'Monday'
+          delivery_days: ['Tuesday']
+          cutoff_time: '10:00 AM'
+    store_ids:
+      Bakery: ""
+      Collegetown: ""
+      Triphammer: ""
+      Easthill: ""
+      Downtown: ""
+
+  Peters Supply:
+    min_order_value: 0
+    min_order_cases: 0
+    special_notes:
+    internal_contacts:
+      - name: Buddy Kent
+        title: Sales Representative
+        email: buddy.kent@peterssupply.com
+        phone: 607-731-6393
+      - name: Brian Peters
+        title: President
+        email: brain.peters@peterssupply.com
+        phone: 607-733-3005
+    ordering:
+      method: ['email']
+      email: 'buddy.kent@peterssupply.com'
+      portal_url: ''
+      phone_number: ''
+      schedule:
+        - order_day: 'Tuesday'
+          delivery_days: ['Thursday']
+          cutoff_time: '3:00 PM'
+    store_ids:
+      Bakery: ""
+      Collegetown: ""
+      Triphammer: ""
+      Easthill: ""
+      Downtown: ""
+
+  Russo Produce:
+    min_order_value: 0
+    min_order_cases: 10
+    special_notes:
+    internal_contacts:
+      - name: John Russo
+        title: Owner
+        email: rusopro@yahoo.com
+        phone: 315-439-7264
+    ordering:
+      method: [email, phone]
+      email: rusopro@yahoo.com
+      portal_url: ''
+      phone_number: 315-439-7264
+      schedule:
+        - order_day: 'Monday'
+          delivery_days: ['Tuesday']
+          cutoff_time: '3:00 PM'
+        - order_day: 'Wednesday'
+          delivery_days: ['Thursday']
+          cutoff_time: '3:00 PM'
+    store_ids:
+      Bakery: ""
+      Collegetown: ""
+      Triphammer: ""
+      Easthill: ""
+      Downtown: ""
+      
+  SANICO:
+    min_order_value: 0
+    min_order_cases: 0
+    special_notes:
+    internal_contacts:
+      - name: Mike Teed
+        title: Sales Representative
+        email: mteed@isanico.com
+        phone: 607-725-2932
+    ordering:
+      method: [email, phone]
+      email: mteed@isanico.com
+      portal_url: ''
+      phone_number: 607-725-2932
+      schedule:
+        - order_day: 'Tuesday'
+          delivery_days: ['Thursday']
+          cutoff_time: '3:00 PM'
+    store_ids:
+      Bakery: ""
+      Collegetown: ""
+      Triphammer: ""
+      Easthill: ""
+      Downtown: ""
+

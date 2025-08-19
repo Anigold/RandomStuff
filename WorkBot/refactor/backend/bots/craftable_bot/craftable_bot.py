@@ -107,6 +107,12 @@ class CraftableBot(SeleniumBotMixin):
     #     return True
 # endregion
 
+    # @Logger.log_exceptions
+    # @property
+    # def fresh_command(self):
+    #     # syntactic sugar: @self.fresh_command
+    #     return self.fresh
+    
 # region ---- Session Page Control ----------------------
     
     '''
@@ -240,7 +246,8 @@ class CraftableBot(SeleniumBotMixin):
     i. Assumes the bot is currrently logged in.
 
     '''
-    @login_necessary
+
+    @SeleniumBotMixin.with_session(login=True)
     @Logger.log_exceptions
     def download_orders(self, stores: list, vendors=list, download_pdf=True, update=True) -> None:
        
@@ -262,6 +269,8 @@ class CraftableBot(SeleniumBotMixin):
                 self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
 
         self.logger.info('Order download complete.')
+        self.logger.info('Closing WebDriver session.')
+        self.end_session
 
         return
    
@@ -332,7 +341,7 @@ class CraftableBot(SeleniumBotMixin):
 # endregion
    
 # region ---- Order Deletion ----------------------------
-    @login_necessary
+    @SeleniumBotMixin.with_session(login=True)
     @Logger.log_exceptions
     def delete_orders(self, stores: list[str], vendors: list[str] = None) -> None:
 
@@ -428,7 +437,7 @@ class CraftableBot(SeleniumBotMixin):
    # endregion
 
 # region ---- Order Transfers ---------------------------
-    @temporary_login
+    @SeleniumBotMixin.with_session(login=True)
     @Logger.log_exceptions
     def input_transfers(self, transfers: list) -> None:
 
@@ -622,6 +631,9 @@ class CraftableBot(SeleniumBotMixin):
         return
 
 # endregion
+
+
+    
 
     '''HELPER FUNCTIONS'''
     

@@ -36,34 +36,46 @@ class CLI:
     # region ---- Initialization ----
     
     def __init__(self) -> None:
+
+        self.logger.info('Initializing CLI.')
+
         self.commands = {}
         self._register_commands()
 
         self.autocomplete_registry = {}
         self._setup_autocomplete()
 
+        self.logger.info(f'CLI initialized successfully with {len(self.commands)} commands.')
+
     # endregion
     
     # region ---- Command Registration ----
     
     def _register_commands(self) -> None:
+        count = 0
         for function_name in dir(self):
             if function_name.startswith('cmd_'):
                 command_name = function_name[4:]
                 self.commands[command_name] = getattr(self, function_name)
+                count += 1
+        self.logger.debug(f'Registered {count} commands: {list(self.commands.keys())}')
 
     def _register_autocomplete(self) -> None:
+        count = 0
         for function_name in dir(self):
             prefix = '_autocomplete_'
             if function_name.startswith(prefix):
                 autocomplete_name = function_name[len(prefix):]
                 self.autocomplete_registry[autocomplete_name] = getattr(self, function_name)
+                count += 1
+        self.logger.debug(f'Registered {count} autocomplete handlers.')
     
     # endregion
 
     # region ---- Autocomplete Setup ----
 
     def _setup_autocomplete(self) -> None:
+        self.logger.debug("Setting up autocomplete and history.")
         readline.set_completer(self._completer)
 
         # Fix hyphen behavior in flag completion
@@ -80,8 +92,9 @@ class CLI:
         # History
         if CLI_HISTORY_FILE.exists():
             readline.read_history_file(str(CLI_HISTORY_FILE))
-        readline.set_history_length(100)
+            self.logger.info(f"Loaded command history from {str(CLI_HISTORY_FILE)}")
 
+        readline.set_history_length(100)
         self._register_autocomplete()
 
     # endregion
@@ -305,6 +318,7 @@ class CLI:
     # region ---- CLI Loop ----
     
     def start(self, welcome_screen: str = '\nWelcome to your CLI. Type "help" to see available commands.\n') -> None:
+        self.logger.info('CLI session started.')
         print(welcome_screen)
         self._run()
 
@@ -317,16 +331,20 @@ class CLI:
                 if not user_input:
                     continue
 
+                self.logger.debug(f"User input received: {user_input}")
+
                 command, args = self._parse_input(user_input)
                 if not command:
                     continue
 
                 if command in ('exit', 'quit'):
+                    self.logger.info("User requested CLI shutdown.")
                     break
 
                 self._dispatch_command(command, args)
 
             except (KeyboardInterrupt, EOFError):
+                self.logger.info("CLI interrupted by user (Ctrl+C / EOF).")
                 print('\nExiting CLI.')
                 break
 
@@ -341,17 +359,20 @@ class CLI:
     
     def cmd_shutdown(self):
         '''Shuts down CLI.'''
+        self.logger.info("Shutdown command invoked.")
         self._cleanup()
         self._exit()
 
     def cmd_help(self) -> None:
         '''Displays available commands'''
+        self.logger.info("Help command invoked.")
         print('\nAvailable Commands:')
         for command in sorted(self.commands.keys()):
             print(f'  {command}')
         print('\nType "command --help" for more details.\n')
 
     def cmd_clear_history(self) -> None:
+        self.logger.info("Clear history command invoked.")
         try:
             open(CLI_HISTORY_FILE, 'w').close()
             readline.clear_history()
@@ -366,9 +387,12 @@ class CLI:
         pass
 
     def _exit(self) -> None:
+        self.logger.info("Exiting CLI and saving history.")
         try:
             readline.write_history_file(str(CLI_HISTORY_FILE))
+            self.logger.debug(f"History saved to {str(CLI_HISTORY_FILE)}")
         except Exception as e:
+            self.logger.warning(f"Failed to save history: {e}")
             print(f'Warning: Failed to save history ({e})')
         time.sleep(1)
         sys.exit(0)
@@ -376,23 +400,30 @@ class CLI:
     def _parse_input(self, user_input: str) -> tuple[Optional[str], list[str]]:
         try:
             args = shlex.split(user_input)
-            return args[0], args[1:]
+            command, params = args[0], args[1:]
+            self.logger.debug(f"Parsed command='{command}', args={params}")
+            return command, params
         except ValueError as ve:
+            self.logger.error(f"Failed to parse input '{user_input}': {ve}")
             print(f'Error parsing input: {ve}')
             return None, []
         
     def _dispatch_command(self, command: str, args: list[str]) -> None:
         
         if command not in self.commands:
+            self.logger.warning(f"Unknown command entered: '{command}'")
             print(f'Unknown command: "{command}". Type "help" for available commands.')
             return
 
         try:
+            self.logger.info(f"Dispatching command: {command} (args={args})")
             self.commands[command](args) if args else self.commands[command]()
+            self.logger.info(f"Command '{command}' executed successfully.")
         except Exception as e:
             self._handle_error(command, e)
 
     def _handle_error(self, context: str, exception: Exception) -> None:
+        self.logger.error(f"[Error] {context} failed: {exception}", exc_info=True)
         print(f'[Error] {context}: {exception}')
         # Optionally log to file or stderr
         # self.logger.error(f'{context} failed: {exception}')
@@ -400,6 +431,7 @@ class CLI:
     def _persist_history(self) -> None:
         try:
             readline.write_history_file(str(CLI_HISTORY_FILE))
+            self.logger.debug("Persisted command history to file.")
         except Exception as e:
             self._handle_error('History Save', e)
         

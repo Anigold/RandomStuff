@@ -296,16 +296,16 @@ class WorkBotCLI(CLI):
     def _format_vendor_info(self, data: dict) -> str:
         # Prepare the top-level vendor info
         summary_table = [
-            ['Minimum Order Value', f'${data.get('min_order_value', 0):,.2f}'],
-            ['Minimum Order Cases', data.get('min_order_cases', 0)],
-            ['Special Notes', data.get('special_notes') or 'None']
+            ['Minimum Order Value', f'${data.min_order_value:,.2f}'],
+            ['Minimum Order Cases', data.min_order_cases],
+            ['Special Notes', data.special_notes or 'None']
         ]
 
         # Prepare internal contacts, if any
-        contacts = data.get('internal_contacts', [])
+        contacts = data.internal_contacts
         if contacts:
             contact_table = [
-                [c['name'], c['title'], c['email'], c['phone']] for c in contacts
+                [c.name, c.title, c.email, c.phone] for c in contacts
             ]
             contact_headers = ['Name', 'Title', 'Email', 'Phone']
             contact_output = tabulate(contact_table, headers=contact_headers, tablefmt='fancy_grid')
@@ -425,7 +425,7 @@ Internal Contacts:
         return [store.name for store in self.workbot.store_coordinator.list_stores()]
     
     def _get_vendors(self):
-        return sorted(self.workbot.store_coordinator.list_vendors())
+        return sorted(self.workbot.vendor_coordinator.list_vendors())
 
     # def show_help(self, args):
     #     '''Displays available commands.'''

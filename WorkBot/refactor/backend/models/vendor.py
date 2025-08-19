@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from typing import List, Optional
+from typing import List
 
 
 @dataclass
@@ -34,5 +34,5 @@ class VendorInfo:
     min_order_value:      float = 0
     min_order_cases:      int = 0
     internal_contacts:    List[ContactInfo] = field(default_factory=list)
-    ordering:             OrderingInfo = field(default_factory=OrderingInfo)
-    store_ids:            dict[str, str] = field(default_factory=dict)
+    ordering:             OrderingInfo      = field(default_factory=OrderingInfo)
+    store_ids:            dict[str, str]    = field(default_factory=dict)

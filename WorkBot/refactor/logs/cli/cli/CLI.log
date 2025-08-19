@@ -1,0 +1,157 @@
+2025-08-19 12:43:44,023 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-19 12:43:44,039 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-19 12:43:44,039 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 19 commands.
+2025-08-19 12:43:44,039 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-19 12:44:10,965 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery', '--vendors', 'Webstaurant'])
+2025-08-19 12:44:34,068 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] download_orders failed: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\andrew\\Desktop\\Andrew\\Projects\\IthacaBakery\\RandomStuff\\WorkBot\\refactor\\data\\orders\\Webstaurant\\Webstaurant_Bakery_2025-08-17.pdf'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\workbot_cli.py", line 39, in cmd_download_orders
+    self.workbot.download_craftable_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\workbot\work_bot.py", line 81, in download_craftable_orders
+    self.craft_bot.download_orders(stores, vendors, download_pdf=download_pdf, update=update)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\bot_mixins.py", line 80, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 269, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 306, in _process_order_row
+    if update and self._update_existing_order(order_to_check_update):
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 704, in _update_existing_order
+    return self.order_coordinator.check_and_update_order(order)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\order_coordinator.py", line 210, in check_and_update_order
+    self.file_handler.remove_file(file_path.with_suffix('.pdf'))
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\storage\file\file_handler.py", line 60, in remove_file
+    path.unlink()
+    ~~~~~~~~~~~^^
+  File "C:\Users\Will\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 746, in unlink
+    os.unlink(self)
+    ~~~~~~~~~^^^^^^
+PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\andrew\\Desktop\\Andrew\\Projects\\IthacaBakery\\RandomStuff\\WorkBot\\refactor\\data\\orders\\Webstaurant\\Webstaurant_Bakery_2025-08-17.pdf'
+2025-08-19 12:48:57,351 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: shutdown (args=[])
+2025-08-19 12:49:02,350 - INFO - cli.cli.CLI - (cli.py:362) - Shutdown command invoked.
+2025-08-19 12:49:02,351 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-19 12:49:24,117 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-19 12:49:24,132 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-19 12:49:24,132 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 19 commands.
+2025-08-19 12:49:24,132 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-19 13:30:55,200 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: vendor_information (args=['--vendor', 'Hillcrest Foods'])
+2025-08-19 13:30:55,201 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] vendor_information failed: 'Hillcrest Foods'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\workbot_cli.py", line 288, in cmd_vendor_information
+    vendor_info = self.workbot.get_vendor_information(parsed_args.vendor)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\workbot\work_bot.py", line 332, in get_vendor_information
+    return self.vendor_coordinator.get_vendor_information(vendor_name)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\vendor_coordinator.py", line 53, in get_vendor_information
+    return self.catalog[vendor_name]
+           ~~~~~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'Hillcrest Foods'
+2025-08-19 13:30:59,847 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: shutdown (args=[])
+2025-08-19 13:31:05,826 - INFO - cli.cli.CLI - (cli.py:362) - Shutdown command invoked.
+2025-08-19 13:31:05,826 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-19 13:31:16,453 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-19 13:31:16,467 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-19 13:31:16,468 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 19 commands.
+2025-08-19 13:31:16,468 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-19 13:31:19,712 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: vendor_information (args=['--vendor', 'Hillcrest Foods'])
+2025-08-19 13:31:19,713 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] vendor_information failed: 'VendorInfo' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\workbot_cli.py", line 290, in cmd_vendor_information
+    print(f'{self._format_vendor_info(vendor_info)}\n')
+             ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\workbot_cli.py", line 299, in _format_vendor_info
+    ['Minimum Order Value', f'${data.get('min_order_value', 0):,.2f}'],
+                                ^^^^^^^^
+AttributeError: 'VendorInfo' object has no attribute 'get'
+2025-08-19 13:32:40,702 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-19 13:32:40,706 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-19 13:32:47,494 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-19 13:32:47,508 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-19 13:32:47,508 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 19 commands.
+2025-08-19 13:32:47,509 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-19 13:32:49,705 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: vendor_information (args=['--vendor', 'Hillcrest Foods'])
+2025-08-19 13:32:49,706 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] vendor_information failed: 'VendorInfo' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\workbot_cli.py", line 290, in cmd_vendor_information
+    print(f'{self._format_vendor_info(vendor_info)}\n')
+             ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\workbot_cli.py", line 299, in _format_vendor_info
+    ['Minimum Order Value', f'${data.get('min_order_value', 0):,.2f}'],
+                                ^^^^^^^^
+AttributeError: 'VendorInfo' object has no attribute 'get'
+2025-08-19 13:34:08,318 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-19 13:34:08,322 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-19 13:34:11,998 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-19 13:34:12,005 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-19 13:34:12,005 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 19 commands.
+2025-08-19 13:34:12,005 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-19 13:34:13,594 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: vendor_information (args=['--vendor', 'Hillcrest Foods'])
+2025-08-19 13:34:13,595 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] vendor_information failed: 'VendorInfo' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\workbot_cli.py", line 290, in cmd_vendor_information
+    print(f'{self._format_vendor_info(vendor_info)}\n')
+             ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\workbot_cli.py", line 300, in _format_vendor_info
+    ['Minimum Order Cases', data.get('min_order_cases', 0)],
+                            ^^^^^^^^
+AttributeError: 'VendorInfo' object has no attribute 'get'
+2025-08-19 13:34:40,815 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-19 13:34:40,818 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-19 13:34:46,327 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-19 13:34:46,334 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-19 13:34:46,334 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 19 commands.
+2025-08-19 13:34:46,335 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-19 13:35:13,423 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-19 13:35:13,426 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-19 13:35:16,233 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-19 13:35:16,239 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-19 13:35:16,240 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 19 commands.
+2025-08-19 13:35:16,240 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-19 13:35:17,793 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: vendor_information (args=['--vendor', 'Hillcrest Foods'])
+2025-08-19 13:35:17,795 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] vendor_information failed: 'ContactInfo' object is not subscriptable
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\workbot_cli.py", line 290, in cmd_vendor_information
+    print(f'{self._format_vendor_info(vendor_info)}\n')
+             ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\workbot_cli.py", line 308, in _format_vendor_info
+    [c['name'], c['title'], c['email'], c['phone']] for c in contacts
+     ~^^^^^^^^
+TypeError: 'ContactInfo' object is not subscriptable
+2025-08-19 13:35:54,815 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-19 13:35:54,819 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-19 13:36:00,287 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-19 13:36:00,295 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-19 13:36:00,295 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 19 commands.
+2025-08-19 13:36:00,295 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-19 13:36:01,276 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: vendor_information (args=['--vendor', 'Hillcrest Foods'])
+2025-08-19 13:36:01,278 - INFO - cli.cli.CLI - (cli.py:421) - Command 'vendor_information' executed successfully.
+2025-08-19 13:39:10,307 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: vendor_information (args=['--vendor', 'Russo Produce'])
+2025-08-19 13:39:10,309 - INFO - cli.cli.CLI - (cli.py:421) - Command 'vendor_information' executed successfully.
+2025-08-19 14:31:23,093 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: shutdown (args=[])
+2025-08-19 14:31:28,538 - INFO - cli.cli.CLI - (cli.py:362) - Shutdown command invoked.
+2025-08-19 14:31:28,538 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.

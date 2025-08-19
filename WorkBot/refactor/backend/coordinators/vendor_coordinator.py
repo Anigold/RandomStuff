@@ -51,6 +51,9 @@ class VendorCoordinator:
 
     def get_vendor_information(self, vendor_name: str):
         return self.catalog[vendor_name]
+    
+    def list_vendors(self) -> list:
+        return [vendor for vendor in self.catalog]
 
     # def get_bot(self, name: str):
     #     return create_vendor_bot(name, self.driver, self.username, self.password)

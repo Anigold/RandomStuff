@@ -1,38 +1,117 @@
+from __future__ import annotations
 from abc import ABC, abstractmethod
 from openpyxl import load_workbook, Workbook
 import re
-from pprint import pprint
+import time
+from contextlib import contextmanager
 
 class SeleniumBotMixin(ABC):
 
     def __init__(self, downloads_path: str = None, username: str = None, password: str = None) -> None:
-        self._driver = None
+        self._driver             = None
         self._driver_initialized = False
-        self.username = username
-        self.password = password
-        self.downloads_path = downloads_path
-        self.is_logged_in = False
+        self.username            = username
+        self.password            = password
+        self.downloads_path      = downloads_path
+        self.is_logged_in        = False
+
+        # Track nested usage so inner calls don’t kill the browser
+        self._session_depth = 0
+
+    def start_session(self) -> None:
+        """Create a WebDriver if one isn't already running."""
+        if not self._driver_initialized or self._driver is None:
+            from backend.bots.helpers import create_driver, create_options
+            options            = create_options(self.downloads_path)
+            self._driver       = create_driver(options)
+            self._driver_initialized = True
+
+    def end_session(self) -> None:
+        """
+        Hard close of the browser process when a session truly ends.
+        Safe to call multiple times.
+        """
+        try:
+            if self._driver_initialized and self._driver:
+                self._driver.quit()
+        finally:
+            # Reset everything so a fresh session can be started later
+            self._driver = None
+            self._driver_initialized = False
+            self.is_logged_in = False
+
+    @contextmanager
+    def session(self, login: bool = False):
+        """
+        Nesting-safe context:
+          - Starts the browser on first entry
+          - (Optionally) logs in once
+          - Tears down only when the outermost context exits
+        """
+        created_here = False
+        try:
+            if self._session_depth == 0:
+                # spin up a new browser
+                self.start_session()
+                created_here = True
+                if login and not self.is_logged_in:
+                    self.login()
+            self._session_depth += 1
+            yield self
+        finally:
+            # unwind depth and close only when outermost finishes
+            self._session_depth -= 1
+            if created_here and self._session_depth == 0:
+                self.end_session()
+                # slight pause can prevent race conditions on some OS/driver combos
+                time.sleep(1.5)
+
+    @staticmethod
+    def with_session(login: bool = False):
+        """
+        Decorator to auto-wrap a method inside `self.session(login=...)`.
+        Usage:
+            @SeleniumBotMixin.with_session(login=True)
+            def do_stuff(self): ...
+        """
+        def deco(func):
+            def wrapper(self, *args, **kwargs):
+                with self.session(login=login):
+                    return func(self, *args, **kwargs)
+            return wrapper
+        return deco
+
+    def __enter__(self):
+        # no auto-login here; pick per-call with session(login=True) when needed
+        return self.session().__enter__()
+
+    def __exit__(self, exc_type, exc, tb):
+        return self.session().__exit__(exc_type, exc, tb)
 
     @property
     def driver(self):
-        if not self._driver_initialized:
-            from backend.bots.helpers import create_driver, create_options
-            options                  = create_options(self.downloads_path)
-            self._driver             = create_driver(options)
-            self._driver_initialized = True
+        """
+        Lazy accessor. If you prefer to *force* session usage, you could
+        assert self._session_depth > 0 here. For backward-compatibility,
+        we keep lazy startup.
+        """
+        if not self._driver_initialized or self._driver is None:
+            # Start a session if someone touches driver directly.
+            # Strongly prefer using `with self.session():` or the decorator.
+            self.start_session()
         return self._driver
     
-    def login(self) -> None:
-        pass
+    def login(self) -> None: 
+        ...
 
     def logout(self) -> None:
-        pass
+        ...
 
-    def end_session(self) -> None:
-        if self._driver_initialized and self._driver:
-            self._driver.quit()
-            self._driver_initialized = False
-        return self.driver.close()
+    # def end_session(self) -> None:
+    #     if self._driver_initialized and self._driver:
+    #         self._driver.quit()
+    #         self._driver_initialized = False
+    #     return self.driver.close()
     
 
 class PricingBotMixin(ABC):
