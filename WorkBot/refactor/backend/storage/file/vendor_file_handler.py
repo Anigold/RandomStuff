@@ -1,21 +1,24 @@
 from .file_handler import FileHandler
-from config.paths import VENDOR_FILES_DIR
+from config.paths import VENDOR_FILES_DIR, VENDORS_FILE
 from pathlib import Path
 from backend.models.vendor import VendorInfo, ContactInfo, OrderingInfo, ScheduleEntry
-
+from typing import List, Optional
+from backend.utils.timeparse import normalize_time_str
 
 import yaml
 
 class VendorFileHandler(FileHandler):
 
     VENDOR_FILES_DIR = Path(VENDOR_FILES_DIR)
+    VENDORS_FILE = Path(VENDORS_FILE)
 
-    def __init__(self):
+    def __init__(self, vendors_file: Path | None = None) -> None:
         super().__init__(VENDOR_FILES_DIR)
+        self.vendors_file = vendors_file or VENDORS_FILE
 
 
     def load_all(self) -> dict[str, VendorInfo]:
-        file_path = self.VENDOR_FILES_DIR / 'vendors.yaml'
+        file_path = self.VENDORS_FILE
 
         with open(file_path, 'r', encoding='utf-8') as f:
             raw_data = yaml.safe_load(f)
@@ -56,3 +59,31 @@ class VendorFileHandler(FileHandler):
                 print(f'Failed to load vendor "{name}": {e}', flush=True)
 
         return catalog
+    
+    def vendors_with_order_day(self, weekday_name: str) -> List[dict]:
+        """
+        Uses your typed load_all() to return a list of:
+        { 'name': <vendor>, 'stores': [..], 'cutoff_time': 'HH:MM' | None }
+        If multiple schedules match the same weekday, we pick the earliest cutoff.
+        """
+        catalog = self.load_all()  # dict[str, VendorInfo]
+        target = (weekday_name or "").strip().lower()
+        out: List[dict] = []
+
+        for vname, vinfo in catalog.items():
+            times: list[str] = []
+            for s in (vinfo.ordering.schedule or []):
+                if ((s.order_day or "").strip().lower() == target):
+                    t = normalize_time_str(getattr(s, "cutoff_time", None))
+                    times.append(t or "")
+
+            if not times:
+                continue
+
+            non_empty = [t for t in times if t]
+            cutoff: Optional[str] = (sorted(non_empty)[0] if non_empty else None)
+
+            stores = list((vinfo.store_ids or {}).keys())
+            out.append({"name": vname, "stores": stores, "cutoff_time": cutoff})
+
+        return out

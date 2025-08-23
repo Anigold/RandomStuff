@@ -61,6 +61,7 @@ class CraftableBot(SeleniumBotMixin):
             'login_page': 'https://app.craftable.com/signin',
             'orders_page': 'https://app.craftable.com/buyer/2/{store_id}/orders/list',
             'transfer_page': 'https://app.craftable.com/buyer/2/{store_id}/transfers/list',
+            'audit_page': 'https://app.craftable.com/director/2/583/audits/history/list'
     }
     
     stores = {
@@ -74,6 +75,8 @@ class CraftableBot(SeleniumBotMixin):
             'Easthill':    '14374',
             'Triphammer':  '14375',
             'Collegetown': '14372',
+            'Director': '583',
+            'DIRECTOR': '583',
     }
     
 # endregion
@@ -632,7 +635,115 @@ class CraftableBot(SeleniumBotMixin):
 
 # endregion
 
+# region ---- Audit Downloading -------------------------
 
+    @SeleniumBotMixin.with_session(login=True)
+    @Logger.log_exceptions
+    def download_audits(self, stores: list[str], start_date: str, end_date: str) -> None:
+
+        store_audit_name_map = {
+            'Bakery':       'Ithaca Bakery - Meadow St',
+            'Triphammer':   'Ithaca Bakery - Triphammer',
+            'Collegetown':  'Collegetown Bagels - College Ave',
+            'Easthill':     'Collegetown Bagels - East Hill Plaza',
+            'Downtown':     'Collegetown Bagels - State St',
+            'Syracuse':     'Collegetown Bagels - Syracuse',
+        }
+        
+        self.logger.info('Beginning audit download.')
+
+        director_audit_url = self.site_map['audit_page']
+        self.driver.get(director_audit_url)
+
+        # try:
+        #     self.logger.info('Waiting for audit table to load.')
+        #     WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located((By.CLASS_NAME, 'sort-header')))
+        # except:
+        #     self.logger.info('Unable to locate audit table, ending audit download.')
+        #     raise ValueError()
+        time.sleep(10)
+        try:
+            audit_list_table = self.driver.find_element(By.TAG_NAME, 'table')
+            self.logger.info('Audit table loaded.')
+        except:
+            self.logger.info('Could not find audit list table, ending audit download.')
+            raise ValueError()
+        
+        # Set to correct store(s)
+        try:
+            stores_dropdown = self.driver.find_element(By.XPATH, '//button[text()="Stores"]')
+            stores_dropdown.click()
+            time.sleep(5)
+
+            all_stores_option = self.driver.find_element(By.XPATH, f'//div[text()="All Stores"]')
+            time.sleep(1)
+            all_stores_option.click()
+            time.sleep(1)
+            all_stores_option.click()
+            time.sleep(1)
+            for store in stores:
+                store_text_input = self.driver.find_element(By.ID, 'text-input')
+                store_text_input.clear()
+                store_text_input.send_keys(store_audit_name_map[store])
+                time.sleep(2)
+                dropdown_option = self.driver.find_element(By.XPATH, f'//div[text()="{store_audit_name_map[store]}"]')
+
+                # NEED TO CHECK IF STORE IS ALREADY TOGGLED
+                dropdown_option.click()
+                time.sleep(2)
+
+        except:
+            raise ValueError()
+        # Set starting date
+        # Set ending date
+        try:
+            self.logger.info('Searching for table rows.')
+            audit_rows = audit_list_table.find_elements(By.TAG_NAME, 'tr')
+            self.logger.info('Table rows found.')
+        except:
+            self.logger.info('Unable to find table rows, ending audit download.')
+            raise ValueError()
+        
+        self.logger.info(f'Found {len(audit_rows)} rows.')
+        for pos, row in enumerate(audit_rows):
+            self.logger.info(f'Processing row {pos+1} of {len(audit_rows)}.')
+            cols = row.find_elements(By.TAG_NAME, 'td')
+            store, date, closed_time, auditor, audit_type, inventory_cost = cols
+
+            date_hyperlink = date.find_element(By.TAG_NAME, 'a')
+
+            original_tab = self.driver.current_window_handle
+
+            actions = ActionChains(self.driver)
+            actions.key_down(Keys.CONTROL).click(date_hyperlink).key_up(Keys.CONTROL).perform()
+
+            # self.driver.execute_script("window.open(arguments[0].href, '_blank');", date_hyperlink)
+            time.sleep(5)
+
+            self.driver.switch_to.window(self.driver.window_handles[-1])
+            time.sleep(5)
+
+            # download_filename = f'{store.text} - Foodager - Audit {date[-1:-5]}-{date[0:2]}-{date[3:5]}.xlsx'
+            try:
+                time.sleep(5)
+                self.logger.info(f'Attempting download of row {pos+1}.')
+                download_button = self.driver.find_element(By.CLASS_NAME, 'fa-download')
+                download_button.click()
+                time.sleep(5)
+                self.logger.info('Download success')
+            except:
+                self.logger.info('Unable to download audit, skipping.')
+                self.driver.close()
+
+            
+
+            self.driver.close()
+            self.driver.switch_to.window(original_tab)
+            
+
+
+
+# endregion
     
 
     '''HELPER FUNCTIONS'''

@@ -10,7 +10,10 @@ MASTER_LOG_FILE    = DATA_STORAGE_DIR / 'logging' / 'master.log'
 DOWNLOADS_PATH     = DATA_STORAGE_DIR / 'downloads'
 STORES_DATA_FILE   = DATA_STORAGE_DIR / 'stores' / 'stores.json'
 UPLOAD_FILES_DIR   = DATA_STORAGE_DIR / 'upload_files'
-VENDOR_FILES_DIR   = DATA_STORAGE_DIR / 'vendors'
-TRANSFER_FILES_DIR = DATA_STORAGE_DIR / 'transfers'
 
+VENDOR_FILES_DIR   = DATA_STORAGE_DIR / 'vendors'
+VENDORS_FILE       = VENDOR_FILES_DIR / 'vendors.yaml'
+
+TRANSFER_FILES_DIR = DATA_STORAGE_DIR / 'transfers'
+TODOS_DIR          = DATA_STORAGE_DIR / 'todos'
 CREDENTIALS_DIR    = BASE_DIR / 'config' / 'secrets'

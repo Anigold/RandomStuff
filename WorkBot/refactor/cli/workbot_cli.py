@@ -12,6 +12,15 @@ except ImportError:
     import readline
 from cli.cli import CLI
 
+import argparse
+from pathlib import Path
+from typing import List
+
+from backend.coordinators.todo_coordinator import ToDoCoordinator
+from backend.utils.days import iso_today
+from backend.utils.timeparse import normalize_time_str
+from config.paths import TODOS_DIR
+
 @Logger.attach_logger
 class WorkBotCLI(CLI):
     ''' Interactive CLI for WorkBot '''
@@ -508,3 +517,167 @@ Internal Contacts:
             print('All Natalie Juices split.')
         except SystemExit:
             pass
+
+
+    def args_download_audits(self):
+        parser = argparse.ArgumentParser(
+            prog='download_audits',
+            description='Downloads audits from Craftable.'
+        )
+        parser.add_argument('--stores', nargs='+', default=['Bakery', 'Collegetown', 'Triphammer', 'Downtown', 'Easthill'], help='An active store.')
+        return parser
+
+    def cmd_download_audits(self, args) -> None:
+
+        parser = self.args_download_audits()
+        parsed_args = parser.parse_args(args)
+        try:
+            self.workbot.download_audits(parsed_args.stores, 'as', 'as')
+        except:
+            print('oops')
+
+    def args_todos_list(self):
+        parser = argparse.ArgumentParser(
+            prog='todos_list',
+            description='List To-Dos for a date (auto-generates vendor tasks from vendor schedules).'
+        )
+        parser.add_argument('--date', default=iso_today(), help='YYYY-MM-DD (default: today)')
+        return parser
+
+    def cmd_todos_list(self, args):
+        try:
+            parser = self.args_todos_list()
+            parsed = parser.parse_args(args)
+            coord = ToDoCoordinator(per_store=False)
+            items = coord.list_for_date(parsed.date, autogenerate=True)
+            print(f'\n{self._format_todos_list(parsed.date, items)}\n')
+        except SystemExit:
+            pass
+
+    # --- ADD --------------------------------------------------------------
+
+    def args_todos_add(self):
+        parser = argparse.ArgumentParser(
+            prog='todos_add',
+            description='Add a custom To-Do for a date.'
+        )
+        parser.add_argument('--title', required=True, help='Title for the To-Do')
+        parser.add_argument('--date', default=iso_today(), help='YYYY-MM-DD (default: today)')
+        parser.add_argument('--notes', default=None, help='Optional notes')
+        parser.add_argument('--store', default=None, help='Optional store label')
+        parser.add_argument('--time', default=None, help='Optional due time like "3:00 PM" or "15:00"')
+        return parser
+
+    def cmd_todos_add(self, args):
+        try:
+            parser = self.args_todos_add()
+            parsed = parser.parse_args(args)
+            coord = ToDoCoordinator(per_store=False)
+            due_time = normalize_time_str(parsed.time) if parsed.time else None
+            coord.add_custom(parsed.date, parsed.title, notes=parsed.notes, store=parsed.store, due_time=due_time)
+            items = coord.list_for_date(parsed.date, autogenerate=False)
+            print(self._format_todos_list(parsed.date, items))
+        except SystemExit:
+            pass
+
+    # --- DONE / UNDO ------------------------------------------------------
+
+    def args_todos_done(self):
+        parser = argparse.ArgumentParser(
+            prog='todos_done',
+            description='Mark a To-Do as done/undone by index (see `todos_list`).'
+        )
+        parser.add_argument('--index', required=True, type=int, help='1-based index from the list output')
+        parser.add_argument('--date', default=iso_today(), help='YYYY-MM-DD (default: today)')
+        parser.add_argument('--undo', action='store_true', help='Unmark instead of marking done')
+        return parser
+
+    def cmd_todos_done(self, args):
+        try:
+            parser = self.args_todos_done()
+            parsed = parser.parse_args(args)
+            coord = ToDoCoordinator(per_store=False)
+            coord.set_done(parsed.date, parsed.index, done=not parsed.undo)
+            items = coord.list_for_date(parsed.date, autogenerate=False)
+            print(self._format_todos_list(parsed.date, items))
+        except SystemExit:
+            pass
+
+    # --- REGENERATE (idempotent) -----------------------------------------
+
+    def args_todos_regen(self):
+        parser = argparse.ArgumentParser(
+            prog='todos_regen',
+            description='Regenerate vendor To-Dos for a date (safe; no duplicates).'
+        )
+        parser.add_argument('--date', default=iso_today(), help='YYYY-MM-DD (default: today)')
+        return parser
+
+    def cmd_todos_regen(self, args):
+        try:
+            parser = self.args_todos_regen()
+            parsed = parser.parse_args(args)
+            coord = ToDoCoordinator(per_store=False)
+            created = coord.ensure_vendor_todos_for_date(parsed.date)
+            print(f"Regenerated vendor To-Dos for {parsed.date}; inserted {created} new item(s).")
+            items = coord.list_for_date(parsed.date, autogenerate=False)
+            print(self._format_todos_list(parsed.date, items))
+        except SystemExit:
+            pass
+
+    # --- Formatting & Autocomplete ---------------------------------------
+
+    def _format_todos_list(self, date_iso: str, items: List[dict]) -> str:
+        if not items:
+            return f"[{date_iso}] No To-Dos."
+        lines = [f"[{date_iso}] To-Dos:"]
+        for i, t in enumerate(items, start=1):
+            chk   = "[x]" if t.get("done") else "[ ]"
+            title = t.get("title", "")
+            time  = t.get("due_time")
+            tail  = f" @ {time}" if time else ""
+            meta_bits = [x for x in (t.get("vendor"), t.get("store")) if x]
+            meta  = f" — {' | '.join(meta_bits)}" if meta_bits else ""
+            lines.append(f"  {i:>2}. {chk} {title}{tail}{meta}")
+            if t.get("notes"):
+                lines.append(f"       ↳ {t['notes']}")
+        return "\n".join(lines)
+
+    def _autocomplete_todos_list(self, flag: str, text: str):
+        flags = {
+            '--date': self._get_todo_dates_for_autocomplete,
+        }
+        provider = flags.get(flag)
+        return [opt for opt in (provider() if provider else []) if opt.startswith(text)]
+
+    def _autocomplete_todos_add(self, flag: str, text: str):
+        flags = {
+            '--date': self._get_todo_dates_for_autocomplete,
+            # You can wire a store provider here if you have one:
+            # '--store': self._get_stores,
+        }
+        provider = flags.get(flag)
+        return [opt for opt in (provider() if provider else []) if opt.startswith(text)]
+
+    def _autocomplete_todos_done(self, flag: str, text: str):
+        flags = {
+            '--date': self._get_todo_dates_for_autocomplete,
+            # '--index' could be dynamic, but we keep it simple; indexes are numbers.
+        }
+        provider = flags.get(flag)
+        return [opt for opt in (provider() if provider else []) if opt.startswith(text)]
+
+    def _autocomplete_todos_regen(self, flag: str, text: str):
+        flags = {
+            '--date': self._get_todo_dates_for_autocomplete,
+        }
+        provider = flags.get(flag)
+        return [opt for opt in (provider() if provider else []) if opt.startswith(text)]
+
+    def _get_todo_dates_for_autocomplete(self) -> List[str]:
+        """Suggest dates based on existing data/todos/*.yaml files (most recent first)."""
+        base = TODOS_DIR
+        if not base.exists():
+            return []
+        files = sorted(base.glob("*.yaml"), reverse=True)
+        return [f.stem for f in files]

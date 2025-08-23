@@ -398,4 +398,12 @@ class WorkBot:
 
     # endregion
 
+
+
+
+
+    def download_audits(self, stores: list[str], start_date: str, end_date: str) -> None:
+        self.craft_bot.download_audits(stores, start_date, end_date)
+
+        
 # endregion

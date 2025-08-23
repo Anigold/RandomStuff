@@ -155,3 +155,523 @@ TypeError: 'ContactInfo' object is not subscriptable
 2025-08-19 14:31:23,093 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: shutdown (args=[])
 2025-08-19 14:31:28,538 - INFO - cli.cli.CLI - (cli.py:362) - Shutdown command invoked.
 2025-08-19 14:31:28,538 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-20 06:24:04,047 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-20 06:24:04,062 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-20 06:24:04,062 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 19 commands.
+2025-08-20 06:24:04,062 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-20 06:24:18,292 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer'])
+2025-08-20 06:35:36,540 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-08-20 06:39:05,326 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: delete_orders (args=['--stores', 'Triphammer', 'Collegetown', 'Easthill', 'Downtown'])
+2025-08-20 06:40:07,421 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-20 06:40:07,424 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-20 06:40:25,424 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-20 06:40:25,439 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-20 06:40:25,440 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 19 commands.
+2025-08-20 06:40:25,440 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-20 06:40:27,288 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: delete_orders (args=['--stores', 'Triphammer', 'Collegetown', 'Easthill', 'Downtown'])
+2025-08-20 06:49:58,967 - INFO - cli.cli.CLI - (cli.py:421) - Command 'delete_orders' executed successfully.
+2025-08-20 11:16:06,235 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: shutdown (args=[])
+2025-08-20 11:16:12,185 - INFO - cli.cli.CLI - (cli.py:362) - Shutdown command invoked.
+2025-08-20 11:16:12,186 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-20 11:16:27,203 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-20 11:16:27,218 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-20 11:16:27,218 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-08-20 11:16:27,218 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-20 11:16:30,171 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: help (args=[])
+2025-08-20 11:16:30,171 - INFO - cli.cli.CLI - (cli.py:368) - Help command invoked.
+2025-08-20 11:16:30,182 - INFO - cli.cli.CLI - (cli.py:421) - Command 'help' executed successfully.
+2025-08-20 11:16:34,315 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: todos_list (args=[])
+2025-08-20 11:16:34,315 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] todos_list failed: WorkBotCLI.cmd_todos_list() missing 1 required positional argument: 'args'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+                                              ~~~~~~~~~~~~~~~~~~~~~~^^
+TypeError: WorkBotCLI.cmd_todos_list() missing 1 required positional argument: 'args'
+2025-08-20 11:17:39,326 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: todos_list (args=['--date', '2025-08-12'])
+2025-08-20 11:17:39,355 - INFO - cli.cli.CLI - (cli.py:421) - Command 'todos_list' executed successfully.
+2025-08-20 11:17:50,269 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: todos_list (args=['--date', '2025-08-20'])
+2025-08-20 11:17:50,295 - INFO - cli.cli.CLI - (cli.py:421) - Command 'todos_list' executed successfully.
+2025-08-20 11:18:58,969 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: todos_add (args=['Go count things', '--time', '12:00 PM', '--notes', 'First time'])
+2025-08-20 11:18:58,970 - INFO - cli.cli.CLI - (cli.py:421) - Command 'todos_add' executed successfully.
+2025-08-20 11:19:16,017 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: todos_add (args=['--title', 'Go count things', '--time', '12:00 PM', '--notes', 'First time'])
+2025-08-20 11:19:16,031 - INFO - cli.cli.CLI - (cli.py:421) - Command 'todos_add' executed successfully.
+2025-08-20 11:19:43,170 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: todos_done (args=['--index', '2'])
+2025-08-20 11:19:43,185 - INFO - cli.cli.CLI - (cli.py:421) - Command 'todos_done' executed successfully.
+2025-08-20 11:22:09,792 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: shutdown (args=[])
+2025-08-20 11:22:14,876 - INFO - cli.cli.CLI - (cli.py:362) - Shutdown command invoked.
+2025-08-20 11:22:14,876 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-20 11:22:24,437 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-20 11:22:24,451 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-20 11:22:24,451 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-08-20 11:22:24,452 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-20 11:22:31,985 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: todos_list (args=['--date', ''])
+2025-08-20 11:22:31,986 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] todos_list failed: Invalid isoformat string: ''
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\workbot_cli.py", line 538, in cmd_todos_list
+    items = coord.list_for_date(parsed.date, autogenerate=True)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\todo_coordinator.py", line 48, in list_for_date
+    if self.ensure_vendor_todos_for_date(date_iso):
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\todo_coordinator.py", line 21, in ensure_vendor_todos_for_date
+    weekday_name = weekday_name_of(date_iso)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\days.py", line 17, in weekday_name_of
+    return IDX_TO_NAME[weekday_index_of(date_iso)]
+                       ~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\days.py", line 14, in weekday_index_of
+    return _dt.date.fromisoformat(date_iso).weekday()
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+ValueError: Invalid isoformat string: ''
+2025-08-20 11:22:40,281 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: todos_list (args=['--date', '2025-08-20'])
+2025-08-20 11:22:40,316 - INFO - cli.cli.CLI - (cli.py:421) - Command 'todos_list' executed successfully.
+2025-08-20 11:23:52,812 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: todos_list (args=['--date', '2025-08-20'])
+2025-08-20 11:23:52,855 - INFO - cli.cli.CLI - (cli.py:421) - Command 'todos_list' executed successfully.
+2025-08-20 11:23:58,075 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: todos_list (args=['--date', '2025-08-20'])
+2025-08-20 11:23:58,126 - INFO - cli.cli.CLI - (cli.py:421) - Command 'todos_list' executed successfully.
+2025-08-20 11:24:01,300 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: todos_list (args=['--date', '2025-08-20'])
+2025-08-20 11:24:01,354 - INFO - cli.cli.CLI - (cli.py:421) - Command 'todos_list' executed successfully.
+2025-08-20 12:42:41,217 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: shutdown (args=[])
+2025-08-20 12:42:46,876 - INFO - cli.cli.CLI - (cli.py:362) - Shutdown command invoked.
+2025-08-20 12:42:46,876 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-20 12:44:18,800 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-20 12:44:18,814 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-20 12:44:18,815 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-08-20 12:44:18,815 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-20 12:50:45,669 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: todos_list (args=['--date', '2025-08-20'])
+2025-08-20 12:50:45,700 - INFO - cli.cli.CLI - (cli.py:421) - Command 'todos_list' executed successfully.
+2025-08-20 12:51:51,646 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: shutdown (args=[])
+2025-08-20 12:51:56,953 - INFO - cli.cli.CLI - (cli.py:362) - Shutdown command invoked.
+2025-08-20 12:51:56,953 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-20 13:09:37,158 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-20 13:09:37,172 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-20 13:09:37,173 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-08-20 13:09:37,173 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-20 13:09:39,822 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: todos_list (args=['--date', '2025-08-20'])
+2025-08-20 13:09:39,848 - INFO - cli.cli.CLI - (cli.py:421) - Command 'todos_list' executed successfully.
+2025-08-20 13:09:54,678 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: shutdown (args=[])
+2025-08-20 13:10:00,080 - INFO - cli.cli.CLI - (cli.py:362) - Shutdown command invoked.
+2025-08-20 13:10:00,081 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-20 13:10:11,521 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-20 13:10:11,536 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-20 13:10:11,536 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-08-20 13:10:11,536 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-20 13:10:14,782 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: todos_list (args=['--date', '2025-08-20'])
+2025-08-20 13:10:14,807 - INFO - cli.cli.CLI - (cli.py:421) - Command 'todos_list' executed successfully.
+2025-08-20 13:11:27,359 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery', 'Collegetown', 'Triphammer'])
+2025-08-20 13:13:51,115 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-08-20 13:19:21,144 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: vendor_information (args=['--vendor', "Sweet Sam's"])
+2025-08-20 13:19:21,145 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] vendor_information failed: "Sweet Sam's"
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\workbot_cli.py", line 297, in cmd_vendor_information
+    vendor_info = self.workbot.get_vendor_information(parsed_args.vendor)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\workbot\work_bot.py", line 332, in get_vendor_information
+    return self.vendor_coordinator.get_vendor_information(vendor_name)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\vendor_coordinator.py", line 53, in get_vendor_information
+    return self.catalog[vendor_name]
+           ~~~~~~~~~~~~^^^^^^^^^^^^^
+KeyError: "Sweet Sam's"
+2025-08-20 13:28:41,411 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Collegetown', 'Bakery', 'Triphammer', '--vendors', 'US Foods', 'Sysco', 'Performance Food'])
+2025-08-20 13:28:41,856 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_upload_files' executed successfully.
+2025-08-20 13:29:02,299 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Collegetown', 'Bakery', 'Triphammer', '--vendors', 'US Foods', 'Sysco', 'Performance Food'])
+2025-08-20 13:29:02,538 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_upload_files' executed successfully.
+2025-08-20 14:15:03,266 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery', 'Collegetown', 'Triphammer'])
+2025-08-20 14:15:33,264 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] download_orders failed: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\andrew\\Desktop\\Andrew\\Projects\\IthacaBakery\\RandomStuff\\WorkBot\\refactor\\data\\orders\\DUTCH VALLEY FOOD DIST\\DUTCH VALLEY FOOD DIST_Bakery_2025-08-18.pdf'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\workbot_cli.py", line 48, in cmd_download_orders
+    self.workbot.download_craftable_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\workbot\work_bot.py", line 81, in download_craftable_orders
+    self.craft_bot.download_orders(stores, vendors, download_pdf=download_pdf, update=update)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\bot_mixins.py", line 80, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 269, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 306, in _process_order_row
+    if update and self._update_existing_order(order_to_check_update):
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 704, in _update_existing_order
+    return self.order_coordinator.check_and_update_order(order)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\order_coordinator.py", line 210, in check_and_update_order
+    self.file_handler.remove_file(file_path.with_suffix('.pdf'))
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\storage\file\file_handler.py", line 60, in remove_file
+    path.unlink()
+    ~~~~~~~~~~~^^
+  File "C:\Users\Will\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 746, in unlink
+    os.unlink(self)
+    ~~~~~~~~~^^^^^^
+PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\andrew\\Desktop\\Andrew\\Projects\\IthacaBakery\\RandomStuff\\WorkBot\\refactor\\data\\orders\\DUTCH VALLEY FOOD DIST\\DUTCH VALLEY FOOD DIST_Bakery_2025-08-18.pdf'
+2025-08-20 14:35:18,283 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery', 'Collegetown', 'Triphammer'])
+2025-08-20 14:37:50,326 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-08-20 14:42:04,713 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', 'Collegetown', 'Triphammer', '--vendors', 'Sysco', 'Performance Food', 'US Foods'])
+2025-08-20 14:42:05,112 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_upload_files' executed successfully.
+2025-08-20 14:52:58,425 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Bakery', 'Collegetown', 'Triphammer', '--vendors', 'FingerLakes Farms'])
+2025-08-20 14:52:58,915 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-08-20 14:54:32,362 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Triphammer', '--vendors', 'Russo Produce'])
+2025-08-20 14:54:32,677 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-08-23 08:12:23,126 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 08:12:23,139 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 08:12:23,139 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-08-23 08:12:23,140 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 08:12:42,041 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-08-23 08:13:50,003 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-08-23 08:15:03,163 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: archive_orders (args=['--stores', 'Bakery'])
+2025-08-23 08:15:03,736 - INFO - cli.cli.CLI - (cli.py:421) - Command 'archive_orders' executed successfully.
+2025-08-23 08:15:09,307 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: delete_orders (args=['--stores', 'Bakery'])
+2025-08-23 08:16:18,126 - INFO - cli.cli.CLI - (cli.py:421) - Command 'delete_orders' executed successfully.
+2025-08-23 08:16:55,406 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Downtown', 'Easthill', 'Collegetown', 'Triphammer'])
+2025-08-23 08:17:07,164 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 08:17:07,169 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 08:17:14,202 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 08:17:14,215 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 08:17:14,216 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-08-23 08:17:14,216 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 08:17:25,670 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: archive_orders (args=['--stores', 'Downtown', 'Easthill', 'Collegetown', 'Triphammer'])
+2025-08-23 08:17:27,280 - INFO - cli.cli.CLI - (cli.py:421) - Command 'archive_orders' executed successfully.
+2025-08-23 08:17:29,702 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Downtown', 'Easthill', 'Collegetown', 'Triphammer'])
+2025-08-23 08:24:57,079 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-08-23 09:24:48,253 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery', 'Downtown'])
+2025-08-23 09:26:53,029 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-08-23 09:35:02,692 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'UNFI'])
+2025-08-23 09:35:02,820 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_upload_files' executed successfully.
+2025-08-23 14:00:25,607 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 14:00:25,625 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 14:00:25,625 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 14:00:25,625 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 14:00:28,832 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=[])
+2025-08-23 14:00:28,832 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] download_audits failed: WorkBotCLI.cmd_download_audits() missing 1 required positional argument: 'args'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+                                              ~~~~~~~~~~~~~~~~~~~~~~^^
+TypeError: WorkBotCLI.cmd_download_audits() missing 1 required positional argument: 'args'
+2025-08-23 14:01:50,552 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'B'])
+2025-08-23 14:02:28,999 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 14:02:32,318 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 14:02:32,322 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 14:02:43,682 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 14:02:43,699 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 14:02:43,699 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 14:02:43,699 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 14:02:45,650 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'B'])
+2025-08-23 14:03:31,236 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 14:04:50,119 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 14:04:50,121 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 14:04:57,577 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 14:04:57,584 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 14:04:57,584 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 14:04:57,584 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 14:05:00,195 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'B'])
+2025-08-23 14:05:46,705 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 14:07:50,736 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 14:07:50,742 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 14:07:54,754 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 14:07:54,761 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 14:07:54,761 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 14:07:54,761 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 14:07:56,139 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'B'])
+2025-08-23 14:08:30,983 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 14:08:49,424 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 14:08:49,428 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 14:08:53,877 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 14:08:53,884 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 14:08:53,885 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 14:08:53,885 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 14:08:56,300 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'B'])
+2025-08-23 14:09:30,461 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 14:09:37,977 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 14:09:37,980 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 14:09:42,760 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 14:09:42,768 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 14:09:42,768 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 14:09:42,768 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 14:09:43,972 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'B'])
+2025-08-23 14:09:58,349 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 14:10:30,746 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 14:10:30,750 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 14:10:35,713 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 14:10:35,719 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 14:10:35,719 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 14:10:35,719 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 14:13:02,164 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'B'])
+2025-08-23 14:13:43,939 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 14:18:15,923 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 14:18:15,929 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 14:18:19,474 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 14:18:19,481 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 14:18:19,481 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 14:18:19,481 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 14:19:41,710 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'B'])
+2025-08-23 14:20:23,428 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 14:22:47,269 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 14:22:47,273 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 14:22:54,690 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 14:22:54,696 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 14:22:54,696 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 14:22:54,697 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 14:23:05,479 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'B'])
+2025-08-23 14:29:39,040 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 14:32:32,632 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 14:32:32,634 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 14:32:38,741 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 14:32:38,748 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 14:32:38,748 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 14:32:38,748 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 14:32:45,322 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'B'])
+2025-08-23 14:33:20,392 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 14:33:33,472 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 14:33:33,476 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 14:33:39,069 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 14:33:39,076 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 14:33:39,077 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 14:33:39,077 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 14:34:04,099 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'B'])
+2025-08-23 14:34:39,141 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 14:36:19,712 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 14:36:19,715 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 14:36:24,472 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 14:36:24,482 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 14:36:24,482 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 14:36:24,482 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 14:36:26,659 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'B'])
+2025-08-23 14:43:01,524 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 14:53:18,511 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 14:53:18,514 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 14:53:23,087 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 14:53:23,094 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 14:53:23,094 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 14:53:23,094 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 14:53:29,144 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'B'])
+2025-08-23 14:54:11,076 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 14:54:13,766 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 14:54:13,769 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 14:54:19,588 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 14:54:19,595 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 14:54:19,595 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 14:54:19,596 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 14:54:24,785 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'B'])
+2025-08-23 14:55:08,264 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 14:55:09,670 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 14:55:09,673 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 14:55:16,284 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 14:55:16,291 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 14:55:16,292 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 14:55:16,292 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 14:55:18,497 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'B'])
+2025-08-23 14:56:06,247 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 14:56:36,398 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 14:56:36,401 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 14:56:40,827 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 14:56:40,835 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 14:56:40,836 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 14:56:40,836 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 14:56:42,545 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'B'])
+2025-08-23 14:57:27,872 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 14:57:44,630 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 14:57:44,633 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 14:58:15,769 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 14:58:15,775 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 14:58:15,775 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 14:58:15,775 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 14:58:17,345 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'B'])
+2025-08-23 14:59:02,411 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 14:59:02,774 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 14:59:02,778 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 14:59:07,491 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 14:59:07,499 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 14:59:07,499 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 14:59:07,499 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 14:59:09,401 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'B'])
+2025-08-23 14:59:54,807 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 15:01:12,399 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 15:01:12,403 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 15:01:17,003 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 15:01:17,009 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 15:01:17,010 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 15:01:17,010 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 15:01:18,298 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'B'])
+2025-08-23 15:02:03,279 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 15:02:18,088 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 15:02:18,090 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 15:02:22,529 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 15:02:22,536 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 15:02:22,536 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 15:02:22,536 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 15:02:23,826 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'B'])
+2025-08-23 15:03:08,624 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 15:03:23,936 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 15:03:23,940 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 15:03:29,110 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 15:03:29,118 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 15:03:29,118 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 15:03:29,118 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 15:03:38,955 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'B'])
+2025-08-23 15:04:24,297 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 15:05:00,481 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 15:05:00,484 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 15:05:05,380 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 15:05:05,387 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 15:05:05,387 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 15:05:05,387 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 15:05:06,939 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'B'])
+2025-08-23 15:05:52,347 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 15:13:09,346 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 15:13:09,352 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 15:13:14,359 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 15:13:14,365 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 15:13:14,365 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 15:13:14,365 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 15:13:15,757 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'B'])
+2025-08-23 15:13:18,155 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 15:13:18,394 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 15:13:18,397 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 15:13:23,321 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 15:13:23,327 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 15:13:23,327 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 15:13:23,327 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 15:13:32,998 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'Bakery', 'Collegetown'])
+2025-08-23 15:14:18,479 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 15:14:22,115 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 15:14:22,118 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 15:15:39,298 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 15:15:39,316 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 15:15:39,317 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 15:15:39,317 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 15:15:41,694 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'Bakery', 'Collegetown'])
+2025-08-23 15:16:03,937 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 15:16:03,943 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 15:16:03,944 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 15:16:03,944 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 15:16:07,581 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores'])
+2025-08-23 15:16:14,816 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 15:16:14,833 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 15:16:14,833 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 15:16:14,833 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 15:16:25,549 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'Bakery', 'Collegetown'])
+2025-08-23 15:17:01,383 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 15:17:01,398 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 15:17:01,398 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 15:17:01,398 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 15:17:03,294 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'Bakery', 'Collegetown'])
+2025-08-23 15:17:54,036 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 15:17:54,356 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 15:17:54,358 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 15:17:59,587 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 15:17:59,593 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 15:17:59,594 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 15:17:59,594 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 15:18:05,807 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'Bakery', 'Collegetown'])
+2025-08-23 15:19:05,508 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 15:19:05,804 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 15:19:05,806 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 15:20:23,257 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 15:20:23,263 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 15:20:23,264 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 15:20:23,264 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 15:20:24,455 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'Bakery', 'Collegetown'])
+2025-08-23 15:21:37,629 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 15:21:37,893 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 15:21:37,895 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 15:21:41,811 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 15:21:41,817 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 15:21:41,817 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 15:21:41,817 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 15:21:42,880 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'Bakery', 'Collegetown'])
+2025-08-23 15:22:59,077 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 15:22:59,357 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 15:22:59,359 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 15:23:04,268 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 15:23:04,275 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 15:23:04,275 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 15:23:04,275 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 15:23:05,752 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'Bakery', 'Collegetown'])
+2025-08-23 15:23:37,682 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 15:23:47,133 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 15:23:47,138 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 15:23:50,624 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 15:23:50,630 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 15:23:50,630 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 15:23:50,630 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 15:23:56,560 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'Bakery', 'Collegetown'])
+2025-08-23 15:24:28,524 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 15:26:40,927 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 15:26:40,930 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 15:26:44,552 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 15:26:44,558 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 15:26:44,558 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 15:26:44,558 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 15:26:46,777 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'Bakery', 'Collegetown'])
+2025-08-23 15:27:18,788 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 15:27:55,727 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 15:27:55,732 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 15:27:58,452 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 15:27:58,459 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 15:27:58,459 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 15:27:58,459 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 15:28:03,745 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'Bakery', 'Collegetown'])
+2025-08-23 15:28:35,967 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 15:30:02,425 - WARNING - cli.cli.CLI - (cli.py:414) - Unknown command entered: 'cls'
+2025-08-23 15:30:03,471 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 15:30:03,474 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 15:30:08,698 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 15:30:08,713 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 15:30:08,713 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 15:30:08,713 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 15:30:11,394 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'Bakery', 'Collegetown'])
+2025-08-23 15:30:43,034 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 15:31:12,248 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 15:31:12,253 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 15:31:17,518 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 15:31:17,535 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 15:31:17,536 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 15:31:17,536 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 15:31:18,978 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'Bakery', 'Collegetown'])
+2025-08-23 15:31:50,847 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 15:33:34,384 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 15:33:34,387 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 15:33:37,982 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 15:33:37,989 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 15:33:37,990 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 15:33:37,990 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 15:33:38,778 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'Bakery', 'Collegetown'])
+2025-08-23 15:34:11,261 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 15:34:40,216 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 15:34:40,220 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 15:34:44,489 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 15:34:44,495 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 15:34:44,496 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 15:34:44,496 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 15:34:45,891 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'Bakery', 'Collegetown'])
+2025-08-23 15:35:17,848 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 15:38:03,834 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 15:38:03,837 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 15:38:07,111 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 15:38:07,117 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 15:38:07,117 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 15:38:07,117 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 15:38:07,779 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'Bakery', 'Collegetown'])
+2025-08-23 15:39:20,600 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 15:42:39,987 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 15:42:39,990 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 15:42:44,657 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 15:42:44,663 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 15:42:44,663 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 15:42:44,663 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 15:42:50,094 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'Bakery', 'Collegetown'])
+2025-08-23 15:48:57,709 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 15:48:57,972 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 15:48:57,974 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
