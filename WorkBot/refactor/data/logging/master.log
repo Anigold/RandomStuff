@@ -25305,3 +25305,109 @@ ValueError
 2025-08-23 15:48:57,709 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
 2025-08-23 15:48:57,972 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
 2025-08-23 15:48:57,974 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 19:04:13,991 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:54) - Initializing WorkBot...
+2025-08-23 19:04:14,035 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:74) - WorkBot initialized successfully.
+2025-08-23 19:04:14,035 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 19:04:14,054 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 19:04:14,054 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 19:04:14,054 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 19:04:37,291 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'Bakery', 'Collegetown', 'Triphammer'])
+2025-08-23 19:04:44,007 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:134) - Logging into Craftable.
+2025-08-23 19:04:51,594 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:158) - Login successful.
+2025-08-23 19:04:51,595 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:653) - Beginning audit download.
+2025-08-23 19:05:02,199 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:667) - Audit table loaded.
+2025-08-23 19:05:21,111 - ERROR - backend.bots.craftable_bot.craftable_bot.CraftableBot - (logger.py:107) - Error in download_audits: 
+Traceback (most recent call last):
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 689, in download_audits
+    dropdown_option = self.driver.find_element(By.XPATH, f'//div[text()="{store_audit_name_map[store]}"]')
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 888, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 429, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//div[text()="Ithaca Bakery - Triphammer"]"}
+  (Session info: chrome=139.0.7258.128); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x0xe3ffc3+65331]
+	GetHandleVerifier [0x0xe40004+65396]
+	(No symbol) [0x0xc33f63]
+	(No symbol) [0x0xc7c99e]
+	(No symbol) [0x0xc7cd3b]
+	(No symbol) [0x0xcc53d2]
+	(No symbol) [0x0xca1524]
+	(No symbol) [0x0xcc2bcb]
+	(No symbol) [0x0xca12d6]
+	(No symbol) [0x0xc70910]
+	(No symbol) [0x0xc71784]
+	GetHandleVerifier [0x0x10838b3+2439203]
+	GetHandleVerifier [0x0x107eae2+2419282]
+	GetHandleVerifier [0x0xe6712a+225434]
+	GetHandleVerifier [0x0xe56e08+159096]
+	GetHandleVerifier [0x0xe5dd5d+187597]
+	GetHandleVerifier [0x0xe47ad8+96840]
+	GetHandleVerifier [0x0xe47c62+97234]
+	GetHandleVerifier [0x0xe3277a+9962]
+	BaseThreadInitThunk [0x0x76225d49+25]
+	RtlInitializeExceptionChain [0x0x77ccd1ab+107]
+	RtlGetAppContainerNamedObjectPath [0x0x77ccd131+561]
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 696, in download_audits
+    raise ValueError()
+ValueError
+2025-08-23 19:05:23,091 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 20:34:12,005 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 20:34:12,009 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-08-23 20:34:21,591 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:54) - Initializing WorkBot...
+2025-08-23 20:34:21,643 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:74) - WorkBot initialized successfully.
+2025-08-23 20:34:21,644 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-08-23 20:34:21,667 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-08-23 20:34:21,668 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-08-23 20:34:21,668 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-08-23 20:34:32,362 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_audits (args=['--stores', 'Bakery', 'Collegetown'])
+2025-08-23 20:34:40,852 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:136) - Logging into Craftable.
+2025-08-23 20:34:48,562 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:160) - Login successful.
+2025-08-23 20:34:48,562 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:709) - Beginning audit download.
+2025-08-23 20:34:51,504 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:736) - Setting audit options:- stores = ['Bakery', 'Collegetown']- start_date = as- end_date = as
+2025-08-23 20:34:51,504 - ERROR - backend.bots.craftable_bot.craftable_bot.CraftableBot - (logger.py:107) - Error in download_audits: 
+Traceback (most recent call last):
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 743, in download_audits
+    self._set_audit_stores_filter(stores)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 657, in _set_audit_stores_filter
+    if not (stores_dropdown := self.wait_for_element(
+                               ~~~~~~~~~~~~~~~~~~~~~^
+        element=(By.XPATH, '//button[text()="Stores"]'))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\bot_mixins.py", line 163, in wait_for_element
+    return wait.until(EC.visibility_of(element))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\support\wait.py", line 137, in until
+    value = method(self._driver)
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 260, in _predicate
+    return _element_if_visible(element)
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 280, in _element_if_visible
+    return element if element.is_displayed() == visibility else False
+                      ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'tuple' object has no attribute 'is_displayed'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 745, in download_audits
+    raise ValueError()
+ValueError
+2025-08-23 20:34:53,360 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_audits' executed successfully.
+2025-08-23 20:37:12,622 - WARNING - cli.cli.CLI - (cli.py:414) - Unknown command entered: 'cls'
+2025-08-23 20:37:15,912 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-08-23 20:37:15,916 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.

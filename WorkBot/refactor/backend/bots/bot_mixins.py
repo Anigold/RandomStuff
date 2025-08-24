@@ -3,6 +3,21 @@ from abc import ABC, abstractmethod
 from openpyxl import load_workbook, Workbook
 import re
 import time
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import (
+    TimeoutException,
+    NoSuchElementException,
+    StaleElementReferenceException,
+)
+
+from typing import Literal
+from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException, NoSuchElementException, StaleElementReferenceException
+
+
 from contextlib import contextmanager
 
 class SeleniumBotMixin(ABC):
@@ -112,7 +127,84 @@ class SeleniumBotMixin(ABC):
     #         self._driver.quit()
     #         self._driver_initialized = False
     #     return self.driver.close()
-    
+
+    def wait_for_element(
+        self,
+        locator=None,
+        element=None,
+        timeout: int = 10,
+        condition: str = "visible",
+    ):
+        """
+        Wait until an element is present/visible/clickable.
+
+        Args:
+            locator (tuple): (By.<METHOD>, "selector") if you want to look up the element.
+            element (WebElement): Existing element reference (optional).
+            timeout (int): Max seconds to wait before giving up.
+            condition (str): One of 'present', 'visible', 'clickable'.
+
+        Returns:
+            WebElement if found within timeout, else None.
+        """
+        try:
+            wait = WebDriverWait(self.driver, timeout)
+
+            if locator:
+                if condition == "present":
+                    return wait.until(EC.presence_of_element_located(locator))
+                elif condition == "visible":
+                    return wait.until(EC.visibility_of_element_located(locator))
+                elif condition == "clickable":
+                    return wait.until(EC.element_to_be_clickable(locator))
+                
+            elif element:
+                if condition == "visible":
+                    return wait.until(EC.visibility_of(element))
+                elif condition == "clickable":
+                    return wait.until(EC.element_to_be_clickable(element))
+                else:
+                    # presence doesn't apply to existing element reference
+                    return element
+        except (TimeoutException, NoSuchElementException, StaleElementReferenceException):
+            return None
+        
+
+    def wait_for_elements(
+        self,
+        locator: tuple,
+        timeout: int = 10,
+        condition: Literal["present", "visible"] = "visible",
+    ) -> list[WebElement] | None:
+        """
+        Wait until multiple elements are present/visible and return them.
+
+        Args:
+            locator (tuple): (By.<METHOD>, "selector").
+            timeout (int): Seconds to wait.
+            condition (str): 'present' -> in DOM, may be hidden;
+                            'visible' -> displayed and non-zero size.
+
+        Returns:
+            list[WebElement] if found within timeout, else None.
+        """
+        try:
+            wait = WebDriverWait(self.driver, timeout)
+
+            if condition == "present":
+                return wait.until(EC.presence_of_all_elements_located(locator))
+            elif condition == "visible":
+                return wait.until(EC.visibility_of_all_elements_located(locator))
+            else:
+                raise ValueError(f"Unsupported condition: {condition}")
+
+        except (TimeoutException, NoSuchElementException, StaleElementReferenceException):
+            return None
+
+
+
+
+
 
 class PricingBotMixin(ABC):
 

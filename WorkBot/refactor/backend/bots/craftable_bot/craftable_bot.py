@@ -29,6 +29,8 @@ from backend.utils.logger import Logger
 from backend.utils.helpers import convert_date_format
 
 from backend.bots.bot_mixins import SeleniumBotMixin
+from selenium.webdriver.common.by import By
+from selenium.common.exceptions import TimeoutException, NoSuchElementException, StaleElementReferenceException
 
 
 
@@ -637,108 +639,208 @@ class CraftableBot(SeleniumBotMixin):
 
 # region ---- Audit Downloading -------------------------
 
-    @SeleniumBotMixin.with_session(login=True)
-    @Logger.log_exceptions
-    def download_audits(self, stores: list[str], start_date: str, end_date: str) -> None:
-
+    def get_audit_store_name(self, store: str) -> str:
         store_audit_name_map = {
             'Bakery':       'Ithaca Bakery - Meadow St',
-            'Triphammer':   'Ithaca Bakery - Triphammer',
+            'Triphammer':   'Ithaca Bakery - Triphammer Rd',
             'Collegetown':  'Collegetown Bagels - College Ave',
             'Easthill':     'Collegetown Bagels - East Hill Plaza',
             'Downtown':     'Collegetown Bagels - State St',
             'Syracuse':     'Collegetown Bagels - Syracuse',
         }
-        
-        self.logger.info('Beginning audit download.')
 
+        return store_audit_name_map.get(store, '')
+
+    def _set_audit_stores_filter(self, stores: list[str]) -> None:
+            
+            # Access dropdown menu
+            if not (stores_dropdown := self.wait_for_element(
+                locator=(By.XPATH, '//button[text()="Stores"]'))
+                ):
+                self.logger.error('Unable to find store selection filter.')
+                raise TimeoutException('Stores filter dropdown did not load in time.')
+            
+            stores_dropdown.click()
+
+            # Clear the dropdown filter
+            if not (all_stores_option := self.wait_for_element(
+                locator=(By.XPATH, f'//div[text()="All Stores"]'),
+                condition='clickable'
+            )):
+                self.logger.error('Unable to find "All Stores" in dropdown filter.')
+                raise TimeoutError('"All Stores" option was not clickable in time.')
+            all_stores_option.click()
+            time.sleep(1)
+            all_stores_option.click()
+
+            # Access dropdown filter input
+            if not (input_element := self.wait_for_element(
+                locator=(By.ID, 'text-input')
+            )):
+                self.logger.error('Unable to find store filter input element.')
+                raise TimeoutError('Stores filter input box did not load in time.')
+            
+            # Select stores
+            for store in stores:
+
+                # Input store name
+                store_audit_name = self.get_audit_store_name(store)
+                input_element.clear()
+                input_element.send_keys(store_audit_name)
+
+                # Check for store option
+                if not (dropdown_option := self.wait_for_element(
+                    locator=(By.XPATH, f'//div[text()="{store_audit_name}"]')
+                )):
+                    self.logger.error('Unable to find inputted store; skipping.')
+                    continue
+                
+                # Click store option
+                dropdown_option.click()
+                time.sleep(1)
+
+    def _set_date_filters(self, start_date: str, end_date: str) -> None:
+        self._change_calendar_date
+    @SeleniumBotMixin.with_session(login=True)
+    @Logger.log_exceptions
+    def download_audits(self, stores: list[str], start_date: str, end_date: str) -> None:
+
+        # store_audit_name = self.get_audit_store_name(store)
+
+        self.logger.info('Beginning audit download.')
+        
+        # Navigate to audit page
         director_audit_url = self.site_map['audit_page']
         self.driver.get(director_audit_url)
 
+        # Wait until the table header is interactable (signals table fully initialized)
+        if not (sort_hdr := self.wait_for_element(
+            locator=(By.CLASS_NAME, "sort-header"),
+            timeout=30,
+            condition="clickable",
+        )):
+            self.logger.error("Audit list table did not become clickable within 30s.")
+            raise TimeoutException("Audit list table did not load in time.")
+
+        self.logger.debug('Table header is clickable; table seems to have loaded successfully.')
+
+        # Ensure table element is visible
+        if not (audit_table := self.wait_for_element(
+            locator=(By.TAG_NAME, "table"),
+            timeout=10,
+            condition="visible",
+        )):
+            self.logger.error("Audit table element not found/visible.")
+            raise NoSuchElementException("Audit table element missing or hidden.")
+        
+        # Set filters
+        self.logger.info(
+            'Setting audit options:'
+            f'- stores = {[i for i in stores]}'
+            f'- start_date = {start_date}'
+            f'- end_date = {end_date}'
+        )
+        try:
+            self._set_audit_stores_filter(stores)
+            self._set_date_filters(start_date, end_date)
+        except:
+            raise ValueError()
+        
+
+        # self.logger.info('Setting audit options:')
+        # self.logger.info(f'- stores = {[i for i in stores]}')
+        # self.logger.info(f'- start_date = {start_date}')
+        # self.logger.info(f'- end_date = {end_date}')
         # try:
-        #     self.logger.info('Waiting for audit table to load.')
-        #     WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located((By.CLASS_NAME, 'sort-header')))
+        #     self._set_audit_stores(stores)
+        #     self._set_start_date(start_date)
+        #     self._set_end_date(end_date)
         # except:
-        #     self.logger.info('Unable to locate audit table, ending audit download.')
+
+
+
+
+
+
+
+        # time.sleep(10)
+        # try:
+        #     audit_list_table = self.driver.find_element(By.TAG_NAME, 'table')
+        #     self.logger.info('Audit table loaded.')
+        # except:
+        #     self.logger.info('Could not find audit list table, ending audit download.')
         #     raise ValueError()
-        time.sleep(10)
-        try:
-            audit_list_table = self.driver.find_element(By.TAG_NAME, 'table')
-            self.logger.info('Audit table loaded.')
-        except:
-            self.logger.info('Could not find audit list table, ending audit download.')
-            raise ValueError()
         
-        # Set to correct store(s)
-        try:
-            stores_dropdown = self.driver.find_element(By.XPATH, '//button[text()="Stores"]')
-            stores_dropdown.click()
-            time.sleep(5)
+        # # Set to correct store(s)
+        # try:
+        #     stores_dropdown = self.driver.find_element(By.XPATH, '//button[text()="Stores"]')
+        #     stores_dropdown.click()
+        #     time.sleep(5)
 
-            all_stores_option = self.driver.find_element(By.XPATH, f'//div[text()="All Stores"]')
-            time.sleep(1)
-            all_stores_option.click()
-            time.sleep(1)
-            all_stores_option.click()
-            time.sleep(1)
-            for store in stores:
-                store_text_input = self.driver.find_element(By.ID, 'text-input')
-                store_text_input.clear()
-                store_text_input.send_keys(store_audit_name_map[store])
-                time.sleep(2)
-                dropdown_option = self.driver.find_element(By.XPATH, f'//div[text()="{store_audit_name_map[store]}"]')
+        #     all_stores_option = self.driver.find_element(By.XPATH, f'//div[text()="All Stores"]')
+        #     time.sleep(1)
+        #     all_stores_option.click()
+            # time.sleep(1)
+            # all_stores_option.click()
+            # time.sleep(1)
+            # for store in stores:
+            #     store_text_input = self.driver.find_element(By.ID, 'text-input')
+            #     store_text_input.clear()
+            #     store_text_input.send_keys(store_audit_name)
+            #     time.sleep(2)
+            #     dropdown_option = self.driver.find_element(By.XPATH, f'//div[text()="{store_audit_name}"]')
 
-                # NEED TO CHECK IF STORE IS ALREADY TOGGLED
-                dropdown_option.click()
-                time.sleep(2)
+            #     # NEED TO CHECK IF STORE IS ALREADY TOGGLED
+            #     dropdown_option.click()
+            #     time.sleep(2)
 
-        except:
-            raise ValueError()
-        # Set starting date
-        # Set ending date
-        try:
-            self.logger.info('Searching for table rows.')
-            audit_rows = audit_list_table.find_elements(By.TAG_NAME, 'tr')
-            self.logger.info('Table rows found.')
-        except:
-            self.logger.info('Unable to find table rows, ending audit download.')
-            raise ValueError()
+        # except:
+        #     raise ValueError()
+        # # Set starting date
+        # # Set ending date
+        # try:
+        #     self.logger.info('Searching for table rows.')
+        #     audit_rows = audit_list_table.find_elements(By.TAG_NAME, 'tr')
+        #     self.logger.info('Table rows found.')
+        # except:
+        #     self.logger.info('Unable to find table rows, ending audit download.')
+        #     raise ValueError()
         
-        self.logger.info(f'Found {len(audit_rows)} rows.')
-        for pos, row in enumerate(audit_rows):
-            self.logger.info(f'Processing row {pos+1} of {len(audit_rows)}.')
-            cols = row.find_elements(By.TAG_NAME, 'td')
-            store, date, closed_time, auditor, audit_type, inventory_cost = cols
+        # self.logger.info(f'Found {len(audit_rows)} rows.')
+        # for pos, row in enumerate(audit_rows):
+        #     self.logger.info(f'Processing row {pos+1} of {len(audit_rows)}.')
+        #     cols = row.find_elements(By.TAG_NAME, 'td')
+        #     store, date, closed_time, auditor, audit_type, inventory_cost = cols
 
-            date_hyperlink = date.find_element(By.TAG_NAME, 'a')
+        #     date_hyperlink = date.find_element(By.TAG_NAME, 'a')
 
-            original_tab = self.driver.current_window_handle
+        #     original_tab = self.driver.current_window_handle
 
-            actions = ActionChains(self.driver)
-            actions.key_down(Keys.CONTROL).click(date_hyperlink).key_up(Keys.CONTROL).perform()
+        #     actions = ActionChains(self.driver)
+        #     actions.key_down(Keys.CONTROL).click(date_hyperlink).key_up(Keys.CONTROL).perform()
 
-            # self.driver.execute_script("window.open(arguments[0].href, '_blank');", date_hyperlink)
-            time.sleep(5)
+        #     # self.driver.execute_script("window.open(arguments[0].href, '_blank');", date_hyperlink)
+        #     time.sleep(5)
 
-            self.driver.switch_to.window(self.driver.window_handles[-1])
-            time.sleep(5)
+        #     self.driver.switch_to.window(self.driver.window_handles[-1])
+        #     time.sleep(5)
 
-            # download_filename = f'{store.text} - Foodager - Audit {date[-1:-5]}-{date[0:2]}-{date[3:5]}.xlsx'
-            try:
-                time.sleep(5)
-                self.logger.info(f'Attempting download of row {pos+1}.')
-                download_button = self.driver.find_element(By.CLASS_NAME, 'fa-download')
-                download_button.click()
-                time.sleep(5)
-                self.logger.info('Download success')
-            except:
-                self.logger.info('Unable to download audit, skipping.')
-                self.driver.close()
+        #     # download_filename = f'{store.text} - Foodager - Audit {date[-1:-5]}-{date[0:2]}-{date[3:5]}.xlsx'
+        #     try:
+        #         time.sleep(5)
+        #         self.logger.info(f'Attempting download of row {pos+1}.')
+        #         download_button = self.driver.find_element(By.CLASS_NAME, 'fa-download')
+        #         download_button.click()
+        #         time.sleep(5)
+        #         self.logger.info('Download success')
+        #     except:
+        #         self.logger.info('Unable to download audit, skipping.')
+        #         self.driver.close()
 
             
 
-            self.driver.close()
-            self.driver.switch_to.window(original_tab)
+            # self.driver.close()
+            # self.driver.switch_to.window(original_tab)
             
 
 
