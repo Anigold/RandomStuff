@@ -576,7 +576,6 @@ class CraftableBot(SeleniumBotMixin):
     
     def _add_transfer_item(self, item) -> None:
 
-
         self.logger.debug(f'Clicking "Add Transfer Line" button for {item.name}.')
         # Click the add-item button
         page_body = self.driver.find_element(By.XPATH, './/div[@class="card-body"]')
@@ -653,66 +652,56 @@ class CraftableBot(SeleniumBotMixin):
 
     def _set_audit_stores_filter(self, stores: list[str]) -> None:
             
-            # Access dropdown menu
-            if not (stores_dropdown := self.wait_for_element(
-                locator=(By.XPATH, '//button[text()="Stores"]'))
-                ):
-                self.logger.error('Unable to find store selection filter.')
-                raise TimeoutException('Stores filter dropdown did not load in time.')
-            
-            stores_dropdown.click()
+        # Access dropdown menu
+        if not (stores_dropdown := self.wait_for_element(
+            locator=(By.XPATH, '//button[text()="Stores"]'))
+            ):
+            self.logger.error('Unable to find store selection filter.')
+            raise TimeoutException('Stores filter dropdown did not load in time.')
+        
+        stores_dropdown.click()
 
-            # Clear the dropdown filter
-            if not (all_stores_option := self.wait_for_element(
-                locator=(By.XPATH, f'//div[text()="All Stores"]'),
-                condition='clickable'
+        # Clear the dropdown filter
+        if not (all_stores_option := self.wait_for_element(
+            locator=(By.XPATH, f'//div[text()="All Stores"]'),
+            condition='clickable'
+        )):
+            self.logger.error('Unable to find "All Stores" in dropdown filter.')
+            raise TimeoutError('"All Stores" option was not clickable in time.')
+        all_stores_option.click()
+        time.sleep(1)
+        all_stores_option.click()
+
+        # Access dropdown filter input
+        if not (input_element := self.wait_for_element(
+            locator=(By.ID, 'text-input')
+        )):
+            self.logger.error('Unable to find store filter input element.')
+            raise TimeoutError('Stores filter input box did not load in time.')
+        
+        # Select stores
+        for store in stores:
+
+            # Input store name
+            store_audit_name = self.get_audit_store_name(store)
+            input_element.clear()
+            input_element.send_keys(store_audit_name)
+
+            # Check for store option
+            if not (dropdown_option := self.wait_for_element(
+                locator=(By.XPATH, f'//div[text()="{store_audit_name}"]')
             )):
-                self.logger.error('Unable to find "All Stores" in dropdown filter.')
-                raise TimeoutError('"All Stores" option was not clickable in time.')
-            all_stores_option.click()
+                self.logger.error('Unable to find inputted store; skipping.')
+                continue
+            
+            # Click store option
+            dropdown_option.click()
             time.sleep(1)
-            all_stores_option.click()
-
-            # Access dropdown filter input
-            if not (input_element := self.wait_for_element(
-                locator=(By.ID, 'text-input')
-            )):
-                self.logger.error('Unable to find store filter input element.')
-                raise TimeoutError('Stores filter input box did not load in time.')
-            
-            # Select stores
-            for store in stores:
-
-                # Input store name
-                store_audit_name = self.get_audit_store_name(store)
-                input_element.clear()
-                input_element.send_keys(store_audit_name)
-
-                # Check for store option
-                if not (dropdown_option := self.wait_for_element(
-                    locator=(By.XPATH, f'//div[text()="{store_audit_name}"]')
-                )):
-                    self.logger.error('Unable to find inputted store; skipping.')
-                    continue
-                
-                # Click store option
-                dropdown_option.click()
-                time.sleep(1)
 
     def _set_date_filters(self, start_date: str, end_date: str) -> None:
         self._change_calendar_date
-    @SeleniumBotMixin.with_session(login=True)
-    @Logger.log_exceptions
-    def download_audits(self, stores: list[str], start_date: str, end_date: str) -> None:
 
-        # store_audit_name = self.get_audit_store_name(store)
-
-        self.logger.info('Beginning audit download.')
-        
-        # Navigate to audit page
-        director_audit_url = self.site_map['audit_page']
-        self.driver.get(director_audit_url)
-
+    def _audit_table_is_ready(self) -> bool:
         # Wait until the table header is interactable (signals table fully initialized)
         if not (sort_hdr := self.wait_for_element(
             locator=(By.CLASS_NAME, "sort-header"),
@@ -733,6 +722,29 @@ class CraftableBot(SeleniumBotMixin):
             self.logger.error("Audit table element not found/visible.")
             raise NoSuchElementException("Audit table element missing or hidden.")
         
+        return True
+    
+    @SeleniumBotMixin.with_session(login=True)
+    @Logger.log_exceptions
+    def download_audits(self, stores: list[str], start_date: str, end_date: str) -> None:
+
+        # store_audit_name = self.get_audit_store_name(store)
+
+        self.logger.info('Beginning audit download.')
+        
+        # Navigate to audit page
+        director_audit_url = self.site_map['audit_page']
+        self.driver.get(director_audit_url)
+
+        try:
+            self._audit_table_is_ready() # If this fails, expect NoSuchElement or Timeout Exception
+        except TimeoutException as te:
+            raise TimeoutException(te.msg)
+        except NoSuchElementException as nsee:
+            raise NoSuchElementException(nsee.msg)
+        except: 
+            raise ValueError('Something went wrong')
+        
         # Set filters
         self.logger.info(
             'Setting audit options:'
@@ -740,6 +752,7 @@ class CraftableBot(SeleniumBotMixin):
             f'- start_date = {start_date}'
             f'- end_date = {end_date}'
         )
+
         try:
             self._set_audit_stores_filter(stores)
             self._set_date_filters(start_date, end_date)
