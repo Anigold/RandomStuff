@@ -1,0 +1,138 @@
+/* ItemsPage.css – Dark Mode */
+
+:root {
+    --bg: #1f1f1f;
+    --surface: #2b2b2b;
+    --border: #3a3a3a;
+    --text: #e0e0e0;
+    --accent: #3498db;
+    --accent-hover: #2980b9;
+    --muted: #888;
+}
+  
+  .scrollable-content {
+    padding: 2rem;
+    overflow-y: auto;
+    height: 100%;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .item-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+  
+  .item-card {
+    background: var(--surface);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    padding: 1.2rem;
+    color: var(--text);
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  
+  .item-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  }
+  
+  .modal-backdrop {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+  
+  .modal {
+    background: var(--surface);
+    border-radius: 10px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 720px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    max-height: 90%;
+    overflow-y: auto;
+    color: var(--text);
+  }
+  
+  .modal h3, .modal h4 {
+    margin-top: 0;
+    color: var(--text);
+  }
+  
+  .modal label {
+    display: block;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+  
+  .modal input {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    margin-top: 0.25rem;
+    border-radius: 4px;
+    background: #202020;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  
+  .modal ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .modal ul li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .modal table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    color: var(--text);
+  }
+  
+  .modal th, .modal td {
+    border: 1px solid var(--border);
+    padding: 0.6rem;
+  }
+  
+  .modal th {
+    background-color: #333;
+  }
+  
+  .modal button {
+    padding: 0.6rem 1.2rem;
+    margin-top: 1.2rem;
+    margin-right: 0.5rem;
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .modal button:hover {
+    background-color: var(--accent-hover);
+  }
+  
+  .modal button:last-child {
+    background-color: #555;
+  }
+  
+  .modal button:last-child:hover {
+    background-color: #444;
+  }
+  

@@ -525,6 +525,8 @@ Internal Contacts:
             description='Downloads audits from Craftable.'
         )
         parser.add_argument('--stores', nargs='+', default=['Bakery', 'Collegetown', 'Triphammer', 'Downtown', 'Easthill'], help='An active store.')
+        parser.add_argument('--start_date', help='Date in mm/dd/yyyy format.')
+        parser.add_argument('--end_date', help='Date in mm/dd/yyyy format.')
         return parser
 
     def cmd_download_audits(self, args) -> None:
@@ -532,7 +534,7 @@ Internal Contacts:
         parser = self.args_download_audits()
         parsed_args = parser.parse_args(args)
         try:
-            self.workbot.download_audits(parsed_args.stores, 'as', 'as')
+            self.workbot.download_audits(parsed_args.stores, parsed_args.start_date, parsed_args.end_date)
         except:
             print('oops')
 

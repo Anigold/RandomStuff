@@ -26,7 +26,7 @@ from backend.coordinators.order_coordinator import OrderCoordinator
 from backend.coordinators.transfer_coordinator import TransferCoordinator
 
 from backend.utils.logger import Logger
-from backend.utils.helpers import convert_date_format
+from backend.utils.helpers import convert_date_format, string_to_datetime
 
 from backend.bots.bot_mixins import SeleniumBotMixin
 from selenium.webdriver.common.by import By
@@ -652,6 +652,8 @@ class CraftableBot(SeleniumBotMixin):
 
     def _set_audit_stores_filter(self, stores: list[str]) -> None:
             
+        self.logger.info(f'Setting audit "Stores" filter: {stores}')
+
         # Access dropdown menu
         if not (stores_dropdown := self.wait_for_element(
             locator=(By.XPATH, '//button[text()="Stores"]'))
@@ -698,8 +700,69 @@ class CraftableBot(SeleniumBotMixin):
             dropdown_option.click()
             time.sleep(1)
 
+        self.logger.info('Stores filter updated successfully.')
+
+    def _change_calendar_to_date(self, calendar, date: datetime) -> None:
+
+        date = string_to_datetime(date)
+        
+        try:
+            self.logger.debug('Attempting to open flatpickr calendar.')
+            calendar.click()
+            WebDriverWait(calendar, 30).until(EC.element_to_be_clickable((By.CLASS_NAME, 'flatpickr-calendar')))
+        except:
+            self.logger.error('Calendar did not open when clicked.')
+
+        self.logger.debug('Calendar opened successfully.')
+        time.sleep(5)
+
+        calendar_current_month      = calendar.find_element(By.CLASS_NAME, 'cur-month')
+        calendar_current_year_input = calendar.find_element(By.CLASS_NAME, 'cur-year')
+
+        # calendar_current_year_input.send_keys(date.year)
+
+        # print(calendar_current_month.text, flush=True)
+        current_month_value = self._get_month_value(calendar_current_month.text)
+        # print(f'Current calendar month {current_month_value}.', flush=True)
+        # print(f'Inputted date month {date.month}.', flush=True)
+
+        time.sleep(5)
+        if current_month_value != date.month:
+            # print('Changing month', flush=True)
+            if current_month_value > date.month:
+                # Click back
+                for _ in range(current_month_value - date.month):
+                    previous_month_button = calendar.find_element(By.CLASS_NAME, 'flatpickr-prev-month')
+                    previous_month_button.click()
+                    time.sleep(1)
+            if current_month_value < date.month:
+                for _ in range(date.month - current_month_value):
+                    next_month_button = calendar.find_element(By.CLASS_NAME, 'flatpickr-next-month')
+                    next_month_button.click()
+                    time.sleep(1)
+
+        day_container = calendar.find_element(By.CLASS_NAME, 'dayContainer')
+        today = day_container.find_element(By.XPATH, f'.//span[@class="flatpickr-day "][text()="{date.day}"]')
+        today.click()
+        time.sleep(10)
+
     def _set_date_filters(self, start_date: str, end_date: str) -> None:
-        self._change_calendar_date
+        
+        self.logger.info(f'Setting audit "Date" filters: {start_date} to {end_date}.')
+
+        from_date_filter = self.driver.find_element(By.XPATH, '//div[label[text()="From Date"]]')
+        to_date_filter = self.driver.find_element(By.XPATH, '//div[label[text()="To Date"]]')
+
+        self._change_calendar_to_date(from_date_filter, start_date)
+        self._change_calendar_to_date(to_date_filter, end_date)
+
+        self.logger.info('Date filters updated successfully.')
+
+    def _submit_audit_filters(self) -> None:
+
+        self.logger.info('Submitting audit filters.')
+        submit_button = self.driver.find_element(By.XPATH, '//button[text()="Go"]')
+        submit_button.click()
 
     def _audit_table_is_ready(self) -> bool:
         # Wait until the table header is interactable (signals table fully initialized)
@@ -723,7 +786,47 @@ class CraftableBot(SeleniumBotMixin):
             raise NoSuchElementException("Audit table element missing or hidden.")
         
         return True
-    
+
+    def _download_audits_from_table(self) -> None:
+
+        audit_table_rows = self.driver.find_elements(By.TAG_NAME, 'tr') # Only 1 table on the page
+        table_cols = ['Store', 'Date', 'Audit Closed Time', 'Auditor', 'Type', 'Inventory']
+
+        for pos, row in enumerate(audit_table_rows):
+            self.logger.info(f'Processing row {pos+1} of {len(audit_table_rows)}.')
+            cols = row.find_elements(By.TAG_NAME, 'td')
+            store, date, closed_time, auditor, audit_type, inventory_cost = cols
+
+            date_hyperlink = date.find_element(By.TAG_NAME, 'a')
+
+            original_tab = self.driver.current_window_handle
+
+            actions = ActionChains(self.driver)
+            actions.key_down(Keys.CONTROL).click(date_hyperlink).key_up(Keys.CONTROL).perform()
+
+            # self.driver.execute_script("window.open(arguments[0].href, '_blank');", date_hyperlink)
+            time.sleep(5)
+
+            self.driver.switch_to.window(self.driver.window_handles[-1])
+
+            # download_filename = f'{store.text} - Foodager - Audit {date[-1:-5]}-{date[0:2]}-{date[3:5]}.xlsx'
+            try:
+                time.sleep(5)
+                self.logger.info(f'Attempting download of row {pos+1}.')
+                download_button = self.driver.find_element(By.CLASS_NAME, 'fa-download')
+                download_button.click()
+                time.sleep(15)
+                self.logger.info('Download success')
+                self.driver.close()
+            except:
+                self.logger.info('Unable to download audit, skipping.')
+            
+            self.driver.switch_to.window(self.driver.window_handles[0])
+            time.sleep(2)
+
+
+
+
     @SeleniumBotMixin.with_session(login=True)
     @Logger.log_exceptions
     def download_audits(self, stores: list[str], start_date: str, end_date: str) -> None:
@@ -738,10 +841,8 @@ class CraftableBot(SeleniumBotMixin):
 
         try:
             self._audit_table_is_ready() # If this fails, expect NoSuchElement or Timeout Exception
-        except TimeoutException as te:
-            raise TimeoutException(te.msg)
-        except NoSuchElementException as nsee:
-            raise NoSuchElementException(nsee.msg)
+        except (TimeoutException, NoSuchElementException):
+            raise 
         except: 
             raise ValueError('Something went wrong')
         
@@ -753,22 +854,23 @@ class CraftableBot(SeleniumBotMixin):
             f'- end_date = {end_date}'
         )
 
+        # Set filters
         try:
             self._set_audit_stores_filter(stores)
             self._set_date_filters(start_date, end_date)
+            self._submit_audit_filters()
+            time.sleep(3)
+            self._audit_table_is_ready()
         except:
             raise ValueError()
         
+        # Download Filtered Audits
+        try:
+            self._download_audits_from_table()
+        except:
+            raise ValueError()
 
-        # self.logger.info('Setting audit options:')
-        # self.logger.info(f'- stores = {[i for i in stores]}')
-        # self.logger.info(f'- start_date = {start_date}')
-        # self.logger.info(f'- end_date = {end_date}')
-        # try:
-        #     self._set_audit_stores(stores)
-        #     self._set_start_date(start_date)
-        #     self._set_end_date(end_date)
-        # except:
+
 
 
 
@@ -969,7 +1071,7 @@ class CraftableBot(SeleniumBotMixin):
         return
     
     def _get_month_value(self, month: str) -> int:
-        print(month, flush=True)
+        # print(month, flush=True)
         months = {
             'January': 1,
             'February': 2,
@@ -985,5 +1087,6 @@ class CraftableBot(SeleniumBotMixin):
             'December': 12
         }
 
-        if month not in months: return None
-        return months[month]
+        
+        if month not in months: return  None
+        return months[month] 
