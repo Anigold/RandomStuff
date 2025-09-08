@@ -20,7 +20,7 @@ from typing import List
 from backend.utils.days import iso_today
 from backend.utils.timeparse import normalize_time_str
 from config.paths import TODOS_DIR
-from experimental.backend.app.services.services_orders import OrderServices
+from backend.app.services.services_orders import OrderServices
 
 @Logger.attach_logger
 class WorkBotCLI(CLI):

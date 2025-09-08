@@ -29,7 +29,8 @@ class FileHandler:
         self._save_strategies = {
             'excel': self._save_excel,
             'csv':   self._save_csv,
-            'json':  self._save_json
+            'json':  self._save_json,
+            'xlsx':  self._save_excel,
         }
 
     def _write_data(self, format: str, data: Any, file_path: Path) -> None:

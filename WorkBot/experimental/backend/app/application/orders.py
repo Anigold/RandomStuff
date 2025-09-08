@@ -8,6 +8,7 @@ from backend.models.order import Order
 from backend.utils.logger import Logger
 
 # Queries
+@Logger.attach_logger
 @dataclass(frozen=True)
 class GetOrderFiles:
 
@@ -16,17 +17,18 @@ class GetOrderFiles:
     def __call__(self, stores: list[str], vendors: list[str], formats: list[str] | None=None) -> list[Path]:
         return self.files.get_order_files(stores, vendors, formats)
 
+@Logger.attach_logger
 @dataclass(frozen=True)
 class ReadOrderFromFile:
 
     files: OrderFilePort
 
-    @Logger.attach_logger
     def __call__(self, path: Path) -> Order:  # type: ignore[misc]
         self.logger.info(f"Reading order file: {path}")
         return self.files.get_order_from_file(path)
 
 # Commands
+@Logger.attach_logger
 @dataclass(frozen=True)
 class GenerateVendorUploadFile:
 
@@ -34,7 +36,8 @@ class GenerateVendorUploadFile:
 
     def __call__(self, order: Order, context: dict | None=None) -> Path:
         return self.files.generate_vendor_upload_file(order, context=context)
-
+    
+@Logger.attach_logger
 @dataclass(frozen=True)
 class GenerateVendorUploadFiles:
 
@@ -42,7 +45,6 @@ class GenerateVendorUploadFiles:
     read_order: ReadOrderFromFile
     gen_upload: GenerateVendorUploadFile
 
-    @Logger.attach_logger
     def __call__(
         self,
         stores: list[str],
@@ -59,7 +61,8 @@ class GenerateVendorUploadFiles:
             ctx = context_map.get(str(fp), {}) if context_map else {}
             outs.append(self.gen_upload(order, ctx))
         return outs
-
+    
+@Logger.attach_logger
 @dataclass(frozen=True)
 class SaveOrderToDB:
 
@@ -67,6 +70,16 @@ class SaveOrderToDB:
 
     def __call__(self, order: Order) -> int: return self.repo.save_order(order)
 
+@Logger.attach_logger
+@dataclass(frozen=True)
+class SaveOrderToFile:
+    
+    files: OrderFilePort
+
+    def __call__(self, order: Order, format='xlsx') -> None:
+        self.files.save_order(order, format)
+
+@Logger.attach_logger
 @dataclass(frozen=True)
 class ArchiveOrderFile:
 
@@ -75,13 +88,13 @@ class ArchiveOrderFile:
     def __call__(self, order: Order) -> None:
         self.files.archive_order_file(order)
 
+@Logger.attach_logger
 @dataclass(frozen=True)
 class ExpectDownloadedPdf:
 
     files: OrderFilePort
     downloads: DownloadPort
 
-    @Logger.attach_logger
     def __call__(self, order: Order) -> None:  # type: ignore[misc]
         def handle(file: Path):
             dest = self.files.get_order_file_path(order, format="pdf")
@@ -90,12 +103,12 @@ class ExpectDownloadedPdf:
         self.downloads.on_download_once(match_fn=lambda f: f.name == "Order.pdf", callback=handle, timeout=10)
 
 # Diff / validation
+@Logger.attach_logger
 @dataclass(frozen=True)
 class CheckAndUpdateOrder:
 
     files: OrderFilePort
 
-    @Logger.attach_logger
     def __call__(self, order: Order) -> bool:  # type: ignore[misc]
         fp = self.files.get_order_file_path(order)
         if not fp.exists():
@@ -114,7 +127,7 @@ class CheckAndUpdateOrder:
         pdf = fp.with_suffix(".pdf")
         if pdf.exists(): self.files.remove_file(pdf)
         return False
-
+    
 def _same(a: Order, b: Order) -> bool:
 
     if (a.store != b.store) or (a.vendor != b.vendor) or (a.date != b.date): return False

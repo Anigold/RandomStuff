@@ -4352,3 +4352,820 @@ KeyError: 'Fingerlakes Artisen Foods'
 2025-09-07 09:59:10,342 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
 2025-09-07 10:44:28,974 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
 2025-09-07 10:44:28,978 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-09-08 13:41:25,152 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:51) - Initializing WorkBot...
+2025-09-08 13:46:23,961 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:57) - Initializing WorkBot...
+2025-09-08 13:48:11,369 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:57) - Initializing WorkBot...
+2025-09-08 13:53:59,670 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:60) - Initializing WorkBot...
+2025-09-08 13:53:59,685 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:91) - WorkBot initialized successfully.
+2025-09-08 13:53:59,685 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-08 13:53:59,704 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\cli\.cli_history
+2025-09-08 13:53:59,704 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-09-08 13:53:59,704 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-09-08 13:54:06,180 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-09-08 13:54:12,948 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:114) - Logging into Craftable.
+2025-09-08 13:54:20,827 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:138) - Login successful.
+2025-09-08 13:54:20,827 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:237) - Starting order download protocol.
+2025-09-08 13:54:20,828 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:240) - Accessing order page for Bakery.
+2025-09-08 13:54:27,575 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Webstaurant (08/30/2025).
+2025-09-08 13:54:29,854 - ERROR - backend.bots.craftable_bot.craftable_bot.CraftableBot - (logger.py:107) - Error in download_orders: 'CheckAndUpdateOrder' object has no attribute 'logger'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\utils\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\craftable_bot\craftable_bot.py", line 252, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\craftable_bot\craftable_bot.py", line 289, in _process_order_row
+    if update and self.orders.check_and_update_order(order_to_check_update):
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\app\application\orders.py", line 120, in __call__
+    self.logger.info("[Order Update] Order has changed. Removing old file.")
+    ^^^^^^^^^^^
+AttributeError: 'CheckAndUpdateOrder' object has no attribute 'logger'
+2025-09-08 13:54:31,574 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] download_orders failed: 'CheckAndUpdateOrder' object has no attribute 'logger'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\cli\workbot_cli.py", line 49, in cmd_download_orders
+    self.workbot.download_craftable_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 98, in download_craftable_orders
+    self.craft_bot.download_orders(stores, vendors, download_pdf=download_pdf, update=update)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\bot_mixins.py", line 95, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\utils\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\craftable_bot\craftable_bot.py", line 252, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\craftable_bot\craftable_bot.py", line 289, in _process_order_row
+    if update and self.orders.check_and_update_order(order_to_check_update):
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\app\application\orders.py", line 120, in __call__
+    self.logger.info("[Order Update] Order has changed. Removing old file.")
+    ^^^^^^^^^^^
+AttributeError: 'CheckAndUpdateOrder' object has no attribute 'logger'
+2025-09-08 13:55:25,917 - WARNING - cli.cli.CLI - (cli.py:414) - Unknown command entered: 'cls'
+2025-09-08 13:55:27,772 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-09-08 13:55:27,775 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-09-08 13:55:31,838 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:60) - Initializing WorkBot...
+2025-09-08 13:55:51,287 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:60) - Initializing WorkBot...
+2025-09-08 14:06:39,274 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:60) - Initializing WorkBot...
+2025-09-08 14:06:39,291 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:91) - WorkBot initialized successfully.
+2025-09-08 14:06:39,292 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-08 14:06:39,309 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\cli\.cli_history
+2025-09-08 14:06:39,310 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-09-08 14:06:39,310 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-09-08 14:07:10,840 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: archive_orders (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer'])
+2025-09-08 14:07:10,841 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:111) - Retrieving orders for: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[[]], formats=[['xlsx']]
+2025-09-08 14:07:10,841 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - Retrieving order files for: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[[]], formats=[['xlsx']]
+2025-09-08 14:07:10,841 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:65) - Retrieving order files: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[All vendors], formats=['xlsx']
+2025-09-08 14:07:10,871 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] archive_orders failed: Invalid filename format: combined_orders.xlsx
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\cli\workbot_cli.py", line 419, in cmd_archive_orders
+    self.workbot.archive_all_current_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 118, in archive_all_current_orders
+    orders = self.get_orders(stores, vendors, formats=['xlsx'])
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 112, in get_orders
+    order_files = self.get_order_files(stores, vendors, formats=formats)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 108, in get_order_files
+    return self.order_coordinator.get_order_files(stores=stores, vendors=vendors, formats=formats)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\depricated_coordinators\order_coordinator.py", line 57, in get_order_files
+    return self.file_handler.get_order_files(stores, vendors, formats=formats)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\storage\file\order_file_handler.py", line 103, in get_order_files
+    meta = self.filename_strategy.parse(file.name)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\serializer\filename_strategies\order_filename_strategy.py", line 28, in parse
+    raise ValueError(f'Invalid filename format: {filename}')
+ValueError: Invalid filename format: combined_orders.xlsx
+2025-09-08 14:07:26,527 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: archive_orders (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer'])
+2025-09-08 14:07:26,528 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:111) - Retrieving orders for: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[[]], formats=[['xlsx']]
+2025-09-08 14:07:26,528 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - Retrieving order files for: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[[]], formats=[['xlsx']]
+2025-09-08 14:07:26,528 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:65) - Retrieving order files: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[All vendors], formats=['xlsx']
+2025-09-08 14:07:26,542 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] archive_orders failed: Invalid filename format: ~$combined_orders.xlsx
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\cli\workbot_cli.py", line 419, in cmd_archive_orders
+    self.workbot.archive_all_current_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 118, in archive_all_current_orders
+    orders = self.get_orders(stores, vendors, formats=['xlsx'])
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 112, in get_orders
+    order_files = self.get_order_files(stores, vendors, formats=formats)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 108, in get_order_files
+    return self.order_coordinator.get_order_files(stores=stores, vendors=vendors, formats=formats)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\depricated_coordinators\order_coordinator.py", line 57, in get_order_files
+    return self.file_handler.get_order_files(stores, vendors, formats=formats)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\storage\file\order_file_handler.py", line 103, in get_order_files
+    meta = self.filename_strategy.parse(file.name)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\serializer\filename_strategies\order_filename_strategy.py", line 28, in parse
+    raise ValueError(f'Invalid filename format: {filename}')
+ValueError: Invalid filename format: ~$combined_orders.xlsx
+2025-09-08 14:07:31,695 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: archive_orders (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer'])
+2025-09-08 14:07:31,696 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:111) - Retrieving orders for: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[[]], formats=[['xlsx']]
+2025-09-08 14:07:31,696 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - Retrieving order files for: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[[]], formats=[['xlsx']]
+2025-09-08 14:07:31,696 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:65) - Retrieving order files: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[All vendors], formats=['xlsx']
+2025-09-08 14:07:31,709 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] archive_orders failed: Invalid filename format: ~$combined_orders.xlsx
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\cli\workbot_cli.py", line 419, in cmd_archive_orders
+    self.workbot.archive_all_current_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 118, in archive_all_current_orders
+    orders = self.get_orders(stores, vendors, formats=['xlsx'])
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 112, in get_orders
+    order_files = self.get_order_files(stores, vendors, formats=formats)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 108, in get_order_files
+    return self.order_coordinator.get_order_files(stores=stores, vendors=vendors, formats=formats)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\depricated_coordinators\order_coordinator.py", line 57, in get_order_files
+    return self.file_handler.get_order_files(stores, vendors, formats=formats)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\storage\file\order_file_handler.py", line 103, in get_order_files
+    meta = self.filename_strategy.parse(file.name)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\serializer\filename_strategies\order_filename_strategy.py", line 28, in parse
+    raise ValueError(f'Invalid filename format: {filename}')
+ValueError: Invalid filename format: ~$combined_orders.xlsx
+2025-09-08 14:08:05,752 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: archive_orders (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer'])
+2025-09-08 14:08:05,753 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:111) - Retrieving orders for: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[[]], formats=[['xlsx']]
+2025-09-08 14:08:05,753 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - Retrieving order files for: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[[]], formats=[['xlsx']]
+2025-09-08 14:08:05,753 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:65) - Retrieving order files: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[All vendors], formats=['xlsx']
+2025-09-08 14:08:05,765 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] archive_orders failed: Invalid filename format: ~$combined_orders.xlsx
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\cli\workbot_cli.py", line 419, in cmd_archive_orders
+    self.workbot.archive_all_current_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 118, in archive_all_current_orders
+    orders = self.get_orders(stores, vendors, formats=['xlsx'])
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 112, in get_orders
+    order_files = self.get_order_files(stores, vendors, formats=formats)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 108, in get_order_files
+    return self.order_coordinator.get_order_files(stores=stores, vendors=vendors, formats=formats)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\depricated_coordinators\order_coordinator.py", line 57, in get_order_files
+    return self.file_handler.get_order_files(stores, vendors, formats=formats)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\storage\file\order_file_handler.py", line 103, in get_order_files
+    meta = self.filename_strategy.parse(file.name)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\serializer\filename_strategies\order_filename_strategy.py", line 28, in parse
+    raise ValueError(f'Invalid filename format: {filename}')
+ValueError: Invalid filename format: ~$combined_orders.xlsx
+2025-09-08 14:08:09,158 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-09-08 14:08:09,161 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-09-08 14:08:12,320 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:60) - Initializing WorkBot...
+2025-09-08 14:08:12,336 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:91) - WorkBot initialized successfully.
+2025-09-08 14:08:12,336 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-08 14:08:12,353 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\cli\.cli_history
+2025-09-08 14:08:12,353 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-09-08 14:08:12,353 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-09-08 14:08:17,176 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: archive_orders (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer'])
+2025-09-08 14:08:17,177 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:111) - Retrieving orders for: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[[]], formats=[['xlsx']]
+2025-09-08 14:08:17,177 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - Retrieving order files for: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[[]], formats=[['xlsx']]
+2025-09-08 14:08:17,177 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:65) - Retrieving order files: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[All vendors], formats=['xlsx']
+2025-09-08 14:08:17,195 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] archive_orders failed: Invalid filename format: ~$combined_orders.xlsx
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\cli\workbot_cli.py", line 419, in cmd_archive_orders
+    self.workbot.archive_all_current_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 118, in archive_all_current_orders
+    orders = self.get_orders(stores, vendors, formats=['xlsx'])
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 112, in get_orders
+    order_files = self.get_order_files(stores, vendors, formats=formats)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 108, in get_order_files
+    return self.order_coordinator.get_order_files(stores=stores, vendors=vendors, formats=formats)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\depricated_coordinators\order_coordinator.py", line 57, in get_order_files
+    return self.file_handler.get_order_files(stores, vendors, formats=formats)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\storage\file\order_file_handler.py", line 103, in get_order_files
+    meta = self.filename_strategy.parse(file.name)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\serializer\filename_strategies\order_filename_strategy.py", line 28, in parse
+    raise ValueError(f'Invalid filename format: {filename}')
+ValueError: Invalid filename format: ~$combined_orders.xlsx
+2025-09-08 14:08:24,712 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: archive_orders (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer'])
+2025-09-08 14:08:24,713 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:111) - Retrieving orders for: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[[]], formats=[['xlsx']]
+2025-09-08 14:08:24,713 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - Retrieving order files for: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[[]], formats=[['xlsx']]
+2025-09-08 14:08:24,713 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:65) - Retrieving order files: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[All vendors], formats=['xlsx']
+2025-09-08 14:08:24,756 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:107) - Retrieved 94 order files.
+2025-09-08 14:08:24,756 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:52) - Reading 94 order files.
+2025-09-08 14:08:24,756 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\FingerLakes Farms\FingerLakes Farms_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:24,773 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Performance Food\Performance Food_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:24,790 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\FingerLakes Farms\FingerLakes Farms_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:24,804 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Performance Food\Performance Food_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:24,821 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\FingerLakes Farms\FingerLakes Farms_Downtown_2025-09-05.xlsx
+2025-09-08 14:08:24,836 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Performance Food\Performance Food_Downtown_2025-09-05.xlsx
+2025-09-08 14:08:24,850 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Performance Food\Performance Food_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:24,865 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\FingerLakes Farms\FingerLakes Farms_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:24,880 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\FingerLakes Farms\FingerLakes Farms_Bakery_2025-09-06.xlsx
+2025-09-08 14:08:24,895 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Performance Food\Performance Food_Bakery_2025-09-06.xlsx
+2025-09-08 14:08:24,910 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Equal Exchange\Equal Exchange_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:24,925 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Equal Exchange\Equal Exchange_Downtown_2025-09-05.xlsx
+2025-09-08 14:08:24,938 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Equal Exchange\Equal Exchange_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:24,952 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Equal Exchange\Equal Exchange_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:24,966 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Copper Horse Coffee\Copper Horse Coffee_Bakery_2025-09-07.xlsx
+2025-09-08 14:08:24,980 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\DUTCH VALLEY FOOD DIST\DUTCH VALLEY FOOD DIST_Bakery_2025-09-07.xlsx
+2025-09-08 14:08:24,994 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\BJ's\BJ's_Bakery_2025-09-07.xlsx
+2025-09-08 14:08:25,008 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Equal Exchange\Equal Exchange_Bakery_2025-09-07.xlsx
+2025-09-08 14:08:25,023 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Eurocafe Imports\Eurocafe Imports_Bakery_2025-09-07.xlsx
+2025-09-08 14:08:25,036 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Keck's Food Service\Keck's Food Service_Bakery_2025-09-07.xlsx
+2025-09-08 14:08:25,050 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Hillcrest Foods\Hillcrest Foods_Bakery_2025-09-07.xlsx
+2025-09-08 14:08:25,064 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\US Foods\US Foods_Bakery_2025-09-07.xlsx
+2025-09-08 14:08:25,080 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Coca-Cola\Coca-Cola_Bakery_2025-09-07.xlsx
+2025-09-08 14:08:25,094 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Odeko In\Odeko In._Bakery_2025-09-07.xlsx
+2025-09-08 14:08:25,108 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Hillcrest Dairy\Hillcrest Dairy_Bakery_2025-09-06.xlsx
+2025-09-08 14:08:25,123 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Sysco\Sysco_Bakery_2025-09-06.xlsx
+2025-09-08 14:08:25,140 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\UNFI\UNFI_Bakery_2025-09-03.xlsx
+2025-09-08 14:08:25,156 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Webstaurant\Webstaurant_Bakery_2025-08-30.xlsx
+2025-09-08 14:08:25,160 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\NAT'S NUTS\NAT'S NUTS_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:25,175 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Wegmans\Wegmans_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:25,191 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\BALKAN BEVERAGE LLC\BALKAN BEVERAGE LLC_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:25,206 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\A.L. George\A.L. George_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:25,220 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Coca-Cola\Coca-Cola_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:25,235 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\UNFI\UNFI_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:25,252 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\DUTCH VALLEY FOOD DIST\DUTCH VALLEY FOOD DIST_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:25,266 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Peters Supply\Peters Supply_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:25,279 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Johnston Paper\Johnston Paper_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:25,292 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Hill & Markes\Hill & Markes_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:25,307 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Copper Horse Coffee\Copper Horse Coffee_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:25,321 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Regional Distributors, Inc\Regional Distributors, Inc._Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:25,336 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Hillcrest Dairy\Hillcrest Dairy_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:25,350 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Sysco\Sysco_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:25,365 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\US Foods\US Foods_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:25,380 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Hen of the Woods\Hen of the Woods_Downtown_2025-09-06.xlsx
+2025-09-08 14:08:25,394 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Worlds Best Cheeses\Worlds Best Cheeses_Downtown_2025-09-05.xlsx
+2025-09-08 14:08:25,408 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Peters Supply\Peters Supply_Downtown_2025-09-05.xlsx
+2025-09-08 14:08:25,422 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\DUTCH VALLEY FOOD DIST\DUTCH VALLEY FOOD DIST_Downtown_2025-09-05.xlsx
+2025-09-08 14:08:25,435 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Hillcrest Dairy\Hillcrest Dairy_Downtown_2025-09-05.xlsx
+2025-09-08 14:08:25,449 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\UNFI\UNFI_Downtown_2025-09-05.xlsx
+2025-09-08 14:08:25,465 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Coca-Cola\Coca-Cola_Downtown_2025-09-05.xlsx
+2025-09-08 14:08:25,479 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Sysco\Sysco_Downtown_2025-09-05.xlsx
+2025-09-08 14:08:25,493 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\SANICO\SANICO_Downtown_2025-09-05.xlsx
+2025-09-08 14:08:25,506 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Hill & Markes\Hill & Markes_Downtown_2025-09-05.xlsx
+2025-09-08 14:08:25,519 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Copper Horse Coffee\Copper Horse Coffee_Downtown_2025-09-05.xlsx
+2025-09-08 14:08:25,534 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Regional Distributors, Inc\Regional Distributors, Inc._Downtown_2025-09-05.xlsx
+2025-09-08 14:08:25,548 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\US Foods\US Foods_Downtown_2025-09-05.xlsx
+2025-09-08 14:08:25,562 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\OLBRO DISTRIBUTORS\OLBRO DISTRIBUTORS_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:25,575 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\NAT'S NUTS\NAT'S NUTS_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:25,589 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Mapleland Farms\Mapleland Farms_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:25,603 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Karma Sauce Company LLC\Karma Sauce Company LLC_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:25,617 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Katz Specialty Food Group, LLC\Katz Specialty Food Group, LLC_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:25,630 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Hen of the Woods\Hen of the Woods_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:25,644 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\GranolaChik\GranolaChik_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:25,659 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Earthquake Spices\Earthquake Spices_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:25,673 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\DUTCH VALLEY FOOD DIST\DUTCH VALLEY FOOD DIST_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:25,687 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Creative Converting\Creative Converting_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:25,700 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Worlds Best Cheeses\Worlds Best Cheeses_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:25,715 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Belle's Barkery\Belle's Barkery_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:25,729 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\BBQuse\BBQuse_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:25,742 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Hillcrest Dairy\Hillcrest Dairy_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:25,756 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\UNFI\UNFI_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:25,772 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Eurocafe Imports\Eurocafe Imports_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:25,786 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Hill & Markes\Hill & Markes_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:25,800 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Copper Horse Coffee\Copper Horse Coffee_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:25,814 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Regional Distributors, Inc\Regional Distributors, Inc._Easthill_2025-09-05.xlsx
+2025-09-08 14:08:25,829 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Coca-Cola\Coca-Cola_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:25,843 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Peters Supply\Peters Supply_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:25,858 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Sysco\Sysco_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:25,872 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\US Foods\US Foods_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:25,888 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Fingerlakes Artisen Foods\Fingerlakes Artisen Foods_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:25,902 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Worlds Best Cheeses\Worlds Best Cheeses_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:25,915 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Bo's Bones\Bo's Bones_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:25,929 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\DUTCH VALLEY FOOD DIST\DUTCH VALLEY FOOD DIST_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:25,943 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Coca-Cola\Coca-Cola_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:25,957 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\US Foods\US Foods_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:25,972 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Copper Horse Coffee\Copper Horse Coffee_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:25,986 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Johnston Paper\Johnston Paper_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:26,000 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Peters Supply\Peters Supply_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:26,014 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Hillcrest Dairy\Hillcrest Dairy_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:26,028 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\UNFI\UNFI_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:26,045 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Sysco\Sysco_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:26,060 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Webstaurant\Webstaurant_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:26,073 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Regional Distributors, Inc\Regional Distributors, Inc._Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:26,087 - INFO - backend.depricated_coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Hill & Markes\Hill & Markes_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:26,104 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: FingerLakes Farms_Easthill_2025-09-05.pdf
+2025-09-08 14:08:26,106 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: FingerLakes Farms_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:26,108 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Performance Food_Easthill_2025-09-05.pdf
+2025-09-08 14:08:26,110 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Performance Food_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:26,112 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: FingerLakes Farms_Collegetown_2025-09-05.pdf
+2025-09-08 14:08:26,113 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: FingerLakes Farms_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:26,115 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Performance Food_Collegetown_2025-09-05.pdf
+2025-09-08 14:08:26,117 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Performance Food_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:26,119 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: FingerLakes Farms_Downtown_2025-09-05.pdf
+2025-09-08 14:08:26,121 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: FingerLakes Farms_Downtown_2025-09-05.xlsx
+2025-09-08 14:08:26,123 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Performance Food_Downtown_2025-09-05.pdf
+2025-09-08 14:08:26,124 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Performance Food_Downtown_2025-09-05.xlsx
+2025-09-08 14:08:26,126 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Performance Food_Triphammer_2025-09-05.pdf
+2025-09-08 14:08:26,128 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Performance Food_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:26,129 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: FingerLakes Farms_Triphammer_2025-09-05.pdf
+2025-09-08 14:08:26,131 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: FingerLakes Farms_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:26,133 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: FingerLakes Farms_Bakery_2025-09-06.pdf
+2025-09-08 14:08:26,134 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: FingerLakes Farms_Bakery_2025-09-06.xlsx
+2025-09-08 14:08:26,136 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Performance Food_Bakery_2025-09-06.pdf
+2025-09-08 14:08:26,137 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Performance Food_Bakery_2025-09-06.xlsx
+2025-09-08 14:08:26,139 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Equal Exchange_Collegetown_2025-09-05.pdf
+2025-09-08 14:08:26,141 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Equal Exchange_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:26,143 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Equal Exchange_Downtown_2025-09-05.pdf
+2025-09-08 14:08:26,144 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Equal Exchange_Downtown_2025-09-05.xlsx
+2025-09-08 14:08:26,146 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Equal Exchange_Easthill_2025-09-05.pdf
+2025-09-08 14:08:26,148 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Equal Exchange_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:26,150 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Equal Exchange_Triphammer_2025-09-05.pdf
+2025-09-08 14:08:26,151 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Equal Exchange_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:26,153 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Copper Horse Coffee_Bakery_2025-09-07.pdf
+2025-09-08 14:08:26,154 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Copper Horse Coffee_Bakery_2025-09-07.xlsx
+2025-09-08 14:08:26,157 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: DUTCH VALLEY FOOD DIST_Bakery_2025-09-07.pdf
+2025-09-08 14:08:26,158 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: DUTCH VALLEY FOOD DIST_Bakery_2025-09-07.xlsx
+2025-09-08 14:08:26,160 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: BJ's_Bakery_2025-09-07.pdf
+2025-09-08 14:08:26,162 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: BJ's_Bakery_2025-09-07.xlsx
+2025-09-08 14:08:26,164 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Equal Exchange_Bakery_2025-09-07.pdf
+2025-09-08 14:08:26,165 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Equal Exchange_Bakery_2025-09-07.xlsx
+2025-09-08 14:08:26,167 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Eurocafe Imports_Bakery_2025-09-07.pdf
+2025-09-08 14:08:26,168 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Eurocafe Imports_Bakery_2025-09-07.xlsx
+2025-09-08 14:08:26,170 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Keck's Food Service_Bakery_2025-09-07.pdf
+2025-09-08 14:08:26,172 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Keck's Food Service_Bakery_2025-09-07.xlsx
+2025-09-08 14:08:26,173 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hillcrest Foods_Bakery_2025-09-07.pdf
+2025-09-08 14:08:26,175 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hillcrest Foods_Bakery_2025-09-07.xlsx
+2025-09-08 14:08:26,177 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: US Foods_Bakery_2025-09-07.pdf
+2025-09-08 14:08:26,178 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: US Foods_Bakery_2025-09-07.xlsx
+2025-09-08 14:08:26,180 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Coca-Cola_Bakery_2025-09-07.pdf
+2025-09-08 14:08:26,182 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Coca-Cola_Bakery_2025-09-07.xlsx
+2025-09-08 14:08:26,184 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Odeko In._Bakery_2025-09-07.pdf
+2025-09-08 14:08:26,185 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Odeko In._Bakery_2025-09-07.xlsx
+2025-09-08 14:08:26,187 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hillcrest Dairy_Bakery_2025-09-06.pdf
+2025-09-08 14:08:26,189 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hillcrest Dairy_Bakery_2025-09-06.xlsx
+2025-09-08 14:08:26,192 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sysco_Bakery_2025-09-06.pdf
+2025-09-08 14:08:26,193 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sysco_Bakery_2025-09-06.xlsx
+2025-09-08 14:08:26,195 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: UNFI_Bakery_2025-09-03.pdf
+2025-09-08 14:08:26,198 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: UNFI_Bakery_2025-09-03.xlsx
+2025-09-08 14:08:26,201 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Webstaurant_Bakery_2025-08-30.pdf
+2025-09-08 14:08:26,203 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Webstaurant_Bakery_2025-08-30.xlsx
+2025-09-08 14:08:26,204 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: NAT'S NUTS_Collegetown_2025-09-05.pdf
+2025-09-08 14:08:26,206 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: NAT'S NUTS_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:26,208 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Wegmans_Collegetown_2025-09-05.pdf
+2025-09-08 14:08:26,209 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Wegmans_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:26,211 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: BALKAN BEVERAGE LLC_Collegetown_2025-09-05.pdf
+2025-09-08 14:08:26,212 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: BALKAN BEVERAGE LLC_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:26,214 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: A.L. George_Collegetown_2025-09-05.pdf
+2025-09-08 14:08:26,215 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: A.L. George_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:26,217 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Coca-Cola_Collegetown_2025-09-05.pdf
+2025-09-08 14:08:26,219 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Coca-Cola_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:26,222 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: UNFI_Collegetown_2025-09-05.pdf
+2025-09-08 14:08:26,224 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: UNFI_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:26,226 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: DUTCH VALLEY FOOD DIST_Collegetown_2025-09-05.pdf
+2025-09-08 14:08:26,228 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: DUTCH VALLEY FOOD DIST_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:26,230 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Peters Supply_Collegetown_2025-09-05.pdf
+2025-09-08 14:08:26,231 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Peters Supply_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:26,233 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Johnston Paper_Collegetown_2025-09-05.pdf
+2025-09-08 14:08:26,234 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Johnston Paper_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:26,236 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hill & Markes_Collegetown_2025-09-05.pdf
+2025-09-08 14:08:26,238 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hill & Markes_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:26,240 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Copper Horse Coffee_Collegetown_2025-09-05.pdf
+2025-09-08 14:08:26,242 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Copper Horse Coffee_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:26,244 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Regional Distributors, Inc._Collegetown_2025-09-05.pdf
+2025-09-08 14:08:26,245 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Regional Distributors, Inc._Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:26,247 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hillcrest Dairy_Collegetown_2025-09-05.pdf
+2025-09-08 14:08:26,249 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hillcrest Dairy_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:26,251 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sysco_Collegetown_2025-09-05.pdf
+2025-09-08 14:08:26,252 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sysco_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:26,255 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: US Foods_Collegetown_2025-09-05.pdf
+2025-09-08 14:08:26,256 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: US Foods_Collegetown_2025-09-05.xlsx
+2025-09-08 14:08:26,258 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hen of the Woods_Downtown_2025-09-06.pdf
+2025-09-08 14:08:26,260 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hen of the Woods_Downtown_2025-09-06.xlsx
+2025-09-08 14:08:26,261 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Worlds Best Cheeses_Downtown_2025-09-05.pdf
+2025-09-08 14:08:26,263 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Worlds Best Cheeses_Downtown_2025-09-05.xlsx
+2025-09-08 14:08:26,265 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Peters Supply_Downtown_2025-09-05.pdf
+2025-09-08 14:08:26,266 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Peters Supply_Downtown_2025-09-05.xlsx
+2025-09-08 14:08:26,268 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: DUTCH VALLEY FOOD DIST_Downtown_2025-09-05.pdf
+2025-09-08 14:08:26,270 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: DUTCH VALLEY FOOD DIST_Downtown_2025-09-05.xlsx
+2025-09-08 14:08:26,272 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hillcrest Dairy_Downtown_2025-09-05.pdf
+2025-09-08 14:08:26,273 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hillcrest Dairy_Downtown_2025-09-05.xlsx
+2025-09-08 14:08:26,275 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: UNFI_Downtown_2025-09-05.pdf
+2025-09-08 14:08:26,277 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: UNFI_Downtown_2025-09-05.xlsx
+2025-09-08 14:08:26,279 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Coca-Cola_Downtown_2025-09-05.pdf
+2025-09-08 14:08:26,280 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Coca-Cola_Downtown_2025-09-05.xlsx
+2025-09-08 14:08:26,283 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sysco_Downtown_2025-09-05.pdf
+2025-09-08 14:08:26,284 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sysco_Downtown_2025-09-05.xlsx
+2025-09-08 14:08:26,287 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: SANICO_Downtown_2025-09-05.pdf
+2025-09-08 14:08:26,288 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: SANICO_Downtown_2025-09-05.xlsx
+2025-09-08 14:08:26,290 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hill & Markes_Downtown_2025-09-05.pdf
+2025-09-08 14:08:26,292 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hill & Markes_Downtown_2025-09-05.xlsx
+2025-09-08 14:08:26,294 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Copper Horse Coffee_Downtown_2025-09-05.pdf
+2025-09-08 14:08:26,296 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Copper Horse Coffee_Downtown_2025-09-05.xlsx
+2025-09-08 14:08:26,298 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Regional Distributors, Inc._Downtown_2025-09-05.pdf
+2025-09-08 14:08:26,299 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Regional Distributors, Inc._Downtown_2025-09-05.xlsx
+2025-09-08 14:08:26,301 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: US Foods_Downtown_2025-09-05.pdf
+2025-09-08 14:08:26,303 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: US Foods_Downtown_2025-09-05.xlsx
+2025-09-08 14:08:26,306 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: OLBRO DISTRIBUTORS_Easthill_2025-09-05.pdf
+2025-09-08 14:08:26,307 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: OLBRO DISTRIBUTORS_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:26,309 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: NAT'S NUTS_Easthill_2025-09-05.pdf
+2025-09-08 14:08:26,310 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: NAT'S NUTS_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:26,312 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Mapleland Farms_Easthill_2025-09-05.pdf
+2025-09-08 14:08:26,313 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Mapleland Farms_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:26,314 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Karma Sauce Company LLC_Easthill_2025-09-05.pdf
+2025-09-08 14:08:26,315 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Karma Sauce Company LLC_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:26,317 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Katz Specialty Food Group, LLC_Easthill_2025-09-05.pdf
+2025-09-08 14:08:26,319 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Katz Specialty Food Group, LLC_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:26,321 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hen of the Woods_Easthill_2025-09-05.pdf
+2025-09-08 14:08:26,324 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hen of the Woods_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:26,326 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: GranolaChik_Easthill_2025-09-05.pdf
+2025-09-08 14:08:26,327 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: GranolaChik_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:26,330 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Earthquake Spices_Easthill_2025-09-05.pdf
+2025-09-08 14:08:26,332 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Earthquake Spices_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:26,335 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: DUTCH VALLEY FOOD DIST_Easthill_2025-09-05.pdf
+2025-09-08 14:08:26,338 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: DUTCH VALLEY FOOD DIST_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:26,340 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Creative Converting_Easthill_2025-09-05.pdf
+2025-09-08 14:08:26,341 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Creative Converting_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:26,343 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Worlds Best Cheeses_Easthill_2025-09-05.pdf
+2025-09-08 14:08:26,346 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Worlds Best Cheeses_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:26,348 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Belle's Barkery_Easthill_2025-09-05.pdf
+2025-09-08 14:08:26,349 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Belle's Barkery_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:26,351 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: BBQuse_Easthill_2025-09-05.pdf
+2025-09-08 14:08:26,352 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: BBQuse_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:26,355 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hillcrest Dairy_Easthill_2025-09-05.pdf
+2025-09-08 14:08:26,356 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hillcrest Dairy_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:26,360 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: UNFI_Easthill_2025-09-05.pdf
+2025-09-08 14:08:26,362 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: UNFI_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:26,365 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Eurocafe Imports_Easthill_2025-09-05.pdf
+2025-09-08 14:08:26,368 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Eurocafe Imports_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:26,371 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hill & Markes_Easthill_2025-09-05.pdf
+2025-09-08 14:08:26,373 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hill & Markes_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:26,377 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Copper Horse Coffee_Easthill_2025-09-05.pdf
+2025-09-08 14:08:26,379 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Copper Horse Coffee_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:26,382 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Regional Distributors, Inc._Easthill_2025-09-05.pdf
+2025-09-08 14:08:26,385 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Regional Distributors, Inc._Easthill_2025-09-05.xlsx
+2025-09-08 14:08:26,389 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Coca-Cola_Easthill_2025-09-05.pdf
+2025-09-08 14:08:26,391 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Coca-Cola_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:26,394 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Peters Supply_Easthill_2025-09-05.pdf
+2025-09-08 14:08:26,396 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Peters Supply_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:26,399 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sysco_Easthill_2025-09-05.pdf
+2025-09-08 14:08:26,402 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sysco_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:26,405 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: US Foods_Easthill_2025-09-05.pdf
+2025-09-08 14:08:26,407 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: US Foods_Easthill_2025-09-05.xlsx
+2025-09-08 14:08:26,410 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Fingerlakes Artisen Foods_Triphammer_2025-09-05.pdf
+2025-09-08 14:08:26,412 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Fingerlakes Artisen Foods_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:26,416 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Worlds Best Cheeses_Triphammer_2025-09-05.pdf
+2025-09-08 14:08:26,419 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Worlds Best Cheeses_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:26,424 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Bo's Bones_Triphammer_2025-09-05.pdf
+2025-09-08 14:08:26,427 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Bo's Bones_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:26,430 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: DUTCH VALLEY FOOD DIST_Triphammer_2025-09-05.pdf
+2025-09-08 14:08:26,433 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: DUTCH VALLEY FOOD DIST_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:26,435 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Coca-Cola_Triphammer_2025-09-05.pdf
+2025-09-08 14:08:26,437 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Coca-Cola_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:26,440 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: US Foods_Triphammer_2025-09-05.pdf
+2025-09-08 14:08:26,442 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: US Foods_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:26,445 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Copper Horse Coffee_Triphammer_2025-09-05.pdf
+2025-09-08 14:08:26,448 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Copper Horse Coffee_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:26,450 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Johnston Paper_Triphammer_2025-09-05.pdf
+2025-09-08 14:08:26,453 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Johnston Paper_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:26,456 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Peters Supply_Triphammer_2025-09-05.pdf
+2025-09-08 14:08:26,458 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Peters Supply_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:26,461 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hillcrest Dairy_Triphammer_2025-09-05.pdf
+2025-09-08 14:08:26,463 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hillcrest Dairy_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:26,466 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: UNFI_Triphammer_2025-09-05.pdf
+2025-09-08 14:08:26,469 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: UNFI_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:26,473 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sysco_Triphammer_2025-09-05.pdf
+2025-09-08 14:08:26,475 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sysco_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:26,478 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Webstaurant_Triphammer_2025-09-05.pdf
+2025-09-08 14:08:26,481 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Webstaurant_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:26,483 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Regional Distributors, Inc._Triphammer_2025-09-05.pdf
+2025-09-08 14:08:26,486 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Regional Distributors, Inc._Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:26,490 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hill & Markes_Triphammer_2025-09-05.pdf
+2025-09-08 14:08:26,496 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hill & Markes_Triphammer_2025-09-05.xlsx
+2025-09-08 14:08:26,496 - INFO - cli.cli.CLI - (cli.py:421) - Command 'archive_orders' executed successfully.
+2025-09-08 14:08:33,696 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-09-08 14:08:38,674 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:114) - Logging into Craftable.
+2025-09-08 14:08:46,186 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:138) - Login successful.
+2025-09-08 14:08:46,187 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:237) - Starting order download protocol.
+2025-09-08 14:08:46,187 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:240) - Accessing order page for Bakery.
+2025-09-08 14:08:52,952 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Webstaurant (08/30/2025).
+2025-09-08 14:08:55,181 - ERROR - backend.bots.craftable_bot.craftable_bot.CraftableBot - (logger.py:107) - Error in download_orders: 'CheckAndUpdateOrder' object has no attribute 'logger'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\utils\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\craftable_bot\craftable_bot.py", line 252, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\craftable_bot\craftable_bot.py", line 289, in _process_order_row
+    if update and self.orders.check_and_update_order(order_to_check_update):
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\app\application\orders.py", line 111, in __call__
+    self.logger.info(f"[Order Update] No existing file at {fp}. Proceeding with save.")
+    ^^^^^^^^^^^
+AttributeError: 'CheckAndUpdateOrder' object has no attribute 'logger'
+2025-09-08 14:08:56,938 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] download_orders failed: 'CheckAndUpdateOrder' object has no attribute 'logger'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\cli\workbot_cli.py", line 49, in cmd_download_orders
+    self.workbot.download_craftable_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 98, in download_craftable_orders
+    self.craft_bot.download_orders(stores, vendors, download_pdf=download_pdf, update=update)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\bot_mixins.py", line 95, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\utils\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\craftable_bot\craftable_bot.py", line 252, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\craftable_bot\craftable_bot.py", line 289, in _process_order_row
+    if update and self.orders.check_and_update_order(order_to_check_update):
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\app\application\orders.py", line 111, in __call__
+    self.logger.info(f"[Order Update] No existing file at {fp}. Proceeding with save.")
+    ^^^^^^^^^^^
+AttributeError: 'CheckAndUpdateOrder' object has no attribute 'logger'
+2025-09-08 14:09:31,807 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-09-08 14:09:31,810 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-09-08 14:09:35,338 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:60) - Initializing WorkBot...
+2025-09-08 14:09:35,354 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:91) - WorkBot initialized successfully.
+2025-09-08 14:09:35,354 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-08 14:09:35,369 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\cli\.cli_history
+2025-09-08 14:09:35,370 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-09-08 14:09:35,370 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-09-08 14:09:36,483 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-09-08 14:09:41,826 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:114) - Logging into Craftable.
+2025-09-08 14:09:48,987 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:138) - Login successful.
+2025-09-08 14:09:48,987 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:237) - Starting order download protocol.
+2025-09-08 14:09:48,987 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:240) - Accessing order page for Bakery.
+2025-09-08 14:09:55,802 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Webstaurant (08/30/2025).
+2025-09-08 14:09:58,081 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:111) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Webstaurant\Webstaurant_Bakery_2025-08-30.xlsx. Proceeding with save.
+2025-09-08 14:09:58,081 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Webstaurant.
+2025-09-08 14:09:58,082 - ERROR - backend.bots.craftable_bot.craftable_bot.CraftableBot - (logger.py:107) - Error in download_orders: Unsupported format: xlsx
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\storage\file\file_handler.py", line 37, in _write_data
+    save_func = self._save_strategies[format]
+                ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+KeyError: 'xlsx'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\utils\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\craftable_bot\craftable_bot.py", line 252, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\craftable_bot\craftable_bot.py", line 298, in _process_order_row
+    self.orders.save_order_to_file(order_to_save, format='xlsx')
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\app\application\orders.py", line 76, in __call__
+    self.files.save_order(order, format)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\app\adapters\file\order_file_adapter.py", line 33, in save_order
+    self.impl.save_order(order, format)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\storage\file\order_file_handler.py", line 33, in save_order
+    self._write_data(format, data, file_path)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\storage\file\file_handler.py", line 39, in _write_data
+    raise ValueError(f'Unsupported format: {format}')
+ValueError: Unsupported format: xlsx
+2025-09-08 14:09:59,802 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] download_orders failed: Unsupported format: xlsx
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\storage\file\file_handler.py", line 37, in _write_data
+    save_func = self._save_strategies[format]
+                ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+KeyError: 'xlsx'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\cli\workbot_cli.py", line 49, in cmd_download_orders
+    self.workbot.download_craftable_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 98, in download_craftable_orders
+    self.craft_bot.download_orders(stores, vendors, download_pdf=download_pdf, update=update)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\bot_mixins.py", line 95, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\utils\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\craftable_bot\craftable_bot.py", line 252, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\craftable_bot\craftable_bot.py", line 298, in _process_order_row
+    self.orders.save_order_to_file(order_to_save, format='xlsx')
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\app\application\orders.py", line 76, in __call__
+    self.files.save_order(order, format)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\app\adapters\file\order_file_adapter.py", line 33, in save_order
+    self.impl.save_order(order, format)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\storage\file\order_file_handler.py", line 33, in save_order
+    self._write_data(format, data, file_path)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\storage\file\file_handler.py", line 39, in _write_data
+    raise ValueError(f'Unsupported format: {format}')
+ValueError: Unsupported format: xlsx
+2025-09-08 14:19:14,127 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-09-08 14:19:14,130 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-09-08 14:19:18,729 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:60) - Initializing WorkBot...
+2025-09-08 14:19:18,744 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:91) - WorkBot initialized successfully.
+2025-09-08 14:19:18,744 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-08 14:19:18,752 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\cli\.cli_history
+2025-09-08 14:19:18,752 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-09-08 14:19:18,752 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-09-08 14:19:20,242 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-09-08 14:19:25,307 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:114) - Logging into Craftable.
+2025-09-08 14:19:32,539 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:138) - Login successful.
+2025-09-08 14:19:32,539 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:237) - Starting order download protocol.
+2025-09-08 14:19:32,539 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:240) - Accessing order page for Bakery.
+2025-09-08 14:19:39,203 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Webstaurant (08/30/2025).
+2025-09-08 14:19:41,380 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:111) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Webstaurant\Webstaurant_Bakery_2025-08-30.xlsx. Proceeding with save.
+2025-09-08 14:19:41,381 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Webstaurant.
+2025-09-08 14:19:45,808 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for UNFI (09/03/2025).
+2025-09-08 14:19:48,285 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:111) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\UNFI\UNFI_Bakery_2025-09-03.xlsx. Proceeding with save.
+2025-09-08 14:19:48,285 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for UNFI.
+2025-09-08 14:19:52,699 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Performance Food (09/06/2025).
+2025-09-08 14:19:55,485 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:111) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Performance Food\Performance Food_Bakery_2025-09-06.xlsx. Proceeding with save.
+2025-09-08 14:19:55,485 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Performance Food.
+2025-09-08 14:19:59,904 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for FingerLakes Farms (09/06/2025).
+2025-09-08 14:20:01,612 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:111) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\FingerLakes Farms\FingerLakes Farms_Bakery_2025-09-06.xlsx. Proceeding with save.
+2025-09-08 14:20:01,612 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for FingerLakes Farms.
+2025-09-08 14:20:06,028 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Sysco (09/06/2025).
+2025-09-08 14:20:08,581 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:111) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Sysco\Sysco_Bakery_2025-09-06.xlsx. Proceeding with save.
+2025-09-08 14:20:08,581 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Sysco.
+2025-09-08 14:20:12,974 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Hillcrest Dairy (09/06/2025).
+2025-09-08 14:20:14,391 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:111) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Hillcrest Dairy\Hillcrest Dairy_Bakery_2025-09-06.xlsx. Proceeding with save.
+2025-09-08 14:20:14,391 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Hillcrest Dairy.
+2025-09-08 14:20:18,783 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Odeko In. (09/07/2025).
+2025-09-08 14:20:19,939 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:111) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Odeko In.\Odeko In._Bakery_2025-09-07.xlsx. Proceeding with save.
+2025-09-08 14:20:19,939 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Odeko In..
+2025-09-08 14:20:24,340 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Coca-Cola (09/07/2025).
+2025-09-08 14:20:26,017 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:111) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Coca-Cola\Coca-Cola_Bakery_2025-09-07.xlsx. Proceeding with save.
+2025-09-08 14:20:26,017 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Coca-Cola.
+2025-09-08 14:20:30,411 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for US Foods (09/07/2025).
+2025-09-08 14:20:32,843 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:111) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\US Foods\US Foods_Bakery_2025-09-07.xlsx. Proceeding with save.
+2025-09-08 14:20:32,843 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for US Foods.
+2025-09-08 14:20:37,261 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Hillcrest Foods (09/07/2025).
+2025-09-08 14:20:39,294 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:111) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Hillcrest Foods\Hillcrest Foods_Bakery_2025-09-07.xlsx. Proceeding with save.
+2025-09-08 14:20:39,295 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Hillcrest Foods.
+2025-09-08 14:20:43,694 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Keck's Food Service (09/07/2025).
+2025-09-08 14:20:45,101 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:111) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Keck's Food Service\Keck's Food Service_Bakery_2025-09-07.xlsx. Proceeding with save.
+2025-09-08 14:20:45,101 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Keck's Food Service.
+2025-09-08 14:20:49,511 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Eurocafe Imports (09/07/2025).
+2025-09-08 14:20:50,671 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:111) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Eurocafe Imports\Eurocafe Imports_Bakery_2025-09-07.xlsx. Proceeding with save.
+2025-09-08 14:20:50,671 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Eurocafe Imports.
+2025-09-08 14:20:55,061 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Equal Exchange (09/07/2025).
+2025-09-08 14:20:56,619 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:111) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Equal Exchange\Equal Exchange_Bakery_2025-09-07.xlsx. Proceeding with save.
+2025-09-08 14:20:56,619 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Equal Exchange.
+2025-09-08 14:21:01,018 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for BJ's (09/07/2025).
+2025-09-08 14:21:02,284 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:111) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\BJ's\BJ's_Bakery_2025-09-07.xlsx. Proceeding with save.
+2025-09-08 14:21:02,284 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for BJ's.
+2025-09-08 14:21:06,677 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for DUTCH VALLEY FOOD DIST (09/07/2025).
+2025-09-08 14:21:07,894 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:111) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\DUTCH VALLEY FOOD DIST\DUTCH VALLEY FOOD DIST_Bakery_2025-09-07.xlsx. Proceeding with save.
+2025-09-08 14:21:07,895 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for DUTCH VALLEY FOOD DIST.
+2025-09-08 14:21:12,286 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Copper Horse Coffee (09/07/2025).
+2025-09-08 14:21:13,583 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:111) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Copper Horse Coffee\Copper Horse Coffee_Bakery_2025-09-07.xlsx. Proceeding with save.
+2025-09-08 14:21:13,583 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Copper Horse Coffee.
+2025-09-08 14:21:17,971 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Regional Distributors, Inc. (09/08/2025).
+2025-09-08 14:21:19,970 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:111) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Regional Distributors, Inc.\Regional Distributors, Inc._Bakery_2025-09-08.xlsx. Proceeding with save.
+2025-09-08 14:21:19,970 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Regional Distributors, Inc..
+2025-09-08 14:21:24,362 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Lentz (09/08/2025).
+2025-09-08 14:21:26,007 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:111) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Lentz\Lentz_Bakery_2025-09-08.xlsx. Proceeding with save.
+2025-09-08 14:21:26,007 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Lentz.
+2025-09-08 14:21:30,414 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for BALKAN BEVERAGE LLC (09/08/2025).
+2025-09-08 14:21:31,727 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:111) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\BALKAN BEVERAGE LLC\BALKAN BEVERAGE LLC_Bakery_2025-09-08.xlsx. Proceeding with save.
+2025-09-08 14:21:31,727 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for BALKAN BEVERAGE LLC.
+2025-09-08 14:21:36,134 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for A.L. George (09/08/2025).
+2025-09-08 14:21:37,679 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:111) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\A.L. George\A.L. George_Bakery_2025-09-08.xlsx. Proceeding with save.
+2025-09-08 14:21:37,679 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for A.L. George.
+2025-09-08 14:21:42,131 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Palmer (09/08/2025).
+2025-09-08 14:21:43,349 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:111) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Palmer\Palmer_Bakery_2025-09-08.xlsx. Proceeding with save.
+2025-09-08 14:21:43,349 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Palmer.
+2025-09-08 14:21:47,748 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Side Hill Acres (09/08/2025).
+2025-09-08 14:21:48,927 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:111) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Side Hill Acres\Side Hill Acres_Bakery_2025-09-08.xlsx. Proceeding with save.
+2025-09-08 14:21:48,927 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Side Hill Acres.
+2025-09-08 14:21:53,292 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:254) - Order download complete.
+2025-09-08 14:21:53,292 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:255) - Closing WebDriver session.
+2025-09-08 14:21:55,010 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-08 14:25:37,293 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-09-08 14:25:37,297 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-09-08 14:25:41,522 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:60) - Initializing WorkBot...
+2025-09-08 14:25:41,538 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:91) - WorkBot initialized successfully.
+2025-09-08 14:25:41,538 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-08 14:25:41,547 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\cli\.cli_history
+2025-09-08 14:25:41,547 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-09-08 14:25:41,547 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-09-08 14:25:43,063 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-09-08 14:25:48,223 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:114) - Logging into Craftable.
+2025-09-08 14:25:55,241 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:138) - Login successful.
+2025-09-08 14:25:55,241 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:237) - Starting order download protocol.
+2025-09-08 14:25:55,241 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:240) - Accessing order page for Bakery.
+2025-09-08 14:26:01,938 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Webstaurant (08/30/2025).
+2025-09-08 14:26:04,118 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:115) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Webstaurant\Webstaurant_Bakery_2025-08-30.xlsx. Proceeding with save.
+2025-09-08 14:26:04,118 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Webstaurant.
+2025-09-08 14:26:06,657 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:102) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Webstaurant\Webstaurant_Bakery_2025-08-30.pdf
+2025-09-08 14:26:08,516 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for UNFI (09/03/2025).
+2025-09-08 14:26:11,045 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:115) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\UNFI\UNFI_Bakery_2025-09-03.xlsx. Proceeding with save.
+2025-09-08 14:26:11,045 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for UNFI.
+2025-09-08 14:26:13,075 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:102) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\UNFI\UNFI_Bakery_2025-09-03.pdf
+2025-09-08 14:26:15,444 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Performance Food (09/06/2025).
+2025-09-08 14:26:18,242 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:115) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Performance Food\Performance Food_Bakery_2025-09-06.xlsx. Proceeding with save.
+2025-09-08 14:26:18,242 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Performance Food.
+2025-09-08 14:26:20,777 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:102) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Performance Food\Performance Food_Bakery_2025-09-06.pdf
+2025-09-08 14:26:22,657 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for FingerLakes Farms (09/06/2025).
+2025-09-08 14:26:24,432 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:115) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\FingerLakes Farms\FingerLakes Farms_Bakery_2025-09-06.xlsx. Proceeding with save.
+2025-09-08 14:26:24,432 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for FingerLakes Farms.
+2025-09-08 14:26:26,452 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:102) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\FingerLakes Farms\FingerLakes Farms_Bakery_2025-09-06.pdf
+2025-09-08 14:26:28,832 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Sysco (09/06/2025).
+2025-09-08 14:26:31,455 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:115) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Sysco\Sysco_Bakery_2025-09-06.xlsx. Proceeding with save.
+2025-09-08 14:26:31,455 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Sysco.
+2025-09-08 14:26:33,988 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:102) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Sysco\Sysco_Bakery_2025-09-06.pdf
+2025-09-08 14:26:35,868 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Hillcrest Dairy (09/06/2025).
+2025-09-08 14:26:37,274 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:115) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Hillcrest Dairy\Hillcrest Dairy_Bakery_2025-09-06.xlsx. Proceeding with save.
+2025-09-08 14:26:37,274 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Hillcrest Dairy.
+2025-09-08 14:26:39,294 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:102) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Hillcrest Dairy\Hillcrest Dairy_Bakery_2025-09-06.pdf
+2025-09-08 14:26:41,660 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Odeko In. (09/07/2025).
+2025-09-08 14:26:42,813 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:115) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Odeko In.\Odeko In._Bakery_2025-09-07.xlsx. Proceeding with save.
+2025-09-08 14:26:42,813 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Odeko In..
+2025-09-08 14:26:44,831 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:102) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Odeko In.\Odeko In._Bakery_2025-09-07.pdf
+2025-09-08 14:26:47,201 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Coca-Cola (09/07/2025).
+2025-09-08 14:26:48,876 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:115) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Coca-Cola\Coca-Cola_Bakery_2025-09-07.xlsx. Proceeding with save.
+2025-09-08 14:26:48,877 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Coca-Cola.
+2025-09-08 14:26:50,895 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:102) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Coca-Cola\Coca-Cola_Bakery_2025-09-07.pdf
+2025-09-08 14:26:53,267 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for US Foods (09/07/2025).
+2025-09-08 14:26:55,761 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:115) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\US Foods\US Foods_Bakery_2025-09-07.xlsx. Proceeding with save.
+2025-09-08 14:26:55,761 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for US Foods.
+2025-09-08 14:26:57,782 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:102) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\US Foods\US Foods_Bakery_2025-09-07.pdf
+2025-09-08 14:27:00,150 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Hillcrest Foods (09/07/2025).
+2025-09-08 14:27:02,331 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:115) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Hillcrest Foods\Hillcrest Foods_Bakery_2025-09-07.xlsx. Proceeding with save.
+2025-09-08 14:27:02,331 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Hillcrest Foods.
+2025-09-08 14:27:04,361 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:102) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Hillcrest Foods\Hillcrest Foods_Bakery_2025-09-07.pdf
+2025-09-08 14:27:06,732 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Keck's Food Service (09/07/2025).
+2025-09-08 14:27:08,098 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:115) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Keck's Food Service\Keck's Food Service_Bakery_2025-09-07.xlsx. Proceeding with save.
+2025-09-08 14:27:08,098 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Keck's Food Service.
+2025-09-08 14:27:10,618 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:102) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Keck's Food Service\Keck's Food Service_Bakery_2025-09-07.pdf
+2025-09-08 14:27:12,487 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Eurocafe Imports (09/07/2025).
+2025-09-08 14:27:13,642 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:115) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Eurocafe Imports\Eurocafe Imports_Bakery_2025-09-07.xlsx. Proceeding with save.
+2025-09-08 14:27:13,642 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Eurocafe Imports.
+2025-09-08 14:27:15,659 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:102) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Eurocafe Imports\Eurocafe Imports_Bakery_2025-09-07.pdf
+2025-09-08 14:27:18,050 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Equal Exchange (09/07/2025).
+2025-09-08 14:27:19,697 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:115) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Equal Exchange\Equal Exchange_Bakery_2025-09-07.xlsx. Proceeding with save.
+2025-09-08 14:27:19,697 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Equal Exchange.
+2025-09-08 14:27:21,717 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:102) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Equal Exchange\Equal Exchange_Bakery_2025-09-07.pdf
+2025-09-08 14:27:24,089 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for BJ's (09/07/2025).
+2025-09-08 14:27:25,347 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:115) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\BJ's\BJ's_Bakery_2025-09-07.xlsx. Proceeding with save.
+2025-09-08 14:27:25,347 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for BJ's.
+2025-09-08 14:27:27,868 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:102) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\BJ's\BJ's_Bakery_2025-09-07.pdf
+2025-09-08 14:27:29,739 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for DUTCH VALLEY FOOD DIST (09/07/2025).
+2025-09-08 14:27:30,953 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:115) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\DUTCH VALLEY FOOD DIST\DUTCH VALLEY FOOD DIST_Bakery_2025-09-07.xlsx. Proceeding with save.
+2025-09-08 14:27:30,953 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for DUTCH VALLEY FOOD DIST.
+2025-09-08 14:27:33,476 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:102) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\DUTCH VALLEY FOOD DIST\DUTCH VALLEY FOOD DIST_Bakery_2025-09-07.pdf
+2025-09-08 14:27:35,341 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Copper Horse Coffee (09/07/2025).
+2025-09-08 14:27:36,600 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:115) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Copper Horse Coffee\Copper Horse Coffee_Bakery_2025-09-07.xlsx. Proceeding with save.
+2025-09-08 14:27:36,600 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Copper Horse Coffee.
+2025-09-08 14:27:38,619 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:102) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Copper Horse Coffee\Copper Horse Coffee_Bakery_2025-09-07.pdf
+2025-09-08 14:27:40,974 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Regional Distributors, Inc. (09/08/2025).
+2025-09-08 14:27:42,920 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:115) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Regional Distributors, Inc.\Regional Distributors, Inc._Bakery_2025-09-08.xlsx. Proceeding with save.
+2025-09-08 14:27:42,921 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Regional Distributors, Inc..
+2025-09-08 14:27:44,940 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:102) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Regional Distributors, Inc.\Regional Distributors, Inc._Bakery_2025-09-08.pdf
+2025-09-08 14:27:47,310 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Lentz (09/08/2025).
+2025-09-08 14:27:48,952 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:115) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Lentz\Lentz_Bakery_2025-09-08.xlsx. Proceeding with save.
+2025-09-08 14:27:48,952 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Lentz.
+2025-09-08 14:27:51,477 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:102) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Lentz\Lentz_Bakery_2025-09-08.pdf
+2025-09-08 14:27:53,345 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for BALKAN BEVERAGE LLC (09/08/2025).
+2025-09-08 14:27:54,659 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:115) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\BALKAN BEVERAGE LLC\BALKAN BEVERAGE LLC_Bakery_2025-09-08.xlsx. Proceeding with save.
+2025-09-08 14:27:54,659 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for BALKAN BEVERAGE LLC.
+2025-09-08 14:27:56,677 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:102) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\BALKAN BEVERAGE LLC\BALKAN BEVERAGE LLC_Bakery_2025-09-08.pdf
+2025-09-08 14:27:59,050 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for A.L. George (09/08/2025).
+2025-09-08 14:28:00,582 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:115) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\A.L. George\A.L. George_Bakery_2025-09-08.xlsx. Proceeding with save.
+2025-09-08 14:28:00,582 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for A.L. George.
+2025-09-08 14:28:02,605 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:102) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\A.L. George\A.L. George_Bakery_2025-09-08.pdf
+2025-09-08 14:28:04,970 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Palmer (09/08/2025).
+2025-09-08 14:28:06,182 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:115) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Palmer\Palmer_Bakery_2025-09-08.xlsx. Proceeding with save.
+2025-09-08 14:28:06,182 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Palmer.
+2025-09-08 14:28:08,703 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:102) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Palmer\Palmer_Bakery_2025-09-08.pdf
+2025-09-08 14:28:10,581 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Side Hill Acres (09/08/2025).
+2025-09-08 14:28:11,750 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:115) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Side Hill Acres\Side Hill Acres_Bakery_2025-09-08.xlsx. Proceeding with save.
+2025-09-08 14:28:11,750 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Side Hill Acres.
+2025-09-08 14:28:14,270 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:102) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\Side Hill Acres\Side Hill Acres_Bakery_2025-09-08.pdf
+2025-09-08 14:28:16,101 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:254) - Order download complete.
+2025-09-08 14:28:16,101 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:255) - Closing WebDriver session.
+2025-09-08 14:28:17,812 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-08 15:38:02,697 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-09-08 15:38:02,705 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.

@@ -7,6 +7,7 @@ from backend.app.application.orders import (
     ReadOrderFromFile,
     GenerateVendorUploadFile,
     GenerateVendorUploadFiles,
+    SaveOrderToFile,
     SaveOrderToDB,
     ArchiveOrderFile,
     ExpectDownloadedPdf,
@@ -36,6 +37,7 @@ class OrderServices:
             read_order=self.read_order_from_file,
             gen_upload=self.generate_vendor_upload,
         )
+        self.save_order_to_file    = SaveOrderToFile(self.files)
         self.save_order_to_db      = SaveOrderToDB(self.repo)
         self.archive_order_file    = ArchiveOrderFile(self.files)
 

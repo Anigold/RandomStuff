@@ -87,7 +87,7 @@ def produce_pricing_and_email(driver) -> None:
     emailer.display_email(email)
     return
 
-def download_pricing_sheets(driver, vendors=['Sysco', 'US Foods', 'Performance Food',], guides=['IBProduce']) -> None:
+def download_pricing_sheets(driver, vendors=['Sysco', 'US Foods', 'Russo Produce', 'Performance Food',], guides=['IBProduce']) -> None:
 
     for vendor in vendors:
 

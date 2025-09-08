@@ -295,8 +295,8 @@ class CraftableBot(SeleniumBotMixin):
         self.logger.info(f'Saving order for {row_vendor_name}.')
         order_to_save = Order(store=store, vendor=row_vendor_name, date=row_date_formatted, items=items)
 
-        self.orders.save(order_to_save, format='xlsx')
-        self.orders.save_order_to_db(order_to_save)
+        self.orders.save_order_to_file(order_to_save, format='xlsx')
+        # self.orders.save_order_to_db(order_to_save)
 
         time.sleep(1)
 
@@ -304,17 +304,17 @@ class CraftableBot(SeleniumBotMixin):
         if download_pdf:
             
             # 1) Register a one-time watcher BEFORE clicking the button
-            def handle_downloaded(file: Path, order=order_to_save):
-                dest = self.files.get_order_file_path(order, format="pdf")
-                self.files.move_file(file, dest, overwrite=True)
-                self.logger.info(f"PDF moved to {dest}")
+            # def handle_downloaded(file: Path, order=order_to_save):
+            #     dest = self.files.get_order_file_path(order, format="pdf")
+            #     self.files.move_file(file, dest, overwrite=True)
+            #     self.logger.info(f"PDF moved to {dest}")
 
-            self.downloads.on_download_once(
-                match_fn=lambda f: f.name.lower().endswith("order.pdf"),
-                callback=handle_downloaded,
-                timeout=30,
-            )
-
+            # self.downloads.on_download_once(
+            #     match_fn=lambda f: f.name.lower().endswith("order.pdf"),
+            #     callback=handle_downloaded,
+            #     timeout=30,
+            # )
+            self.orders.expect_downloaded_pdf(order_to_save)
             self._download_order_pdf()
 
         self.driver.back()

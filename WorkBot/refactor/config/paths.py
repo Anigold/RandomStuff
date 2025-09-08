@@ -10,6 +10,7 @@ MASTER_LOG_FILE    = DATA_STORAGE_DIR / 'logging' / 'master.log'
 DOWNLOADS_PATH     = DATA_STORAGE_DIR / 'downloads'
 STORES_DATA_FILE   = DATA_STORAGE_DIR / 'stores' / 'stores.json'
 UPLOAD_FILES_DIR   = DATA_STORAGE_DIR / 'upload_files'
+ITEMS_DATA_FILE    = DATA_STORAGE_DIR / 'items'
 
 VENDOR_FILES_DIR   = DATA_STORAGE_DIR / 'vendors'
 VENDORS_FILE       = VENDOR_FILES_DIR / 'vendors.yaml'

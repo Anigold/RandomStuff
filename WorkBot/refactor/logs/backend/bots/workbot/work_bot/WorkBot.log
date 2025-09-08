@@ -1212,3 +1212,32 @@
 2025-09-07 14:45:05,679 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[['Triphammer']], vendors=[['Sysco', 'Performance Food', 'US Foods']], formats=[['xlsx']]
 2025-09-07 14:45:05,687 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:174) - Found 3 order files to process.
 2025-09-07 14:45:05,791 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:197) - Vendor upload file generation complete. 3 files created.
+2025-09-08 07:04:09,569 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:54) - Initializing WorkBot...
+2025-09-08 07:04:09,604 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:74) - WorkBot initialized successfully.
+2025-09-08 08:36:44,938 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:94) - Retrieving orders for: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[['Hillcrest Dairy', 'Hillcrest Foods']], formats=[['xlsx']]
+2025-09-08 08:36:44,938 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[['Hillcrest Dairy', 'Hillcrest Foods']], formats=[['xlsx']]
+2025-09-08 08:40:15,460 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:94) - Retrieving orders for: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[['Hillcrest Foods']], formats=[['xlsx']]
+2025-09-08 08:40:15,460 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[['Hillcrest Foods']], formats=[['xlsx']]
+2025-09-08 08:48:38,840 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:94) - Retrieving orders for: stores=[['Bakery', 'Collegetown']], vendors=[['A.L. George']], formats=[['xlsx']]
+2025-09-08 08:48:38,840 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[['Bakery', 'Collegetown']], vendors=[['A.L. George']], formats=[['xlsx']]
+2025-09-08 11:34:36,703 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:54) - Initializing WorkBot...
+2025-09-08 11:34:36,720 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:74) - WorkBot initialized successfully.
+2025-09-08 11:35:14,006 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:140) - Beginning order-transfer conversion: Collegetown-Ithaca Bakery -> Bakery
+2025-09-08 11:35:14,006 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:94) - Retrieving orders for: stores=[['Collegetown']], vendors=[['Ithaca Bakery']], formats=[['xlsx']]
+2025-09-08 11:35:14,006 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[['Collegetown']], vendors=[['Ithaca Bakery']], formats=[['xlsx']]
+2025-09-08 11:35:44,142 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:140) - Beginning order-transfer conversion: Collegetown-Ithaca Bakery -> Bakery
+2025-09-08 11:35:44,143 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:94) - Retrieving orders for: stores=[['Collegetown']], vendors=[['Ithaca Bakery']], formats=[['xlsx']]
+2025-09-08 11:35:44,143 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[['Collegetown']], vendors=[['Ithaca Bakery']], formats=[['xlsx']]
+2025-09-08 11:35:59,975 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:140) - Beginning order-transfer conversion: Easthill-Ithaca Bakery -> Bakery
+2025-09-08 11:35:59,975 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:94) - Retrieving orders for: stores=[['Easthill']], vendors=[['Ithaca Bakery']], formats=[['xlsx']]
+2025-09-08 11:35:59,975 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[['Easthill']], vendors=[['Ithaca Bakery']], formats=[['xlsx']]
+2025-09-08 11:36:06,135 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:140) - Beginning order-transfer conversion: Downtown-Ithaca Bakery -> Bakery
+2025-09-08 11:36:06,135 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:94) - Retrieving orders for: stores=[['Downtown']], vendors=[['Ithaca Bakery']], formats=[['xlsx']]
+2025-09-08 11:36:06,135 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[['Downtown']], vendors=[['Ithaca Bakery']], formats=[['xlsx']]
+2025-09-08 11:36:11,279 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:140) - Beginning order-transfer conversion: Triphammer-Ithaca Bakery -> Bakery
+2025-09-08 11:36:11,279 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:94) - Retrieving orders for: stores=[['Triphammer']], vendors=[['Ithaca Bakery']], formats=[['xlsx']]
+2025-09-08 11:36:11,279 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[['Triphammer']], vendors=[['Ithaca Bakery']], formats=[['xlsx']]
+2025-09-08 12:19:08,051 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:94) - Retrieving orders for: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[['Hillcrest Dairy']], formats=[['xlsx']]
+2025-09-08 12:19:08,051 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[['Hillcrest Dairy']], formats=[['xlsx']]
+2025-09-08 14:43:59,062 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:94) - Retrieving orders for: stores=[['Triphammer']], vendors=[['Russo Produce']], formats=[['xlsx']]
+2025-09-08 14:43:59,062 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[['Triphammer']], vendors=[['Russo Produce']], formats=[['xlsx']]

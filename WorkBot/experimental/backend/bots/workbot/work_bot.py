@@ -23,7 +23,7 @@ from backend.bots.craftable_bot.helpers import get_craftable_username_password
 
 # region Application Services
 from backend.bots.craftable_bot.craftable_bot import CraftableBot
-from experimental.backend.app.services.services_orders import OrderServices
+from backend.app.services.services_orders import OrderServices
 # endregion
 
 # region Models
@@ -32,12 +32,21 @@ from backend.models.transfer import Transfer
 from backend.models.transfer_item import TransferItem
 # endregion
 
+from backend.depricated_coordinators.vendor_coordinator import VendorCoordinator
+from backend.depricated_coordinators.item_coordinator import ItemCoordinator
+from backend.depricated_coordinators.order_coordinator import OrderCoordinator
+from backend.depricated_coordinators.store_coordinator import StoreCoordinator
+from backend.depricated_coordinators.transfer_coordinator import TransferCoordinator
+
 # region Email Services
 from backend.utils.emailer.emailer import Emailer, Email
 from backend.utils.emailer.services.gmail_service import GmailService
 from backend.utils.emailer.services.outlook_service import OutlookService
 # endregion
 
+from backend.app.adapters.file.order_file_adapter import OrderFileAdapter
+from backend.app.adapters.repo.order_repo_adapter import OrderRepositoryAdapter
+from backend.app.adapters.download.download_adapter import DownloadAdapter
 # endregion
 
 # region ---- WORKBOT CLASS ----
@@ -50,18 +59,29 @@ class WorkBot:
     def __init__(self):
         self.logger.info('Initializing WorkBot...')
 
-        # self.vendor_coordinator   = VendorCoordinator()
-        # self.order_coordinator    = OrderCoordinator()
-        # self.store_coordinator    = StoreCoordinator()
-        # self.transfer_coordinator = TransferCoordinator()
+        # These will be replaced by the Services
+        self.vendor_coordinator   = VendorCoordinator()
+        self.order_coordinator    = OrderCoordinator()
+        self.store_coordinator    = StoreCoordinator()
+        self.transfer_coordinator = TransferCoordinator()
+
+        files     = OrderFileAdapter()
+        repo      = OrderRepositoryAdapter()
+        downloads = DownloadAdapter()
+
+        self.orders = OrderServices(
+            files=files,
+            repo=repo,
+            downloads=downloads
+        )
 
         username, password = get_craftable_username_password()
 
         self.craft_bot = CraftableBot(
             username,
             password,
-            order_coordinator=self.order_coordinator,
-            transfer_coordinator=self.transfer_coordinator
+            orders=self.orders
+
         )
 
         # Host-based conditional setup

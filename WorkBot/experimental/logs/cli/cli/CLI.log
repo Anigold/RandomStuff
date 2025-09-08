@@ -1,0 +1,257 @@
+2025-09-08 13:53:59,685 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-08 13:53:59,704 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\cli\.cli_history
+2025-09-08 13:53:59,704 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-09-08 13:53:59,704 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-09-08 13:54:06,180 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-09-08 13:54:31,574 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] download_orders failed: 'CheckAndUpdateOrder' object has no attribute 'logger'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\cli\workbot_cli.py", line 49, in cmd_download_orders
+    self.workbot.download_craftable_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 98, in download_craftable_orders
+    self.craft_bot.download_orders(stores, vendors, download_pdf=download_pdf, update=update)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\bot_mixins.py", line 95, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\utils\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\craftable_bot\craftable_bot.py", line 252, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\craftable_bot\craftable_bot.py", line 289, in _process_order_row
+    if update and self.orders.check_and_update_order(order_to_check_update):
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\app\application\orders.py", line 120, in __call__
+    self.logger.info("[Order Update] Order has changed. Removing old file.")
+    ^^^^^^^^^^^
+AttributeError: 'CheckAndUpdateOrder' object has no attribute 'logger'
+2025-09-08 13:55:25,917 - WARNING - cli.cli.CLI - (cli.py:414) - Unknown command entered: 'cls'
+2025-09-08 13:55:27,772 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-09-08 13:55:27,775 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-09-08 14:06:39,292 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-08 14:06:39,309 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\cli\.cli_history
+2025-09-08 14:06:39,310 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-09-08 14:06:39,310 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-09-08 14:07:10,840 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: archive_orders (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer'])
+2025-09-08 14:07:10,871 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] archive_orders failed: Invalid filename format: combined_orders.xlsx
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\cli\workbot_cli.py", line 419, in cmd_archive_orders
+    self.workbot.archive_all_current_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 118, in archive_all_current_orders
+    orders = self.get_orders(stores, vendors, formats=['xlsx'])
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 112, in get_orders
+    order_files = self.get_order_files(stores, vendors, formats=formats)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 108, in get_order_files
+    return self.order_coordinator.get_order_files(stores=stores, vendors=vendors, formats=formats)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\depricated_coordinators\order_coordinator.py", line 57, in get_order_files
+    return self.file_handler.get_order_files(stores, vendors, formats=formats)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\storage\file\order_file_handler.py", line 103, in get_order_files
+    meta = self.filename_strategy.parse(file.name)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\serializer\filename_strategies\order_filename_strategy.py", line 28, in parse
+    raise ValueError(f'Invalid filename format: {filename}')
+ValueError: Invalid filename format: combined_orders.xlsx
+2025-09-08 14:07:26,527 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: archive_orders (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer'])
+2025-09-08 14:07:26,542 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] archive_orders failed: Invalid filename format: ~$combined_orders.xlsx
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\cli\workbot_cli.py", line 419, in cmd_archive_orders
+    self.workbot.archive_all_current_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 118, in archive_all_current_orders
+    orders = self.get_orders(stores, vendors, formats=['xlsx'])
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 112, in get_orders
+    order_files = self.get_order_files(stores, vendors, formats=formats)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 108, in get_order_files
+    return self.order_coordinator.get_order_files(stores=stores, vendors=vendors, formats=formats)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\depricated_coordinators\order_coordinator.py", line 57, in get_order_files
+    return self.file_handler.get_order_files(stores, vendors, formats=formats)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\storage\file\order_file_handler.py", line 103, in get_order_files
+    meta = self.filename_strategy.parse(file.name)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\serializer\filename_strategies\order_filename_strategy.py", line 28, in parse
+    raise ValueError(f'Invalid filename format: {filename}')
+ValueError: Invalid filename format: ~$combined_orders.xlsx
+2025-09-08 14:07:31,695 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: archive_orders (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer'])
+2025-09-08 14:07:31,709 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] archive_orders failed: Invalid filename format: ~$combined_orders.xlsx
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\cli\workbot_cli.py", line 419, in cmd_archive_orders
+    self.workbot.archive_all_current_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 118, in archive_all_current_orders
+    orders = self.get_orders(stores, vendors, formats=['xlsx'])
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 112, in get_orders
+    order_files = self.get_order_files(stores, vendors, formats=formats)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 108, in get_order_files
+    return self.order_coordinator.get_order_files(stores=stores, vendors=vendors, formats=formats)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\depricated_coordinators\order_coordinator.py", line 57, in get_order_files
+    return self.file_handler.get_order_files(stores, vendors, formats=formats)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\storage\file\order_file_handler.py", line 103, in get_order_files
+    meta = self.filename_strategy.parse(file.name)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\serializer\filename_strategies\order_filename_strategy.py", line 28, in parse
+    raise ValueError(f'Invalid filename format: {filename}')
+ValueError: Invalid filename format: ~$combined_orders.xlsx
+2025-09-08 14:08:05,752 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: archive_orders (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer'])
+2025-09-08 14:08:05,765 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] archive_orders failed: Invalid filename format: ~$combined_orders.xlsx
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\cli\workbot_cli.py", line 419, in cmd_archive_orders
+    self.workbot.archive_all_current_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 118, in archive_all_current_orders
+    orders = self.get_orders(stores, vendors, formats=['xlsx'])
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 112, in get_orders
+    order_files = self.get_order_files(stores, vendors, formats=formats)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 108, in get_order_files
+    return self.order_coordinator.get_order_files(stores=stores, vendors=vendors, formats=formats)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\depricated_coordinators\order_coordinator.py", line 57, in get_order_files
+    return self.file_handler.get_order_files(stores, vendors, formats=formats)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\storage\file\order_file_handler.py", line 103, in get_order_files
+    meta = self.filename_strategy.parse(file.name)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\serializer\filename_strategies\order_filename_strategy.py", line 28, in parse
+    raise ValueError(f'Invalid filename format: {filename}')
+ValueError: Invalid filename format: ~$combined_orders.xlsx
+2025-09-08 14:08:09,158 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-09-08 14:08:09,161 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-09-08 14:08:12,336 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-08 14:08:12,353 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\cli\.cli_history
+2025-09-08 14:08:12,353 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-09-08 14:08:12,353 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-09-08 14:08:17,176 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: archive_orders (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer'])
+2025-09-08 14:08:17,195 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] archive_orders failed: Invalid filename format: ~$combined_orders.xlsx
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\cli\workbot_cli.py", line 419, in cmd_archive_orders
+    self.workbot.archive_all_current_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 118, in archive_all_current_orders
+    orders = self.get_orders(stores, vendors, formats=['xlsx'])
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 112, in get_orders
+    order_files = self.get_order_files(stores, vendors, formats=formats)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 108, in get_order_files
+    return self.order_coordinator.get_order_files(stores=stores, vendors=vendors, formats=formats)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\depricated_coordinators\order_coordinator.py", line 57, in get_order_files
+    return self.file_handler.get_order_files(stores, vendors, formats=formats)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\storage\file\order_file_handler.py", line 103, in get_order_files
+    meta = self.filename_strategy.parse(file.name)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\serializer\filename_strategies\order_filename_strategy.py", line 28, in parse
+    raise ValueError(f'Invalid filename format: {filename}')
+ValueError: Invalid filename format: ~$combined_orders.xlsx
+2025-09-08 14:08:24,712 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: archive_orders (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer'])
+2025-09-08 14:08:26,496 - INFO - cli.cli.CLI - (cli.py:421) - Command 'archive_orders' executed successfully.
+2025-09-08 14:08:33,696 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-09-08 14:08:56,938 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] download_orders failed: 'CheckAndUpdateOrder' object has no attribute 'logger'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\cli\workbot_cli.py", line 49, in cmd_download_orders
+    self.workbot.download_craftable_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 98, in download_craftable_orders
+    self.craft_bot.download_orders(stores, vendors, download_pdf=download_pdf, update=update)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\bot_mixins.py", line 95, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\utils\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\craftable_bot\craftable_bot.py", line 252, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\craftable_bot\craftable_bot.py", line 289, in _process_order_row
+    if update and self.orders.check_and_update_order(order_to_check_update):
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\app\application\orders.py", line 111, in __call__
+    self.logger.info(f"[Order Update] No existing file at {fp}. Proceeding with save.")
+    ^^^^^^^^^^^
+AttributeError: 'CheckAndUpdateOrder' object has no attribute 'logger'
+2025-09-08 14:09:31,807 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-09-08 14:09:31,810 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-09-08 14:09:35,354 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-08 14:09:35,369 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\cli\.cli_history
+2025-09-08 14:09:35,370 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-09-08 14:09:35,370 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-09-08 14:09:36,483 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-09-08 14:09:59,802 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] download_orders failed: Unsupported format: xlsx
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\storage\file\file_handler.py", line 37, in _write_data
+    save_func = self._save_strategies[format]
+                ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+KeyError: 'xlsx'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\cli\workbot_cli.py", line 49, in cmd_download_orders
+    self.workbot.download_craftable_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\workbot\work_bot.py", line 98, in download_craftable_orders
+    self.craft_bot.download_orders(stores, vendors, download_pdf=download_pdf, update=update)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\bot_mixins.py", line 95, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\utils\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\craftable_bot\craftable_bot.py", line 252, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\bots\craftable_bot\craftable_bot.py", line 298, in _process_order_row
+    self.orders.save_order_to_file(order_to_save, format='xlsx')
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\app\application\orders.py", line 76, in __call__
+    self.files.save_order(order, format)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\app\adapters\file\order_file_adapter.py", line 33, in save_order
+    self.impl.save_order(order, format)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\storage\file\order_file_handler.py", line 33, in save_order
+    self._write_data(format, data, file_path)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\backend\storage\file\file_handler.py", line 39, in _write_data
+    raise ValueError(f'Unsupported format: {format}')
+ValueError: Unsupported format: xlsx
+2025-09-08 14:19:14,127 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-09-08 14:19:14,130 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-09-08 14:19:18,744 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-08 14:19:18,752 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\cli\.cli_history
+2025-09-08 14:19:18,752 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-09-08 14:19:18,752 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-09-08 14:19:20,242 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-09-08 14:21:55,010 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-08 14:25:37,293 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-09-08 14:25:37,297 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-09-08 14:25:41,538 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-08 14:25:41,547 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\cli\.cli_history
+2025-09-08 14:25:41,547 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-09-08 14:25:41,547 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-09-08 14:25:43,063 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-09-08 14:28:17,812 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-08 15:38:02,697 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-09-08 15:38:02,705 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.

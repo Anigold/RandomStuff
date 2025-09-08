@@ -164,12 +164,20 @@ class Logger:
         os.makedirs(os.path.dirname(log_file), exist_ok=True)
 
         cls.logger = Logger.get_logger(logger_name, log_file=log_file)
+        
+        # detect frozen dataclass
+        is_frozen = bool(getattr(getattr(cls, "__dataclass_params__", None), "frozen", False))
 
         # Patch __init__ to attach to instances as well
         orig_init = cls.__init__
 
         def new_init(self, *args, **kwargs):
-            self.logger = Logger.get_logger(logger_name, log_file=log_file)
+
+            if is_frozen:
+                object.__setattr__(self, 'logger', Logger.get_logger(logger_name, log_file=log_file))
+            else:
+                self.logger = Logger.get_logger(logger_name, log_file=log_file)
+            
             orig_init(self, *args, **kwargs)
 
         cls.__init__ = new_init
