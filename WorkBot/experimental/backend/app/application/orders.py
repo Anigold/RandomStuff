@@ -27,6 +27,25 @@ class ReadOrderFromFile:
         self.logger.info(f"Reading order file: {path}")
         return self.files.get_order_from_file(path)
 
+@Logger.attach_logger
+@dataclass(frozen=True)
+class ReadOrdersFromFile:
+
+    files: OrderFilePort
+    read_order: ReadOrderFromFile
+
+    def __call__(self, paths: list[Path]) -> list[Order]:
+        return [self.read_order(path) for path in paths]
+        
+@Logger.attach_logger
+@dataclass(frozen=True)
+class ParseFilenameForMetadata:
+
+    files: OrderFilePort
+
+    def __call__(self, order_name: str):
+        self.files.parse_filename_for_metadata(order_name)
+
 # Commands
 @Logger.attach_logger
 @dataclass(frozen=True)
@@ -41,7 +60,7 @@ class GenerateVendorUploadFile:
 @dataclass(frozen=True)
 class GenerateVendorUploadFiles:
 
-    get_paths: GetOrderFiles
+    get_paths:  GetOrderFiles
     read_order: ReadOrderFromFile
     gen_upload: GenerateVendorUploadFile
 
@@ -53,6 +72,7 @@ class GenerateVendorUploadFiles:
         end_date: Optional[str]=None,
         context_map: dict[str, dict] | None=None
     ) -> list[Path]:  # type: ignore[misc]
+        
         file_paths = self.get_paths(stores=stores, vendors=vendors, formats=["xlsx"])
         self.logger.info(f"[GenerateVendorUploadFiles] Found {len(file_paths)} order files.")
         outs: list[Path] = []
@@ -77,7 +97,7 @@ class SaveOrderToFile:
     files: OrderFilePort
 
     def __call__(self, order: Order, format='xlsx') -> None:
-        self.files.save_order(order, format)
+        self.files.save(order, format)
 
 @Logger.attach_logger
 @dataclass(frozen=True)
@@ -87,6 +107,16 @@ class ArchiveOrderFile:
 
     def __call__(self, order: Order) -> None:
         self.files.archive_order_file(order)
+
+
+@Logger.attach_logger
+@dataclass(frozen=True)
+class CombineOrders:
+
+    files: OrderFilePort
+
+    def __call__(self, vendors: list[str]) -> None:
+        self.files.combine_orders(vendors)
 
 @Logger.attach_logger
 @dataclass(frozen=True)
@@ -110,7 +140,7 @@ class CheckAndUpdateOrder:
     files: OrderFilePort
 
     def __call__(self, order: Order) -> bool:  # type: ignore[misc]
-        fp = self.files.get_order_file_path(order)
+        fp = self.files.get_file_path(order)
         if not fp.exists():
             self.logger.info(f"[Order Update] No existing file at {fp}. Proceeding with save.")
             return False

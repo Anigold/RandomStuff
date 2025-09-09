@@ -1573,3 +1573,21 @@ ValueError: Invalid filename format: combined_orders.xlsx
 2025-09-08 14:07:46,793 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
 2025-09-08 14:43:59,061 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Triphammer', '--vendors', 'Russo Produce'])
 2025-09-08 14:43:59,345 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-09 09:53:21,190 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-09 09:53:21,198 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-09-09 09:53:21,198 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-09-09 09:53:21,198 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-09-09 09:53:25,928 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-09-09 09:56:28,193 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-09 09:56:48,379 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'Hill & Markes'])
+2025-09-09 09:56:48,544 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_upload_files' executed successfully.
+2025-09-09 09:57:18,731 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Triphammer', 'Easthill', 'Downtown', 'Collegetown'])
+2025-09-09 10:06:43,747 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-09 10:07:30,018 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'Hill & Markes'])
+2025-09-09 10:07:30,184 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_upload_files' executed successfully.
+2025-09-09 12:02:56,201 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'Peters Supply'])
+2025-09-09 12:02:57,190 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-09 12:05:24,186 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'SANICO'])
+2025-09-09 12:05:24,467 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-09 13:34:55,452 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-09-09 13:34:55,458 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.

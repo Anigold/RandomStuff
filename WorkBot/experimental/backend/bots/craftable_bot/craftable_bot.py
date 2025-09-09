@@ -34,7 +34,7 @@ from backend.bots.bot_mixins import SeleniumBotMixin
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException, NoSuchElementException, StaleElementReferenceException
 
-from backend.app.services.services_orders import OrderServices
+from backend.app.services.services_order import OrderServices
 
 
 def temporary_login(func):

@@ -23,7 +23,7 @@ from backend.bots.craftable_bot.helpers import get_craftable_username_password
 
 # region Application Services
 from backend.bots.craftable_bot.craftable_bot import CraftableBot
-from backend.app.services.services_orders import OrderServices
+from backend.app.services.services_order import OrderServices
 # endregion
 
 # region Models
@@ -32,11 +32,11 @@ from backend.models.transfer import Transfer
 from backend.models.transfer_item import TransferItem
 # endregion
 
-from backend.depricated_coordinators.vendor_coordinator import VendorCoordinator
-from backend.depricated_coordinators.item_coordinator import ItemCoordinator
-from backend.depricated_coordinators.order_coordinator import OrderCoordinator
-from backend.depricated_coordinators.store_coordinator import StoreCoordinator
-from backend.depricated_coordinators.transfer_coordinator import TransferCoordinator
+# from backend.depricated_coordinators.vendor_coordinator import VendorCoordinator
+# from backend.depricated_coordinators.item_coordinator import ItemCoordinator
+# from backend.depricated_coordinators.order_coordinator import OrderCoordinator
+# from backend.depricated_coordinators.store_coordinator import StoreCoordinator
+# from backend.depricated_coordinators.transfer_coordinator import TransferCoordinator
 
 # region Email Services
 from backend.utils.emailer.emailer import Emailer, Email
@@ -44,10 +44,12 @@ from backend.utils.emailer.services.gmail_service import GmailService
 from backend.utils.emailer.services.outlook_service import OutlookService
 # endregion
 
-from backend.app.adapters.file.order_file_adapter import OrderFileAdapter
-from backend.app.adapters.repo.order_repo_adapter import OrderRepositoryAdapter
-from backend.app.adapters.download.download_adapter import DownloadAdapter
+from backend.app.adapters.files.order_file_adapter import OrderFileAdapter
+# from backend.app.repos.order_repo_adapter import OrderRepositoryAdapter
+from backend.app.adapters.downloads.download_adapter import PollingDownloadAdapter
 # endregion
+
+from config.paths import ORDER_FILES_DIR, DOWNLOADS_PATH
 
 # region ---- WORKBOT CLASS ----
 
@@ -60,18 +62,18 @@ class WorkBot:
         self.logger.info('Initializing WorkBot...')
 
         # These will be replaced by the Services
-        self.vendor_coordinator   = VendorCoordinator()
-        self.order_coordinator    = OrderCoordinator()
-        self.store_coordinator    = StoreCoordinator()
-        self.transfer_coordinator = TransferCoordinator()
+        # self.vendor_coordinator   = VendorCoordinator()
+        # # self.order_coordinator    = OrderCoordinator()
+        # self.store_coordinator    = StoreCoordinator()
+        # self.transfer_coordinator = TransferCoordinator()
 
-        files     = OrderFileAdapter()
-        repo      = OrderRepositoryAdapter()
-        downloads = DownloadAdapter()
+        files     = OrderFileAdapter(ORDER_FILES_DIR)
+        # repo      = OrderRepositoryAdapter()
+        downloads = PollingDownloadAdapter(DOWNLOADS_PATH)
 
         self.orders = OrderServices(
             files=files,
-            repo=repo,
+            repo=None,
             downloads=downloads
         )
 
@@ -97,20 +99,20 @@ class WorkBot:
     def download_craftable_orders(self, stores, vendors=[], download_pdf=True, update=True):
         self.craft_bot.download_orders(stores, vendors, download_pdf=download_pdf, update=update)
 
-    def sort_orders(self):
-        self.order_coordinator.sort_orders()
+    # def sort_orders(self):
+    #     self.order_coordinator.sort_orders()
 
     def delete_craftable_orders(self, stores, vendors=[]):
         self.craft_bot.delete_orders(stores, vendors)
 
     def get_order_files(self, stores: list, vendors: list = [], formats: list[str] = None) -> list[Path]:
         self.logger.info(f'Retrieving order files for: stores=[{stores}], vendors=[{vendors}], formats=[{formats}]')
-        return self.order_coordinator.get_order_files(stores=stores, vendors=vendors, formats=formats)
+        return self.orders.get_order_files(stores=stores, vendors=vendors, formats=formats)
 
     def get_orders(self, stores: list[str], vendors: list[str], formats: list[str] = None) -> list[Order]:
         self.logger.info(f'Retrieving orders for: stores=[{stores}], vendors=[{vendors}], formats=[{formats}]')
         order_files = self.get_order_files(stores, vendors, formats=formats)
-        return self.order_coordinator.read_orders_from_files(order_files)
+        return self.orders.read_orders_from_file(order_files)
 
     def archive_all_current_orders(self, stores: list[str] = None, vendors: list[str] = None) -> None:
         vendors = vendors or []
@@ -119,12 +121,12 @@ class WorkBot:
 
         for order in orders:
             try:
-                self.order_coordinator.archive_order_file(order)
+                self.orders.archive_order_file(order)
             except Exception as e:
                 self.logger.warning(f'[Archive] Skipped {order}: {e}')
 
     def combine_orders(self, vendors: list) -> None:
-        self.order_coordinator.combine_orders(vendors)
+        self.orders.combine_orders(vendors)
 
     # endregion
 
@@ -192,7 +194,7 @@ class WorkBot:
 
         context_map = {}
         for file_path in order_file_paths:
-            order = self.order_coordinator.read_order_from_file(file_path)
+            order = self.orders.read_order_from_file(file_path)
             vendor_info = self.vendor_coordinator.get_vendor_information(order.vendor)
 
             context_map[str(file_path)] = {
@@ -203,7 +205,7 @@ class WorkBot:
 
         self.logger.debug(f'Context map built with {len(context_map)} entries. Delegating to OrderCoordinator.')
 
-        result_paths = self.order_coordinator.generate_vendor_upload_files(
+        result_paths = self.orders.generate_vendor_uploads(
             stores=stores,
             vendors=vendors,
             start_date=start_date,
@@ -292,7 +294,7 @@ class WorkBot:
     def _get_email_attachments(self, orders: list[Order]) -> list[str]:
         attachments = []
         for order in orders:
-            pdf_file_path = self.order_coordinator.get_order_file_path(order, format='pdf')
+            pdf_file_path = self.orders.get_order_files(order, format='pdf')
 
             if pdf_file_path.exists():
                 attachments.append(str(pdf_file_path))
@@ -311,7 +313,7 @@ class WorkBot:
         emails = []
         store_orders_table = defaultdict(list)
         for order in orders:
-            order_meta_data = self.order_coordinator.parse_filename_for_metadata(order.name)
+            order_meta_data = self.orders.parse_filename_for_metadata(order.name)
             store_orders_table[order_meta_data['store']].append(order)
 
         for store, store_orders in store_orders_table.items():
@@ -384,13 +386,13 @@ class WorkBot:
             if row[0].value and row[0].value.strip()
         ]
 
-        orders_files = self.order_coordinator.get_order_files(
+        orders_files = self.orders.get_order_files(
             stores=['Bakery', 'Easthill', 'Collegetown', 'Triphammer', 'Downtown'],
             vendors=['Performance Food', 'FingerLakes Farms'],
             formats=['xlsx']
         )
 
-        orders = [self.order_coordinator.read_order_from_file(order) for order in orders_files]
+        orders = [self.orders.read_order_from_file(order) for order in orders_files]
 
         store_indices = {
             'Collegetown': 2,

@@ -20,7 +20,7 @@ from typing import List
 from backend.utils.days import iso_today
 from backend.utils.timeparse import normalize_time_str
 from config.paths import TODOS_DIR
-from backend.app.services.services_orders import OrderServices
+from backend.app.services.services_order import OrderServices
 
 @Logger.attach_logger
 class WorkBotCLI(CLI):
@@ -71,17 +71,17 @@ class WorkBotCLI(CLI):
 
 
 # SORT ORDERS
-    def args_sort_orders(self) -> None:
-        return argparse.ArgumentParser(prog='sort_orders', description='Sort the saved orders by vendor.')
+    # def args_sort_orders(self) -> None:
+    #     return argparse.ArgumentParser(prog='sort_orders', description='Sort the saved orders by vendor.')
     
-    def cmd_sort_orders(self, args):
-        parser = self.args_sort_orders()
+    # def cmd_sort_orders(self, args):
+    #     parser = self.args_sort_orders()
 
-        try:    
-            self.workbot.sort_orders()
-            print('Orders sorted successfully.')
-        except SystemExit:
-            pass
+    #     try:    
+    #         self.workbot.sort_orders()
+    #         print('Orders sorted successfully.')
+    #     except SystemExit:
+    #         pass
 
 
 # LIST ORDERS
