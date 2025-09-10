@@ -5515,3 +5515,123 @@ AttributeError: 'OrderFileAdapter' object has no attribute 'save_order'
 2025-09-09 13:35:54,603 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Side Hill Acres.
 2025-09-09 13:36:03,363 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
 2025-09-09 13:36:03,365 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-09-10 09:26:31,451 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:62) - Initializing WorkBot...
+2025-09-10 09:26:31,453 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:93) - WorkBot initialized successfully.
+2025-09-10 09:26:31,454 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-10 09:26:31,472 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\cli\.cli_history
+2025-09-10 09:26:31,473 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-09-10 09:26:31,473 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-09-10 09:30:59,096 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: shutdown (args=[])
+2025-09-10 09:30:59,096 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:151) - Closing WebDriver session.
+2025-09-10 09:31:04,369 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:158) - WebDriver session closed.
+2025-09-10 09:31:04,369 - INFO - cli.cli.CLI - (cli.py:362) - Shutdown command invoked.
+2025-09-10 09:31:04,369 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-09-10 09:31:15,623 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:62) - Initializing WorkBot...
+2025-09-10 09:31:15,624 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:93) - WorkBot initialized successfully.
+2025-09-10 09:31:15,624 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-10 09:31:15,639 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\cli\.cli_history
+2025-09-10 09:31:15,639 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-09-10 09:31:15,639 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-09-10 09:31:25,711 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-09-10 09:31:30,786 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:114) - Logging into Craftable.
+2025-09-10 09:31:38,800 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:138) - Login successful.
+2025-09-10 09:31:38,800 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:237) - Starting order download protocol.
+2025-09-10 09:31:38,800 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:240) - Accessing order page for Bakery.
+2025-09-10 09:31:45,437 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Webstaurant (08/30/2025).
+2025-09-10 09:31:47,682 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:145) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\20250830 - Bakery - Webstaurant.xlsx. Proceeding with save.
+2025-09-10 09:31:47,683 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Webstaurant.
+2025-09-10 09:32:02,499 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for DUTCH VALLEY FOOD DIST (09/07/2025).
+2025-09-10 09:32:03,702 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:145) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\20250907 - Bakery - DUTCH VALLEY FOOD DIST.xlsx. Proceeding with save.
+2025-09-10 09:32:03,702 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for DUTCH VALLEY FOOD DIST.
+2025-09-10 09:32:18,502 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Palmer (09/08/2025).
+2025-09-10 09:32:19,658 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:145) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\20250908 - Bakery - Palmer.xlsx. Proceeding with save.
+2025-09-10 09:32:19,658 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Palmer.
+2025-09-10 09:32:34,584 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for FingerLakes Farms (09/09/2025).
+2025-09-10 09:32:36,114 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:145) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\20250909 - Bakery - FingerLakes Farms.xlsx. Proceeding with save.
+2025-09-10 09:32:36,114 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for FingerLakes Farms.
+2025-09-10 09:32:50,923 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Sysco (09/09/2025).
+2025-09-10 09:32:52,132 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:145) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\20250909 - Bakery - Sysco.xlsx. Proceeding with save.
+2025-09-10 09:32:52,132 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Sysco.
+2025-09-10 09:33:06,894 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:254) - Order download complete.
+2025-09-10 09:33:06,895 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:255) - Closing WebDriver session.
+2025-09-10 09:33:08,623 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-10 09:41:22,876 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: shutdown (args=[])
+2025-09-10 09:41:22,877 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:151) - Closing WebDriver session.
+2025-09-10 09:41:27,929 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:158) - WebDriver session closed.
+2025-09-10 09:41:27,930 - INFO - cli.cli.CLI - (cli.py:362) - Shutdown command invoked.
+2025-09-10 09:41:27,930 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-09-10 09:41:41,114 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:62) - Initializing WorkBot...
+2025-09-10 09:41:41,114 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:93) - WorkBot initialized successfully.
+2025-09-10 09:41:41,115 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-10 09:41:41,130 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\cli\.cli_history
+2025-09-10 09:41:41,130 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-09-10 09:41:41,130 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-09-10 09:41:47,309 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-09-10 09:41:52,482 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:114) - Logging into Craftable.
+2025-09-10 09:41:59,453 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:138) - Login successful.
+2025-09-10 09:41:59,454 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:237) - Starting order download protocol.
+2025-09-10 09:41:59,454 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:240) - Accessing order page for Bakery.
+2025-09-10 09:42:06,135 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Webstaurant (08/30/2025).
+2025-09-10 09:42:08,630 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:145) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\20250830 - Bakery - Webstaurant.xlsx. Proceeding with save.
+2025-09-10 09:42:08,630 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Webstaurant.
+2025-09-10 09:42:43,077 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for DUTCH VALLEY FOOD DIST (09/07/2025).
+2025-09-10 09:42:44,294 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:145) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\20250907 - Bakery - DUTCH VALLEY FOOD DIST.xlsx. Proceeding with save.
+2025-09-10 09:42:44,294 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for DUTCH VALLEY FOOD DIST.
+2025-09-10 09:43:18,754 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Palmer (09/08/2025).
+2025-09-10 09:43:19,916 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:145) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\20250908 - Bakery - Palmer.xlsx. Proceeding with save.
+2025-09-10 09:43:19,916 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Palmer.
+2025-09-10 09:43:54,368 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for FingerLakes Farms (09/09/2025).
+2025-09-10 09:43:55,925 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:145) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\20250909 - Bakery - FingerLakes Farms.xlsx. Proceeding with save.
+2025-09-10 09:43:55,925 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for FingerLakes Farms.
+2025-09-10 09:44:30,453 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Sysco (09/09/2025).
+2025-09-10 09:44:31,662 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:145) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\20250909 - Bakery - Sysco.xlsx. Proceeding with save.
+2025-09-10 09:44:31,662 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Sysco.
+2025-09-10 09:45:06,133 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:254) - Order download complete.
+2025-09-10 09:45:06,133 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:255) - Closing WebDriver session.
+2025-09-10 09:45:08,262 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-10 09:49:37,357 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-09-10 09:49:37,360 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-09-10 09:50:18,294 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:62) - Initializing WorkBot...
+2025-09-10 09:50:18,294 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:93) - WorkBot initialized successfully.
+2025-09-10 09:50:18,295 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-10 09:50:18,310 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\cli\.cli_history
+2025-09-10 09:50:18,310 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-09-10 09:50:18,310 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-09-10 09:50:36,377 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-09-10 09:50:41,487 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:114) - Logging into Craftable.
+2025-09-10 09:50:48,622 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:138) - Login successful.
+2025-09-10 09:50:48,622 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:237) - Starting order download protocol.
+2025-09-10 09:50:48,622 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:240) - Accessing order page for Bakery.
+2025-09-10 09:50:55,270 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Webstaurant (08/30/2025).
+2025-09-10 09:50:57,554 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:145) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\20250830 - Bakery - Webstaurant.xlsx. Proceeding with save.
+2025-09-10 09:50:57,554 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Webstaurant.
+2025-09-10 09:50:59,617 - INFO - backend.app.adapters.downloads.download_adapter.ThreadedDownloadAdapter - (download_adapter.py:54) - [DownloadOnce] Match detected: Order.pdf
+2025-09-10 09:50:59,619 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:132) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\20250830 - Bakery - Webstaurant.pdf
+2025-09-10 09:51:01,997 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for DUTCH VALLEY FOOD DIST (09/07/2025).
+2025-09-10 09:51:03,198 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:145) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\20250907 - Bakery - DUTCH VALLEY FOOD DIST.xlsx. Proceeding with save.
+2025-09-10 09:51:03,198 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for DUTCH VALLEY FOOD DIST.
+2025-09-10 09:51:05,251 - INFO - backend.app.adapters.downloads.download_adapter.ThreadedDownloadAdapter - (download_adapter.py:54) - [DownloadOnce] Match detected: Order.pdf
+2025-09-10 09:51:05,253 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:132) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\20250907 - Bakery - DUTCH VALLEY FOOD DIST.pdf
+2025-09-10 09:51:07,612 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Palmer (09/08/2025).
+2025-09-10 09:51:08,780 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:145) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\20250908 - Bakery - Palmer.xlsx. Proceeding with save.
+2025-09-10 09:51:08,780 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Palmer.
+2025-09-10 09:51:10,839 - INFO - backend.app.adapters.downloads.download_adapter.ThreadedDownloadAdapter - (download_adapter.py:54) - [DownloadOnce] Match detected: Order.pdf
+2025-09-10 09:51:10,841 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:132) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\20250908 - Bakery - Palmer.pdf
+2025-09-10 09:51:13,202 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for FingerLakes Farms (09/09/2025).
+2025-09-10 09:51:14,741 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:145) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\20250909 - Bakery - FingerLakes Farms.xlsx. Proceeding with save.
+2025-09-10 09:51:14,741 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for FingerLakes Farms.
+2025-09-10 09:51:16,797 - INFO - backend.app.adapters.downloads.download_adapter.ThreadedDownloadAdapter - (download_adapter.py:54) - [DownloadOnce] Match detected: Order.pdf
+2025-09-10 09:51:16,800 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:132) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\20250909 - Bakery - FingerLakes Farms.pdf
+2025-09-10 09:51:19,157 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:281) - Retrieving order for Sysco (09/09/2025).
+2025-09-10 09:51:20,373 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:145) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\20250909 - Bakery - Sysco.xlsx. Proceeding with save.
+2025-09-10 09:51:20,373 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:295) - Saving order for Sysco.
+2025-09-10 09:51:22,426 - INFO - backend.app.adapters.downloads.download_adapter.ThreadedDownloadAdapter - (download_adapter.py:54) - [DownloadOnce] Match detected: Order.pdf
+2025-09-10 09:51:22,428 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:132) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\experimental\data\orders\20250909 - Bakery - Sysco.pdf
+2025-09-10 09:51:24,739 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:254) - Order download complete.
+2025-09-10 09:51:24,739 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:255) - Closing WebDriver session.
+2025-09-10 09:51:26,503 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-10 16:25:21,555 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: shutdown (args=[])
+2025-09-10 16:25:21,561 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:151) - Closing WebDriver session.
+2025-09-10 16:25:26,985 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:158) - WebDriver session closed.
+2025-09-10 16:25:26,985 - INFO - cli.cli.CLI - (cli.py:362) - Shutdown command invoked.
+2025-09-10 16:25:26,986 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.

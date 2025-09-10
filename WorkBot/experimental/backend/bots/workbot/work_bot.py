@@ -46,7 +46,7 @@ from backend.utils.emailer.services.outlook_service import OutlookService
 
 from backend.app.adapters.files.order_file_adapter import OrderFileAdapter
 # from backend.app.repos.order_repo_adapter import OrderRepositoryAdapter
-from backend.app.adapters.downloads.download_adapter import PollingDownloadAdapter
+from backend.app.adapters.downloads.download_adapter import ThreadedDownloadAdapter
 # endregion
 
 from config.paths import ORDER_FILES_DIR, DOWNLOADS_PATH
@@ -69,7 +69,7 @@ class WorkBot:
 
         files     = OrderFileAdapter(ORDER_FILES_DIR)
         # repo      = OrderRepositoryAdapter()
-        downloads = PollingDownloadAdapter(DOWNLOADS_PATH)
+        downloads = ThreadedDownloadAdapter(DOWNLOADS_PATH)
 
         self.orders = OrderServices(
             files=files,

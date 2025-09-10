@@ -96,7 +96,7 @@ class SaveOrderToFile:
     
     files: OrderFilePort
 
-    def __call__(self, order: Order, format='xlsx') -> None:
+    def __call__(self, order: Order, *, format='xlsx', context: dict | None = None) -> None:
         self.files.save(order, format)
 
 @Logger.attach_logger
@@ -127,10 +127,10 @@ class ExpectDownloadedPdf:
 
     def __call__(self, order: Order) -> None:  # type: ignore[misc]
         def handle(file: Path):
-            dest = self.files.get_order_file_path(order, format="pdf")
-            self.files.move_file(file, dest, overwrite=True)
+            dest = self.files.get_file_path(order, format="pdf")
+            self.files.move(file, dest, overwrite=True)
             self.logger.info(f"Moved downloaded PDF to: {dest}")
-        self.downloads.on_download_once(match_fn=lambda f: f.name == "Order.pdf", callback=handle, timeout=10)
+        self.downloads.on_download_once(match_fn=lambda f: f.name == "Order.pdf", callback=handle, timeout=30)
 
 # Diff / validation
 @Logger.attach_logger

@@ -6,7 +6,7 @@ from backend.models.order import Order
 from backend.app.ports import OrderFilePort
 from backend.app.files.generic_file_adapter import GenericFileAdapter
 from backend.app.files.blobstores import LocalBlobStore
-from backend.app.serializers.order import OrderExcelSerializer
+from backend.app.serializer.order import OrderExcelSerializer
 from backend.app.naming.order import OrderNamer
 
 class OrderFileAdapter(OrderFilePort):
