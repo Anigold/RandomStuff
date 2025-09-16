@@ -1611,3 +1611,181 @@ ValueError: Invalid filename format: combined_orders.xlsx
 2025-09-10 14:43:48,108 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_upload_files' executed successfully.
 2025-09-10 14:49:46,882 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Triphammer', '--vendors', 'Russo Produce'])
 2025-09-10 14:49:47,663 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-13 08:56:20,088 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-13 08:56:20,106 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-09-13 08:56:20,107 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-09-13 08:56:20,107 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-09-13 08:56:32,032 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer'])
+2025-09-13 09:04:14,173 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-13 09:04:57,867 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: archive_orders (args=['--stores', 'Bakery'])
+2025-09-13 09:04:58,464 - INFO - cli.cli.CLI - (cli.py:421) - Command 'archive_orders' executed successfully.
+2025-09-13 09:12:18,212 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: delete_orders (args=['--stores', 'Bakery'])
+2025-09-13 09:13:32,496 - INFO - cli.cli.CLI - (cli.py:421) - Command 'delete_orders' executed successfully.
+2025-09-13 09:16:09,337 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-09-13 09:16:41,551 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-13 09:17:21,875 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'UNFI'])
+2025-09-13 09:17:21,980 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_upload_files' executed successfully.
+2025-09-14 08:02:33,540 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Collegetown', 'Triphammer', 'Easthill', 'Downtown'])
+2025-09-14 08:04:18,253 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] download_orders failed: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\andrew\\Desktop\\Andrew\\Projects\\IthacaBakery\\RandomStuff\\WorkBot\\refactor\\data\\orders\\UNFI\\UNFI_Collegetown_2025-09-12.pdf'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\workbot_cli.py", line 48, in cmd_download_orders
+    self.workbot.download_craftable_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\workbot\work_bot.py", line 81, in download_craftable_orders
+    self.craft_bot.download_orders(stores, vendors, download_pdf=download_pdf, update=update)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\bot_mixins.py", line 95, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 274, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 311, in _process_order_row
+    if update and self._update_existing_order(order_to_check_update):
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 1032, in _update_existing_order
+    return self.order_coordinator.check_and_update_order(order)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\order_coordinator.py", line 210, in check_and_update_order
+    self.file_handler.remove_file(file_path.with_suffix('.pdf'))
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\storage\file\file_handler.py", line 60, in remove_file
+    path.unlink()
+    ~~~~~~~~~~~^^
+  File "C:\Users\Will\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 746, in unlink
+    os.unlink(self)
+    ~~~~~~~~~^^^^^^
+PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\andrew\\Desktop\\Andrew\\Projects\\IthacaBakery\\RandomStuff\\WorkBot\\refactor\\data\\orders\\UNFI\\UNFI_Collegetown_2025-09-12.pdf'
+2025-09-14 08:47:30,413 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Collegetown', 'Triphammer', 'Easthill', 'Downtown'])
+2025-09-14 08:54:19,326 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-14 08:58:55,594 - WARNING - cli.cli.CLI - (cli.py:414) - Unknown command entered: '-+'
+2025-09-14 09:22:57,283 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: combine_orders (args=['--vendors', 'Ithaca Bakery'])
+2025-09-14 09:22:57,413 - INFO - cli.cli.CLI - (cli.py:421) - Command 'combine_orders' executed successfully.
+2025-09-14 09:32:25,302 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-09-14 09:34:04,266 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-14 10:05:20,562 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: split_natalies (args=[])
+2025-09-14 10:05:20,784 - INFO - cli.cli.CLI - (cli.py:421) - Command 'split_natalies' executed successfully.
+2025-09-14 10:08:33,883 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_store_order_emails (args=['--stores', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer'])
+2025-09-14 10:08:38,850 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_store_order_emails' executed successfully.
+2025-09-14 10:11:51,172 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'Performance Food', 'FingerLakes Farms'])
+2025-09-14 10:13:41,047 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-14 10:16:33,736 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'Copper Horse Coffee', 'FingerLakes Farms'])
+2025-09-14 10:16:35,066 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-14 10:19:18,591 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', "Bo's Bones"])
+2025-09-14 10:19:19,084 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-14 11:19:22,620 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown'])
+2025-09-14 11:19:22,632 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] generate_vendor_upload_files failed: Invalid filename format: combined_orders.xlsx
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\workbot_cli.py", line 170, in cmd_generate_vendor_upload_files
+    paths = self.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\workbot\work_bot.py", line 173, in generate_vendor_upload_files
+    order_file_paths = self.get_order_files(stores=stores, vendors=vendors, formats=['xlsx'])
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\workbot\work_bot.py", line 91, in get_order_files
+    return self.order_coordinator.get_order_files(stores=stores, vendors=vendors, formats=formats)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\order_coordinator.py", line 57, in get_order_files
+    return self.file_handler.get_order_files(stores, vendors, formats=formats)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\storage\file\order_file_handler.py", line 103, in get_order_files
+    meta = self.filename_strategy.parse(file.name)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\serializer\filename_strategies\order_filename_strategy.py", line 28, in parse
+    raise ValueError(f'Invalid filename format: {filename}')
+ValueError: Invalid filename format: combined_orders.xlsx
+2025-09-14 11:19:38,332 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', '--vendors', 'Sysco', 'Performance Food', 'US Foods'])
+2025-09-14 11:19:38,607 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] generate_vendor_upload_files failed: invalid literal for int() with base 10: '0.75'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\workbot_cli.py", line 170, in cmd_generate_vendor_upload_files
+    paths = self.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\workbot\work_bot.py", line 189, in generate_vendor_upload_files
+    result_paths = self.order_coordinator.generate_vendor_upload_files(
+        stores=stores,
+    ...<3 lines>...
+        context_map=context_map
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\order_coordinator.py", line 177, in generate_vendor_upload_files
+    output_path = self.generate_vendor_upload_file(order, context)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\order_coordinator.py", line 141, in generate_vendor_upload_file
+    return self.file_handler.generate_vendor_upload_file(order, context=context)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\storage\file\order_file_handler.py", line 170, in generate_vendor_upload_file
+    rows.append(adapter.modify_row(row, item=item, context=ctx))
+                ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\serializer\adapters\sysco_adapter.py", line 12, in modify_row
+    return ['P', item.sku, int(item.quantity), 0]
+                           ~~~^^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '0.75'
+2025-09-14 11:34:46,645 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Collegetown', '--vendors', 'Sysco'])
+2025-09-14 11:35:14,269 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-14 11:37:13,321 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', '--vendors', 'Sysco', 'Performance Food', 'US Foods'])
+2025-09-14 11:37:13,470 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_upload_files' executed successfully.
+2025-09-14 11:37:59,194 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', '--vendors', 'Sysco', 'Performance Food', 'US Foods'])
+2025-09-14 11:37:59,331 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_upload_files' executed successfully.
+2025-09-14 13:49:48,403 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Triphammer'])
+2025-09-14 13:51:51,579 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-14 13:52:14,036 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Triphammer', '--vendors', 'Sysco', 'Performance Food', 'US Foods'])
+2025-09-14 13:52:14,128 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_upload_files' executed successfully.
+2025-09-15 07:08:33,100 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer'])
+2025-09-15 07:16:56,922 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-15 07:48:30,110 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: combine_orders (args=['--vendors', 'Ithaca Bakery'])
+2025-09-15 07:48:30,210 - INFO - cli.cli.CLI - (cli.py:421) - Command 'combine_orders' executed successfully.
+2025-09-15 08:39:43,866 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-09-15 08:42:18,335 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-15 08:43:15,045 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'Hillcrest Foods'])
+2025-09-15 08:43:15,394 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-15 08:45:06,470 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery', '--vendors', 'Hillcrest Foods'])
+2025-09-15 08:45:34,306 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-15 08:47:47,512 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'Hillcrest Foods'])
+2025-09-15 08:47:47,814 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-15 08:48:31,304 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'Hillcrest Dairy'])
+2025-09-15 08:48:31,846 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-15 09:20:08,188 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery', 'Easthill', 'Collegetown', 'Downtown', 'Triphammer', '--vendors', 'Equal Exchange'])
+2025-09-15 09:21:26,727 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-15 09:22:21,564 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'Equal Exchange'])
+2025-09-15 09:22:22,132 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-15 11:50:21,180 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Bakery', 'Collegetown', '--vendors', 'A.L. George'])
+2025-09-15 11:50:21,528 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-15 11:51:19,868 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Bakery', 'Collegetown', 'Triphammer', 'Easthill', 'Downtown', '--vendors', 'BALKAN  BEVERAGE LLC'])
+2025-09-15 11:51:19,872 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-15 11:51:29,124 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Bakery', 'Collegetown', 'Triphammer', 'Easthill', 'Downtown', '--vendors', 'BALKAN BEVERAGE LLC'])
+2025-09-15 11:51:29,530 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-15 13:17:37,531 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Triphammer'])
+2025-09-15 13:19:46,686 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-15 14:20:43,497 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Triphammer', '--vendors', 'Russo Produce', 'Performance Food'])
+2025-09-15 14:21:18,559 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-15 14:21:32,466 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Triphammer', '--vendors', 'Russo Produce'])
+2025-09-15 14:21:32,749 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-16 06:43:52,064 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-16 06:43:52,073 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-09-16 06:43:52,073 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-09-16 06:43:52,073 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-09-16 06:44:16,570 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer'])
+2025-09-16 06:53:51,240 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-16 10:42:20,166 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-09-16 10:45:18,513 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-16 10:48:44,139 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'Hill & Markes'])
+2025-09-16 10:48:44,351 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_upload_files' executed successfully.
+2025-09-16 13:26:20,955 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'Peters Supply'])
+2025-09-16 13:26:21,435 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-16 13:28:14,339 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'SANICO'])
+2025-09-16 13:28:14,562 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-16 14:05:46,014 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: shutdown (args=[])
+2025-09-16 14:05:51,203 - INFO - cli.cli.CLI - (cli.py:362) - Shutdown command invoked.
+2025-09-16 14:05:51,203 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.

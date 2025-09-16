@@ -1,0 +1,292 @@
+├── .env
+├── README.md
+├── backend
+│   ├── adapters
+│   │   ├── downloads
+│   │   │   ├── __init__.py
+│   │   │   └── threaded_download_adapter.py
+│   │   ├── emailer
+│   │   │   ├── __init__.py
+│   │   │   ├── emailer.py
+│   │   │   └── services
+│   │   │       ├── __init__.py
+│   │   │       ├── gmail_service.py
+│   │   │       ├── outlook_service.py
+│   │   │       └── service.py
+│   │   ├── external
+│   │   │   └── __init__.py
+│   │   ├── files
+│   │   │   ├── __init__.py
+│   │   │   ├── generic_file_adapter.py
+│   │   │   └── order_file_adapter.py
+│   │   └── repos
+│   │       ├── __init__.py
+│   │       └── order_repository_impl.py
+│   ├── app
+│   │   ├── application
+│   │   │   ├── __init__.py
+│   │   │   └── orders.py
+│   │   ├── cli
+│   │   │   ├── .cli_history
+│   │   │   ├── __init__.py
+│   │   │   ├── cli.py
+│   │   │   ├── cli_helpers.py
+│   │   │   ├── commands
+│   │   │   │   ├── command.py
+│   │   │   │   └── download_orders.py
+│   │   │   └── workbot_cli.py
+│   │   ├── ports
+│   │   │   ├── __init__.py
+│   │   │   ├── downloads.py
+│   │   │   ├── files.py
+│   │   │   ├── generic.py
+│   │   │   └── repos.py
+│   │   └── services
+│   │       ├── __init__.py
+│   │       └── services_order.py
+│   ├── bots
+│   │   ├── bot_mixins.py
+│   │   ├── craftable_bot
+│   │   │   ├── __init__.py
+│   │   │   ├── craftable_bot.py
+│   │   │   └── helpers.py
+│   │   ├── helpers.py
+│   │   └── workbot
+│   │       ├── __init__.py
+│   │       └── work_bot.py
+│   ├── domain
+│   │   ├── models
+│   │   │   ├── __init__.py
+│   │   │   ├── audit.py
+│   │   │   ├── item.py
+│   │   │   ├── order.py
+│   │   │   ├── order_item.py
+│   │   │   ├── store.py
+│   │   │   ├── store_item_info.py
+│   │   │   ├── to_do.py
+│   │   │   ├── transfer.py
+│   │   │   ├── transfer_item.py
+│   │   │   ├── vendor.py
+│   │   │   └── vendor_item_info.py
+│   │   ├── naming
+│   │   │   ├── __init__.py
+│   │   │   └── order_namer.py
+│   │   ├── serializer
+│   │   │   ├── __init__.py
+│   │   │   ├── domain_modules
+│   │   │   │   └── order.py
+│   │   │   ├── factories
+│   │   │   ├── formats
+│   │   │   ├── naming
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── order.py
+│   │   │   │   └── transfer.py
+│   │   │   ├── naming_strategies
+│   │   │   ├── order.py
+│   │   │   ├── profiles
+│   │   │   ├── serializer.py
+│   │   │   └── transfer.py
+│   │   └── validation
+│   │       ├── __init__.py
+│   │       └── order_diff.py
+│   ├── helpers
+│   │   └── datetimes.py
+│   ├── infra
+│   │   ├── __init__.py
+│   │   ├── config
+│   │   │   ├── __init__.py
+│   │   │   ├── secrets
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── env_loader.py
+│   │   │   └── settings.py
+│   │   ├── logger.py
+│   │   └── paths.py
+│   └── tests
+│       ├── adapters
+│       │   └── __init__.py
+│       ├── app
+│       │   └── __init__.py
+│       ├── bots
+│       │   └── __init__.py
+│       └── domain
+│           └── __init__.py
+├── data
+│   ├── audits
+│   │   ├── Bakery
+│   │   ├── Collegetown
+│   │   ├── Downtown
+│   │   ├── Easthill
+│   │   └── Triphammer
+│   ├── cli
+│   │   └── .cli_history
+│   ├── downloads
+│   │   ├── Collegetown Bagels - College Ave - Foodager - Audit 2025-07-02.xlsx
+│   │   ├── Collegetown Bagels - College Ave - Foodager - Audit 2025-07-04.xlsx
+│   │   ├── Collegetown Bagels - College Ave - Foodager - Audit 2025-07-09.xlsx
+│   │   ├── Collegetown Bagels - College Ave - Foodager - Audit 2025-07-10.xlsx
+│   │   ├── Collegetown Bagels - College Ave - Foodager - Audit 2025-07-16.xlsx
+│   │   ├── Collegetown Bagels - College Ave - Foodager - Audit 2025-07-17.xlsx
+│   │   ├── Collegetown Bagels - College Ave - Foodager - Audit 2025-07-23.xlsx
+│   │   ├── Collegetown Bagels - College Ave - Foodager - Audit 2025-07-24.xlsx
+│   │   ├── Collegetown Bagels - College Ave - Foodager - Audit 2025-07-30.xlsx
+│   │   ├── Collegetown Bagels - College Ave - Foodager - Audit 2025-08-01.xlsx
+│   │   ├── Collegetown Bagels - College Ave - Foodager - Audit 2025-08-06.xlsx
+│   │   ├── Collegetown Bagels - College Ave - Foodager - Audit 2025-08-08.xlsx
+│   │   ├── Collegetown Bagels - College Ave - Foodager - Audit 2025-08-13.xlsx
+│   │   ├── Collegetown Bagels - College Ave - Foodager - Audit 2025-08-15.xlsx
+│   │   ├── Collegetown Bagels - College Ave - Foodager - Audit 2025-08-20.xlsx
+│   │   ├── Collegetown Bagels - College Ave - Foodager - Audit 2025-08-22.xlsx
+│   │   ├── Collegetown Bagels - College Ave - Foodager - Audit 2025-08-27.xlsx
+│   │   ├── Collegetown Bagels - College Ave - Foodager - Audit 2025-08-29.xlsx
+│   │   ├── Collegetown Bagels - College Ave - Foodager - Audit 2025-09-03.xlsx
+│   │   ├── Collegetown Bagels - College Ave - Foodager - Audit 2025-09-05.xlsx
+│   │   ├── Collegetown Bagels - East Hill Plaza - Foodager - Audit 2025-07-03.xlsx
+│   │   ├── Collegetown Bagels - East Hill Plaza - Foodager - Audit 2025-07-11.xlsx
+│   │   ├── Collegetown Bagels - East Hill Plaza - Foodager - Audit 2025-07-17.xlsx
+│   │   ├── Collegetown Bagels - East Hill Plaza - Foodager - Audit 2025-07-31.xlsx
+│   │   ├── Collegetown Bagels - East Hill Plaza - Foodager - Audit 2025-08-07.xlsx
+│   │   ├── Collegetown Bagels - East Hill Plaza - Foodager - Audit 2025-08-15.xlsx
+│   │   ├── Collegetown Bagels - East Hill Plaza - Foodager - Audit 2025-08-21.xlsx
+│   │   ├── Collegetown Bagels - East Hill Plaza - Foodager - Audit 2025-08-28.xlsx
+│   │   ├── Collegetown Bagels - East Hill Plaza - Foodager - Audit 2025-09-05.xlsx
+│   │   ├── Collegetown Bagels - State St - Foodager - Audit 2025-07-04.xlsx
+│   │   ├── Collegetown Bagels - State St - Foodager - Audit 2025-07-11.xlsx
+│   │   ├── Collegetown Bagels - State St - Foodager - Audit 2025-07-18.xlsx
+│   │   ├── Collegetown Bagels - State St - Foodager - Audit 2025-08-01.xlsx
+│   │   ├── Collegetown Bagels - State St - Foodager - Audit 2025-08-08.xlsx
+│   │   ├── Collegetown Bagels - State St - Foodager - Audit 2025-08-15.xlsx
+│   │   ├── Collegetown Bagels - State St - Foodager - Audit 2025-08-21.xlsx
+│   │   ├── Collegetown Bagels - State St - Foodager - Audit 2025-08-29.xlsx
+│   │   ├── Collegetown Bagels - State St - Foodager - Audit 2025-09-05.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-07-01.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-07-02.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-07-05.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-07-06.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-07-07.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-07-08.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-07-09.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-07-12.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-07-13.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-07-14.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-07-15.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-07-16.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-07-30.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-08-02.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-08-03.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-08-04.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-08-05.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-08-06.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-08-09.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-08-10.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-08-11.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-08-12.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-08-13.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-08-16.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-08-17.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-08-18.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-08-19.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-08-20.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-08-23.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-08-24.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-08-25.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-08-26.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-08-27.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-08-30.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-08-31.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-09-02.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-09-03.xlsx
+│   │   ├── Ithaca Bakery - Meadow St - Foodager - Audit 2025-09-05.xlsx
+│   │   ├── Ithaca Bakery - Triphammer Rd - Foodager - Audit 2025-07-02.xlsx
+│   │   ├── Ithaca Bakery - Triphammer Rd - Foodager - Audit 2025-07-04.xlsx
+│   │   ├── Ithaca Bakery - Triphammer Rd - Foodager - Audit 2025-07-06.xlsx
+│   │   ├── Ithaca Bakery - Triphammer Rd - Foodager - Audit 2025-07-09.xlsx
+│   │   ├── Ithaca Bakery - Triphammer Rd - Foodager - Audit 2025-07-11.xlsx
+│   │   ├── Ithaca Bakery - Triphammer Rd - Foodager - Audit 2025-07-14.xlsx
+│   │   ├── Ithaca Bakery - Triphammer Rd - Foodager - Audit 2025-07-18.xlsx
+│   │   ├── Ithaca Bakery - Triphammer Rd - Foodager - Audit 2025-07-30.xlsx
+│   │   ├── Ithaca Bakery - Triphammer Rd - Foodager - Audit 2025-08-03.xlsx
+│   │   ├── Ithaca Bakery - Triphammer Rd - Foodager - Audit 2025-08-04.xlsx
+│   │   ├── Ithaca Bakery - Triphammer Rd - Foodager - Audit 2025-08-06.xlsx
+│   │   ├── Ithaca Bakery - Triphammer Rd - Foodager - Audit 2025-08-07.xlsx
+│   │   ├── Ithaca Bakery - Triphammer Rd - Foodager - Audit 2025-08-13.xlsx
+│   │   ├── Ithaca Bakery - Triphammer Rd - Foodager - Audit 2025-08-18.xlsx
+│   │   ├── Ithaca Bakery - Triphammer Rd - Foodager - Audit 2025-08-20.xlsx
+│   │   ├── Ithaca Bakery - Triphammer Rd - Foodager - Audit 2025-08-22.xlsx
+│   │   ├── Ithaca Bakery - Triphammer Rd - Foodager - Audit 2025-08-25.xlsx
+│   │   ├── Ithaca Bakery - Triphammer Rd - Foodager - Audit 2025-08-27.xlsx
+│   │   ├── Ithaca Bakery - Triphammer Rd - Foodager - Audit 2025-08-29.xlsx
+│   │   └── Ithaca Bakery - Triphammer Rd - Foodager - Audit 2025-09-01.xlsx
+│   ├── inventory.db
+│   ├── logging
+│   │   ├── master.log
+│   │   └── master.log.0
+│   ├── orders
+│   │   ├── 20250830 - Bakery - Webstaurant.pdf
+│   │   ├── 20250830 - Bakery - Webstaurant.xlsx
+│   │   ├── 20250907 - Bakery - DUTCH VALLEY FOOD DIST.pdf
+│   │   ├── 20250907 - Bakery - DUTCH VALLEY FOOD DIST.xlsx
+│   │   ├── 20250908 - Bakery - Palmer.pdf
+│   │   ├── 20250908 - Bakery - Palmer.xlsx
+│   │   ├── 20250909 - Bakery - FingerLakes Farms.pdf
+│   │   ├── 20250909 - Bakery - FingerLakes Farms.xlsx
+│   │   ├── 20250909 - Bakery - Sysco.pdf
+│   │   └── 20250909 - Bakery - Sysco.xlsx
+│   ├── stores
+│   │   └── stores.json
+│   ├── todos
+│   │   └── 2025-08-20.yaml
+│   ├── transfers
+│   │   ├── Bakery_Collegetown_2025-08-29.xlsx
+│   │   ├── Bakery_Downtown_2025-08-29.xlsx
+│   │   ├── Bakery_Easthill_2025-08-28.xlsx
+│   │   ├── Bakery_Triphammer_2025-08-29.xlsx
+│   │   └── Completed Transfers
+│   │       ├── Bakery_Collegetown_2025-08-01.xlsx
+│   │       ├── Bakery_Collegetown_2025-08-08.xlsx
+│   │       ├── Bakery_Collegetown_2025-08-15.xlsx
+│   │       ├── Bakery_Collegetown_2025-08-22.xlsx
+│   │       ├── Bakery_Downtown_2025-08-01.xlsx
+│   │       ├── Bakery_Downtown_2025-08-08.xlsx
+│   │       ├── Bakery_Downtown_2025-08-15.xlsx
+│   │       ├── Bakery_Downtown_2025-08-22.xlsx
+│   │       ├── Bakery_Easthill_2025-08-01.xlsx
+│   │       ├── Bakery_Easthill_2025-08-08.xlsx
+│   │       ├── Bakery_Easthill_2025-08-16.xlsx
+│   │       ├── Bakery_Easthill_2025-08-21.xlsx
+│   │       ├── Bakery_Triphammer_2025-08-01.xlsx
+│   │       ├── Bakery_Triphammer_2025-08-07.xlsx
+│   │       ├── Bakery_Triphammer_2025-08-15.xlsx
+│   │       └── Bakery_Triphammer_2025-08-22.xlsx
+│   ├── upload_files
+│   │   └── Sysco
+│   │       ├── Sysco_Bakery_2025-09-06.csv
+│   │       └── Sysco_Collegetown_2025-09-05.csv
+│   └── vendors
+│       └── vendors.yaml
+├── file_tree.txt
+├── get_tree.py
+├── logs
+│   └── backend
+│       ├── app
+│       │   └── application
+│       │       └── orders
+│       │           ├── ArchiveOrderFile.log
+│       │           ├── CheckAndUpdateOrder.log
+│       │           ├── CombineOrders.log
+│       │           ├── ExpectDownloadedPdf.log
+│       │           ├── GenerateVendorUploadFile.log
+│       │           ├── GenerateVendorUploadFiles.log
+│       │           ├── GetOrderFiles.log
+│       │           ├── ParseFilenameForMetadata.log
+│       │           ├── ReadOrderFromFile.log
+│       │           ├── ReadOrdersFromFile.log
+│       │           ├── SaveOrderToDB.log
+│       │           └── SaveOrderToFile.log
+│       └── bots
+│           └── craftable_bot
+│               └── craftable_bot
+│                   └── CraftableBot.log
+├── requirements.txt
+├── run_cli.py
+├── run_flask.py
+└── run_web_app.py
