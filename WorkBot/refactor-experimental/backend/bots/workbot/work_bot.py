@@ -67,9 +67,9 @@ class WorkBot:
         # self.store_coordinator    = StoreCoordinator()
         # self.transfer_coordinator = TransferCoordinator()
 
-        files     = OrderFileAdapter(ORDER_FILES_DIR)
+        files     = OrderFileAdapter(base_dir=ORDER_FILES_DIR)
         # repo      = OrderRepositoryAdapter()
-        downloads = ThreadedDownloadAdapter(DOWNLOADS_PATH)
+        downloads = ThreadedDownloadAdapter(watch_dir=DOWNLOADS_PATH)
 
         self.orders = OrderServices(
             files=files,

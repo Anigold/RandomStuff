@@ -23,9 +23,10 @@ class GenericFileAdapter(Generic[T]):
         return base
 
     def path_for(self, obj: T, *, format: str) -> Path:
-        base = self.directory()
-        name = self.namer.filename(obj, format=format)
-        return (base / name).resolve()
+        # base = self.directory()
+        # name = self.namer.path_for(obj, format=format)
+        # return (base / name).resolve()
+        return self.namer.path_for(obj, format=format)
 
     def list_paths(self, pattern: str = "*") -> list[Path]:
         return self.store.list_paths(self.directory(), pattern)

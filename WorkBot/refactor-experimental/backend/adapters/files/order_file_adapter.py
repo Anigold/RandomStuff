@@ -7,7 +7,7 @@ from backend.app.ports import OrderFilePort
 from backend.adapters.files.generic_file_adapter import GenericFileAdapter
 from backend.adapters.files.local_blob_store import LocalBlobStore
 from backend.domain.serializer.serializers.order import OrderSerializer
-from backend.domain.serializer.filename_strategies.order_filename_strategy import OrderFilenameStrategy
+from backend.domain.naming.order_namer import OrderFilenameStrategy
 
 class OrderFileAdapter(OrderFilePort):
     """Implements OrderFilePort via the generic file engine."""
@@ -15,7 +15,7 @@ class OrderFileAdapter(OrderFilePort):
         self._engine = GenericFileAdapter[Order](
             store=LocalBlobStore(),
             serializer=OrderSerializer(),
-            namer=OrderFilenameStrategy(),
+            namer=OrderFilenameStrategy(base=base_dir),
         )
 
     # FilePort

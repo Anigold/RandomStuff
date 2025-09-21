@@ -1,23 +1,55 @@
-from openpyxl import Workbook, load_workbook
+# backend/app/formatters/excel_formatter.py
+
+from io import BytesIO
 from pathlib import Path
-from typing import Any
-from .base_format import BaseFormat
+from typing import Any, Dict, List
+from openpyxl import Workbook, load_workbook
+from .base_format import BaseFormatter
 
-class ExcelFormat(BaseFormat):
-    
-    default_suffix = '.xlsx'
 
-    def write(self, headers: list[str], rows: list[list[Any]]) -> Workbook:
+class ExcelFormatter(BaseFormatter):
+    """Domain-agnostic Excel formatter: expects a dict with 'headers' and 'rows'."""
+
+    def format_name(self) -> str:
+        return "xlsx"
+
+    def dumps(self, obj: Dict[str, Any]) -> bytes:
+        """
+        obj should be of the form:
+        {
+            "headers": ["col1", "col2", ...],
+            "rows": [
+                ["a", "b", ...],
+                ["c", "d", ...],
+            ]
+        }
+        """
         wb = Workbook()
         ws = wb.active
-        ws.append(headers)
-        for row in rows:
+        ws.append(obj.get("headers", []))
+        for row in obj.get("rows", []):
             ws.append(row)
-        return wb
 
-    def read(self, file_path: Path) -> list[list[Any]]:
-        wb = load_workbook(file_path, read_only=True)
-        sheet = wb.active
-        data = [[cell for cell in row] for row in sheet.iter_rows(min_row=2, values_only=True)]
-        wb.close()
-        return data
+        buf = BytesIO()
+        wb.save(buf)
+        return buf.getvalue()
+
+    def loads(self, data: bytes) -> Dict[str, Any]:
+        buf = BytesIO(data)
+        wb = load_workbook(buf)
+        ws = wb.active
+
+        rows = list(ws.iter_rows(values_only=True))
+        if not rows:
+            return {"headers": [], "rows": []}
+        headers, *body = rows
+        return {"headers": list(headers), "rows": [list(r) for r in body]}
+
+    def load_path(self, path: Path) -> Dict[str, Any]:
+        wb = load_workbook(path)
+        ws = wb.active
+        rows = list(ws.iter_rows(values_only=True))
+        if not rows:
+            return {"headers": [], "rows": []}
+        headers, *body = rows
+        return {"headers": list(headers), "rows": [list(r) for r in body]}

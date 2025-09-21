@@ -1,7 +1,7 @@
 from .downloads import DownloadPort
 from .files import FilePort, OrderFilePort
 from .repos import OrderRepository
-from .generic import BlobStore, Serializer, Namer, DomainModule, Format
+from .generic import BlobStore, Serializer, Namer, DomainModule
 
 __all__ = [
     'DownloadPort',

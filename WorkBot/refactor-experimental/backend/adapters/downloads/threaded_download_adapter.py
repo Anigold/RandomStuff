@@ -21,10 +21,13 @@ class ThreadedDownloadAdapter(DownloadPort):
     """
 
     def __init__(self, watch_dir: Path, poll_interval: float = 0.5, stable_for: float = 0.5):
+
         self.download_dir = Path(watch_dir)
         self.download_dir.mkdir(parents=True, exist_ok=True)
+
         self.poll_interval = poll_interval
-        self.stable_for = stable_for
+        self.stable_for    = stable_for
+
         self._active_watchers: list[threading.Thread] = []
 
     # -------- DownloadPort required method --------
