@@ -24,7 +24,7 @@ class ReadOrderFromFile:
 
     def __call__(self, path: Path) -> Order:  # type: ignore[misc]
         self.logger.info(f"Reading order file: {path}")
-        return self.files.get_order_from_file(path)
+        return self.files.read_from_path(path)
 
 @Logger.attach_logger
 @dataclass(frozen=True)
@@ -95,7 +95,7 @@ class SaveOrderToFile:
     
     files: OrderFilePort
 
-    def __call__(self, order: Order, *, format='xlsx', context: dict | None = None) -> None:
+    def __call__(self, order: Order, *, format: str ='xlsx', context: dict | None = None) -> None:
         self.files.save(order, format)
 
 @Logger.attach_logger
@@ -144,7 +144,7 @@ class CheckAndUpdateOrder:
             self.logger.info(f"[Order Update] No existing file at {fp}. Proceeding with save.")
             return False
         try:
-            existing = self.files.get_order_from_file(fp)
+            existing = self.files.read_from_path(fp)
         except Exception as e:
             self.logger.warning(f"[Order Update] Failed to read existing order file: {e}. Proceeding with overwrite.")
             return False

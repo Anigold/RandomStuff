@@ -27,12 +27,15 @@ class LocalBlobStore(BlobStore):
             tmp.flush()
             os.fsync(tmp.fileno())
 
+        # print(f"[DEBUG] Writing {len(data)} bytes to {tmp_path}", flush=True)
         try:
             # On POSIX, replace is atomic; on Windows, use replace if exists else move
             if path.exists():
                 os.replace(tmp_path, path)
             else:
                 shutil.move(str(tmp_path), str(path))
+                # print(f"[DEBUG] Final file size: {path.stat().st_size} bytes", flush=True)
+
         finally:
             try:
                 if tmp_path.exists():

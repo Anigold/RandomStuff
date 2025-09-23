@@ -29,23 +29,29 @@ class GenericFileAdapter(Generic[T]):
         return self.namer.path_for(obj, format=format)
 
     def list_paths(self, pattern: str = "*") -> list[Path]:
+
         return self.store.list_paths(self.directory(), pattern)
 
     def parse_filename(self, filename: str) -> dict:
         return self.namer.parse_metadata(filename)
 
     # ----- read/write -----
-    def save(self, obj: T, *, format: str, overwrite: bool = True) -> Path:
-        path = self.path_for(obj, format=format)
+    def save(self, obj: T, *, format: str, context: dict | None = None, overwrite: bool = True) -> Path:
+ 
+        fmt = format or self.serializer.preferred_format()
+
+        path = self.path_for(obj, format=fmt)
         self.store.ensure_dir(path.parent)
-        data = self.serializer.dumps(obj, format=format)
+
+        data = self.serializer.dumps(obj, format=fmt, context=context)
+
         self.store.write_bytes(path, data, overwrite=overwrite)
         return path
 
     def read(self, path: Path) -> T:
         # Prefer serializer.load_path if available
         if hasattr(self.serializer, "load_path"):
-            return self.serializer.load_path(path)  # type: ignore[attr-defined]
+            return self.serializer.load_path(path)
         data = self.store.read_bytes(path)
         return self.serializer.loads(data)
 

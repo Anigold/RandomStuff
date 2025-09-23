@@ -194,7 +194,9 @@ class WorkBot:
 
         context_map = {}
         for file_path in order_file_paths:
+            
             order = self.orders.read_order_from_file(file_path)
+            print(order, flush=True)
             vendor_info = self.vendor_coordinator.get_vendor_information(order.vendor)
 
             context_map[str(file_path)] = {

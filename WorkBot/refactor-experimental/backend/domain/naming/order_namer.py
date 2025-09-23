@@ -25,7 +25,7 @@ class OrderFilenameStrategy(Namer[Order]):
             else datetime.strftime(obj.date, "%Y-%m-%d")
         )
         ext = "xlsx" if format in ("excel", "xlsx") else format
-        return f"{obj.store}_{obj.vendor}_{date_str}.{ext}"
+        return f"{obj.vendor}_{obj.store}_{date_str}.{ext}"
 
     def directory_for(self, order: Order) -> Path:
         # Sort by vendor name
@@ -38,7 +38,7 @@ class OrderFilenameStrategy(Namer[Order]):
         """Extract store, vendor, and date back from a filename."""
         stem = Path(filename).stem  # remove extension
         try:
-            store, vendor, date_str = stem.split("_", maxsplit=2)
+            vendor, store, date_str = stem.split("_", maxsplit=2)
         except ValueError:
             return {"store": None, "vendor": None, "date": None}
         return {

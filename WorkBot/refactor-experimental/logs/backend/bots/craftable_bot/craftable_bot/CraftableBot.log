@@ -229,3 +229,488 @@ AttributeError: 'OrderSerializer' object has no attribute 'dumps'
 2025-09-21 14:08:22,980 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for DUTCH VALLEY FOOD DIST.
 2025-09-21 14:08:27,340 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:278) - Order download complete.
 2025-09-21 14:08:27,340 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:279) - Closing WebDriver session.
+2025-09-23 08:13:49,576 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:138) - Logging into Craftable.
+2025-09-23 08:13:57,169 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:162) - Login successful.
+2025-09-23 08:13:57,169 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:261) - Starting order download protocol.
+2025-09-23 08:13:57,169 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:264) - Accessing order page for Bakery.
+2025-09-23 08:14:03,792 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for UNFI (09/20/2025).
+2025-09-23 08:14:05,949 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / UNFI / 20250920.
+2025-09-23 08:14:05,951 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for UNFI.
+2025-09-23 08:14:10,396 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Webstaurant (09/20/2025).
+2025-09-23 08:14:11,832 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Webstaurant / 20250920.
+2025-09-23 08:14:11,833 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Webstaurant.
+2025-09-23 08:14:16,245 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Performance Food (09/20/2025).
+2025-09-23 08:14:18,633 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Performance Food / 20250920.
+2025-09-23 08:14:18,634 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Performance Food.
+2025-09-23 08:14:23,015 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for FingerLakes Farms (09/20/2025).
+2025-09-23 08:14:24,548 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / FingerLakes Farms / 20250920.
+2025-09-23 08:14:24,549 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for FingerLakes Farms.
+2025-09-23 08:14:28,917 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Hillcrest Dairy (09/20/2025).
+2025-09-23 08:14:30,316 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Hillcrest Dairy / 20250920.
+2025-09-23 08:14:30,316 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Hillcrest Dairy.
+2025-09-23 08:14:34,703 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Sysco (09/21/2025).
+2025-09-23 08:14:36,921 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Sysco / 20250921.
+2025-09-23 08:14:36,922 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Sysco.
+2025-09-23 08:14:41,299 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for US Foods (09/21/2025).
+2025-09-23 08:14:43,677 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / US Foods / 20250921.
+2025-09-23 08:14:43,678 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for US Foods.
+2025-09-23 08:14:48,073 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Keck's Food Service (09/21/2025).
+2025-09-23 08:14:49,369 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Keck's Food Service / 20250921.
+2025-09-23 08:14:49,370 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Keck's Food Service.
+2025-09-23 08:14:53,753 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Eurocafe Imports (09/21/2025).
+2025-09-23 08:14:54,910 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Eurocafe Imports / 20250921.
+2025-09-23 08:14:54,911 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Eurocafe Imports.
+2025-09-23 08:14:59,280 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Copper Horse Coffee (09/21/2025).
+2025-09-23 08:15:00,626 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Copper Horse Coffee / 20250921.
+2025-09-23 08:15:00,626 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Copper Horse Coffee.
+2025-09-23 08:15:05,006 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Equal Exchange (09/21/2025).
+2025-09-23 08:15:06,441 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Equal Exchange / 20250921.
+2025-09-23 08:15:06,442 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Equal Exchange.
+2025-09-23 08:15:10,853 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Harney and Sons Tea (09/21/2025).
+2025-09-23 08:15:12,049 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Harney and Sons Tea / 20250921.
+2025-09-23 08:15:12,051 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Harney and Sons Tea.
+2025-09-23 08:15:16,435 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Coca-Cola (09/21/2025).
+2025-09-23 08:15:18,109 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Coca-Cola / 20250921.
+2025-09-23 08:15:18,110 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Coca-Cola.
+2025-09-23 08:15:22,515 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for DUTCH VALLEY FOOD DIST (09/21/2025).
+2025-09-23 08:15:23,718 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / DUTCH VALLEY FOOD DIST / 20250921.
+2025-09-23 08:15:23,719 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for DUTCH VALLEY FOOD DIST.
+2025-09-23 08:15:28,110 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Regional Distributors, Inc. (09/22/2025).
+2025-09-23 08:15:30,024 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Regional Distributors, Inc. / 20250922.
+2025-09-23 08:15:30,025 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Regional Distributors, Inc..
+2025-09-23 08:15:34,437 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Hillcrest Foods (09/22/2025).
+2025-09-23 08:15:36,578 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Hillcrest Foods / 20250922.
+2025-09-23 08:15:36,578 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Hillcrest Foods.
+2025-09-23 08:15:40,967 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Lentz (09/22/2025).
+2025-09-23 08:15:42,333 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Lentz / 20250922.
+2025-09-23 08:15:42,334 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Lentz.
+2025-09-23 08:15:46,731 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for A.L. George (09/22/2025).
+2025-09-23 08:15:48,148 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / A.L. George / 20250922.
+2025-09-23 08:15:48,149 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for A.L. George.
+2025-09-23 08:15:52,519 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for BALKAN BEVERAGE LLC (09/22/2025).
+2025-09-23 08:15:53,678 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / BALKAN BEVERAGE LLC / 20250922.
+2025-09-23 08:15:53,679 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for BALKAN BEVERAGE LLC.
+2025-09-23 08:15:58,135 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Casa (09/22/2025).
+2025-09-23 08:15:59,295 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Casa / 20250922.
+2025-09-23 08:15:59,296 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Casa.
+2025-09-23 08:16:03,689 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Side Hill Acres (09/22/2025).
+2025-09-23 08:16:04,846 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Side Hill Acres / 20250922.
+2025-09-23 08:16:04,847 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Side Hill Acres.
+2025-09-23 08:16:09,241 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Dawn (09/22/2025).
+2025-09-23 08:16:10,449 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Dawn / 20250922.
+2025-09-23 08:16:10,450 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Dawn.
+2025-09-23 08:16:14,799 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:278) - Order download complete.
+2025-09-23 08:16:14,800 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:279) - Closing WebDriver session.
+2025-09-23 09:15:23,988 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:138) - Logging into Craftable.
+2025-09-23 09:15:31,690 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:162) - Login successful.
+2025-09-23 09:15:31,690 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:261) - Starting order download protocol.
+2025-09-23 09:15:31,691 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:264) - Accessing order page for Bakery.
+2025-09-23 09:15:38,396 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for UNFI (09/20/2025).
+2025-09-23 09:15:40,562 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / UNFI / 20250920.
+2025-09-23 09:15:40,563 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for UNFI.
+2025-09-23 09:15:40,564 - ERROR - backend.bots.craftable_bot.craftable_bot.CraftableBot - (logger.py:107) - Error in download_orders: 'str' object has no attribute 'sku'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 276, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 321, in _process_order_row
+    self.orders.save_order_to_file(order_to_save)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 99, in __call__
+    self.files.save(order, format)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\order_file_adapter.py", line 40, in save
+    return self._engine.save(obj, format=fmt, overwrite=True)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\generic_file_adapter.py", line 44, in save
+    data = self.serializer.dumps(obj, format=fmt, context=context)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\serializer\serializers\order.py", line 24, in dumps
+    return formatter.dumps(self.to_dict(obj), context=context or {})
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\serializer\formats\vendor_formats\hill_n_markes_adapter.py", line 18, in dumps
+    rows = [[i.sku, i.quantity] for i in data]
+             ^^^^^
+AttributeError: 'str' object has no attribute 'sku'
+2025-09-23 09:19:28,874 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:138) - Logging into Craftable.
+2025-09-23 09:19:36,237 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:162) - Login successful.
+2025-09-23 09:19:36,238 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:261) - Starting order download protocol.
+2025-09-23 09:19:36,238 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:264) - Accessing order page for Bakery.
+2025-09-23 09:19:42,866 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for UNFI (09/20/2025).
+2025-09-23 09:19:45,044 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / UNFI / 20250920.
+2025-09-23 09:19:45,045 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for UNFI.
+2025-09-23 09:19:45,045 - ERROR - backend.bots.craftable_bot.craftable_bot.CraftableBot - (logger.py:107) - Error in download_orders: 'str' object has no attribute 'sku'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 276, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 321, in _process_order_row
+    self.orders.save_order_to_file(order_to_save)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 99, in __call__
+    self.files.save(order, format)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\order_file_adapter.py", line 40, in save
+    return self._engine.save(obj, format=fmt, overwrite=True)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\generic_file_adapter.py", line 44, in save
+    data = self.serializer.dumps(obj, format=fmt, context=context)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\serializer\serializers\order.py", line 24, in dumps
+    return formatter.dumps(self.to_dict(obj), context=context or {})
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\serializer\formats\vendor_formats\hill_n_markes_adapter.py", line 18, in dumps
+    rows = [[i.sku, i.quantity] for i in data]
+             ^^^^^
+AttributeError: 'str' object has no attribute 'sku'
+2025-09-23 09:21:03,983 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:138) - Logging into Craftable.
+2025-09-23 09:21:11,212 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:162) - Login successful.
+2025-09-23 09:21:11,213 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:261) - Starting order download protocol.
+2025-09-23 09:21:11,213 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:264) - Accessing order page for Bakery.
+2025-09-23 09:21:17,840 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for UNFI (09/20/2025).
+2025-09-23 09:21:20,015 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / UNFI / 20250920.
+2025-09-23 09:21:20,016 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for UNFI.
+2025-09-23 09:21:20,016 - ERROR - backend.bots.craftable_bot.craftable_bot.CraftableBot - (logger.py:107) - Error in download_orders: 'str' object has no attribute 'sku'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 276, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 321, in _process_order_row
+    self.orders.save_order_to_file(order_to_save, format='xlsx')
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 99, in __call__
+    self.files.save(order, format)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\order_file_adapter.py", line 40, in save
+    return self._engine.save(obj, format=fmt, overwrite=True)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\generic_file_adapter.py", line 44, in save
+    data = self.serializer.dumps(obj, format=fmt, context=context)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\serializer\serializers\order.py", line 24, in dumps
+    return formatter.dumps(self.to_dict(obj), context=context or {})
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\serializer\formats\vendor_formats\hill_n_markes_adapter.py", line 18, in dumps
+    rows = [[i.sku, i.quantity] for i in data]
+             ^^^^^
+AttributeError: 'str' object has no attribute 'sku'
+2025-09-23 09:22:50,774 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:138) - Logging into Craftable.
+2025-09-23 09:22:58,497 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:162) - Login successful.
+2025-09-23 09:22:58,498 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:261) - Starting order download protocol.
+2025-09-23 09:22:58,498 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:264) - Accessing order page for Bakery.
+2025-09-23 09:23:05,129 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for UNFI (09/20/2025).
+2025-09-23 09:23:07,270 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / UNFI / 20250920.
+2025-09-23 09:23:07,271 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for UNFI.
+2025-09-23 09:23:07,271 - ERROR - backend.bots.craftable_bot.craftable_bot.CraftableBot - (logger.py:107) - Error in download_orders: ExcelFormatter.dumps() got an unexpected keyword argument 'context'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 276, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 321, in _process_order_row
+    self.orders.save_order_to_file(order_to_save, format='xlsx')
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 99, in __call__
+    self.files.save(order, format)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\order_file_adapter.py", line 40, in save
+    return self._engine.save(obj, format=fmt, overwrite=True)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\generic_file_adapter.py", line 44, in save
+    data = self.serializer.dumps(obj, format=fmt, context=context)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\serializer\serializers\order.py", line 24, in dumps
+    return formatter.dumps(self.to_dict(obj), context=context or {})
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: ExcelFormatter.dumps() got an unexpected keyword argument 'context'
+2025-09-23 09:26:09,343 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:138) - Logging into Craftable.
+2025-09-23 09:26:16,925 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:162) - Login successful.
+2025-09-23 09:26:16,926 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:261) - Starting order download protocol.
+2025-09-23 09:26:16,926 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:264) - Accessing order page for Bakery.
+2025-09-23 09:26:23,611 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for UNFI (09/20/2025).
+2025-09-23 09:26:25,794 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / UNFI / 20250920.
+2025-09-23 09:26:25,794 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for UNFI.
+2025-09-23 09:26:30,196 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Webstaurant (09/20/2025).
+2025-09-23 09:26:31,660 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Webstaurant / 20250920.
+2025-09-23 09:26:31,661 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Webstaurant.
+2025-09-23 09:26:36,056 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Performance Food (09/20/2025).
+2025-09-23 09:26:38,457 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Performance Food / 20250920.
+2025-09-23 09:26:38,458 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Performance Food.
+2025-09-23 09:26:42,847 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for FingerLakes Farms (09/20/2025).
+2025-09-23 09:26:44,392 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / FingerLakes Farms / 20250920.
+2025-09-23 09:26:44,393 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for FingerLakes Farms.
+2025-09-23 09:26:48,769 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Hillcrest Dairy (09/20/2025).
+2025-09-23 09:26:50,171 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Hillcrest Dairy / 20250920.
+2025-09-23 09:26:50,172 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Hillcrest Dairy.
+2025-09-23 09:26:54,553 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Sysco (09/21/2025).
+2025-09-23 09:26:56,748 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Sysco / 20250921.
+2025-09-23 09:26:56,749 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Sysco.
+2025-09-23 09:27:01,138 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for US Foods (09/21/2025).
+2025-09-23 09:27:03,661 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / US Foods / 20250921.
+2025-09-23 09:27:03,662 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for US Foods.
+2025-09-23 09:27:08,067 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Keck's Food Service (09/21/2025).
+2025-09-23 09:27:09,436 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Keck's Food Service / 20250921.
+2025-09-23 09:27:09,437 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Keck's Food Service.
+2025-09-23 09:27:13,822 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Eurocafe Imports (09/21/2025).
+2025-09-23 09:27:14,982 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Eurocafe Imports / 20250921.
+2025-09-23 09:27:14,983 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Eurocafe Imports.
+2025-09-23 09:27:19,387 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Copper Horse Coffee (09/21/2025).
+2025-09-23 09:27:20,750 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Copper Horse Coffee / 20250921.
+2025-09-23 09:27:20,751 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Copper Horse Coffee.
+2025-09-23 09:27:25,145 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Equal Exchange (09/21/2025).
+2025-09-23 09:27:26,604 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Equal Exchange / 20250921.
+2025-09-23 09:27:26,605 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Equal Exchange.
+2025-09-23 09:27:31,003 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Harney and Sons Tea (09/21/2025).
+2025-09-23 09:27:32,165 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Harney and Sons Tea / 20250921.
+2025-09-23 09:27:32,166 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Harney and Sons Tea.
+2025-09-23 09:27:36,550 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Coca-Cola (09/21/2025).
+2025-09-23 09:27:38,239 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Coca-Cola / 20250921.
+2025-09-23 09:27:38,240 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Coca-Cola.
+2025-09-23 09:27:42,632 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for DUTCH VALLEY FOOD DIST (09/21/2025).
+2025-09-23 09:27:43,791 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / DUTCH VALLEY FOOD DIST / 20250921.
+2025-09-23 09:27:43,791 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for DUTCH VALLEY FOOD DIST.
+2025-09-23 09:27:48,194 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Regional Distributors, Inc. (09/22/2025).
+2025-09-23 09:27:50,106 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Regional Distributors, Inc. / 20250922.
+2025-09-23 09:27:50,107 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Regional Distributors, Inc..
+2025-09-23 09:27:54,494 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Hillcrest Foods (09/22/2025).
+2025-09-23 09:27:56,625 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Hillcrest Foods / 20250922.
+2025-09-23 09:27:56,625 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Hillcrest Foods.
+2025-09-23 09:28:01,012 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Lentz (09/22/2025).
+2025-09-23 09:28:02,383 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Lentz / 20250922.
+2025-09-23 09:28:02,384 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Lentz.
+2025-09-23 09:28:06,774 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for A.L. George (09/22/2025).
+2025-09-23 09:28:08,189 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / A.L. George / 20250922.
+2025-09-23 09:28:08,189 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for A.L. George.
+2025-09-23 09:28:12,572 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for BALKAN BEVERAGE LLC (09/22/2025).
+2025-09-23 09:28:13,733 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / BALKAN BEVERAGE LLC / 20250922.
+2025-09-23 09:28:13,734 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for BALKAN BEVERAGE LLC.
+2025-09-23 09:28:18,173 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Casa (09/22/2025).
+2025-09-23 09:28:19,344 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Casa / 20250922.
+2025-09-23 09:28:19,345 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Casa.
+2025-09-23 09:28:23,738 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Side Hill Acres (09/22/2025).
+2025-09-23 09:28:24,901 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Side Hill Acres / 20250922.
+2025-09-23 09:28:24,902 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Side Hill Acres.
+2025-09-23 09:28:29,292 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Dawn (09/22/2025).
+2025-09-23 09:28:30,472 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Dawn / 20250922.
+2025-09-23 09:28:30,472 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Dawn.
+2025-09-23 09:28:34,801 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:278) - Order download complete.
+2025-09-23 09:28:34,801 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:279) - Closing WebDriver session.
+2025-09-23 10:33:25,405 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:138) - Logging into Craftable.
+2025-09-23 10:33:32,581 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:162) - Login successful.
+2025-09-23 10:33:32,581 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:261) - Starting order download protocol.
+2025-09-23 10:33:32,581 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:264) - Accessing order page for Bakery.
+2025-09-23 10:33:39,423 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Sysco (09/21/2025).
+2025-09-23 10:33:41,690 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Sysco / 20250921.
+2025-09-23 10:33:41,691 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Sysco.
+2025-09-23 10:33:46,658 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:278) - Order download complete.
+2025-09-23 10:33:46,658 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:279) - Closing WebDriver session.
+2025-09-23 10:36:24,900 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:138) - Logging into Craftable.
+2025-09-23 10:36:32,235 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:162) - Login successful.
+2025-09-23 10:36:32,235 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:261) - Starting order download protocol.
+2025-09-23 10:36:32,235 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:264) - Accessing order page for Bakery.
+2025-09-23 10:36:39,028 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Sysco (09/21/2025).
+2025-09-23 10:36:41,305 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Sysco / 20250921.
+2025-09-23 10:36:41,306 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Sysco.
+2025-09-23 10:36:46,358 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:278) - Order download complete.
+2025-09-23 10:36:46,359 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:279) - Closing WebDriver session.
+2025-09-23 11:14:33,081 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:138) - Logging into Craftable.
+2025-09-23 11:14:40,696 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:162) - Login successful.
+2025-09-23 11:14:40,697 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:261) - Starting order download protocol.
+2025-09-23 11:14:40,697 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:264) - Accessing order page for Bakery.
+2025-09-23 11:14:47,589 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Sysco (09/21/2025).
+2025-09-23 11:14:49,863 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Sysco / 20250921.
+2025-09-23 11:14:49,864 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Sysco.
+2025-09-23 11:14:54,833 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:278) - Order download complete.
+2025-09-23 11:14:54,833 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:279) - Closing WebDriver session.
+2025-09-23 11:19:02,261 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:138) - Logging into Craftable.
+2025-09-23 11:19:09,523 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:162) - Login successful.
+2025-09-23 11:19:09,524 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:261) - Starting order download protocol.
+2025-09-23 11:19:09,524 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:264) - Accessing order page for Bakery.
+2025-09-23 11:19:16,377 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Sysco (09/21/2025).
+2025-09-23 11:19:18,679 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Sysco / 20250921.
+2025-09-23 11:19:18,680 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Sysco.
+2025-09-23 11:19:23,681 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:278) - Order download complete.
+2025-09-23 11:19:23,682 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:279) - Closing WebDriver session.
+2025-09-23 11:20:12,954 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:138) - Logging into Craftable.
+2025-09-23 11:20:20,188 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:162) - Login successful.
+2025-09-23 11:20:20,189 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:261) - Starting order download protocol.
+2025-09-23 11:20:20,189 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:264) - Accessing order page for Bakery.
+2025-09-23 11:20:27,027 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Sysco (09/21/2025).
+2025-09-23 11:20:29,281 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Sysco / 20250921.
+2025-09-23 11:20:29,282 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Sysco.
+2025-09-23 11:20:34,262 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:278) - Order download complete.
+2025-09-23 11:20:34,262 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:279) - Closing WebDriver session.
+2025-09-23 11:26:43,257 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:138) - Logging into Craftable.
+2025-09-23 11:26:50,676 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:162) - Login successful.
+2025-09-23 11:26:50,677 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:261) - Starting order download protocol.
+2025-09-23 11:26:50,677 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:264) - Accessing order page for Bakery.
+2025-09-23 11:26:57,580 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Sysco (09/21/2025).
+2025-09-23 11:26:59,885 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Sysco / 20250921.
+2025-09-23 11:26:59,886 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Sysco.
+2025-09-23 11:27:04,916 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:278) - Order download complete.
+2025-09-23 11:27:04,916 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:279) - Closing WebDriver session.
+2025-09-23 11:31:48,502 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:138) - Logging into Craftable.
+2025-09-23 11:31:56,094 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:162) - Login successful.
+2025-09-23 11:31:56,095 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:261) - Starting order download protocol.
+2025-09-23 11:31:56,095 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:264) - Accessing order page for Bakery.
+2025-09-23 11:32:02,979 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Sysco (09/21/2025).
+2025-09-23 11:32:05,266 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Sysco / 20250921.
+2025-09-23 11:32:05,267 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Sysco.
+2025-09-23 11:32:10,256 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:278) - Order download complete.
+2025-09-23 11:32:10,256 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:279) - Closing WebDriver session.
+2025-09-23 11:32:39,168 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:138) - Logging into Craftable.
+2025-09-23 11:32:46,512 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:162) - Login successful.
+2025-09-23 11:32:46,512 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:261) - Starting order download protocol.
+2025-09-23 11:32:46,512 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:264) - Accessing order page for Bakery.
+2025-09-23 11:32:53,333 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Sysco (09/21/2025).
+2025-09-23 11:32:55,636 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Sysco / 20250921.
+2025-09-23 11:32:55,637 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Sysco.
+2025-09-23 11:33:00,580 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:278) - Order download complete.
+2025-09-23 11:33:00,580 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:279) - Closing WebDriver session.
+2025-09-23 11:36:11,903 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:138) - Logging into Craftable.
+2025-09-23 11:36:19,437 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:162) - Login successful.
+2025-09-23 11:36:19,437 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:261) - Starting order download protocol.
+2025-09-23 11:36:19,437 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:264) - Accessing order page for Bakery.
+2025-09-23 11:36:26,239 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Sysco (09/21/2025).
+2025-09-23 11:36:28,511 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Sysco / 20250921.
+2025-09-23 11:36:28,512 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Sysco.
+2025-09-23 11:36:33,563 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:278) - Order download complete.
+2025-09-23 11:36:33,563 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:279) - Closing WebDriver session.
+2025-09-23 11:38:25,456 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:138) - Logging into Craftable.
+2025-09-23 11:38:32,826 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:162) - Login successful.
+2025-09-23 11:38:32,826 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:261) - Starting order download protocol.
+2025-09-23 11:38:32,826 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:264) - Accessing order page for Bakery.
+2025-09-23 11:38:39,703 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Sysco (09/21/2025).
+2025-09-23 11:38:42,058 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Sysco / 20250921.
+2025-09-23 11:38:42,060 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Sysco.
+2025-09-23 11:38:47,084 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:278) - Order download complete.
+2025-09-23 11:38:47,084 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:279) - Closing WebDriver session.
+2025-09-23 11:40:41,660 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:138) - Logging into Craftable.
+2025-09-23 11:40:49,010 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:162) - Login successful.
+2025-09-23 11:40:49,010 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:261) - Starting order download protocol.
+2025-09-23 11:40:49,010 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:264) - Accessing order page for Bakery.
+2025-09-23 11:40:55,813 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Sysco (09/21/2025).
+2025-09-23 11:40:58,075 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Sysco / 20250921.
+2025-09-23 11:40:58,076 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Sysco.
+2025-09-23 11:41:03,087 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:278) - Order download complete.
+2025-09-23 11:41:03,087 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:279) - Closing WebDriver session.
+2025-09-23 11:42:26,987 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:138) - Logging into Craftable.
+2025-09-23 11:42:34,222 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:162) - Login successful.
+2025-09-23 11:42:34,222 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:261) - Starting order download protocol.
+2025-09-23 11:42:34,222 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:264) - Accessing order page for Bakery.
+2025-09-23 11:42:41,104 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Sysco (09/21/2025).
+2025-09-23 11:42:43,406 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Sysco / 20250921.
+2025-09-23 11:42:43,410 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Sysco.
+2025-09-23 11:42:48,385 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:278) - Order download complete.
+2025-09-23 11:42:48,386 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:279) - Closing WebDriver session.
+2025-09-23 11:43:51,580 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:138) - Logging into Craftable.
+2025-09-23 11:43:58,947 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:162) - Login successful.
+2025-09-23 11:43:58,947 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:261) - Starting order download protocol.
+2025-09-23 11:43:58,947 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:264) - Accessing order page for Bakery.
+2025-09-23 11:44:05,802 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Sysco (09/21/2025).
+2025-09-23 11:44:08,066 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Sysco / 20250921.
+2025-09-23 11:44:08,084 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Sysco.
+2025-09-23 11:44:13,087 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:278) - Order download complete.
+2025-09-23 11:44:13,087 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:279) - Closing WebDriver session.
+2025-09-23 11:44:47,312 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:138) - Logging into Craftable.
+2025-09-23 11:44:54,480 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:162) - Login successful.
+2025-09-23 11:44:54,480 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:261) - Starting order download protocol.
+2025-09-23 11:44:54,480 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:264) - Accessing order page for Bakery.
+2025-09-23 11:45:01,315 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Sysco (09/21/2025).
+2025-09-23 11:45:03,607 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Sysco / 20250921.
+2025-09-23 11:45:03,623 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Sysco.
+2025-09-23 11:45:08,629 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:278) - Order download complete.
+2025-09-23 11:45:08,630 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:279) - Closing WebDriver session.
+2025-09-23 11:46:22,617 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:138) - Logging into Craftable.
+2025-09-23 11:46:29,591 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:162) - Login successful.
+2025-09-23 11:46:29,591 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:261) - Starting order download protocol.
+2025-09-23 11:46:29,591 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:264) - Accessing order page for Bakery.
+2025-09-23 11:46:36,401 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Sysco (09/21/2025).
+2025-09-23 11:46:38,669 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Sysco / 20250921.
+2025-09-23 11:46:38,688 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Sysco.
+2025-09-23 11:46:43,718 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:278) - Order download complete.
+2025-09-23 11:46:43,718 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:279) - Closing WebDriver session.
+2025-09-23 11:52:06,174 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:138) - Logging into Craftable.
+2025-09-23 11:52:13,259 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:162) - Login successful.
+2025-09-23 11:52:13,259 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:261) - Starting order download protocol.
+2025-09-23 11:52:13,259 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:264) - Accessing order page for Bakery.
+2025-09-23 11:52:20,161 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Sysco (09/21/2025).
+2025-09-23 11:52:22,626 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Sysco / 20250921.
+2025-09-23 11:52:22,627 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Sysco.
+2025-09-23 11:52:27,697 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:278) - Order download complete.
+2025-09-23 11:52:27,698 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:279) - Closing WebDriver session.
+2025-09-23 11:52:49,912 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:138) - Logging into Craftable.
+2025-09-23 11:52:57,106 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:162) - Login successful.
+2025-09-23 11:52:57,106 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:261) - Starting order download protocol.
+2025-09-23 11:52:57,106 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:264) - Accessing order page for Bakery.
+2025-09-23 11:53:03,763 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for UNFI (09/20/2025).
+2025-09-23 11:53:05,992 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / UNFI / 20250920.
+2025-09-23 11:53:06,011 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for UNFI.
+2025-09-23 11:53:10,434 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Webstaurant (09/20/2025).
+2025-09-23 11:53:11,908 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Webstaurant / 20250920.
+2025-09-23 11:53:11,925 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Webstaurant.
+2025-09-23 11:53:16,340 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Performance Food (09/20/2025).
+2025-09-23 11:53:18,852 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Performance Food / 20250920.
+2025-09-23 11:53:18,869 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Performance Food.
+2025-09-23 11:53:23,277 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for FingerLakes Farms (09/20/2025).
+2025-09-23 11:53:24,863 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / FingerLakes Farms / 20250920.
+2025-09-23 11:53:24,879 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for FingerLakes Farms.
+2025-09-23 11:53:29,289 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Hillcrest Dairy (09/20/2025).
+2025-09-23 11:53:30,722 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Hillcrest Dairy / 20250920.
+2025-09-23 11:53:30,739 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Hillcrest Dairy.
+2025-09-23 11:53:35,144 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Sysco (09/21/2025).
+2025-09-23 11:53:37,481 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Sysco / 20250921.
+2025-09-23 11:53:37,488 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Sysco.
+2025-09-23 11:53:41,899 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for US Foods (09/21/2025).
+2025-09-23 11:53:44,459 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / US Foods / 20250921.
+2025-09-23 11:53:44,475 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for US Foods.
+2025-09-23 11:53:48,891 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Keck's Food Service (09/21/2025).
+2025-09-23 11:53:50,214 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Keck's Food Service / 20250921.
+2025-09-23 11:53:50,231 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Keck's Food Service.
+2025-09-23 11:53:54,630 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Eurocafe Imports (09/21/2025).
+2025-09-23 11:53:55,796 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Eurocafe Imports / 20250921.
+2025-09-23 11:53:55,813 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Eurocafe Imports.
+2025-09-23 11:54:00,214 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Copper Horse Coffee (09/21/2025).
+2025-09-23 11:54:01,587 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Copper Horse Coffee / 20250921.
+2025-09-23 11:54:01,609 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Copper Horse Coffee.
+2025-09-23 11:54:05,999 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Equal Exchange (09/21/2025).
+2025-09-23 11:54:07,521 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Equal Exchange / 20250921.
+2025-09-23 11:54:07,539 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Equal Exchange.
+2025-09-23 11:54:11,950 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Harney and Sons Tea (09/21/2025).
+2025-09-23 11:54:13,121 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Harney and Sons Tea / 20250921.
+2025-09-23 11:54:13,137 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Harney and Sons Tea.
+2025-09-23 11:54:17,544 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Coca-Cola (09/21/2025).
+2025-09-23 11:54:19,276 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Coca-Cola / 20250921.
+2025-09-23 11:54:19,293 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Coca-Cola.
+2025-09-23 11:54:23,675 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for DUTCH VALLEY FOOD DIST (09/21/2025).
+2025-09-23 11:54:24,839 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / DUTCH VALLEY FOOD DIST / 20250921.
+2025-09-23 11:54:24,856 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for DUTCH VALLEY FOOD DIST.
+2025-09-23 11:54:29,248 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Regional Distributors, Inc. (09/22/2025).
+2025-09-23 11:54:31,227 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Regional Distributors, Inc. / 20250922.
+2025-09-23 11:54:31,244 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Regional Distributors, Inc..
+2025-09-23 11:54:35,649 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Hillcrest Foods (09/22/2025).
+2025-09-23 11:54:37,823 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Hillcrest Foods / 20250922.
+2025-09-23 11:54:37,842 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Hillcrest Foods.
+2025-09-23 11:54:42,247 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Lentz (09/22/2025).
+2025-09-23 11:54:43,629 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Lentz / 20250922.
+2025-09-23 11:54:43,646 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Lentz.
+2025-09-23 11:54:48,086 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for A.L. George (09/22/2025).
+2025-09-23 11:54:49,532 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / A.L. George / 20250922.
+2025-09-23 11:54:49,548 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for A.L. George.
+2025-09-23 11:54:53,942 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for BALKAN BEVERAGE LLC (09/22/2025).
+2025-09-23 11:54:55,117 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / BALKAN BEVERAGE LLC / 20250922.
+2025-09-23 11:54:55,136 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for BALKAN BEVERAGE LLC.
+2025-09-23 11:54:59,537 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Casa (09/22/2025).
+2025-09-23 11:55:00,701 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Casa / 20250922.
+2025-09-23 11:55:00,720 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Casa.
+2025-09-23 11:55:05,143 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Side Hill Acres (09/22/2025).
+2025-09-23 11:55:06,363 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Side Hill Acres / 20250922.
+2025-09-23 11:55:06,381 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Side Hill Acres.
+2025-09-23 11:55:10,769 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for Dawn (09/22/2025).
+2025-09-23 11:55:11,991 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / Dawn / 20250922.
+2025-09-23 11:55:12,008 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for Dawn.
+2025-09-23 11:55:16,366 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:278) - Order download complete.
+2025-09-23 11:55:16,366 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:279) - Closing WebDriver session.

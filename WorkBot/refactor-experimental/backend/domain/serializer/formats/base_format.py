@@ -7,10 +7,22 @@ from abc import ABC, abstractmethod
 T = TypeVar("T")
 
 class BaseFormatter(Generic[T], ABC):
-    """Base class for formatters with file support."""
+    '''Base class for formatters with file support.
+    
+    Format objects should be of the form:
+
+        {
+            "headers": ["col1", "col2", ...],
+            "rows": [
+                ["a", "b", ...],
+                ["c", "d", ...],
+                ...
+            ]
+        }
+    '''
 
     @abstractmethod
-    def dumps(self, obj: T, format: Optional[str] = None) -> bytes:
+    def dumps(self, obj: T, format: Optional[str] = None, context: dict | None = None) -> bytes:
         ...
 
     @abstractmethod

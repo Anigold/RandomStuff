@@ -11,9 +11,9 @@ class CsvFormatter(BaseFormatter):
     """Domain-agnostic CSV formatter: expects a dict with 'headers' and 'rows'."""
 
     def format_name(self) -> str:
-        return "csv"
+        return 'csv'
 
-    def dumps(self, obj: Dict[str, Any]) -> bytes:
+    def dumps(self, obj: Dict[str, Any], context: dict | None = None) -> bytes:
         """
         obj should be of the form:
         {

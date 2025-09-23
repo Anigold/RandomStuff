@@ -13,7 +13,7 @@ class ExcelFormatter(BaseFormatter):
     def format_name(self) -> str:
         return "xlsx"
 
-    def dumps(self, obj: Dict[str, Any]) -> bytes:
+    def dumps(self, obj: Dict[str, Any], context: dict | None = None) -> bytes:
         """
         obj should be of the form:
         {
@@ -35,6 +35,7 @@ class ExcelFormatter(BaseFormatter):
         return buf.getvalue()
 
     def loads(self, data: bytes) -> Dict[str, Any]:
+
         buf = BytesIO(data)
         wb = load_workbook(buf)
         ws = wb.active
@@ -48,7 +49,8 @@ class ExcelFormatter(BaseFormatter):
     def load_path(self, path: Path) -> Dict[str, Any]:
         wb = load_workbook(path)
         ws = wb.active
-        rows = list(ws.iter_rows(values_only=True))
+        rows = [[cell for cell in row] for row in ws.iter_rows(min_row=2, values_only=True)]
+        
         if not rows:
             return {"headers": [], "rows": []}
         headers, *body = rows

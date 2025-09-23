@@ -11,25 +11,31 @@ class OrderSerializer(Serializer[Order]):
     Delegates bytes conversion to a pluggable Formatter via the registry.
     """
 
-    def __init__(self, default_format: str = "xlsx"):
+    def __init__(self, default_format: str = 'xlsx'):
         self.default_format = default_format
 
     def preferred_format(self) -> str:
         return self.default_format
 
     # ---- Core protocol ----
-    def dumps(self, obj: Order, format: Optional[str] = None) -> bytes:
+    def dumps(self, obj: Order, format: Optional[str] = None, context: dict | None = None) -> bytes:
         fmt = format or self.preferred_format()
         formatter = get_formatter(fmt)
-        return formatter.dumps(self.to_dict(obj))
 
-    def loads(self, data: bytes, format: Optional[str] = None) -> Order:
+        order_dict = self.to_dict(obj)
+        order_tablular = self._to_table(order_dict)
+      
+
+        return formatter.dumps(order_tablular, context=context or {})
+
+    def loads(self, data: bytes, format: Optional[str] = None, context: dict | None = None) -> Order:
         fmt = format or self.preferred_format()
         formatter = get_formatter(fmt)
         payload = formatter.loads(data)
         return self.from_dict(payload)
 
     def load_path(self, path: Path) -> Order:
+
         fmt = path.suffix.lstrip(".").lower()
         formatter = get_formatter(fmt)
         payload = formatter.load_path(path)
@@ -37,7 +43,7 @@ class OrderSerializer(Serializer[Order]):
 
     # ---- Domain <-> dict ----
     def to_dict(self, order: Order) -> dict:
-        return {
+        out = {
             "store": order.store,
             "vendor": order.vendor,
             "date": order.date,
@@ -53,7 +59,10 @@ class OrderSerializer(Serializer[Order]):
             ],
         }
 
+        return out
+
     def from_dict(self, data: dict) -> Order:
+        
         items = [
             OrderItem(
                 sku=i.get("sku"),
@@ -70,3 +79,11 @@ class OrderSerializer(Serializer[Order]):
             date=data["date"],
             items=items,
         )
+
+    def _to_table(self, order_dict: dict, context: dict | None = None) -> dict:
+        headers = ['SKU', 'Name', 'Quantity', 'Cost Per', 'Total Cost']
+        rows = [
+            [i['sku'], i['name'], i['quantity'], i.get('cost_per', 0.0), i.get('total_cost', 0.0)]
+            for i in order_dict.get('items', [])
+        ]
+        return {'headers': headers, 'rows': rows}

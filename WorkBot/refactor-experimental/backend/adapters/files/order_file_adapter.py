@@ -35,8 +35,8 @@ class OrderFileAdapter(OrderFilePort):
     def read_from_path(self, path: Path) -> Order:
         return self._engine.read(path)
 
-    def save(self, obj: Order, format: str = "excel") -> Path:
-        fmt = "xlsx" if format in ("excel", "xlsx") else format
+    def save(self, obj: Order, format: str = 'xlsx') -> Path:
+        fmt = 'xlsx' if format in ('excel', 'xlsx') else format
         return self._engine.save(obj, format=fmt, overwrite=True)
 
     def remove(self, path: Path) -> None:
@@ -52,16 +52,55 @@ class OrderFileAdapter(OrderFilePort):
         vendors: List[str],
         formats: Optional[List[str]] = None
     ) -> List[Path]:
+        """
+        Discover saved order files, filtered by store, vendor, and format.
+
+        Uses the Namer's base directory (vendor subdirs) and recurses
+        into them when searching. Filters are applied via filename metadata.
+        """
         fmts = formats or ["xlsx"]
         results: list[Path] = []
+
+        base_dir = self.get_directory().resolve()
+
         for f in fmts:
             ext = "xlsx" if f in ("excel", "xlsx") else f
-            for p in self.list_files(pattern=f"*.{ext}"):
+            # Search recursively in vendor subdirectories
+            for p in base_dir.rglob(f"*.{ext}"):
+                if not p.is_file():
+                    continue
+
                 meta = self.parse_metadata(p.name)
-                if (not stores or meta.get("store") in stores) and (not vendors or meta.get("vendor") in vendors):
+                
+                if (not stores or meta.get("store") in stores) and \
+                (not vendors or meta.get("vendor") in vendors):
                     results.append(p)
-        return results
+    
+        return sorted(results)
 
     # helper used by ExpectDownloadedPdf use-case if you need it elsewhere
     def target_pdf_path_for(self, order: Order) -> Path:
         return self.get_file_path(order, format="pdf")
+
+    def generate_vendor_upload_file(self, order: Order, context: dict = None) -> None:
+        return self._engine.serializer.dumps(order, format=order.vendor, context=context)
+
+
+      
+
+        adapter    = BaseAdapter.get_adapter(order.vendor)
+        fmt        = BaseFormat.get_format(order.vendor)
+        serializer = OrderSerializer(adapter=adapter)
+
+        headers = serializer.get_headers()
+        rows = serializer.to_rows(order)
+        file_data = fmt.write(headers, rows)
+
+        # override default suffix for special cases like Performance Food
+        extension = 'txt' if order.vendor == 'Performance Food' else fmt.default_suffix.strip('.')
+        filename = self.filename_strategy.format(order, extension=extension)
+        output_path = self.output_dir / order.vendor / filename
+
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        self.file_handler._write_data(fmt.name, file_data, output_path)
+        return output_path

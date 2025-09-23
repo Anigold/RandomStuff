@@ -15156,3 +15156,478 @@ Stacktrace:
 2025-09-21 14:08:22,597 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_upload_files' executed successfully.
 2025-09-21 14:31:22,384 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
 2025-09-21 14:31:22,389 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-09-22 07:48:30,516 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:54) - Initializing WorkBot...
+2025-09-22 07:48:30,552 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:74) - WorkBot initialized successfully.
+2025-09-22 07:48:30,552 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-22 07:48:30,561 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-09-22 07:48:30,561 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-09-22 07:48:30,561 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-09-22 07:48:44,275 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Triphammer', 'Easthill', 'Downtown', 'Collegetown', '--vendors', 'Ithaca Bakery'])
+2025-09-22 07:48:50,632 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:136) - Logging into Craftable.
+2025-09-22 07:48:58,114 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:160) - Login successful.
+2025-09-22 07:48:58,114 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:259) - Starting order download protocol.
+2025-09-22 07:48:58,114 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:262) - Accessing order page for Triphammer.
+2025-09-22 07:49:04,681 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Ithaca Bakery (09/19/2025).
+2025-09-22 07:49:07,930 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Triphammer / Ithaca Bakery / 20250919.
+2025-09-22 07:49:07,940 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 07:49:07,941 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Ithaca Bakery.
+2025-09-22 07:49:10,582 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Ithaca Bakery\Ithaca Bakery_Triphammer_2025-09-19.pdf
+2025-09-22 07:49:13,083 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:262) - Accessing order page for Easthill.
+2025-09-22 07:49:19,546 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Ithaca Bakery (09/20/2025).
+2025-09-22 07:49:22,411 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Easthill / Ithaca Bakery / 20250920.
+2025-09-22 07:49:22,419 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 07:49:22,420 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Ithaca Bakery.
+2025-09-22 07:49:25,010 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Ithaca Bakery\Ithaca Bakery_Easthill_2025-09-20.pdf
+2025-09-22 07:49:27,317 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:262) - Accessing order page for Downtown.
+2025-09-22 07:49:33,758 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Ithaca Bakery (09/19/2025).
+2025-09-22 07:49:36,933 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Downtown / Ithaca Bakery / 20250919.
+2025-09-22 07:49:36,942 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 07:49:36,943 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Ithaca Bakery.
+2025-09-22 07:49:39,032 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Ithaca Bakery\Ithaca Bakery_Downtown_2025-09-19.pdf
+2025-09-22 07:49:41,894 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:262) - Accessing order page for Collegetown.
+2025-09-22 07:49:48,425 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Ithaca Bakery (09/19/2025).
+2025-09-22 07:49:51,765 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Collegetown / Ithaca Bakery / 20250919.
+2025-09-22 07:49:51,775 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 07:49:51,776 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Ithaca Bakery.
+2025-09-22 07:49:53,866 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Ithaca Bakery\Ithaca Bakery_Collegetown_2025-09-19.pdf
+2025-09-22 07:49:56,643 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:276) - Order download complete.
+2025-09-22 07:49:56,643 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:277) - Closing WebDriver session.
+2025-09-22 07:49:58,362 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-22 07:50:58,868 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: combine_orders (args=['--vendors', 'Ithaca Bakery'])
+2025-09-22 07:50:58,868 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:122) - Combining orders for 1 vendors.
+2025-09-22 07:50:58,868 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:65) - Retrieving order files: stores=[[]], vendors=[['Ithaca Bakery']], formats=['xlsx']
+2025-09-22 07:50:58,873 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:107) - Retrieved 4 order files.
+2025-09-22 07:50:58,968 - INFO - cli.cli.CLI - (cli.py:421) - Command 'combine_orders' executed successfully.
+2025-09-22 08:51:08,660 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-09-22 08:51:14,003 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:136) - Logging into Craftable.
+2025-09-22 08:51:21,419 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:160) - Login successful.
+2025-09-22 08:51:21,419 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:259) - Starting order download protocol.
+2025-09-22 08:51:21,419 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:262) - Accessing order page for Bakery.
+2025-09-22 08:51:28,032 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for UNFI (09/20/2025).
+2025-09-22 08:51:30,223 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Bakery / UNFI / 20250920.
+2025-09-22 08:51:30,231 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 08:51:30,232 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for UNFI.
+2025-09-22 08:51:32,809 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\UNFI\UNFI_Bakery_2025-09-20.pdf
+2025-09-22 08:51:34,691 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Webstaurant (09/20/2025).
+2025-09-22 08:51:36,158 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Bakery / Webstaurant / 20250920.
+2025-09-22 08:51:36,164 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 08:51:36,165 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Webstaurant.
+2025-09-22 08:51:38,729 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Webstaurant\Webstaurant_Bakery_2025-09-20.pdf
+2025-09-22 08:51:40,604 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Performance Food (09/20/2025).
+2025-09-22 08:51:43,019 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Bakery / Performance Food / 20250920.
+2025-09-22 08:51:43,026 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 08:51:43,027 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Performance Food.
+2025-09-22 08:51:45,601 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Performance Food\Performance Food_Bakery_2025-09-20.pdf
+2025-09-22 08:51:47,482 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for FingerLakes Farms (09/20/2025).
+2025-09-22 08:51:49,080 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Bakery / FingerLakes Farms / 20250920.
+2025-09-22 08:51:49,085 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 08:51:49,086 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for FingerLakes Farms.
+2025-09-22 08:51:51,142 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\FingerLakes Farms\FingerLakes Farms_Bakery_2025-09-20.pdf
+2025-09-22 08:51:53,520 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Hillcrest Dairy (09/20/2025).
+2025-09-22 08:51:54,956 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Bakery / Hillcrest Dairy / 20250920.
+2025-09-22 08:51:54,961 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 08:51:54,962 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Hillcrest Dairy.
+2025-09-22 08:51:57,517 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Dairy\Hillcrest Dairy_Bakery_2025-09-20.pdf
+2025-09-22 08:51:59,390 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Sysco (09/21/2025).
+2025-09-22 08:52:01,632 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Bakery / Sysco / 20250921.
+2025-09-22 08:52:01,638 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 08:52:01,639 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Sysco.
+2025-09-22 08:52:03,704 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Sysco\Sysco_Bakery_2025-09-21.pdf
+2025-09-22 08:52:06,074 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for US Foods (09/21/2025).
+2025-09-22 08:52:08,516 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Bakery / US Foods / 20250921.
+2025-09-22 08:52:08,523 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 08:52:08,524 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for US Foods.
+2025-09-22 08:52:10,596 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\US Foods\US Foods_Bakery_2025-09-21.pdf
+2025-09-22 08:52:12,976 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Keck's Food Service (09/21/2025).
+2025-09-22 08:52:14,275 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Bakery / Keck's Food Service / 20250921.
+2025-09-22 08:52:14,280 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 08:52:14,281 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Keck's Food Service.
+2025-09-22 08:52:16,835 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Keck's Food Service\Keck's Food Service_Bakery_2025-09-21.pdf
+2025-09-22 08:52:18,708 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Eurocafe Imports (09/21/2025).
+2025-09-22 08:52:19,862 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Bakery / Eurocafe Imports / 20250921.
+2025-09-22 08:52:19,866 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 08:52:19,867 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Eurocafe Imports.
+2025-09-22 08:52:21,915 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Eurocafe Imports\Eurocafe Imports_Bakery_2025-09-21.pdf
+2025-09-22 08:52:24,292 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Copper Horse Coffee (09/21/2025).
+2025-09-22 08:52:25,684 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Bakery / Copper Horse Coffee / 20250921.
+2025-09-22 08:52:25,690 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 08:52:25,691 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Copper Horse Coffee.
+2025-09-22 08:52:27,742 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Copper Horse Coffee\Copper Horse Coffee_Bakery_2025-09-21.pdf
+2025-09-22 08:52:30,103 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Equal Exchange (09/21/2025).
+2025-09-22 08:52:31,603 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Bakery / Equal Exchange / 20250921.
+2025-09-22 08:52:31,609 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 08:52:31,610 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Equal Exchange.
+2025-09-22 08:52:34,168 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Equal Exchange\Equal Exchange_Bakery_2025-09-21.pdf
+2025-09-22 08:52:36,042 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Harney and Sons Tea (09/21/2025).
+2025-09-22 08:52:37,196 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Bakery / Harney and Sons Tea / 20250921.
+2025-09-22 08:52:37,200 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 08:52:37,201 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Harney and Sons Tea.
+2025-09-22 08:52:39,248 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Harney and Sons Tea\Harney and Sons Tea_Bakery_2025-09-21.pdf
+2025-09-22 08:52:41,652 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Coca-Cola (09/21/2025).
+2025-09-22 08:52:43,311 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Bakery / Coca-Cola / 20250921.
+2025-09-22 08:52:43,317 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 08:52:43,318 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Coca-Cola.
+2025-09-22 08:52:45,383 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Coca-Cola\Coca-Cola_Bakery_2025-09-21.pdf
+2025-09-22 08:52:47,755 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for DUTCH VALLEY FOOD DIST (09/21/2025).
+2025-09-22 08:52:48,910 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Bakery / DUTCH VALLEY FOOD DIST / 20250921.
+2025-09-22 08:52:48,914 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 08:52:48,915 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for DUTCH VALLEY FOOD DIST.
+2025-09-22 08:52:50,963 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\DUTCH VALLEY FOOD DIST\DUTCH VALLEY FOOD DIST_Bakery_2025-09-21.pdf
+2025-09-22 08:52:53,324 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Regional Distributors, Inc. (09/22/2025).
+2025-09-22 08:52:55,215 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Bakery / Regional Distributors, Inc. / 20250922.
+2025-09-22 08:52:55,216 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:195) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Regional Distributors, Inc.\Regional Distributors, Inc._Bakery_2025-09-22.xlsx. Proceeding with save.
+2025-09-22 08:52:55,216 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Regional Distributors, Inc..
+2025-09-22 08:52:57,287 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Regional Distributors, Inc.\Regional Distributors, Inc._Bakery_2025-09-22.pdf
+2025-09-22 08:52:59,653 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Hillcrest Foods (09/22/2025).
+2025-09-22 08:53:01,749 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Bakery / Hillcrest Foods / 20250922.
+2025-09-22 08:53:01,749 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:195) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Foods\Hillcrest Foods_Bakery_2025-09-22.xlsx. Proceeding with save.
+2025-09-22 08:53:01,749 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Hillcrest Foods.
+2025-09-22 08:53:04,340 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Foods\Hillcrest Foods_Bakery_2025-09-22.pdf
+2025-09-22 08:53:06,210 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Lentz (09/22/2025).
+2025-09-22 08:53:07,571 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Bakery / Lentz / 20250922.
+2025-09-22 08:53:07,572 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:195) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Lentz\Lentz_Bakery_2025-09-22.xlsx. Proceeding with save.
+2025-09-22 08:53:07,572 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Lentz.
+2025-09-22 08:53:09,629 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Lentz\Lentz_Bakery_2025-09-22.pdf
+2025-09-22 08:53:11,985 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for A.L. George (09/22/2025).
+2025-09-22 08:53:13,394 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Bakery / A.L. George / 20250922.
+2025-09-22 08:53:13,395 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:195) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\A.L. George\A.L. George_Bakery_2025-09-22.xlsx. Proceeding with save.
+2025-09-22 08:53:13,395 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for A.L. George.
+2025-09-22 08:53:15,453 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\A.L. George\A.L. George_Bakery_2025-09-22.pdf
+2025-09-22 08:53:17,809 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for BALKAN BEVERAGE LLC (09/22/2025).
+2025-09-22 08:53:18,964 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Bakery / BALKAN BEVERAGE LLC / 20250922.
+2025-09-22 08:53:18,965 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:195) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\BALKAN BEVERAGE LLC\BALKAN BEVERAGE LLC_Bakery_2025-09-22.xlsx. Proceeding with save.
+2025-09-22 08:53:18,965 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for BALKAN BEVERAGE LLC.
+2025-09-22 08:53:21,516 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\BALKAN BEVERAGE LLC\BALKAN BEVERAGE LLC_Bakery_2025-09-22.pdf
+2025-09-22 08:53:23,391 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Casa (09/22/2025).
+2025-09-22 08:53:24,554 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Bakery / Casa / 20250922.
+2025-09-22 08:53:24,554 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:195) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Casa\Casa_Bakery_2025-09-22.xlsx. Proceeding with save.
+2025-09-22 08:53:24,554 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Casa.
+2025-09-22 08:53:26,610 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Casa\Casa_Bakery_2025-09-22.pdf
+2025-09-22 08:53:28,974 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Side Hill Acres (09/22/2025).
+2025-09-22 08:53:30,130 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Bakery / Side Hill Acres / 20250922.
+2025-09-22 08:53:30,130 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:195) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Side Hill Acres\Side Hill Acres_Bakery_2025-09-22.xlsx. Proceeding with save.
+2025-09-22 08:53:30,130 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Side Hill Acres.
+2025-09-22 08:53:32,180 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Side Hill Acres\Side Hill Acres_Bakery_2025-09-22.pdf
+2025-09-22 08:53:34,551 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Dawn (09/22/2025).
+2025-09-22 08:53:35,758 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Bakery / Dawn / 20250922.
+2025-09-22 08:53:35,758 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:195) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Dawn\Dawn_Bakery_2025-09-22.xlsx. Proceeding with save.
+2025-09-22 08:53:35,758 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Dawn.
+2025-09-22 08:53:37,815 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Dawn\Dawn_Bakery_2025-09-22.pdf
+2025-09-22 08:53:40,142 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:276) - Order download complete.
+2025-09-22 08:53:40,142 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:277) - Closing WebDriver session.
+2025-09-22 08:53:41,883 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-22 08:54:10,710 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Bakery', '--vendors', 'Hillcrest Foods'])
+2025-09-22 08:54:10,710 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:94) - Retrieving orders for: stores=[['Bakery']], vendors=[['Hillcrest Foods']], formats=[['xlsx']]
+2025-09-22 08:54:10,710 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[['Bakery']], vendors=[['Hillcrest Foods']], formats=[['xlsx']]
+2025-09-22 08:54:10,711 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:65) - Retrieving order files: stores=[['Bakery']], vendors=[['Hillcrest Foods']], formats=['xlsx']
+2025-09-22 08:54:10,714 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:107) - Retrieved 1 order files.
+2025-09-22 08:54:10,714 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:52) - Reading 1 order files.
+2025-09-22 08:54:10,715 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Foods\Hillcrest Foods_Bakery_2025-09-22.xlsx
+2025-09-22 08:54:11,218 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-22 08:54:48,446 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Triphammer', 'Collegetown', '--vendors', 'Hillcrest Dairy'])
+2025-09-22 08:54:48,447 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:94) - Retrieving orders for: stores=[['Bakery', 'Easthill', 'Downtown', 'Triphammer', 'Collegetown']], vendors=[['Hillcrest Dairy']], formats=[['xlsx']]
+2025-09-22 08:54:48,447 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[['Bakery', 'Easthill', 'Downtown', 'Triphammer', 'Collegetown']], vendors=[['Hillcrest Dairy']], formats=[['xlsx']]
+2025-09-22 08:54:48,447 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:65) - Retrieving order files: stores=[['Bakery', 'Easthill', 'Downtown', 'Triphammer', 'Collegetown']], vendors=[['Hillcrest Dairy']], formats=['xlsx']
+2025-09-22 08:54:48,452 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:107) - Retrieved 5 order files.
+2025-09-22 08:54:48,452 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:52) - Reading 5 order files.
+2025-09-22 08:54:48,452 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Dairy\Hillcrest Dairy_Bakery_2025-09-20.xlsx
+2025-09-22 08:54:48,470 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Dairy\Hillcrest Dairy_Triphammer_2025-09-19.xlsx
+2025-09-22 08:54:48,475 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Dairy\Hillcrest Dairy_Collegetown_2025-09-19.xlsx
+2025-09-22 08:54:48,480 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Dairy\Hillcrest Dairy_Downtown_2025-09-19.xlsx
+2025-09-22 08:54:48,484 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Dairy\Hillcrest Dairy_Easthill_2025-09-20.xlsx
+2025-09-22 08:54:49,021 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-22 08:56:51,386 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery', '--vendors', 'Hillcrest Foods'])
+2025-09-22 08:56:56,606 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:136) - Logging into Craftable.
+2025-09-22 08:57:03,812 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:160) - Login successful.
+2025-09-22 08:57:03,812 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:259) - Starting order download protocol.
+2025-09-22 08:57:03,812 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:262) - Accessing order page for Bakery.
+2025-09-22 08:57:10,984 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Hillcrest Foods (09/22/2025).
+2025-09-22 08:57:13,106 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Bakery / Hillcrest Foods / 20250922.
+2025-09-22 08:57:13,112 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 08:57:13,113 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Hillcrest Foods.
+2025-09-22 08:57:15,247 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Foods\Hillcrest Foods_Bakery_2025-09-22.pdf
+2025-09-22 08:57:17,781 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:276) - Order download complete.
+2025-09-22 08:57:17,781 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:277) - Closing WebDriver session.
+2025-09-22 08:57:19,515 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-22 08:58:01,117 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Bakery', '--vendors', 'Hillcrest Foods'])
+2025-09-22 08:58:01,117 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:94) - Retrieving orders for: stores=[['Bakery']], vendors=[['Hillcrest Foods']], formats=[['xlsx']]
+2025-09-22 08:58:01,118 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[['Bakery']], vendors=[['Hillcrest Foods']], formats=[['xlsx']]
+2025-09-22 08:58:01,118 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:65) - Retrieving order files: stores=[['Bakery']], vendors=[['Hillcrest Foods']], formats=['xlsx']
+2025-09-22 08:58:01,121 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:107) - Retrieved 1 order files.
+2025-09-22 08:58:01,121 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:52) - Reading 1 order files.
+2025-09-22 08:58:01,121 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Foods\Hillcrest Foods_Bakery_2025-09-22.xlsx
+2025-09-22 08:58:01,336 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-22 09:00:09,427 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Collegetown', '--vendors', 'Hillcrest Dairy'])
+2025-09-22 09:00:14,697 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:136) - Logging into Craftable.
+2025-09-22 09:00:22,240 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:160) - Login successful.
+2025-09-22 09:00:22,240 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:259) - Starting order download protocol.
+2025-09-22 09:00:22,240 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:262) - Accessing order page for Collegetown.
+2025-09-22 09:00:29,005 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Hillcrest Dairy (09/19/2025).
+2025-09-22 09:00:30,332 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Collegetown / Hillcrest Dairy / 20250919.
+2025-09-22 09:00:30,337 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 09:00:30,338 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Hillcrest Dairy.
+2025-09-22 09:00:32,387 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Dairy\Hillcrest Dairy_Collegetown_2025-09-19.pdf
+2025-09-22 09:00:35,117 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:276) - Order download complete.
+2025-09-22 09:00:35,118 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:277) - Closing WebDriver session.
+2025-09-22 09:00:36,840 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-22 09:05:32,969 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Triphammer', 'Collegetown', '--vendors', 'Hillcrest Dairy'])
+2025-09-22 09:05:32,970 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:94) - Retrieving orders for: stores=[['Bakery', 'Easthill', 'Downtown', 'Triphammer', 'Collegetown']], vendors=[['Hillcrest Dairy']], formats=[['xlsx']]
+2025-09-22 09:05:32,970 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[['Bakery', 'Easthill', 'Downtown', 'Triphammer', 'Collegetown']], vendors=[['Hillcrest Dairy']], formats=[['xlsx']]
+2025-09-22 09:05:32,970 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:65) - Retrieving order files: stores=[['Bakery', 'Easthill', 'Downtown', 'Triphammer', 'Collegetown']], vendors=[['Hillcrest Dairy']], formats=['xlsx']
+2025-09-22 09:05:32,974 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:107) - Retrieved 5 order files.
+2025-09-22 09:05:32,975 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:52) - Reading 5 order files.
+2025-09-22 09:05:32,975 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Dairy\Hillcrest Dairy_Collegetown_2025-09-19.xlsx
+2025-09-22 09:05:32,992 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Dairy\Hillcrest Dairy_Bakery_2025-09-20.xlsx
+2025-09-22 09:05:32,995 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Dairy\Hillcrest Dairy_Triphammer_2025-09-19.xlsx
+2025-09-22 09:05:32,999 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Dairy\Hillcrest Dairy_Downtown_2025-09-19.xlsx
+2025-09-22 09:05:33,002 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Dairy\Hillcrest Dairy_Easthill_2025-09-20.xlsx
+2025-09-22 09:05:33,315 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-22 13:11:45,650 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Collegetown', 'Bakery', '--vendors', 'A.L. George'])
+2025-09-22 13:11:45,652 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:94) - Retrieving orders for: stores=[['Collegetown', 'Bakery']], vendors=[['A.L. George']], formats=[['xlsx']]
+2025-09-22 13:11:45,653 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[['Collegetown', 'Bakery']], vendors=[['A.L. George']], formats=[['xlsx']]
+2025-09-22 13:11:45,653 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:65) - Retrieving order files: stores=[['Collegetown', 'Bakery']], vendors=[['A.L. George']], formats=['xlsx']
+2025-09-22 13:11:45,671 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:107) - Retrieved 2 order files.
+2025-09-22 13:11:45,672 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:52) - Reading 2 order files.
+2025-09-22 13:11:45,672 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\A.L. George\A.L. George_Bakery_2025-09-22.xlsx
+2025-09-22 13:11:45,697 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\A.L. George\A.L. George_Collegetown_2025-09-19.xlsx
+2025-09-22 13:11:45,954 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-22 13:14:57,693 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Collegetown', '--vendors', 'A.L. George'])
+2025-09-22 13:15:03,648 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:136) - Logging into Craftable.
+2025-09-22 13:15:11,357 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:160) - Login successful.
+2025-09-22 13:15:11,358 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:259) - Starting order download protocol.
+2025-09-22 13:15:11,358 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:262) - Accessing order page for Collegetown.
+2025-09-22 13:15:18,415 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for A.L. George (09/19/2025).
+2025-09-22 13:15:19,877 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Collegetown / A.L. George / 20250919.
+2025-09-22 13:15:19,881 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 13:15:19,882 - ERROR - backend.bots.craftable_bot.craftable_bot.CraftableBot - (logger.py:107) - Error in download_orders: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\andrew\\Desktop\\Andrew\\Projects\\IthacaBakery\\RandomStuff\\WorkBot\\refactor\\data\\orders\\A.L. George\\A.L. George_Collegetown_2025-09-19.pdf'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 274, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 311, in _process_order_row
+    if update and self._update_existing_order(order_to_check_update):
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 1032, in _update_existing_order
+    return self.order_coordinator.check_and_update_order(order)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\order_coordinator.py", line 210, in check_and_update_order
+    self.file_handler.remove_file(file_path.with_suffix('.pdf'))
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\storage\file\file_handler.py", line 60, in remove_file
+    path.unlink()
+    ~~~~~~~~~~~^^
+  File "C:\Users\Will\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 746, in unlink
+    os.unlink(self)
+    ~~~~~~~~~^^^^^^
+PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\andrew\\Desktop\\Andrew\\Projects\\IthacaBakery\\RandomStuff\\WorkBot\\refactor\\data\\orders\\A.L. George\\A.L. George_Collegetown_2025-09-19.pdf'
+2025-09-22 13:15:21,670 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] download_orders failed: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\andrew\\Desktop\\Andrew\\Projects\\IthacaBakery\\RandomStuff\\WorkBot\\refactor\\data\\orders\\A.L. George\\A.L. George_Collegetown_2025-09-19.pdf'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\workbot_cli.py", line 48, in cmd_download_orders
+    self.workbot.download_craftable_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\workbot\work_bot.py", line 81, in download_craftable_orders
+    self.craft_bot.download_orders(stores, vendors, download_pdf=download_pdf, update=update)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\bot_mixins.py", line 95, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 274, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 311, in _process_order_row
+    if update and self._update_existing_order(order_to_check_update):
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 1032, in _update_existing_order
+    return self.order_coordinator.check_and_update_order(order)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\order_coordinator.py", line 210, in check_and_update_order
+    self.file_handler.remove_file(file_path.with_suffix('.pdf'))
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\storage\file\file_handler.py", line 60, in remove_file
+    path.unlink()
+    ~~~~~~~~~~~^^
+  File "C:\Users\Will\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 746, in unlink
+    os.unlink(self)
+    ~~~~~~~~~^^^^^^
+PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\andrew\\Desktop\\Andrew\\Projects\\IthacaBakery\\RandomStuff\\WorkBot\\refactor\\data\\orders\\A.L. George\\A.L. George_Collegetown_2025-09-19.pdf'
+2025-09-22 13:15:30,869 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Collegetown', '--vendors', 'A.L. George'])
+2025-09-22 13:15:36,092 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:136) - Logging into Craftable.
+2025-09-22 13:15:43,331 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:160) - Login successful.
+2025-09-22 13:15:43,332 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:259) - Starting order download protocol.
+2025-09-22 13:15:43,332 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:262) - Accessing order page for Collegetown.
+2025-09-22 13:15:50,419 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for A.L. George (09/19/2025).
+2025-09-22 13:15:51,838 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Collegetown / A.L. George / 20250919.
+2025-09-22 13:15:51,839 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:195) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\A.L. George\A.L. George_Collegetown_2025-09-19.xlsx. Proceeding with save.
+2025-09-22 13:15:51,839 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for A.L. George.
+2025-09-22 13:15:54,418 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\A.L. George\A.L. George_Collegetown_2025-09-19.pdf
+2025-09-22 13:15:56,424 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:276) - Order download complete.
+2025-09-22 13:15:56,424 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:277) - Closing WebDriver session.
+2025-09-22 13:15:58,143 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-22 13:16:19,630 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Collegetown', 'Bakery', '--vendors', 'A.L. George'])
+2025-09-22 13:16:19,630 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:94) - Retrieving orders for: stores=[['Collegetown', 'Bakery']], vendors=[['A.L. George']], formats=[['xlsx']]
+2025-09-22 13:16:19,630 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[['Collegetown', 'Bakery']], vendors=[['A.L. George']], formats=[['xlsx']]
+2025-09-22 13:16:19,631 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:65) - Retrieving order files: stores=[['Collegetown', 'Bakery']], vendors=[['A.L. George']], formats=['xlsx']
+2025-09-22 13:16:19,635 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:107) - Retrieved 2 order files.
+2025-09-22 13:16:19,635 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:52) - Reading 2 order files.
+2025-09-22 13:16:19,635 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\A.L. George\A.L. George_Collegetown_2025-09-19.xlsx
+2025-09-22 13:16:19,652 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\A.L. George\A.L. George_Bakery_2025-09-22.xlsx
+2025-09-22 13:16:19,879 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-22 13:17:35,287 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Collegetown', '--vendors', 'BALKAN BEVERAGE LLC'])
+2025-09-22 13:17:35,287 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:94) - Retrieving orders for: stores=[['Collegetown']], vendors=[['BALKAN BEVERAGE LLC']], formats=[['xlsx']]
+2025-09-22 13:17:35,287 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[['Collegetown']], vendors=[['BALKAN BEVERAGE LLC']], formats=[['xlsx']]
+2025-09-22 13:17:35,287 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:65) - Retrieving order files: stores=[['Collegetown']], vendors=[['BALKAN BEVERAGE LLC']], formats=['xlsx']
+2025-09-22 13:17:35,293 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:107) - Retrieved 1 order files.
+2025-09-22 13:17:35,293 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:52) - Reading 1 order files.
+2025-09-22 13:17:35,294 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\BALKAN BEVERAGE LLC\BALKAN BEVERAGE LLC_Collegetown_2025-09-19.xlsx
+2025-09-22 13:17:35,518 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-22 13:17:55,767 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Collegetown', '--vendors', 'BALKAN BEVERAGE LLC'])
+2025-09-22 13:18:01,087 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:136) - Logging into Craftable.
+2025-09-22 13:18:08,380 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:160) - Login successful.
+2025-09-22 13:18:08,380 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:259) - Starting order download protocol.
+2025-09-22 13:18:08,380 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:262) - Accessing order page for Collegetown.
+2025-09-22 13:18:15,508 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for BALKAN BEVERAGE LLC (09/19/2025).
+2025-09-22 13:18:16,889 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Collegetown / BALKAN BEVERAGE LLC / 20250919.
+2025-09-22 13:18:16,893 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 13:18:16,894 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for BALKAN BEVERAGE LLC.
+2025-09-22 13:18:18,950 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\BALKAN BEVERAGE LLC\BALKAN BEVERAGE LLC_Collegetown_2025-09-19.pdf
+2025-09-22 13:18:21,314 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:276) - Order download complete.
+2025-09-22 13:18:21,314 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:277) - Closing WebDriver session.
+2025-09-22 13:18:25,351 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-22 13:18:39,176 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Collegetown', '--vendors', 'BALKAN BEVERAGE LLC'])
+2025-09-22 13:18:39,176 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:94) - Retrieving orders for: stores=[['Collegetown']], vendors=[['BALKAN BEVERAGE LLC']], formats=[['xlsx']]
+2025-09-22 13:18:39,176 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[['Collegetown']], vendors=[['BALKAN BEVERAGE LLC']], formats=[['xlsx']]
+2025-09-22 13:18:39,176 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:65) - Retrieving order files: stores=[['Collegetown']], vendors=[['BALKAN BEVERAGE LLC']], formats=['xlsx']
+2025-09-22 13:18:39,180 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:107) - Retrieved 1 order files.
+2025-09-22 13:18:39,181 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:52) - Reading 1 order files.
+2025-09-22 13:18:39,181 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\BALKAN BEVERAGE LLC\BALKAN BEVERAGE LLC_Collegetown_2025-09-19.xlsx
+2025-09-22 13:18:39,404 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-22 13:21:52,298 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Triphammer'])
+2025-09-22 13:21:57,365 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:136) - Logging into Craftable.
+2025-09-22 13:22:04,619 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:160) - Login successful.
+2025-09-22 13:22:04,620 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:259) - Starting order download protocol.
+2025-09-22 13:22:04,620 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:262) - Accessing order page for Triphammer.
+2025-09-22 13:22:11,245 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Ithaca Bakery (09/19/2025).
+2025-09-22 13:22:14,253 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Triphammer / Ithaca Bakery / 20250919.
+2025-09-22 13:22:14,274 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 13:22:14,275 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Ithaca Bakery.
+2025-09-22 13:22:16,864 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Ithaca Bakery\Ithaca Bakery_Triphammer_2025-09-19.pdf
+2025-09-22 13:22:18,755 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Sysco (09/19/2025).
+2025-09-22 13:22:22,167 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Triphammer / Sysco / 20250919.
+2025-09-22 13:22:22,193 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 13:22:22,194 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Sysco.
+2025-09-22 13:22:24,290 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Sysco\Sysco_Triphammer_2025-09-19.pdf
+2025-09-22 13:22:26,663 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Performance Food (09/19/2025).
+2025-09-22 13:22:30,689 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Triphammer / Performance Food / 20250919.
+2025-09-22 13:22:30,713 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 13:22:30,715 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Performance Food.
+2025-09-22 13:22:33,323 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Performance Food\Performance Food_Triphammer_2025-09-19.pdf
+2025-09-22 13:22:35,216 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for FingerLakes Farms (09/19/2025).
+2025-09-22 13:22:36,896 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Triphammer / FingerLakes Farms / 20250919.
+2025-09-22 13:22:36,913 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 13:22:36,915 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for FingerLakes Farms.
+2025-09-22 13:22:38,972 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\FingerLakes Farms\FingerLakes Farms_Triphammer_2025-09-19.pdf
+2025-09-22 13:22:41,329 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Hillcrest Dairy (09/19/2025).
+2025-09-22 13:22:42,622 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Triphammer / Hillcrest Dairy / 20250919.
+2025-09-22 13:22:42,641 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 13:22:42,642 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Hillcrest Dairy.
+2025-09-22 13:22:45,196 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hillcrest Dairy\Hillcrest Dairy_Triphammer_2025-09-19.pdf
+2025-09-22 13:22:47,051 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for UNFI (09/19/2025).
+2025-09-22 13:22:48,844 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Triphammer / UNFI / 20250919.
+2025-09-22 13:22:48,861 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 13:22:48,863 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for UNFI.
+2025-09-22 13:22:50,924 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\UNFI\UNFI_Triphammer_2025-09-19.pdf
+2025-09-22 13:22:53,302 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Peters Supply (09/19/2025).
+2025-09-22 13:22:54,796 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Triphammer / Peters Supply / 20250919.
+2025-09-22 13:22:54,815 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 13:22:54,817 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Peters Supply.
+2025-09-22 13:22:56,876 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Peters Supply\Peters Supply_Triphammer_2025-09-19.pdf
+2025-09-22 13:22:59,252 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Regional Distributors, Inc. (09/19/2025).
+2025-09-22 13:23:01,092 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Triphammer / Regional Distributors, Inc. / 20250919.
+2025-09-22 13:23:01,110 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 13:23:01,111 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Regional Distributors, Inc..
+2025-09-22 13:23:03,681 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Regional Distributors, Inc.\Regional Distributors, Inc._Triphammer_2025-09-19.pdf
+2025-09-22 13:23:05,552 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Johnston Paper (09/19/2025).
+2025-09-22 13:23:07,209 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Triphammer / Johnston Paper / 20250919.
+2025-09-22 13:23:07,226 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 13:23:07,227 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Johnston Paper.
+2025-09-22 13:23:09,793 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Johnston Paper\Johnston Paper_Triphammer_2025-09-19.pdf
+2025-09-22 13:23:11,660 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Hill & Markes (09/19/2025).
+2025-09-22 13:23:13,791 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Triphammer / Hill & Markes / 20250919.
+2025-09-22 13:23:13,810 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 13:23:13,811 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Hill & Markes.
+2025-09-22 13:23:15,876 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Hill & Markes\Hill & Markes_Triphammer_2025-09-19.pdf
+2025-09-22 13:23:18,241 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Copper Horse Coffee (09/19/2025).
+2025-09-22 13:23:19,627 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Triphammer / Copper Horse Coffee / 20250919.
+2025-09-22 13:23:19,644 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 13:23:19,645 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Copper Horse Coffee.
+2025-09-22 13:23:21,700 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Copper Horse Coffee\Copper Horse Coffee_Triphammer_2025-09-19.pdf
+2025-09-22 13:23:24,067 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for US Foods (09/19/2025).
+2025-09-22 13:23:27,095 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Triphammer / US Foods / 20250919.
+2025-09-22 13:23:27,117 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 13:23:27,118 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for US Foods.
+2025-09-22 13:23:29,203 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\US Foods\US Foods_Triphammer_2025-09-19.pdf
+2025-09-22 13:23:31,564 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Equal Exchange (09/19/2025).
+2025-09-22 13:23:32,809 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Triphammer / Equal Exchange / 20250919.
+2025-09-22 13:23:32,826 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 13:23:32,828 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Equal Exchange.
+2025-09-22 13:23:34,873 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Equal Exchange\Equal Exchange_Triphammer_2025-09-19.pdf
+2025-09-22 13:23:37,234 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Coca-Cola (09/19/2025).
+2025-09-22 13:23:38,921 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Triphammer / Coca-Cola / 20250919.
+2025-09-22 13:23:38,943 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 13:23:38,944 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Coca-Cola.
+2025-09-22 13:23:41,506 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Coca-Cola\Coca-Cola_Triphammer_2025-09-19.pdf
+2025-09-22 13:23:43,378 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for A.L. George (09/19/2025).
+2025-09-22 13:23:44,535 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Triphammer / A.L. George / 20250919.
+2025-09-22 13:23:44,538 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 13:23:44,539 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for A.L. George.
+2025-09-22 13:23:46,585 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\A.L. George\A.L. George_Triphammer_2025-09-19.pdf
+2025-09-22 13:23:48,940 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Worlds Best Cheeses (09/19/2025).
+2025-09-22 13:23:50,206 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Triphammer / Worlds Best Cheeses / 20250919.
+2025-09-22 13:23:50,223 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 13:23:50,225 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Worlds Best Cheeses.
+2025-09-22 13:23:52,274 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Worlds Best Cheeses\Worlds Best Cheeses_Triphammer_2025-09-19.pdf
+2025-09-22 13:23:54,638 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Webstaurant (09/19/2025).
+2025-09-22 13:23:56,045 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Triphammer / Webstaurant / 20250919.
+2025-09-22 13:23:56,063 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 13:23:56,064 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Webstaurant.
+2025-09-22 13:23:58,119 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Webstaurant\Webstaurant_Triphammer_2025-09-19.pdf
+2025-09-22 13:24:00,485 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Vegan Epicure (09/21/2025).
+2025-09-22 13:24:01,685 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Triphammer / Vegan Epicure / 20250921.
+2025-09-22 13:24:01,705 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 13:24:01,706 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Vegan Epicure.
+2025-09-22 13:24:03,750 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Vegan Epicure\Vegan Epicure_Triphammer_2025-09-21.pdf
+2025-09-22 13:24:06,107 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Russo Produce (09/21/2025).
+2025-09-22 13:24:08,042 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Triphammer / Russo Produce / 20250921.
+2025-09-22 13:24:08,061 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 13:24:08,062 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Russo Produce.
+2025-09-22 13:24:10,124 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Russo Produce\Russo Produce_Triphammer_2025-09-21.pdf
+2025-09-22 13:24:12,446 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:276) - Order download complete.
+2025-09-22 13:24:12,446 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:277) - Closing WebDriver session.
+2025-09-22 13:24:14,167 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-22 14:45:52,546 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Triphammer', '--vendors', 'Russo Produce'])
+2025-09-22 14:45:57,911 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:136) - Logging into Craftable.
+2025-09-22 14:46:05,269 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:160) - Login successful.
+2025-09-22 14:46:05,270 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:259) - Starting order download protocol.
+2025-09-22 14:46:05,270 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:262) - Accessing order page for Triphammer.
+2025-09-22 14:46:12,619 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:303) - Retrieving order for Russo Produce (09/21/2025).
+2025-09-22 14:46:14,658 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1031) - [Order Update] Initiating update protocol for Triphammer / Russo Produce / 20250921.
+2025-09-22 14:46:14,679 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:208) - [Order Update] Order has changed. Removing old file.
+2025-09-22 14:46:14,680 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:317) - Saving order for Russo Produce.
+2025-09-22 14:46:17,243 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:252) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Russo Produce\Russo Produce_Triphammer_2025-09-21.pdf
+2025-09-22 14:46:19,097 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:276) - Order download complete.
+2025-09-22 14:46:19,097 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:277) - Closing WebDriver session.
+2025-09-22 14:46:20,817 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-22 14:46:31,545 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Triphammer', '--vendors', 'Russo Produce'])
+2025-09-22 14:46:31,546 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:94) - Retrieving orders for: stores=[['Triphammer']], vendors=[['Russo Produce']], formats=[['xlsx']]
+2025-09-22 14:46:31,546 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[['Triphammer']], vendors=[['Russo Produce']], formats=[['xlsx']]
+2025-09-22 14:46:31,547 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:65) - Retrieving order files: stores=[['Triphammer']], vendors=[['Russo Produce']], formats=['xlsx']
+2025-09-22 14:46:31,553 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:107) - Retrieved 1 order files.
+2025-09-22 14:46:31,553 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:52) - Reading 1 order files.
+2025-09-22 14:46:31,553 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:48) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\orders\Russo Produce\Russo Produce_Triphammer_2025-09-21.xlsx
+2025-09-22 14:46:31,803 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
