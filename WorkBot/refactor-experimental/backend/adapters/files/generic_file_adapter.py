@@ -4,9 +4,11 @@ from pathlib import Path
 from typing import Generic, TypeVar, Optional
 
 from backend.app.ports.generic import BlobStore, Serializer, Namer
+from backend.infra.logger import Logger
 
 T = TypeVar("T")
 
+@Logger.attach_logger
 @dataclass
 class GenericFileAdapter(Generic[T]):
     '''
@@ -29,7 +31,6 @@ class GenericFileAdapter(Generic[T]):
         return self.namer.path_for(obj, format=format)
 
     def list_paths(self, pattern: str = "*") -> list[Path]:
-
         return self.store.list_paths(self.directory(), pattern)
 
     def parse_filename(self, filename: str) -> dict:

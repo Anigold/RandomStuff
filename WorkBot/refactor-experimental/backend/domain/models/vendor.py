@@ -27,7 +27,7 @@ class OrderingInfo:
     
 
 @dataclass
-class VendorInfo:
+class Vendor:
     name:                 str
     order_format:         str = ''
     special_notes:        str = ''

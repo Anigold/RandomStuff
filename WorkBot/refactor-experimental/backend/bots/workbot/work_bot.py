@@ -24,12 +24,14 @@ from backend.bots.craftable_bot.helpers import get_craftable_username_password
 # region Application Services
 from backend.bots.craftable_bot.craftable_bot import CraftableBot
 from backend.app.services.services_order import OrderServices
+from backend.app.services.services_vendor import VendorServices
 # endregion
 
 # region Models
 from backend.domain.models.order import Order
 from backend.domain.models.transfer import Transfer
 from backend.domain.models.transfer_item import TransferItem
+from backend.domain.models.vendor import Vendor
 # endregion
 
 # from backend.depricated_coordinators.vendor_coordinator import VendorCoordinator
@@ -47,10 +49,13 @@ from backend.adapters.emailer.services.outlook_service import OutlookService
 from backend.adapters.files.order_file_adapter import OrderFileAdapter
 # from backend.app.repos.order_repo_adapter import OrderRepositoryAdapter
 from backend.adapters.downloads.threaded_download_adapter import ThreadedDownloadAdapter
+
+from backend.adapters.files.vendor_file_adapter import VendorFileAdapter
+
 # endregion
 
-from backend.infra.paths import ORDER_FILES_DIR, DOWNLOADS_PATH
-
+from backend.infra.paths import ORDER_FILES_DIR, DOWNLOADS_PATH, VENDOR_FILES_DIR
+from typing import List
 # region ---- WORKBOT CLASS ----
 
 @Logger.attach_logger
@@ -67,14 +72,16 @@ class WorkBot:
         # self.store_coordinator    = StoreCoordinator()
         # self.transfer_coordinator = TransferCoordinator()
 
-        files     = OrderFileAdapter(base_dir=ORDER_FILES_DIR)
-        # repo      = OrderRepositoryAdapter()
-        downloads = ThreadedDownloadAdapter(watch_dir=DOWNLOADS_PATH)
-
         self.orders = OrderServices(
-            files=files,
+            files=OrderFileAdapter(base_dir=ORDER_FILES_DIR),
             repo=None,
-            downloads=downloads
+            downloads=ThreadedDownloadAdapter(watch_dir=DOWNLOADS_PATH)
+        )
+
+        self.vendors = VendorServices(
+            files=VendorFileAdapter(base_dir=VENDOR_FILES_DIR),
+            repo=None,
+            downloads=ThreadedDownloadAdapter(watch_dir=DOWNLOADS_PATH)
         )
 
         username, password = get_craftable_username_password()
@@ -349,8 +356,8 @@ class WorkBot:
 
     # region ---- Utilities & Lifecycle ----
 
-    def get_vendor_information(self, vendor_name: str) -> dict:
-        return self.vendor_coordinator.get_vendor_information(vendor_name)
+    def get_vendor_information(self, vendor_name: str) -> Vendor:
+        return self.vendors.get_vendor(vendor_name)
 
     def get_store_information(self, store_name: str) -> dict:
         return self.store_coordinator.find_store_by_name(store_name=store_name)
@@ -365,6 +372,9 @@ class WorkBot:
     def shutdown(self) -> None:
         self.close_craftable_session()
         print('Exiting WorkBot CLI.')
+
+    def list_all_vendors(self) -> List[str]:
+        ...
 
     def _get_today_date_and_day(self):
         today = datetime.today()

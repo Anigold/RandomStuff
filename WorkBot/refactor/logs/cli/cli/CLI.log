@@ -2380,3 +2380,53 @@ PermissionError: [WinError 32] The process cannot access the file because it is 
 2025-09-22 14:46:20,817 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
 2025-09-22 14:46:31,545 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Triphammer', '--vendors', 'Russo Produce'])
 2025-09-22 14:46:31,803 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-23 07:01:11,403 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-23 07:01:11,419 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-09-23 07:01:11,420 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-09-23 07:01:11,420 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-09-23 07:01:44,751 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer'])
+2025-09-23 07:11:25,254 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-23 12:25:06,233 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-09-23 12:28:05,353 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-23 12:31:23,671 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_upload_files (args=['--vendors', 'HillNMarkes'])
+2025-09-23 12:31:23,683 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_upload_files' executed successfully.
+2025-09-23 12:31:32,607 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_upload_files (args=['--vendors', 'Hill & Markes'])
+2025-09-23 12:31:32,773 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_upload_files' executed successfully.
+2025-09-23 12:31:56,447 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Downtown'])
+2025-09-23 12:33:51,254 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-23 13:16:43,310 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'Peters Supply', 'SANICO'])
+2025-09-23 13:16:44,456 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-23 13:55:57,975 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: convert_order_to_transfer (args=['--origin', 'Bakery', '--vendor', 'Ithaca Bakery', '--destination', 'Collegetown'])
+2025-09-23 13:55:58,035 - INFO - cli.cli.CLI - (cli.py:421) - Command 'convert_order_to_transfer' executed successfully.
+2025-09-23 13:56:03,223 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: convert_order_to_transfer (args=['--origin', 'Bakery', '--vendor', 'Ithaca Bakery', '--destination', 'Easthill'])
+2025-09-23 13:56:03,353 - INFO - cli.cli.CLI - (cli.py:421) - Command 'convert_order_to_transfer' executed successfully.
+2025-09-23 13:56:06,743 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: convert_order_to_transfer (args=['--origin', 'Bakery', '--vendor', 'Ithaca Bakery', '--destination', 'Downtown'])
+2025-09-23 13:56:06,786 - INFO - cli.cli.CLI - (cli.py:421) - Command 'convert_order_to_transfer' executed successfully.
+2025-09-23 13:56:10,640 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: convert_order_to_transfer (args=['--origin', 'Bakery', '--vendor', 'Ithaca Bakery', '--destination', 'Triphammer'])
+2025-09-23 13:56:10,684 - INFO - cli.cli.CLI - (cli.py:421) - Command 'convert_order_to_transfer' executed successfully.
+2025-09-23 14:03:49,563 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-09-23 14:06:47,461 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-23 14:47:36,189 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: input_transfers (args=[])
+2025-09-23 15:18:37,222 - INFO - cli.cli.CLI - (cli.py:421) - Command 'input_transfers' executed successfully.
+2025-09-24 07:06:23,704 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: input_transfers (args=[])
+2025-09-24 07:16:36,546 - INFO - cli.cli.CLI - (cli.py:421) - Command 'input_transfers' executed successfully.
+2025-09-24 12:05:49,711 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer'])
+2025-09-24 12:13:11,276 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-24 12:13:24,835 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: delete_orders (args=['--stores', 'Collegetown', 'Triphammer', 'Easthill', 'Downtown'])
+2025-09-24 12:21:28,205 - INFO - cli.cli.CLI - (cli.py:421) - Command 'delete_orders' executed successfully.
+2025-09-24 12:29:02,166 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-09-24 12:31:20,971 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-24 13:17:48,230 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Sysco', 'US Foods', 'Performance Food'])
+2025-09-24 13:17:48,369 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_upload_files' executed successfully.
+2025-09-24 13:21:17,351 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-09-24 13:22:27,999 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-24 14:54:51,608 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery', 'Collegetown', 'Triphammer'])
+2025-09-24 14:57:25,476 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-24 14:57:46,081 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Collegetown', 'Bakery', 'Triphammer', '--vendors', 'Sysco', 'Performance Food', 'US Foods'])
+2025-09-24 14:57:46,498 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_upload_files' executed successfully.
+2025-09-24 15:08:27,480 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Bakery', 'Collegetown', '--vendors', 'FingerLakes Farms'])
+2025-09-24 15:08:27,940 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-24 15:09:29,008 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Triphammer', '--vendors', 'Russo Produce'])
+2025-09-24 15:09:29,322 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-24 16:33:33,982 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-09-24 16:33:33,988 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.

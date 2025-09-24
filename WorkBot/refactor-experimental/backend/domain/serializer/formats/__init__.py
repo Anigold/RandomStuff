@@ -17,6 +17,7 @@ from typing import Dict, Type
 from .base_format import BaseFormatter
 from .excel_format import ExcelFormatter
 from .csv_format import CsvFormatter
+from .json_format import JSONFormatter
 
 from .vendor_formats.sysco import SyscoFormatter
 # from .vendor_formats.hill_n_markes_adapter import HillNMarkesFormatter
@@ -34,6 +35,8 @@ def get_formatter(fmt: str) -> BaseFormatter:
 # Pre-register built-in formatters
 register_formatter(ExcelFormatter())
 register_formatter(CsvFormatter())
+register_formatter(JSONFormatter())
+
 register_formatter(SyscoFormatter())
 # register_formatter(HillNMarkesFormatter())
 

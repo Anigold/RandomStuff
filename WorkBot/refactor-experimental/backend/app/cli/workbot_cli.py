@@ -59,13 +59,11 @@ class WorkBotCLI(CLI):
         return parser
     
     def _autocomplete_download_orders(self, flag: str, text: str):
-
-        
+  
         flags = {
             '--stores': self._get_stores,
             '--vendors': self._get_vendors
         }
-        
         return [option for option in flags.get(flag, [])() if option.startswith(text)]
 
 
@@ -424,7 +422,8 @@ Internal Contacts:
             '--stores': self._get_stores,
             '--vendors': self._get_vendors
         }
-        
+        self.logger.info(f'flag: {flag}, text: {text}')
+        self.logger.info(f'{[option for option in flags.get(flag, [])() if option.startswith(text)]}')
         return [option for option in flags.get(flag, [])() if option.startswith(text)]
 
 
@@ -434,7 +433,7 @@ Internal Contacts:
         return [store.name for store in self.workbot.store_coordinator.list_stores()]
     
     def _get_vendors(self):
-        return sorted(self.workbot.vendor_coordinator.list_vendors())
+        return sorted([i.name for i in self.workbot.vendors.list_vendors()])
 
     # def show_help(self, args):
     #     '''Displays available commands.'''

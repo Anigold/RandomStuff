@@ -1,0 +1,40 @@
+{
+  "name": "Sysco",
+  "order_format": "",
+  "special_notes": "",
+  "min_order_value": 500,
+  "min_order_cases": 0,
+  "internal_contacts": [
+    {
+      "name": "John Burnette",
+      "title": "Sales Representative",
+      "email": "",
+      "phone": ""
+    }
+  ],
+  "ordering": {
+    "method": [],
+    "email": "",
+    "portal_url": "",
+    "phone_number": "",
+    "schedule": [
+      {
+        "order_day": "Sunday",
+        "delivery_days": ["Monday"],
+        "cutoff_time": "5:00 PM"
+      },
+      {
+        "order_day": "Wednesday",
+        "delivery_days": ["Thursday"],
+        "cutoff_time": "5:00 PM"
+      }
+    ]
+  },
+  "store_ids": {
+    "Bakery": "",
+    "Collegetown": "",
+    "Triphammer": "",
+    "Easthill": "",
+    "Downtown": ""
+  }
+}

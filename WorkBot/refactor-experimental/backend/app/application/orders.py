@@ -6,7 +6,6 @@ from backend.app.ports import OrderFilePort, OrderRepository, DownloadPort
 from backend.domain.models.order import Order
 from backend.infra.logger import Logger
 
-# Queries
 @Logger.attach_logger
 @dataclass(frozen=True)
 class GetOrderFiles:

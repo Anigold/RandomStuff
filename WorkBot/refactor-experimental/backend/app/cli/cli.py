@@ -233,10 +233,12 @@ class CLI:
 
         # Case 2: After a complete flag, expecting a value
         elif last_flag and (last_token == last_flag or buffer.endswith(' ')):
+            self.logger.info(f'{command}, {last_flag}, {text}')
             return self._get_autocomplete_values(command, last_flag, text)
 
         # Case 3: Inside a value for a known flag
         elif last_flag and (last_token_stripped not in possible_flags):
+            self.logger.info(f'{command}, {last_flag}, {text}')
             return self._get_autocomplete_values(command, last_flag, text)
 
         # Case 4: First argument after command
