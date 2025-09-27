@@ -2,7 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 # from backend.app.ports.repos import VendorRepository
-from backend.domain.models.vendor import Vendor
+from backend.domain.models import Vendor
 from backend.infra.logger import Logger
 
 from backend.app.ports.files import VendorFilePort

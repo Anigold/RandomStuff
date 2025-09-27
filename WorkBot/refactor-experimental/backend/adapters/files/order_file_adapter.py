@@ -2,7 +2,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import List, Optional
 
-from backend.domain.models.order import Order
+from backend.domain.models import Order
 from backend.app.ports import OrderFilePort
 from backend.adapters.files.generic_file_adapter import GenericFileAdapter
 from backend.adapters.files.local_blob_store import LocalBlobStore

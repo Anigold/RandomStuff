@@ -8,11 +8,13 @@ ORDER_FILES_DIR    = DATA_STORAGE_DIR / 'orders'
 CLI_HISTORY_FILE   = DATA_STORAGE_DIR / 'cli' / '.cli_history'
 MASTER_LOG_FILE    = DATA_STORAGE_DIR / 'logging' / 'master.log'
 DOWNLOADS_PATH     = DATA_STORAGE_DIR / 'downloads'
-STORES_DATA_FILE   = DATA_STORAGE_DIR / 'stores' / 'stores.json'
+# STORES_DATA_FILE   = DATA_STORAGE_DIR / 'stores' / 'stores.json'
 UPLOAD_FILES_DIR   = DATA_STORAGE_DIR / 'upload_files'
 ITEMS_DATA_FILE    = DATA_STORAGE_DIR / 'items'
 
 VENDOR_FILES_DIR   = BASE_DIR / 'backend' / 'infra' / 'config' / 'vendors'
+STORE_FILES_DIR    = BASE_DIR / 'backend' / 'infra' / 'config' / 'stores'
+
 
 TRANSFER_FILES_DIR = DATA_STORAGE_DIR / 'transfers'
 TODOS_DIR          = DATA_STORAGE_DIR / 'todos'

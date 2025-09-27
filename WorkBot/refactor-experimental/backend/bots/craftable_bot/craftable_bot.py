@@ -17,13 +17,7 @@ from selenium.webdriver.chrome.webdriver import WebDriver
 from pynput.keyboard import Key, Controller
 from openpyxl import Workbook, load_workbook
 
-from backend.domain.models.item import Item 
-from backend.domain.models.order import Order
-from backend.domain.models.order_item import OrderItem
-from backend.domain.models.transfer import Transfer
-
-# from backend.coordinators.order_coordinator import OrderCoordinator
-# from backend.coordinators.transfer_coordinator import TransferCoordinator
+from backend.domain.models import Item, Order, OrderItem, Transfer 
 
 from backend.app.services.services_order import OrderServices
 
@@ -88,12 +82,9 @@ class CraftableBot(SeleniumBotMixin):
     def __init__(self, username: str, password: str, 
                  orders: OrderServices = None):
         
-        
         super().__init__(DOWNLOADS_PATH, username=username, password=password)
 
         self.orders = orders
-        # self.order_coordinator    = order_coordinator or OrderCoordinator()
-        # self.transfer_coordinator = transfer_coordinator or TransferCoordinator()
 
         self.is_logged_in = False
         

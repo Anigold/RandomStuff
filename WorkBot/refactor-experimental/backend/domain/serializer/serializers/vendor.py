@@ -3,7 +3,7 @@
 from pathlib import Path
 from typing import Any, Dict, Optional
 import json
-from backend.domain.models.vendor import Vendor, ContactInfo, OrderingInfo, ScheduleEntry
+from backend.domain.models import Vendor, ContactInfo, OrderingInfo, ScheduleEntry
 from backend.app.ports.generic import Serializer
 from ..formats import get_formatter  # registry, like in OrderSerializer
 from backend.infra.logger import Logger

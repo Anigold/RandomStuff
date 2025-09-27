@@ -1,6 +1,6 @@
 from pathlib import Path
 from typing import Optional
-from backend.domain.models.order import Order, OrderItem
+from backend.domain.models import Order, OrderItem
 from backend.app.ports.generic import Serializer
 from ..formats import get_formatter
 
@@ -18,7 +18,7 @@ class OrderSerializer(Serializer[Order]):
         return self.default_format
 
     # ---- Core protocol ----
-    def dumps(self, obj: Order, format: Optional[str] = None, context: dict | None = None) -> bytes:
+    def dumps(self, obj: Order, format: Optional[str] = None) -> bytes:
         fmt = format or self.preferred_format()
         formatter = get_formatter(fmt)
 
@@ -26,13 +26,17 @@ class OrderSerializer(Serializer[Order]):
         order_tablular = self._to_table(order_dict)
       
 
-        return formatter.dumps(order_tablular, context=context or {})
+        return formatter.dumps(order_tablular)
 
-    def loads(self, data: bytes, format: Optional[str] = None, context: dict | None = None) -> Order:
+    def loads(self, data: bytes, format: Optional[str] = None) -> Order:
         fmt = format or self.preferred_format()
         formatter = get_formatter(fmt)
         payload = formatter.loads(data)
-        return self.from_dict(payload)
+
+        if fmt in ("xlsx", "csv"):
+            return self.from_table(payload) 
+        else:
+            return self.from_dict(payload)
 
     def load_path(self, path: Path) -> Order:
 
@@ -62,28 +66,52 @@ class OrderSerializer(Serializer[Order]):
         return out
 
     def from_dict(self, data: dict) -> Order:
-        
+        meta = data.get("metadata", {})
         items = [
             OrderItem(
-                sku=i.get("sku"),
-                name=i.get("name"),
-                quantity=i.get("quantity"),
-                cost_per=i.get("cost_per"),
-                total_cost=i.get("total_cost"),
+                sku=i.get("sku", ""),
+                name=i.get("name", ""),
+                quantity=i.get("quantity", 0),
+                cost_per=i.get("cost_per", 0),
+                total_cost=i.get("total_cost", 0),
             )
             for i in data.get("items", [])
         ]
         return Order(
-            store=data["store"],
-            vendor=data["vendor"],
-            date=data["date"],
+            store=meta.get("store", ""),
+            vendor=meta.get("vendor", ""),
+            date=meta.get("date", ""),
             items=items,
         )
 
+
     def _to_table(self, order_dict: dict, context: dict | None = None) -> dict:
+        metadata = {
+            'store': order_dict.get('store', ''),
+            'vendor': order_dict.get('vendor'),
+            'date': order_dict.get('date', '')
+        }
+
         headers = ['SKU', 'Name', 'Quantity', 'Cost Per', 'Total Cost']
         rows = [
             [i['sku'], i['name'], i['quantity'], i.get('cost_per', 0.0), i.get('total_cost', 0.0)]
             for i in order_dict.get('items', [])
         ]
-        return {'headers': headers, 'rows': rows}
+        return {'metadata': metadata, 'headers': headers, 'rows': rows}
+    
+    def from_table(self, table: dict) -> Order:
+        headers = table.get("headers", [])
+        rows = table.get("rows", [])
+        meta = table.get("metadata", {})   # always pass it through
+
+        items = []
+        for row in rows:
+            item = dict(zip(headers, row))
+            items.append(item)
+
+        data = {
+            "metadata": meta,   # preserve metadata
+            "items": items,
+        }
+
+        return self.from_dict(data)

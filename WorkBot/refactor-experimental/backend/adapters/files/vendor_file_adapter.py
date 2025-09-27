@@ -1,4 +1,4 @@
-from backend.domain.models.vendor import Vendor
+from backend.domain.models import Vendor
 from backend.app.ports.files import VendorFilePort
 from pathlib import Path
 from backend.adapters.files.local_blob_store import LocalBlobStore
@@ -27,7 +27,7 @@ class VendorFileAdapter(VendorFilePort):
         return self._engine.read(path)
 
     def get_file_path(self, vendor: Vendor, format: str = "json") -> Path:
-        return self._engine.path_for(vendor, format)
+        return self._engine.path_for(vendor, format=format)
 
     def remove(self, path: Path) -> None:
         self._engine.remove(path)

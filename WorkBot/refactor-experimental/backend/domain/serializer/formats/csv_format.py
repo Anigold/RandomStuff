@@ -43,10 +43,10 @@ class CsvFormatter(BaseFormatter):
         rows = list(reader)
 
         if not rows:
-            return {"headers": [], "rows": []}
+            return {"headers": [], "rows": [], 'metadata': {}}
 
         headers, *body = rows
-        return {"headers": headers, "rows": body}
+        return {"headers": headers, "rows": body, 'metadata': {}}
 
     def load_path(self, path: Path) -> Dict[str, Any]:
         with path.open("r", newline="", encoding="utf-8") as f:
@@ -54,7 +54,7 @@ class CsvFormatter(BaseFormatter):
             rows = list(reader)
 
         if not rows:
-            return {"headers": [], "rows": []}
+            return {"headers": [], "rows": [], 'metadata': {}}
 
         headers, *body = rows
-        return {"headers": headers, "rows": body}
+        return {"headers": headers, "rows": body, 'metadata': {}}

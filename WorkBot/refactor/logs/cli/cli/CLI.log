@@ -2430,3 +2430,29 @@ PermissionError: [WinError 32] The process cannot access the file because it is 
 2025-09-24 15:09:29,322 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
 2025-09-24 16:33:33,982 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
 2025-09-24 16:33:33,988 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-09-27 06:19:54,459 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-27 06:19:54,476 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-09-27 06:19:54,476 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-09-27 06:19:54,476 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-09-27 06:20:06,872 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-09-27 06:21:21,639 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-27 06:26:29,538 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: archive_orders (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer'])
+2025-09-27 06:26:31,562 - INFO - cli.cli.CLI - (cli.py:421) - Command 'archive_orders' executed successfully.
+2025-09-27 06:26:42,266 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: delete_orders (args=['--stores', 'Bakery'])
+2025-09-27 06:27:57,629 - INFO - cli.cli.CLI - (cli.py:421) - Command 'delete_orders' executed successfully.
+2025-09-27 06:29:32,291 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer'])
+2025-09-27 06:37:06,330 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-27 07:15:45,796 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-09-27 07:16:13,257 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-27 07:17:15,556 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Downtown'])
+2025-09-27 07:19:18,018 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-27 07:19:52,534 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'UNFI'])
+2025-09-27 07:19:52,662 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_upload_files' executed successfully.
+2025-09-27 07:20:34,821 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'UNFI'])
+2025-09-27 07:20:34,946 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_upload_files' executed successfully.
+2025-09-27 07:37:10,754 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'FingerLakes Farms'])
+2025-09-27 07:38:17,048 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-27 14:36:30,154 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: combine_orders (args=['--vendors', 'Ithaca Bakery'])
+2025-09-27 14:36:30,267 - INFO - cli.cli.CLI - (cli.py:421) - Command 'combine_orders' executed successfully.
+2025-09-27 15:03:08,766 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-09-27 15:03:08,770 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.

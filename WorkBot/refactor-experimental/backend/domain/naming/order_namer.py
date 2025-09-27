@@ -1,6 +1,6 @@
 from pathlib import Path
 from datetime import datetime
-from backend.domain.models.order import Order
+from backend.domain.models import Order
 from backend.app.ports.generic import Namer
 
 

@@ -44,7 +44,7 @@ class ExcelFormatter(BaseFormatter):
         if not rows:
             return {"headers": [], "rows": []}
         headers, *body = rows
-        return {"headers": list(headers), "rows": [list(r) for r in body]}
+        return {"headers": list(headers), "rows": [list(r) for r in body], 'metadata': {}}
 
     def load_path(self, path: Path) -> Dict[str, Any]:
         wb = load_workbook(path)
@@ -54,4 +54,4 @@ class ExcelFormatter(BaseFormatter):
         if not rows:
             return {"headers": [], "rows": []}
         headers, *body = rows
-        return {"headers": list(headers), "rows": [list(r) for r in body]}
+        return {"headers": list(headers), "rows": [list(r) for r in body], 'metadata': {}}

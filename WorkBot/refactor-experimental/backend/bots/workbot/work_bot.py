@@ -17,28 +17,28 @@ from backend.infra.logger import Logger
 # endregion
 
 # region Helpers
-from backend.bots.bot_mixins import SeleniumBotMixin
 from backend.bots.craftable_bot.helpers import get_craftable_username_password
 # endregion
 
 # region Application Services
 from backend.bots.craftable_bot.craftable_bot import CraftableBot
-from backend.app.services.services_order import OrderServices
-from backend.app.services.services_vendor import VendorServices
+
+from backend.app.services import (
+    OrderServices,
+    VendorServices,
+    StoreServices
+)
 # endregion
 
 # region Models
-from backend.domain.models.order import Order
-from backend.domain.models.transfer import Transfer
-from backend.domain.models.transfer_item import TransferItem
-from backend.domain.models.vendor import Vendor
+from backend.domain.models import (
+    Order,
+    Transfer, TransferItem,
+    Vendor,
+    Store
+)
 # endregion
 
-# from backend.depricated_coordinators.vendor_coordinator import VendorCoordinator
-# from backend.depricated_coordinators.item_coordinator import ItemCoordinator
-# from backend.depricated_coordinators.order_coordinator import OrderCoordinator
-# from backend.depricated_coordinators.store_coordinator import StoreCoordinator
-# from backend.depricated_coordinators.transfer_coordinator import TransferCoordinator
 
 # region Email Services
 from backend.adapters.emailer.emailer import Emailer, Email
@@ -46,15 +46,20 @@ from backend.adapters.emailer.services.gmail_service import GmailService
 from backend.adapters.emailer.services.outlook_service import OutlookService
 # endregion
 
-from backend.adapters.files.order_file_adapter import OrderFileAdapter
+from backend.adapters.files import OrderFileAdapter, VendorFileAdapter, StoreFileAdapter
 # from backend.app.repos.order_repo_adapter import OrderRepositoryAdapter
 from backend.adapters.downloads.threaded_download_adapter import ThreadedDownloadAdapter
 
-from backend.adapters.files.vendor_file_adapter import VendorFileAdapter
 
 # endregion
 
-from backend.infra.paths import ORDER_FILES_DIR, DOWNLOADS_PATH, VENDOR_FILES_DIR
+from backend.infra.paths import (
+    ORDER_FILES_DIR,
+    DOWNLOADS_PATH,
+    VENDOR_FILES_DIR,
+    STORE_FILES_DIR
+    )
+
 from typing import List
 # region ---- WORKBOT CLASS ----
 
@@ -65,12 +70,6 @@ class WorkBot:
     
     def __init__(self):
         self.logger.info('Initializing WorkBot...')
-
-        # These will be replaced by the Services
-        # self.vendor_coordinator   = VendorCoordinator()
-        # # self.order_coordinator    = OrderCoordinator()
-        # self.store_coordinator    = StoreCoordinator()
-        # self.transfer_coordinator = TransferCoordinator()
 
         self.orders = OrderServices(
             files=OrderFileAdapter(base_dir=ORDER_FILES_DIR),
@@ -84,8 +83,13 @@ class WorkBot:
             downloads=ThreadedDownloadAdapter(watch_dir=DOWNLOADS_PATH)
         )
 
-        username, password = get_craftable_username_password()
+        self.stores = StoreServices(
+            files=StoreFileAdapter(base_dir=STORE_FILES_DIR),
+            repo=None,
+            downloads=ThreadedDownloadAdapter(watch_dir=DOWNLOADS_PATH)
+        )
 
+        username, password = get_craftable_username_password()
         self.craft_bot = CraftableBot(
             username,
             password,
@@ -204,7 +208,7 @@ class WorkBot:
             
             order = self.orders.read_order_from_file(file_path)
             print(order, flush=True)
-            vendor_info = self.vendor_coordinator.get_vendor_information(order.vendor)
+            vendor_info = self.vendors.get_vendor(order.vendor)
 
             context_map[str(file_path)] = {
                 'store':       order.store,
@@ -360,7 +364,13 @@ class WorkBot:
         return self.vendors.get_vendor(vendor_name)
 
     def get_store_information(self, store_name: str) -> dict:
-        return self.store_coordinator.find_store_by_name(store_name=store_name)
+        return self.stores.get_store(store_name)
+
+    def list_vendors(self) -> List[Vendor]:
+        return self.vendors.list_vendors()
+
+    def list_stores(self) -> List[Store]:
+        return self.stores.list_stores()
 
     def close_craftable_session(self):
         self.craft_bot.close_session()

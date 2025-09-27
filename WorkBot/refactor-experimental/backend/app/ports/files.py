@@ -1,8 +1,8 @@
 from __future__ import annotations
 from pathlib import Path
 from typing import Protocol, List, Optional
-from backend.domain.models.order import Order
-from backend.domain.models.vendor import Vendor
+from backend.domain.models import Order, Vendor, Store
+
 class FilePort(Protocol):
     def get_directory(self) -> Path: ...
     def get_file_path(self, obj, format: str) -> Path: ...
@@ -27,3 +27,9 @@ class VendorFilePort(FilePort, Protocol):
 
     def get_vendor(self, vendor: str) -> Vendor: ...
     def list_vendor_files(self) -> List[Path]: ...
+
+
+class StoreFilePort(FilePort, Protocol):
+
+    def get_store(self, store: str) -> Store: ...
+    def list_stores(self) -> List[Store]: ...

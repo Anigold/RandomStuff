@@ -430,10 +430,10 @@ Internal Contacts:
     
 # PRIVATE FUNCTIONS    
     def _get_stores(self):
-        return [store.name for store in self.workbot.store_coordinator.list_stores()]
+        return [store.name for store in self.workbot.stores.list_stores()]
     
     def _get_vendors(self):
-        return sorted([i.name for i in self.workbot.vendors.list_vendors()])
+        return sorted([vendor.name for vendor in self.workbot.vendors.list_vendors()])
 
     # def show_help(self, args):
     #     '''Displays available commands.'''

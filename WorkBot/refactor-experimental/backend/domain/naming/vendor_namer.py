@@ -1,7 +1,5 @@
-# backend/domain/serializers/vendor_namer.py
-
 from pathlib import Path
-from backend.domain.models.vendor import Vendor
+from backend.domain.models import Vendor
 from backend.app.ports.generic import Namer
 import re
 

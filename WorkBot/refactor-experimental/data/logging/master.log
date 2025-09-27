@@ -9092,3 +9092,588 @@ KeyError: 'store'
 2025-09-24 10:51:14,080 - INFO - backend.adapters.files.vendor_file_adapter.VendorFileAdapter - (vendor_file_adapter.py:60) - [Vendor(name='Sysco', order_format='', special_notes='', min_order_value=500, min_order_cases=0, internal_contacts=[ContactInfo(name='John Burnette', title='Sales Representative', email='', phone='')], ordering=OrderingInfo(method=[], email='', portal_url='', phone_number='', schedule=[ScheduleEntry(order_day='Sunday', delivery_days=['Monday'], cutoff_time='5:00 PM'), ScheduleEntry(order_day='Wednesday', delivery_days=['Thursday'], cutoff_time='5:00 PM')]), store_ids={'Bakery': '', 'Collegetown': '', 'Triphammer': '', 'Easthill': '', 'Downtown': ''})]
 2025-09-24 10:53:30,319 - INFO - backend.app.cli.cli.CLI - (cli.py:349) - CLI interrupted by user (Ctrl+C / EOF).
 2025-09-24 10:53:30,321 - INFO - backend.app.cli.cli.CLI - (cli.py:392) - Exiting CLI and saving history.
+2025-09-24 10:53:34,320 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:67) - Initializing WorkBot...
+2025-09-24 10:53:34,321 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:100) - WorkBot initialized successfully.
+2025-09-24 10:53:34,321 - INFO - backend.app.cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-24 10:53:34,328 - INFO - backend.app.cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-09-24 10:53:34,329 - INFO - backend.app.cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-09-24 10:53:34,329 - INFO - backend.app.cli.cli.CLI - (cli.py:323) - CLI session started.
+2025-09-24 10:53:40,960 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --vendors, Sys
+2025-09-24 10:53:40,961 - INFO - backend.app.application.vendors.ListVendors - (vendors.py:30) - Listing all vendors
+2025-09-24 10:53:40,964 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --vendors, Sys
+2025-09-24 10:53:40,964 - INFO - backend.app.application.vendors.ListVendors - (vendors.py:30) - Listing all vendors
+2025-09-27 12:25:02,103 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:67) - Initializing WorkBot...
+2025-09-27 12:25:02,104 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:100) - WorkBot initialized successfully.
+2025-09-27 12:25:02,105 - INFO - backend.app.cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-27 12:25:02,122 - INFO - backend.app.cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-09-27 12:25:02,122 - INFO - backend.app.cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-09-27 12:25:02,122 - INFO - backend.app.cli.cli.CLI - (cli.py:323) - CLI session started.
+2025-09-27 12:26:09,105 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --stores, B
+2025-09-27 12:26:16,032 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --vendors, Sys
+2025-09-27 12:26:16,032 - INFO - backend.app.application.vendors.ListVendors - (vendors.py:30) - Listing all vendors
+2025-09-27 12:26:16,046 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --vendors, Sys
+2025-09-27 12:26:16,046 - INFO - backend.app.application.vendors.ListVendors - (vendors.py:30) - Listing all vendors
+2025-09-27 13:18:31,101 - INFO - backend.app.cli.cli.CLI - (cli.py:349) - CLI interrupted by user (Ctrl+C / EOF).
+2025-09-27 13:18:31,107 - INFO - backend.app.cli.cli.CLI - (cli.py:392) - Exiting CLI and saving history.
+2025-09-27 13:18:34,944 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:70) - Initializing WorkBot...
+2025-09-27 13:18:34,945 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:102) - WorkBot initialized successfully.
+2025-09-27 13:18:34,945 - INFO - backend.app.cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-27 13:18:34,953 - INFO - backend.app.cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-09-27 13:18:34,953 - INFO - backend.app.cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-09-27 13:18:34,953 - INFO - backend.app.cli.cli.CLI - (cli.py:323) - CLI session started.
+2025-09-27 13:18:42,989 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --stores, B
+2025-09-27 13:18:42,989 - INFO - backend.app.application.stores.ListStores - (stores.py:30) - Listing all stores.
+2025-09-27 13:18:42,991 - WARNING - backend.adapters.files.store_file_adapter.StoreFileAdapter - (store_file_adapter.py:56) - Skipped C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores\Collegetown.json: Expecting value: line 1 column 1 (char 0)
+2025-09-27 13:18:42,992 - WARNING - backend.adapters.files.store_file_adapter.StoreFileAdapter - (store_file_adapter.py:56) - Skipped C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores\Downtown.json: Expecting value: line 1 column 1 (char 0)
+2025-09-27 13:18:42,993 - WARNING - backend.adapters.files.store_file_adapter.StoreFileAdapter - (store_file_adapter.py:56) - Skipped C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores\Easthill.json: Expecting value: line 1 column 1 (char 0)
+2025-09-27 13:18:42,993 - WARNING - backend.adapters.files.store_file_adapter.StoreFileAdapter - (store_file_adapter.py:56) - Skipped C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores\Syracuse.json: Expecting value: line 1 column 1 (char 0)
+2025-09-27 13:18:42,993 - WARNING - backend.adapters.files.store_file_adapter.StoreFileAdapter - (store_file_adapter.py:56) - Skipped C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores\Triphammer.json: Expecting value: line 1 column 1 (char 0)
+2025-09-27 13:18:42,996 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --stores, B
+2025-09-27 13:18:42,996 - INFO - backend.app.application.stores.ListStores - (stores.py:30) - Listing all stores.
+2025-09-27 13:18:42,997 - WARNING - backend.adapters.files.store_file_adapter.StoreFileAdapter - (store_file_adapter.py:56) - Skipped C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores\Collegetown.json: Expecting value: line 1 column 1 (char 0)
+2025-09-27 13:18:42,997 - WARNING - backend.adapters.files.store_file_adapter.StoreFileAdapter - (store_file_adapter.py:56) - Skipped C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores\Downtown.json: Expecting value: line 1 column 1 (char 0)
+2025-09-27 13:18:42,998 - WARNING - backend.adapters.files.store_file_adapter.StoreFileAdapter - (store_file_adapter.py:56) - Skipped C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores\Easthill.json: Expecting value: line 1 column 1 (char 0)
+2025-09-27 13:18:42,998 - WARNING - backend.adapters.files.store_file_adapter.StoreFileAdapter - (store_file_adapter.py:56) - Skipped C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores\Syracuse.json: Expecting value: line 1 column 1 (char 0)
+2025-09-27 13:18:42,999 - WARNING - backend.adapters.files.store_file_adapter.StoreFileAdapter - (store_file_adapter.py:56) - Skipped C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores\Triphammer.json: Expecting value: line 1 column 1 (char 0)
+2025-09-27 13:18:47,861 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --stores, C
+2025-09-27 13:18:47,861 - INFO - backend.app.application.stores.ListStores - (stores.py:30) - Listing all stores.
+2025-09-27 13:18:47,862 - WARNING - backend.adapters.files.store_file_adapter.StoreFileAdapter - (store_file_adapter.py:56) - Skipped C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores\Collegetown.json: Expecting value: line 1 column 1 (char 0)
+2025-09-27 13:18:47,862 - WARNING - backend.adapters.files.store_file_adapter.StoreFileAdapter - (store_file_adapter.py:56) - Skipped C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores\Downtown.json: Expecting value: line 1 column 1 (char 0)
+2025-09-27 13:18:47,863 - WARNING - backend.adapters.files.store_file_adapter.StoreFileAdapter - (store_file_adapter.py:56) - Skipped C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores\Easthill.json: Expecting value: line 1 column 1 (char 0)
+2025-09-27 13:18:47,863 - WARNING - backend.adapters.files.store_file_adapter.StoreFileAdapter - (store_file_adapter.py:56) - Skipped C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores\Syracuse.json: Expecting value: line 1 column 1 (char 0)
+2025-09-27 13:18:47,864 - WARNING - backend.adapters.files.store_file_adapter.StoreFileAdapter - (store_file_adapter.py:56) - Skipped C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores\Triphammer.json: Expecting value: line 1 column 1 (char 0)
+2025-09-27 13:18:48,989 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --stores, C
+2025-09-27 13:18:48,989 - INFO - backend.app.application.stores.ListStores - (stores.py:30) - Listing all stores.
+2025-09-27 13:18:48,990 - WARNING - backend.adapters.files.store_file_adapter.StoreFileAdapter - (store_file_adapter.py:56) - Skipped C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores\Collegetown.json: Expecting value: line 1 column 1 (char 0)
+2025-09-27 13:18:48,990 - WARNING - backend.adapters.files.store_file_adapter.StoreFileAdapter - (store_file_adapter.py:56) - Skipped C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores\Downtown.json: Expecting value: line 1 column 1 (char 0)
+2025-09-27 13:18:48,991 - WARNING - backend.adapters.files.store_file_adapter.StoreFileAdapter - (store_file_adapter.py:56) - Skipped C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores\Easthill.json: Expecting value: line 1 column 1 (char 0)
+2025-09-27 13:18:48,991 - WARNING - backend.adapters.files.store_file_adapter.StoreFileAdapter - (store_file_adapter.py:56) - Skipped C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores\Syracuse.json: Expecting value: line 1 column 1 (char 0)
+2025-09-27 13:18:48,992 - WARNING - backend.adapters.files.store_file_adapter.StoreFileAdapter - (store_file_adapter.py:56) - Skipped C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores\Triphammer.json: Expecting value: line 1 column 1 (char 0)
+2025-09-27 13:18:49,557 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --stores, C
+2025-09-27 13:18:49,557 - INFO - backend.app.application.stores.ListStores - (stores.py:30) - Listing all stores.
+2025-09-27 13:18:49,558 - WARNING - backend.adapters.files.store_file_adapter.StoreFileAdapter - (store_file_adapter.py:56) - Skipped C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores\Collegetown.json: Expecting value: line 1 column 1 (char 0)
+2025-09-27 13:18:49,558 - WARNING - backend.adapters.files.store_file_adapter.StoreFileAdapter - (store_file_adapter.py:56) - Skipped C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores\Downtown.json: Expecting value: line 1 column 1 (char 0)
+2025-09-27 13:18:49,559 - WARNING - backend.adapters.files.store_file_adapter.StoreFileAdapter - (store_file_adapter.py:56) - Skipped C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores\Easthill.json: Expecting value: line 1 column 1 (char 0)
+2025-09-27 13:18:49,559 - WARNING - backend.adapters.files.store_file_adapter.StoreFileAdapter - (store_file_adapter.py:56) - Skipped C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores\Syracuse.json: Expecting value: line 1 column 1 (char 0)
+2025-09-27 13:18:49,560 - WARNING - backend.adapters.files.store_file_adapter.StoreFileAdapter - (store_file_adapter.py:56) - Skipped C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores\Triphammer.json: Expecting value: line 1 column 1 (char 0)
+2025-09-27 13:29:33,335 - INFO - backend.app.cli.cli.CLI - (cli.py:349) - CLI interrupted by user (Ctrl+C / EOF).
+2025-09-27 13:29:33,338 - INFO - backend.app.cli.cli.CLI - (cli.py:392) - Exiting CLI and saving history.
+2025-09-27 13:29:38,034 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:70) - Initializing WorkBot...
+2025-09-27 13:29:38,035 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:102) - WorkBot initialized successfully.
+2025-09-27 13:29:38,035 - INFO - backend.app.cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-27 13:29:38,043 - INFO - backend.app.cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-09-27 13:29:38,043 - INFO - backend.app.cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-09-27 13:29:38,043 - INFO - backend.app.cli.cli.CLI - (cli.py:323) - CLI session started.
+2025-09-27 13:29:45,624 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --stores, B
+2025-09-27 13:29:45,624 - INFO - backend.app.application.stores.ListStores - (stores.py:30) - Listing all stores.
+2025-09-27 13:29:45,659 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --stores, B
+2025-09-27 13:29:45,659 - INFO - backend.app.application.stores.ListStores - (stores.py:30) - Listing all stores.
+2025-09-27 13:29:47,152 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --stores, E
+2025-09-27 13:29:47,152 - INFO - backend.app.application.stores.ListStores - (stores.py:30) - Listing all stores.
+2025-09-27 13:29:47,155 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --stores, E
+2025-09-27 13:29:47,156 - INFO - backend.app.application.stores.ListStores - (stores.py:30) - Listing all stores.
+2025-09-27 13:29:48,664 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --stores, C
+2025-09-27 13:29:48,664 - INFO - backend.app.application.stores.ListStores - (stores.py:30) - Listing all stores.
+2025-09-27 13:29:48,668 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --stores, C
+2025-09-27 13:29:48,668 - INFO - backend.app.application.stores.ListStores - (stores.py:30) - Listing all stores.
+2025-09-27 13:29:51,200 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --stores, 
+2025-09-27 13:29:51,201 - INFO - backend.app.application.stores.ListStores - (stores.py:30) - Listing all stores.
+2025-09-27 13:29:51,204 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --stores, 
+2025-09-27 13:29:51,204 - INFO - backend.app.application.stores.ListStores - (stores.py:30) - Listing all stores.
+2025-09-27 13:29:51,207 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --stores, 
+2025-09-27 13:29:51,207 - INFO - backend.app.application.stores.ListStores - (stores.py:30) - Listing all stores.
+2025-09-27 13:29:51,210 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --stores, 
+2025-09-27 13:29:51,210 - INFO - backend.app.application.stores.ListStores - (stores.py:30) - Listing all stores.
+2025-09-27 13:29:51,212 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --stores, 
+2025-09-27 13:29:51,213 - INFO - backend.app.application.stores.ListStores - (stores.py:30) - Listing all stores.
+2025-09-27 13:29:51,215 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --stores, 
+2025-09-27 13:29:51,215 - INFO - backend.app.application.stores.ListStores - (stores.py:30) - Listing all stores.
+2025-09-27 13:29:51,218 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --stores, 
+2025-09-27 13:29:51,218 - INFO - backend.app.application.stores.ListStores - (stores.py:30) - Listing all stores.
+2025-09-27 13:29:53,824 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --stores, T
+2025-09-27 13:29:53,825 - INFO - backend.app.application.stores.ListStores - (stores.py:30) - Listing all stores.
+2025-09-27 13:29:53,828 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --stores, T
+2025-09-27 13:29:53,828 - INFO - backend.app.application.stores.ListStores - (stores.py:30) - Listing all stores.
+2025-09-27 13:29:57,689 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --vendors, Sys
+2025-09-27 13:29:57,689 - INFO - backend.app.application.vendors.ListVendors - (vendors.py:30) - Listing all vendors
+2025-09-27 13:29:57,691 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --vendors, Sys
+2025-09-27 13:29:57,691 - INFO - backend.app.application.vendors.ListVendors - (vendors.py:30) - Listing all vendors
+2025-09-27 14:07:48,238 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --stores, B
+2025-09-27 14:07:48,238 - INFO - backend.app.application.stores.ListStores - (stores.py:30) - Listing all stores.
+2025-09-27 14:07:48,241 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --stores, B
+2025-09-27 14:07:48,242 - INFO - backend.app.application.stores.ListStores - (stores.py:30) - Listing all stores.
+2025-09-27 14:07:52,270 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --stores, Col
+2025-09-27 14:07:52,270 - INFO - backend.app.application.stores.ListStores - (stores.py:30) - Listing all stores.
+2025-09-27 14:07:52,273 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --stores, Col
+2025-09-27 14:07:52,273 - INFO - backend.app.application.stores.ListStores - (stores.py:30) - Listing all stores.
+2025-09-27 14:07:53,334 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --stores, T
+2025-09-27 14:07:53,334 - INFO - backend.app.application.stores.ListStores - (stores.py:30) - Listing all stores.
+2025-09-27 14:07:53,337 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --stores, T
+2025-09-27 14:07:53,337 - INFO - backend.app.application.stores.ListStores - (stores.py:30) - Listing all stores.
+2025-09-27 14:08:03,392 - INFO - backend.app.cli.cli.CLI - (cli.py:421) - Dispatching command: download_orders (args=['--stores', 'Bakery', 'Collegetown', 'Triphammer', '--vendors', 'UNFI'])
+2025-09-27 14:08:09,602 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:138) - Logging into Craftable.
+2025-09-27 14:08:16,584 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:162) - Login successful.
+2025-09-27 14:08:16,584 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:261) - Starting order download protocol.
+2025-09-27 14:08:16,584 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:264) - Accessing order page for Bakery.
+2025-09-27 14:08:23,271 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for UNFI (09/27/2025).
+2025-09-27 14:08:25,120 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Bakery / UNFI / 20250927.
+2025-09-27 14:08:25,121 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:143) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\orders\UNFI\UNFI_Bakery_20250927.xlsx. Proceeding with save.
+2025-09-27 14:08:25,121 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for UNFI.
+2025-09-27 14:08:27,180 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-09-27 14:08:27,182 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:130) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\orders\UNFI\UNFI_Bakery_20250927.pdf
+2025-09-27 14:08:29,492 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:264) - Accessing order page for Collegetown.
+2025-09-27 14:08:36,561 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for UNFI (09/26/2025).
+2025-09-27 14:08:39,138 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Collegetown / UNFI / 20250926.
+2025-09-27 14:08:39,139 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:143) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\orders\UNFI\UNFI_Collegetown_20250926.xlsx. Proceeding with save.
+2025-09-27 14:08:39,139 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for UNFI.
+2025-09-27 14:08:41,694 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-09-27 14:08:41,696 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:130) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\orders\UNFI\UNFI_Collegetown_20250926.pdf
+2025-09-27 14:08:43,756 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:264) - Accessing order page for Triphammer.
+2025-09-27 14:08:50,185 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:305) - Retrieving order for UNFI (09/26/2025).
+2025-09-27 14:08:51,826 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1033) - [Order Update] Initiating update protocol for Triphammer / UNFI / 20250926.
+2025-09-27 14:08:51,827 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:143) - [Order Update] No existing file at C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\orders\UNFI\UNFI_Triphammer_20250926.xlsx. Proceeding with save.
+2025-09-27 14:08:51,827 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:319) - Saving order for UNFI.
+2025-09-27 14:08:53,866 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-09-27 14:08:53,868 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:130) - Moved downloaded PDF to: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\orders\UNFI\UNFI_Triphammer_20250926.pdf
+2025-09-27 14:08:56,665 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:278) - Order download complete.
+2025-09-27 14:08:56,666 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:279) - Closing WebDriver session.
+2025-09-27 14:08:58,417 - INFO - backend.app.cli.cli.CLI - (cli.py:423) - Command 'download_orders' executed successfully.
+2025-09-27 14:09:50,256 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - generate_vendor_upload_files, --stores, B
+2025-09-27 14:09:50,257 - INFO - backend.app.application.stores.ListStores - (stores.py:30) - Listing all stores.
+2025-09-27 14:09:50,260 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - generate_vendor_upload_files, --stores, B
+2025-09-27 14:09:50,260 - INFO - backend.app.application.stores.ListStores - (stores.py:30) - Listing all stores.
+2025-09-27 14:09:55,226 - INFO - backend.app.cli.cli.CLI - (cli.py:421) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'UNFI'])
+2025-09-27 14:09:55,227 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:198) - Generating vendor upload files for stores=['Bakery'], vendors=['UNFI'], start_date=None, end_date=None
+2025-09-27 14:09:55,227 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:118) - Retrieving order files for: stores=[['Bakery']], vendors=[['UNFI']], formats=[['xlsx']]
+2025-09-27 14:09:55,228 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Found 1 order files to process.
+2025-09-27 14:09:55,228 - INFO - backend.app.application.orders.ReadOrderFromFile - (orders.py:25) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\orders\UNFI\UNFI_Bakery_20250927.xlsx
+2025-09-27 14:09:55,249 - ERROR - backend.app.cli.cli.CLI - (cli.py:428) - [Error] generate_vendor_upload_files failed: 'store'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 422, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\workbot_cli.py", line 168, in cmd_generate_vendor_upload_files
+    paths = self.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 207, in generate_vendor_upload_files
+    for file_path in order_file_paths:
+                ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 26, in __call__
+    return self.files.read_from_path(path)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\order_file_adapter.py", line 36, in read_from_path
+    return self._engine.read(path)
+           ~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\generic_file_adapter.py", line 55, in read
+    return self.serializer.load_path(path)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\serializer\serializers\order.py", line 42, in load_path
+    return self.from_dict(payload)
+           ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\serializer\serializers\order.py", line 77, in from_dict
+    store=data["store"],
+          ~~~~^^^^^^^^^
+KeyError: 'store'
+2025-09-27 14:15:55,864 - INFO - backend.app.cli.cli.CLI - (cli.py:349) - CLI interrupted by user (Ctrl+C / EOF).
+2025-09-27 14:15:55,867 - INFO - backend.app.cli.cli.CLI - (cli.py:392) - Exiting CLI and saving history.
+2025-09-27 14:19:57,460 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:72) - Initializing WorkBot...
+2025-09-27 14:19:57,461 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-09-27 14:19:57,461 - INFO - backend.app.cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-27 14:19:57,478 - INFO - backend.app.cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-09-27 14:19:57,478 - INFO - backend.app.cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-09-27 14:19:57,478 - INFO - backend.app.cli.cli.CLI - (cli.py:323) - CLI session started.
+2025-09-27 14:20:03,846 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - generate_vendor_upload_files, --stores, B
+2025-09-27 14:20:03,846 - INFO - backend.app.application.stores.ListStores - (stores.py:30) - Listing all stores.
+2025-09-27 14:20:03,850 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - generate_vendor_upload_files, --stores, B
+2025-09-27 14:20:03,850 - INFO - backend.app.application.stores.ListStores - (stores.py:30) - Listing all stores.
+2025-09-27 14:20:07,400 - INFO - backend.app.cli.cli.CLI - (cli.py:421) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'UNFI'])
+2025-09-27 14:20:07,401 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:200) - Generating vendor upload files for stores=['Bakery'], vendors=['UNFI'], start_date=None, end_date=None
+2025-09-27 14:20:07,401 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:120) - Retrieving order files for: stores=[['Bakery']], vendors=[['UNFI']], formats=[['xlsx']]
+2025-09-27 14:20:07,402 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:204) - Found 1 order files to process.
+2025-09-27 14:20:07,402 - INFO - backend.app.application.orders.ReadOrderFromFile - (orders.py:25) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\orders\UNFI\UNFI_Bakery_20250927.xlsx
+2025-09-27 14:20:07,408 - ERROR - backend.app.cli.cli.CLI - (cli.py:428) - [Error] generate_vendor_upload_files failed: 'store'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 422, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\workbot_cli.py", line 168, in cmd_generate_vendor_upload_files
+    paths = self.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 209, in generate_vendor_upload_files
+    order = self.orders.read_order_from_file(file_path)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 26, in __call__
+    return self.files.read_from_path(path)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\order_file_adapter.py", line 36, in read_from_path
+    return self._engine.read(path)
+           ~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\generic_file_adapter.py", line 55, in read
+    return self.serializer.load_path(path)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\serializer\serializers\order.py", line 42, in load_path
+    return self.from_dict(payload)
+           ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\serializer\serializers\order.py", line 77, in from_dict
+    store=data["store"],
+          ~~~~^^^^^^^^^
+KeyError: 'store'
+2025-09-27 14:41:34,237 - INFO - backend.app.cli.cli.CLI - (cli.py:349) - CLI interrupted by user (Ctrl+C / EOF).
+2025-09-27 14:41:34,240 - INFO - backend.app.cli.cli.CLI - (cli.py:392) - Exiting CLI and saving history.
+2025-09-27 14:42:11,410 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:72) - Initializing WorkBot...
+2025-09-27 14:42:11,411 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-09-27 14:42:11,411 - INFO - backend.app.cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-27 14:42:11,427 - INFO - backend.app.cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-09-27 14:42:11,427 - INFO - backend.app.cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-09-27 14:42:11,427 - INFO - backend.app.cli.cli.CLI - (cli.py:323) - CLI session started.
+2025-09-27 14:42:13,136 - INFO - backend.app.cli.cli.CLI - (cli.py:421) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'UNFI'])
+2025-09-27 14:42:13,137 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:200) - Generating vendor upload files for stores=['Bakery'], vendors=['UNFI'], start_date=None, end_date=None
+2025-09-27 14:42:13,137 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:120) - Retrieving order files for: stores=[['Bakery']], vendors=[['UNFI']], formats=[['xlsx']]
+2025-09-27 14:42:13,138 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:204) - Found 1 order files to process.
+2025-09-27 14:42:13,138 - INFO - backend.app.application.orders.ReadOrderFromFile - (orders.py:25) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\orders\UNFI\UNFI_Bakery_20250927.xlsx
+2025-09-27 14:42:13,138 - ERROR - backend.app.cli.cli.CLI - (cli.py:428) - [Error] generate_vendor_upload_files failed: OrderSerializer.load_path() got an unexpected keyword argument 'context'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 422, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\workbot_cli.py", line 168, in cmd_generate_vendor_upload_files
+    paths = self.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 209, in generate_vendor_upload_files
+    order = self.orders.read_order_from_file(file_path)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 26, in __call__
+    return self.files.read_from_path(path)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\order_file_adapter.py", line 36, in read_from_path
+    return self._engine.read(path)
+           ~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\generic_file_adapter.py", line 55, in read
+    return self.serializer.load_path(path, context=context)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: OrderSerializer.load_path() got an unexpected keyword argument 'context'
+2025-09-27 14:42:42,837 - INFO - backend.app.cli.cli.CLI - (cli.py:349) - CLI interrupted by user (Ctrl+C / EOF).
+2025-09-27 14:42:42,840 - INFO - backend.app.cli.cli.CLI - (cli.py:392) - Exiting CLI and saving history.
+2025-09-27 14:42:47,227 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:72) - Initializing WorkBot...
+2025-09-27 14:42:47,228 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-09-27 14:42:47,228 - INFO - backend.app.cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-27 14:42:47,235 - INFO - backend.app.cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-09-27 14:42:47,236 - INFO - backend.app.cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-09-27 14:42:47,236 - INFO - backend.app.cli.cli.CLI - (cli.py:323) - CLI session started.
+2025-09-27 14:42:48,545 - INFO - backend.app.cli.cli.CLI - (cli.py:421) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'UNFI'])
+2025-09-27 14:42:48,546 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:200) - Generating vendor upload files for stores=['Bakery'], vendors=['UNFI'], start_date=None, end_date=None
+2025-09-27 14:42:48,546 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:120) - Retrieving order files for: stores=[['Bakery']], vendors=[['UNFI']], formats=[['xlsx']]
+2025-09-27 14:42:48,547 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:204) - Found 1 order files to process.
+2025-09-27 14:42:48,548 - INFO - backend.app.application.orders.ReadOrderFromFile - (orders.py:25) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\orders\UNFI\UNFI_Bakery_20250927.xlsx
+2025-09-27 14:42:48,553 - ERROR - backend.app.cli.cli.CLI - (cli.py:428) - [Error] generate_vendor_upload_files failed: 'metadata'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 422, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\workbot_cli.py", line 168, in cmd_generate_vendor_upload_files
+    paths = self.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 209, in generate_vendor_upload_files
+    order = self.orders.read_order_from_file(file_path)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 26, in __call__
+    return self.files.read_from_path(path)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\order_file_adapter.py", line 36, in read_from_path
+    return self._engine.read(path)
+           ~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\generic_file_adapter.py", line 55, in read
+    return self.serializer.load_path(path)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\serializer\serializers\order.py", line 42, in load_path
+    return self.from_dict(payload)
+           ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\serializer\serializers\order.py", line 77, in from_dict
+    store=data['metadata']["store"],
+          ~~~~^^^^^^^^^^^^
+KeyError: 'metadata'
+2025-09-27 14:44:10,902 - INFO - backend.app.cli.cli.CLI - (cli.py:349) - CLI interrupted by user (Ctrl+C / EOF).
+2025-09-27 14:44:10,905 - INFO - backend.app.cli.cli.CLI - (cli.py:392) - Exiting CLI and saving history.
+2025-09-27 14:44:14,936 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:72) - Initializing WorkBot...
+2025-09-27 14:44:14,937 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-09-27 14:44:14,937 - INFO - backend.app.cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-27 14:44:14,945 - INFO - backend.app.cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-09-27 14:44:14,945 - INFO - backend.app.cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-09-27 14:44:14,945 - INFO - backend.app.cli.cli.CLI - (cli.py:323) - CLI session started.
+2025-09-27 14:44:15,906 - INFO - backend.app.cli.cli.CLI - (cli.py:421) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'UNFI'])
+2025-09-27 14:44:15,907 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:200) - Generating vendor upload files for stores=['Bakery'], vendors=['UNFI'], start_date=None, end_date=None
+2025-09-27 14:44:15,907 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:120) - Retrieving order files for: stores=[['Bakery']], vendors=[['UNFI']], formats=[['xlsx']]
+2025-09-27 14:44:15,908 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:204) - Found 1 order files to process.
+2025-09-27 14:44:15,908 - INFO - backend.app.application.orders.ReadOrderFromFile - (orders.py:25) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\orders\UNFI\UNFI_Bakery_20250927.xlsx
+2025-09-27 14:44:15,915 - ERROR - backend.app.cli.cli.CLI - (cli.py:428) - [Error] generate_vendor_upload_files failed: 'metadata'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 422, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\workbot_cli.py", line 168, in cmd_generate_vendor_upload_files
+    paths = self.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 209, in generate_vendor_upload_files
+    order = self.orders.read_order_from_file(file_path)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 26, in __call__
+    return self.files.read_from_path(path)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\order_file_adapter.py", line 36, in read_from_path
+    return self._engine.read(path)
+           ~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\generic_file_adapter.py", line 55, in read
+    return self.serializer.load_path(path)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\serializer\serializers\order.py", line 42, in load_path
+    return self.from_dict(payload)
+           ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\serializer\serializers\order.py", line 77, in from_dict
+    store=data['metadata']["store"],
+          ~~~~^^^^^^^^^^^^
+KeyError: 'metadata'
+2025-09-27 14:47:12,577 - INFO - backend.app.cli.cli.CLI - (cli.py:349) - CLI interrupted by user (Ctrl+C / EOF).
+2025-09-27 14:47:12,582 - INFO - backend.app.cli.cli.CLI - (cli.py:392) - Exiting CLI and saving history.
+2025-09-27 14:47:16,478 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:72) - Initializing WorkBot...
+2025-09-27 14:47:16,479 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-09-27 14:47:16,479 - INFO - backend.app.cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-27 14:47:16,486 - INFO - backend.app.cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-09-27 14:47:16,486 - INFO - backend.app.cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-09-27 14:47:16,487 - INFO - backend.app.cli.cli.CLI - (cli.py:323) - CLI session started.
+2025-09-27 14:47:17,148 - INFO - backend.app.cli.cli.CLI - (cli.py:421) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'UNFI'])
+2025-09-27 14:47:17,149 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:200) - Generating vendor upload files for stores=['Bakery'], vendors=['UNFI'], start_date=None, end_date=None
+2025-09-27 14:47:17,150 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:120) - Retrieving order files for: stores=[['Bakery']], vendors=[['UNFI']], formats=[['xlsx']]
+2025-09-27 14:47:17,151 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:204) - Found 1 order files to process.
+2025-09-27 14:47:17,151 - INFO - backend.app.application.orders.ReadOrderFromFile - (orders.py:25) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\orders\UNFI\UNFI_Bakery_20250927.xlsx
+2025-09-27 14:47:17,157 - ERROR - backend.app.cli.cli.CLI - (cli.py:428) - [Error] generate_vendor_upload_files failed: 'store'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 422, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\workbot_cli.py", line 168, in cmd_generate_vendor_upload_files
+    paths = self.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 209, in generate_vendor_upload_files
+    order = self.orders.read_order_from_file(file_path)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 26, in __call__
+    return self.files.read_from_path(path)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\order_file_adapter.py", line 36, in read_from_path
+    return self._engine.read(path)
+           ~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\generic_file_adapter.py", line 55, in read
+    return self.serializer.load_path(path)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\serializer\serializers\order.py", line 42, in load_path
+    return self.from_dict(payload)
+           ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\serializer\serializers\order.py", line 77, in from_dict
+    store=data['metadata']["store"],
+          ~~~~~~~~~~~~~~~~^^^^^^^^^
+KeyError: 'store'
+2025-09-27 14:51:55,997 - INFO - backend.app.cli.cli.CLI - (cli.py:349) - CLI interrupted by user (Ctrl+C / EOF).
+2025-09-27 14:51:56,002 - INFO - backend.app.cli.cli.CLI - (cli.py:392) - Exiting CLI and saving history.
+2025-09-27 14:52:00,123 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:72) - Initializing WorkBot...
+2025-09-27 14:52:00,123 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-09-27 14:52:00,124 - INFO - backend.app.cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-27 14:52:00,131 - INFO - backend.app.cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-09-27 14:52:00,131 - INFO - backend.app.cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-09-27 14:52:00,132 - INFO - backend.app.cli.cli.CLI - (cli.py:323) - CLI session started.
+2025-09-27 14:52:00,816 - INFO - backend.app.cli.cli.CLI - (cli.py:421) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'UNFI'])
+2025-09-27 14:52:00,817 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:200) - Generating vendor upload files for stores=['Bakery'], vendors=['UNFI'], start_date=None, end_date=None
+2025-09-27 14:52:00,817 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:120) - Retrieving order files for: stores=[['Bakery']], vendors=[['UNFI']], formats=[['xlsx']]
+2025-09-27 14:52:00,818 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:204) - Found 1 order files to process.
+2025-09-27 14:52:00,819 - INFO - backend.app.application.orders.ReadOrderFromFile - (orders.py:25) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\orders\UNFI\UNFI_Bakery_20250927.xlsx
+2025-09-27 14:52:00,828 - ERROR - backend.app.cli.cli.CLI - (cli.py:428) - [Error] generate_vendor_upload_files failed: 'WorkBot' object has no attribute 'vendor_coordinator'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 422, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\workbot_cli.py", line 168, in cmd_generate_vendor_upload_files
+    paths = self.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 211, in generate_vendor_upload_files
+    vendor_info = self.vendor_coordinator.get_vendor_information(order.vendor)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'WorkBot' object has no attribute 'vendor_coordinator'
+2025-09-27 14:52:44,182 - INFO - backend.app.cli.cli.CLI - (cli.py:349) - CLI interrupted by user (Ctrl+C / EOF).
+2025-09-27 14:52:44,185 - INFO - backend.app.cli.cli.CLI - (cli.py:392) - Exiting CLI and saving history.
+2025-09-27 14:52:47,369 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:72) - Initializing WorkBot...
+2025-09-27 14:52:47,370 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-09-27 14:52:47,370 - INFO - backend.app.cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-27 14:52:47,378 - INFO - backend.app.cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-09-27 14:52:47,378 - INFO - backend.app.cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-09-27 14:52:47,378 - INFO - backend.app.cli.cli.CLI - (cli.py:323) - CLI session started.
+2025-09-27 14:52:48,529 - INFO - backend.app.cli.cli.CLI - (cli.py:421) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'UNFI'])
+2025-09-27 14:52:48,530 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:200) - Generating vendor upload files for stores=['Bakery'], vendors=['UNFI'], start_date=None, end_date=None
+2025-09-27 14:52:48,530 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:120) - Retrieving order files for: stores=[['Bakery']], vendors=[['UNFI']], formats=[['xlsx']]
+2025-09-27 14:52:48,531 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:204) - Found 1 order files to process.
+2025-09-27 14:52:48,532 - INFO - backend.app.application.orders.ReadOrderFromFile - (orders.py:25) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\orders\UNFI\UNFI_Bakery_20250927.xlsx
+2025-09-27 14:52:48,537 - INFO - backend.app.application.vendors.GetVendor - (vendors.py:19) - Fetching vendor: 
+2025-09-27 14:52:48,538 - ERROR - backend.app.cli.cli.CLI - (cli.py:428) - [Error] generate_vendor_upload_files failed: GenericFileAdapter.path_for() takes 2 positional arguments but 3 were given
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 422, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\workbot_cli.py", line 168, in cmd_generate_vendor_upload_files
+    paths = self.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 211, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\vendors.py", line 20, in __call__
+    return self.files.get_vendor(name)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\vendor_file_adapter.py", line 43, in get_vendor
+    file_path = self.get_file_path(vendor)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\vendor_file_adapter.py", line 30, in get_file_path
+    return self._engine.path_for(vendor, format)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+TypeError: GenericFileAdapter.path_for() takes 2 positional arguments but 3 were given
+2025-09-27 14:53:55,545 - WARNING - backend.app.cli.cli.CLI - (cli.py:416) - Unknown command entered: 'cls'
+2025-09-27 14:53:56,287 - INFO - backend.app.cli.cli.CLI - (cli.py:349) - CLI interrupted by user (Ctrl+C / EOF).
+2025-09-27 14:53:56,290 - INFO - backend.app.cli.cli.CLI - (cli.py:392) - Exiting CLI and saving history.
+2025-09-27 14:54:00,314 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:72) - Initializing WorkBot...
+2025-09-27 14:54:00,315 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-09-27 14:54:00,315 - INFO - backend.app.cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-27 14:54:00,333 - INFO - backend.app.cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-09-27 14:54:00,333 - INFO - backend.app.cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-09-27 14:54:00,333 - INFO - backend.app.cli.cli.CLI - (cli.py:323) - CLI session started.
+2025-09-27 14:54:02,579 - INFO - backend.app.cli.cli.CLI - (cli.py:421) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'UNFI'])
+2025-09-27 14:54:02,580 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:200) - Generating vendor upload files for stores=['Bakery'], vendors=['UNFI'], start_date=None, end_date=None
+2025-09-27 14:54:02,580 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:120) - Retrieving order files for: stores=[['Bakery']], vendors=[['UNFI']], formats=[['xlsx']]
+2025-09-27 14:54:02,581 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:204) - Found 1 order files to process.
+2025-09-27 14:54:02,581 - INFO - backend.app.application.orders.ReadOrderFromFile - (orders.py:25) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\orders\UNFI\UNFI_Bakery_20250927.xlsx
+2025-09-27 14:54:02,587 - INFO - backend.app.application.vendors.GetVendor - (vendors.py:19) - Fetching vendor: 
+2025-09-27 14:54:02,587 - ERROR - backend.app.cli.cli.CLI - (cli.py:428) - [Error] generate_vendor_upload_files failed: 'str' object has no attribute 'name'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 422, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\workbot_cli.py", line 168, in cmd_generate_vendor_upload_files
+    paths = self.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 211, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\vendors.py", line 20, in __call__
+    return self.files.get_vendor(name)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\vendor_file_adapter.py", line 43, in get_vendor
+    file_path = self.get_file_path(vendor)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\vendor_file_adapter.py", line 30, in get_file_path
+    return self._engine.path_for(vendor, format)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\generic_file_adapter.py", line 31, in path_for
+    return self.namer.path_for(obj, format=format)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\naming\vendor_namer.py", line 35, in path_for
+    return (self.directory_for(vendor) / self.filename(vendor, format=format)).resolve()
+                                         ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\naming\vendor_namer.py", line 28, in filename
+    return f"{self._sanitize(obj.name)}.{ext}"
+                             ^^^^^^^^
+AttributeError: 'str' object has no attribute 'name'
+2025-09-27 14:54:19,727 - INFO - backend.app.cli.cli.CLI - (cli.py:349) - CLI interrupted by user (Ctrl+C / EOF).
+2025-09-27 14:54:19,730 - INFO - backend.app.cli.cli.CLI - (cli.py:392) - Exiting CLI and saving history.
+2025-09-27 14:54:22,335 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:72) - Initializing WorkBot...
+2025-09-27 14:54:22,336 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-09-27 14:54:22,336 - INFO - backend.app.cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-27 14:54:22,355 - INFO - backend.app.cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-09-27 14:54:22,355 - INFO - backend.app.cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-09-27 14:54:22,355 - INFO - backend.app.cli.cli.CLI - (cli.py:323) - CLI session started.
+2025-09-27 14:54:23,114 - INFO - backend.app.cli.cli.CLI - (cli.py:421) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'UNFI'])
+2025-09-27 14:54:23,115 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:200) - Generating vendor upload files for stores=['Bakery'], vendors=['UNFI'], start_date=None, end_date=None
+2025-09-27 14:54:23,115 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:120) - Retrieving order files for: stores=[['Bakery']], vendors=[['UNFI']], formats=[['xlsx']]
+2025-09-27 14:54:23,116 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:204) - Found 1 order files to process.
+2025-09-27 14:54:23,116 - INFO - backend.app.application.orders.ReadOrderFromFile - (orders.py:25) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\orders\UNFI\UNFI_Bakery_20250927.xlsx
+2025-09-27 14:54:23,122 - INFO - backend.app.application.vendors.GetVendor - (vendors.py:19) - Fetching vendor: 
+2025-09-27 14:54:23,122 - ERROR - backend.app.cli.cli.CLI - (cli.py:428) - [Error] generate_vendor_upload_files failed: GenericFileAdapter.path_for() takes 2 positional arguments but 3 were given
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 422, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\workbot_cli.py", line 168, in cmd_generate_vendor_upload_files
+    paths = self.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 211, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\vendors.py", line 20, in __call__
+    return self.files.get_vendor(name)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\vendor_file_adapter.py", line 43, in get_vendor
+    file_path = self.get_file_path(vendor)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\vendor_file_adapter.py", line 30, in get_file_path
+    return self._engine.path_for(vendor, format)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+TypeError: GenericFileAdapter.path_for() takes 2 positional arguments but 3 were given
+2025-09-27 14:55:34,578 - WARNING - backend.app.cli.cli.CLI - (cli.py:416) - Unknown command entered: 'cls'
+2025-09-27 14:55:35,704 - INFO - backend.app.cli.cli.CLI - (cli.py:349) - CLI interrupted by user (Ctrl+C / EOF).
+2025-09-27 14:55:35,707 - INFO - backend.app.cli.cli.CLI - (cli.py:392) - Exiting CLI and saving history.
+2025-09-27 14:55:39,018 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:72) - Initializing WorkBot...
+2025-09-27 14:55:39,019 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-09-27 14:55:39,019 - INFO - backend.app.cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-27 14:55:39,035 - INFO - backend.app.cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-09-27 14:55:39,035 - INFO - backend.app.cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-09-27 14:55:39,036 - INFO - backend.app.cli.cli.CLI - (cli.py:323) - CLI session started.
+2025-09-27 14:55:41,348 - INFO - backend.app.cli.cli.CLI - (cli.py:421) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'UNFI'])
+2025-09-27 14:55:41,349 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:200) - Generating vendor upload files for stores=['Bakery'], vendors=['UNFI'], start_date=None, end_date=None
+2025-09-27 14:55:41,349 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:120) - Retrieving order files for: stores=[['Bakery']], vendors=[['UNFI']], formats=[['xlsx']]
+2025-09-27 14:55:41,350 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:204) - Found 1 order files to process.
+2025-09-27 14:55:41,351 - INFO - backend.app.application.orders.ReadOrderFromFile - (orders.py:25) - Reading order file: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\orders\UNFI\UNFI_Bakery_20250927.xlsx
+2025-09-27 14:55:41,356 - INFO - backend.app.application.vendors.GetVendor - (vendors.py:19) - Fetching vendor: 
+2025-09-27 14:55:41,356 - ERROR - backend.app.cli.cli.CLI - (cli.py:428) - [Error] generate_vendor_upload_files failed: 'str' object has no attribute 'name'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 422, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\workbot_cli.py", line 168, in cmd_generate_vendor_upload_files
+    paths = self.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 211, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\vendors.py", line 20, in __call__
+    return self.files.get_vendor(name)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\vendor_file_adapter.py", line 43, in get_vendor
+    file_path = self.get_file_path(vendor)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\vendor_file_adapter.py", line 30, in get_file_path
+    return self._engine.path_for(vendor, format=format)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\generic_file_adapter.py", line 31, in path_for
+    return self.namer.path_for(obj, format=format)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\naming\vendor_namer.py", line 35, in path_for
+    return (self.directory_for(vendor) / self.filename(vendor, format=format)).resolve()
+                                         ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\naming\vendor_namer.py", line 28, in filename
+    return f"{self._sanitize(obj.name)}.{ext}"
+                             ^^^^^^^^
+AttributeError: 'str' object has no attribute 'name'

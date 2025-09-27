@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Optional
 from backend.app.ports import OrderFilePort, OrderRepository, DownloadPort
-from backend.domain.models.order import Order
+from backend.domain.models import Order
 from backend.infra.logger import Logger
 
 @Logger.attach_logger
