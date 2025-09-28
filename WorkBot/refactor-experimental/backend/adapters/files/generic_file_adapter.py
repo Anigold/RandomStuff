@@ -25,16 +25,13 @@ class GenericFileAdapter(Generic[T]):
         return base
 
     def path_for(self, obj: T, *, format: str) -> Path:
-        # base = self.directory()
-        # name = self.namer.path_for(obj, format=format)
-        # return (base / name).resolve()
         return self.namer.path_for(obj, format=format)
 
     def list_paths(self, pattern: str = "*") -> list[Path]:
         return self.store.list_paths(self.directory(), pattern)
 
     def parse_filename(self, filename: str) -> dict:
-        return self.namer.parse_metadata(filename)
+        return self.namer.parse_filename_for_metadata(filename)
 
     # ----- read/write -----
     def save(self, obj: T, *, format: str, context: dict | None = None, overwrite: bool = True) -> Path:

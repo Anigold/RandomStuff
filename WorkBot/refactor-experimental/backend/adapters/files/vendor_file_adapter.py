@@ -20,31 +20,12 @@ class VendorFileAdapter(VendorFilePort):
             namer=VendorFilenameStrategy(base=base_dir),
         )
 
-    def save(self, vendor: Vendor, format: str = 'json') -> Path:
-        return self._engine.save(vendor, format)
-
-    def read_from_path(self, path: Path) -> Vendor:
-        return self._engine.read(path)
-
-    def get_file_path(self, vendor: Vendor, format: str = "json") -> Path:
-        return self._engine.path_for(vendor, format=format)
-
-    def remove(self, path: Path) -> None:
-        self._engine.remove(path)
-
-    def move(self, src: Path, dest: Path, overwrite: bool = False) -> None:
-        self._engine.move(src, dest, overwrite=overwrite)
-
-    def get_directory(self) -> Path:
-        return self._engine.get_directory()
-
-
     def get_vendor(self, vendor: str) -> Vendor:
         file_path = self.get_file_path(vendor)
         return self.read_from_path(file_path)
 
 
-    def list_vendor_files(self) -> List[Vendor]:
+    def list_vendors(self) -> List[Vendor]:
         vendors: List[Vendor] = []
 
         for ext in ('*.json', '*.yaml', '*.yml'):

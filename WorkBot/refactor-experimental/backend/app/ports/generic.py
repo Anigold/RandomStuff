@@ -1,11 +1,12 @@
 from __future__ import annotations
 from pathlib import Path
-from typing import Protocol, TypeVar, Generic, Optional, Iterable, Any
+from typing import Protocol, TypeVar, Generic, Optional, List, Any
 
-T = TypeVar("T")
+T = TypeVar('T')
+
 
 class Serializer(Protocol, Generic[T]):
-    """Turn domain objects into bytes (and back)."""
+    '''Turn domain objects into bytes (and back).'''
     def preferred_format(self) -> str: ...
     def dumps(self, obj: T, format: Optional[str] = None, context: dict | None = None) -> bytes: ...
     def loads(self, data: bytes, format: Optional[str] = None) -> T: ...
@@ -14,18 +15,26 @@ class Serializer(Protocol, Generic[T]):
 
 
 class Namer(Protocol, Generic[T]):
-    """Decide where & how files are named on disk."""
+    '''Decide where & how files are named on disk.'''
     def base_dir(self) -> Path: ...
     def filename(self, obj: T, *, format: str) -> str: ...
-    def parse_metadata(self, filename: str) -> dict[str, Any]: ...
+    def parse_filename_for_metadata(self, filename: str) -> dict[str, Any]: ...
     def path_for(self, obj: T, *, format: str) -> Path: ...
 
 
+class Repository(Protocol, Generic[T]):
+    '''Abstracts persistence operations (CRUD).'''
+    def get(self, key: str) -> T: ...
+    def list_all(self) -> List[T]: ...
+    def save(self, obj: T) -> None: ...
+    def remove(self, key: str) -> None: ...
+
+
 class BlobStore(Protocol):
-    """
+    '''
     Minimal filesystem-like surface. Can be implemented by local FS, S3, etc.
     Paths are always absolute when passed in here.
-    """
+    '''
     # write / read
     def write_bytes(self, path: Path, data: bytes, *, overwrite: bool = False) -> None: ...
     def read_bytes(self, path: Path) -> bytes: ...
@@ -41,7 +50,7 @@ class BlobStore(Protocol):
 
 
 class DomainModule(Protocol):
-    """What each domain (Orders, Transfers, …) must provide to plug in."""
+    '''What each domain (Orders, Transfers, …) must provide to plug in.'''
     # Type detection
     def supports_type(self, obj: Any) -> bool: ...
     def supports_path(self, path: Path) -> bool: ...
@@ -60,7 +69,7 @@ class DomainModule(Protocol):
 
 
 class Formatter(Protocol[T]):
-    """Domain-agnostic: convert primitives <-> bytes."""
+    '''Domain-agnostic: convert primitives <-> bytes.'''
 
     def dumps(self, obj: T, format: Optional[str] = None) -> bytes:
         ...

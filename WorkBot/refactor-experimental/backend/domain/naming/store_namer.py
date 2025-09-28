@@ -29,7 +29,7 @@ class StoreFilenameStrategy(Namer[Store]):
     def path_for(self, store: Store, *, format: str) -> Path:
         return (self.directory_for(store) / self.filename(store, format=format)).resolve()
 
-    def parse_metadata(self, filename: str) -> dict[str, str]:
+    def parse_filename_for_metadata(self, filename: str) -> dict[str, str]:
         """Extract store name from a filename."""
         stem = Path(filename).stem
         return {"name": stem.replace("_", " ")}

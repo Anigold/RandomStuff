@@ -9,18 +9,6 @@ from backend.models.order import Order
 
 class OrderFileAdapter(OrderFilePort):
 
-    def __init__(self, impl: OrderFileHandler | None=None) -> None:
-        self.impl = impl or OrderFileHandler()
-
-    def get_order_directory(self) -> Path:
-        return self.impl.get_order_directory()
-    
-    def get_order_file_path(self, order: Order, format: str="excel") -> Path:
-        return self.impl.get_order_file_path(order, format=format)
-    
-    def parse_filename_for_metadata(self, file_name: str) -> dict:
-        return self.impl.parse_filename_for_metadata(file_name=file_name)
-    
     def get_order_files(
         self,
         stores: List[str],

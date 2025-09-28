@@ -4,6 +4,7 @@ from typing import Protocol, List, Optional
 from backend.domain.models import Order, Vendor, Store
 
 class FilePort(Protocol):
+    '''Generic File Handler'''
     def get_directory(self) -> Path: ...
     def get_file_path(self, obj, format: str) -> Path: ...
     def parse_filename(self, filename: str) -> dict: ...
@@ -13,7 +14,9 @@ class FilePort(Protocol):
     def remove(self, path: Path) -> None: ...
     def move(self, src: Path, dest: Path, overwrite: bool = False) -> None: ...
 
-class OrderFilePort(FilePort, Protocol):
+# DOMAIN HANDLERS, DO NOT MIX WITH ABOVE FILE HANDLER.
+class OrderFilePort(Protocol):
+    '''Order-Domain handler'''
     def get_order_files(
         self,
         stores: List[str],
@@ -23,13 +26,13 @@ class OrderFilePort(FilePort, Protocol):
 
     def generate_vendor_upload_file(self, order: Order, context: dict | None = None) -> Path: ...
 
-class VendorFilePort(FilePort, Protocol):
-
+class VendorFilePort(Protocol):
+    '''Vendor-Domain handler'''
     def get_vendor(self, vendor: str) -> Vendor: ...
     def list_vendor_files(self) -> List[Path]: ...
 
 
-class StoreFilePort(FilePort, Protocol):
-
+class StoreFilePort(Protocol):
+    '''Store-Domain handler'''
     def get_store(self, store: str) -> Store: ...
     def list_stores(self) -> List[Store]: ...

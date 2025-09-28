@@ -34,7 +34,12 @@ class OrderFilenameStrategy(Namer[Order]):
     def path_for(self, order: Order, *, format: str) -> Path:
         return (self.directory_for(order) / self.filename(order, format=format)).resolve()
     
-    def parse_metadata(self, filename: str) -> dict:
+    def parse_metadata_for_filename(
+        self, *, store: str, vendor: str, date: str | None = None, format: str = "xlsx"
+    ) -> Path | str:
+        return f"{store}_{vendor}_*.{format}" if (date is None or date == '*') else f"{store}_{vendor}_{date}.{format}"
+        
+    def parse_filename_for_metadata(self, filename: str) -> dict:
         """Extract store, vendor, and date back from a filename."""
         stem = Path(filename).stem  # remove extension
         try:

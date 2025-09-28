@@ -34,7 +34,7 @@ class VendorFilenameStrategy(Namer[Vendor]):
     def path_for(self, vendor: Vendor, *, format: str) -> Path:
         return (self.directory_for(vendor) / self.filename(vendor, format=format)).resolve()
 
-    def parse_metadata(self, filename: str) -> dict[str, str]:
+    def parse_filename_for_metadata(self, filename: str) -> dict[str, str]:
         """Extract vendor name from a filename."""
         stem = Path(filename).stem
         return {"name": stem.replace("_", " ")}
