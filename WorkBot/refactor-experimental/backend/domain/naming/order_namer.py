@@ -11,8 +11,9 @@ class OrderFilenameStrategy(Namer[Order]):
           Downtown_UNFI_2025-09-20.pdf
     """
 
-    def __init__(self, base: Path):
-        self._base = base
+    def __init__(self, orders_base_dir: Path, uploads_base_dir: Path):
+        self._base = orders_base_dir
+        self._upload_base = uploads_base_dir
 
     def base_dir(self) -> Path:
         """Return the base directory where all order files live."""
@@ -34,11 +35,15 @@ class OrderFilenameStrategy(Namer[Order]):
     def path_for(self, order: Order, *, format: str) -> Path:
         return (self.directory_for(order) / self.filename(order, format=format)).resolve()
     
+    def upload_path_for(self, order: Order):
+        return (self._upload_base / order.vendor / self.filename(order, order.vendor)).resolve()
+    
     def parse_metadata_for_filename(
         self, *, store: str, vendor: str, date: str | None = None, format: str = "xlsx"
     ) -> Path | str:
         return f"{store}_{vendor}_*.{format}" if (date is None or date == '*') else f"{store}_{vendor}_{date}.{format}"
-        
+    
+    
     def parse_filename_for_metadata(self, filename: str) -> dict:
         """Extract store, vendor, and date back from a filename."""
         stem = Path(filename).stem  # remove extension

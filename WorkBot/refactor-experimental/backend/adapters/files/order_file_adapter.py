@@ -13,14 +13,16 @@ class OrderFileAdapter(OrderFilePort):
     """Implements OrderFilePort via the generic file engine."""
 
     def __init__(self, base_dir: Path):
-
+        
         self._engine = GenericFileAdapter[Order](
             store=LocalBlobStore(),
-            serializer= OrderSerializer(),
+            serializer=OrderSerializer(),
             namer=OrderFilenameStrategy(base=base_dir),
         )
 
-    # Order-specific discovery
+    def save(self, order: Order):
+        ...
+        
     def list_orders(self) -> List[Order]:
         return [self._engine.read(p) for p in self._engine.list_paths()]
     

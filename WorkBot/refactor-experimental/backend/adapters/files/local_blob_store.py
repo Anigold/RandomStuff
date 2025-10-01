@@ -13,7 +13,7 @@ class LocalBlobStore(BlobStore):
     - write to temp file in the same directory, then replace/move
     - cross-device moves handled via shutil.move
     """
-
+    
     def write_bytes(self, path: Path, data: bytes, *, overwrite: bool = False) -> None:
         path = path.resolve()
         self.ensure_dir(path.parent)

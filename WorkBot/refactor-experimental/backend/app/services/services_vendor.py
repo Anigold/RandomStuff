@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from backend.app.ports import (VendorFilePort, VendorRepository, DownloadPort)
+from backend.app.ports import VendorRepository, DownloadPort
 
 from backend.app.application.vendors import (
     GetVendor,
@@ -8,7 +8,6 @@ from backend.app.application.vendors import (
 @dataclass
 class VendorServices:
 
-    # files:     VendorFilePort
     repo:      VendorRepository
     downloads: DownloadPort
 

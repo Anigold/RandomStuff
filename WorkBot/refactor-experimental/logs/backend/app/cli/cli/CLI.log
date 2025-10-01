@@ -1772,3 +1772,41 @@ Traceback (most recent call last):
     return f"{self._sanitize(obj.name)}.{ext}"
                              ^^^^^^^^
 AttributeError: 'str' object has no attribute 'name'
+2025-09-28 09:59:17,858 - INFO - backend.app.cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-28 09:59:17,876 - INFO - backend.app.cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-09-28 09:59:17,877 - INFO - backend.app.cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-09-28 09:59:17,877 - INFO - backend.app.cli.cli.CLI - (cli.py:323) - CLI session started.
+2025-09-28 09:59:22,610 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - generate_vendor_upload_files, --stores, B
+2025-09-28 09:59:22,661 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - generate_vendor_upload_files, --stores, B
+2025-09-28 09:59:27,219 - INFO - backend.app.cli.cli.CLI - (cli.py:421) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'UNFI'])
+2025-09-28 09:59:27,243 - ERROR - backend.app.cli.cli.CLI - (cli.py:428) - [Error] generate_vendor_upload_files failed: 'str' object has no attribute 'name'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 422, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\workbot_cli.py", line 168, in cmd_generate_vendor_upload_files
+    paths = self.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 211, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\vendors.py", line 20, in __call__
+    return self.files.get_vendor(name)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\vendor_file_adapter.py", line 43, in get_vendor
+    file_path = self.get_file_path(vendor)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\vendor_file_adapter.py", line 30, in get_file_path
+    return self._engine.path_for(vendor, format=format)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\generic_file_adapter.py", line 31, in path_for
+    return self.namer.path_for(obj, format=format)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\naming\vendor_namer.py", line 35, in path_for
+    return (self.directory_for(vendor) / self.filename(vendor, format=format)).resolve()
+                                         ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\naming\vendor_namer.py", line 28, in filename
+    return f"{self._sanitize(obj.name)}.{ext}"
+                             ^^^^^^^^
+AttributeError: 'str' object has no attribute 'name'

@@ -5,7 +5,8 @@ from dataclasses import dataclass
 from backend.domain.models import Store
 from backend.infra.logger import Logger
 
-from backend.app.ports.files import StoreFilePort
+from backend.app.ports.repos import StoreRepository
+# from backend.app.ports.files import StoreFilePort
 
 # ---- Queries ----
 
@@ -13,21 +14,21 @@ from backend.app.ports.files import StoreFilePort
 @dataclass(frozen=True)
 class GetStore:
     
-    files: StoreFilePort
+    repo: StoreRepository
 
     def __call__(self, name: str) -> Store:
         self.logger.info(f"Fetching store: {name}")
-        return self.files.get_store(name)
+        return self.repo.get(name)
 
 
 @Logger.attach_logger
 @dataclass(frozen=True)
 class ListStores:
     
-    files: StoreFilePort
+    repo: StoreRepository
 
     def __call__(self) -> list[Store]:
         self.logger.info("Listing all stores.")
-        return self.files.list_stores()
+        return self.repo.list_all()
 
 

@@ -46,10 +46,12 @@ from backend.adapters.emailer.services.gmail_service import GmailService
 from backend.adapters.emailer.services.outlook_service import OutlookService
 # endregion
 
-from backend.adapters.files import OrderFileAdapter, VendorFileAdapter, StoreFileAdapter
-# from backend.app.repos.order_repo_adapter import OrderRepositoryAdapter
 from backend.adapters.downloads.threaded_download_adapter import ThreadedDownloadAdapter
 
+
+from backend.adapters.repos.order_file_repository import OrderFileRepository
+from backend.adapters.repos.vendor_file_repository import VendorFileRepository
+from backend.adapters.repos.store_file_repository import StoreFileRepository
 
 # endregion
 
@@ -57,7 +59,8 @@ from backend.infra.paths import (
     ORDER_FILES_DIR,
     DOWNLOADS_PATH,
     VENDOR_FILES_DIR,
-    STORE_FILES_DIR
+    STORE_FILES_DIR,
+    UPLOAD_FILES_DIR
     )
 
 from typing import List
@@ -72,20 +75,17 @@ class WorkBot:
         self.logger.info('Initializing WorkBot...')
 
         self.orders = OrderServices(
-            files=OrderFileAdapter(base_dir=ORDER_FILES_DIR),
-            repo=None,
+            repo=OrderFileRepository(base_dir=ORDER_FILES_DIR, uploads_dir=UPLOAD_FILES_DIR),
             downloads=ThreadedDownloadAdapter(watch_dir=DOWNLOADS_PATH)
         )
 
         self.vendors = VendorServices(
-            files=VendorFileAdapter(base_dir=VENDOR_FILES_DIR),
-            repo=None,
+            repo=VendorFileRepository(base_dir=VENDOR_FILES_DIR),
             downloads=ThreadedDownloadAdapter(watch_dir=DOWNLOADS_PATH)
         )
 
         self.stores = StoreServices(
-            files=StoreFileAdapter(base_dir=STORE_FILES_DIR),
-            repo=None,
+            repo=StoreFileRepository(base_dir=STORE_FILES_DIR),
             downloads=ThreadedDownloadAdapter(watch_dir=DOWNLOADS_PATH)
         )
 

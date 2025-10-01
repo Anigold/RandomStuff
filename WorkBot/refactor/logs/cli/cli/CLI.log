@@ -2523,3 +2523,407 @@ PermissionError: [WinError 32] The process cannot access the file because it is 
 2025-09-28 12:59:50,709 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_upload_files' executed successfully.
 2025-09-28 13:43:22,849 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
 2025-09-28 13:43:22,854 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-09-29 07:28:32,503 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-29 07:28:32,520 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-09-29 07:28:32,521 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-09-29 07:28:32,521 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-09-29 07:28:46,472 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Triphammer'])
+2025-09-29 07:30:50,026 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-29 07:34:40,410 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: combine_orders (args=['--vendors', 'Ithaca Bakery'])
+2025-09-29 07:34:40,413 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] combine_orders failed: Invalid filename format: combined_orders.xlsx
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\workbot_cli.py", line 273, in cmd_combine_orders
+    self.workbot.combine_orders(parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\workbot\work_bot.py", line 110, in combine_orders
+    self.order_coordinator.combine_orders(vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\order_coordinator.py", line 123, in combine_orders
+    return self.file_handler.combine_orders_by_store(vendors)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\storage\file\order_file_handler.py", line 133, in combine_orders_by_store
+    order_paths = self.get_order_files(stores=[], vendors=[vendor])
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\storage\file\order_file_handler.py", line 103, in get_order_files
+    meta = self.filename_strategy.parse(file.name)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\serializer\filename_strategies\order_filename_strategy.py", line 28, in parse
+    raise ValueError(f'Invalid filename format: {filename}')
+ValueError: Invalid filename format: combined_orders.xlsx
+2025-09-29 07:35:14,074 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: combine_orders (args=['--vendors', 'Ithaca Bakery'])
+2025-09-29 07:35:14,161 - INFO - cli.cli.CLI - (cli.py:421) - Command 'combine_orders' executed successfully.
+2025-09-29 08:46:13,129 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-09-29 08:48:47,669 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-29 08:49:23,586 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Bakery', '--vendors', 'Hillcrest Foods'])
+2025-09-29 08:49:24,266 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-29 08:52:13,403 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Bakery', '--vendors', 'Hillcrest Foods'])
+2025-09-29 08:52:13,609 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-29 08:52:19,835 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-09-29 08:54:53,861 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-29 08:54:57,500 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Bakery', '--vendors', 'Hillcrest Foods'])
+2025-09-29 08:54:57,741 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-29 08:56:04,373 - ERROR - cli.cli.CLI - (cli.py:407) - Failed to parse input 'generate_vendor_order_emails --stores "Bakery" "Collegetown" "Easthill" "Downtown" "Triphammer" --vendors Hillcrest Dairy"': No closing quotation
+2025-09-29 08:56:12,508 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Bakery', 'Collegetown', 'Easthill', 'Downtown', 'Triphammer', '--vendors', 'Hillcrest Dairy'])
+2025-09-29 08:56:12,948 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-29 11:05:33,761 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Bakery', '--vendors', 'A.L. George'])
+2025-09-29 11:05:34,000 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-29 13:41:23,873 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Triphammer'])
+2025-09-29 13:43:44,130 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-29 14:42:03,619 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Triphammer', '--vendors', 'Russo Produce'])
+2025-09-29 14:42:32,051 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-29 14:42:45,443 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Triphammer', '--vendors', 'Russo Produce'])
+2025-09-29 14:42:45,703 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-30 07:07:26,154 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-09-30 07:07:26,170 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-09-30 07:07:26,170 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-09-30 07:07:26,171 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-09-30 07:07:37,520 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer'])
+2025-09-30 07:18:16,223 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-30 11:04:49,092 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-09-30 11:07:54,470 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-30 11:09:50,749 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'Hill & Markes'])
+2025-09-30 11:09:50,954 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_upload_files' executed successfully.
+2025-09-30 12:03:48,701 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-09-30 12:06:16,988 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] download_orders failed: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\andrew\\Desktop\\Andrew\\Projects\\IthacaBakery\\RandomStuff\\WorkBot\\refactor\\data\\orders\\Dawn\\Dawn_Bakery_2025-09-29.pdf'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\workbot_cli.py", line 48, in cmd_download_orders
+    self.workbot.download_craftable_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\workbot\work_bot.py", line 81, in download_craftable_orders
+    self.craft_bot.download_orders(stores, vendors, download_pdf=download_pdf, update=update)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\bot_mixins.py", line 95, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 274, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 311, in _process_order_row
+    if update and self._update_existing_order(order_to_check_update):
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 1032, in _update_existing_order
+    return self.order_coordinator.check_and_update_order(order)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\order_coordinator.py", line 210, in check_and_update_order
+    self.file_handler.remove_file(file_path.with_suffix('.pdf'))
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\storage\file\file_handler.py", line 60, in remove_file
+    path.unlink()
+    ~~~~~~~~~~~^^
+  File "C:\Users\Will\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 746, in unlink
+    os.unlink(self)
+    ~~~~~~~~~^^^^^^
+PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\andrew\\Desktop\\Andrew\\Projects\\IthacaBakery\\RandomStuff\\WorkBot\\refactor\\data\\orders\\Dawn\\Dawn_Bakery_2025-09-29.pdf'
+2025-09-30 12:08:46,255 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-09-30 12:11:50,283 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-30 12:27:42,288 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-09-30 12:27:42,342 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_upload_files' executed successfully.
+2025-09-30 12:33:14,226 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', 'Bakery', '--vendors', 'Peters Supply', 'SANICO'])
+2025-09-30 12:33:15,310 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-30 12:42:48,982 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Downtown', 'Triphammer', '--vendors', 'SANICO'])
+2025-09-30 12:43:29,454 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-09-30 12:44:23,918 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', 'Bakery', '--vendors', 'Peters Supply', 'SANICO'])
+2025-09-30 12:44:24,878 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-09-30 13:18:53,284 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: delete_orders (args=['--stores', 'Bakery', '--vendors', 'FingerLakes Farms', 'Sysco', 'Performance Food', 'US Foods'])
+2025-09-30 13:19:44,456 - INFO - cli.cli.CLI - (cli.py:421) - Command 'delete_orders' executed successfully.
+2025-10-01 06:19:14,115 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-10-01 06:19:14,135 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-10-01 06:19:14,135 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-10-01 06:19:14,135 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-10-01 06:20:08,586 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Collegetown', 'Downtown', 'Easthill', 'Triphammer'])
+2025-10-01 06:20:14,751 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] download_orders failed: Message: session not created: cannot connect to chrome at 127.0.0.1:62447
+from session not created: This version of ChromeDriver only supports Chrome version 141
+Current browser version is 140.0.7339.208
+Stacktrace:
+	GetHandleVerifier [0x0xf79d93+65891]
+	GetHandleVerifier [0x0xf79dd4+65956]
+	(No symbol) [0x0xd8dca8]
+	(No symbol) [0x0xdc9925]
+	(No symbol) [0x0xdc8899]
+	(No symbol) [0x0xdbebaf]
+	(No symbol) [0x0xdbe9d6]
+	(No symbol) [0x0xe07003]
+	(No symbol) [0x0xe068fa]
+	(No symbol) [0x0xdfb076]
+	(No symbol) [0x0xdcc37a]
+	(No symbol) [0x0xdcd224]
+	GetHandleVerifier [0x0x11e7e23+2613747]
+	GetHandleVerifier [0x0x11e2f5a+2593578]
+	GetHandleVerifier [0x0xfa1ac4+229012]
+	GetHandleVerifier [0x0xf91e58+164392]
+	GetHandleVerifier [0x0xf9880d+191453]
+	GetHandleVerifier [0x0xf82148+99608]
+	GetHandleVerifier [0x0xf822e0+100016]
+	GetHandleVerifier [0x0xf6c4ca+10394]
+	BaseThreadInitThunk [0x0x766afcc9+25]
+	RtlGetAppContainerNamedObjectPath [0x0x773682ae+286]
+	RtlGetAppContainerNamedObjectPath [0x0x7736827e+238]
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\workbot_cli.py", line 48, in cmd_download_orders
+    self.workbot.download_craftable_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\workbot\work_bot.py", line 81, in download_craftable_orders
+    self.craft_bot.download_orders(stores, vendors, download_pdf=download_pdf, update=update)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\bot_mixins.py", line 94, in wrapper
+    with self.session(login=login):
+         ~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Will\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\bot_mixins.py", line 70, in session
+    self.start_session()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\bot_mixins.py", line 41, in start_session
+    self._driver       = create_driver(options)
+                         ~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\helpers.py", line 19, in create_driver
+    return uc.Chrome(options=options, use_subprocess=True)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\undetected_chromedriver\__init__.py", line 466, in __init__
+    super(Chrome, self).__init__(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        service=service,
+        ^^^^^^^^^^^^^^^^
+        options=options,
+        ^^^^^^^^^^^^^^^^
+        keep_alive=keep_alive,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 45, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        browser_name=DesiredCapabilities.CHROME["browserName"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        keep_alive=keep_alive,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\chromium\webdriver.py", line 66, in __init__
+    super().__init__(command_executor=executor, options=options)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 250, in __init__
+    self.start_session(capabilities)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\undetected_chromedriver\__init__.py", line 724, in start_session
+    super(selenium.webdriver.chrome.webdriver.WebDriver, self).start_session(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        capabilities
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 342, in start_session
+    response = self.execute(Command.NEW_SESSION, caps)["value"]
+               ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 429, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.SessionNotCreatedException: Message: session not created: cannot connect to chrome at 127.0.0.1:62447
+from session not created: This version of ChromeDriver only supports Chrome version 141
+Current browser version is 140.0.7339.208
+Stacktrace:
+	GetHandleVerifier [0x0xf79d93+65891]
+	GetHandleVerifier [0x0xf79dd4+65956]
+	(No symbol) [0x0xd8dca8]
+	(No symbol) [0x0xdc9925]
+	(No symbol) [0x0xdc8899]
+	(No symbol) [0x0xdbebaf]
+	(No symbol) [0x0xdbe9d6]
+	(No symbol) [0x0xe07003]
+	(No symbol) [0x0xe068fa]
+	(No symbol) [0x0xdfb076]
+	(No symbol) [0x0xdcc37a]
+	(No symbol) [0x0xdcd224]
+	GetHandleVerifier [0x0x11e7e23+2613747]
+	GetHandleVerifier [0x0x11e2f5a+2593578]
+	GetHandleVerifier [0x0xfa1ac4+229012]
+	GetHandleVerifier [0x0xf91e58+164392]
+	GetHandleVerifier [0x0xf9880d+191453]
+	GetHandleVerifier [0x0xf82148+99608]
+	GetHandleVerifier [0x0xf822e0+100016]
+	GetHandleVerifier [0x0xf6c4ca+10394]
+	BaseThreadInitThunk [0x0x766afcc9+25]
+	RtlGetAppContainerNamedObjectPath [0x0x773682ae+286]
+	RtlGetAppContainerNamedObjectPath [0x0x7736827e+238]
+
+2025-10-01 06:22:31,122 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Collegetown', 'Downtown', 'Easthill', 'Triphammer'])
+2025-10-01 06:22:44,858 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-10-01 06:23:54,010 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-01 06:23:54,013 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-10-01 06:24:12,886 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-10-01 06:24:12,903 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-10-01 06:24:12,903 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-10-01 06:24:12,903 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-10-01 06:24:14,748 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Collegetown', 'Downtown', 'Easthill', 'Triphammer'])
+2025-10-01 06:32:36,819 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-10-01 06:34:37,400 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: delete_orders (args=['--stores', 'Collegetown', 'Downtown', 'Easthill', 'Triphammer'])
+2025-10-01 06:43:54,880 - INFO - cli.cli.CLI - (cli.py:421) - Command 'delete_orders' executed successfully.
+2025-10-01 06:45:16,437 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-10-01 06:48:04,322 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-10-01 12:09:03,395 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-10-01 12:10:28,279 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-10-01 13:57:36,927 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Triphammer', 'Collegetown'])
+2025-10-01 13:59:20,773 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-10-01 14:00:24,385 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', 'Collegetown', 'Triphammer', '--vendors', 'Sysco', 'Performance Food', 'US Foods'])
+2025-10-01 14:00:24,965 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_upload_files' executed successfully.
+2025-10-01 14:11:45,535 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Triphammer', '--vendors', 'Russo Produce'])
+2025-10-01 14:12:15,782 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-10-01 14:12:31,615 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Triphammer', '--vendors', 'Russo Produce'])
+2025-10-01 14:12:32,116 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-10-01 14:19:36,346 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Collegetown', 'Bakery', '--vendors', 'FingerLakes Farms'])
+2025-10-01 14:19:36,838 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-10-01 14:20:59,140 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery', '--vendors', 'FingerLakes Farms'])
+2025-10-01 14:21:26,623 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-10-01 14:26:11,982 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Collegetown', 'Bakery', '--vendors', 'FingerLakes Farms'])
+2025-10-01 14:26:12,382 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-10-01 14:29:03,536 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: convert_order_to_transfer (args=['--origin', 'Bakery', '--vendor', 'Ithaca Bakery', '--destination', 'Collegetown'])
+2025-10-01 14:29:03,541 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] convert_order_to_transfer failed: Invalid filename format: combined_orders.xlsx
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\workbot_cli.py", line 380, in cmd_convert_order_to_transfer
+    self.workbot.convert_order_to_transfer(parsed_args.destination, parsed_args.vendor, parsed_args.origin)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\workbot\work_bot.py", line 141, in convert_order_to_transfer
+    order = self.get_orders([destination], [vendor], formats=['xlsx'])[0]
+            ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\workbot\work_bot.py", line 95, in get_orders
+    order_files = self.get_order_files(stores, vendors, formats=formats)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\workbot\work_bot.py", line 91, in get_order_files
+    return self.order_coordinator.get_order_files(stores=stores, vendors=vendors, formats=formats)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\order_coordinator.py", line 57, in get_order_files
+    return self.file_handler.get_order_files(stores, vendors, formats=formats)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\storage\file\order_file_handler.py", line 103, in get_order_files
+    meta = self.filename_strategy.parse(file.name)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\serializer\filename_strategies\order_filename_strategy.py", line 28, in parse
+    raise ValueError(f'Invalid filename format: {filename}')
+ValueError: Invalid filename format: combined_orders.xlsx
+2025-10-01 14:29:16,448 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: convert_order_to_transfer (args=['--origin', 'Bakery', '--vendor', 'Ithaca Bakery', '--destination', 'Collegetown'])
+2025-10-01 14:29:16,509 - INFO - cli.cli.CLI - (cli.py:421) - Command 'convert_order_to_transfer' executed successfully.
+2025-10-01 14:29:21,185 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: convert_order_to_transfer (args=['--origin', 'Bakery', '--vendor', 'Ithaca Bakery', '--destination', 'Downtown'])
+2025-10-01 14:29:21,231 - INFO - cli.cli.CLI - (cli.py:421) - Command 'convert_order_to_transfer' executed successfully.
+2025-10-01 14:29:25,032 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: convert_order_to_transfer (args=['--origin', 'Bakery', '--vendor', 'Ithaca Bakery', '--destination', 'Easthill'])
+2025-10-01 14:29:25,075 - INFO - cli.cli.CLI - (cli.py:421) - Command 'convert_order_to_transfer' executed successfully.
+2025-10-01 14:29:29,016 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: convert_order_to_transfer (args=['--origin', 'Bakery', '--vendor', 'Ithaca Bakery', '--destination', 'Triphammer'])
+2025-10-01 14:29:29,065 - INFO - cli.cli.CLI - (cli.py:421) - Command 'convert_order_to_transfer' executed successfully.
+2025-10-01 14:29:58,873 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: convert_order_to_transfer (args=['--origin', 'Bakery', '--vendor', 'Ithaca Bakery', '--destination', 'Collegetown'])
+2025-10-01 14:29:58,907 - INFO - cli.cli.CLI - (cli.py:421) - Command 'convert_order_to_transfer' executed successfully.
+2025-10-01 14:30:00,568 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: convert_order_to_transfer (args=['--origin', 'Bakery', '--vendor', 'Ithaca Bakery', '--destination', 'Triphammer'])
+2025-10-01 14:30:00,599 - INFO - cli.cli.CLI - (cli.py:421) - Command 'convert_order_to_transfer' executed successfully.
+2025-10-01 14:30:38,121 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: convert_order_to_transfer (args=['--origin', 'Bakery', '--vendor', 'Ithaca Bakery', '--destination', 'Collegetown'])
+2025-10-01 14:30:38,158 - INFO - cli.cli.CLI - (cli.py:421) - Command 'convert_order_to_transfer' executed successfully.
+2025-10-01 14:30:44,073 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: convert_order_to_transfer (args=['--origin', 'Bakery', '--vendor', 'Ithaca Bakery', '--destination', 'Triphammer'])
+2025-10-01 14:30:44,094 - INFO - cli.cli.CLI - (cli.py:421) - Command 'convert_order_to_transfer' executed successfully.
+2025-10-01 14:30:56,969 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: convert_order_to_transfer (args=['--origin', 'Bakery', '--vendor', 'Ithaca Bakery', '--destination', 'Easthill'])
+2025-10-01 14:30:57,000 - INFO - cli.cli.CLI - (cli.py:421) - Command 'convert_order_to_transfer' executed successfully.
+2025-10-01 14:30:59,425 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: convert_order_to_transfer (args=['--origin', 'Bakery', '--vendor', 'Ithaca Bakery', '--destination', 'Downtown'])
+2025-10-01 14:30:59,459 - INFO - cli.cli.CLI - (cli.py:421) - Command 'convert_order_to_transfer' executed successfully.
+2025-10-01 14:34:46,754 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: input_transfers (args=[])
+2025-10-01 15:05:49,172 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] input_transfers failed: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//form"}
+  (Session info: chrome=141.0.7390.55); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x0x869d93+65891]
+	GetHandleVerifier [0x0x869dd4+65956]
+	(No symbol) [0x0x67dca8]
+	(No symbol) [0x0x6c87d4]
+	(No symbol) [0x0x6c8b7b]
+	(No symbol) [0x0x6bdd41]
+	(No symbol) [0x0x6eb2c4]
+	(No symbol) [0x0x6bdc44]
+	(No symbol) [0x0x6eb434]
+	(No symbol) [0x0x70cbe0]
+	(No symbol) [0x0x6eb076]
+	(No symbol) [0x0x6bc37a]
+	(No symbol) [0x0x6bd224]
+	GetHandleVerifier [0x0xad7e23+2613747]
+	GetHandleVerifier [0x0xad2f5a+2593578]
+	GetHandleVerifier [0x0x891ac4+229012]
+	GetHandleVerifier [0x0x881e58+164392]
+	GetHandleVerifier [0x0x88880d+191453]
+	GetHandleVerifier [0x0x872148+99608]
+	GetHandleVerifier [0x0x8722e0+100016]
+	GetHandleVerifier [0x0x85c4ca+10394]
+	BaseThreadInitThunk [0x0x766afcc9+25]
+	RtlGetAppContainerNamedObjectPath [0x0x773682ae+286]
+	RtlGetAppContainerNamedObjectPath [0x0x7736827e+238]
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+                                              ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\workbot_cli.py", line 402, in cmd_input_transfers
+    self.workbot.input_craftable_transfers()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\workbot\work_bot.py", line 137, in input_craftable_transfers
+    self.craft_bot.input_transfers(transfers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\bot_mixins.py", line 95, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 451, in input_transfers
+    self.input_transfer(transfer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 470, in input_transfer
+    self._enter_transfer_details(transfer)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 494, in _enter_transfer_details
+    transfer_form = transfer_modal.find_element(By.XPATH, './/form')
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 599, in find_element
+    return self._execute(Command.FIND_CHILD_ELEMENT, {"using": by, "value": value})["value"]
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 570, in _execute
+    return self._parent.execute(command, params)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 429, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//form"}
+  (Session info: chrome=141.0.7390.55); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x0x869d93+65891]
+	GetHandleVerifier [0x0x869dd4+65956]
+	(No symbol) [0x0x67dca8]
+	(No symbol) [0x0x6c87d4]
+	(No symbol) [0x0x6c8b7b]
+	(No symbol) [0x0x6bdd41]
+	(No symbol) [0x0x6eb2c4]
+	(No symbol) [0x0x6bdc44]
+	(No symbol) [0x0x6eb434]
+	(No symbol) [0x0x70cbe0]
+	(No symbol) [0x0x6eb076]
+	(No symbol) [0x0x6bc37a]
+	(No symbol) [0x0x6bd224]
+	GetHandleVerifier [0x0xad7e23+2613747]
+	GetHandleVerifier [0x0xad2f5a+2593578]
+	GetHandleVerifier [0x0x891ac4+229012]
+	GetHandleVerifier [0x0x881e58+164392]
+	GetHandleVerifier [0x0x88880d+191453]
+	GetHandleVerifier [0x0x872148+99608]
+	GetHandleVerifier [0x0x8722e0+100016]
+	GetHandleVerifier [0x0x85c4ca+10394]
+	BaseThreadInitThunk [0x0x766afcc9+25]
+	RtlGetAppContainerNamedObjectPath [0x0x773682ae+286]
+	RtlGetAppContainerNamedObjectPath [0x0x7736827e+238]
+
+2025-10-01 15:30:52,108 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: input_transfers (args=[])
+2025-10-01 15:36:27,131 - INFO - cli.cli.CLI - (cli.py:421) - Command 'input_transfers' executed successfully.
+2025-10-01 16:44:51,251 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-01 16:44:51,256 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
