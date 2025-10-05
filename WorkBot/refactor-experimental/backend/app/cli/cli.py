@@ -65,7 +65,7 @@ class CLI:
         self.logger.debug(f'Registered {count} commands: {list(self.commands.keys())}')
 
 
-    def load_commands_from_package(self, package_name: str, context):
+    def load_commands_from_package(self, package_name: str, context: dict | None):
             """Dynamically load Command subclasses from a package."""
             package = importlib.import_module(package_name)
             count = 0
@@ -87,7 +87,7 @@ class CLI:
 
                         if callable(cmd.autocomplete):
                             self.autocomplete_registry[cmd.name] = cmd.autocomplete
-
+                            
                         count += 1
             self.logger.info(f"Loaded {count} commands from {package_name}")
 
@@ -189,12 +189,16 @@ class CLI:
         buffer = readline.get_line_buffer().strip()
 
         if not buffer:
+            self.logger.info('Empty buffer.')
             options = self._complete_commands(text)
         elif ' ' not in buffer:
+            self.logger.info('Singular input.')
             options = self._complete_commands(text)
         else:
+            self.logger.info('Multiple input.')
             options = self._complete_arguments(buffer, text)
 
+        self.logger.info(f'Output: {options[state] if state < len(options) else None}.')
         return options[state] if state < len(options) else None
 
     def _complete_commands(self, text: str) -> list[str]:
@@ -263,6 +267,7 @@ class CLI:
         last_flag = self._get_last_valid_flag(matches, possible_flags)
         
         # Case 1: Typing or completing a flag
+        self.logger.info('Case 1: Typing or completing a flag')
         if last_token.startswith('--') or (buffer.endswith(' ') and not last_flag):
             return [f for f in possible_flags if f.startswith(text)]
 

@@ -1919,3 +1919,63 @@ TypeError: OrderSerializer.dumps() got an unexpected keyword argument 'context'
 2025-10-05 14:43:13,464 - INFO - backend.app.cli.cli.CLI - (cli.py:358) - CLI session started.
 2025-10-05 14:43:24,753 - INFO - backend.app.cli.cli.CLI - (cli.py:384) - CLI interrupted by user (Ctrl+C / EOF).
 2025-10-05 14:43:24,755 - INFO - backend.app.cli.cli.CLI - (cli.py:427) - Exiting CLI and saving history.
+2025-10-05 19:08:42,842 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-05 19:08:42,851 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-05 19:08:42,851 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 20 commands.
+2025-10-05 19:08:42,861 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 3 commands from backend.app.cli.commands
+2025-10-05 19:08:42,862 - INFO - backend.app.cli.cli.CLI - (cli.py:358) - CLI session started.
+2025-10-05 19:09:04,593 - INFO - backend.app.cli.cli.CLI - (cli.py:456) - Dispatching command: help (args=[])
+2025-10-05 19:09:04,593 - INFO - backend.app.cli.cli.CLI - (cli.py:405) - Help command invoked.
+2025-10-05 19:09:04,594 - INFO - backend.app.cli.cli.CLI - (cli.py:458) - Command 'help' executed successfully.
+2025-10-05 19:09:14,443 - INFO - backend.app.cli.cli.CLI - (cli.py:456) - Dispatching command: download_orders (args=['--help'])
+2025-10-05 19:09:14,444 - ERROR - backend.app.cli.cli.CLI - (cli.py:463) - [Error] download_orders failed: 'DownloadOrders' object is not callable
+Traceback (most recent call last):
+  File "C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 457, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+TypeError: 'DownloadOrders' object is not callable
+2025-10-05 19:42:41,746 - INFO - backend.app.cli.cli.CLI - (cli.py:384) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-05 19:42:41,749 - INFO - backend.app.cli.cli.CLI - (cli.py:427) - Exiting CLI and saving history.
+2025-10-05 19:42:47,327 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-05 19:42:47,345 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-05 19:42:47,346 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-05 19:42:47,474 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-05 19:42:47,474 - INFO - backend.app.cli.cli.CLI - (cli.py:358) - CLI session started.
+2025-10-05 19:42:50,358 - INFO - backend.app.cli.cli.CLI - (cli.py:456) - Dispatching command: help (args=[])
+2025-10-05 19:42:50,359 - INFO - backend.app.cli.cli.CLI - (cli.py:405) - Help command invoked.
+2025-10-05 19:42:50,360 - INFO - backend.app.cli.cli.CLI - (cli.py:458) - Command 'help' executed successfully.
+2025-10-05 19:51:30,529 - INFO - backend.app.cli.cli.CLI - (cli.py:384) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-05 19:51:30,532 - INFO - backend.app.cli.cli.CLI - (cli.py:427) - Exiting CLI and saving history.
+2025-10-05 19:51:36,067 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-05 19:51:36,090 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-05 19:51:36,090 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-05 19:51:36,102 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-05 19:51:36,102 - INFO - backend.app.cli.cli.CLI - (cli.py:359) - CLI session started.
+2025-10-05 19:54:58,298 - INFO - backend.app.cli.cli.CLI - (cli.py:385) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-05 19:54:58,301 - INFO - backend.app.cli.cli.CLI - (cli.py:428) - Exiting CLI and saving history.
+2025-10-05 19:55:02,560 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-05 19:55:02,571 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-05 19:55:02,571 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-05 19:55:02,585 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-05 19:55:02,585 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-05 19:55:04,303 - INFO - backend.app.cli.cli.CLI - (cli.py:195) - Singular input.
+2025-10-05 19:55:04,304 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: download_audits.
+2025-10-05 19:55:04,304 - INFO - backend.app.cli.cli.CLI - (cli.py:195) - Singular input.
+2025-10-05 19:55:04,304 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: download_orders.
+2025-10-05 19:55:04,304 - INFO - backend.app.cli.cli.CLI - (cli.py:195) - Singular input.
+2025-10-05 19:55:04,304 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: None.
+2025-10-05 19:55:05,898 - INFO - backend.app.cli.cli.CLI - (cli.py:195) - Singular input.
+2025-10-05 19:55:05,898 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: download_orders.
+2025-10-05 19:55:05,899 - INFO - backend.app.cli.cli.CLI - (cli.py:195) - Singular input.
+2025-10-05 19:55:05,899 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: None.
+2025-10-05 19:55:07,513 - INFO - backend.app.cli.cli.CLI - (cli.py:198) - Multiple input.
+2025-10-05 19:55:07,514 - INFO - backend.app.cli.cli.CLI - (cli.py:270) - Case 1: Typing or completing a flag
+2025-10-05 19:55:07,514 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: None.
+2025-10-05 19:55:07,746 - INFO - backend.app.cli.cli.CLI - (cli.py:198) - Multiple input.
+2025-10-05 19:55:07,747 - INFO - backend.app.cli.cli.CLI - (cli.py:270) - Case 1: Typing or completing a flag
+2025-10-05 19:55:07,747 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: None.
+2025-10-05 19:55:07,921 - INFO - backend.app.cli.cli.CLI - (cli.py:198) - Multiple input.
+2025-10-05 19:55:07,921 - INFO - backend.app.cli.cli.CLI - (cli.py:270) - Case 1: Typing or completing a flag
+2025-10-05 19:55:07,921 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: None.
+2025-10-05 19:55:25,731 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-05 19:55:25,733 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
