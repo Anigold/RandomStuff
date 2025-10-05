@@ -18,7 +18,7 @@ class OrderFileRepository(OrderRepository):
         )
 
     # ---- Repository API ----
-    def get_order(self, vendor: str, store: str, date: str | None = None) -> Order:
+    def get(self, vendor: str, store: str, date: str | None = None) -> Order:
         """Get the current or specific dated order for vendor+store."""
         matches = self._engine.find(vendor=vendor, store=store)
 
@@ -32,7 +32,7 @@ class OrderFileRepository(OrderRepository):
         matches.sort(key=lambda o: o.date, reverse=True)
         return matches[0]
 
-    def list_orders(self) -> list[Order]:
+    def list_all(self) -> list[Order]:
         return [self._engine.read_from_path(p) for p in self._engine.list_files("*.xlsx")]
 
     def list_by_vendor(self, vendor: str) -> list[Order]:
@@ -41,11 +41,11 @@ class OrderFileRepository(OrderRepository):
     def list_by_store(self, store: str) -> list[Order]:
         return [o for o in self.list_all() if o.store == store]
 
-    def save_order(self, order: Order) -> int:
+    def save(self, order: Order) -> int:
         self._engine.save(order, format="xlsx")
         return 1
 
-    def remove_order(self, vendor: str, store: str, date: str | None = None) -> None:
+    def remove(self, vendor: str, store: str, date: str | None = None) -> None:
         try:
             order = self.get(vendor, store, date)
             path = self._engine.get_file_path(order, format="xlsx")
@@ -54,6 +54,12 @@ class OrderFileRepository(OrderRepository):
             pass
 
     def generate_vendor_upload_file(self, order: Order, context: dict | None = None) -> None:
-        dest_path = self._engine.namer.upload_path_for(order)
+        dest_path = self._engine.namer.path_for(order)
         return self._engine.save(order, format=order.vendor, context=context, path_override=dest_path)
+    
+    def ingest_downloaded_attachment(self, order: Order, src_path: Path, kind: str) -> None:
+        dest_path = self._engine.get_file_path(order, format=kind)
+        self._engine.ensure_dir(dest_path.parent)
+        self._engine.move(src_path, dest_path, overwrite=True)
+        return dest_path
     

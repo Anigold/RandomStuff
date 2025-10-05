@@ -22,14 +22,22 @@ class VendorFileRepository(VendorRepository):
             namer=VendorFilenameStrategy(base=base_dir),
         )
 
-    def get(self, vendor_name: str) -> Vendor:
-        return ''
-    
+    def get(self, name: str) -> Vendor:
+        matches = self._engine.find(vendor=name)
+        if not matches:
+            raise FileNotFoundError(f"No vendor file found for {name}")
+        return matches[0]
+
     def list_all(self) -> List[Vendor]:
-        return []
-    
+        return self._engine.find()
+
     def save(self, vendor: Vendor) -> None:
-        return
-    
-    def remove(self, vendor_name: str) -> None:
-        return 
+        self._engine.save(vendor, format=self._engine.preferred_format())
+
+    def remove(self, name: str) -> None:
+        try:
+            vendor = Vendor(name=name)
+            path = self._engine.get_file_path(vendor, format=self._engine.preferred_format())
+            self._engine.remove(path)
+        except FileNotFoundError:
+            pass

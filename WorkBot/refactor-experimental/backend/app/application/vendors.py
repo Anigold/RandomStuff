@@ -17,7 +17,7 @@ class GetVendor:
 
     def __call__(self, name: str) -> Vendor:
         self.logger.info(f"Fetching vendor: {name}")
-        return self.repo.get_vendor(name)
+        return self.repo.get(name)
 
 
 @Logger.attach_logger
@@ -28,7 +28,7 @@ class ListVendors:
 
     def __call__(self) -> list[Vendor]:
         self.logger.info("Listing all vendors")
-        return self.repo.list_vendor_files()
+        return self.repo.list_all()
 
 
 # ---- Commands ----

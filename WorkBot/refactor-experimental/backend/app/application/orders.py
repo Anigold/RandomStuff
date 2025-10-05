@@ -15,7 +15,7 @@ class ListOrders:
     repo: OrderRepository
     def __call__(self) -> list[Order]:
         self.logger.info("Listing all orders")
-        return self.repo.list_orders()
+        return self.repo.list_all()
 
 
 @Logger.attach_logger
@@ -42,7 +42,7 @@ class GetOrder:
     repo: OrderRepository
     def __call__(self, vendor: str, store: str, date: Optional[str] = None) -> Order:
         self.logger.info(f"Getting order vendor={vendor}, store={store}, date={date}")
-        return self.repo.get_order(vendor, store, date)
+        return self.repo.get(vendor, store, date)
 
 
 # ========== COMMANDS ==========
@@ -53,7 +53,7 @@ class SaveOrder:
     repo: OrderRepository
     def __call__(self, order: Order) -> int:
         self.logger.info(f"Saving order {order.vendor} / {order.store} / {order.date}")
-        return self.repo.save_order(order)
+        return self.repo.save(order)
 
 
 @Logger.attach_logger
@@ -62,7 +62,7 @@ class RemoveOrder:
     repo: OrderRepository
     def __call__(self, vendor: str, store: str, date: Optional[str] = None) -> None:
         self.logger.info(f"Removing order vendor={vendor}, store={store}, date={date}")
-        self.repo.remove_order(vendor, store, date)
+        self.repo.remove(vendor, store, date)
 
 
 @Logger.attach_logger
@@ -145,7 +145,7 @@ class CheckAndUpdateOrder:
 
     def __call__(self, order: Order) -> bool:
         try:
-            existing = self.repo.get_order(order.vendor, order.store, date=order.date)
+            existing = self.repo.get(order.vendor, order.store, date=order.date)
         except FileNotFoundError:
             self.logger.info("[Order Update] No existing order found for same vendor/store/date")
             return False

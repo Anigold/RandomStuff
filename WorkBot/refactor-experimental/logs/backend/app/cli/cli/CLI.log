@@ -1810,3 +1810,112 @@ Traceback (most recent call last):
     return f"{self._sanitize(obj.name)}.{ext}"
                              ^^^^^^^^
 AttributeError: 'str' object has no attribute 'name'
+2025-10-01 10:57:29,917 - INFO - backend.app.cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-10-01 10:57:29,934 - INFO - backend.app.cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-01 10:57:29,934 - INFO - backend.app.cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-10-01 10:57:29,934 - INFO - backend.app.cli.cli.CLI - (cli.py:323) - CLI session started.
+2025-10-01 10:57:36,074 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --stores, B
+2025-10-01 10:57:51,107 - INFO - backend.app.cli.cli.CLI - (cli.py:421) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-10-01 10:58:15,105 - ERROR - backend.app.cli.cli.CLI - (cli.py:428) - [Error] download_orders failed: 'OrderServices' object has no attribute 'save_order_to_file'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 422, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\workbot_cli.py", line 48, in cmd_download_orders
+    self.workbot.download_craftable_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 111, in download_craftable_orders
+    self.craft_bot.download_orders(stores, vendors, download_pdf=download_pdf, update=update)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\bot_mixins.py", line 95, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 267, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 312, in _process_order_row
+    self.orders.save_order_to_file(order_to_save, format='xlsx')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'OrderServices' object has no attribute 'save_order_to_file'
+2025-10-05 11:58:48,147 - INFO - backend.app.cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-10-05 11:58:48,175 - INFO - backend.app.cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-05 11:58:48,175 - INFO - backend.app.cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-10-05 11:58:48,176 - INFO - backend.app.cli.cli.CLI - (cli.py:323) - CLI session started.
+2025-10-05 11:58:53,026 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --stores, B
+2025-10-05 11:58:55,363 - INFO - backend.app.cli.cli.CLI - (cli.py:421) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-10-05 11:59:19,380 - ERROR - backend.app.cli.cli.CLI - (cli.py:428) - [Error] download_orders failed: OrderSerializer.dumps() got an unexpected keyword argument 'context'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 422, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\workbot_cli.py", line 48, in cmd_download_orders
+    self.workbot.download_craftable_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 111, in download_craftable_orders
+    self.craft_bot.download_orders(stores, vendors, download_pdf=download_pdf, update=update)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\bot_mixins.py", line 95, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 267, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 312, in _process_order_row
+    self.orders.save_order(order_to_save)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 56, in __call__
+    return self.repo.save_order(order)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\repos\order_file_repository.py", line 45, in save_order
+    self._engine.save(order, format="xlsx")
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\generic_file_adapter.py", line 49, in save
+    data = self.serializer.dumps(obj, format=fmt, context=context)
+TypeError: OrderSerializer.dumps() got an unexpected keyword argument 'context'
+2025-10-05 11:59:59,283 - INFO - backend.app.cli.cli.CLI - (cli.py:349) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-05 11:59:59,286 - INFO - backend.app.cli.cli.CLI - (cli.py:392) - Exiting CLI and saving history.
+2025-10-05 12:00:02,433 - INFO - backend.app.cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-10-05 12:00:02,441 - INFO - backend.app.cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-05 12:00:02,441 - INFO - backend.app.cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-10-05 12:00:02,441 - INFO - backend.app.cli.cli.CLI - (cli.py:323) - CLI session started.
+2025-10-05 12:00:03,157 - INFO - backend.app.cli.cli.CLI - (cli.py:421) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-10-05 12:01:58,610 - INFO - backend.app.cli.cli.CLI - (cli.py:423) - Command 'download_orders' executed successfully.
+2025-10-05 12:13:03,502 - INFO - backend.app.cli.cli.CLI - (cli.py:349) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-05 12:13:03,508 - INFO - backend.app.cli.cli.CLI - (cli.py:392) - Exiting CLI and saving history.
+2025-10-05 12:13:10,511 - INFO - backend.app.cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-10-05 12:13:10,519 - INFO - backend.app.cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-05 12:13:10,520 - INFO - backend.app.cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-10-05 12:13:10,520 - INFO - backend.app.cli.cli.CLI - (cli.py:323) - CLI session started.
+2025-10-05 12:13:39,044 - INFO - backend.app.cli.cli.CLI - (cli.py:421) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-10-05 12:15:32,011 - INFO - backend.app.cli.cli.CLI - (cli.py:423) - Command 'download_orders' executed successfully.
+2025-10-05 13:18:29,396 - INFO - backend.app.cli.cli.CLI - (cli.py:349) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-05 13:18:29,414 - INFO - backend.app.cli.cli.CLI - (cli.py:392) - Exiting CLI and saving history.
+2025-10-05 13:19:26,630 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-05 13:19:26,639 - INFO - backend.app.cli.cli.CLI - (cli.py:115) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-05 13:19:26,639 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 22 commands.
+2025-10-05 13:19:26,639 - INFO - backend.app.cli.cli.CLI - (cli.py:354) - CLI session started.
+2025-10-05 14:38:24,108 - INFO - backend.app.cli.cli.CLI - (cli.py:380) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-05 14:38:24,133 - INFO - backend.app.cli.cli.CLI - (cli.py:423) - Exiting CLI and saving history.
+2025-10-05 14:38:28,318 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-05 14:38:28,326 - INFO - backend.app.cli.cli.CLI - (cli.py:115) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-05 14:38:28,326 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 20 commands.
+2025-10-05 14:38:28,347 - INFO - backend.app.cli.cli.CLI - (cli.py:88) - Loaded 3 commands from backend.app.cli.commands
+2025-10-05 14:38:28,347 - INFO - backend.app.cli.cli.CLI - (cli.py:354) - CLI session started.
+2025-10-05 14:40:12,023 - INFO - backend.app.cli.cli.CLI - (cli.py:380) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-05 14:40:12,026 - INFO - backend.app.cli.cli.CLI - (cli.py:423) - Exiting CLI and saving history.
+2025-10-05 14:40:15,420 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-05 14:40:15,428 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-05 14:40:15,429 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 20 commands.
+2025-10-05 14:40:15,431 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 3 commands from backend.app.cli.commands
+2025-10-05 14:40:15,431 - INFO - backend.app.cli.cli.CLI - (cli.py:358) - CLI session started.
+2025-10-05 14:43:09,993 - INFO - backend.app.cli.cli.CLI - (cli.py:384) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-05 14:43:09,995 - INFO - backend.app.cli.cli.CLI - (cli.py:427) - Exiting CLI and saving history.
+2025-10-05 14:43:13,454 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-05 14:43:13,461 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-05 14:43:13,462 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 20 commands.
+2025-10-05 14:43:13,464 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 3 commands from backend.app.cli.commands
+2025-10-05 14:43:13,464 - INFO - backend.app.cli.cli.CLI - (cli.py:358) - CLI session started.
+2025-10-05 14:43:24,753 - INFO - backend.app.cli.cli.CLI - (cli.py:384) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-05 14:43:24,755 - INFO - backend.app.cli.cli.CLI - (cli.py:427) - Exiting CLI and saving history.

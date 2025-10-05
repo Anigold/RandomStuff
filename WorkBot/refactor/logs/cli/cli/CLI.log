@@ -2927,3 +2927,190 @@ Stacktrace:
 2025-10-01 15:36:27,131 - INFO - cli.cli.CLI - (cli.py:421) - Command 'input_transfers' executed successfully.
 2025-10-01 16:44:51,251 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
 2025-10-01 16:44:51,256 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-10-04 06:43:06,446 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-10-04 06:43:06,468 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-10-04 06:43:06,468 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-10-04 06:43:06,468 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-10-04 06:43:22,834 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: archive_orders (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer'])
+2025-10-04 06:43:25,266 - INFO - cli.cli.CLI - (cli.py:421) - Command 'archive_orders' executed successfully.
+2025-10-04 06:43:46,866 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Easthill', 'Collegetown', 'Downtown', 'Triphammer'])
+2025-10-04 06:44:09,656 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-10-04 06:44:16,267 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Easthill', 'Collegetown', 'Downtown', 'Triphammer'])
+2025-10-04 06:44:37,950 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-10-04 06:44:41,896 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-04 06:44:41,898 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-10-04 06:44:45,924 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-10-04 06:44:45,944 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-10-04 06:44:45,945 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-10-04 06:44:45,945 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-10-04 06:44:48,003 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Easthill', 'Collegetown', 'Downtown', 'Triphammer'])
+2025-10-04 06:45:08,933 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-10-04 06:45:19,963 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Easthill', 'Collegetown', 'Downtown', 'Triphammer'])
+2025-10-04 06:45:40,748 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-10-04 06:45:49,515 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Collegetown', 'Downtown', 'Triphammer'])
+2025-10-04 06:51:33,977 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] download_orders failed: Message: no such element: Unable to locate element: {"method":"css selector","selector":".fa-download"}
+  (Session info: chrome=141.0.7390.55); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x0x1119d93+65891]
+	GetHandleVerifier [0x0x1119dd4+65956]
+	(No symbol) [0x0xf2dca8]
+	(No symbol) [0x0xf787d4]
+	(No symbol) [0x0xf78b7b]
+	(No symbol) [0x0xfbf4c2]
+	(No symbol) [0x0xf9b2c4]
+	(No symbol) [0x0xfbcbe0]
+	(No symbol) [0x0xf9b076]
+	(No symbol) [0x0xf6c37a]
+	(No symbol) [0x0xf6d224]
+	GetHandleVerifier [0x0x1387e23+2613747]
+	GetHandleVerifier [0x0x1382f5a+2593578]
+	GetHandleVerifier [0x0x1141ac4+229012]
+	GetHandleVerifier [0x0x1131e58+164392]
+	GetHandleVerifier [0x0x113880d+191453]
+	GetHandleVerifier [0x0x1122148+99608]
+	GetHandleVerifier [0x0x11222e0+100016]
+	GetHandleVerifier [0x0x110c4ca+10394]
+	BaseThreadInitThunk [0x0x766afcc9+25]
+	RtlGetAppContainerNamedObjectPath [0x0x773682ae+286]
+	RtlGetAppContainerNamedObjectPath [0x0x7736827e+238]
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\workbot_cli.py", line 48, in cmd_download_orders
+    self.workbot.download_craftable_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\workbot\work_bot.py", line 81, in download_craftable_orders
+    self.craft_bot.download_orders(stores, vendors, download_pdf=download_pdf, update=update)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\bot_mixins.py", line 95, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\utils\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 274, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 329, in _process_order_row
+    self._download_order_pdf()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\craftable_bot\craftable_bot.py", line 1019, in _download_order_pdf
+    download_button = self.driver.find_element(By.CLASS_NAME, 'fa-download')
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 888, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 429, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":".fa-download"}
+  (Session info: chrome=141.0.7390.55); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x0x1119d93+65891]
+	GetHandleVerifier [0x0x1119dd4+65956]
+	(No symbol) [0x0xf2dca8]
+	(No symbol) [0x0xf787d4]
+	(No symbol) [0x0xf78b7b]
+	(No symbol) [0x0xfbf4c2]
+	(No symbol) [0x0xf9b2c4]
+	(No symbol) [0x0xfbcbe0]
+	(No symbol) [0x0xf9b076]
+	(No symbol) [0x0xf6c37a]
+	(No symbol) [0x0xf6d224]
+	GetHandleVerifier [0x0x1387e23+2613747]
+	GetHandleVerifier [0x0x1382f5a+2593578]
+	GetHandleVerifier [0x0x1141ac4+229012]
+	GetHandleVerifier [0x0x1131e58+164392]
+	GetHandleVerifier [0x0x113880d+191453]
+	GetHandleVerifier [0x0x1122148+99608]
+	GetHandleVerifier [0x0x11222e0+100016]
+	GetHandleVerifier [0x0x110c4ca+10394]
+	BaseThreadInitThunk [0x0x766afcc9+25]
+	RtlGetAppContainerNamedObjectPath [0x0x773682ae+286]
+	RtlGetAppContainerNamedObjectPath [0x0x7736827e+238]
+
+2025-10-04 06:51:56,983 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Triphammer'])
+2025-10-04 06:54:20,108 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-10-04 06:58:29,770 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Triphammer'])
+2025-10-04 07:00:46,914 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-10-04 10:20:05,711 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-10-04 10:20:45,638 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-10-04 10:22:31,010 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Easthill', 'Downtown'])
+2025-10-04 10:26:22,552 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-10-04 10:33:32,611 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'UNFI'])
+2025-10-04 10:33:32,740 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_upload_files' executed successfully.
+2025-10-04 12:46:10,840 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: combine_orders (args=['--vendors', 'Ithaca Bakery'])
+2025-10-04 12:46:10,974 - INFO - cli.cli.CLI - (cli.py:421) - Command 'combine_orders' executed successfully.
+2025-10-04 13:51:32,102 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: combine_orders (args=['--vendors', 'Equal Exchange'])
+2025-10-04 13:51:32,201 - INFO - cli.cli.CLI - (cli.py:421) - Command 'combine_orders' executed successfully.
+2025-10-05 06:43:13,586 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-10-05 06:43:13,604 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-10-05 06:43:13,604 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-10-05 06:43:13,604 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-10-05 06:43:34,621 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Collegetown', 'Easthill', 'Downtown', 'Triphammer', 'Bakery'])
+2025-10-05 06:52:04,460 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-10-05 07:38:22,772 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: split_natalies (args=[])
+2025-10-05 07:38:22,947 - INFO - cli.cli.CLI - (cli.py:421) - Command 'split_natalies' executed successfully.
+2025-10-05 07:44:07,093 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Downtown', 'Triphammer', 'Easthill', '--vendors', 'FingerLakes Farms', 'Performance Food'])
+2025-10-05 07:45:21,945 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-10-05 08:38:34,712 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_store_order_emails (args=['--stores', 'Collegetown', 'Easthill', 'Downtown', 'Triphammer'])
+2025-10-05 08:38:39,801 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_store_order_emails' executed successfully.
+2025-10-05 08:42:45,436 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-10-05 08:44:30,974 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-10-05 08:46:54,665 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: combine_orders (args=['--vendors', 'Equal Exchange'])
+2025-10-05 08:46:54,667 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] combine_orders failed: Invalid filename format: combined_orders.xlsx
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\workbot_cli.py", line 273, in cmd_combine_orders
+    self.workbot.combine_orders(parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\workbot\work_bot.py", line 110, in combine_orders
+    self.order_coordinator.combine_orders(vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\order_coordinator.py", line 123, in combine_orders
+    return self.file_handler.combine_orders_by_store(vendors)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\storage\file\order_file_handler.py", line 133, in combine_orders_by_store
+    order_paths = self.get_order_files(stores=[], vendors=[vendor])
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\storage\file\order_file_handler.py", line 103, in get_order_files
+    meta = self.filename_strategy.parse(file.name)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\serializer\filename_strategies\order_filename_strategy.py", line 28, in parse
+    raise ValueError(f'Invalid filename format: {filename}')
+ValueError: Invalid filename format: combined_orders.xlsx
+2025-10-05 08:47:01,024 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: combine_orders (args=['--vendors', 'Equal Exchange'])
+2025-10-05 08:47:01,127 - INFO - cli.cli.CLI - (cli.py:421) - Command 'combine_orders' executed successfully.
+2025-10-05 08:51:03,557 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'Equal Exchange'])
+2025-10-05 08:52:22,385 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-10-05 08:53:28,544 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'Equal Exchange', 'Copper Horse Coffee', "Bo's Bones"])
+2025-10-05 08:53:28,548 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] generate_vendor_order_emails failed: Invalid filename format: combined_orders.xlsx
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\workbot_cli.py", line 353, in cmd_generate_vendor_order_emails
+    self.workbot.generate_vendor_order_emails(stores=parsed_args.stores, vendors=parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\workbot\work_bot.py", line 206, in generate_vendor_order_emails
+    orders = self.get_orders(stores=stores, vendors=vendors, formats=['xlsx'])
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\workbot\work_bot.py", line 95, in get_orders
+    order_files = self.get_order_files(stores, vendors, formats=formats)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\workbot\work_bot.py", line 91, in get_order_files
+    return self.order_coordinator.get_order_files(stores=stores, vendors=vendors, formats=formats)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\order_coordinator.py", line 57, in get_order_files
+    return self.file_handler.get_order_files(stores, vendors, formats=formats)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\storage\file\order_file_handler.py", line 103, in get_order_files
+    meta = self.filename_strategy.parse(file.name)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\serializer\filename_strategies\order_filename_strategy.py", line 28, in parse
+    raise ValueError(f'Invalid filename format: {filename}')
+ValueError: Invalid filename format: combined_orders.xlsx
+2025-10-05 08:53:48,168 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'Equal Exchange', 'Copper Horse Coffee', "Bo's Bones"])
+2025-10-05 08:53:49,820 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_order_emails' executed successfully.
+2025-10-05 09:09:30,720 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', '--vendors', 'Sysco', 'Performance Food', 'US Foods'])
+2025-10-05 09:09:31,086 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_upload_files' executed successfully.
+2025-10-05 11:01:37,636 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-10-05 11:01:48,270 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-05 11:01:48,280 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.

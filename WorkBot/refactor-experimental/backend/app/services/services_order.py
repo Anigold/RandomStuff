@@ -33,11 +33,7 @@ class OrderServices:
             self.generate_vendor_upload
         )
 
-        self.expect_downloaded_pdf = ExpectDownloadedPdf(
-            self.repo,
-            self.downloads
-        )
-
+        self.expect_downloaded_pdf = ExpectDownloadedPdf(self.repo, self.downloads)
         self.check_and_update_order = CheckAndUpdateOrder(self.repo)
 
         # # Queries

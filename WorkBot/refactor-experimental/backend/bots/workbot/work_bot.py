@@ -360,17 +360,17 @@ class WorkBot:
 
     # region ---- Utilities & Lifecycle ----
 
+    def list_all_vendors(self) -> List[Vendor]:
+        return self.vendors.list_vendors()
+    
+    def list_all_stores(self) -> List[Store]:
+        return self.stores.list_stores()
+    
     def get_vendor_information(self, vendor_name: str) -> Vendor:
         return self.vendors.get_vendor(vendor_name)
 
     def get_store_information(self, store_name: str) -> dict:
         return self.stores.get_store(store_name)
-
-    def list_vendors(self) -> List[Vendor]:
-        return self.vendors.list_vendors()
-
-    def list_stores(self) -> List[Store]:
-        return self.stores.list_stores()
 
     def close_craftable_session(self):
         self.craft_bot.close_session()
@@ -382,9 +382,6 @@ class WorkBot:
     def shutdown(self) -> None:
         self.close_craftable_session()
         print('Exiting WorkBot CLI.')
-
-    def list_all_vendors(self) -> List[str]:
-        ...
 
     def _get_today_date_and_day(self):
         today = datetime.today()

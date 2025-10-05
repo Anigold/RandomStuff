@@ -9732,3 +9732,414 @@ AttributeError: 'str' object has no attribute 'name'
 2025-10-01 10:54:48,929 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
 2025-10-01 10:55:27,048 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
 2025-10-01 10:56:08,166 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-01 10:57:29,916 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-01 10:57:29,916 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-01 10:57:29,917 - INFO - backend.app.cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-10-01 10:57:29,934 - INFO - backend.app.cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-01 10:57:29,934 - INFO - backend.app.cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-10-01 10:57:29,934 - INFO - backend.app.cli.cli.CLI - (cli.py:323) - CLI session started.
+2025-10-01 10:57:36,074 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --stores, B
+2025-10-01 10:57:36,074 - INFO - backend.app.application.stores.ListStores - (stores.py:31) - Listing all stores.
+2025-10-01 10:57:51,107 - INFO - backend.app.cli.cli.CLI - (cli.py:421) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-10-01 10:57:57,287 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:129) - Logging into Craftable.
+2025-10-01 10:58:04,707 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:153) - Login successful.
+2025-10-01 10:58:04,707 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:252) - Starting order download protocol.
+2025-10-01 10:58:04,707 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:255) - Accessing order page for Bakery.
+2025-10-01 10:58:11,340 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Webstaurant (09/28/2025).
+2025-10-01 10:58:13,385 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Webstaurant / 20250928.
+2025-10-01 10:58:13,385 - WARNING - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:153) - [Order Update] Failed to fetch existing order: 'GenericFileAdapter' object has no attribute 'directory'. Proceeding as changed.
+2025-10-01 10:58:13,386 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Webstaurant.
+2025-10-01 10:58:13,386 - ERROR - backend.bots.craftable_bot.craftable_bot.CraftableBot - (logger.py:107) - Error in download_orders: 'OrderServices' object has no attribute 'save_order_to_file'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 267, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 312, in _process_order_row
+    self.orders.save_order_to_file(order_to_save, format='xlsx')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'OrderServices' object has no attribute 'save_order_to_file'
+2025-10-01 10:58:15,105 - ERROR - backend.app.cli.cli.CLI - (cli.py:428) - [Error] download_orders failed: 'OrderServices' object has no attribute 'save_order_to_file'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 422, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\workbot_cli.py", line 48, in cmd_download_orders
+    self.workbot.download_craftable_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 111, in download_craftable_orders
+    self.craft_bot.download_orders(stores, vendors, download_pdf=download_pdf, update=update)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\bot_mixins.py", line 95, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 267, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 312, in _process_order_row
+    self.orders.save_order_to_file(order_to_save, format='xlsx')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'OrderServices' object has no attribute 'save_order_to_file'
+2025-10-05 11:58:48,145 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-05 11:58:48,147 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-05 11:58:48,147 - INFO - backend.app.cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-10-05 11:58:48,175 - INFO - backend.app.cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-05 11:58:48,175 - INFO - backend.app.cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-10-05 11:58:48,176 - INFO - backend.app.cli.cli.CLI - (cli.py:323) - CLI session started.
+2025-10-05 11:58:53,026 - INFO - backend.app.cli.cli.CLI - (cli.py:241) - download_orders, --stores, B
+2025-10-05 11:58:53,027 - INFO - backend.app.application.stores.ListStores - (stores.py:31) - Listing all stores.
+2025-10-05 11:58:55,363 - INFO - backend.app.cli.cli.CLI - (cli.py:421) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-10-05 11:59:01,139 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:129) - Logging into Craftable.
+2025-10-05 11:59:08,818 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:153) - Login successful.
+2025-10-05 11:59:08,818 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:252) - Starting order download protocol.
+2025-10-05 11:59:08,818 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:255) - Accessing order page for Bakery.
+2025-10-05 11:59:15,564 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for UNFI (10/04/2025).
+2025-10-05 11:59:17,656 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / UNFI / 20251004.
+2025-10-05 11:59:17,656 - WARNING - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:153) - [Order Update] Failed to fetch existing order: 'GenericFileAdapter' object has no attribute 'directory'. Proceeding as changed.
+2025-10-05 11:59:17,657 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for UNFI.
+2025-10-05 11:59:17,657 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order UNFI / Bakery / 20251004
+2025-10-05 11:59:17,658 - ERROR - backend.bots.craftable_bot.craftable_bot.CraftableBot - (logger.py:107) - Error in download_orders: OrderSerializer.dumps() got an unexpected keyword argument 'context'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 267, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 312, in _process_order_row
+    self.orders.save_order(order_to_save)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 56, in __call__
+    return self.repo.save_order(order)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\repos\order_file_repository.py", line 45, in save_order
+    self._engine.save(order, format="xlsx")
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\generic_file_adapter.py", line 49, in save
+    data = self.serializer.dumps(obj, format=fmt, context=context)
+TypeError: OrderSerializer.dumps() got an unexpected keyword argument 'context'
+2025-10-05 11:59:19,380 - ERROR - backend.app.cli.cli.CLI - (cli.py:428) - [Error] download_orders failed: OrderSerializer.dumps() got an unexpected keyword argument 'context'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 422, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\workbot_cli.py", line 48, in cmd_download_orders
+    self.workbot.download_craftable_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 111, in download_craftable_orders
+    self.craft_bot.download_orders(stores, vendors, download_pdf=download_pdf, update=update)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\bot_mixins.py", line 95, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 267, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 312, in _process_order_row
+    self.orders.save_order(order_to_save)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 56, in __call__
+    return self.repo.save_order(order)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\repos\order_file_repository.py", line 45, in save_order
+    self._engine.save(order, format="xlsx")
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\generic_file_adapter.py", line 49, in save
+    data = self.serializer.dumps(obj, format=fmt, context=context)
+TypeError: OrderSerializer.dumps() got an unexpected keyword argument 'context'
+2025-10-05 11:59:59,283 - INFO - backend.app.cli.cli.CLI - (cli.py:349) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-05 11:59:59,286 - INFO - backend.app.cli.cli.CLI - (cli.py:392) - Exiting CLI and saving history.
+2025-10-05 12:00:02,432 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-05 12:00:02,433 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-05 12:00:02,433 - INFO - backend.app.cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-10-05 12:00:02,441 - INFO - backend.app.cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-05 12:00:02,441 - INFO - backend.app.cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-10-05 12:00:02,441 - INFO - backend.app.cli.cli.CLI - (cli.py:323) - CLI session started.
+2025-10-05 12:00:03,157 - INFO - backend.app.cli.cli.CLI - (cli.py:421) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-10-05 12:00:08,958 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:129) - Logging into Craftable.
+2025-10-05 12:00:16,617 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:153) - Login successful.
+2025-10-05 12:00:16,618 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:252) - Starting order download protocol.
+2025-10-05 12:00:16,618 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:255) - Accessing order page for Bakery.
+2025-10-05 12:00:23,400 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for UNFI (10/04/2025).
+2025-10-05 12:00:25,481 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / UNFI / 20251004.
+2025-10-05 12:00:25,481 - WARNING - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:153) - [Order Update] Failed to fetch existing order: 'GenericFileAdapter' object has no attribute 'directory'. Proceeding as changed.
+2025-10-05 12:00:25,481 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for UNFI.
+2025-10-05 12:00:25,482 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order UNFI / Bakery / 20251004
+2025-10-05 12:00:26,497 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for UNFI / Bakery / 20251004
+2025-10-05 12:00:28,053 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-05 12:00:29,959 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for J.Mills (10/04/2025).
+2025-10-05 12:00:31,365 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / J.Mills / 20251004.
+2025-10-05 12:00:31,365 - WARNING - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:153) - [Order Update] Failed to fetch existing order: 'GenericFileAdapter' object has no attribute 'directory'. Proceeding as changed.
+2025-10-05 12:00:31,365 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for J.Mills.
+2025-10-05 12:00:31,365 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order J.Mills / Bakery / 20251004
+2025-10-05 12:00:32,379 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for J.Mills / Bakery / 20251004
+2025-10-05 12:00:33,404 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order (1).pdf
+2025-10-05 12:00:35,763 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Webstaurant (10/04/2025).
+2025-10-05 12:00:36,929 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Webstaurant / 20251004.
+2025-10-05 12:00:36,929 - WARNING - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:153) - [Order Update] Failed to fetch existing order: 'GenericFileAdapter' object has no attribute 'directory'. Proceeding as changed.
+2025-10-05 12:00:36,930 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Webstaurant.
+2025-10-05 12:00:36,930 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Webstaurant / Bakery / 20251004
+2025-10-05 12:00:37,941 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Webstaurant / Bakery / 20251004
+2025-10-05 12:00:38,962 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order (2).pdf
+2025-10-05 12:00:41,311 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Odeko In. (10/05/2025).
+2025-10-05 12:00:42,471 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Odeko In. / 20251005.
+2025-10-05 12:00:42,471 - WARNING - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:153) - [Order Update] Failed to fetch existing order: 'GenericFileAdapter' object has no attribute 'directory'. Proceeding as changed.
+2025-10-05 12:00:42,471 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Odeko In..
+2025-10-05 12:00:42,471 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Odeko In. / Bakery / 20251005
+2025-10-05 12:00:43,483 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Odeko In. / Bakery / 20251005
+2025-10-05 12:00:45,032 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order (3).pdf
+2025-10-05 12:00:46,855 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Sysco (10/05/2025).
+2025-10-05 12:00:49,775 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Sysco / 20251005.
+2025-10-05 12:00:49,775 - WARNING - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:153) - [Order Update] Failed to fetch existing order: 'GenericFileAdapter' object has no attribute 'directory'. Proceeding as changed.
+2025-10-05 12:00:49,775 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Sysco.
+2025-10-05 12:00:49,775 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Sysco / Bakery / 20251005
+2025-10-05 12:00:50,814 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Sysco / Bakery / 20251005
+2025-10-05 12:00:52,357 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order (4).pdf
+2025-10-05 12:00:54,217 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Performance Food (10/05/2025).
+2025-10-05 12:00:56,926 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Performance Food / 20251005.
+2025-10-05 12:00:56,926 - WARNING - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:153) - [Order Update] Failed to fetch existing order: 'GenericFileAdapter' object has no attribute 'directory'. Proceeding as changed.
+2025-10-05 12:00:56,926 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Performance Food.
+2025-10-05 12:00:56,926 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Performance Food / Bakery / 20251005
+2025-10-05 12:00:57,955 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Performance Food / Bakery / 20251005
+2025-10-05 12:00:59,494 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order (5).pdf
+2025-10-05 12:01:01,354 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for US Foods (10/05/2025).
+2025-10-05 12:01:04,021 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / US Foods / 20251005.
+2025-10-05 12:01:04,022 - WARNING - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:153) - [Order Update] Failed to fetch existing order: 'GenericFileAdapter' object has no attribute 'directory'. Proceeding as changed.
+2025-10-05 12:01:04,022 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for US Foods.
+2025-10-05 12:01:04,022 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order US Foods / Bakery / 20251005
+2025-10-05 12:01:06,132 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for US Foods / Bakery / 20251005
+2025-10-05 12:01:07,901 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order (6).pdf
+2025-10-05 12:01:09,522 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Copper Horse Coffee (10/05/2025).
+2025-10-05 12:01:10,910 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Copper Horse Coffee / 20251005.
+2025-10-05 12:01:10,910 - WARNING - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:153) - [Order Update] Failed to fetch existing order: 'GenericFileAdapter' object has no attribute 'directory'. Proceeding as changed.
+2025-10-05 12:01:10,910 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Copper Horse Coffee.
+2025-10-05 12:01:10,910 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Copper Horse Coffee / Bakery / 20251005
+2025-10-05 12:01:12,174 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Copper Horse Coffee / Bakery / 20251005
+2025-10-05 12:01:13,746 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order (7).pdf
+2025-10-05 12:01:15,656 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Equal Exchange (10/05/2025).
+2025-10-05 12:01:17,145 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Equal Exchange / 20251005.
+2025-10-05 12:01:17,145 - WARNING - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:153) - [Order Update] Failed to fetch existing order: 'GenericFileAdapter' object has no attribute 'directory'. Proceeding as changed.
+2025-10-05 12:01:17,145 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Equal Exchange.
+2025-10-05 12:01:17,146 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Equal Exchange / Bakery / 20251005
+2025-10-05 12:01:18,222 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Equal Exchange / Bakery / 20251005
+2025-10-05 12:01:19,781 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order (8).pdf
+2025-10-05 12:01:21,605 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Harney and Sons Tea (10/05/2025).
+2025-10-05 12:01:22,963 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Harney and Sons Tea / 20251005.
+2025-10-05 12:01:22,963 - WARNING - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:153) - [Order Update] Failed to fetch existing order: 'GenericFileAdapter' object has no attribute 'directory'. Proceeding as changed.
+2025-10-05 12:01:22,964 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Harney and Sons Tea.
+2025-10-05 12:01:22,964 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Harney and Sons Tea / Bakery / 20251005
+2025-10-05 12:01:23,983 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Harney and Sons Tea / Bakery / 20251005
+2025-10-05 12:01:25,566 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order (9).pdf
+2025-10-05 12:01:27,391 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for FingerLakes Farms (10/05/2025).
+2025-10-05 12:01:29,229 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / FingerLakes Farms / 20251005.
+2025-10-05 12:01:29,229 - WARNING - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:153) - [Order Update] Failed to fetch existing order: 'GenericFileAdapter' object has no attribute 'directory'. Proceeding as changed.
+2025-10-05 12:01:29,229 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for FingerLakes Farms.
+2025-10-05 12:01:29,230 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order FingerLakes Farms / Bakery / 20251005
+2025-10-05 12:01:30,243 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for FingerLakes Farms / Bakery / 20251005
+2025-10-05 12:01:31,780 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order (10).pdf
+2025-10-05 12:01:33,666 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Coca-Cola (10/05/2025).
+2025-10-05 12:01:35,411 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Coca-Cola / 20251005.
+2025-10-05 12:01:35,411 - WARNING - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:153) - [Order Update] Failed to fetch existing order: 'GenericFileAdapter' object has no attribute 'directory'. Proceeding as changed.
+2025-10-05 12:01:35,411 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Coca-Cola.
+2025-10-05 12:01:35,412 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Coca-Cola / Bakery / 20251005
+2025-10-05 12:01:36,427 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Coca-Cola / Bakery / 20251005
+2025-10-05 12:01:37,458 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order (11).pdf
+2025-10-05 12:01:39,818 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for DUTCH VALLEY FOOD DIST (10/05/2025).
+2025-10-05 12:01:40,984 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / DUTCH VALLEY FOOD DIST / 20251005.
+2025-10-05 12:01:40,984 - WARNING - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:153) - [Order Update] Failed to fetch existing order: 'GenericFileAdapter' object has no attribute 'directory'. Proceeding as changed.
+2025-10-05 12:01:40,985 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for DUTCH VALLEY FOOD DIST.
+2025-10-05 12:01:40,985 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order DUTCH VALLEY FOOD DIST / Bakery / 20251005
+2025-10-05 12:01:41,998 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for DUTCH VALLEY FOOD DIST / Bakery / 20251005
+2025-10-05 12:01:43,036 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order (12).pdf
+2025-10-05 12:01:45,385 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Hill & Markes (10/05/2025).
+2025-10-05 12:01:46,541 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Hill & Markes / 20251005.
+2025-10-05 12:01:46,541 - WARNING - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:153) - [Order Update] Failed to fetch existing order: 'GenericFileAdapter' object has no attribute 'directory'. Proceeding as changed.
+2025-10-05 12:01:46,542 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Hill & Markes.
+2025-10-05 12:01:46,542 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Hill & Markes / Bakery / 20251005
+2025-10-05 12:01:47,561 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Hill & Markes / Bakery / 20251005
+2025-10-05 12:01:48,605 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order (13).pdf
+2025-10-05 12:01:50,970 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Hillcrest Dairy (10/05/2025).
+2025-10-05 12:01:52,208 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Hillcrest Dairy / 20251005.
+2025-10-05 12:01:52,208 - WARNING - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:153) - [Order Update] Failed to fetch existing order: 'GenericFileAdapter' object has no attribute 'directory'. Proceeding as changed.
+2025-10-05 12:01:52,208 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Hillcrest Dairy.
+2025-10-05 12:01:52,209 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Hillcrest Dairy / Bakery / 20251005
+2025-10-05 12:01:53,220 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Hillcrest Dairy / Bakery / 20251005
+2025-10-05 12:01:54,756 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order (14).pdf
+2025-10-05 12:01:56,545 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:269) - Order download complete.
+2025-10-05 12:01:56,546 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:270) - Closing WebDriver session.
+2025-10-05 12:01:58,610 - INFO - backend.app.cli.cli.CLI - (cli.py:423) - Command 'download_orders' executed successfully.
+2025-10-05 12:13:03,502 - INFO - backend.app.cli.cli.CLI - (cli.py:349) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-05 12:13:03,508 - INFO - backend.app.cli.cli.CLI - (cli.py:392) - Exiting CLI and saving history.
+2025-10-05 12:13:10,510 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-05 12:13:10,511 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-05 12:13:10,511 - INFO - backend.app.cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-10-05 12:13:10,519 - INFO - backend.app.cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-05 12:13:10,520 - INFO - backend.app.cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 23 commands.
+2025-10-05 12:13:10,520 - INFO - backend.app.cli.cli.CLI - (cli.py:323) - CLI session started.
+2025-10-05 12:13:39,044 - INFO - backend.app.cli.cli.CLI - (cli.py:421) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-10-05 12:13:46,125 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:129) - Logging into Craftable.
+2025-10-05 12:13:53,479 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:153) - Login successful.
+2025-10-05 12:13:53,479 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:252) - Starting order download protocol.
+2025-10-05 12:13:53,479 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:255) - Accessing order page for Bakery.
+2025-10-05 12:14:00,182 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for UNFI (10/04/2025).
+2025-10-05 12:14:02,261 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / UNFI / 20251004.
+2025-10-05 12:14:02,262 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-05 12:14:02,262 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for UNFI.
+2025-10-05 12:14:02,262 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order UNFI / Bakery / 20251004
+2025-10-05 12:14:03,282 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for UNFI / Bakery / 20251004
+2025-10-05 12:14:04,816 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-05 12:14:04,819 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-05 12:14:06,671 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for J.Mills (10/04/2025).
+2025-10-05 12:14:08,028 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / J.Mills / 20251004.
+2025-10-05 12:14:08,030 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-05 12:14:08,030 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for J.Mills.
+2025-10-05 12:14:08,030 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order J.Mills / Bakery / 20251004
+2025-10-05 12:14:09,041 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for J.Mills / Bakery / 20251004
+2025-10-05 12:14:10,068 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-05 12:14:10,070 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-05 12:14:12,425 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Webstaurant (10/04/2025).
+2025-10-05 12:14:13,577 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Webstaurant / 20251004.
+2025-10-05 12:14:13,577 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-05 12:14:13,578 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Webstaurant.
+2025-10-05 12:14:13,578 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Webstaurant / Bakery / 20251004
+2025-10-05 12:14:14,588 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Webstaurant / Bakery / 20251004
+2025-10-05 12:14:15,615 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-05 12:14:15,616 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-05 12:14:17,953 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Odeko In. (10/05/2025).
+2025-10-05 12:14:19,102 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Odeko In. / 20251005.
+2025-10-05 12:14:19,102 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-05 12:14:19,103 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Odeko In..
+2025-10-05 12:14:19,103 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Odeko In. / Bakery / 20251005
+2025-10-05 12:14:20,113 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Odeko In. / Bakery / 20251005
+2025-10-05 12:14:21,642 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-05 12:14:21,645 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-05 12:14:23,483 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Sysco (10/05/2025).
+2025-10-05 12:14:26,000 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Sysco / 20251005.
+2025-10-05 12:14:26,002 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-05 12:14:26,002 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Sysco.
+2025-10-05 12:14:26,002 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Sysco / Bakery / 20251005
+2025-10-05 12:14:27,046 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Sysco / Bakery / 20251005
+2025-10-05 12:14:28,577 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-05 12:14:28,579 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-05 12:14:30,429 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Performance Food (10/05/2025).
+2025-10-05 12:14:33,006 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Performance Food / 20251005.
+2025-10-05 12:14:33,007 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-05 12:14:33,007 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Performance Food.
+2025-10-05 12:14:33,008 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Performance Food / Bakery / 20251005
+2025-10-05 12:14:34,032 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Performance Food / Bakery / 20251005
+2025-10-05 12:14:35,060 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-05 12:14:35,062 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-05 12:14:37,416 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for US Foods (10/05/2025).
+2025-10-05 12:14:39,982 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / US Foods / 20251005.
+2025-10-05 12:14:39,983 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-05 12:14:39,983 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for US Foods.
+2025-10-05 12:14:39,983 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order US Foods / Bakery / 20251005
+2025-10-05 12:14:41,006 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for US Foods / Bakery / 20251005
+2025-10-05 12:14:42,031 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-05 12:14:42,033 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-05 12:14:44,392 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Copper Horse Coffee (10/05/2025).
+2025-10-05 12:14:45,696 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Copper Horse Coffee / 20251005.
+2025-10-05 12:14:45,697 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-05 12:14:45,697 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Copper Horse Coffee.
+2025-10-05 12:14:45,697 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Copper Horse Coffee / Bakery / 20251005
+2025-10-05 12:14:46,708 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Copper Horse Coffee / Bakery / 20251005
+2025-10-05 12:14:48,241 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-05 12:14:48,243 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-05 12:14:50,081 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Equal Exchange (10/05/2025).
+2025-10-05 12:14:51,484 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Equal Exchange / 20251005.
+2025-10-05 12:14:51,485 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-05 12:14:51,485 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Equal Exchange.
+2025-10-05 12:14:51,485 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Equal Exchange / Bakery / 20251005
+2025-10-05 12:14:52,500 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Equal Exchange / Bakery / 20251005
+2025-10-05 12:14:53,525 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-05 12:14:53,528 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-05 12:14:55,870 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Harney and Sons Tea (10/05/2025).
+2025-10-05 12:14:57,122 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Harney and Sons Tea / 20251005.
+2025-10-05 12:14:57,123 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-05 12:14:57,123 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Harney and Sons Tea.
+2025-10-05 12:14:57,124 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Harney and Sons Tea / Bakery / 20251005
+2025-10-05 12:14:58,135 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Harney and Sons Tea / Bakery / 20251005
+2025-10-05 12:14:59,161 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-05 12:14:59,165 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-05 12:15:01,522 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for FingerLakes Farms (10/05/2025).
+2025-10-05 12:15:03,263 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / FingerLakes Farms / 20251005.
+2025-10-05 12:15:03,264 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-05 12:15:03,264 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for FingerLakes Farms.
+2025-10-05 12:15:03,264 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order FingerLakes Farms / Bakery / 20251005
+2025-10-05 12:15:04,278 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for FingerLakes Farms / Bakery / 20251005
+2025-10-05 12:15:05,810 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-05 12:15:05,812 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-05 12:15:07,656 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Coca-Cola (10/05/2025).
+2025-10-05 12:15:09,254 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Coca-Cola / 20251005.
+2025-10-05 12:15:09,255 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-05 12:15:09,255 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Coca-Cola.
+2025-10-05 12:15:09,255 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Coca-Cola / Bakery / 20251005
+2025-10-05 12:15:10,269 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Coca-Cola / Bakery / 20251005
+2025-10-05 12:15:11,807 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-05 12:15:11,809 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-05 12:15:13,655 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for DUTCH VALLEY FOOD DIST (10/05/2025).
+2025-10-05 12:15:14,811 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / DUTCH VALLEY FOOD DIST / 20251005.
+2025-10-05 12:15:14,812 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-05 12:15:14,812 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for DUTCH VALLEY FOOD DIST.
+2025-10-05 12:15:14,812 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order DUTCH VALLEY FOOD DIST / Bakery / 20251005
+2025-10-05 12:15:15,823 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for DUTCH VALLEY FOOD DIST / Bakery / 20251005
+2025-10-05 12:15:16,846 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-05 12:15:16,848 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-05 12:15:19,189 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Hill & Markes (10/05/2025).
+2025-10-05 12:15:20,339 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Hill & Markes / 20251005.
+2025-10-05 12:15:20,340 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-05 12:15:20,340 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Hill & Markes.
+2025-10-05 12:15:20,340 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Hill & Markes / Bakery / 20251005
+2025-10-05 12:15:21,351 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Hill & Markes / Bakery / 20251005
+2025-10-05 12:15:22,383 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-05 12:15:22,384 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-05 12:15:24,727 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Hillcrest Dairy (10/05/2025).
+2025-10-05 12:15:25,929 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Hillcrest Dairy / 20251005.
+2025-10-05 12:15:25,930 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-05 12:15:25,930 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Hillcrest Dairy.
+2025-10-05 12:15:25,930 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Hillcrest Dairy / Bakery / 20251005
+2025-10-05 12:15:26,941 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Hillcrest Dairy / Bakery / 20251005
+2025-10-05 12:15:27,963 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-05 12:15:27,965 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-05 12:15:30,275 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:269) - Order download complete.
+2025-10-05 12:15:30,275 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:270) - Closing WebDriver session.
+2025-10-05 12:15:32,011 - INFO - backend.app.cli.cli.CLI - (cli.py:423) - Command 'download_orders' executed successfully.
+2025-10-05 13:18:29,396 - INFO - backend.app.cli.cli.CLI - (cli.py:349) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-05 13:18:29,414 - INFO - backend.app.cli.cli.CLI - (cli.py:392) - Exiting CLI and saving history.
+2025-10-05 13:19:26,628 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-05 13:19:26,630 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-05 13:19:26,630 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-05 13:19:26,639 - INFO - backend.app.cli.cli.CLI - (cli.py:115) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-05 13:19:26,639 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 22 commands.
+2025-10-05 13:19:26,639 - INFO - backend.app.cli.cli.CLI - (cli.py:354) - CLI session started.
+2025-10-05 14:38:24,108 - INFO - backend.app.cli.cli.CLI - (cli.py:380) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-05 14:38:24,133 - INFO - backend.app.cli.cli.CLI - (cli.py:423) - Exiting CLI and saving history.
+2025-10-05 14:38:28,317 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-05 14:38:28,318 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-05 14:38:28,318 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-05 14:38:28,326 - INFO - backend.app.cli.cli.CLI - (cli.py:115) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-05 14:38:28,326 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 20 commands.
+2025-10-05 14:38:28,347 - INFO - backend.app.cli.cli.CLI - (cli.py:88) - Loaded 3 commands from backend.app.cli.commands
+2025-10-05 14:38:28,347 - INFO - backend.app.cli.cli.CLI - (cli.py:354) - CLI session started.
+2025-10-05 14:40:12,023 - INFO - backend.app.cli.cli.CLI - (cli.py:380) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-05 14:40:12,026 - INFO - backend.app.cli.cli.CLI - (cli.py:423) - Exiting CLI and saving history.
+2025-10-05 14:40:15,419 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-05 14:40:15,420 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-05 14:40:15,420 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-05 14:40:15,428 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-05 14:40:15,429 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 20 commands.
+2025-10-05 14:40:15,431 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 3 commands from backend.app.cli.commands
+2025-10-05 14:40:15,431 - INFO - backend.app.cli.cli.CLI - (cli.py:358) - CLI session started.
+2025-10-05 14:43:09,993 - INFO - backend.app.cli.cli.CLI - (cli.py:384) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-05 14:43:09,995 - INFO - backend.app.cli.cli.CLI - (cli.py:427) - Exiting CLI and saving history.
+2025-10-05 14:43:13,453 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-05 14:43:13,454 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-05 14:43:13,454 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-05 14:43:13,461 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-05 14:43:13,462 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 20 commands.
+2025-10-05 14:43:13,464 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 3 commands from backend.app.cli.commands
+2025-10-05 14:43:13,464 - INFO - backend.app.cli.cli.CLI - (cli.py:358) - CLI session started.
+2025-10-05 14:43:24,753 - INFO - backend.app.cli.cli.CLI - (cli.py:384) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-05 14:43:24,755 - INFO - backend.app.cli.cli.CLI - (cli.py:427) - Exiting CLI and saving history.

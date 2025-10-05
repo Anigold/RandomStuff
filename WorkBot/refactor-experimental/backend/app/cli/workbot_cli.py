@@ -20,6 +20,10 @@ from backend.helpers.datetimes import iso_today
 from backend.helpers.datetimes import normalize_time_str
 from backend.infra.paths import TODOS_DIR
 from backend.app.services.services_order import OrderServices
+from .commands.command import CommandContext
+
+
+from .commands.download_orders import DownloadOrders
 
 @Logger.attach_logger
 class WorkBotCLI(CLI):
@@ -29,8 +33,10 @@ class WorkBotCLI(CLI):
 
         self.workbot = workbot or WorkBot()
         super().__init__()
+        self.context = CommandContext(workbot=self.workbot)
+        self.load_commands_from_package('backend.app.cli.commands', self.context)
 
-        # self.context = CommandContext(workbot=self.workbot)
+        
 
 # SHUTDOWN OVERRIDE
     def cmd_shutdown(self):
@@ -39,32 +45,32 @@ class WorkBotCLI(CLI):
 
 
 # DOWNLOAD ORDERS
-    def cmd_download_orders(self, args):
-        '''Handles downloading orders.'''
+    # def cmd_download_orders(self, args):
+    #     '''Handles downloading orders.'''
 
-        parser = self.args_download_orders()
-        parsed_args = parser.parse_args(args)
-        try:
-            self.workbot.download_craftable_orders(parsed_args.stores, parsed_args.vendors)
-        except SystemExit:
-            pass  # Prevent argparse from exiting CLI loop
+    #     parser = self.args_download_orders()
+    #     parsed_args = parser.parse_args(args)
+    #     try:
+    #         self.workbot.download_craftable_orders(parsed_args.stores, parsed_args.vendors)
+    #     except SystemExit:
+    #         pass  # Prevent argparse from exiting CLI loop
 
-        print('\nOrders downloaded successfully.\n')
+    #     print('\nOrders downloaded successfully.\n')
     
-    def args_download_orders(self):
-        parser = argparse.ArgumentParser(prog='download_orders', description='Download orders from vendors.')
-        parser.add_argument('--stores', nargs='+', required=True, help='List of store names.')
-        parser.add_argument('--vendors', nargs='+', help='List of vendors (default: all).')
-        parser.add_argument('--sort', action='store_true', help='Sort orders by vendor after downloading.')
-        return parser
+    # def args_download_orders(self):
+    #     parser = argparse.ArgumentParser(prog='download_orders', description='Download orders from vendors.')
+    #     parser.add_argument('--stores', nargs='+', required=True, help='List of store names.')
+    #     parser.add_argument('--vendors', nargs='+', help='List of vendors (default: all).')
+    #     parser.add_argument('--sort', action='store_true', help='Sort orders by vendor after downloading.')
+    #     return parser
     
-    def _autocomplete_download_orders(self, flag: str, text: str):
+    # def _autocomplete_download_orders(self, flag: str, text: str):
   
-        flags = {
-            '--stores': self._get_stores,
-            '--vendors': self._get_vendors
-        }
-        return [option for option in flags.get(flag, [])() if option.startswith(text)]
+    #     flags = {
+    #         '--stores': self._get_stores,
+    #         '--vendors': self._get_vendors
+    #     }
+    #     return [option for option in flags.get(flag, [])() if option.startswith(text)]
 
 
 # SORT ORDERS
@@ -82,108 +88,108 @@ class WorkBotCLI(CLI):
 
 
 # LIST ORDERS
-    def args_list_orders(self) -> None:
-        parser = argparse.ArgumentParser(prog='list_orders', description='List the saved orders.')
-        parser.add_argument('--stores', nargs='+', required=True, help='List of store names.')
-        parser.add_argument('--vendors', nargs='+', help='List of vendors (default: all).')
-        parser.add_argument('--show_pricing', action='store_true', help='Display the total estimated price of the order.')
-        parser.add_argument('--show_minimums', action='store_true', help='Display the vendor order minimums.')
-        return parser
+    # def args_list_orders(self) -> None:
+    #     parser = argparse.ArgumentParser(prog='list_orders', description='List the saved orders.')
+    #     parser.add_argument('--stores', nargs='+', required=True, help='List of store names.')
+    #     parser.add_argument('--vendors', nargs='+', help='List of vendors (default: all).')
+    #     parser.add_argument('--show_pricing', action='store_true', help='Display the total estimated price of the order.')
+    #     parser.add_argument('--show_minimums', action='store_true', help='Display the vendor order minimums.')
+    #     return parser
         
-    def cmd_list_orders(self, args):
+    # def cmd_list_orders(self, args):
 
-        parser = self.args_list_orders()
-        try:
+    #     parser = self.args_list_orders()
+    #     try:
 
-            parsed_args      = parser.parse_args(args)
+    #         parsed_args      = parser.parse_args(args)
             
-            orders           = self.workbot.get_orders(parsed_args.stores, parsed_args.vendors)
-            formatted_orders = self._format_order_list(orders, parsed_args.show_pricing, parsed_args.show_minimums)
-            print(f'\n{formatted_orders}\n')
-        except SystemExit:
-            pass
+    #         orders           = self.workbot.get_orders(parsed_args.stores, parsed_args.vendors)
+    #         formatted_orders = self._format_order_list(orders, parsed_args.show_pricing, parsed_args.show_minimums)
+    #         print(f'\n{formatted_orders}\n')
+    #     except SystemExit:
+    #         pass
 
-    def _format_order_list(self, orders: list, show_pricing: bool = False, show_minimums: bool = False):
+    # def _format_order_list(self, orders: list, show_pricing: bool = False, show_minimums: bool = False):
 
-        if not orders: return tabulate([])
+    #     if not orders: return tabulate([])
 
-        orders.sort(key=lambda x: x.store)
+    #     orders.sort(key=lambda x: x.store)
 
-        headers = ['Store', 'Vendor', 'Date', 'Items', 'Cases']
+    #     headers = ['Store', 'Vendor', 'Date', 'Items', 'Cases']
 
-        formatted_orders = [[order.store, order.vendor, order.date, len(order.items), sum([int(i.quantity) for i in order.items])] for order in orders]
+    #     formatted_orders = [[order.store, order.vendor, order.date, len(order.items), sum([int(i.quantity) for i in order.items])] for order in orders]
 
-        if show_pricing:
-            headers.append('Total Cost')
-            for pos, order in enumerate(orders):
-                total_cost = sum(float(item.total_cost) for item in order.items if item.total_cost) if show_pricing else 'N/A'
-                formatted_orders[pos].append(f'${total_cost:.2f}')
+    #     if show_pricing:
+    #         headers.append('Total Cost')
+    #         for pos, order in enumerate(orders):
+    #             total_cost = sum(float(item.total_cost) for item in order.items if item.total_cost) if show_pricing else 'N/A'
+    #             formatted_orders[pos].append(f'${total_cost:.2f}')
         
-        if show_minimums:
-            headers.extend(['Min. Price', 'Min. Cases'])
-            for pos, order in enumerate(orders):
-                vendor_information = self.workbot.get_vendor_information(order.vendor)
+    #     if show_minimums:
+    #         headers.extend(['Min. Price', 'Min. Cases'])
+    #         for pos, order in enumerate(orders):
+    #             vendor_information = self.workbot.get_vendor_information(order.vendor)
 
-                min_order_price = vendor_information['min_order_value'] if 'min_order_value' in vendor_information else ''
-                min_order_cases = vendor_information['min_order_cases'] if 'min_order_cases' in vendor_information else ''
+    #             min_order_price = vendor_information['min_order_value'] if 'min_order_value' in vendor_information else ''
+    #             min_order_cases = vendor_information['min_order_cases'] if 'min_order_cases' in vendor_information else ''
                 
-                total_cost = sum(float(item.total_cost) for item in order.items if item.total_cost) if show_pricing else 'N/A'
+    #             total_cost = sum(float(item.total_cost) for item in order.items if item.total_cost) if show_pricing else 'N/A'
                 
-                # Check if the order meets vendor minimums
-                # below_min_value = total_cost < min_order_price
-                # below_min_cases = len(order.items) < min_order_cases
+    #             # Check if the order meets vendor minimums
+    #             # below_min_value = total_cost < min_order_price
+    #             # below_min_cases = len(order.items) < min_order_cases
 
-                # total_cost_str = colored(f'${total_cost:.2f}', 'red') if below_min_value else f'${total_cost:.2f}'
-                # min_order_value_str = colored(f'${min_order_price:.2f}', 'red') if below_min_value else f'${min_order_price:.2f}'
-                # min_order_cases_str = colored(str(min_order_cases), 'red') if below_min_cases else str(min_order_cases)
+    #             # total_cost_str = colored(f'${total_cost:.2f}', 'red') if below_min_value else f'${total_cost:.2f}'
+    #             # min_order_value_str = colored(f'${min_order_price:.2f}', 'red') if below_min_value else f'${min_order_price:.2f}'
+    #             # min_order_cases_str = colored(str(min_order_cases), 'red') if below_min_cases else str(min_order_cases)
 
-                formatted_orders[pos].extend([min_order_price, min_order_cases])
+    #             formatted_orders[pos].extend([min_order_price, min_order_cases])
 
-        return tabulate(formatted_orders, headers=headers, tablefmt='grid')
+    #     return tabulate(formatted_orders, headers=headers, tablefmt='grid')
 
-    def _autocomplete_list_orders(self, flag: str, text: str):
+    # def _autocomplete_list_orders(self, flag: str, text: str):
         
-        flags = {
-            '--stores': self._get_stores,
-            '--vendors': self._get_vendors
-        }
+    #     flags = {
+    #         '--stores': self._get_stores,
+    #         '--vendors': self._get_vendors
+    #     }
         
-        return [option for option in flags.get(flag, [])() if option.startswith(text)]
+    #     return [option for option in flags.get(flag, [])() if option.startswith(text)]
 
 
 # GENERATE VENDOR UPLOAD FILES
-    def args_generate_vendor_upload_files(self):
-        parser = argparse.ArgumentParser(prog='generate_vendor_upload_files', description='Generate a vendor-specific upload file.')
-        parser.add_argument('--stores', nargs='+', help='List of store names (default: all).')       
-        parser.add_argument('--vendors', nargs='+', help='List of vendors (default: all).')
-        parser.add_argument('--start_date', help='Start of date range for lookup (yyyy-mm-dd)')
-        parser.add_argument('--end_date', help='End of date range for lookup (yyyy-mm-dd)')
-        return parser
+    # def args_generate_vendor_upload_files(self):
+    #     parser = argparse.ArgumentParser(prog='generate_vendor_upload_files', description='Generate a vendor-specific upload file.')
+    #     parser.add_argument('--stores', nargs='+', help='List of store names (default: all).')       
+    #     parser.add_argument('--vendors', nargs='+', help='List of vendors (default: all).')
+    #     parser.add_argument('--start_date', help='Start of date range for lookup (yyyy-mm-dd)')
+    #     parser.add_argument('--end_date', help='End of date range for lookup (yyyy-mm-dd)')
+    #     return parser
     
-    def cmd_generate_vendor_upload_files(self, args):
-        parser = self.args_generate_vendor_upload_files()
-        try:
-            parsed_args = parser.parse_args(args)
+    # def cmd_generate_vendor_upload_files(self, args):
+    #     parser = self.args_generate_vendor_upload_files()
+    #     try:
+    #         parsed_args = parser.parse_args(args)
 
-            paths = self.workbot.generate_vendor_upload_files(
-                stores=parsed_args.stores,
-                vendors=parsed_args.vendors,
-                start_date=parsed_args.start_date,
-                end_date=parsed_args.end_date
-            )
+    #         paths = self.workbot.generate_vendor_upload_files(
+    #             stores=parsed_args.stores,
+    #             vendors=parsed_args.vendors,
+    #             start_date=parsed_args.start_date,
+    #             end_date=parsed_args.end_date
+    #         )
 
-            print('\nUpload files generated successfully.\n')
-        except SystemExit:
-            pass
+    #         print('\nUpload files generated successfully.\n')
+    #     except SystemExit:
+    #         pass
 
-    def _autocomplete_generate_vendor_upload_files(self, flag: str, text: str):
+    # def _autocomplete_generate_vendor_upload_files(self, flag: str, text: str):
         
-        flags = {
-            '--stores': self._get_stores,
-            '--vendors': self._get_vendors
-        }
+    #     flags = {
+    #         '--stores': self._get_stores,
+    #         '--vendors': self._get_vendors
+    #     }
         
-        return [option for option in flags.get(flag, [])() if option.startswith(text)]
+    #     return [option for option in flags.get(flag, [])() if option.startswith(text)]
 
 
 # DELETE ORDERS
@@ -430,10 +436,10 @@ Internal Contacts:
     
 # PRIVATE FUNCTIONS    
     def _get_stores(self):
-        return [store.name for store in self.workbot.stores.list_stores()]
+        return [store.name for store in self.workbot.list_all_stores()]
     
     def _get_vendors(self):
-        return sorted([vendor.name for vendor in self.workbot.vendors.list_vendors()])
+        return sorted([vendor.name for vendor in self.workbot.list_all_vendors()])
 
     # def show_help(self, args):
     #     '''Displays available commands.'''

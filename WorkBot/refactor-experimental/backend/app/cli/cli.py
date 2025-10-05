@@ -15,6 +15,10 @@ except ImportError:
     sys.modules['readline'] = pry
     import readline
 
+import importlib
+import pkgutil
+
+from .commands.command import Command, CommandContext
 # from backend.errors import (
 #     WorkBotError,
 #     CLIInputError,
@@ -60,15 +64,35 @@ class CLI:
                 count += 1
         self.logger.debug(f'Registered {count} commands: {list(self.commands.keys())}')
 
-    def _register_autocomplete(self) -> None:
-        count = 0
-        for function_name in dir(self):
-            prefix = '_autocomplete_'
-            if function_name.startswith(prefix):
-                autocomplete_name = function_name[len(prefix):]
-                self.autocomplete_registry[autocomplete_name] = getattr(self, function_name)
-                count += 1
-        self.logger.debug(f'Registered {count} autocomplete handlers.')
+
+    def load_commands_from_package(self, package_name: str, context):
+            """Dynamically load Command subclasses from a package."""
+            package = importlib.import_module(package_name)
+            count = 0
+
+            for _, mod_name, is_pkg in pkgutil.iter_modules(package.__path__):
+                if is_pkg:
+                    continue
+                module = importlib.import_module(f"{package_name}.{mod_name}")
+
+                for attr_name in dir(module):
+                    attr = getattr(module, attr_name)
+                    if (
+                        isinstance(attr, type)
+                        and issubclass(attr, Command)
+                        and attr is not Command
+                    ):
+                        cmd = attr(context)
+                        self.commands[cmd.name] = cmd
+
+                        if callable(cmd.autocomplete):
+                            self.autocomplete_registry[cmd.name] = cmd.autocomplete
+
+                        count += 1
+            self.logger.info(f"Loaded {count} commands from {package_name}")
+
+
+
     
     # endregion
 
@@ -97,6 +121,17 @@ class CLI:
         readline.set_history_length(100)
         self._register_autocomplete()
 
+                    
+    def _register_autocomplete(self) -> None:
+        count = 0
+        for function_name in dir(self):
+            prefix = '_autocomplete_'
+            if function_name.startswith(prefix):
+                autocomplete_name = function_name[len(prefix):]
+                self.autocomplete_registry[autocomplete_name] = getattr(self, function_name)
+                count += 1
+        self.logger.debug(f'Registered {count} autocomplete handlers.')
+
     # endregion
 
     # region ---- Autocompletion Core ----
@@ -105,7 +140,7 @@ class CLI:
         '''Autocompletion entry point registered with readline.
 
         This method is invoked repeatedly by the readline library during TAB completion.
-        It is responsible for returning the nth matching completion for the given `text`.
+        It is responsible for returning the Nth matching completion for the given "text".
 
         Parameters:
             text (str): The current word fragment that the user is attempting to complete.
@@ -116,7 +151,7 @@ class CLI:
                         will increment state and expect the next possible match.
 
         Returns:
-            Optional[str]: The `state`-th matching completion string if available;
+            Optional[str]: The "state"-th matching completion string if available;
                         otherwise, None to signal no more matches.
 
         Completion Logic:
@@ -124,25 +159,25 @@ class CLI:
         1. If the input buffer is empty, suggest all registered commands.
         2. If the input buffer has only one word fragment (no space yet), suggest commands that match the input prefix.
         3. If the buffer contains a command and flags/arguments:
-        - Delegate to `_complete_arguments()` to determine whether to suggest:
+        - Delegate to "_complete_arguments()" to determine whether to suggest:
             - Valid flags for the given command
             - Values for the current flag based on context
             - Nothing if context is ambiguous or invalid
 
         Internally Uses:
         ----------------
-        - `readline.get_line_buffer()` to access the full input buffer
-        - `_complete_commands()` for top-level command name suggestions
-        - `_complete_arguments()` for argument-level parsing and completion
+        - "readline.get_line_buffer()" to access the full input buffer
+        - "_complete_commands()" for top-level command name suggestions
+        - "_complete_arguments()" for argument-level parsing and completion
 
         Example:
-            Input:  'download_orders --sto'
-            text:   '--sto'
-            state:  0 → returns '--stores'
-            state:  1 → returns None (if no more matches)
+            Input:  "download_orders --sto"
+            text:   "--sto"
+            state:  0 -> returns "--stores"
+            state:  1 -> returns None (if no more matches)
 
         Integration:
-            This method is registered once via `readline.set_completer(self._completer)`
+            This method is registered once via "readline.set_completer(self._completer)"
             during CLI initialization.
 
         Notes:
@@ -168,40 +203,40 @@ class CLI:
     def _complete_arguments(self, buffer: str, text: str) -> list[str]:
         '''Determines context-aware autocompletion suggestions for a given command buffer.
 
-        This method is invoked by `_completer()` when the user has typed beyond a single command.
+        This method is invoked by "_completer()" when the user has typed beyond a single command.
         It attempts to infer whether the user is typing a flag or a flag's argument, and routes
         the query accordingly.
 
         Parameters:
-            buffer (str): The full raw input line from the user, as retrieved from `readline`.
-                        Example: 'download_orders --stores 'Dow'
+            buffer (str): The full raw input line from the user, as retrieved from "readline".
+                        Example: "download_orders --stores "Dow"
             text (str):   The current word fragment under the cursor. Typically the word being typed
-                        (e.g., 'Dow', '--ven', etc.) and used to match completions.
+                        (e.g., "Dow", "--ven", etc.) and used to match completions.
 
         Returns:
             list[str]: A list of string completions that match the inferred context, suitable
-                    for feeding back to the readline `completer()` function.
+                    for feeding back to the readline "completer()" function.
 
         Completion Cases Handled:
         --------------------------
-        1. Typing a flag (e.g., '--ven' → suggests `--vendors`)
-        2. Typing a value for a known flag (e.g., `--stores 'Dow` → suggests `Downtown`)
+        1. Typing a flag (e.g., "--ven" → suggests "--vendors")
+        2. Typing a value for a known flag (e.g., "--stores Dow" → suggests "Downtown")
         3. Typing inside a partially-quoted flag value
         4. Single flag position after command (fallback case)
         5. Fallback to empty list when context is not understood or ambiguous
 
         Behavior:
         ---------
-        - Tries to split the buffer using `shlex.split()` to preserve quoted values.
-        - Falls back to a basic `split()` if quotes are incomplete or invalid.
+        - Tries to split the buffer using "shlex.split()" to preserve quoted values.
+        - Falls back to a basic "split()" if quotes are incomplete or invalid.
         - Uses regex to extract previously typed flags from the buffer.
-        - Resolves the most recent valid flag using `_get_last_valid_flag()`.
-        - Delegates value suggestions to `_get_autocomplete_values()` if appropriate.
+        - Resolves the most recent valid flag using "_get_last_valid_flag()".
+        - Delegates value suggestions to "_get_autocomplete_values()" if appropriate.
 
         Example:
-            buffer = 'download_orders --stores 'Dow'
-            text   = 'Dow'
-            returns → ['Downtown']
+            buffer = "download_orders --stores Dow"
+            text   = "Dow"
+            returns → ["Downtown"]
 
         Performance:
             Fast and stateless; avoids mutation and heavy parsing.
@@ -257,7 +292,7 @@ class CLI:
         '''Invokes the appropriate autocomplete handler for a given command and flag.
 
         This method is responsible for routing value completions (e.g. store names,
-        vendor names) to the correct handler defined by the subclass (e.g. `_autocomplete_download_orders`).
+        vendor names) to the correct handler defined by the subclass (e.g. "_autocomplete_download_orders").
 
         Parameters:
             command (str): The command being executed (e.g. 'download_orders').
@@ -269,14 +304,14 @@ class CLI:
 
         Quoted Value Handling:
         ----------------------
-        - If `text` appears to be quoted (e.g., ''Dow'), it is unwrapped before being passed to the handler.
+        - If "text" appears to be quoted (e.g., ''Dow'), it is unwrapped before being passed to the handler.
         - Returned completions will be re-wrapped in matching quotes to preserve shell safety.
 
         Assumptions:
         ------------
-        - A corresponding `_autocomplete_<command>()` handler exists and is registered
-        in `self.autocomplete_registry[command]`.
-        - The handler accepts `(flag: str, text: str)` and returns a list of strings.
+        - A corresponding "_autocomplete_<command>()" handler exists and is registered
+        in "self.autocomplete_registry[command]".
+        - The handler accepts "(flag: str, text: str)" and returns a list of strings.
 
         Example Handler Signature:
             def _autocomplete_download_orders(self, flag: str, text: str) -> list[str]:

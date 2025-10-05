@@ -24,6 +24,9 @@ class GenericFileAdapter(GenericFilePort, Generic[T]):
         self.store.ensure_dir(base)
         return base
 
+    def ensure_dir(self, path: Path) -> None:
+        self.store.ensure_dir(path)
+
     def get_file_path(self, obj: T, format) -> Path:
         return self.namer.path_for(obj, format=format)
     
@@ -31,7 +34,7 @@ class GenericFileAdapter(GenericFilePort, Generic[T]):
         return self.namer.parse_filename_for_metadata(filename)
     
     def list_files(self, pattern = "*"):
-        return self.store.list_paths(self.directory(), pattern)
+        return self.store.list_paths(self.get_directory(), pattern)
     
     def read_from_path(self, path):
         # Prefer serializer.load_path if available
@@ -70,6 +73,8 @@ class GenericFileAdapter(GenericFilePort, Generic[T]):
                 matches.append(self.read_from_path(path))
         return matches
     
+    def preferred_format(self) -> str:
+        return self.serializer.preferred_format()
     
     # ----- LEGACY ----- #
     # ----- discovery -----

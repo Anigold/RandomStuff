@@ -18,7 +18,7 @@ class OrderSerializer(Serializer[Order]):
         return self.default_format
 
     # ---- Core protocol ----
-    def dumps(self, obj: Order, format: Optional[str] = None) -> bytes:
+    def dumps(self, obj: Order, format: Optional[str] = None, context: dict | None = None) -> bytes:
         fmt = format or self.preferred_format()
         formatter = get_formatter(fmt)
 
