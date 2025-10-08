@@ -37,9 +37,11 @@ class GenericFileAdapter(GenericFilePort, Generic[T]):
         return self.store.list_paths(self.get_directory(), pattern)
     
     def read_from_path(self, path):
+        
         # Prefer serializer.load_path if available
         if hasattr(self.serializer, "load_path"):
             return self.serializer.load_path(path)
+        
         data = self.store.read_bytes(path)
         return self.serializer.loads(data)
     
@@ -63,16 +65,30 @@ class GenericFileAdapter(GenericFilePort, Generic[T]):
 
     def find(self, **criteria) -> list[T]:
         """
-        Find domain objects matching metadata criteria.
-        Example: find(vendor="Sysco", store="Bakery")
+        Domain-agnostic file discovery and filtering by metadata.
+
+        Delegates:
+        - file enumeration to BlobStore.iter_files()
+        - metadata extraction to Namer.parse_path_metadata()
         """
+        base = self.get_directory()
         matches: list[T] = []
-        for path in self.list_files():
-            meta = self.parse_filename(path.name)
-            if all(meta.get(k) == v for k, v in criteria.items()):
-                matches.append(self.read_from_path(path))
+
+        for path in self.store.iter_files(base):
+            meta = self.namer.parse_path_metadata(path)
+            if not meta: continue
+            # print(f'Meta: {meta}', flush=True)
+            # print(f'Criteria: {criteria}')
+            
+            if all(meta.get(k) == v for k, v in criteria.items()):  
+                try:
+                    matches.append(self.read_from_path(path))
+                except Exception as e:
+                    self.logger.warning(f"Skipping unreadable file {path}: {e}")
+        # print(matches, flush=True)
         return matches
-    
+        
+   
     def preferred_format(self) -> str:
         return self.serializer.preferred_format()
     

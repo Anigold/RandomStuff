@@ -29,13 +29,12 @@ class OrderFilenameStrategy(Namer[Order]):
         return f"{obj.vendor}_{obj.store}_{date_str}.{ext}"
 
     def directory_for(self, order: Order) -> Path:
-        # Sort by vendor name
         return self.base_dir() / order.vendor
     
     def path_for(self, order: Order, *, format: str) -> Path:
         return (self.directory_for(order) / self.filename(order, format=format)).resolve()
     
-    def upload_path_for(self, order: Order):
+    def upload_path_for(self, order: Order) -> Path:
         return (self._upload_base / order.vendor / self.filename(order, order.vendor)).resolve()
     
     def parse_metadata_for_filename(
@@ -56,3 +55,13 @@ class OrderFilenameStrategy(Namer[Order]):
             "vendor": vendor,
             "date":   date_str,
         }
+
+    def parse_path_metadata(self, path: Path) -> dict[str, str]:
+        """
+        Combine filename metadata with directory-based vendor info.
+        """
+        meta = self.parse_filename_for_metadata(path.name)
+        if not meta.get("vendor"):
+            # infer vendor from parent directory
+            meta["vendor"] = path.parent.name
+        return meta

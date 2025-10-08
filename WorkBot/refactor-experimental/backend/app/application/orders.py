@@ -1,6 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass
-from typing import Optional, Callable
+from typing import Optional, Callable, List
 
 from backend.app.ports import OrderRepository, DownloadPort
 from backend.domain.models import Order
@@ -13,7 +13,7 @@ from backend.infra.logger import Logger
 @dataclass(frozen=True)
 class ListOrders:
     repo: OrderRepository
-    def __call__(self) -> list[Order]:
+    def __call__(self) -> List[Order]:
         self.logger.info("Listing all orders")
         return self.repo.list_all()
 
@@ -22,7 +22,7 @@ class ListOrders:
 @dataclass(frozen=True)
 class GetOrdersByVendor:
     repo: OrderRepository
-    def __call__(self, vendor: str) -> list[Order]:
+    def __call__(self, vendor: str) -> List[Order]:
         self.logger.info(f"Listing orders for vendor={vendor}")
         return self.repo.list_by_vendor(vendor)
 
@@ -31,7 +31,7 @@ class GetOrdersByVendor:
 @dataclass(frozen=True)
 class GetOrdersByStore:
     repo: OrderRepository
-    def __call__(self, store: str) -> list[Order]:
+    def __call__(self, store: str) -> List[Order]:
         self.logger.info(f"Listing orders for store={store}")
         return self.repo.list_by_store(store)
 
@@ -42,8 +42,21 @@ class GetOrder:
     repo: OrderRepository
     def __call__(self, vendor: str, store: str, date: Optional[str] = None) -> Order:
         self.logger.info(f"Getting order vendor={vendor}, store={store}, date={date}")
-        return self.repo.get(vendor, store, date)
+        return self.repo.get(store, vendor, date)
 
+@Logger.attach_logger
+@dataclass(frozen=True)
+class GetOrders:
+    repo: OrderRepository
+    get_order: GetOrder
+    def __call__(self, vendors: str, stores: str, dates: Optional[List[str]] = None) -> List[Order]:
+        self.logger.info(f"Getting order vendors={vendors}, stores={stores}, dates={dates}")
+        orders = []
+        for vendor in vendors:
+            for store in stores:
+                if not dates:
+                    orders.append(self.get_order(vendor, store))
+        return orders
 
 # ========== COMMANDS ==========
 

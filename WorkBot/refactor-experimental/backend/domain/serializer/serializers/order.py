@@ -3,7 +3,7 @@ from typing import Optional
 from backend.domain.models import Order, OrderItem
 from backend.app.ports.generic import Serializer
 from ..formats import get_formatter
-
+from pprint import pprint
 
 class OrderSerializer(Serializer[Order]):
     """
@@ -39,11 +39,13 @@ class OrderSerializer(Serializer[Order]):
             return self.from_dict(payload)
 
     def load_path(self, path: Path) -> Order:
-
+        print(f'Loading path: {self}')
         fmt = path.suffix.lstrip(".").lower()
+
         formatter = get_formatter(fmt)
+
         payload = formatter.load_path(path)
-        return self.from_dict(payload)
+        return self._from_formatter(payload)
 
     # ---- Domain <-> dict ----
     def to_dict(self, order: Order) -> dict:
@@ -84,7 +86,6 @@ class OrderSerializer(Serializer[Order]):
             items=items,
         )
 
-
     def _to_table(self, order_dict: dict, context: dict | None = None) -> dict:
         metadata = {
             'store': order_dict.get('store', ''),
@@ -115,3 +116,22 @@ class OrderSerializer(Serializer[Order]):
         }
 
         return self.from_dict(data)
+    
+    def _from_formatter(self, data: dict) -> Order:
+        meta = data.get("metadata", {})
+        items = [
+            OrderItem(
+                sku=i.get("sku", ""),
+                name=i.get("name", ""),
+                quantity=i.get("quantity", 0),
+                cost_per=i.get("cost_per", 0),
+                total_cost=i.get("total_cost", 0),
+            )
+            for i in data.get("rows", [])
+        ]
+        return Order(
+            store=meta.get("store", ""),
+            vendor=meta.get("vendor", ""),
+            date=meta.get("date", ""),
+            items=items,
+        )

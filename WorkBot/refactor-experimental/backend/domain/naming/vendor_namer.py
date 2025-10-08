@@ -38,3 +38,5 @@ class VendorFilenameStrategy(Namer[Vendor]):
         """Extract vendor name from a filename."""
         stem = Path(filename).stem
         return {"name": stem.replace("_", " ")}
+    
+    

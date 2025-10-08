@@ -21,7 +21,10 @@ class OrderFileRepository(OrderRepository):
     def get(self, vendor: str, store: str, date: str | None = None) -> Order:
         """Get the current or specific dated order for vendor+store."""
         matches = self._engine.find(vendor=vendor, store=store)
-
+        # print(matches, flush=True)
+        print(matches, flush=True)
+        return matches[0] if len(matches) > 1 else None
+        print(matches, flush=True)
         if date:
             matches = [o for o in matches if o.date == date]
 

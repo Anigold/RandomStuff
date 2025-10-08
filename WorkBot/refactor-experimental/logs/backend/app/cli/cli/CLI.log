@@ -1979,3 +1979,893 @@ TypeError: 'DownloadOrders' object is not callable
 2025-10-05 19:55:07,921 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: None.
 2025-10-05 19:55:25,731 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
 2025-10-05 19:55:25,733 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 07:06:47,856 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 07:06:47,872 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 07:06:47,873 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 07:06:47,911 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 07:06:47,912 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 07:06:49,387 - INFO - backend.app.cli.cli.CLI - (cli.py:195) - Singular input.
+2025-10-08 07:06:49,387 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: download_audits.
+2025-10-08 07:06:49,387 - INFO - backend.app.cli.cli.CLI - (cli.py:195) - Singular input.
+2025-10-08 07:06:49,387 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: download_orders.
+2025-10-08 07:06:49,387 - INFO - backend.app.cli.cli.CLI - (cli.py:195) - Singular input.
+2025-10-08 07:06:49,387 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: None.
+2025-10-08 07:06:49,867 - INFO - backend.app.cli.cli.CLI - (cli.py:195) - Singular input.
+2025-10-08 07:06:49,867 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: download_orders.
+2025-10-08 07:06:49,867 - INFO - backend.app.cli.cli.CLI - (cli.py:195) - Singular input.
+2025-10-08 07:06:49,867 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: None.
+2025-10-08 07:06:51,883 - INFO - backend.app.cli.cli.CLI - (cli.py:198) - Multiple input.
+2025-10-08 07:06:51,883 - INFO - backend.app.cli.cli.CLI - (cli.py:270) - Case 1: Typing or completing a flag
+2025-10-08 07:06:51,884 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: None.
+2025-10-08 07:07:15,205 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-10-08 07:07:15,206 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] download_orders failed: 'DownloadOrders' object is not callable
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+TypeError: 'DownloadOrders' object is not callable
+2025-10-08 07:08:19,565 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 07:08:19,568 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 07:08:23,815 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 07:08:23,831 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 07:08:23,831 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 07:08:23,840 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 07:08:23,840 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 07:08:24,775 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-10-08 07:11:30,110 - INFO - backend.app.cli.cli.CLI - (cli.py:463) - Command 'download_orders' executed successfully.
+2025-10-08 07:11:44,750 - INFO - backend.app.cli.cli.CLI - (cli.py:195) - Singular input.
+2025-10-08 07:11:44,750 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: generate_store_order_emails.
+2025-10-08 07:11:44,750 - INFO - backend.app.cli.cli.CLI - (cli.py:195) - Singular input.
+2025-10-08 07:11:44,750 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: generate_vendor_order_emails.
+2025-10-08 07:11:44,750 - INFO - backend.app.cli.cli.CLI - (cli.py:195) - Singular input.
+2025-10-08 07:11:44,750 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: generate_vendor_upload_files.
+2025-10-08 07:11:44,750 - INFO - backend.app.cli.cli.CLI - (cli.py:195) - Singular input.
+2025-10-08 07:11:44,750 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: None.
+2025-10-08 07:11:46,278 - INFO - backend.app.cli.cli.CLI - (cli.py:195) - Singular input.
+2025-10-08 07:11:46,278 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: generate_vendor_order_emails.
+2025-10-08 07:11:46,278 - INFO - backend.app.cli.cli.CLI - (cli.py:195) - Singular input.
+2025-10-08 07:11:46,278 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: generate_vendor_upload_files.
+2025-10-08 07:11:46,278 - INFO - backend.app.cli.cli.CLI - (cli.py:195) - Singular input.
+2025-10-08 07:11:46,278 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: None.
+2025-10-08 07:11:47,734 - INFO - backend.app.cli.cli.CLI - (cli.py:195) - Singular input.
+2025-10-08 07:11:47,734 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: generate_vendor_upload_files.
+2025-10-08 07:11:47,734 - INFO - backend.app.cli.cli.CLI - (cli.py:195) - Singular input.
+2025-10-08 07:11:47,734 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: None.
+2025-10-08 07:11:49,006 - INFO - backend.app.cli.cli.CLI - (cli.py:198) - Multiple input.
+2025-10-08 07:11:49,006 - INFO - backend.app.cli.cli.CLI - (cli.py:270) - Case 1: Typing or completing a flag
+2025-10-08 07:11:49,006 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: None.
+2025-10-08 07:11:52,086 - INFO - backend.app.cli.cli.CLI - (cli.py:198) - Multiple input.
+2025-10-08 07:11:52,086 - INFO - backend.app.cli.cli.CLI - (cli.py:270) - Case 1: Typing or completing a flag
+2025-10-08 07:11:52,086 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: None.
+2025-10-08 07:11:52,310 - INFO - backend.app.cli.cli.CLI - (cli.py:198) - Multiple input.
+2025-10-08 07:11:52,310 - INFO - backend.app.cli.cli.CLI - (cli.py:270) - Case 1: Typing or completing a flag
+2025-10-08 07:11:52,310 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: None.
+2025-10-08 07:11:54,046 - INFO - backend.app.cli.cli.CLI - (cli.py:198) - Multiple input.
+2025-10-08 07:11:54,046 - INFO - backend.app.cli.cli.CLI - (cli.py:270) - Case 1: Typing or completing a flag
+2025-10-08 07:11:54,046 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: None.
+2025-10-08 07:12:03,416 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 07:12:03,417 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'OrderServices' object has no attribute 'get_order_files'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 203, in generate_vendor_upload_files
+    order_file_paths = self.get_order_files(stores=stores, vendors=vendors, formats=['xlsx'])
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 121, in get_order_files
+    return self.orders.get_order_files(stores=stores, vendors=vendors, formats=formats)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'OrderServices' object has no attribute 'get_order_files'
+2025-10-08 07:26:00,974 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 07:26:00,977 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 07:26:10,451 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 07:26:10,468 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 07:26:10,468 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 07:26:10,478 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 07:26:10,478 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 07:26:12,905 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 07:26:12,908 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: No order found for vendor=Bakery, store=Hill & Markes, date=None
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 205, in generate_vendor_upload_files
+    orders = self.get_orders(vendors, stores)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 125, in get_orders
+    return self.orders.get_orders(vendors, stores)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 58, in __call__
+    orders.append(self.get_order(vendor, store))
+                  ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 45, in __call__
+    return self.repo.get(vendor, store, date)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\repos\order_file_repository.py", line 29, in get
+    raise FileNotFoundError(f"No order found for vendor={vendor}, store={store}, date={date}")
+FileNotFoundError: No order found for vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 07:27:15,902 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 07:27:15,905 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 07:27:18,425 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 07:27:18,433 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 07:27:18,433 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 07:27:18,441 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 07:27:18,442 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 07:27:19,793 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 07:27:19,795 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: No order found for vendor=Bakery, store=Hill & Markes, date=None
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 205, in generate_vendor_upload_files
+    orders = self.get_orders(vendors, stores)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 125, in get_orders
+    return self.orders.get_orders(vendors, stores)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 58, in __call__
+    orders.append(self.get_order(vendor, store))
+                  ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 45, in __call__
+    return self.repo.get(vendor, store, date)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\repos\order_file_repository.py", line 29, in get
+    raise FileNotFoundError(f"No order found for vendor={vendor}, store={store}, date={date}")
+FileNotFoundError: No order found for vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 07:27:46,575 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 07:27:46,579 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 07:27:49,260 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 07:27:49,268 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 07:27:49,268 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 07:27:49,276 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 07:27:49,276 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 07:27:50,257 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 07:27:50,276 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: No order found for vendor=Bakery, store=Hill & Markes, date=None
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 205, in generate_vendor_upload_files
+    orders = self.get_orders(vendors, stores)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 125, in get_orders
+    return self.orders.get_orders(vendors, stores)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 58, in __call__
+    orders.append(self.get_order(vendor, store))
+                  ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 45, in __call__
+    return self.repo.get(vendor, store, date)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\repos\order_file_repository.py", line 29, in get
+    raise FileNotFoundError(f"No order found for vendor={vendor}, store={store}, date={date}")
+FileNotFoundError: No order found for vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 08:43:49,419 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 08:43:49,424 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 08:43:52,961 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 08:43:52,969 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 08:43:52,969 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 08:43:52,978 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 08:43:52,978 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 08:43:54,775 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 08:43:54,785 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'list' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'vendor'
+2025-10-08 08:44:16,764 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 08:44:16,768 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 08:44:19,466 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 08:44:19,474 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 08:44:19,475 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 08:44:19,483 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 08:44:19,484 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 08:44:20,215 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 08:44:20,225 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'list' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'vendor'
+2025-10-08 08:50:05,991 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 08:50:05,993 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 08:50:09,617 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 08:50:09,624 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 08:50:09,624 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 08:50:09,633 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 08:50:09,633 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 08:50:10,714 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 08:50:10,724 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 08:51:14,385 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 08:51:14,388 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 08:51:17,675 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 08:51:17,683 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 08:51:17,684 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 08:51:17,692 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 08:51:17,692 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 08:51:18,613 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 08:51:18,623 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 08:52:12,507 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 08:52:12,510 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 08:52:15,826 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 08:52:15,833 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 08:52:15,833 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 08:52:15,842 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 08:52:15,842 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 08:52:16,703 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 08:52:16,789 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 08:53:03,548 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 08:53:03,553 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 08:53:13,612 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 08:53:13,619 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 08:53:13,620 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 08:53:13,628 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 08:53:13,628 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 08:53:14,568 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 08:53:14,578 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 08:54:48,599 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 08:54:48,601 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 08:54:52,331 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 08:54:52,339 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 08:54:52,339 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 08:54:52,347 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 08:54:52,347 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 08:54:53,131 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 08:54:53,141 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 08:55:04,136 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 08:55:04,139 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 08:55:06,391 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 08:55:06,399 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 08:55:06,399 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 08:55:06,407 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 08:55:06,407 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 08:55:07,738 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 08:55:07,748 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 08:55:27,232 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 08:55:27,238 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 08:55:31,821 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 08:55:31,828 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 08:55:31,828 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 08:55:31,836 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 08:55:31,836 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 08:55:32,548 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 08:55:32,558 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 08:55:53,049 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 08:55:53,052 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 08:55:55,518 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 08:55:55,525 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 08:55:55,526 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 08:55:55,534 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 08:55:55,534 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 08:55:56,716 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 08:55:56,758 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 08:57:06,643 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 08:57:06,648 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 08:57:10,632 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 08:57:10,640 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 08:57:10,640 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 08:57:10,648 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 08:57:10,648 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 08:57:25,567 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 08:57:25,605 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:21:22,396 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 10:21:22,402 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 10:21:25,491 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 10:21:25,499 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 10:21:25,499 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 10:21:25,507 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 10:21:25,508 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 10:21:26,351 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:21:26,415 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:23:39,679 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 10:23:39,682 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 10:23:42,396 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 10:23:42,403 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 10:23:42,403 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 10:23:42,413 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 10:23:42,413 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 10:23:45,801 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:23:45,865 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:24:29,848 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 10:24:29,853 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 10:24:32,704 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 10:24:32,711 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 10:24:32,712 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 10:24:32,720 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 10:24:32,720 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 10:24:33,418 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:24:33,488 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:26:52,970 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 10:26:52,975 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 10:26:55,507 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 10:26:55,514 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 10:26:55,514 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 10:26:55,523 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 10:26:55,523 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 10:26:56,477 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:26:56,546 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:27:08,683 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 10:27:08,688 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 10:27:11,205 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 10:27:11,212 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 10:27:11,212 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 10:27:11,221 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 10:27:11,221 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 10:27:12,118 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:27:12,189 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:28:25,615 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:28:25,689 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:28:26,924 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 10:28:26,928 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 10:28:30,442 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 10:28:30,449 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 10:28:30,450 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 10:28:30,458 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 10:28:30,458 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 10:28:31,439 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:28:31,504 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:28:45,549 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 10:28:45,554 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 10:28:48,231 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 10:28:48,239 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 10:28:48,239 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 10:28:48,247 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 10:28:48,247 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 10:28:49,136 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:28:49,194 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:29:41,070 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 10:29:41,075 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 10:29:43,212 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 10:29:43,219 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 10:29:43,219 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 10:29:43,228 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 10:29:43,228 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 10:31:34,018 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:31:34,243 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:33:21,482 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 10:33:21,487 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 10:33:35,230 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 10:33:35,237 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 10:33:35,237 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 10:33:35,246 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 10:33:35,246 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 10:33:36,069 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:33:36,101 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:37:41,023 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 10:37:41,026 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 10:37:57,794 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 10:37:57,802 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 10:37:57,802 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 10:37:57,810 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 10:37:57,810 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 10:37:58,449 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:37:58,467 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:39:58,993 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 10:39:58,996 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 10:40:01,962 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 10:40:01,969 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 10:40:01,970 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 10:40:01,978 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 10:40:01,979 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 10:40:03,222 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:40:03,241 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:40:50,530 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 10:40:50,534 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 10:40:53,324 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 10:40:53,331 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 10:40:53,331 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 10:40:53,340 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 10:40:53,340 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 10:40:53,902 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:40:53,918 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:41:24,331 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 10:41:24,335 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 10:41:26,842 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 10:41:26,850 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 10:41:26,850 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 10:41:26,858 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 10:41:26,858 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 10:41:27,437 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:41:27,456 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:41:57,003 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 10:41:57,007 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 10:41:59,469 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 10:41:59,476 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 10:41:59,476 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 10:41:59,485 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 10:41:59,485 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 10:42:00,215 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:42:00,237 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:42:22,532 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 10:42:22,535 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 10:42:25,269 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 10:42:25,276 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 10:42:25,276 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 10:42:25,284 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 10:42:25,284 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 10:42:25,798 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:42:25,816 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:42:37,788 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 10:42:37,793 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 10:42:39,920 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 10:42:39,928 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 10:42:39,928 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 10:42:39,936 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 10:42:39,936 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 10:42:40,535 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:42:40,564 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 11:03:15,521 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 11:03:15,525 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 11:06:08,073 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 11:06:08,081 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 11:06:08,081 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 11:06:08,090 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 11:06:08,090 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 11:06:08,864 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 11:06:08,880 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 11:06:22,541 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 11:06:22,545 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 11:06:25,227 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 11:06:25,234 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 11:06:25,235 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 11:06:25,243 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 11:06:25,243 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 11:06:26,616 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 11:06:26,632 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 11:07:36,006 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 11:07:36,009 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 11:07:38,851 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 11:07:38,858 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 11:07:38,858 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 11:07:38,867 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 11:07:38,867 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 11:07:39,433 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 11:07:39,450 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 16:41:58,236 - WARNING - backend.app.cli.cli.CLI - (cli.py:456) - Unknown command entered: 'cls'
+2025-10-08 16:41:59,685 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 16:41:59,688 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.

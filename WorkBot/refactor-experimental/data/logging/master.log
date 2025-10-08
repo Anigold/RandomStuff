@@ -10211,3 +10211,1377 @@ TypeError: 'DownloadOrders' object is not callable
 2025-10-05 19:55:07,921 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: None.
 2025-10-05 19:55:25,731 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
 2025-10-05 19:55:25,733 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 07:06:47,855 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 07:06:47,856 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 07:06:47,856 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 07:06:47,872 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 07:06:47,873 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 07:06:47,911 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 07:06:47,912 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 07:06:49,387 - INFO - backend.app.cli.cli.CLI - (cli.py:195) - Singular input.
+2025-10-08 07:06:49,387 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: download_audits.
+2025-10-08 07:06:49,387 - INFO - backend.app.cli.cli.CLI - (cli.py:195) - Singular input.
+2025-10-08 07:06:49,387 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: download_orders.
+2025-10-08 07:06:49,387 - INFO - backend.app.cli.cli.CLI - (cli.py:195) - Singular input.
+2025-10-08 07:06:49,387 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: None.
+2025-10-08 07:06:49,867 - INFO - backend.app.cli.cli.CLI - (cli.py:195) - Singular input.
+2025-10-08 07:06:49,867 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: download_orders.
+2025-10-08 07:06:49,867 - INFO - backend.app.cli.cli.CLI - (cli.py:195) - Singular input.
+2025-10-08 07:06:49,867 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: None.
+2025-10-08 07:06:51,883 - INFO - backend.app.cli.cli.CLI - (cli.py:198) - Multiple input.
+2025-10-08 07:06:51,883 - INFO - backend.app.cli.cli.CLI - (cli.py:270) - Case 1: Typing or completing a flag
+2025-10-08 07:06:51,884 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: None.
+2025-10-08 07:07:15,205 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-10-08 07:07:15,206 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] download_orders failed: 'DownloadOrders' object is not callable
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+TypeError: 'DownloadOrders' object is not callable
+2025-10-08 07:08:19,565 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 07:08:19,568 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 07:08:23,814 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 07:08:23,815 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 07:08:23,815 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 07:08:23,831 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 07:08:23,831 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 07:08:23,840 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 07:08:23,840 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 07:08:24,775 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-10-08 07:08:29,105 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:129) - Logging into Craftable.
+2025-10-08 07:08:36,609 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:153) - Login successful.
+2025-10-08 07:08:36,609 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:252) - Starting order download protocol.
+2025-10-08 07:08:36,609 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:255) - Accessing order page for Bakery.
+2025-10-08 07:08:43,302 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for UNFI (10/04/2025).
+2025-10-08 07:08:45,350 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / UNFI / 20251004.
+2025-10-08 07:08:45,350 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-08 07:08:45,351 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for UNFI.
+2025-10-08 07:08:45,351 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order UNFI / Bakery / 20251004
+2025-10-08 07:08:46,367 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for UNFI / Bakery / 20251004
+2025-10-08 07:08:47,922 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-08 07:08:47,925 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-08 07:08:49,774 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for J.Mills (10/04/2025).
+2025-10-08 07:08:51,119 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / J.Mills / 20251004.
+2025-10-08 07:08:51,120 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-08 07:08:51,120 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for J.Mills.
+2025-10-08 07:08:51,120 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order J.Mills / Bakery / 20251004
+2025-10-08 07:08:52,132 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for J.Mills / Bakery / 20251004
+2025-10-08 07:08:53,159 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-08 07:08:53,161 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-08 07:08:55,498 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Webstaurant (10/04/2025).
+2025-10-08 07:08:57,129 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Webstaurant / 20251004.
+2025-10-08 07:08:57,130 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-08 07:08:57,130 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Webstaurant.
+2025-10-08 07:08:57,130 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Webstaurant / Bakery / 20251004
+2025-10-08 07:08:58,143 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Webstaurant / Bakery / 20251004
+2025-10-08 07:08:59,678 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-08 07:08:59,680 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-08 07:09:01,520 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Odeko In. (10/05/2025).
+2025-10-08 07:09:02,669 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Odeko In. / 20251005.
+2025-10-08 07:09:02,669 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-08 07:09:02,669 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Odeko In..
+2025-10-08 07:09:02,670 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Odeko In. / Bakery / 20251005
+2025-10-08 07:09:03,681 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Odeko In. / Bakery / 20251005
+2025-10-08 07:09:05,217 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-08 07:09:05,219 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-08 07:09:07,060 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for US Foods (10/05/2025).
+2025-10-08 07:09:09,545 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / US Foods / 20251005.
+2025-10-08 07:09:09,547 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-08 07:09:09,547 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for US Foods.
+2025-10-08 07:09:09,547 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order US Foods / Bakery / 20251005
+2025-10-08 07:09:10,581 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for US Foods / Bakery / 20251005
+2025-10-08 07:09:11,610 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-08 07:09:11,612 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-08 07:09:13,970 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Copper Horse Coffee (10/05/2025).
+2025-10-08 07:09:15,370 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Copper Horse Coffee / 20251005.
+2025-10-08 07:09:15,371 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-08 07:09:15,371 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Copper Horse Coffee.
+2025-10-08 07:09:15,371 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Copper Horse Coffee / Bakery / 20251005
+2025-10-08 07:09:16,382 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Copper Horse Coffee / Bakery / 20251005
+2025-10-08 07:09:17,419 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-08 07:09:17,421 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-08 07:09:19,753 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Equal Exchange (10/05/2025).
+2025-10-08 07:09:21,215 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Equal Exchange / 20251005.
+2025-10-08 07:09:21,216 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-08 07:09:21,216 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Equal Exchange.
+2025-10-08 07:09:21,216 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Equal Exchange / Bakery / 20251005
+2025-10-08 07:09:22,227 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Equal Exchange / Bakery / 20251005
+2025-10-08 07:09:23,256 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-08 07:09:23,258 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-08 07:09:25,598 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Harney and Sons Tea (10/05/2025).
+2025-10-08 07:09:26,858 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Harney and Sons Tea / 20251005.
+2025-10-08 07:09:26,858 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-08 07:09:26,859 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Harney and Sons Tea.
+2025-10-08 07:09:26,859 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Harney and Sons Tea / Bakery / 20251005
+2025-10-08 07:09:27,880 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Harney and Sons Tea / Bakery / 20251005
+2025-10-08 07:09:29,415 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-08 07:09:29,418 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-08 07:09:31,264 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Coca-Cola (10/05/2025).
+2025-10-08 07:09:32,990 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Coca-Cola / 20251005.
+2025-10-08 07:09:32,991 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-08 07:09:32,991 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Coca-Cola.
+2025-10-08 07:09:32,991 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Coca-Cola / Bakery / 20251005
+2025-10-08 07:09:34,015 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Coca-Cola / Bakery / 20251005
+2025-10-08 07:09:35,549 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-08 07:09:35,551 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-08 07:09:37,391 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for DUTCH VALLEY FOOD DIST (10/05/2025).
+2025-10-08 07:09:38,716 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / DUTCH VALLEY FOOD DIST / 20251005.
+2025-10-08 07:09:38,717 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-08 07:09:38,717 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for DUTCH VALLEY FOOD DIST.
+2025-10-08 07:09:38,717 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order DUTCH VALLEY FOOD DIST / Bakery / 20251005
+2025-10-08 07:09:39,728 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for DUTCH VALLEY FOOD DIST / Bakery / 20251005
+2025-10-08 07:09:40,753 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-08 07:09:40,756 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-08 07:09:43,095 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Hill & Markes (10/05/2025).
+2025-10-08 07:09:44,844 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Hill & Markes / 20251005.
+2025-10-08 07:09:44,845 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-08 07:09:44,845 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Hill & Markes.
+2025-10-08 07:09:44,845 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Hill & Markes / Bakery / 20251005
+2025-10-08 07:09:45,858 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Hill & Markes / Bakery / 20251005
+2025-10-08 07:09:47,390 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-08 07:09:47,392 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-08 07:09:49,253 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Hillcrest Dairy (10/05/2025).
+2025-10-08 07:09:50,664 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Hillcrest Dairy / 20251005.
+2025-10-08 07:09:50,665 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-08 07:09:50,665 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Hillcrest Dairy.
+2025-10-08 07:09:50,665 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Hillcrest Dairy / Bakery / 20251005
+2025-10-08 07:09:51,677 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Hillcrest Dairy / Bakery / 20251005
+2025-10-08 07:09:52,704 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-08 07:09:52,706 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-08 07:09:55,038 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Hillcrest Foods (10/06/2025).
+2025-10-08 07:09:57,063 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Hillcrest Foods / 20251006.
+2025-10-08 07:09:57,064 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-08 07:09:57,064 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Hillcrest Foods.
+2025-10-08 07:09:57,064 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Hillcrest Foods / Bakery / 20251006
+2025-10-08 07:09:58,091 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Hillcrest Foods / Bakery / 20251006
+2025-10-08 07:09:59,120 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-08 07:09:59,124 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-08 07:10:01,463 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Regional Distributors, Inc. (10/06/2025).
+2025-10-08 07:10:03,548 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Regional Distributors, Inc. / 20251006.
+2025-10-08 07:10:03,549 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-08 07:10:03,549 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Regional Distributors, Inc..
+2025-10-08 07:10:03,549 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Regional Distributors, Inc. / Bakery / 20251006
+2025-10-08 07:10:04,562 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Regional Distributors, Inc. / Bakery / 20251006
+2025-10-08 07:10:05,592 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-08 07:10:05,594 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-08 07:10:07,945 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Lentz (10/06/2025).
+2025-10-08 07:10:09,411 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Lentz / 20251006.
+2025-10-08 07:10:09,413 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-08 07:10:09,413 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Lentz.
+2025-10-08 07:10:09,413 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Lentz / Bakery / 20251006
+2025-10-08 07:10:10,428 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Lentz / Bakery / 20251006
+2025-10-08 07:10:11,454 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-08 07:10:11,456 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-08 07:10:13,798 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for BJ's (10/06/2025).
+2025-10-08 07:10:15,070 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / BJ's / 20251006.
+2025-10-08 07:10:15,071 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-08 07:10:15,072 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for BJ's.
+2025-10-08 07:10:15,072 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order BJ's / Bakery / 20251006
+2025-10-08 07:10:16,082 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for BJ's / Bakery / 20251006
+2025-10-08 07:10:17,114 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-08 07:10:17,116 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-08 07:10:19,446 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for A.L. George (10/06/2025).
+2025-10-08 07:10:20,957 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / A.L. George / 20251006.
+2025-10-08 07:10:20,958 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-08 07:10:20,958 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for A.L. George.
+2025-10-08 07:10:20,958 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order A.L. George / Bakery / 20251006
+2025-10-08 07:10:21,971 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for A.L. George / Bakery / 20251006
+2025-10-08 07:10:22,998 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-08 07:10:23,000 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-08 07:10:25,346 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for BALKAN BEVERAGE LLC (10/06/2025).
+2025-10-08 07:10:26,556 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / BALKAN BEVERAGE LLC / 20251006.
+2025-10-08 07:10:26,557 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-08 07:10:26,557 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for BALKAN BEVERAGE LLC.
+2025-10-08 07:10:26,557 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order BALKAN BEVERAGE LLC / Bakery / 20251006
+2025-10-08 07:10:27,570 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for BALKAN BEVERAGE LLC / Bakery / 20251006
+2025-10-08 07:10:28,604 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-08 07:10:28,606 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-08 07:10:30,941 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Keck's Food Service (10/06/2025).
+2025-10-08 07:10:32,200 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Keck's Food Service / 20251006.
+2025-10-08 07:10:32,201 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-08 07:10:32,201 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Keck's Food Service.
+2025-10-08 07:10:32,202 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Keck's Food Service / Bakery / 20251006
+2025-10-08 07:10:33,213 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Keck's Food Service / Bakery / 20251006
+2025-10-08 07:10:34,239 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-08 07:10:34,242 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-08 07:10:36,576 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Dawn (10/06/2025).
+2025-10-08 07:10:37,750 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Dawn / 20251006.
+2025-10-08 07:10:37,751 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-08 07:10:37,751 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Dawn.
+2025-10-08 07:10:37,751 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Dawn / Bakery / 20251006
+2025-10-08 07:10:38,764 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Dawn / Bakery / 20251006
+2025-10-08 07:10:39,790 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-08 07:10:39,792 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-08 07:10:42,144 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Atlantic Spice Company (10/06/2025).
+2025-10-08 07:10:43,305 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Atlantic Spice Company / 20251006.
+2025-10-08 07:10:43,306 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-08 07:10:43,306 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Atlantic Spice Company.
+2025-10-08 07:10:43,306 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Atlantic Spice Company / Bakery / 20251006
+2025-10-08 07:10:44,318 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Atlantic Spice Company / Bakery / 20251006
+2025-10-08 07:10:45,856 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-08 07:10:45,858 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-08 07:10:47,703 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Side Hill Acres (10/06/2025).
+2025-10-08 07:10:48,889 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Side Hill Acres / 20251006.
+2025-10-08 07:10:48,890 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-08 07:10:48,890 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Side Hill Acres.
+2025-10-08 07:10:48,891 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Side Hill Acres / Bakery / 20251006
+2025-10-08 07:10:49,901 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Side Hill Acres / Bakery / 20251006
+2025-10-08 07:10:50,924 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-08 07:10:50,926 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-08 07:10:53,265 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Johnston Paper (10/07/2025).
+2025-10-08 07:10:54,883 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Johnston Paper / 20251007.
+2025-10-08 07:10:54,884 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-08 07:10:54,884 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Johnston Paper.
+2025-10-08 07:10:54,884 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Johnston Paper / Bakery / 20251007
+2025-10-08 07:10:55,898 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Johnston Paper / Bakery / 20251007
+2025-10-08 07:10:56,925 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-08 07:10:56,928 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-08 07:10:59,285 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Peters Supply (10/07/2025).
+2025-10-08 07:11:00,918 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Peters Supply / 20251007.
+2025-10-08 07:11:00,919 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-08 07:11:00,920 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Peters Supply.
+2025-10-08 07:11:00,920 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Peters Supply / Bakery / 20251007
+2025-10-08 07:11:01,932 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Peters Supply / Bakery / 20251007
+2025-10-08 07:11:02,959 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-08 07:11:02,961 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-08 07:11:05,300 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Qualita (10/07/2025).
+2025-10-08 07:11:06,467 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Qualita / 20251007.
+2025-10-08 07:11:06,468 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-08 07:11:06,468 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Qualita.
+2025-10-08 07:11:06,468 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Qualita / Bakery / 20251007
+2025-10-08 07:11:07,484 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Qualita / Bakery / 20251007
+2025-10-08 07:11:08,507 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-08 07:11:08,509 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-08 07:11:10,847 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for SANICO (10/07/2025).
+2025-10-08 07:11:12,018 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / SANICO / 20251007.
+2025-10-08 07:11:12,019 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-08 07:11:12,020 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for SANICO.
+2025-10-08 07:11:12,020 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order SANICO / Bakery / 20251007
+2025-10-08 07:11:13,032 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for SANICO / Bakery / 20251007
+2025-10-08 07:11:14,567 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-08 07:11:14,569 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-08 07:11:16,417 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for FingerLakes Farms (10/07/2025).
+2025-10-08 07:11:17,916 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / FingerLakes Farms / 20251007.
+2025-10-08 07:11:17,917 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-08 07:11:17,918 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for FingerLakes Farms.
+2025-10-08 07:11:17,918 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order FingerLakes Farms / Bakery / 20251007
+2025-10-08 07:11:18,930 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for FingerLakes Farms / Bakery / 20251007
+2025-10-08 07:11:19,953 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-08 07:11:19,955 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-08 07:11:22,314 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for Sysco (10/07/2025).
+2025-10-08 07:11:23,641 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / Sysco / 20251007.
+2025-10-08 07:11:23,642 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-08 07:11:23,643 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Sysco.
+2025-10-08 07:11:23,643 - INFO - backend.app.application.orders.SaveOrder - (orders.py:55) - Saving order Sysco / Bakery / 20251007
+2025-10-08 07:11:24,654 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:121) - Expecting downloaded PDF for Sysco / Bakery / 20251007
+2025-10-08 07:11:25,678 - INFO - backend.adapters.downloads.threaded_download_adapter.ThreadedDownloadAdapter - (threaded_download_adapter.py:58) - [DownloadOnce] Match detected: Order.pdf
+2025-10-08 07:11:25,681 - INFO - backend.app.application.orders.ExpectDownloadedPdf - (orders.py:129) - Ingested downloaded PDF: C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\downloads\Order.pdf
+2025-10-08 07:11:27,988 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:269) - Order download complete.
+2025-10-08 07:11:27,988 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:270) - Closing WebDriver session.
+2025-10-08 07:11:30,110 - INFO - backend.app.cli.cli.CLI - (cli.py:463) - Command 'download_orders' executed successfully.
+2025-10-08 07:11:44,750 - INFO - backend.app.cli.cli.CLI - (cli.py:195) - Singular input.
+2025-10-08 07:11:44,750 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: generate_store_order_emails.
+2025-10-08 07:11:44,750 - INFO - backend.app.cli.cli.CLI - (cli.py:195) - Singular input.
+2025-10-08 07:11:44,750 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: generate_vendor_order_emails.
+2025-10-08 07:11:44,750 - INFO - backend.app.cli.cli.CLI - (cli.py:195) - Singular input.
+2025-10-08 07:11:44,750 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: generate_vendor_upload_files.
+2025-10-08 07:11:44,750 - INFO - backend.app.cli.cli.CLI - (cli.py:195) - Singular input.
+2025-10-08 07:11:44,750 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: None.
+2025-10-08 07:11:46,278 - INFO - backend.app.cli.cli.CLI - (cli.py:195) - Singular input.
+2025-10-08 07:11:46,278 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: generate_vendor_order_emails.
+2025-10-08 07:11:46,278 - INFO - backend.app.cli.cli.CLI - (cli.py:195) - Singular input.
+2025-10-08 07:11:46,278 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: generate_vendor_upload_files.
+2025-10-08 07:11:46,278 - INFO - backend.app.cli.cli.CLI - (cli.py:195) - Singular input.
+2025-10-08 07:11:46,278 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: None.
+2025-10-08 07:11:47,734 - INFO - backend.app.cli.cli.CLI - (cli.py:195) - Singular input.
+2025-10-08 07:11:47,734 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: generate_vendor_upload_files.
+2025-10-08 07:11:47,734 - INFO - backend.app.cli.cli.CLI - (cli.py:195) - Singular input.
+2025-10-08 07:11:47,734 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: None.
+2025-10-08 07:11:49,006 - INFO - backend.app.cli.cli.CLI - (cli.py:198) - Multiple input.
+2025-10-08 07:11:49,006 - INFO - backend.app.cli.cli.CLI - (cli.py:270) - Case 1: Typing or completing a flag
+2025-10-08 07:11:49,006 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: None.
+2025-10-08 07:11:52,086 - INFO - backend.app.cli.cli.CLI - (cli.py:198) - Multiple input.
+2025-10-08 07:11:52,086 - INFO - backend.app.cli.cli.CLI - (cli.py:270) - Case 1: Typing or completing a flag
+2025-10-08 07:11:52,086 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: None.
+2025-10-08 07:11:52,310 - INFO - backend.app.cli.cli.CLI - (cli.py:198) - Multiple input.
+2025-10-08 07:11:52,310 - INFO - backend.app.cli.cli.CLI - (cli.py:270) - Case 1: Typing or completing a flag
+2025-10-08 07:11:52,310 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: None.
+2025-10-08 07:11:54,046 - INFO - backend.app.cli.cli.CLI - (cli.py:198) - Multiple input.
+2025-10-08 07:11:54,046 - INFO - backend.app.cli.cli.CLI - (cli.py:270) - Case 1: Typing or completing a flag
+2025-10-08 07:11:54,046 - INFO - backend.app.cli.cli.CLI - (cli.py:201) - Output: None.
+2025-10-08 07:12:03,416 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 07:12:03,417 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:200) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 07:12:03,417 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:120) - Retrieving order files for: stores=[['Bakery']], vendors=[['Hill & Markes']], formats=[['xlsx']]
+2025-10-08 07:12:03,417 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'OrderServices' object has no attribute 'get_order_files'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 203, in generate_vendor_upload_files
+    order_file_paths = self.get_order_files(stores=stores, vendors=vendors, formats=['xlsx'])
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 121, in get_order_files
+    return self.orders.get_order_files(stores=stores, vendors=vendors, formats=formats)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'OrderServices' object has no attribute 'get_order_files'
+2025-10-08 07:26:00,974 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 07:26:00,977 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 07:26:10,450 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 07:26:10,451 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 07:26:10,451 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 07:26:10,468 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 07:26:10,468 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 07:26:10,478 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 07:26:10,478 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 07:26:12,905 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 07:26:12,906 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 07:26:12,906 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=[['Hill & Markes']], vendors=[['Bakery']]
+2025-10-08 07:26:12,906 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 07:26:12,906 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 07:26:12,908 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: No order found for vendor=Bakery, store=Hill & Markes, date=None
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 205, in generate_vendor_upload_files
+    orders = self.get_orders(vendors, stores)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 125, in get_orders
+    return self.orders.get_orders(vendors, stores)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 58, in __call__
+    orders.append(self.get_order(vendor, store))
+                  ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 45, in __call__
+    return self.repo.get(vendor, store, date)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\repos\order_file_repository.py", line 29, in get
+    raise FileNotFoundError(f"No order found for vendor={vendor}, store={store}, date={date}")
+FileNotFoundError: No order found for vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 07:27:15,902 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 07:27:15,905 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 07:27:18,425 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 07:27:18,425 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 07:27:18,425 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 07:27:18,433 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 07:27:18,433 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 07:27:18,441 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 07:27:18,442 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 07:27:19,793 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 07:27:19,794 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 07:27:19,794 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=[['Hill & Markes']], vendors=[['Bakery']]
+2025-10-08 07:27:19,794 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 07:27:19,794 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 07:27:19,795 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: No order found for vendor=Bakery, store=Hill & Markes, date=None
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 205, in generate_vendor_upload_files
+    orders = self.get_orders(vendors, stores)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 125, in get_orders
+    return self.orders.get_orders(vendors, stores)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 58, in __call__
+    orders.append(self.get_order(vendor, store))
+                  ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 45, in __call__
+    return self.repo.get(vendor, store, date)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\repos\order_file_repository.py", line 29, in get
+    raise FileNotFoundError(f"No order found for vendor={vendor}, store={store}, date={date}")
+FileNotFoundError: No order found for vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 07:27:46,575 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 07:27:46,579 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 07:27:49,259 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 07:27:49,260 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 07:27:49,260 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 07:27:49,268 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 07:27:49,268 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 07:27:49,276 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 07:27:49,276 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 07:27:50,257 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 07:27:50,258 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 07:27:50,258 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=[['Hill & Markes']], vendors=[['Bakery']]
+2025-10-08 07:27:50,258 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 07:27:50,258 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 07:27:50,276 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: No order found for vendor=Bakery, store=Hill & Markes, date=None
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 205, in generate_vendor_upload_files
+    orders = self.get_orders(vendors, stores)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 125, in get_orders
+    return self.orders.get_orders(vendors, stores)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 58, in __call__
+    orders.append(self.get_order(vendor, store))
+                  ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 45, in __call__
+    return self.repo.get(vendor, store, date)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\repos\order_file_repository.py", line 29, in get
+    raise FileNotFoundError(f"No order found for vendor={vendor}, store={store}, date={date}")
+FileNotFoundError: No order found for vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 08:43:49,419 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 08:43:49,424 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 08:43:52,960 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 08:43:52,961 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 08:43:52,961 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 08:43:52,969 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 08:43:52,969 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 08:43:52,978 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 08:43:52,978 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 08:43:54,775 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 08:43:54,776 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 08:43:54,776 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=[['Hill & Markes']], vendors=[['Bakery']]
+2025-10-08 08:43:54,776 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 08:43:54,776 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 08:43:54,785 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:208) - Found 1 orders to process.
+2025-10-08 08:43:54,785 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'list' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'vendor'
+2025-10-08 08:44:16,764 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 08:44:16,768 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 08:44:19,465 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 08:44:19,466 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 08:44:19,466 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 08:44:19,474 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 08:44:19,475 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 08:44:19,483 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 08:44:19,484 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 08:44:20,215 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 08:44:20,216 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 08:44:20,216 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=[['Hill & Markes']], vendors=[['Bakery']]
+2025-10-08 08:44:20,216 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 08:44:20,216 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 08:44:20,225 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:208) - Found 1 orders to process.
+2025-10-08 08:44:20,225 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'list' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'vendor'
+2025-10-08 08:50:05,991 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 08:50:05,993 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 08:50:09,616 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 08:50:09,617 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 08:50:09,617 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 08:50:09,624 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 08:50:09,624 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 08:50:09,633 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 08:50:09,633 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 08:50:10,714 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 08:50:10,715 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 08:50:10,715 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=['Hill & Markes'], vendors=['Bakery']
+2025-10-08 08:50:10,715 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 08:50:10,716 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 08:50:10,724 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:208) - Found 1 orders to process.
+2025-10-08 08:50:10,724 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 08:51:14,385 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 08:51:14,388 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 08:51:17,674 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 08:51:17,675 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 08:51:17,675 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 08:51:17,683 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 08:51:17,684 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 08:51:17,692 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 08:51:17,692 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 08:51:18,613 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 08:51:18,614 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 08:51:18,614 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=['Hill & Markes'], vendors=['Bakery']
+2025-10-08 08:51:18,614 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 08:51:18,614 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 08:51:18,623 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:208) - Found 1 orders to process.
+2025-10-08 08:51:18,623 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 08:52:12,507 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 08:52:12,510 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 08:52:15,825 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 08:52:15,826 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 08:52:15,826 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 08:52:15,833 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 08:52:15,833 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 08:52:15,842 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 08:52:15,842 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 08:52:16,703 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 08:52:16,705 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 08:52:16,706 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=['Hill & Markes'], vendors=['Bakery']
+2025-10-08 08:52:16,706 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 08:52:16,706 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 08:52:16,789 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:208) - Found 1 orders to process.
+2025-10-08 08:52:16,789 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 08:53:03,548 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 08:53:03,553 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 08:53:13,611 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 08:53:13,612 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 08:53:13,612 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 08:53:13,619 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 08:53:13,620 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 08:53:13,628 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 08:53:13,628 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 08:53:14,568 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 08:53:14,569 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 08:53:14,569 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=['Hill & Markes'], vendors=['Bakery']
+2025-10-08 08:53:14,569 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 08:53:14,569 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 08:53:14,578 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:208) - Found 1 orders to process.
+2025-10-08 08:53:14,578 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 08:54:48,599 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 08:54:48,601 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 08:54:52,330 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 08:54:52,331 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 08:54:52,331 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 08:54:52,339 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 08:54:52,339 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 08:54:52,347 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 08:54:52,347 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 08:54:53,131 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 08:54:53,132 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 08:54:53,132 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=['Hill & Markes'], vendors=['Bakery']
+2025-10-08 08:54:53,132 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 08:54:53,132 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 08:54:53,141 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:208) - Found 1 orders to process.
+2025-10-08 08:54:53,141 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 08:55:04,136 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 08:55:04,139 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 08:55:06,390 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 08:55:06,391 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 08:55:06,391 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 08:55:06,399 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 08:55:06,399 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 08:55:06,407 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 08:55:06,407 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 08:55:07,738 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 08:55:07,739 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 08:55:07,739 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=['Hill & Markes'], vendors=['Bakery']
+2025-10-08 08:55:07,739 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 08:55:07,739 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 08:55:07,747 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:208) - Found 1 orders to process.
+2025-10-08 08:55:07,748 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 08:55:27,232 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 08:55:27,238 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 08:55:31,820 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 08:55:31,821 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 08:55:31,821 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 08:55:31,828 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 08:55:31,828 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 08:55:31,836 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 08:55:31,836 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 08:55:32,548 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 08:55:32,549 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 08:55:32,549 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=['Hill & Markes'], vendors=['Bakery']
+2025-10-08 08:55:32,549 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 08:55:32,549 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 08:55:32,558 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:208) - Found 1 orders to process.
+2025-10-08 08:55:32,558 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 08:55:53,049 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 08:55:53,052 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 08:55:55,517 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 08:55:55,518 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 08:55:55,518 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 08:55:55,525 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 08:55:55,526 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 08:55:55,534 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 08:55:55,534 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 08:55:56,716 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 08:55:56,717 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 08:55:56,717 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=['Hill & Markes'], vendors=['Bakery']
+2025-10-08 08:55:56,717 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 08:55:56,717 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 08:55:56,758 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:208) - Found 1 orders to process.
+2025-10-08 08:55:56,758 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 08:57:06,643 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 08:57:06,648 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 08:57:10,631 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 08:57:10,632 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 08:57:10,632 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 08:57:10,640 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 08:57:10,640 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 08:57:10,648 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 08:57:10,648 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 08:57:25,567 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 08:57:25,568 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 08:57:25,568 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=['Hill & Markes'], vendors=['Bakery']
+2025-10-08 08:57:25,568 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 08:57:25,568 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 08:57:25,604 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:208) - Found 1 orders to process.
+2025-10-08 08:57:25,605 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:21:22,396 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 10:21:22,402 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 10:21:25,491 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 10:21:25,491 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 10:21:25,491 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 10:21:25,499 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 10:21:25,499 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 10:21:25,507 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 10:21:25,508 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 10:21:26,351 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:21:26,352 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 10:21:26,352 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=['Hill & Markes'], vendors=['Bakery']
+2025-10-08 10:21:26,353 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 10:21:26,353 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 10:21:26,414 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:208) - Found 1 orders to process.
+2025-10-08 10:21:26,415 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:23:39,679 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 10:23:39,682 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 10:23:42,395 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 10:23:42,396 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 10:23:42,396 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 10:23:42,403 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 10:23:42,403 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 10:23:42,413 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 10:23:42,413 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 10:23:45,801 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:23:45,802 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 10:23:45,803 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=['Hill & Markes'], vendors=['Bakery']
+2025-10-08 10:23:45,803 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 10:23:45,803 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 10:23:45,865 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:208) - Found 1 orders to process.
+2025-10-08 10:23:45,865 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:24:29,848 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 10:24:29,853 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 10:24:32,703 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 10:24:32,704 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 10:24:32,704 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 10:24:32,711 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 10:24:32,712 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 10:24:32,720 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 10:24:32,720 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 10:24:33,418 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:24:33,420 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 10:24:33,420 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=['Hill & Markes'], vendors=['Bakery']
+2025-10-08 10:24:33,420 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 10:24:33,420 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 10:24:33,488 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:208) - Found 1 orders to process.
+2025-10-08 10:24:33,488 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:26:52,970 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 10:26:52,975 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 10:26:55,506 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 10:26:55,507 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 10:26:55,507 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 10:26:55,514 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 10:26:55,514 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 10:26:55,523 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 10:26:55,523 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 10:26:56,477 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:26:56,478 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 10:26:56,478 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=['Hill & Markes'], vendors=['Bakery']
+2025-10-08 10:26:56,478 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 10:26:56,479 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 10:26:56,546 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:208) - Found 1 orders to process.
+2025-10-08 10:26:56,546 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:27:08,683 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 10:27:08,688 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 10:27:11,204 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 10:27:11,205 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 10:27:11,205 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 10:27:11,212 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 10:27:11,212 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 10:27:11,221 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 10:27:11,221 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 10:27:12,118 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:27:12,119 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 10:27:12,119 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=['Hill & Markes'], vendors=['Bakery']
+2025-10-08 10:27:12,119 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 10:27:12,119 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 10:27:12,189 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:208) - Found 1 orders to process.
+2025-10-08 10:27:12,189 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:28:25,615 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:28:25,615 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 10:28:25,615 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=['Hill & Markes'], vendors=['Bakery']
+2025-10-08 10:28:25,616 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 10:28:25,616 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 10:28:25,689 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:208) - Found 1 orders to process.
+2025-10-08 10:28:25,689 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:28:26,924 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 10:28:26,928 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 10:28:30,441 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 10:28:30,442 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 10:28:30,442 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 10:28:30,449 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 10:28:30,450 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 10:28:30,458 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 10:28:30,458 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 10:28:31,439 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:28:31,440 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 10:28:31,440 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=['Hill & Markes'], vendors=['Bakery']
+2025-10-08 10:28:31,440 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 10:28:31,440 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 10:28:31,504 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:208) - Found 1 orders to process.
+2025-10-08 10:28:31,504 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:28:45,549 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 10:28:45,554 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 10:28:48,231 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 10:28:48,231 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 10:28:48,231 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 10:28:48,239 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 10:28:48,239 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 10:28:48,247 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 10:28:48,247 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 10:28:49,136 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:28:49,137 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 10:28:49,137 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=['Hill & Markes'], vendors=['Bakery']
+2025-10-08 10:28:49,137 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 10:28:49,137 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 10:28:49,194 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:208) - Found 1 orders to process.
+2025-10-08 10:28:49,194 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:29:41,070 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 10:29:41,075 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 10:29:43,211 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 10:29:43,212 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 10:29:43,212 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 10:29:43,219 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 10:29:43,219 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 10:29:43,228 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 10:29:43,228 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 10:31:34,018 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:31:34,020 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 10:31:34,020 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=['Hill & Markes'], vendors=['Bakery']
+2025-10-08 10:31:34,020 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 10:31:34,020 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 10:31:34,243 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:208) - Found 1 orders to process.
+2025-10-08 10:31:34,243 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:33:21,482 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 10:33:21,487 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 10:33:35,228 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 10:33:35,230 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 10:33:35,230 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 10:33:35,237 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 10:33:35,237 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 10:33:35,246 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 10:33:35,246 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 10:33:36,069 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:33:36,070 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 10:33:36,071 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=['Hill & Markes'], vendors=['Bakery']
+2025-10-08 10:33:36,071 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 10:33:36,071 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 10:33:36,076 - WARNING - backend.adapters.files.generic_file_adapter.GenericFileAdapter - (generic_file_adapter.py:88) - Skipping unreadable file C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\orders\Hill & Markes\Hill & Markes_Bakery_20251005.pdf: 'pdf'
+2025-10-08 10:33:36,101 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:208) - Found 1 orders to process.
+2025-10-08 10:33:36,101 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:37:41,023 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 10:37:41,026 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 10:37:57,794 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 10:37:57,794 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 10:37:57,794 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 10:37:57,802 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 10:37:57,802 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 10:37:57,810 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 10:37:57,810 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 10:37:58,449 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:37:58,451 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 10:37:58,451 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=['Hill & Markes'], vendors=['Bakery']
+2025-10-08 10:37:58,451 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 10:37:58,451 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 10:37:58,455 - WARNING - backend.adapters.files.generic_file_adapter.GenericFileAdapter - (generic_file_adapter.py:85) - Skipping unreadable file C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\orders\Hill & Markes\Hill & Markes_Bakery_20251005.pdf: 'pdf'
+2025-10-08 10:37:58,466 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:208) - Found 1 orders to process.
+2025-10-08 10:37:58,467 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:39:58,993 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 10:39:58,996 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 10:40:01,961 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 10:40:01,962 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 10:40:01,962 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 10:40:01,969 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 10:40:01,970 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 10:40:01,978 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 10:40:01,979 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 10:40:03,222 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:40:03,223 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 10:40:03,223 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=['Hill & Markes'], vendors=['Bakery']
+2025-10-08 10:40:03,223 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 10:40:03,223 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 10:40:03,228 - WARNING - backend.adapters.files.generic_file_adapter.GenericFileAdapter - (generic_file_adapter.py:85) - Skipping unreadable file C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\orders\Hill & Markes\Hill & Markes_Bakery_20251005.pdf: 'pdf'
+2025-10-08 10:40:03,241 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:208) - Found 1 orders to process.
+2025-10-08 10:40:03,241 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:40:50,530 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 10:40:50,534 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 10:40:53,323 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 10:40:53,323 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 10:40:53,324 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 10:40:53,331 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 10:40:53,331 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 10:40:53,340 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 10:40:53,340 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 10:40:53,902 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:40:53,903 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 10:40:53,903 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=['Hill & Markes'], vendors=['Bakery']
+2025-10-08 10:40:53,903 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 10:40:53,903 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 10:40:53,907 - WARNING - backend.adapters.files.generic_file_adapter.GenericFileAdapter - (generic_file_adapter.py:85) - Skipping unreadable file C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\orders\Hill & Markes\Hill & Markes_Bakery_20251005.pdf: 'pdf'
+2025-10-08 10:40:53,918 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:208) - Found 1 orders to process.
+2025-10-08 10:40:53,918 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:41:24,331 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 10:41:24,335 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 10:41:26,841 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 10:41:26,842 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 10:41:26,842 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 10:41:26,850 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 10:41:26,850 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 10:41:26,858 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 10:41:26,858 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 10:41:27,437 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:41:27,438 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 10:41:27,439 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=['Hill & Markes'], vendors=['Bakery']
+2025-10-08 10:41:27,439 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 10:41:27,439 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 10:41:27,443 - WARNING - backend.adapters.files.generic_file_adapter.GenericFileAdapter - (generic_file_adapter.py:85) - Skipping unreadable file C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\orders\Hill & Markes\Hill & Markes_Bakery_20251005.pdf: 'pdf'
+2025-10-08 10:41:27,456 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:208) - Found 1 orders to process.
+2025-10-08 10:41:27,456 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:41:57,003 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 10:41:57,007 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 10:41:59,468 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 10:41:59,469 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 10:41:59,469 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 10:41:59,476 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 10:41:59,476 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 10:41:59,485 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 10:41:59,485 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 10:42:00,215 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:42:00,216 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 10:42:00,216 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=['Hill & Markes'], vendors=['Bakery']
+2025-10-08 10:42:00,216 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 10:42:00,216 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 10:42:00,221 - WARNING - backend.adapters.files.generic_file_adapter.GenericFileAdapter - (generic_file_adapter.py:85) - Skipping unreadable file C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\orders\Hill & Markes\Hill & Markes_Bakery_20251005.pdf: 'pdf'
+2025-10-08 10:42:00,236 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:208) - Found 1 orders to process.
+2025-10-08 10:42:00,237 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:42:22,532 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 10:42:22,535 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 10:42:25,268 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 10:42:25,268 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 10:42:25,269 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 10:42:25,276 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 10:42:25,276 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 10:42:25,284 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 10:42:25,284 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 10:42:25,798 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:42:25,799 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 10:42:25,799 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=['Hill & Markes'], vendors=['Bakery']
+2025-10-08 10:42:25,799 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 10:42:25,799 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 10:42:25,804 - WARNING - backend.adapters.files.generic_file_adapter.GenericFileAdapter - (generic_file_adapter.py:85) - Skipping unreadable file C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\orders\Hill & Markes\Hill & Markes_Bakery_20251005.pdf: 'pdf'
+2025-10-08 10:42:25,811 - WARNING - backend.adapters.files.generic_file_adapter.GenericFileAdapter - (generic_file_adapter.py:85) - Skipping unreadable file C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\orders\Hill & Markes\Hill & Markes_Bakery_20251005.xlsx: pprint() got an unexpected keyword argument 'flush'
+2025-10-08 10:42:25,816 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:208) - Found 1 orders to process.
+2025-10-08 10:42:25,816 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 10:42:37,788 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 10:42:37,793 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 10:42:39,919 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 10:42:39,920 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 10:42:39,920 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 10:42:39,928 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 10:42:39,928 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 10:42:39,936 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 10:42:39,936 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 10:42:40,535 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 10:42:40,536 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 10:42:40,536 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=['Hill & Markes'], vendors=['Bakery']
+2025-10-08 10:42:40,536 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 10:42:40,536 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 10:42:40,540 - WARNING - backend.adapters.files.generic_file_adapter.GenericFileAdapter - (generic_file_adapter.py:85) - Skipping unreadable file C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\orders\Hill & Markes\Hill & Markes_Bakery_20251005.pdf: 'pdf'
+2025-10-08 10:42:40,564 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:208) - Found 1 orders to process.
+2025-10-08 10:42:40,564 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 11:03:15,521 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 11:03:15,525 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 11:06:08,072 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 11:06:08,073 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 11:06:08,073 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 11:06:08,081 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 11:06:08,081 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 11:06:08,090 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 11:06:08,090 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 11:06:08,864 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 11:06:08,864 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 11:06:08,865 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=['Hill & Markes'], vendors=['Bakery']
+2025-10-08 11:06:08,865 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 11:06:08,865 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 11:06:08,869 - WARNING - backend.adapters.files.generic_file_adapter.GenericFileAdapter - (generic_file_adapter.py:87) - Skipping unreadable file C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\orders\Hill & Markes\Hill & Markes_Bakery_20251005.pdf: 'pdf'
+2025-10-08 11:06:08,875 - WARNING - backend.adapters.files.generic_file_adapter.GenericFileAdapter - (generic_file_adapter.py:87) - Skipping unreadable file C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\orders\Hill & Markes\Hill & Markes_Bakery_20251005.xlsx: name 'body' is not defined
+2025-10-08 11:06:08,880 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:208) - Found 1 orders to process.
+2025-10-08 11:06:08,880 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 11:06:22,541 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 11:06:22,545 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 11:06:25,226 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 11:06:25,227 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 11:06:25,227 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 11:06:25,234 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 11:06:25,235 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 11:06:25,243 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 11:06:25,243 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 11:06:26,616 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 11:06:26,617 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 11:06:26,617 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=['Hill & Markes'], vendors=['Bakery']
+2025-10-08 11:06:26,617 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 11:06:26,617 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 11:06:26,621 - WARNING - backend.adapters.files.generic_file_adapter.GenericFileAdapter - (generic_file_adapter.py:87) - Skipping unreadable file C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\orders\Hill & Markes\Hill & Markes_Bakery_20251005.pdf: 'pdf'
+2025-10-08 11:06:26,627 - WARNING - backend.adapters.files.generic_file_adapter.GenericFileAdapter - (generic_file_adapter.py:87) - Skipping unreadable file C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\orders\Hill & Markes\Hill & Markes_Bakery_20251005.xlsx: 'list' object has no attribute 'get'
+2025-10-08 11:06:26,632 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:208) - Found 1 orders to process.
+2025-10-08 11:06:26,632 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 11:07:36,006 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 11:07:36,009 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-08 11:07:38,850 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:75) - Initializing WorkBot...
+2025-10-08 11:07:38,851 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:104) - WorkBot initialized successfully.
+2025-10-08 11:07:38,851 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-08 11:07:38,858 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-08 11:07:38,858 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-08 11:07:38,867 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-08 11:07:38,867 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-08 11:07:39,433 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-08 11:07:39,434 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Generating vendor upload files for stores=['Bakery'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2025-10-08 11:07:39,434 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:124) - Retrieving orders for: stores=['Hill & Markes'], vendors=['Bakery']
+2025-10-08 11:07:39,434 - INFO - backend.app.application.orders.GetOrders - (orders.py:53) - Getting order vendors=['Bakery'], stores=['Hill & Markes'], dates=None
+2025-10-08 11:07:39,434 - INFO - backend.app.application.orders.GetOrder - (orders.py:44) - Getting order vendor=Bakery, store=Hill & Markes, date=None
+2025-10-08 11:07:39,439 - WARNING - backend.adapters.files.generic_file_adapter.GenericFileAdapter - (generic_file_adapter.py:87) - Skipping unreadable file C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\orders\Hill & Markes\Hill & Markes_Bakery_20251005.pdf: 'pdf'
+2025-10-08 11:07:39,445 - WARNING - backend.adapters.files.generic_file_adapter.GenericFileAdapter - (generic_file_adapter.py:87) - Skipping unreadable file C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\orders\Hill & Markes\Hill & Markes_Bakery_20251005.xlsx: 'list' object has no attribute 'get'
+2025-10-08 11:07:39,449 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:208) - Found 1 orders to process.
+2025-10-08 11:07:39,450 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-08 16:41:58,236 - WARNING - backend.app.cli.cli.CLI - (cli.py:456) - Unknown command entered: 'cls'
+2025-10-08 16:41:59,685 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-08 16:41:59,688 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.

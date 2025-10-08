@@ -1,6 +1,6 @@
 from __future__ import annotations
 from pathlib import Path
-from typing import Protocol, TypeVar, Generic, Optional, List, Any
+from typing import Protocol, TypeVar, Generic, Optional, List, Any, Iterable
 
 T = TypeVar('T')
 
@@ -20,6 +20,8 @@ class Namer(Protocol, Generic[T]):
     def filename(self, obj: T, *, format: str) -> str: ...
     def parse_filename_for_metadata(self, filename: str) -> dict[str, Any]: ...
     def path_for(self, obj: T, *, format: str) -> Path: ...
+    def parse_path_metadata(self, path: Path) -> dict[str, Any]:
+        return self.parse_filename_for_metadata(path.name)
 
 
 class Repository(Protocol, Generic[T]):
@@ -46,6 +48,7 @@ class BlobStore(Protocol):
 
     # discovery
     def list_paths(self, base: Path, pattern: str = "*") -> list[Path]: ...
+    def iter_files(self, root: Path) -> Iterable[Path]: ...
     def ensure_dir(self, path: Path) -> None: ...
 
 

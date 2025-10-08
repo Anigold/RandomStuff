@@ -49,9 +49,9 @@ class ExcelFormatter(BaseFormatter):
     def load_path(self, path: Path) -> Dict[str, Any]:
         wb = load_workbook(path)
         ws = wb.active
+        headers = [[cell for cell in row] for row in ws.iter_rows(min_row=1, max_row=1, values_only=True)]
         rows = [[cell for cell in row] for row in ws.iter_rows(min_row=2, values_only=True)]
         
-        if not rows:
-            return {"headers": [], "rows": []}
-        headers, *body = rows
-        return {"headers": list(headers), "rows": [list(r) for r in body], 'metadata': {}}
+        if not rows: return {"headers": [], "rows": []}
+        # headers, *body = rows
+        return {"headers": list(headers), "rows": rows, 'metadata': {}}

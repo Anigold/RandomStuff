@@ -81,3 +81,10 @@ class LocalBlobStore(BlobStore):
 
     def ensure_dir(self, path: Path) -> None:
         path.mkdir(parents=True, exist_ok=True)
+
+    def iter_files(self, root: Path) -> Iterable[Path]:
+        if not root.exists():
+            return
+        for path in root.rglob("*"):
+            if path.is_file():
+                yield path

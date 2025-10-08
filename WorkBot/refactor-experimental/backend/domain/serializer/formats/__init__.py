@@ -20,7 +20,7 @@ from .csv_format import CsvFormatter
 from .json_format import JSONFormatter
 
 from .vendor_formats.sysco import SyscoFormatter
-# from .vendor_formats.hill_n_markes_adapter import HillNMarkesFormatter
+from .vendor_formats.hill_n_markes_adapter import HillNMarkesFormatter
 
 _FORMATTERS: Dict[str, BaseFormatter] = {}
 
@@ -38,6 +38,6 @@ register_formatter(CsvFormatter())
 register_formatter(JSONFormatter())
 
 register_formatter(SyscoFormatter())
-# register_formatter(HillNMarkesFormatter())
+register_formatter(HillNMarkesFormatter())
 
 

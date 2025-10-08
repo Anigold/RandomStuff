@@ -23,6 +23,7 @@ class OrderServices:
         self.get_orders_by_vendor = GetOrdersByVendor(self.repo)
         self.get_orders_by_store  = GetOrdersByStore(self.repo)
         self.get_order            = GetOrder(self.repo)
+        self.get_orders           = GetOrders(self.repo, self.get_order)
 
         self.save_order   = SaveOrder(self.repo)
         self.remove_order = RemoveOrder(self.repo)

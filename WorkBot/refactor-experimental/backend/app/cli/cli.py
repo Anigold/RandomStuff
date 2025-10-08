@@ -459,7 +459,7 @@ class CLI:
 
         try:
             self.logger.info(f"Dispatching command: {command} (args={args})")
-            self.commands[command](args) if args else self.commands[command]()
+            self.commands[command].command(args) if args else self.commands[command].command()
             self.logger.info(f"Command '{command}' executed successfully.")
         except Exception as e:
             self._handle_error(command, e)

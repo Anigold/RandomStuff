@@ -116,12 +116,14 @@ class WorkBot:
     def delete_craftable_orders(self, stores, vendors=[]):
         self.craft_bot.delete_orders(stores, vendors)
 
-    def get_order_files(self, stores: list, vendors: list = [], formats: list[str] = None) -> list[Path]:
-        self.logger.info(f'Retrieving order files for: stores=[{stores}], vendors=[{vendors}], formats=[{formats}]')
-        return self.orders.get_order_files(stores=stores, vendors=vendors, formats=formats)
+    # def get_order_files(self, stores: list, vendors: list = [], formats: list[str] = None) -> list[Path]:
+    #     self.logger.info(f'Retrieving order files for: stores=[{stores}], vendors=[{vendors}], formats=[{formats}]')
+    #     return self.orders.get_order_files(stores=stores, vendors=vendors, formats=formats)
 
-    def get_orders(self, stores: list[str], vendors: list[str], formats: list[str] = None) -> list[Order]:
-        self.logger.info(f'Retrieving orders for: stores=[{stores}], vendors=[{vendors}], formats=[{formats}]')
+    def get_orders(self, stores: list[str], vendors: list[str]) -> list[Order]:
+        self.logger.info(f'Retrieving orders for: stores={stores}, vendors={vendors}')
+        return self.orders.get_orders(vendors, stores)
+    
         order_files = self.get_order_files(stores, vendors, formats=formats)
         return self.orders.read_orders_from_file(order_files)
 
@@ -200,17 +202,17 @@ class WorkBot:
         self.logger.info(f'Generating vendor upload files for stores={stores}, vendors={vendors}, '
                          f'start_date={start_date}, end_date={end_date}')
 
-        order_file_paths = self.get_order_files(stores=stores, vendors=vendors, formats=['xlsx'])
-        self.logger.info(f'Found {len(order_file_paths)} order files to process.')
+        orders = self.get_orders(vendors, stores)
+        # print(orders, flush=True)
+        # order_file_paths = self.get_order_files(stores=stores, vendors=vendors, formats=['xlsx'])
+        self.logger.info(f'Found {len(orders)} orders to process.')
 
         context_map = {}
-        for file_path in order_file_paths:
+        for order in orders:
             
-            order = self.orders.read_order_from_file(file_path)
-            print(order, flush=True)
             vendor_info = self.vendors.get_vendor(order.vendor)
 
-            context_map[str(file_path)] = {
+            context_map[order] = {
                 'store':       order.store,
                 'vendor_info': vendor_info,
                 'date_str':    order.date,
