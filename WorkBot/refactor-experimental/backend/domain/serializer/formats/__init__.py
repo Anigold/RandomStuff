@@ -19,25 +19,33 @@ from .excel_format import ExcelFormatter
 from .csv_format import CsvFormatter
 from .json_format import JSONFormatter
 
-from .vendor_formats.sysco import SyscoFormatter
-from .vendor_formats.hill_n_markes_adapter import HillNMarkesFormatter
+from .vendor_formats import * 
 
-_FORMATTERS: Dict[str, BaseFormatter] = {}
+_FORMATTERS: Dict[str, BaseFormatter] = {
+    'xlsx': ExcelFormatter,
+    'csv': CsvFormatter,
+    'json': JSONFormatter,
+    'sysco': SyscoFormatter,
+    'hillnmarkes': HillNMarkesFormatter,
+    'unfi': UNFIFormatter, 
+}
 
-def register_formatter(formatter: BaseFormatter) -> None:
-    '''Register a formatter by its format_name() key.'''
-    _FORMATTERS[formatter.format_name()] = formatter
+# def register_formatter(formatter: BaseFormatter) -> None:
+#     '''Register a formatter by its format_name() key.'''
+#     _FORMATTERS[formatter.format_name()] = formatter
 
 def get_formatter(fmt: str) -> BaseFormatter:
     '''Retrieve a formatter by name, raises KeyError if not found.'''
-    return _FORMATTERS[fmt]
+    fmt = fmt.strip().lower()
+    return _FORMATTERS[fmt]()
 
 # Pre-register built-in formatters
-register_formatter(ExcelFormatter())
-register_formatter(CsvFormatter())
-register_formatter(JSONFormatter())
+# register_formatter(ExcelFormatter())
+# register_formatter(CsvFormatter())
+# register_formatter(JSONFormatter())
 
-register_formatter(SyscoFormatter())
-register_formatter(HillNMarkesFormatter())
+# register_formatter(SyscoFormatter())
+# register_formatter(HillNMarkesFormatter())
+# register_formatter(UNFIFormatter())
 
 

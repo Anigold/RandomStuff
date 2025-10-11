@@ -3,9 +3,10 @@
 from pathlib import Path
 from typing import Generic, TypeVar, Optional
 from abc import ABC, abstractmethod
-
+from backend.infra.logger import Logger
 T = TypeVar("T")
 
+@Logger.attach_logger
 class BaseFormatter(Generic[T], ABC):
     '''Base class for formatters with file support.
     

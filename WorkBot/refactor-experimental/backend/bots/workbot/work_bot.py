@@ -209,7 +209,7 @@ class WorkBot:
 
         context_map = {}
         for order in orders:
-            
+    
             vendor_info = self.vendors.get_vendor(order.vendor)
 
             context_map[order] = {
@@ -221,7 +221,6 @@ class WorkBot:
         self.logger.debug(f'Context map built with {len(context_map)} entries. Delegating to OrderCoordinator.')
 
         result_paths = self.orders.generate_vendor_uploads(
-            stores=stores,
             vendors=vendors,
             start_date=start_date,
             end_date=end_date,

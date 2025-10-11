@@ -27,8 +27,9 @@ class GenericFileAdapter(GenericFilePort, Generic[T]):
     def ensure_dir(self, path: Path) -> None:
         self.store.ensure_dir(path)
 
-    def get_file_path(self, obj: T, format) -> Path:
-        return self.namer.path_for(obj, format=format)
+    def get_file_path(self, obj: T, format,  category: str | None = None) -> Path:
+
+        return self.namer.path_for(obj, format=format, category=category)
     
     def parse_filename(self, filename: str) -> dict:
         return self.namer.parse_filename_for_metadata(filename)
@@ -40,12 +41,14 @@ class GenericFileAdapter(GenericFilePort, Generic[T]):
         
         # Prefer serializer.load_path if available
         if hasattr(self.serializer, "load_path"):
-            return self.serializer.load_path(path)
+            meta = self.parse_filename(path.name)
+            return self.serializer.load_path(path, meta)
         
         data = self.store.read_bytes(path)
         return self.serializer.loads(data)
     
     def save(self, obj: T, format = None, context: dict | None = None, path_override: Path | None = None):
+        
         fmt = format or self.serializer.preferred_format()
 
         path = path_override or self.get_file_path(obj, format=fmt)
@@ -54,6 +57,7 @@ class GenericFileAdapter(GenericFilePort, Generic[T]):
         data = self.serializer.dumps(obj, format=fmt, context=context)
 
         self.store.write_bytes(path, data, overwrite=True)
+        self.logger.info(path)
         return path
     
     def remove(self, path):
@@ -75,17 +79,17 @@ class GenericFileAdapter(GenericFilePort, Generic[T]):
         matches: list[T] = []
 
         for path in self.store.iter_files(base):
+
             meta = self.namer.parse_path_metadata(path)
+
             if not meta: continue
-            # print(f'Meta: {meta}', flush=True)
-            # print(f'Criteria: {criteria}')
-            
+            # self.logger.info(f'Meta: {meta}')
+            # self.logger.info(f'Criteria: {criteria.items()}')
             if all(meta.get(k) == v for k, v in criteria.items()):  
                 try:
                     matches.append(self.read_from_path(path))
                 except Exception as e:
                     self.logger.warning(f"Skipping unreadable file {path}: {e}")
-        # print(matches, flush=True)
         return matches
         
    

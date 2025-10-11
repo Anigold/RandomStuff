@@ -6,11 +6,14 @@ from backend.domain.serializer.serializers.order import OrderSerializer
 from backend.domain.naming.order_namer import OrderFilenameStrategy
 from backend.domain.models import Order
 from backend.adapters.files.local_blob_store import LocalBlobStore
+from backend.infra.logger import Logger
 
+@Logger.attach_logger
 class OrderFileRepository(OrderRepository):
     """File-backed implementation of OrderRepository using GenericFileAdapter."""
 
     def __init__(self, base_dir: Path, uploads_dir: Path):
+        self._uploads_dir = uploads_dir
         self._engine = GenericFileAdapter[Order](
             store=LocalBlobStore(),
             serializer=OrderSerializer(),
@@ -21,21 +24,10 @@ class OrderFileRepository(OrderRepository):
     def get(self, vendor: str, store: str, date: str | None = None) -> Order:
         """Get the current or specific dated order for vendor+store."""
         matches = self._engine.find(vendor=vendor, store=store)
-        # print(matches, flush=True)
-        print(matches, flush=True)
-        return matches[0] if len(matches) > 1 else None
-        print(matches, flush=True)
-        if date:
-            matches = [o for o in matches if o.date == date]
-
-        if not matches:
-            raise FileNotFoundError(f"No order found for vendor={vendor}, store={store}, date={date}")
-
-        # If no date: pick most recent
-        matches.sort(key=lambda o: o.date, reverse=True)
-        return matches[0]
+        return matches[0] if len(matches) >= 1 else None
 
     def list_all(self) -> list[Order]:
+        self.logger.info([self._engine.read_from_path(p) for p in self._engine.list_files("*.xlsx")])
         return [self._engine.read_from_path(p) for p in self._engine.list_files("*.xlsx")]
 
     def list_by_vendor(self, vendor: str) -> list[Order]:
@@ -57,7 +49,9 @@ class OrderFileRepository(OrderRepository):
             pass
 
     def generate_vendor_upload_file(self, order: Order, context: dict | None = None) -> None:
-        dest_path = self._engine.namer.path_for(order)
+        formatter = self._engine.serializer.get_formatter(order.vendor.strip().lower())
+        dest_path = self._engine.get_file_path(order, format=formatter.format_name(), category='upload')
+        self.logger.info(dest_path)
         return self._engine.save(order, format=order.vendor, context=context, path_override=dest_path)
     
     def ingest_downloaded_attachment(self, order: Order, src_path: Path, kind: str) -> None:

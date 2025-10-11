@@ -12,9 +12,6 @@ from typing import Any, List
 from backend.domain.serializer.formats.excel_format import ExcelFormatter
 
 class HillNMarkesFormatter(ExcelFormatter):
-
-    def format_name(self) -> str:
-        return 'Hill & Markes'
     
     def dumps(self, data: List[List[Any]], **kwargs) -> bytes:
         headers = ['Key Word', 'Quantity']

@@ -6,7 +6,9 @@ from pathlib import Path
 from typing import Iterable
 
 from backend.app.ports import BlobStore
+from backend.infra.logger import Logger
 
+@Logger.attach_logger
 class LocalBlobStore(BlobStore):
     """
     Local filesystem BlobStore with simple atomic-ish writes:
@@ -77,7 +79,7 @@ class LocalBlobStore(BlobStore):
         base = base.resolve()
         if not base.exists():
             return []
-        return sorted(base.glob(pattern))
+        return sorted(base.rglob(pattern))
 
     def ensure_dir(self, path: Path) -> None:
         path.mkdir(parents=True, exist_ok=True)

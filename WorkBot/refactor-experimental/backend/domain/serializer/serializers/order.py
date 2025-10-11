@@ -5,6 +5,10 @@ from backend.app.ports.generic import Serializer
 from ..formats import get_formatter
 from pprint import pprint
 
+from backend.infra.logger import Logger
+from ..formats.base_format import BaseFormatter
+
+@Logger.attach_logger
 class OrderSerializer(Serializer[Order]):
     """
     Domain serializer: maps Order <-> dict.
@@ -20,7 +24,7 @@ class OrderSerializer(Serializer[Order]):
     # ---- Core protocol ----
     def dumps(self, obj: Order, format: Optional[str] = None, context: dict | None = None) -> bytes:
         fmt = format or self.preferred_format()
-        formatter = get_formatter(fmt)
+        formatter = self.get_formatter(fmt)
 
         order_dict = self.to_dict(obj)
         order_tablular = self._to_table(order_dict)
@@ -30,7 +34,7 @@ class OrderSerializer(Serializer[Order]):
 
     def loads(self, data: bytes, format: Optional[str] = None) -> Order:
         fmt = format or self.preferred_format()
-        formatter = get_formatter(fmt)
+        formatter = self.get_formatter(fmt)
         payload = formatter.loads(data)
 
         if fmt in ("xlsx", "csv"):
@@ -38,15 +42,19 @@ class OrderSerializer(Serializer[Order]):
         else:
             return self.from_dict(payload)
 
-    def load_path(self, path: Path) -> Order:
-        print(f'Loading path: {self}')
+    def load_path(self, path: Path, context: dict | None = None) -> Order:
+
         fmt = path.suffix.lstrip(".").lower()
+   
+        formatter = self.get_formatter(fmt)
 
-        formatter = get_formatter(fmt)
+        payload = formatter.load_path(path, context=context)
+    
+        return self.from_table(payload)
 
-        payload = formatter.load_path(path)
-        return self._from_formatter(payload)
-
+    def get_formatter(self, fmt: str) -> BaseFormatter:
+        return get_formatter(fmt)
+    
     # ---- Domain <-> dict ----
     def to_dict(self, order: Order) -> dict:
         out = {
@@ -68,6 +76,7 @@ class OrderSerializer(Serializer[Order]):
         return out
 
     def from_dict(self, data: dict) -> Order:
+   
         meta = data.get("metadata", {})
         items = [
             OrderItem(
@@ -79,6 +88,7 @@ class OrderSerializer(Serializer[Order]):
             )
             for i in data.get("items", [])
         ]
+
         return Order(
             store=meta.get("store", ""),
             vendor=meta.get("vendor", ""),
@@ -101,13 +111,21 @@ class OrderSerializer(Serializer[Order]):
         return {'metadata': metadata, 'headers': headers, 'rows': rows}
     
     def from_table(self, table: dict) -> Order:
+
         headers = table.get("headers", [])
         rows = table.get("rows", [])
         meta = table.get("metadata", {})   # always pass it through
 
         items = []
         for row in rows:
-            item = dict(zip(headers, row))
+            item_sku, item_name, qty, cost_per, total_cost = row
+            item = {
+                'sku': item_sku,
+                'name': item_name,
+                'quantity': qty,
+                'cost_per': cost_per,
+                'total_cost': total_cost,
+            }
             items.append(item)
 
         data = {

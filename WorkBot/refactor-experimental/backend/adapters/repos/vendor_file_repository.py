@@ -23,7 +23,8 @@ class VendorFileRepository(VendorRepository):
         )
 
     def get(self, name: str) -> Vendor:
-        matches = self._engine.find(vendor=name)
+
+        matches = self._engine.find(name=name)
         if not matches:
             raise FileNotFoundError(f"No vendor file found for {name}")
         return matches[0]

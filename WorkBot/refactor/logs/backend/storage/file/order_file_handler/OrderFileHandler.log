@@ -3636,3 +3636,307 @@
 2025-10-08 13:57:32,906 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:191) - [upload] Sysco | Triphammer | 2025-10-03 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\upload_files\Sysco\Sysco_Triphammer_2025-10-03.csv
 2025-10-08 14:34:07,302 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:65) - Retrieving order files: stores=[['Triphammer']], vendors=[['Russo Produce']], formats=['xlsx']
 2025-10-08 14:34:07,309 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:107) - Retrieved 2 order files.
+2025-10-08 16:49:59,020 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:65) - Retrieving order files: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[All vendors], formats=['xlsx']
+2025-10-08 16:49:59,057 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:107) - Retrieved 124 order files.
+2025-10-08 16:50:00,824 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Russo Produce_Triphammer_2025-10-08.pdf
+2025-10-08 16:50:00,825 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Russo Produce_Triphammer_2025-10-08.xlsx
+2025-10-08 16:50:00,828 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sysco_Triphammer_2025-10-08.pdf
+2025-10-08 16:50:00,829 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sysco_Triphammer_2025-10-08.xlsx
+2025-10-08 16:50:00,831 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Ithaca Bakery_Triphammer_2025-10-08.pdf
+2025-10-08 16:50:00,833 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Ithaca Bakery_Triphammer_2025-10-08.xlsx
+2025-10-08 16:50:00,835 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: US Foods_Triphammer_2025-10-08.pdf
+2025-10-08 16:50:00,837 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: US Foods_Triphammer_2025-10-08.xlsx
+2025-10-08 16:50:00,838 - WARNING - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:129) - Failed to archive Webstaurant_Triphammer_2025-10-08.pdf: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\andrew\\Desktop\\Andrew\\Projects\\IthacaBakery\\RandomStuff\\WorkBot\\refactor\\data\\orders\\Webstaurant\\Webstaurant_Triphammer_2025-10-08.pdf' -> 'C:\\Users\\andrew\\Desktop\\Andrew\\Projects\\IthacaBakery\\RandomStuff\\WorkBot\\refactor\\data\\orders\\Webstaurant\\CompletedOrders\\Webstaurant_Triphammer_2025-10-08.pdf'
+2025-10-08 16:50:00,839 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Webstaurant_Triphammer_2025-10-08.xlsx
+2025-10-08 16:50:00,842 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Performance Food_Triphammer_2025-10-08.pdf
+2025-10-08 16:50:00,844 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Performance Food_Triphammer_2025-10-08.xlsx
+2025-10-08 16:50:00,846 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Ithaca Bakery_Collegetown_2025-10-08.pdf
+2025-10-08 16:50:00,847 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Ithaca Bakery_Collegetown_2025-10-08.xlsx
+2025-10-08 16:50:00,850 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: US Foods_Collegetown_2025-10-08.pdf
+2025-10-08 16:50:00,851 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: US Foods_Collegetown_2025-10-08.xlsx
+2025-10-08 16:50:00,854 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Performance Food_Collegetown_2025-10-08.pdf
+2025-10-08 16:50:00,855 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Performance Food_Collegetown_2025-10-08.xlsx
+2025-10-08 16:50:00,858 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sysco_Collegetown_2025-10-08.pdf
+2025-10-08 16:50:00,859 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sysco_Collegetown_2025-10-08.xlsx
+2025-10-08 16:50:00,861 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sweet Sam's Baking Company, LLC_Bakery_2025-10-08.pdf
+2025-10-08 16:50:00,863 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sweet Sam's Baking Company, LLC_Bakery_2025-10-08.xlsx
+2025-10-08 16:50:00,865 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Performance Food_Bakery_2025-10-08.pdf
+2025-10-08 16:50:00,866 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Performance Food_Bakery_2025-10-08.xlsx
+2025-10-08 16:50:00,868 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: US Foods_Bakery_2025-10-08.pdf
+2025-10-08 16:50:00,870 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: US Foods_Bakery_2025-10-08.xlsx
+2025-10-08 16:50:00,872 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sysco_Bakery_2025-10-07.pdf
+2025-10-08 16:50:00,874 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sysco_Bakery_2025-10-07.xlsx
+2025-10-08 16:50:00,876 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: FingerLakes Farms_Bakery_2025-10-07.pdf
+2025-10-08 16:50:00,877 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: FingerLakes Farms_Bakery_2025-10-07.xlsx
+2025-10-08 16:50:00,880 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Qualita_Bakery_2025-10-07.pdf
+2025-10-08 16:50:00,881 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Qualita_Bakery_2025-10-07.xlsx
+2025-10-08 16:50:00,883 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: BJ's_Bakery_2025-10-06.pdf
+2025-10-08 16:50:00,884 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: BJ's_Bakery_2025-10-06.xlsx
+2025-10-08 16:50:00,886 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: DUTCH VALLEY FOOD DIST_Bakery_2025-10-05.pdf
+2025-10-08 16:50:00,887 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: DUTCH VALLEY FOOD DIST_Bakery_2025-10-05.xlsx
+2025-10-08 16:50:00,889 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Coca-Cola_Bakery_2025-10-05.pdf
+2025-10-08 16:50:00,891 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Coca-Cola_Bakery_2025-10-05.xlsx
+2025-10-08 16:50:00,893 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Harney and Sons Tea_Bakery_2025-10-05.pdf
+2025-10-08 16:50:00,894 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Harney and Sons Tea_Bakery_2025-10-05.xlsx
+2025-10-08 16:50:00,896 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Webstaurant_Bakery_2025-10-04.pdf
+2025-10-08 16:50:00,897 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Webstaurant_Bakery_2025-10-04.xlsx
+2025-10-08 16:50:00,899 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: J.Mills_Bakery_2025-10-04.pdf
+2025-10-08 16:50:00,899 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: J.Mills_Bakery_2025-10-04.xlsx
+2025-10-08 16:50:00,901 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Tops_Triphammer_2025-10-08.pdf
+2025-10-08 16:50:00,901 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Tops_Triphammer_2025-10-08.xlsx
+2025-10-08 16:50:00,904 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: SANICO_Triphammer_2025-10-07.pdf
+2025-10-08 16:50:00,905 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: SANICO_Triphammer_2025-10-07.xlsx
+2025-10-08 16:50:00,907 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sysco_Triphammer_2025-10-05.pdf
+2025-10-08 16:50:00,909 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sysco_Triphammer_2025-10-05.xlsx
+2025-10-08 16:50:00,910 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Russo Produce_Triphammer_2025-10-05.pdf
+2025-10-08 16:50:00,912 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Russo Produce_Triphammer_2025-10-05.xlsx
+2025-10-08 16:50:00,913 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Vegan Epicure_Triphammer_2025-10-05.pdf
+2025-10-08 16:50:00,915 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Vegan Epicure_Triphammer_2025-10-05.xlsx
+2025-10-08 16:50:00,916 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Creative Converting_Triphammer_2025-10-03.pdf
+2025-10-08 16:50:00,918 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Creative Converting_Triphammer_2025-10-03.xlsx
+2025-10-08 16:50:00,920 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Bo's Bones_Triphammer_2025-10-03.pdf
+2025-10-08 16:50:00,921 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Bo's Bones_Triphammer_2025-10-03.xlsx
+2025-10-08 16:50:00,923 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: A.L. George_Triphammer_2025-10-03.pdf
+2025-10-08 16:50:00,924 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: A.L. George_Triphammer_2025-10-03.xlsx
+2025-10-08 16:50:00,926 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Coca-Cola_Triphammer_2025-10-03.pdf
+2025-10-08 16:50:00,928 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Coca-Cola_Triphammer_2025-10-03.xlsx
+2025-10-08 16:50:00,930 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Equal Exchange_Triphammer_2025-10-03.pdf
+2025-10-08 16:50:00,931 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Equal Exchange_Triphammer_2025-10-03.xlsx
+2025-10-08 16:50:00,933 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Copper Horse Coffee_Triphammer_2025-10-03.pdf
+2025-10-08 16:50:00,934 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Copper Horse Coffee_Triphammer_2025-10-03.xlsx
+2025-10-08 16:50:00,936 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Regional Distributors, Inc._Triphammer_2025-10-03.pdf
+2025-10-08 16:50:00,938 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Regional Distributors, Inc._Triphammer_2025-10-03.xlsx
+2025-10-08 16:50:00,940 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hill & Markes_Triphammer_2025-10-03.pdf
+2025-10-08 16:50:00,941 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hill & Markes_Triphammer_2025-10-03.xlsx
+2025-10-08 16:50:00,943 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Peters Supply_Triphammer_2025-10-03.pdf
+2025-10-08 16:50:00,945 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Peters Supply_Triphammer_2025-10-03.xlsx
+2025-10-08 16:50:00,947 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: US Foods_Triphammer_2025-10-03.pdf
+2025-10-08 16:50:00,948 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: US Foods_Triphammer_2025-10-03.xlsx
+2025-10-08 16:50:00,950 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: KEHE DISTRIBUTORS_Triphammer_2025-10-03.pdf
+2025-10-08 16:50:00,951 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: KEHE DISTRIBUTORS_Triphammer_2025-10-03.xlsx
+2025-10-08 16:50:00,953 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Ithaca Bakery_Triphammer_2025-10-03.pdf
+2025-10-08 16:50:00,955 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Ithaca Bakery_Triphammer_2025-10-03.xlsx
+2025-10-08 16:50:00,957 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: UNFI_Triphammer_2025-10-03.pdf
+2025-10-08 16:50:00,958 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: UNFI_Triphammer_2025-10-03.xlsx
+2025-10-08 16:50:00,960 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hillcrest Dairy_Triphammer_2025-10-03.pdf
+2025-10-08 16:50:00,962 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hillcrest Dairy_Triphammer_2025-10-03.xlsx
+2025-10-08 16:50:00,964 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: FingerLakes Farms_Triphammer_2025-10-03.pdf
+2025-10-08 16:50:00,965 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: FingerLakes Farms_Triphammer_2025-10-03.xlsx
+2025-10-08 16:50:00,967 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Performance Food_Triphammer_2025-10-03.pdf
+2025-10-08 16:50:00,969 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Performance Food_Triphammer_2025-10-03.xlsx
+2025-10-08 16:50:00,971 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Webstaurant_Triphammer_2025-10-03.pdf
+2025-10-08 16:50:00,972 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Webstaurant_Triphammer_2025-10-03.xlsx
+2025-10-08 16:50:00,975 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Johnston Paper_Triphammer_2025-10-03.pdf
+2025-10-08 16:50:00,976 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Johnston Paper_Triphammer_2025-10-03.xlsx
+2025-10-08 16:50:00,978 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: UNFI_Collegetown_2025-10-03.pdf
+2025-10-08 16:50:00,979 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: UNFI_Collegetown_2025-10-03.xlsx
+2025-10-08 16:50:00,981 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: A.L. George_Collegetown_2025-10-03.pdf
+2025-10-08 16:50:00,982 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: A.L. George_Collegetown_2025-10-03.xlsx
+2025-10-08 16:50:00,984 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: DUTCH VALLEY FOOD DIST_Collegetown_2025-10-03.pdf
+2025-10-08 16:50:00,986 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: DUTCH VALLEY FOOD DIST_Collegetown_2025-10-03.xlsx
+2025-10-08 16:50:00,987 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: BALKAN BEVERAGE LLC_Collegetown_2025-10-03.pdf
+2025-10-08 16:50:00,989 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: BALKAN BEVERAGE LLC_Collegetown_2025-10-03.xlsx
+2025-10-08 16:50:00,991 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Coca-Cola_Collegetown_2025-10-03.pdf
+2025-10-08 16:50:00,992 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Coca-Cola_Collegetown_2025-10-03.xlsx
+2025-10-08 16:50:00,994 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Peters Supply_Collegetown_2025-10-03.pdf
+2025-10-08 16:50:00,995 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Peters Supply_Collegetown_2025-10-03.xlsx
+2025-10-08 16:50:00,997 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Johnston Paper_Collegetown_2025-10-03.pdf
+2025-10-08 16:50:00,999 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Johnston Paper_Collegetown_2025-10-03.xlsx
+2025-10-08 16:50:01,001 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hill & Markes_Collegetown_2025-10-03.pdf
+2025-10-08 16:50:01,002 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hill & Markes_Collegetown_2025-10-03.xlsx
+2025-10-08 16:50:01,004 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Equal Exchange_Collegetown_2025-10-03.pdf
+2025-10-08 16:50:01,006 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Equal Exchange_Collegetown_2025-10-03.xlsx
+2025-10-08 16:50:01,008 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Regional Distributors, Inc._Collegetown_2025-10-03.pdf
+2025-10-08 16:50:01,009 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Regional Distributors, Inc._Collegetown_2025-10-03.xlsx
+2025-10-08 16:50:01,011 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hillcrest Dairy_Collegetown_2025-10-03.pdf
+2025-10-08 16:50:01,012 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hillcrest Dairy_Collegetown_2025-10-03.xlsx
+2025-10-08 16:50:01,014 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Ithaca Bakery_Collegetown_2025-10-03.pdf
+2025-10-08 16:50:01,016 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Ithaca Bakery_Collegetown_2025-10-03.xlsx
+2025-10-08 16:50:01,018 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sysco_Collegetown_2025-10-03.pdf
+2025-10-08 16:50:01,019 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sysco_Collegetown_2025-10-03.xlsx
+2025-10-08 16:50:01,021 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: US Foods_Collegetown_2025-10-03.pdf
+2025-10-08 16:50:01,023 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: US Foods_Collegetown_2025-10-03.xlsx
+2025-10-08 16:50:01,025 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Performance Food_Collegetown_2025-10-03.pdf
+2025-10-08 16:50:01,026 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Performance Food_Collegetown_2025-10-03.xlsx
+2025-10-08 16:50:01,028 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Wegmans_Downtown_2025-10-04.pdf
+2025-10-08 16:50:01,030 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Wegmans_Downtown_2025-10-04.xlsx
+2025-10-08 16:50:01,032 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Peters Supply_Downtown_2025-10-03.pdf
+2025-10-08 16:50:01,034 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Peters Supply_Downtown_2025-10-03.xlsx
+2025-10-08 16:50:01,036 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: FingerLakes Farms_Downtown_2025-10-03.pdf
+2025-10-08 16:50:01,037 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: FingerLakes Farms_Downtown_2025-10-03.xlsx
+2025-10-08 16:50:01,039 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hillcrest Dairy_Downtown_2025-10-03.pdf
+2025-10-08 16:50:01,040 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hillcrest Dairy_Downtown_2025-10-03.xlsx
+2025-10-08 16:50:01,042 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Performance Food_Downtown_2025-10-03.pdf
+2025-10-08 16:50:01,044 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Performance Food_Downtown_2025-10-03.xlsx
+2025-10-08 16:50:01,046 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: UNFI_Downtown_2025-10-03.pdf
+2025-10-08 16:50:01,047 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: UNFI_Downtown_2025-10-03.xlsx
+2025-10-08 16:50:01,049 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Coca-Cola_Downtown_2025-10-03.pdf
+2025-10-08 16:50:01,050 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Coca-Cola_Downtown_2025-10-03.xlsx
+2025-10-08 16:50:01,052 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sysco_Downtown_2025-10-03.pdf
+2025-10-08 16:50:01,054 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sysco_Downtown_2025-10-03.xlsx
+2025-10-08 16:50:01,055 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: KEHE DISTRIBUTORS_Downtown_2025-10-03.pdf
+2025-10-08 16:50:01,057 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: KEHE DISTRIBUTORS_Downtown_2025-10-03.xlsx
+2025-10-08 16:50:01,059 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Johnston Paper_Downtown_2025-10-03.pdf
+2025-10-08 16:50:01,060 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Johnston Paper_Downtown_2025-10-03.xlsx
+2025-10-08 16:50:01,062 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: SANICO_Downtown_2025-10-03.pdf
+2025-10-08 16:50:01,064 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: SANICO_Downtown_2025-10-03.xlsx
+2025-10-08 16:50:01,065 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Equal Exchange_Downtown_2025-10-03.pdf
+2025-10-08 16:50:01,067 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Equal Exchange_Downtown_2025-10-03.xlsx
+2025-10-08 16:50:01,069 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hill & Markes_Downtown_2025-10-03.pdf
+2025-10-08 16:50:01,070 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hill & Markes_Downtown_2025-10-03.xlsx
+2025-10-08 16:50:01,072 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Copper Horse Coffee_Downtown_2025-10-03.pdf
+2025-10-08 16:50:01,073 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Copper Horse Coffee_Downtown_2025-10-03.xlsx
+2025-10-08 16:50:01,075 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Regional Distributors, Inc._Downtown_2025-10-03.pdf
+2025-10-08 16:50:01,077 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Regional Distributors, Inc._Downtown_2025-10-03.xlsx
+2025-10-08 16:50:01,078 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: US Foods_Downtown_2025-10-03.pdf
+2025-10-08 16:50:01,080 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: US Foods_Downtown_2025-10-03.xlsx
+2025-10-08 16:50:01,082 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Ithaca Bakery_Downtown_2025-10-03.pdf
+2025-10-08 16:50:01,083 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Ithaca Bakery_Downtown_2025-10-03.xlsx
+2025-10-08 16:50:01,085 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Creative Converting_Easthill_2025-10-04.pdf
+2025-10-08 16:50:01,086 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Creative Converting_Easthill_2025-10-04.xlsx
+2025-10-08 16:50:01,088 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hen of the Woods_Easthill_2025-10-04.pdf
+2025-10-08 16:50:01,089 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hen of the Woods_Easthill_2025-10-04.xlsx
+2025-10-08 16:50:01,091 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Worlds Best Cheeses_Easthill_2025-10-04.pdf
+2025-10-08 16:50:01,092 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Worlds Best Cheeses_Easthill_2025-10-04.xlsx
+2025-10-08 16:50:01,094 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Webstaurant_Easthill_2025-10-04.pdf
+2025-10-08 16:50:01,095 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Webstaurant_Easthill_2025-10-04.xlsx
+2025-10-08 16:50:01,098 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: BALKAN BEVERAGE LLC_Easthill_2025-10-04.pdf
+2025-10-08 16:50:01,099 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: BALKAN BEVERAGE LLC_Easthill_2025-10-04.xlsx
+2025-10-08 16:50:01,101 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: DUTCH VALLEY FOOD DIST_Easthill_2025-10-04.pdf
+2025-10-08 16:50:01,102 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: DUTCH VALLEY FOOD DIST_Easthill_2025-10-04.xlsx
+2025-10-08 16:50:01,104 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: FingerLakes Farms_Easthill_2025-10-04.pdf
+2025-10-08 16:50:01,105 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: FingerLakes Farms_Easthill_2025-10-04.xlsx
+2025-10-08 16:50:01,107 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Johnston Paper_Easthill_2025-10-04.pdf
+2025-10-08 16:50:01,109 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Johnston Paper_Easthill_2025-10-04.xlsx
+2025-10-08 16:50:01,110 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hillcrest Dairy_Easthill_2025-10-04.pdf
+2025-10-08 16:50:01,112 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hillcrest Dairy_Easthill_2025-10-04.xlsx
+2025-10-08 16:50:01,114 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: UNFI_Easthill_2025-10-04.pdf
+2025-10-08 16:50:01,115 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: UNFI_Easthill_2025-10-04.xlsx
+2025-10-08 16:50:01,117 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hill & Markes_Easthill_2025-10-04.pdf
+2025-10-08 16:50:01,118 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hill & Markes_Easthill_2025-10-04.xlsx
+2025-10-08 16:50:01,120 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Copper Horse Coffee_Easthill_2025-10-04.pdf
+2025-10-08 16:50:01,121 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Copper Horse Coffee_Easthill_2025-10-04.xlsx
+2025-10-08 16:50:01,123 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Regional Distributors, Inc._Easthill_2025-10-04.pdf
+2025-10-08 16:50:01,126 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Regional Distributors, Inc._Easthill_2025-10-04.xlsx
+2025-10-08 16:50:01,127 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Coca-Cola_Easthill_2025-10-04.pdf
+2025-10-08 16:50:01,129 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Coca-Cola_Easthill_2025-10-04.xlsx
+2025-10-08 16:50:01,130 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hillcrest Foods_Easthill_2025-10-04.pdf
+2025-10-08 16:50:01,132 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hillcrest Foods_Easthill_2025-10-04.xlsx
+2025-10-08 16:50:01,133 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Bo's Bones_Easthill_2025-10-04.pdf
+2025-10-08 16:50:01,135 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Bo's Bones_Easthill_2025-10-04.xlsx
+2025-10-08 16:50:01,137 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: US Foods_Easthill_2025-10-04.pdf
+2025-10-08 16:50:01,138 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: US Foods_Easthill_2025-10-04.xlsx
+2025-10-08 16:50:01,140 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Peters Supply_Easthill_2025-10-04.pdf
+2025-10-08 16:50:01,142 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Peters Supply_Easthill_2025-10-04.xlsx
+2025-10-08 16:50:01,144 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Performance Food_Easthill_2025-10-04.pdf
+2025-10-08 16:50:01,145 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Performance Food_Easthill_2025-10-04.xlsx
+2025-10-08 16:50:01,147 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Equal Exchange_Easthill_2025-10-04.pdf
+2025-10-08 16:50:01,148 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Equal Exchange_Easthill_2025-10-04.xlsx
+2025-10-08 16:50:01,150 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Ithaca Bakery_Easthill_2025-10-04.pdf
+2025-10-08 16:50:01,151 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Ithaca Bakery_Easthill_2025-10-04.xlsx
+2025-10-08 16:50:01,153 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sysco_Easthill_2025-10-04.pdf
+2025-10-08 16:50:01,154 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sysco_Easthill_2025-10-04.xlsx
+2025-10-08 16:50:01,156 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: SANICO_Bakery_2025-10-07.pdf
+2025-10-08 16:50:01,158 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: SANICO_Bakery_2025-10-07.xlsx
+2025-10-08 16:50:01,159 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Peters Supply_Bakery_2025-10-07.pdf
+2025-10-08 16:50:01,161 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Peters Supply_Bakery_2025-10-07.xlsx
+2025-10-08 16:50:01,162 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Johnston Paper_Bakery_2025-10-07.pdf
+2025-10-08 16:50:01,164 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Johnston Paper_Bakery_2025-10-07.xlsx
+2025-10-08 16:50:01,165 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Side Hill Acres_Bakery_2025-10-06.pdf
+2025-10-08 16:50:01,167 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Side Hill Acres_Bakery_2025-10-06.xlsx
+2025-10-08 16:50:01,168 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Atlantic Spice Company_Bakery_2025-10-06.pdf
+2025-10-08 16:50:01,170 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Atlantic Spice Company_Bakery_2025-10-06.xlsx
+2025-10-08 16:50:01,171 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Dawn_Bakery_2025-10-06.pdf
+2025-10-08 16:50:01,173 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Dawn_Bakery_2025-10-06.xlsx
+2025-10-08 16:50:01,174 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Keck's Food Service_Bakery_2025-10-06.pdf
+2025-10-08 16:50:01,176 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Keck's Food Service_Bakery_2025-10-06.xlsx
+2025-10-08 16:50:01,177 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: BALKAN BEVERAGE LLC_Bakery_2025-10-06.pdf
+2025-10-08 16:50:01,179 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: BALKAN BEVERAGE LLC_Bakery_2025-10-06.xlsx
+2025-10-08 16:50:01,180 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: A.L. George_Bakery_2025-10-06.pdf
+2025-10-08 16:50:01,182 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: A.L. George_Bakery_2025-10-06.xlsx
+2025-10-08 16:50:01,183 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Lentz_Bakery_2025-10-06.pdf
+2025-10-08 16:50:01,185 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Lentz_Bakery_2025-10-06.xlsx
+2025-10-08 16:50:01,186 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Regional Distributors, Inc._Bakery_2025-10-06.pdf
+2025-10-08 16:50:01,188 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Regional Distributors, Inc._Bakery_2025-10-06.xlsx
+2025-10-08 16:50:01,190 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hillcrest Foods_Bakery_2025-10-06.pdf
+2025-10-08 16:50:01,191 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hillcrest Foods_Bakery_2025-10-06.xlsx
+2025-10-08 16:50:01,193 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hillcrest Dairy_Bakery_2025-10-05.pdf
+2025-10-08 16:50:01,194 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hillcrest Dairy_Bakery_2025-10-05.xlsx
+2025-10-08 16:50:01,196 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hill & Markes_Bakery_2025-10-05.pdf
+2025-10-08 16:50:01,197 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Hill & Markes_Bakery_2025-10-05.xlsx
+2025-10-08 16:50:01,199 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Equal Exchange_Bakery_2025-10-05.pdf
+2025-10-08 16:50:01,200 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Equal Exchange_Bakery_2025-10-05.xlsx
+2025-10-08 16:50:01,202 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Copper Horse Coffee_Bakery_2025-10-05.pdf
+2025-10-08 16:50:01,204 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Copper Horse Coffee_Bakery_2025-10-05.xlsx
+2025-10-08 16:50:01,205 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: US Foods_Bakery_2025-10-05.pdf
+2025-10-08 16:50:01,207 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: US Foods_Bakery_2025-10-05.xlsx
+2025-10-08 16:50:01,209 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Odeko In._Bakery_2025-10-05.pdf
+2025-10-08 16:50:01,210 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Odeko In._Bakery_2025-10-05.xlsx
+2025-10-08 16:50:01,212 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: UNFI_Bakery_2025-10-04.pdf
+2025-10-08 16:50:01,213 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: UNFI_Bakery_2025-10-04.xlsx
+2025-10-08 16:50:01,215 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: BEHLOG & SON, INC._Triphammer_2025-10-05.pdf
+2025-10-08 16:50:01,217 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: BEHLOG & SON, INC._Triphammer_2025-10-05.xlsx
+2025-10-08 16:50:01,218 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: FingerLakes Farms_Bakery_2025-10-05.pdf
+2025-10-08 16:50:01,220 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: FingerLakes Farms_Bakery_2025-10-05.xlsx
+2025-10-08 16:50:01,221 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Performance Food_Bakery_2025-10-05.pdf
+2025-10-08 16:50:01,223 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Performance Food_Bakery_2025-10-05.xlsx
+2025-10-08 16:50:01,225 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sysco_Bakery_2025-10-05.pdf
+2025-10-08 16:50:01,226 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sysco_Bakery_2025-10-05.xlsx
+2025-10-08 16:50:01,228 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sysco_Triphammer_2025-10-03.pdf
+2025-10-08 16:50:01,229 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sysco_Triphammer_2025-10-03.xlsx
+2025-10-08 16:50:01,231 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Fingerlakes Artisen Foods_Triphammer_2025-10-03.xlsx
+2025-10-08 16:50:07,443 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:65) - Retrieving order files: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[All vendors], formats=['xlsx']
+2025-10-08 16:50:07,452 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:107) - Retrieved 0 order files.
+2025-10-11 07:17:19,143 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:65) - Retrieving order files: stores=[['Bakery']], vendors=[All vendors], formats=['xlsx']
+2025-10-11 07:17:19,156 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:107) - Retrieved 12 order files.
+2025-10-11 07:17:19,352 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sweet Sam's Baking Company, LLC_Bakery_2025-10-08.pdf
+2025-10-11 07:17:19,354 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sweet Sam's Baking Company, LLC_Bakery_2025-10-08.xlsx
+2025-10-11 07:17:19,355 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Performance Food_Bakery_2025-10-08.pdf
+2025-10-11 07:17:19,356 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Performance Food_Bakery_2025-10-08.xlsx
+2025-10-11 07:17:19,358 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: US Foods_Bakery_2025-10-08.pdf
+2025-10-11 07:17:19,359 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: US Foods_Bakery_2025-10-08.xlsx
+2025-10-11 07:17:19,360 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sysco_Bakery_2025-10-07.pdf
+2025-10-11 07:17:19,362 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Sysco_Bakery_2025-10-07.xlsx
+2025-10-11 07:17:19,363 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: FingerLakes Farms_Bakery_2025-10-07.pdf
+2025-10-11 07:17:19,364 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: FingerLakes Farms_Bakery_2025-10-07.xlsx
+2025-10-11 07:17:19,366 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Qualita_Bakery_2025-10-07.pdf
+2025-10-11 07:17:19,367 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Qualita_Bakery_2025-10-07.xlsx
+2025-10-11 07:17:19,368 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: BJ's_Bakery_2025-10-06.pdf
+2025-10-11 07:17:19,369 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: BJ's_Bakery_2025-10-06.xlsx
+2025-10-11 07:17:19,371 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: DUTCH VALLEY FOOD DIST_Bakery_2025-10-05.pdf
+2025-10-11 07:17:19,372 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: DUTCH VALLEY FOOD DIST_Bakery_2025-10-05.xlsx
+2025-10-11 07:17:19,373 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Coca-Cola_Bakery_2025-10-05.pdf
+2025-10-11 07:17:19,374 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Coca-Cola_Bakery_2025-10-05.xlsx
+2025-10-11 07:17:19,376 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Harney and Sons Tea_Bakery_2025-10-05.pdf
+2025-10-11 07:17:19,377 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Harney and Sons Tea_Bakery_2025-10-05.xlsx
+2025-10-11 07:17:19,378 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Webstaurant_Bakery_2025-10-04.pdf
+2025-10-11 07:17:19,379 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: Webstaurant_Bakery_2025-10-04.xlsx
+2025-10-11 07:17:19,381 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: J.Mills_Bakery_2025-10-04.pdf
+2025-10-11 07:17:19,382 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:127) - Archived order file: J.Mills_Bakery_2025-10-04.xlsx
+2025-10-11 08:16:25,147 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:65) - Retrieving order files: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[['UNFI']], formats=['xlsx']
+2025-10-11 08:16:25,152 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:107) - Retrieved 5 order files.
+2025-10-11 08:16:25,237 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:65) - Retrieving order files: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[['UNFI']], formats=['xlsx']
+2025-10-11 08:16:25,241 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:107) - Retrieved 5 order files.
+2025-10-11 08:16:25,248 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:191) - [upload] UNFI | Bakery | 2025-10-11 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\upload_files\UNFI\UNFI_Bakery_2025-10-11.csv
+2025-10-11 08:16:25,254 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:191) - [upload] UNFI | Triphammer | 2025-10-10 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\upload_files\UNFI\UNFI_Triphammer_2025-10-10.csv
+2025-10-11 08:16:25,260 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:191) - [upload] UNFI | Downtown | 2025-10-10 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\upload_files\UNFI\UNFI_Downtown_2025-10-10.csv
+2025-10-11 08:16:25,265 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:191) - [upload] UNFI | Easthill | 2025-10-10 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\upload_files\UNFI\UNFI_Easthill_2025-10-10.csv
+2025-10-11 08:16:25,271 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:191) - [upload] UNFI | Collegetown | 2025-10-10 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\upload_files\UNFI\UNFI_Collegetown_2025-10-10.csv
+2025-10-11 08:18:33,148 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:65) - Retrieving order files: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[['UNFI']], formats=['xlsx']
+2025-10-11 08:18:33,153 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:107) - Retrieved 5 order files.
+2025-10-11 08:18:33,189 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:65) - Retrieving order files: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[['UNFI']], formats=['xlsx']
+2025-10-11 08:18:33,193 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:107) - Retrieved 5 order files.
+2025-10-11 08:18:33,199 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:191) - [upload] UNFI | Downtown | 2025-10-10 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\upload_files\UNFI\UNFI_Downtown_2025-10-10.csv
+2025-10-11 08:18:33,205 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:191) - [upload] UNFI | Bakery | 2025-10-11 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\upload_files\UNFI\UNFI_Bakery_2025-10-11.csv
+2025-10-11 08:18:33,210 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:191) - [upload] UNFI | Triphammer | 2025-10-10 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\upload_files\UNFI\UNFI_Triphammer_2025-10-10.csv
+2025-10-11 08:18:33,215 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:191) - [upload] UNFI | Easthill | 2025-10-10 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\upload_files\UNFI\UNFI_Easthill_2025-10-10.csv
+2025-10-11 08:18:33,221 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:191) - [upload] UNFI | Collegetown | 2025-10-10 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\upload_files\UNFI\UNFI_Collegetown_2025-10-10.csv
+2025-10-11 08:19:21,957 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:65) - Retrieving order files: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[['UNFI']], formats=['xlsx']
+2025-10-11 08:19:21,962 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:107) - Retrieved 5 order files.
+2025-10-11 08:19:21,988 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:65) - Retrieving order files: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[['UNFI']], formats=['xlsx']
+2025-10-11 08:19:21,993 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:107) - Retrieved 5 order files.
+2025-10-11 08:19:22,000 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:191) - [upload] UNFI | Downtown | 2025-10-10 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\upload_files\UNFI\UNFI_Downtown_2025-10-10.csv
+2025-10-11 08:19:22,008 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:191) - [upload] UNFI | Bakery | 2025-10-11 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\upload_files\UNFI\UNFI_Bakery_2025-10-11.csv
+2025-10-11 08:19:22,015 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:191) - [upload] UNFI | Triphammer | 2025-10-10 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\upload_files\UNFI\UNFI_Triphammer_2025-10-10.csv
+2025-10-11 08:19:22,021 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:191) - [upload] UNFI | Easthill | 2025-10-10 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\upload_files\UNFI\UNFI_Easthill_2025-10-10.csv
+2025-10-11 08:19:22,028 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:191) - [upload] UNFI | Collegetown | 2025-10-10 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\upload_files\UNFI\UNFI_Collegetown_2025-10-10.csv
