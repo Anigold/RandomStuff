@@ -4281,3 +4281,817 @@ KeyError: 'Sysco'
 2025-10-11 13:51:18,622 - INFO - backend.app.cli.cli.CLI - (cli.py:463) - Command 'generate_vendor_upload_files' executed successfully.
 2025-10-11 13:51:56,976 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
 2025-10-11 13:51:56,978 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-11 13:52:54,917 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-11 13:52:54,924 - INFO - backend.app.cli.cli.CLI - (cli.py:119) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-11 13:52:54,924 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-11 13:52:54,932 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-11 13:52:54,932 - INFO - backend.app.cli.cli.CLI - (cli.py:363) - CLI session started.
+2025-10-11 13:52:59,171 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'UNFI'])
+2025-10-11 13:52:59,387 - INFO - backend.app.cli.cli.CLI - (cli.py:463) - Command 'generate_vendor_upload_files' executed successfully.
+2025-10-11 13:53:18,427 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'HillNMarkes'])
+2025-10-11 13:53:18,436 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vendor'
+2025-10-11 13:53:42,524 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-11 13:53:42,538 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: No vendor file found for Hill & Markes
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\vendors.py", line 20, in __call__
+    return self.repo.get(name)
+           ~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\repos\vendor_file_repository.py", line 29, in get
+    raise FileNotFoundError(f"No vendor file found for {name}")
+FileNotFoundError: No vendor file found for Hill & Markes
+2025-10-11 13:54:09,020 - INFO - backend.app.cli.cli.CLI - (cli.py:461) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-11 13:54:09,035 - ERROR - backend.app.cli.cli.CLI - (cli.py:468) - [Error] generate_vendor_upload_files failed: No vendor file found for Hill & Markes
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 462, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\vendors.py", line 20, in __call__
+    return self.repo.get(name)
+           ~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\repos\vendor_file_repository.py", line 29, in get
+    raise FileNotFoundError(f"No vendor file found for {name}")
+FileNotFoundError: No vendor file found for Hill & Markes
+2025-10-11 13:54:12,065 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-11 13:54:12,068 - INFO - backend.app.cli.cli.CLI - (cli.py:432) - Exiting CLI and saving history.
+2025-10-12 13:00:33,733 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-12 13:00:33,749 - INFO - backend.app.cli.cli.CLI - (cli.py:120) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-12 13:00:33,749 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-12 13:00:33,763 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-12 13:00:33,763 - INFO - backend.app.cli.cli.CLI - (cli.py:364) - CLI session started.
+2025-10-12 13:00:35,954 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 13:00:35,954 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: open_directory.
+2025-10-12 13:00:35,955 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 13:00:35,955 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 13:00:37,946 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 13:00:37,947 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 13:00:37,947 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 13:00:59,797 - INFO - backend.app.cli.cli.CLI - (cli.py:462) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'Hill & Markes'])
+2025-10-12 13:00:59,840 - ERROR - backend.app.cli.cli.CLI - (cli.py:469) - [Error] generate_vendor_upload_files failed: No vendor file found for Hill & Markes
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 463, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 213, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\vendors.py", line 20, in __call__
+    return self.repo.get(name)
+           ~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\repos\vendor_file_repository.py", line 29, in get
+    raise FileNotFoundError(f"No vendor file found for {name}")
+FileNotFoundError: No vendor file found for Hill & Markes
+2025-10-12 13:01:04,493 - INFO - backend.app.cli.cli.CLI - (cli.py:462) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'UNFI'])
+2025-10-12 13:01:05,051 - INFO - backend.app.cli.cli.CLI - (cli.py:464) - Command 'generate_vendor_upload_files' executed successfully.
+2025-10-12 13:14:32,365 - INFO - backend.app.cli.cli.CLI - (cli.py:390) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-12 13:14:32,368 - INFO - backend.app.cli.cli.CLI - (cli.py:433) - Exiting CLI and saving history.
+2025-10-12 13:14:37,857 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-12 13:14:37,875 - INFO - backend.app.cli.cli.CLI - (cli.py:120) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-12 13:14:37,876 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-12 13:14:37,885 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-12 13:14:37,885 - INFO - backend.app.cli.cli.CLI - (cli.py:364) - CLI session started.
+2025-10-12 13:14:39,288 - INFO - backend.app.cli.cli.CLI - (cli.py:462) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'UNFI'])
+2025-10-12 13:14:39,532 - INFO - backend.app.cli.cli.CLI - (cli.py:464) - Command 'generate_vendor_upload_files' executed successfully.
+2025-10-12 14:33:44,065 - INFO - backend.app.cli.cli.CLI - (cli.py:390) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-12 14:33:44,074 - INFO - backend.app.cli.cli.CLI - (cli.py:433) - Exiting CLI and saving history.
+2025-10-12 14:33:47,863 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-12 14:33:47,870 - INFO - backend.app.cli.cli.CLI - (cli.py:120) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-12 14:33:47,871 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-12 14:33:47,885 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-12 14:33:47,885 - INFO - backend.app.cli.cli.CLI - (cli.py:364) - CLI session started.
+2025-10-12 14:33:49,133 - INFO - backend.app.cli.cli.CLI - (cli.py:462) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', '--vendors', 'UNFI'])
+2025-10-12 14:33:49,377 - INFO - backend.app.cli.cli.CLI - (cli.py:464) - Command 'generate_vendor_upload_files' executed successfully.
+2025-10-12 14:34:05,746 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:34:05,747 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: generate_store_order_emails.
+2025-10-12 14:34:05,747 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:34:05,747 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: generate_vendor_order_emails.
+2025-10-12 14:34:05,747 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:34:05,747 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: generate_vendor_upload_files.
+2025-10-12 14:34:05,747 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:34:05,747 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:34:07,010 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:34:07,011 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: generate_vendor_order_emails.
+2025-10-12 14:34:07,011 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:34:07,011 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: generate_vendor_upload_files.
+2025-10-12 14:34:07,011 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:34:07,011 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:34:07,738 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:34:07,739 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: generate_vendor_upload_files.
+2025-10-12 14:34:07,739 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:34:07,739 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:34:08,962 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:34:08,963 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:34:08,963 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:34:09,187 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:34:09,187 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:34:09,187 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:34:09,370 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:34:09,371 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:34:09,371 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:34:09,530 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:34:09,531 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:34:09,531 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:34:09,714 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:34:09,715 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:34:09,715 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:34:09,874 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:34:09,875 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:34:09,875 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:34:10,050 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:34:10,051 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:34:10,051 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:34:24,987 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:34:24,987 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:34:24,987 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:38:30,383 - INFO - backend.app.cli.cli.CLI - (cli.py:390) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-12 14:38:30,386 - INFO - backend.app.cli.cli.CLI - (cli.py:433) - Exiting CLI and saving history.
+2025-10-12 14:38:33,744 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-12 14:38:33,751 - INFO - backend.app.cli.cli.CLI - (cli.py:120) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-12 14:38:33,752 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-12 14:38:33,761 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-12 14:38:33,761 - INFO - backend.app.cli.cli.CLI - (cli.py:364) - CLI session started.
+2025-10-12 14:38:38,151 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:38:38,151 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: download_audits.
+2025-10-12 14:38:38,151 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:38:38,151 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: download_orders.
+2025-10-12 14:38:38,151 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:38:38,151 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:38:39,383 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:38:39,383 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: download_orders.
+2025-10-12 14:38:39,383 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:38:39,383 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:38:40,303 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:38:40,303 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:38:40,303 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:38:40,567 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:38:40,567 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:38:40,567 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:38:40,767 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:38:40,767 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:38:40,767 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:38:42,175 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:38:42,175 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:38:42,175 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:38:42,399 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:38:42,399 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:38:42,399 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:38:42,583 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:38:42,583 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:38:42,583 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:38:42,759 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:38:42,759 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:38:42,759 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:38:42,983 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:38:42,983 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:38:42,983 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:41:27,601 - INFO - backend.app.cli.cli.CLI - (cli.py:390) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-12 14:41:27,604 - INFO - backend.app.cli.cli.CLI - (cli.py:433) - Exiting CLI and saving history.
+2025-10-12 14:41:30,655 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-12 14:41:30,662 - INFO - backend.app.cli.cli.CLI - (cli.py:120) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-12 14:41:30,662 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-12 14:41:30,671 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-12 14:41:30,671 - INFO - backend.app.cli.cli.CLI - (cli.py:364) - CLI session started.
+2025-10-12 14:41:40,473 - INFO - backend.app.cli.cli.CLI - (cli.py:390) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-12 14:41:40,476 - INFO - backend.app.cli.cli.CLI - (cli.py:433) - Exiting CLI and saving history.
+2025-10-12 14:41:43,676 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-12 14:41:43,683 - INFO - backend.app.cli.cli.CLI - (cli.py:120) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-12 14:41:43,683 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-12 14:41:43,691 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-12 14:41:43,691 - INFO - backend.app.cli.cli.CLI - (cli.py:364) - CLI session started.
+2025-10-12 14:41:45,834 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:41:45,834 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: download_audits.
+2025-10-12 14:41:45,834 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:41:45,834 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: download_orders.
+2025-10-12 14:41:45,834 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:41:45,834 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:41:46,554 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:41:46,554 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: download_orders.
+2025-10-12 14:41:46,554 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:41:46,554 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:41:47,442 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:41:47,442 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:41:47,442 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:41:47,682 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:41:47,682 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:41:47,682 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:41:48,994 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:41:48,994 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:41:48,994 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:41:50,882 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:41:50,882 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:41:50,882 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:41:51,122 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:41:51,122 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:41:51,122 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:41:51,330 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:41:51,330 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:41:51,330 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:46:45,790 - INFO - backend.app.cli.cli.CLI - (cli.py:390) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-12 14:46:45,792 - INFO - backend.app.cli.cli.CLI - (cli.py:433) - Exiting CLI and saving history.
+2025-10-12 14:46:48,653 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-12 14:46:48,660 - INFO - backend.app.cli.cli.CLI - (cli.py:120) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-12 14:46:48,660 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-12 14:46:48,661 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.app.cli.commands.archive_orders.ArchiveOrders object at 0x000002090C0C78C0>
+2025-10-12 14:46:48,662 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.app.cli.commands.combine_orders.CombineOrders object at 0x000002090C0C7A10>
+2025-10-12 14:46:48,663 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.app.cli.commands.convert_order_to_transfer.ConvertOrderToTransfer object at 0x000002090C0C7B60>
+2025-10-12 14:46:48,664 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.app.cli.commands.delete_orders.DeleteOrders object at 0x000002090C0C7CB0>
+2025-10-12 14:46:48,664 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.app.cli.commands.download_audits.DownloadAudits object at 0x000002090C0C7E00>
+2025-10-12 14:46:48,664 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.app.cli.commands.download_orders.DownloadOrders object at 0x000002090C10C050>
+2025-10-12 14:46:48,665 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.app.cli.commands.generate_store_order_emails.GenerateStoreOrderEmails object at 0x000002090C10C1A0>
+2025-10-12 14:46:48,666 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.app.cli.commands.generate_vendor_order_emails.GenerateVendorOrderEmails object at 0x000002090C10C2F0>
+2025-10-12 14:46:48,667 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.app.cli.commands.generate_vendor_upload_files.GenerateVendorUploadFiles object at 0x000002090C10C440>
+2025-10-12 14:46:48,667 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.app.cli.commands.input_transfers.InputTransfers object at 0x000002090C10C590>
+2025-10-12 14:46:48,668 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.app.cli.commands.list_orders.ListOrders object at 0x000002090C10C6E0>
+2025-10-12 14:46:48,669 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.app.cli.commands.open_directory.OpenDirectory object at 0x000002090C10C980>
+2025-10-12 14:46:48,670 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.app.cli.commands.split_natalies.SplitNatalies object at 0x000002090C10CC20>
+2025-10-12 14:46:48,671 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.app.cli.commands.vendor_information.VendorInformation object at 0x000002090C10CD70>
+2025-10-12 14:46:48,671 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-12 14:46:48,671 - INFO - backend.app.cli.cli.CLI - (cli.py:364) - CLI session started.
+2025-10-12 14:47:12,903 - INFO - backend.app.cli.cli.CLI - (cli.py:390) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-12 14:47:12,905 - INFO - backend.app.cli.cli.CLI - (cli.py:433) - Exiting CLI and saving history.
+2025-10-12 14:47:16,133 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-12 14:47:16,140 - INFO - backend.app.cli.cli.CLI - (cli.py:120) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-12 14:47:16,140 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-12 14:47:16,142 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.app.cli.commands.command.CommandContext object at 0x000001C85BBD7770>
+2025-10-12 14:47:16,142 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.app.cli.commands.command.CommandContext object at 0x000001C85BBD7770>
+2025-10-12 14:47:16,143 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.app.cli.commands.command.CommandContext object at 0x000001C85BBD7770>
+2025-10-12 14:47:16,144 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.app.cli.commands.command.CommandContext object at 0x000001C85BBD7770>
+2025-10-12 14:47:16,145 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.app.cli.commands.command.CommandContext object at 0x000001C85BBD7770>
+2025-10-12 14:47:16,145 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.app.cli.commands.command.CommandContext object at 0x000001C85BBD7770>
+2025-10-12 14:47:16,146 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.app.cli.commands.command.CommandContext object at 0x000001C85BBD7770>
+2025-10-12 14:47:16,146 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.app.cli.commands.command.CommandContext object at 0x000001C85BBD7770>
+2025-10-12 14:47:16,147 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.app.cli.commands.command.CommandContext object at 0x000001C85BBD7770>
+2025-10-12 14:47:16,148 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.app.cli.commands.command.CommandContext object at 0x000001C85BBD7770>
+2025-10-12 14:47:16,148 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.app.cli.commands.command.CommandContext object at 0x000001C85BBD7770>
+2025-10-12 14:47:16,149 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.app.cli.commands.command.CommandContext object at 0x000001C85BBD7770>
+2025-10-12 14:47:16,150 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.app.cli.commands.command.CommandContext object at 0x000001C85BBD7770>
+2025-10-12 14:47:16,151 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.app.cli.commands.command.CommandContext object at 0x000001C85BBD7770>
+2025-10-12 14:47:16,151 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-12 14:47:16,151 - INFO - backend.app.cli.cli.CLI - (cli.py:364) - CLI session started.
+2025-10-12 14:47:30,359 - INFO - backend.app.cli.cli.CLI - (cli.py:390) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-12 14:47:30,361 - INFO - backend.app.cli.cli.CLI - (cli.py:433) - Exiting CLI and saving history.
+2025-10-12 14:47:32,829 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-12 14:47:32,836 - INFO - backend.app.cli.cli.CLI - (cli.py:120) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-12 14:47:32,836 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-12 14:47:52,565 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-12 14:47:52,571 - INFO - backend.app.cli.cli.CLI - (cli.py:120) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-12 14:47:52,571 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-12 14:47:52,572 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x0000026C895E4980>
+2025-10-12 14:47:52,573 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x0000026C895E4980>
+2025-10-12 14:47:52,573 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x0000026C895E4980>
+2025-10-12 14:47:52,574 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x0000026C895E4980>
+2025-10-12 14:47:52,575 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x0000026C895E4980>
+2025-10-12 14:47:52,575 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x0000026C895E4980>
+2025-10-12 14:47:52,576 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x0000026C895E4980>
+2025-10-12 14:47:52,576 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x0000026C895E4980>
+2025-10-12 14:47:52,577 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x0000026C895E4980>
+2025-10-12 14:47:52,578 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x0000026C895E4980>
+2025-10-12 14:47:52,579 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x0000026C895E4980>
+2025-10-12 14:47:52,579 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x0000026C895E4980>
+2025-10-12 14:47:52,580 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x0000026C895E4980>
+2025-10-12 14:47:52,581 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x0000026C895E4980>
+2025-10-12 14:47:52,581 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-12 14:47:52,581 - INFO - backend.app.cli.cli.CLI - (cli.py:364) - CLI session started.
+2025-10-12 14:48:38,904 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:48:38,904 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: download_audits.
+2025-10-12 14:48:38,904 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:48:38,904 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: download_orders.
+2025-10-12 14:48:38,904 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:48:38,904 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:48:39,408 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:48:39,408 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: download_orders.
+2025-10-12 14:48:39,408 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:48:39,408 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:48:41,016 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:48:41,016 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:48:41,016 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:48:41,320 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:48:41,320 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:48:41,320 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:48:41,800 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:48:41,800 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:48:41,800 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:53:46,908 - INFO - backend.app.cli.cli.CLI - (cli.py:390) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-12 14:53:46,911 - INFO - backend.app.cli.cli.CLI - (cli.py:433) - Exiting CLI and saving history.
+2025-10-12 14:53:50,379 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-12 14:53:50,386 - INFO - backend.app.cli.cli.CLI - (cli.py:120) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-12 14:53:50,386 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-12 14:53:50,387 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x000001CDA745C980>
+2025-10-12 14:53:50,388 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x000001CDA745C980>
+2025-10-12 14:53:50,388 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x000001CDA745C980>
+2025-10-12 14:53:50,389 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x000001CDA745C980>
+2025-10-12 14:53:50,390 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x000001CDA745C980>
+2025-10-12 14:53:50,390 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x000001CDA745C980>
+2025-10-12 14:53:50,391 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x000001CDA745C980>
+2025-10-12 14:53:50,391 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x000001CDA745C980>
+2025-10-12 14:53:50,392 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x000001CDA745C980>
+2025-10-12 14:53:50,393 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x000001CDA745C980>
+2025-10-12 14:53:50,394 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x000001CDA745C980>
+2025-10-12 14:53:50,394 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x000001CDA745C980>
+2025-10-12 14:53:50,395 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x000001CDA745C980>
+2025-10-12 14:53:50,396 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x000001CDA745C980>
+2025-10-12 14:53:50,396 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-12 14:53:50,396 - INFO - backend.app.cli.cli.CLI - (cli.py:396) - CLI session started.
+2025-10-12 14:53:52,645 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:53:52,645 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: download_audits.
+2025-10-12 14:53:52,645 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:53:52,645 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: download_orders.
+2025-10-12 14:53:52,645 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:53:52,645 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:53:53,389 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:53:53,389 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: download_orders.
+2025-10-12 14:53:53,389 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:53:53,389 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:53:54,260 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:53:54,262 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:53:54,262 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: --stores.
+2025-10-12 14:53:54,262 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:53:54,263 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:53:54,263 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: --sort.
+2025-10-12 14:53:54,263 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:53:54,264 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:53:54,264 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:53:55,309 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:53:55,309 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:53:55,309 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: --stores.
+2025-10-12 14:53:55,310 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:53:55,310 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:53:55,310 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:53:56,429 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:53:56,429 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:53:56,430 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --stores, B
+2025-10-12 14:53:56,430 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: Bakery.
+2025-10-12 14:53:56,430 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:53:56,431 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:53:56,431 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --stores, B
+2025-10-12 14:53:56,431 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:53:59,757 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:53:59,757 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:53:59,758 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: --vendors.
+2025-10-12 14:53:59,758 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:53:59,758 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:53:59,758 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:01,773 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:01,773 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:01,774 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:01,774 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:02,117 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:02,118 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:02,118 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:02,118 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:02,741 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:02,742 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:02,742 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:02,742 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:02,981 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:02,982 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:02,982 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:02,982 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:03,445 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:03,445 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:03,446 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:03,446 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:03,629 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:03,630 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:03,630 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:03,630 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:03,789 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:03,790 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:03,790 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:03,790 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:03,949 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:03,950 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:03,950 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:03,950 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:04,333 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:04,334 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:04,334 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:04,334 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:04,549 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:04,550 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:04,550 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:04,551 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:04,757 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:04,758 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:04,758 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:04,758 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:04,933 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:04,934 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:04,934 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:04,934 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:05,431 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:05,432 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:05,432 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:05,432 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:05,467 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:05,468 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:05,468 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:05,469 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:05,499 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:05,500 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:05,500 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:05,501 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:05,530 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:05,531 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:05,531 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:05,532 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:05,567 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:05,569 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:05,569 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:05,569 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:05,599 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:05,600 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:05,600 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:05,600 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:05,630 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:05,631 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:05,631 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:05,631 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:05,667 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:05,668 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:05,668 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:05,669 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:05,700 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:05,701 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:05,701 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:05,701 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:05,730 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:05,731 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:05,731 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:05,732 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:05,767 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:05,768 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:05,768 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:05,769 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:05,798 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:05,799 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:05,799 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:05,800 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:05,829 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:05,830 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:05,830 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:05,831 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:05,867 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:05,868 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:05,868 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:05,869 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:05,898 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:05,899 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:05,899 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:05,900 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:05,929 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:05,930 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:05,930 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:05,931 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:05,967 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:05,968 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:05,968 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:05,969 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:05,998 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:05,999 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:05,999 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:05,999 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:06,029 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:06,030 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:06,030 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:06,031 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:06,067 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:06,068 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:06,068 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:06,068 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:06,098 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:06,099 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:06,099 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:06,100 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:06,129 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:06,130 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:06,130 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:06,131 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:06,167 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:06,168 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:06,168 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:06,169 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:06,198 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:06,199 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:06,199 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:06,200 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:06,229 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:06,230 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:06,230 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:06,231 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:06,267 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:06,268 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:06,268 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:06,268 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:06,298 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:06,299 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:06,299 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:06,299 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:06,329 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:06,330 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:06,330 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:06,331 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:06,366 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:06,367 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:06,367 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:06,368 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:06,398 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:06,399 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:06,399 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:06,399 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:06,429 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:06,430 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:06,430 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:06,431 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:06,467 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:06,468 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:06,468 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:06,469 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:06,498 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:06,498 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:06,499 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:06,499 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:06,529 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:06,530 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:06,530 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:06,531 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:06,552 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:06,553 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:06,553 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:06,553 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:06,598 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:06,598 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:06,599 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:06,599 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:06,629 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:06,630 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:06,630 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:06,630 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:06,651 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:06,652 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:06,652 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:06,653 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:06,697 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:06,698 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:06,698 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:06,699 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:06,729 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:06,730 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:06,730 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:06,730 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:06,751 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:06,752 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:06,752 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:06,753 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:06,782 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:06,783 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:06,783 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:06,784 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:06,829 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:06,830 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:06,830 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:06,831 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:06,851 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:06,852 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:06,852 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:06,853 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:06,882 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:06,883 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:06,883 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:06,883 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:06,913 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:06,914 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:06,914 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:06,915 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:06,951 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:06,952 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:06,952 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:06,952 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:06,983 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:06,984 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:06,984 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:06,984 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:07,013 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:07,014 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:07,014 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:07,015 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:07,051 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:07,052 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:07,052 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:07,053 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:07,082 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:07,083 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:07,083 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:07,084 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:07,114 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:07,115 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:07,115 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:07,116 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:07,152 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:07,153 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:07,153 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:07,153 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:07,183 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:07,184 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:07,184 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:07,184 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:07,215 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:07,216 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:07,216 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:07,216 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:07,253 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:07,254 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:07,254 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:07,254 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:07,283 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:07,284 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:07,284 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:07,285 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:07,315 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:07,315 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:07,315 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:07,316 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:07,352 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:07,353 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:07,353 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:07,354 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:07,384 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:07,385 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:07,385 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:07,385 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:07,415 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:07,415 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:07,415 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:07,416 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:54:07,453 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:54:07,454 - INFO - backend.app.cli.cli.CLI - (cli.py:271) - Case 1: Typing or completing a flag
+2025-10-12 14:54:07,454 - INFO - backend.app.cli.cli.CLI - (cli.py:282) - download_orders, --vendors, B
+2025-10-12 14:54:07,455 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:55:32,118 - INFO - backend.app.cli.cli.CLI - (cli.py:422) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-12 14:55:32,120 - INFO - backend.app.cli.cli.CLI - (cli.py:465) - Exiting CLI and saving history.
+2025-10-12 14:55:34,972 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-12 14:55:34,980 - INFO - backend.app.cli.cli.CLI - (cli.py:120) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-12 14:55:34,980 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-12 14:55:34,981 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x00000159356E8830>
+2025-10-12 14:55:34,982 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x00000159356E8830>
+2025-10-12 14:55:34,982 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x00000159356E8830>
+2025-10-12 14:55:34,983 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x00000159356E8830>
+2025-10-12 14:55:34,984 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x00000159356E8830>
+2025-10-12 14:55:34,984 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x00000159356E8830>
+2025-10-12 14:55:34,985 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x00000159356E8830>
+2025-10-12 14:55:34,985 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x00000159356E8830>
+2025-10-12 14:55:34,986 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x00000159356E8830>
+2025-10-12 14:55:34,987 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x00000159356E8830>
+2025-10-12 14:55:34,988 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x00000159356E8830>
+2025-10-12 14:55:34,988 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x00000159356E8830>
+2025-10-12 14:55:34,989 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x00000159356E8830>
+2025-10-12 14:55:34,990 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x00000159356E8830>
+2025-10-12 14:55:34,990 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-12 14:55:34,990 - INFO - backend.app.cli.cli.CLI - (cli.py:393) - CLI session started.
+2025-10-12 14:55:35,702 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:55:35,702 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: download_audits.
+2025-10-12 14:55:35,702 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:55:35,702 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: download_orders.
+2025-10-12 14:55:35,702 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:55:35,703 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:55:36,079 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:55:36,079 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: download_orders.
+2025-10-12 14:55:36,079 - INFO - backend.app.cli.cli.CLI - (cli.py:196) - Singular input.
+2025-10-12 14:55:36,079 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:55:37,326 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:55:37,327 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: --stores.
+2025-10-12 14:55:37,327 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:55:37,328 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:55:38,254 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:55:38,256 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:55:38,478 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:55:38,479 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:55:38,662 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:55:38,663 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:55:39,470 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:55:39,471 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:55:39,963 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:55:39,964 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:55:39,994 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:55:39,995 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:55:40,031 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:55:40,032 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:55:40,063 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:55:40,064 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:55:40,094 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:55:40,095 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:55:40,132 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:55:40,133 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:55:40,164 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:55:40,165 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:55:40,194 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:55:40,195 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:55:40,232 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:55:40,233 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:55:40,264 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:55:40,265 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:55:40,295 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:55:40,296 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:55:40,333 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:55:40,334 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:55:40,364 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:55:40,365 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:55:40,395 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:55:40,396 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:55:40,433 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:55:40,434 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:55:40,464 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:55:40,465 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:55:40,495 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:55:40,497 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:55:40,534 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:55:40,535 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:55:40,566 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:55:40,567 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:55:40,597 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:55:40,598 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:55:40,634 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:55:40,635 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:55:40,666 - INFO - backend.app.cli.cli.CLI - (cli.py:199) - Multiple input.
+2025-10-12 14:55:40,667 - INFO - backend.app.cli.cli.CLI - (cli.py:202) - Output: None.
+2025-10-12 14:56:20,351 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-12 14:56:20,353 - INFO - backend.app.cli.cli.CLI - (cli.py:462) - Exiting CLI and saving history.
+2025-10-12 14:56:23,346 - INFO - backend.app.cli.cli.CLI - (cli.py:44) - Initializing CLI.
+2025-10-12 14:56:23,353 - INFO - backend.app.cli.cli.CLI - (cli.py:120) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-12 14:56:23,353 - INFO - backend.app.cli.cli.CLI - (cli.py:52) - CLI initialized successfully with 3 commands.
+2025-10-12 14:56:23,354 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x0000017D30108980>
+2025-10-12 14:56:23,355 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x0000017D30108980>
+2025-10-12 14:56:23,356 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x0000017D30108980>
+2025-10-12 14:56:23,356 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x0000017D30108980>
+2025-10-12 14:56:23,357 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x0000017D30108980>
+2025-10-12 14:56:23,357 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x0000017D30108980>
+2025-10-12 14:56:23,358 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x0000017D30108980>
+2025-10-12 14:56:23,358 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x0000017D30108980>
+2025-10-12 14:56:23,359 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x0000017D30108980>
+2025-10-12 14:56:23,360 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x0000017D30108980>
+2025-10-12 14:56:23,361 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x0000017D30108980>
+2025-10-12 14:56:23,362 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x0000017D30108980>
+2025-10-12 14:56:23,362 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x0000017D30108980>
+2025-10-12 14:56:23,363 - INFO - backend.app.cli.cli.CLI - (cli.py:89) - <backend.bots.workbot.work_bot.WorkBot object at 0x0000017D30108980>
+2025-10-12 14:56:23,363 - INFO - backend.app.cli.cli.CLI - (cli.py:92) - Loaded 14 commands from backend.app.cli.commands
+2025-10-12 14:56:23,363 - INFO - backend.app.cli.cli.CLI - (cli.py:389) - CLI session started.
+2025-10-12 16:07:26,501 - INFO - backend.app.cli.cli.CLI - (cli.py:415) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-12 16:07:26,506 - INFO - backend.app.cli.cli.CLI - (cli.py:458) - Exiting CLI and saving history.
+2025-10-12 16:11:04,327 - INFO - backend.app.cli.cli.CLI - (cli.py:45) - Initializing CLI.
+2025-10-12 16:11:30,531 - INFO - backend.app.cli.cli.CLI - (cli.py:45) - Initializing CLI.
+2025-10-12 16:13:58,603 - INFO - backend.app.cli.cli.CLI - (cli.py:45) - Initializing CLI.
+2025-10-12 16:13:58,609 - INFO - backend.app.cli.cli.CLI - (cli.py:90) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-10-12 16:13:58,616 - INFO - backend.app.cli.cli.CLI - (cli.py:118) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-12 16:14:23,194 - INFO - backend.app.cli.cli.CLI - (cli.py:45) - Initializing CLI.
+2025-10-12 16:14:23,199 - INFO - backend.app.cli.cli.CLI - (cli.py:90) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-10-12 16:14:23,205 - INFO - backend.app.cli.cli.CLI - (cli.py:118) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-12 16:14:23,205 - INFO - backend.app.cli.cli.CLI - (cli.py:53) - CLI initialized successfully with 1 commands.
+2025-10-12 16:14:23,389 - INFO - backend.app.cli.cli.CLI - (cli.py:90) - Loaded 14 commands from backend.app.cli.commands.workbot
+2025-10-12 16:14:23,390 - INFO - backend.app.cli.cli.CLI - (cli.py:387) - CLI session started.
+2025-10-12 16:14:34,310 - INFO - backend.app.cli.cli.CLI - (cli.py:413) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-12 16:14:34,312 - INFO - backend.app.cli.cli.CLI - (cli.py:456) - Exiting CLI and saving history.
+2025-10-12 16:14:38,016 - INFO - backend.app.cli.cli.CLI - (cli.py:45) - Initializing CLI.
+2025-10-12 16:14:38,020 - INFO - backend.app.cli.cli.CLI - (cli.py:90) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-10-12 16:14:38,028 - INFO - backend.app.cli.cli.CLI - (cli.py:118) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-12 16:14:38,028 - INFO - backend.app.cli.cli.CLI - (cli.py:53) - CLI initialized successfully with 1 commands.
+2025-10-12 16:14:38,043 - INFO - backend.app.cli.cli.CLI - (cli.py:90) - Loaded 14 commands from backend.app.cli.commands.workbot
+2025-10-12 16:14:38,043 - INFO - backend.app.cli.cli.CLI - (cli.py:387) - CLI session started.
+2025-10-12 16:15:59,367 - INFO - backend.app.cli.cli.CLI - (cli.py:413) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-12 16:15:59,369 - INFO - backend.app.cli.cli.CLI - (cli.py:456) - Exiting CLI and saving history.

@@ -18,17 +18,8 @@ except ImportError:
 import importlib
 import pkgutil
 
-from .commands.command import Command, CommandContext
-# from backend.errors import (
-#     WorkBotError,
-#     CLIInputError,
-#     VendorBotError,
-#     SeleniumError,
-#     VendorLoginError,
-#     OrderError,
-#     PricingError,
-#     FileAccessError,
-# )
+from .commands.command import Command
+from .commands.command_context import CommandContext
 
 # endregion
 
@@ -43,10 +34,10 @@ class CLI:
 
         self.logger.info('Initializing CLI.')
 
-        self.commands = {}
-        self._register_commands()
+        self.commands: dict[str, Command] = {}
+        self.autocomplete_registry: dict[str, callable] = {}
 
-        self.autocomplete_registry = {}
+        self._register_builtin_commands()  
         self._setup_autocomplete()
 
         self.logger.info(f'CLI initialized successfully with {len(self.commands)} commands.')
@@ -55,14 +46,12 @@ class CLI:
     
     # region ---- Command Registration ----
     
-    def _register_commands(self) -> None:
-        count = 0
-        for function_name in dir(self):
-            if function_name.startswith('cmd_'):
-                command_name = function_name[4:]
-                self.commands[command_name] = getattr(self, function_name)
-                count += 1
-        self.logger.debug(f'Registered {count} commands: {list(self.commands.keys())}')
+
+    def _register_builtin_commands(self, context: CommandContext | None = None) -> None:
+        from backend.app.cli.commands.command_context import CommandContext
+        context = context or CommandContext(cli=self)
+
+        self.load_commands_from_package('backend.app.cli.commands.builtin', context)
 
 
     def load_commands_from_package(self, package_name: str, context: dict | None):
@@ -71,8 +60,7 @@ class CLI:
             count = 0
 
             for _, mod_name, is_pkg in pkgutil.iter_modules(package.__path__):
-                if is_pkg:
-                    continue
+                if is_pkg: continue
                 module = importlib.import_module(f"{package_name}.{mod_name}")
 
                 for attr_name in dir(module):
@@ -92,7 +80,8 @@ class CLI:
             self.logger.info(f"Loaded {count} commands from {package_name}")
 
 
-
+    # Default Commands
+    
     
     # endregion
 
@@ -119,18 +108,6 @@ class CLI:
             self.logger.info(f"Loaded command history from {str(CLI_HISTORY_FILE)}")
 
         readline.set_history_length(100)
-        self._register_autocomplete()
-
-                    
-    def _register_autocomplete(self) -> None:
-        count = 0
-        for function_name in dir(self):
-            prefix = '_autocomplete_'
-            if function_name.startswith(prefix):
-                autocomplete_name = function_name[len(prefix):]
-                self.autocomplete_registry[autocomplete_name] = getattr(self, function_name)
-                count += 1
-        self.logger.debug(f'Registered {count} autocomplete handlers.')
 
     # endregion
 
@@ -189,16 +166,12 @@ class CLI:
         buffer = readline.get_line_buffer().strip()
 
         if not buffer:
-            self.logger.info('Empty buffer.')
             options = self._complete_commands(text)
         elif ' ' not in buffer:
-            self.logger.info('Singular input.')
             options = self._complete_commands(text)
         else:
-            self.logger.info('Multiple input.')
             options = self._complete_arguments(buffer, text)
 
-        self.logger.info(f'Output: {options[state] if state < len(options) else None}.')
         return options[state] if state < len(options) else None
 
     def _complete_commands(self, text: str) -> list[str]:
@@ -267,18 +240,15 @@ class CLI:
         last_flag = self._get_last_valid_flag(matches, possible_flags)
         
         # Case 1: Typing or completing a flag
-        self.logger.info('Case 1: Typing or completing a flag')
         if last_token.startswith('--') or (buffer.endswith(' ') and not last_flag):
             return [f for f in possible_flags if f.startswith(text)]
 
         # Case 2: After a complete flag, expecting a value
         elif last_flag and (last_token == last_flag or buffer.endswith(' ')):
-            self.logger.info(f'{command}, {last_flag}, {text}')
             return self._get_autocomplete_values(command, last_flag, text)
 
         # Case 3: Inside a value for a known flag
         elif last_flag and (last_token_stripped not in possible_flags):
-            self.logger.info(f'{command}, {last_flag}, {text}')
             return self._get_autocomplete_values(command, last_flag, text)
 
         # Case 4: First argument after command
@@ -294,62 +264,94 @@ class CLI:
         return None
 
     def _get_autocomplete_values(self, command: str, flag: str, text: str) -> list[str]:
-        '''Invokes the appropriate autocomplete handler for a given command and flag.
+        """
+        Resolves and invokes the appropriate autocomplete handler for a given command + flag pair.
 
-        This method is responsible for routing value completions (e.g. store names,
-        vendor names) to the correct handler defined by the subclass (e.g. "_autocomplete_download_orders").
+        This method is the central router for all argument-level autocompletions in the CLI.
 
-        Parameters:
-            command (str): The command being executed (e.g. 'download_orders').
-            flag (str):    The specific flag for which the value is being completed (e.g. '--stores').
-            text (str):    The partially typed value to match against (e.g. 'Dow').
+        It supports *two* distinct command styles:
+
+        1. **Legacy Built-in Commands**
+        - Autocomplete handlers are defined as `_autocomplete_<command>()`
+            methods on the CLI subclass.
+        - These handlers are registered in `self.autocomplete_registry[command]`
+            by `_register_builtin_commands()`.
+
+        2. **Modular Commands**
+        - Each command is defined as a `Command` subclass loaded dynamically
+            from a package.
+        - These classes implement an `autocomplete(self, flag: str, text: str) -> list[str]`
+            method, which is bound to their instance.
+        - These are registered in `self.autocomplete_registry` when loaded
+            by `load_commands_from_package()`.
+
+        The lookup order is:
+
+            1. Try an explicit handler in `self.autocomplete_registry`
+            2. Fall back to the command object's `.autocomplete()` method (if present)
+
+        Args:
+            command (str): The command name currently being autocompleted.
+            flag (str):    The active flag under the cursor (e.g. "--store").
+            text (str):    The partial token being typed by the user.
 
         Returns:
-            list[str]: A list of strings representing possible completions for the given flag.
-
-        Quoted Value Handling:
-        ----------------------
-        - If "text" appears to be quoted (e.g., ''Dow'), it is unwrapped before being passed to the handler.
-        - Returned completions will be re-wrapped in matching quotes to preserve shell safety.
-
-        Assumptions:
-        ------------
-        - A corresponding "_autocomplete_<command>()" handler exists and is registered
-        in "self.autocomplete_registry[command]".
-        - The handler accepts "(flag: str, text: str)" and returns a list of strings.
-
-        Example Handler Signature:
-            def _autocomplete_download_orders(self, flag: str, text: str) -> list[str]:
-                if flag == '--stores':
-                    return [s for s in ['Downtown', 'Collegetown'] if s.startswith(text)]
+            list[str]: A list of possible completions that match the current context.
+                    Returns an empty list if no handler or completions exist.
 
         Example:
-            _get_autocomplete_values('download_orders', '--stores', 'Dow')
-            → ['Downtown']
+            Suppose the user types:
+                "download_orders --store Do"
+            Then:
+                command = "download_orders"
+                flag = "--store"
+                text = "Do"
 
-        Returns an empty list if no handler is found or an error occurs.
-        '''
-        
-        if command in self.autocomplete_registry:
-            handler = self.autocomplete_registry[command]
+            The method will:
+                - Look for `self.autocomplete_registry['download_orders']`
+                - If found, call `handler("--store", "Do")`
+                - Else, fall back to `self.commands['download_orders'].autocomplete("--store", "Do")`
+                - Return completions such as ["Downtown"]
 
-            is_quoted = text.startswith((''', '''))
-            stripped = text.strip(''').strip(''')
+        Notes:
+            - Handlers are expected to be *pure functions* (no side effects).
+            - They should execute quickly since this method is called repeatedly
+            during TAB completion.
+            - Returned completions must be strings (no None values).
+            - If a handler raises, this function will log and safely return [].
 
-            completions = handler(flag, stripped)
+        """
+        try:
+            cmd_obj = self.commands.get(command)
+            handler = self.autocomplete_registry.get(command)
 
-            if is_quoted:
-                quote = text[0]
-                return [f'{quote}{match}{quote}' for match in completions]
+            # Priority 1: explicitly registered handler
+            if callable(handler):
+                completions = handler(flag, text)
+                if completions:
+                    return completions
 
-            return completions
+            # Priority 2: fall back to command's own method
+            if hasattr(cmd_obj, "autocomplete") and callable(cmd_obj.autocomplete):
+                return cmd_obj.autocomplete(flag, text)
 
-        return []
+            return []
+
+        except Exception as e:
+            # Defensive fallback to prevent readline crashes during completion
+            self.logger.warning(
+                f"Autocomplete error for command='{command}', flag='{flag}': {e}",
+                exc_info=True
+            )
+            return []
+
 
     def _get_command_flags(self, command: str) -> list[str]:
-        if hasattr(self, f'args_{command}'):
-            parser = getattr(self, f'args_{command}')()
-            return list(parser._option_string_actions.keys())
+        cmd_obj = self.commands.get(command)
+        if hasattr(cmd_obj, "arguments"):
+            parser = cmd_obj.arguments()
+            if parser:
+                return list(parser._option_string_actions.keys())
         return []
 
     def register_autocomplete(self, command: str, handler):
