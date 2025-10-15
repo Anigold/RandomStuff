@@ -2,12 +2,11 @@
 
 from backend.infra.logger import Logger
 
-import shlex
-import sys
+import shlex, sys, re, time
+
 from typing import Optional
 from backend.infra.paths import CLI_HISTORY_FILE
-import re
-import time
+
 try:
     import readline
 except ImportError:
@@ -45,14 +44,12 @@ class CLI:
     # endregion
     
     # region ---- Command Registration ----
-    
 
     def _register_builtin_commands(self, context: CommandContext | None = None) -> None:
         from backend.app.cli.commands.command_context import CommandContext
         context = context or CommandContext(cli=self)
 
         self.load_commands_from_package('backend.app.cli.commands.builtin', context)
-
 
     def load_commands_from_package(self, package_name: str, context: dict | None):
             """Dynamically load Command subclasses from a package."""
@@ -79,10 +76,6 @@ class CLI:
                         count += 1
             self.logger.info(f"Loaded {count} commands from {package_name}")
 
-
-    # Default Commands
-    
-    
     # endregion
 
     # region ---- Autocomplete Setup ----
@@ -344,7 +337,6 @@ class CLI:
                 exc_info=True
             )
             return []
-
 
     def _get_command_flags(self, command: str) -> list[str]:
         cmd_obj = self.commands.get(command)
