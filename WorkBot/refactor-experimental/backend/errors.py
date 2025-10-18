@@ -1,12 +1,11 @@
 '''
 ==================
+Core error definitions and the global ErrorBus.
 
-Core error definitions and the global ErrorBus for WorkBot.
-
-This is the *foundation* of the entire error-handling system.
+This is the foundation of the error-handling system.
 
 Goals:
-- Provide a single, semantic exception hierarchy (`WorkBotError` base).
+- Provide a single, semantic exception hierarchy.
 - Allow all exceptions to emit structured `ErrorEvent` objects.
 - Avoid dependencies on logging or infrastructure.
 - Remain stable across all layers: domain, app, infra, bots, CLI.
@@ -14,6 +13,7 @@ Goals:
 The ErrorBus enables system-wide observability without coupling.
 Other layers (infra, CLI, bots) can subscribe to ErrorBus events
 to log, alert, or handle them as needed.
+==================
 '''
 
 from __future__ import annotations
@@ -40,17 +40,17 @@ class ErrorEvent:
         severity (str): Level indicator ("ERROR", "WARNING", "CRITICAL", etc.).
         trace (Optional[str]): Formatted stack trace (optional).
     '''
-    id: str = field(default_factory=lambda: str(uuid.uuid4()))
-    type: str = ""
-    message: str = ""
+    id: str                = field(default_factory=lambda: str(uuid.uuid4()))
+    type: str              = ""
+    message: str           = ""
     context: Optional[str] = None
-    severity: str = "ERROR"
-    trace: Optional[str] = None
+    severity: str          = "ERROR"
+    trace: Optional[str]   = None
 
 
 class ErrorBus:
     '''
-    Global pub/sub mechanism for WorkBot errors.
+    Global pub/sub mechanism for project errors.
 
     - Purely synchronous.
     - Subscribers are callbacks taking a single `ErrorEvent`.
@@ -86,7 +86,7 @@ class ErrorBus:
 
 class WorkBotError(Exception):
     '''
-    Root of all domain/application/infra exceptions in WorkBot.
+    Root of all domain/application/infra project exceptions.
 
     Each WorkBotError automatically emits an ErrorEvent to the
     global ErrorBus upon initialization — providing decoupled

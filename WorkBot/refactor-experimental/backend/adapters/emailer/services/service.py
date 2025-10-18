@@ -8,10 +8,11 @@ class Email:
     subject:     str
     body:        str        
     cc:          Optional[Tuple[str, ...]] = None # We use a tuple to remain hashable
-    attachments: Optional[Tuple[str, ...]] = None # We use a tuple to remain hashable
+    bcc:         Optional[Tuple[str, ...]] = None,
+    attachments: Optional[Tuple[str, ...]] = None
     
 
-class Service(ABC):
+class EmailService(ABC):
     
     @abstractmethod
     def create_email(self, email: Email) -> dict:

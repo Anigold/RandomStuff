@@ -967,3 +967,92 @@ TypeError: OrderSerializer.dumps() got an unexpected keyword argument 'context'
 2025-10-08 07:11:23,643 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for Sysco.
 2025-10-08 07:11:27,988 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:269) - Order download complete.
 2025-10-08 07:11:27,988 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:270) - Closing WebDriver session.
+2025-10-18 10:07:37,555 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:129) - Logging into Craftable.
+2025-10-18 10:07:45,044 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:153) - Login successful.
+2025-10-18 10:07:45,044 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:252) - Starting order download protocol.
+2025-10-18 10:07:45,044 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:255) - Accessing order page for Bakery.
+2025-10-18 10:07:51,768 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for UNFI (10/18/2025).
+2025-10-18 10:07:54,529 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / UNFI / 20251018.
+2025-10-18 10:07:54,541 - ERROR - backend.bots.craftable_bot.craftable_bot.CraftableBot - (logger.py:107) - Error in download_orders: 'NoneType' object has no attribute 'store'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 267, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 304, in _process_order_row
+    if update and self._update_existing_order(order_to_check_update):
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 1025, in _update_existing_order
+    return self.orders.check_and_update_order(order)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 169, in __call__
+    same = _same(existing, order)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 177, in _same
+    if (a.store != b.store) or (a.vendor != b.vendor) or (a.date != b.date):
+        ^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'store'
+2025-10-18 10:13:06,370 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:129) - Logging into Craftable.
+2025-10-18 10:13:13,416 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:153) - Login successful.
+2025-10-18 10:13:13,416 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:252) - Starting order download protocol.
+2025-10-18 10:13:13,416 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:255) - Accessing order page for Bakery.
+2025-10-18 10:13:20,381 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for UNFI (10/18/2025).
+2025-10-18 10:13:23,241 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / UNFI / 20251018.
+2025-10-18 10:13:23,250 - ERROR - backend.bots.craftable_bot.craftable_bot.CraftableBot - (logger.py:107) - Error in download_orders: 'NoneType' object has no attribute 'store'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 267, in download_orders
+    self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 304, in _process_order_row
+    if update and self._update_existing_order(order_to_check_update):
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 1025, in _update_existing_order
+    return self.orders.check_and_update_order(order)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 170, in __call__
+    same = _same(existing, order)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 178, in _same
+    if (a.store != b.store) or (a.vendor != b.vendor) or (a.date != b.date):
+        ^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'store'
+2025-10-18 10:14:21,030 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:129) - Logging into Craftable.
+2025-10-18 10:14:28,491 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:153) - Login successful.
+2025-10-18 10:14:28,491 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:252) - Starting order download protocol.
+2025-10-18 10:14:28,491 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:255) - Accessing order page for Bakery.
+2025-10-18 10:14:35,152 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for UNFI (10/18/2025).
+2025-10-18 10:14:37,979 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / UNFI / 20251018.
+2025-10-18 10:14:37,987 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for UNFI.
+2025-10-18 10:14:42,426 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:269) - Order download complete.
+2025-10-18 10:14:42,426 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:270) - Closing WebDriver session.
+2025-10-18 10:16:02,492 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:129) - Logging into Craftable.
+2025-10-18 10:16:09,835 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:153) - Login successful.
+2025-10-18 10:16:09,836 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:252) - Starting order download protocol.
+2025-10-18 10:16:09,836 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:255) - Accessing order page for Bakery.
+2025-10-18 10:16:16,484 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for UNFI (10/18/2025).
+2025-10-18 10:16:19,959 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1024) - [Order Update] Initiating update protocol for Bakery / UNFI / 20251018.
+2025-10-18 10:16:19,985 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for UNFI.
+2025-10-18 10:16:24,491 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:269) - Order download complete.
+2025-10-18 10:16:24,491 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:270) - Closing WebDriver session.
+2025-10-18 11:01:04,976 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:129) - Logging into Craftable.
+2025-10-18 11:01:12,322 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:153) - Login successful.
+2025-10-18 11:01:12,322 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:252) - Starting order download protocol.
+2025-10-18 11:01:12,322 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:255) - Accessing order page for Collegetown.
+2025-10-18 11:01:19,719 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for UNFI (10/17/2025).
+2025-10-18 11:01:22,161 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1021) - [Order Update] Initiating update protocol for Collegetown / UNFI / 20251017.
+2025-10-18 11:01:22,171 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for UNFI.
+2025-10-18 11:01:26,593 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:255) - Accessing order page for Easthill.
+2025-10-18 11:01:33,496 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for UNFI (10/17/2025).
+2025-10-18 11:01:35,138 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1021) - [Order Update] Initiating update protocol for Easthill / UNFI / 20251017.
+2025-10-18 11:01:35,148 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for UNFI.
+2025-10-18 11:01:39,726 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:255) - Accessing order page for Downtown.
+2025-10-18 11:01:46,493 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for UNFI (10/17/2025).
+2025-10-18 11:01:48,190 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1021) - [Order Update] Initiating update protocol for Downtown / UNFI / 20251017.
+2025-10-18 11:01:48,199 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for UNFI.
+2025-10-18 11:01:52,669 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:255) - Accessing order page for Triphammer.
+2025-10-18 11:01:59,194 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:296) - Retrieving order for UNFI (10/16/2025).
+2025-10-18 11:02:01,034 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1021) - [Order Update] Initiating update protocol for Triphammer / UNFI / 20251016.
+2025-10-18 11:02:01,044 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:310) - Saving order for UNFI.
+2025-10-18 11:02:05,944 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:269) - Order download complete.
+2025-10-18 11:02:05,944 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:270) - Closing WebDriver session.

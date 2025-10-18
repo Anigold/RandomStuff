@@ -7,7 +7,7 @@ class GenerateVendorUploadFiles(Command):
 
     def arguments(self):
         parser = argparse.ArgumentParser(prog='generate_vendor_upload_files', description='Generate a vendor-specific upload file.')
-        parser.add_argument('--stores', nargs='+', help='List of store names (default: all).')       
+        parser.add_argument('--stores', nargs='+', help='List of store names (default: all).', default=self.context.get_stores())       
         parser.add_argument('--vendors', nargs='+', help='List of vendors (default: all).')
         parser.add_argument('--start_date', help='Start of date range for lookup (yyyy-mm-dd)')
         parser.add_argument('--end_date', help='End of date range for lookup (yyyy-mm-dd)')

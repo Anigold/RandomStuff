@@ -38,7 +38,7 @@ class OrderFilenameStrategy(Namer[Order]):
             return (self.upload_path_for(order) / self.filename(order, format=format)).resolve()
     
     def upload_path_for(self, order: Order) -> Path:
-        return (self._upload_base / order.vendor / self.filename(order, order.vendor)).resolve()
+        return self._upload_base / order.vendor
     
     def parse_metadata_for_filename(
         self, *, store: str, vendor: str, date: str | None = None, format: str = "xlsx"

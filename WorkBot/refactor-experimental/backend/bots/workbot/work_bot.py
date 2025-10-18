@@ -26,7 +26,8 @@ from backend.bots.craftable_bot.craftable_bot import CraftableBot
 from backend.app.services import (
     OrderServices,
     VendorServices,
-    StoreServices
+    StoreServices,
+    EmailServices,
 )
 # endregion
 
@@ -44,6 +45,7 @@ from backend.domain.models import (
 from backend.adapters.emailer.emailer import Emailer, Email
 from backend.adapters.emailer.services.gmail_service import GmailService
 from backend.adapters.emailer.services.outlook_service import OutlookService
+from backend.adapters.emailer.registry import EmailProviderRegistry
 # endregion
 
 from backend.adapters.downloads.threaded_download_adapter import ThreadedDownloadAdapter
@@ -97,9 +99,24 @@ class WorkBot:
 
         )
 
-        # Host-based conditional setup
-        email_host = socket.gethostname()
-        self.emailer = Emailer(OutlookService()) if email_host == 'Purchasing' else None  
+        try:
+            # Look up the configured email provider ("outlook", "gmail", or "mock")
+            provider = EmailProviderRegistry.get('outlook')
+            self.emailer = Emailer(provider)
+            self.logger.info(f"Emailer initialized using provider: {provider}")
+        except Exception as e:
+            self.logger.warning(f"Emailer could not be initialized ({e}); continuing without email support.")
+            self.emailer = None
+
+        self.emails = EmailServices(
+            emailer=self.emailer,
+            orders=self.orders,
+            vendors=self.vendors
+        )
+
+        # # Host-based setup: kinda clunky, but works for now
+        # email_host = socket.gethostname()
+        # self.emailer = Emailer(OutlookService()) if email_host == 'Purchasing' else None  
 
         self.logger.info('WorkBot initialized successfully.')
 
@@ -122,10 +139,8 @@ class WorkBot:
 
     def get_orders(self, stores: list[str], vendors: list[str]) -> list[Order]:
         self.logger.info(f'Retrieving orders for: stores={stores}, vendors={vendors}')
-        return self.orders.get_orders(vendors, stores)
-    
-        order_files = self.get_order_files(stores, vendors, formats=formats)
-        return self.orders.read_orders_from_file(order_files)
+        return self.orders.get_orders(stores=stores, vendors=vendors)
+
 
     def archive_all_current_orders(self, stores: list[str] = None, vendors: list[str] = None) -> None:
         vendors = vendors or []
@@ -202,7 +217,7 @@ class WorkBot:
         self.logger.info(f'Generating vendor upload files for stores={stores}, vendors={vendors}, '
                          f'start_date={start_date}, end_date={end_date}')
 
-        orders = self.get_orders(vendors, stores)
+        orders = self.get_orders(stores, vendors)
         # print(orders, flush=True)
         # order_file_paths = self.get_order_files(stores=stores, vendors=vendors, formats=['xlsx'])
         self.logger.info(f'Found {len(orders)} orders to process.')
@@ -222,6 +237,7 @@ class WorkBot:
 
         result_paths = self.orders.generate_vendor_uploads(
             vendors=vendors,
+            stores=stores,
             start_date=start_date,
             end_date=end_date,
             context_map=context_map
@@ -320,13 +336,18 @@ class WorkBot:
     # region ---- Emailing: Store-Facing ----
 
     def generate_store_order_emails(self, stores: list[str]):
-        orders = self.get_order_files(stores=stores, vendors=[], formats=['pdf'])
+        
+        return self.emails.send_store_order_emails(stores=stores)
+
+        orders = [[order for order in self.orders.get_orders_by_store(store)] for store in stores]
+        # orders = self.get_order_files(stores=stores, vendors=[], formats=['pdf'])
    
         if not orders: return None
 
         emails = []
         store_orders_table = defaultdict(list)
         for order in orders:
+
             order_meta_data = self.orders.parse_filename_for_metadata(order.name)
             store_orders_table[order_meta_data['store']].append(order)
 

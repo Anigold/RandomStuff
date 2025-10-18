@@ -1,4 +1,4 @@
-from .service import Service, Email
+from .service import EmailService, Email
 
 try:
     import win32com.client
@@ -10,7 +10,7 @@ except:
 from dataclasses import dataclass
 
 
-class OutlookService(Service):
+class OutlookService(EmailService):
     
     def create_email(self, email: Email):
      

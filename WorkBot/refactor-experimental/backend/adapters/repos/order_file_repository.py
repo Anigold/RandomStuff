@@ -27,7 +27,6 @@ class OrderFileRepository(OrderRepository):
         return matches[0] if len(matches) >= 1 else None
 
     def list_all(self) -> list[Order]:
-        self.logger.info([self._engine.read_from_path(p) for p in self._engine.list_files("*.xlsx")])
         return [self._engine.read_from_path(p) for p in self._engine.list_files("*.xlsx")]
 
     def list_by_vendor(self, vendor: str) -> list[Order]:
@@ -51,7 +50,6 @@ class OrderFileRepository(OrderRepository):
     def generate_vendor_upload_file(self, order: Order, context: dict | None = None) -> None:
         formatter = self._engine.serializer.get_formatter(order.vendor.strip().lower())
         dest_path = self._engine.get_file_path(order, format=formatter.format_name(), category='upload')
-        self.logger.info(dest_path)
         return self._engine.save(order, format=order.vendor, context=context, path_override=dest_path)
     
     def ingest_downloaded_attachment(self, order: Order, src_path: Path, kind: str) -> None:

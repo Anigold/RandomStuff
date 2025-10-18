@@ -8,5 +8,8 @@ CRAFTABLE_PASSWORD = get_env_var('CRAFTABLE_PASSWORD')
 GOOGLE_CLIENT_ID     = get_env_var('GOOGLE_CLIENT_ID')
 GOOGLE_CLIENT_SECRET = get_env_var('GOOGLE_CLIENT_SECRET')
 
+# Emailer Settings
+EMAIL_PROVIDER = get_env_var('WORKBOT_EMAIL_PROVIDER', 'outlook').lower()
+
 # Optional values with fallback
 LOG_LEVEL = get_env_var('LOG_LEVEL', required=False) or 'INFO'

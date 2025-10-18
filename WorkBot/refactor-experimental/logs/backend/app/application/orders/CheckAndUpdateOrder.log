@@ -190,3 +190,15 @@
 2025-10-08 07:11:12,019 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
 2025-10-08 07:11:17,917 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
 2025-10-08 07:11:23,642 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:150) - [Order Update] No existing order found for same vendor/store/date
+2025-10-18 10:13:23,250 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:168) - Existing order: None
+2025-10-18 10:13:23,250 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:169) - Order to Compare: < Order store=Bakery, vendor=UNFI, data=20251018, items=34 >
+2025-10-18 10:14:37,987 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:168) - Existing order: None
+2025-10-18 10:14:37,987 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:169) - Order to Compare: < Order store=Bakery, vendor=UNFI, data=20251018, items=34 >
+2025-10-18 10:14:37,987 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:171) - [Order Update] Changed — overwrite needed.
+2025-10-18 10:16:19,984 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:168) - Existing order: < Order store=Bakery, vendor=UNFI, data=20251018, items=33 >
+2025-10-18 10:16:19,984 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:169) - Order to Compare: < Order store=Bakery, vendor=UNFI, data=20251018, items=34 >
+2025-10-18 10:16:19,985 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:171) - [Order Update] Changed — overwrite needed.
+2025-10-18 11:01:22,170 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:173) - [Order Update] Changed — overwrite needed.
+2025-10-18 11:01:35,148 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:173) - [Order Update] Changed — overwrite needed.
+2025-10-18 11:01:48,199 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:173) - [Order Update] Changed — overwrite needed.
+2025-10-18 11:02:01,044 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:173) - [Order Update] Changed — overwrite needed.

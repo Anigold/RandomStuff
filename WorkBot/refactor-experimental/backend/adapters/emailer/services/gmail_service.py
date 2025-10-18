@@ -6,12 +6,12 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 import pickle
 import os
-from .service import Service, Email
+from .service import EmailService, Email
 from backend.infra.paths import CREDENTIALS_DIR
 
 GOOGLE_API_CREDS_DIR = CREDENTIALS_DIR / 'GoogleAPI'
 
-class GmailService(Service):
+class GmailService(EmailService):
 
     def __init__(self, credentials_path=GOOGLE_API_CREDS_DIR / 'creds.json', token_path=GOOGLE_API_CREDS_DIR / 'token.pickle'):
 

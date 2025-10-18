@@ -9,7 +9,6 @@ class DownloadOrders(Command):
         parser = argparse.ArgumentParser(prog="download_orders", description="Download orders from vendors.")
         parser.add_argument("--stores", nargs="+", required=True, help="List of store names.")
         parser.add_argument("--vendors", nargs="+", help="List of vendors (default: all).")
-        parser.add_argument('--sort', action='store_true', help='Sort orders by vendor after downloading.')
         return parser
 
     def autocomplete(self, flag: str, text: str):
@@ -23,7 +22,6 @@ class DownloadOrders(Command):
 
     def command(self, args):
         '''Handles downloading orders.'''
-
         parser = self.arguments()
         parsed_args = parser.parse_args(args)
         try:

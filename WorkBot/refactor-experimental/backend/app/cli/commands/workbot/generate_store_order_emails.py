@@ -7,7 +7,7 @@ class GenerateStoreOrderEmails(Command):
 
     def arguments(self):
         parser = argparse.ArgumentParser(prog=self.name, description='Create an email to send to stores listing out their orders for the week.')
-        parser.add_argument('--stores', nargs='+', required=True, help='List of stores.')
+        parser.add_argument('--stores', nargs='+', required=True, help='List of stores.', default=self.context.get_stores())
         return parser
 
     def autocomplete(self, flag: str, text: str):

@@ -10,10 +10,7 @@ from backend.app.application.orders import *
 
 @dataclass
 class OrderServices:
-    """
-    Stable surface for CLI / API / schedulers.
-    Wires ports into small, testable use-cases and exposes them as attributes.
-    """
+
     repo:      OrderRepository
     downloads: DownloadPort
 
@@ -37,29 +34,5 @@ class OrderServices:
         self.expect_downloaded_pdf = ExpectDownloadedPdf(self.repo, self.downloads)
         self.check_and_update_order = CheckAndUpdateOrder(self.repo)
 
-        # # Queries
-        # self.get_order_files       = GetOrderFiles(self.repo)
-        # self.read_order_from_file  = ReadOrderFromFile(self.repo)
-        # self.read_orders_from_file = ReadOrdersFromFile(
-        #     self.repo,
-        #     self.read_order_from_file
-        # )
-
-        # # Commands
-        # self.generate_vendor_upload  = GenerateVendorUploadFile(self.repo)
-        # self.generate_vendor_uploads = GenerateVendorUploadFiles(
-        #     get_paths=self.get_order_files,
-        #     read_order=self.read_order_from_file,
-        #     gen_upload=self.generate_vendor_upload,
-        # )
-        # self.save_order_to_file          = SaveOrderToFile(self.repo)
-        # self.save_order_to_db            = SaveOrderToDB(self.repo)
-        # self.archive_order_file          = ArchiveOrderFile(self.repo)
-        # self.combine_orders              = CombineOrders(self.repo)
-        # self.parse_filename_for_metadata = ParseFilenameForMetadata(self.repo)
-
-        # # Download watcher (domain-specific wrapper over generic download plumbing)
-        # self.expect_downloaded_pdf = ExpectDownloadedPdf(self.repo, self.downloads)
-
-        # # Diff/validation
-        # self.check_and_update_order = CheckAndUpdateOrder(self.repo)
+        self.generate_store_order_email = GenerateStoreOrderEmail(self.repo)
+        self.generate_store_order_emails = GenerateStoreOrderEmails(self.repo, self.generate_store_order_email)

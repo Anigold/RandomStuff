@@ -40,7 +40,7 @@ class GetOrdersByStore:
 @dataclass(frozen=True)
 class GetOrder:
     repo: OrderRepository
-    def __call__(self, vendor: str, store: str, date: Optional[str] = None) -> Order:
+    def __call__(self, store: str, vendor: str, date: Optional[str] = None) -> Order:
         self.logger.info(f"Getting order vendor={vendor}, store={store}, date={date}")
         return self.repo.get(store, vendor, date)
 
@@ -49,13 +49,15 @@ class GetOrder:
 class GetOrders:
     repo: OrderRepository
     get_order: GetOrder
-    def __call__(self, vendors: str, stores: str, dates: Optional[List[str]] = None) -> List[Order]:
+    def __call__(self, stores: str, vendors: str, dates: Optional[List[str]] = None) -> List[Order]:
         self.logger.info(f"Getting order vendors={vendors}, stores={stores}, dates={dates}")
         orders = []
         for vendor in vendors:
             for store in stores:
                 if not dates:
-                    orders.append(self.get_order(vendor, store))
+                    order = self.get_order(store, vendor)
+                    if not order: continue
+                    orders.append(order)
         return orders
 
 # ========== COMMANDS ==========
@@ -105,11 +107,13 @@ class GenerateVendorUploadFiles:
     def __call__(
         self,
         vendors: list[str],
+        stores: Optional[List[str]] = None,
         start_date: Optional[str] = None,   # reserved for future repo filters
         end_date: Optional[str] = None,     # reserved for future repo filters
         context_map: dict[str, dict] | None = None
     ) -> list:
         outs = []
+        
         for vendor in vendors:
             orders = self.list_by_vendor(vendor)
             self.logger.info(f"[GenerateVendorUploadFiles] vendor={vendor} orders={len(orders)}")
@@ -165,15 +169,35 @@ class CheckAndUpdateOrder:
         except Exception as e:
             self.logger.warning(f"[Order Update] Failed to fetch existing order: {e}. Proceeding as changed.")
             return False
-
         same = _same(existing, order)
         self.logger.info("[Order Update] Unchanged — skip overwrite." if same else "[Order Update] Changed — overwrite needed.")
         return same
 
+@Logger.attach_logger
+@dataclass(frozen=True)
+class GenerateStoreOrderEmail:
+
+    repo: OrderRepository
+
+    def __call__(self, store: str) -> None:
+        pass
+    
+@Logger.attach_logger
+@dataclass(frozen=True)
+class GenerateStoreOrderEmails:
+
+    repo: OrderRepository
+    gen_email: GenerateStoreOrderEmail
+
+    def __call__(self, stores: List[str]) -> None:
+        pass
 
 # ========== DOMAIN COMPARISON HELPERS ==========
 
 def _same(a: Order, b: Order) -> bool:
+
+    if (not a) or (not b): return False
+
     if (a.store != b.store) or (a.vendor != b.vendor) or (a.date != b.date):
         return False
 
