@@ -1739,3 +1739,32 @@
 2025-10-15 07:28:14,002 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:74) - WorkBot initialized successfully.
 2025-10-15 07:32:46,937 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:94) - Retrieving orders for: stores=[['Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[[]], formats=[['xlsx']]
 2025-10-15 07:32:46,937 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[['Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[[]], formats=[['xlsx']]
+2025-10-18 06:59:51,055 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:54) - Initializing WorkBot...
+2025-10-18 06:59:51,091 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:74) - WorkBot initialized successfully.
+2025-10-18 07:03:58,051 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:94) - Retrieving orders for: stores=[['Bakery']], vendors=[[]], formats=[['xlsx']]
+2025-10-18 07:03:58,051 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[['Bakery']], vendors=[[]], formats=[['xlsx']]
+2025-10-18 07:41:17,012 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:170) - Generating vendor upload files for stores=None, vendors=['UNFI'], start_date=None, end_date=None
+2025-10-18 07:41:17,012 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[None], vendors=[['UNFI']], formats=[['xlsx']]
+2025-10-18 07:41:17,017 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:174) - Found 5 order files to process.
+2025-10-18 07:41:17,134 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:197) - Vendor upload file generation complete. 5 files created.
+2025-10-19 06:57:35,707 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:54) - Initializing WorkBot...
+2025-10-19 06:57:35,744 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:74) - WorkBot initialized successfully.
+2025-10-19 08:38:02,888 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:94) - Retrieving orders for: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[['Copper Horse Coffee']], formats=[['xlsx']]
+2025-10-19 08:38:02,888 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[['Copper Horse Coffee']], formats=[['xlsx']]
+2025-10-19 08:38:24,120 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:94) - Retrieving orders for: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[['Coffee Depot LLC']], formats=[['xlsx']]
+2025-10-19 08:38:24,120 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[['Coffee Depot LLC']], formats=[['xlsx']]
+2025-10-19 08:44:49,961 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[['Collegetown', 'Easthill', 'Downtown', 'Triphammer']], vendors=[[]], formats=[['pdf']]
+2025-10-19 09:23:48,531 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:94) - Retrieving orders for: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[['FingerLakes Farms']], formats=[['xlsx']]
+2025-10-19 09:23:48,532 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[['FingerLakes Farms']], formats=[['xlsx']]
+2025-10-19 09:36:52,443 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:94) - Retrieving orders for: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[['Equal Exchange']], formats=[['xlsx']]
+2025-10-19 09:36:52,443 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[['Equal Exchange']], formats=[['xlsx']]
+2025-10-19 09:37:06,028 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:94) - Retrieving orders for: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[['Equal Exchange']], formats=[['xlsx']]
+2025-10-19 09:37:06,028 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[['Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer']], vendors=[['Equal Exchange']], formats=[['xlsx']]
+2025-10-19 09:41:09,528 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:170) - Generating vendor upload files for stores=None, vendors=['Sysco', 'Performance Food', 'US Foods'], start_date=None, end_date=None
+2025-10-19 09:41:09,528 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[None], vendors=[['Sysco', 'Performance Food', 'US Foods']], formats=[['xlsx']]
+2025-10-19 09:41:09,536 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:174) - Found 15 order files to process.
+2025-10-19 09:41:09,826 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:197) - Vendor upload file generation complete. 15 files created.
+2025-10-19 09:41:41,962 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:170) - Generating vendor upload files for stores=['Bakery', 'Collegetown', 'Easthill', 'Downtown'], vendors=['Sysco', 'Performance Food', 'US Foods'], start_date=None, end_date=None
+2025-10-19 09:41:41,962 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[['Bakery', 'Collegetown', 'Easthill', 'Downtown']], vendors=[['Sysco', 'Performance Food', 'US Foods']], formats=[['xlsx']]
+2025-10-19 09:41:41,969 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:174) - Found 12 order files to process.
+2025-10-19 09:41:42,167 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:197) - Vendor upload file generation complete. 12 files created.

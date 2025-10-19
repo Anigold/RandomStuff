@@ -1,0 +1,11 @@
+test:
+	pytest -q
+
+test-watch:
+	ptw --onfail "notify-send 'Tests Failed'" --runner "pytest -q"
+
+lint:
+	ruff check backend tests
+
+coverage:
+	pytest --cov=backend --cov-report=term-missing

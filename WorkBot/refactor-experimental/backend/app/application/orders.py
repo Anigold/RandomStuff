@@ -44,11 +44,14 @@ class GetOrder:
         self.logger.info(f"Getting order vendor={vendor}, store={store}, date={date}")
         return self.repo.get(store, vendor, date)
 
+
 @Logger.attach_logger
 @dataclass(frozen=True)
 class GetOrders:
-    repo: OrderRepository
+
+    repo:      OrderRepository
     get_order: GetOrder
+    
     def __call__(self, stores: str, vendors: str, dates: Optional[List[str]] = None) -> List[Order]:
         self.logger.info(f"Getting order vendors={vendors}, stores={stores}, dates={dates}")
         orders = []
@@ -61,6 +64,17 @@ class GetOrders:
         return orders
 
 # ========== COMMANDS ==========
+
+@Logger.attach_logger
+@dataclass(frozen=True)
+class CombineOrders:
+
+    repo : OrderRepository
+
+    def __call__(self, vendor: str) -> None:
+        self.logger.info(f'Merging all orders for: {vendor}')
+        orders = self.repo.list_by_vendor(vendor)
+        self.repo.generate_combined_orders_file(orders=orders)
 
 @Logger.attach_logger
 @dataclass(frozen=True)

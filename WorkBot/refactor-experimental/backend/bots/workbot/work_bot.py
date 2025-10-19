@@ -1,26 +1,23 @@
-# region ---- IMPORTS ----
-
-# region Standard Library
 from datetime import datetime
 import socket
 from collections import defaultdict
 from pathlib import Path
-# endregion
 
-# region Third-Party
+
+
 from openpyxl import load_workbook
-# endregion
 
-# region Utilities
+
+
 from backend.infra.logger import Logger
 
-# endregion
 
-# region Helpers
+
+
 from backend.bots.craftable_bot.helpers import get_craftable_username_password
-# endregion
 
-# region Application Services
+
+
 from backend.bots.craftable_bot.craftable_bot import CraftableBot
 
 from backend.app.services import (
@@ -28,25 +25,26 @@ from backend.app.services import (
     VendorServices,
     StoreServices,
     EmailServices,
+    FileLocator
 )
-# endregion
 
-# region Models
+
+
 from backend.domain.models import (
     Order,
     Transfer, TransferItem,
     Vendor,
     Store
 )
-# endregion
 
 
-# region Email Services
+
+
 from backend.adapters.emailer.emailer import Emailer, Email
 from backend.adapters.emailer.services.gmail_service import GmailService
 from backend.adapters.emailer.services.outlook_service import OutlookService
 from backend.adapters.emailer.registry import EmailProviderRegistry
-# endregion
+
 
 from backend.adapters.downloads.threaded_download_adapter import ThreadedDownloadAdapter
 
@@ -55,7 +53,7 @@ from backend.adapters.repos.order_file_repository import OrderFileRepository
 from backend.adapters.repos.vendor_file_repository import VendorFileRepository
 from backend.adapters.repos.store_file_repository import StoreFileRepository
 
-# endregion
+
 
 from backend.infra.paths import (
     ORDER_FILES_DIR,
@@ -66,81 +64,88 @@ from backend.infra.paths import (
     )
 
 from typing import List
-# region ---- WORKBOT CLASS ----
+
 
 @Logger.attach_logger
 class WorkBot:
-
-    # region ---- Initialization ----
-    
+ 
     def __init__(self):
         self.logger.info('Initializing WorkBot...')
 
-        self.orders = OrderServices(
-            repo=OrderFileRepository(base_dir=ORDER_FILES_DIR, uploads_dir=UPLOAD_FILES_DIR),
-            downloads=ThreadedDownloadAdapter(watch_dir=DOWNLOADS_PATH)
+        self.orders, self.vendors, self.stores = self._init_domain_services()
+
+        self.craft_bot = self._init_craftable_bot()
+
+        self.locator = FileLocator(
+            orders_repo=self.orders.repo,
+            vendors_repo=self.vendors.repo,
+            stores_repo=self.stores.repo
         )
 
-        self.vendors = VendorServices(
-            repo=VendorFileRepository(base_dir=VENDOR_FILES_DIR),
-            downloads=ThreadedDownloadAdapter(watch_dir=DOWNLOADS_PATH)
-        )
-
-        self.stores = StoreServices(
-            repo=StoreFileRepository(base_dir=STORE_FILES_DIR),
-            downloads=ThreadedDownloadAdapter(watch_dir=DOWNLOADS_PATH)
-        )
-
-        username, password = get_craftable_username_password()
-        self.craft_bot = CraftableBot(
-            username,
-            password,
-            orders=self.orders
-
-        )
-
-        try:
-            # Look up the configured email provider ("outlook", "gmail", or "mock")
-            provider = EmailProviderRegistry.get('outlook')
-            self.emailer = Emailer(provider)
-            self.logger.info(f"Emailer initialized using provider: {provider}")
-        except Exception as e:
-            self.logger.warning(f"Emailer could not be initialized ({e}); continuing without email support.")
-            self.emailer = None
-
-        self.emails = EmailServices(
-            emailer=self.emailer,
-            orders=self.orders,
-            vendors=self.vendors
-        )
-
-        # # Host-based setup: kinda clunky, but works for now
-        # email_host = socket.gethostname()
-        # self.emailer = Emailer(OutlookService()) if email_host == 'Purchasing' else None  
+        self.emails = self._init_email_services()
 
         self.logger.info('WorkBot initialized successfully.')
 
-    # endregion
+    def _init_domain_services(self) -> None:
 
-    # region ---- Order Management ----
+        downloader = ThreadedDownloadAdapter(watch_dir=DOWNLOADS_PATH)
+
+        orders = OrderServices(
+            repo=OrderFileRepository(base_dir=ORDER_FILES_DIR, uploads_dir=UPLOAD_FILES_DIR),
+            downloads=downloader
+        )
+
+        vendors = VendorServices(
+            repo=VendorFileRepository(base_dir=VENDOR_FILES_DIR),
+            downloads=downloader
+        )
+
+        stores = StoreServices(
+            repo=StoreFileRepository(base_dir=STORE_FILES_DIR),
+            downloads=downloader
+        )
+
+        return orders, vendors, stores
+
+    def _init_craftable_bot(self) -> None:
+        username, password = get_craftable_username_password()
+        return CraftableBot(username, password, orders=self.orders)
+
+    def _init_email_services(self) -> EmailServices:
+        """Initialize email subsystem (emailer + service)."""
+        try:
+            provider = EmailProviderRegistry.get("outlook")
+            emailer = Emailer(provider)
+            self.logger.info("Emailer initialized using provider: outlook")
+        except Exception as e:
+            self.logger.warning(f"Emailer could not be initialized ({e}); continuing without email support.")
+            emailer = None
+
+        return EmailServices(
+            emailer=emailer,
+            orders=self.orders,
+            vendors=self.vendors,
+            locator=self.locator,
+        )
+
 
     def download_craftable_orders(self, stores, vendors=[], download_pdf=True, update=True):
-        self.craft_bot.download_orders(stores, vendors, download_pdf=download_pdf, update=update)
-
-    # def sort_orders(self):
-    #     self.order_coordinator.sort_orders()
+        return self.craft_bot.download_orders(stores, vendors, download_pdf=download_pdf, update=update)
 
     def delete_craftable_orders(self, stores, vendors=[]):
-        self.craft_bot.delete_orders(stores, vendors)
+        return self.craft_bot.delete_orders(stores, vendors)
 
-    # def get_order_files(self, stores: list, vendors: list = [], formats: list[str] = None) -> list[Path]:
-    #     self.logger.info(f'Retrieving order files for: stores=[{stores}], vendors=[{vendors}], formats=[{formats}]')
-    #     return self.orders.get_order_files(stores=stores, vendors=vendors, formats=formats)
+    def input_craftable_transfers(self):
+        transfers = self.get_transfers()
+        return self.craft_bot.input_transfers(transfers)
+
+    def download_audits(self, stores: list[str], start_date: str, end_date: str) -> None:
+        self.craft_bot.download_audits(stores, start_date, end_date)
+
 
     def get_orders(self, stores: list[str], vendors: list[str]) -> list[Order]:
         self.logger.info(f'Retrieving orders for: stores={stores}, vendors={vendors}')
         return self.orders.get_orders(stores=stores, vendors=vendors)
-
 
     def archive_all_current_orders(self, stores: list[str] = None, vendors: list[str] = None) -> None:
         vendors = vendors or []
@@ -154,11 +159,7 @@ class WorkBot:
                 self.logger.warning(f'[Archive] Skipped {order}: {e}')
 
     def combine_orders(self, vendors: list) -> None:
-        self.orders.combine_orders(vendors)
-
-    # endregion
-
-    # region ---- Transfer Management ----
+        return self.orders.combine_orders(vendors)
 
     def get_transfers(self, stores: list[str] = None, start_date: str = None, end_date: str = None) -> list[Transfer]:
         '''
@@ -177,11 +178,6 @@ class WorkBot:
             start_date=start_date,
             end_date=end_date
         )
-    
-    def input_craftable_transfers(self):
-        transfers = self.get_transfers()
-
-        self.craft_bot.input_transfers(transfers)
 
     def convert_order_to_transfer(self, destination, vendor, origin):
         self.logger.info(f'Beginning order-transfer conversion: {destination}-{vendor} -> {origin}')
@@ -202,9 +198,6 @@ class WorkBot:
 
         return self.transfer_coordinator.save_transfer(transfer=transfer)
 
-    # endregion
-
-    # region ---- Vendor Uploads ----
 
     def generate_vendor_upload_files(
         self,
@@ -218,8 +211,6 @@ class WorkBot:
                          f'start_date={start_date}, end_date={end_date}')
 
         orders = self.get_orders(stores, vendors)
-        # print(orders, flush=True)
-        # order_file_paths = self.get_order_files(stores=stores, vendors=vendors, formats=['xlsx'])
         self.logger.info(f'Found {len(orders)} orders to process.')
 
         context_map = {}
@@ -233,7 +224,7 @@ class WorkBot:
                 'date_str':    order.date,
             }
 
-        self.logger.debug(f'Context map built with {len(context_map)} entries. Delegating to OrderCoordinator.')
+        self.logger.debug(f'Context map built with {len(context_map)} entries. Delegating to OrderServices.')
 
         result_paths = self.orders.generate_vendor_uploads(
             vendors=vendors,
@@ -247,140 +238,12 @@ class WorkBot:
 
         return result_paths
 
-    # endregion
-
-    # region ---- Emailing: Vendor-Facing ----
-
     def generate_vendor_order_emails(self, vendors: list[str], stores: list[str] = []) -> list[Email]:
-        orders = self.get_orders(stores=stores, vendors=vendors, formats=['xlsx'])
-        if not orders:
-            return []
-
-        grouped_orders = self._group_orders_by_vendor(orders)
-        emails = []
-
-        for vendor_name, vendor_orders in grouped_orders.items():
-            to_emails   = self._get_vendor_recipients(vendor_name)
-            subject     = self._build_email_subject(vendor_name)
-            body        = self._build_vendor_email_body(vendor_name, vendor_orders)
-            attachments = self._get_email_attachments(vendor_orders)
-
-            email = Email(
-                to=tuple(to_emails),
-                subject=subject,
-                body=body,
-                attachments=tuple(attachments) if attachments else None
-            )
-
-            self.emailer.create_email(email)
-            self.emailer.display_email(email)
-            emails.append(email)
-
-        return emails
-
-    def _group_orders_by_vendor(self, orders: list) -> dict:
-        grouped = defaultdict(list)
-        for order in orders:
-            grouped[order.vendor].append(order)
-        return grouped
-
-    def _build_email_subject(self, vendor_name: str) -> str:
-        date_str = datetime.now().strftime('%B %d, %Y')
-        return f'Orders for {vendor_name} ({date_str})'
-
-    def _get_vendor_recipients(self, vendor_name: str) -> list[str]:
-        try:
-            vendor_info = self.vendor_coordinator.get_vendor_info(vendor_name)
-            if vendor_info.ordering.email:
-                return [vendor_info.ordering.email]
-        except Exception:
-            pass
-        return ['default@vendor.com']
-
-    def _build_vendor_email_body(self, vendor_name: str, orders: list) -> str:
-        date_str = datetime.now().strftime('%B %d, %Y')
-        lines = [
-            f'Hello {vendor_name},',
-            '',
-            f'Please find below our orders for {date_str}:'
-        ]
-
-        for order in orders:
-            lines.append(f'\nStore: {order.store}')
-            for item in order.items:
-                lines.append(f'  - {item.quantity} x {item.name}')
-
-        lines += [
-            '', 'Let us know if there are any issues.',
-            '', 'Thank you!', 
-            '---',
-            'Andrew Goldsmith', 
-            'Purchasing Manager', 
-            'Ithaca Bakery', 
-            '(607) 273-7110'
-        ]
-        return '\n'.join(lines)
-
-    def _get_email_attachments(self, orders: list[Order]) -> list[str]:
-        attachments = []
-        for order in orders:
-            pdf_file_path = self.orders.get_order_files(order, format='pdf')
-
-            if pdf_file_path.exists():
-                attachments.append(str(pdf_file_path))
-
-        return attachments
-
-    # endregion
-
-    # region ---- Emailing: Store-Facing ----
+        return self.emails.send_vendor_order_emails(stores=stores, vendors=vendors)
 
     def generate_store_order_emails(self, stores: list[str]):
-        
         return self.emails.send_store_order_emails(stores=stores)
 
-        orders = [[order for order in self.orders.get_orders_by_store(store)] for store in stores]
-        # orders = self.get_order_files(stores=stores, vendors=[], formats=['pdf'])
-   
-        if not orders: return None
-
-        emails = []
-        store_orders_table = defaultdict(list)
-        for order in orders:
-
-            order_meta_data = self.orders.parse_filename_for_metadata(order.name)
-            store_orders_table[order_meta_data['store']].append(order)
-
-        for store, store_orders in store_orders_table.items():
-            to_emails = [
-                contact['email']
-                for contact in self.get_store_information(store).contacts
-                if contact['title'] == 'Inventory Clerk'
-            ]
-
-            subject = f'Orders for the Week: {store}'
-            attachments = [store_order for store_order in store_orders]
-
-            body = 'Hello, here are the orders you have placed for the week.'
-
-            email = Email(
-                to=tuple(to_emails),
-                subject=subject,
-                body=body,
-                cc='jennithacabakery@gmail.com',
-                attachments=tuple(attachments) if attachments else None
-            )
-
-            self.emailer.create_email(email)
-            emails.append(email)
-
-        
-        for email in emails:
-            self.emailer.display_email(email)
-
-    # endregion
-
-    # region ---- Utilities & Lifecycle ----
 
     def list_all_vendors(self) -> List[Vendor]:
         return self.vendors.list_vendors()
@@ -413,10 +276,6 @@ class WorkBot:
         long_date = today.strftime(f'%B {day}{suffix}, %Y')
         return long_date, day_of_week
 
-    # endregion
-
-    # region ---- Special Cases ----
-
     def split_natalies(self) -> None:
         natalies_excel_path = Path('C:/Users/Will/Desktop/Natalies.xlsx')
         workbook = load_workbook(natalies_excel_path)
@@ -444,7 +303,6 @@ class WorkBot:
         }
 
         for order in orders:
-            # order = self.order_coordinator.parse_filename_for_metadata(order_path.name)
             for item in order.items:
                 if 'Natalie' in item.name:
                     flavor = item.name.split(' - ')[1]
@@ -455,15 +313,3 @@ class WorkBot:
                             sheet.cell(row=row, column=col).value = item.quantity
 
         workbook.save('C:/Users/Will/Desktop/Natalies.xlsx')
-
-    # endregion
-
-
-
-
-
-    def download_audits(self, stores: list[str], start_date: str, end_date: str) -> None:
-        self.craft_bot.download_audits(stores, start_date, end_date)
-
-        
-# endregion
