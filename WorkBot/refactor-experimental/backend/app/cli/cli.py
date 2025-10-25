@@ -74,7 +74,7 @@ class CLI:
                             self.autocomplete_registry[cmd.name] = cmd.autocomplete
                             
                         count += 1
-            self.logger.info(f"Loaded {count} commands from {package_name}")
+            self.logger.info(f'Loaded {count} commands from {package_name}')
 
     # endregion
 
@@ -164,7 +164,7 @@ class CLI:
             options = self._complete_commands(text)
         else:
             options = self._complete_arguments(buffer, text)
-
+        
         return options[state] if state < len(options) else None
 
     def _complete_commands(self, text: str) -> list[str]:
@@ -306,13 +306,6 @@ class CLI:
                 - Else, fall back to `self.commands['download_orders'].autocomplete("--store", "Do")`
                 - Return completions such as ["Downtown"]
 
-        Notes:
-            - Handlers are expected to be *pure functions* (no side effects).
-            - They should execute quickly since this method is called repeatedly
-            during TAB completion.
-            - Returned completions must be strings (no None values).
-            - If a handler raises, this function will log and safely return [].
-
         """
         try:
             cmd_obj = self.commands.get(command)
@@ -321,7 +314,7 @@ class CLI:
             # Priority 1: explicitly registered handler
             if callable(handler):
                 completions = handler(flag, text)
-                if completions:
+                if completions: 
                     return completions
 
             # Priority 2: fall back to command's own method

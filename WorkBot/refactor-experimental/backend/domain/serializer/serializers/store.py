@@ -41,7 +41,7 @@ class StoreSerializer(Serializer[Store]):
         else:  # json, yaml
             return self.from_dict(payload)
 
-    def load_path(self, path: Path) -> Store:
+    def load_path(self, path: Path, context: dict | None = None) -> Store:
         fmt = path.suffix.lstrip(".").lower()
         with open(path, "rb") as f:
             return self.loads(f.read(), fmt)

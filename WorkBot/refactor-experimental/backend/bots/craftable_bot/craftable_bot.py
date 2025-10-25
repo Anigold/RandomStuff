@@ -56,10 +56,10 @@ class CraftableBot(SeleniumBotMixin):
 # region ---- Global Class Variables --------------------
 
     site_map = {
-            'login_page': 'https://app.craftable.com/signin',
-            'orders_page': 'https://app.craftable.com/buyer/2/{store_id}/orders/list',
+            'login_page':    'https://app.craftable.com/signin',
+            'orders_page':   'https://app.craftable.com/buyer/2/{store_id}/orders/list',
             'transfer_page': 'https://app.craftable.com/buyer/2/{store_id}/transfers/list',
-            'audit_page': 'https://app.craftable.com/director/2/583/audits/history/list'
+            'audit_page':    'https://app.craftable.com/director/2/583/audits/history/list'
     }
     
     stores = {
@@ -73,8 +73,10 @@ class CraftableBot(SeleniumBotMixin):
             'Easthill':    '14374',
             'Triphammer':  '14375',
             'Collegetown': '14372',
-            'Director': '583',
-            'DIRECTOR': '583',
+            'Director':    '583',
+            'DIRECTOR':    '583',
+            'Syracuse':    '22879',
+            'SYRACUSE':    '22879',
     }
     
 # endregion

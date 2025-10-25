@@ -10,6 +10,10 @@ from backend.domain.models import Order
 from backend.adapters.files.local_blob_store import LocalBlobStore
 from backend.infra.logger import Logger
 
+from backend.domain.models.orders.combine_orders import OrderCombiner
+
+from pprint import pprint
+
 @Logger.attach_logger
 class OrderFileRepository(OrderRepository):
     """File-backed implementation of OrderRepository using GenericFileAdapter."""
@@ -71,6 +75,7 @@ class OrderFileRepository(OrderRepository):
         Returns:
             Path to the created Excel file.
         """
+        combined = OrderCombiner.combine(orders)
 
         if not orders:
             raise ValueError("No orders provided for combination.")
@@ -81,38 +86,45 @@ class OrderFileRepository(OrderRepository):
 
         for order in orders:
             for item in order.items:
-                item_map[item.name][order.store] += item.quantity
+                item_map[item.name][order.store] += float(item.quantity)
+
+        rows = []
+        for item_name, quantities in sorted(item_map.items()):
+           row = [item_name] + [quantities.get(store, 0) for store in store_names]
+           rows.append(row)
+
+        pprint(item_map)
 
         # ---- Step 2: prepare workbook ----
-        wb = Workbook()
-        ws = wb.active
-        ws.title = "Combined Orders"
+        # wb = Workbook()
+        # ws = wb.active
+        # ws.title = "Combined Orders"
 
-        # ---- Step 3: write headers ----
-        headers = ["Item Name"] + store_names
-        ws.append(headers)
+        # # ---- Step 3: write headers ----
+        # headers = ["Item Name"] + store_names
+        # ws.append(headers)
 
-        # ---- Step 4: write rows ----
-        for item_name, quantities in sorted(item_map.items()):
-            row = [item_name] + [quantities.get(store, 0) for store in store_names]
-            ws.append(row)
+        # # ---- Step 4: write rows ----
+        # for item_name, quantities in sorted(item_map.items()):
+        #     row = [item_name] + [quantities.get(store, 0) for store in store_names]
+        #     ws.append(row)
 
-        # ---- Step 5: adjust column widths ----
-        for col_idx, header in enumerate(headers, start=1):
-            column_letter = get_column_letter(col_idx)
-            ws.column_dimensions[column_letter].width = max(12, len(header) + 2)
+        # # ---- Step 5: adjust column widths ----
+        # for col_idx, header in enumerate(headers, start=1):
+        #     column_letter = get_column_letter(col_idx)
+        #     ws.column_dimensions[column_letter].width = max(12, len(header) + 2)
 
-        # ---- Step 6: determine destination path ----
-        if dest_path is None:
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            dest_path = self.base_dir / f"combined_orders_{timestamp}.xlsx"
+        # # ---- Step 6: determine destination path ----
+        # if dest_path is None:
+        #     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        #     dest_path = self.base_dir / f"combined_orders_{timestamp}.xlsx"
 
-        # ---- Step 7: ensure directory exists ----
-        dest_path.parent.mkdir(parents=True, exist_ok=True)
+        # # ---- Step 7: ensure directory exists ----
+        # dest_path.parent.mkdir(parents=True, exist_ok=True)
 
-        # ---- Step 8: save workbook ----
-        wb.save(dest_path)
-        return dest_path
+        # # ---- Step 8: save workbook ----
+        # wb.save(dest_path)
+        # return dest_path
 
 
         

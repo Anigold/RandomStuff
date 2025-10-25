@@ -71,11 +71,15 @@ class CombineOrders:
 
     repo : OrderRepository
 
-    def __call__(self, vendor: str) -> None:
-        self.logger.info(f'Merging all orders for: {vendor}')
-        orders = self.repo.list_by_vendor(vendor)
-        self.repo.generate_combined_orders_file(orders=orders)
+    def __call__(self, vendors: List[str]) -> None:
+        self.logger.info(f'Merging all orders for: {vendors}')
+        for vendor in vendors:
+            orders = self.repo.list_by_vendor(vendor)
+            self.repo.generate_combined_orders_file(orders=orders)
+            self.logger.info(f'Merge for {vendor} complete.')
+        self.logger.info(f'Merging complete.')
 
+        
 @Logger.attach_logger
 @dataclass(frozen=True)
 class SaveOrder:

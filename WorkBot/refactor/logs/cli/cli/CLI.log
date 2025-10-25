@@ -3868,3 +3868,52 @@ ValueError: Invalid filename format: combined_orders.xlsx
 2025-10-19 11:30:06,156 - INFO - cli.cli.CLI - (cli.py:421) - Command 'combine_orders' executed successfully.
 2025-10-19 11:45:11,722 - INFO - cli.cli.CLI - (cli.py:341) - User requested CLI shutdown.
 2025-10-19 11:45:11,724 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-10-25 08:59:56,102 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-10-25 08:59:56,120 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-10-25 08:59:56,120 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-10-25 08:59:56,120 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-10-25 09:02:24,280 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: archive_orders (args=[])
+2025-10-25 09:02:24,281 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] archive_orders failed: WorkBotCLI.cmd_archive_orders() missing 1 required positional argument: 'args'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+                                              ~~~~~~~~~~~~~~~~~~~~~~^^
+TypeError: WorkBotCLI.cmd_archive_orders() missing 1 required positional argument: 'args'
+2025-10-25 09:02:40,641 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: archive_orders (args=['--stores', 'Downtown', 'Easthill', 'Collegetown', 'Triphammer', 'Bakery'])
+2025-10-25 09:02:40,661 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] archive_orders failed: Invalid filename format: combined_orders.xlsx
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\workbot_cli.py", line 418, in cmd_archive_orders
+    self.workbot.archive_all_current_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\workbot\work_bot.py", line 101, in archive_all_current_orders
+    orders = self.get_orders(stores, vendors, formats=['xlsx'])
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\workbot\work_bot.py", line 95, in get_orders
+    order_files = self.get_order_files(stores, vendors, formats=formats)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\workbot\work_bot.py", line 91, in get_order_files
+    return self.order_coordinator.get_order_files(stores=stores, vendors=vendors, formats=formats)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\order_coordinator.py", line 57, in get_order_files
+    return self.file_handler.get_order_files(stores, vendors, formats=formats)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\storage\file\order_file_handler.py", line 103, in get_order_files
+    meta = self.filename_strategy.parse(file.name)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\serializer\filename_strategies\order_filename_strategy.py", line 28, in parse
+    raise ValueError(f'Invalid filename format: {filename}')
+ValueError: Invalid filename format: combined_orders.xlsx
+2025-10-25 09:02:57,449 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: archive_orders (args=['--stores', 'Downtown', 'Easthill', 'Collegetown', 'Triphammer', 'Bakery'])
+2025-10-25 09:02:59,629 - INFO - cli.cli.CLI - (cli.py:421) - Command 'archive_orders' executed successfully.
+2025-10-25 09:03:15,361 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Triphammer', 'Easthill', 'Downtown', 'Collegetown'])
+2025-10-25 09:10:54,782 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-10-25 09:49:55,883 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: delete_orders (args=['--stores', 'Bakery'])
+2025-10-25 09:51:10,471 - INFO - cli.cli.CLI - (cli.py:421) - Command 'delete_orders' executed successfully.
+2025-10-25 09:54:13,101 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Bakery', 'Triphammer'])
+2025-10-25 09:56:42,202 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-10-25 09:59:50,929 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: download_orders (args=['--stores', 'Downtown'])
+2025-10-25 10:01:48,450 - INFO - cli.cli.CLI - (cli.py:421) - Command 'download_orders' executed successfully.
+2025-10-25 10:03:57,659 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: generate_vendor_upload_files (args=['--vendors', 'UNFI'])
+2025-10-25 10:03:57,829 - INFO - cli.cli.CLI - (cli.py:421) - Command 'generate_vendor_upload_files' executed successfully.
+2025-10-25 11:48:22,027 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-25 11:48:22,035 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.

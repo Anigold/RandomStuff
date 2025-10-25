@@ -10,3 +10,4 @@ class Order:
 
     def __repr__(self) -> str:
         return f'< Order store={self.store}, vendor={self.vendor}, data={self.date}, items={len(self.items)} >'
+    

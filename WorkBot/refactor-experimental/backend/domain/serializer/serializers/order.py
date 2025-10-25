@@ -1,9 +1,10 @@
 from pathlib import Path
-from typing import Optional
+from typing import Optional, List
 from backend.domain.models import Order, OrderItem
 from backend.app.ports.generic import Serializer
 from ..formats import get_formatter
 from pprint import pprint
+from collections import defaultdict
 
 from backend.infra.logger import Logger
 from ..formats.base_format import BaseFormatter
@@ -55,6 +56,29 @@ class OrderSerializer(Serializer[Order]):
     def get_formatter(self, fmt: str) -> BaseFormatter:
         return get_formatter(fmt)
     
+    def combine_orders(self, orders: List[Order]) -> None:
+        
+        headers = 'Item Name' + sorted([o.store for o in orders])
+
+        item_map: dict[str, dict[str, float]] = defaultdict(lambda: defaultdict(float))
+        store_names = sorted({o.store for o in orders})
+        
+        for order in orders:
+            for item in order.items:
+                item_map[item.name][order.store] += float(item.quantity)
+
+        rows = []
+        for item_name, quantities in sorted(item_map.items()):
+           row = [item_name] + [quantities.get(store, 0) for store in store_names]
+           rows.append(row)
+
+        formatter = self.get_formatter('xlsx')
+
+        formatter.dumps({'header': headers, 'rows': rows})
+
+
+
+
     # ---- Domain <-> dict ----
     def to_dict(self, order: Order) -> dict:
         out = {

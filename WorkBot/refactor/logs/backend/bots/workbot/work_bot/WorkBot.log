@@ -1768,3 +1768,13 @@
 2025-10-19 09:41:41,962 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[['Bakery', 'Collegetown', 'Easthill', 'Downtown']], vendors=[['Sysco', 'Performance Food', 'US Foods']], formats=[['xlsx']]
 2025-10-19 09:41:41,969 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:174) - Found 12 order files to process.
 2025-10-19 09:41:42,167 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:197) - Vendor upload file generation complete. 12 files created.
+2025-10-25 08:59:56,060 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:54) - Initializing WorkBot...
+2025-10-25 08:59:56,102 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:74) - WorkBot initialized successfully.
+2025-10-25 09:02:40,642 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:94) - Retrieving orders for: stores=[['Downtown', 'Easthill', 'Collegetown', 'Triphammer', 'Bakery']], vendors=[[]], formats=[['xlsx']]
+2025-10-25 09:02:40,642 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[['Downtown', 'Easthill', 'Collegetown', 'Triphammer', 'Bakery']], vendors=[[]], formats=[['xlsx']]
+2025-10-25 09:02:57,450 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:94) - Retrieving orders for: stores=[['Downtown', 'Easthill', 'Collegetown', 'Triphammer', 'Bakery']], vendors=[[]], formats=[['xlsx']]
+2025-10-25 09:02:57,450 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[['Downtown', 'Easthill', 'Collegetown', 'Triphammer', 'Bakery']], vendors=[[]], formats=[['xlsx']]
+2025-10-25 10:03:57,660 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:170) - Generating vendor upload files for stores=None, vendors=['UNFI'], start_date=None, end_date=None
+2025-10-25 10:03:57,660 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:90) - Retrieving order files for: stores=[None], vendors=[['UNFI']], formats=[['xlsx']]
+2025-10-25 10:03:57,665 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:174) - Found 5 order files to process.
+2025-10-25 10:03:57,828 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:197) - Vendor upload file generation complete. 5 files created.
