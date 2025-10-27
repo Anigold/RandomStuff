@@ -52,11 +52,10 @@ class GenericFileAdapter(GenericFilePort, Generic[T]):
 
         path = path_override or self.get_file_path(obj, format=fmt)
         self.store.ensure_dir(path.parent)
-
+        
         data = self.serializer.dumps(obj, format=fmt, context=context)
 
         self.store.write_bytes(path, data, overwrite=True)
-        self.logger.info(path)
         return path
     
     def remove(self, path):

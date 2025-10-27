@@ -16,7 +16,6 @@ class GetVendor:
     repo: VendorRepository
 
     def __call__(self, name: str) -> Vendor:
-        self.logger.info(f"Fetching vendor: {name}")
         return self.repo.get(name)
 
 
@@ -27,7 +26,6 @@ class ListVendors:
     repo: VendorRepository
 
     def __call__(self) -> list[Vendor]:
-        self.logger.info("Listing all vendors")
         return self.repo.list_all()
 
 

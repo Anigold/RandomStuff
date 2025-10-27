@@ -41,7 +41,6 @@ class GetOrdersByStore:
 class GetOrder:
     repo: OrderRepository
     def __call__(self, store: str, vendor: str, date: Optional[str] = None) -> Order:
-        self.logger.info(f"Getting order vendor={vendor}, store={store}, date={date}")
         return self.repo.get(store, vendor, date)
 
 
@@ -53,7 +52,7 @@ class GetOrders:
     get_order: GetOrder
     
     def __call__(self, stores: str, vendors: str, dates: Optional[List[str]] = None) -> List[Order]:
-        self.logger.info(f"Getting order vendors={vendors}, stores={stores}, dates={dates}")
+        self.logger.info(f"Getting orders: vendors={vendors}, stores={stores}, dates={dates}")
         orders = []
         for vendor in vendors:
             for store in stores:
@@ -61,6 +60,7 @@ class GetOrders:
                     order = self.get_order(store, vendor)
                     if not order: continue
                     orders.append(order)
+        self.logger.info(f'Retrieved {len(orders)} orders.')
         return orders
 
 # ========== COMMANDS ==========
@@ -119,7 +119,7 @@ class GenerateVendorUploadFiles:
       - Discover orders via repository (no path/format in app layer)
       - Generate each vendor upload through repository
     """
-    list_by_vendor: GetOrdersByVendor
+    get_order: GetOrdersByVendor
     gen_upload: GenerateVendorUploadFile
 
     def __call__(
@@ -133,12 +133,10 @@ class GenerateVendorUploadFiles:
         outs = []
         
         for vendor in vendors:
-            orders = self.list_by_vendor(vendor)
-            self.logger.info(f"[GenerateVendorUploadFiles] vendor={vendor} orders={len(orders)}")
-            for order in orders:
-                key = f"{order.vendor}|{order.store}|{order.date}"
-                ctx = context_map.get(key, {}) if context_map else {}
-                outs.append(self.gen_upload(order, ctx))
+            for store in stores:
+                order = self.get_order(store, vendor)
+                context = context_map.get(f'{order.store}|{order.vendor}')
+                outs.append(self.gen_upload(order, context))
         return outs
 
 

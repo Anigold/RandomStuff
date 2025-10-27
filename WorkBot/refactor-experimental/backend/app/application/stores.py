@@ -28,7 +28,6 @@ class ListStores:
     repo: StoreRepository
 
     def __call__(self) -> list[Store]:
-        self.logger.info("Listing all stores.")
         return self.repo.list_all()
 
 

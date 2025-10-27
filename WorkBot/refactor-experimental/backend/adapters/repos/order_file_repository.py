@@ -27,9 +27,9 @@ class OrderFileRepository(OrderRepository):
         )
 
     # ---- Repository API ----
-    def get(self, vendor: str, store: str, date: str | None = None) -> Order:
+    def get(self, store: str, vendor: str, date: str | None = None) -> Order:
         """Get the current or specific dated order for vendor+store."""
-        matches = self._engine.find(vendor=vendor, store=store)
+        matches = self._engine.find(store=store, vendor=vendor)
         return matches[0] if len(matches) >= 1 else None
 
     def list_all(self) -> list[Order]:

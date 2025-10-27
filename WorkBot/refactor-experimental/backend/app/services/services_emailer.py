@@ -52,7 +52,7 @@ class EmailServices:
         """
         self.logger.info("Preparing vendor order emails...")
 
-        orders = self.orders.get_orders(vendors, stores)
+        orders = self.orders.get_orders(stores, vendors)
         if not orders:
             self.logger.info("No orders found for vendor email dispatch.")
             return []

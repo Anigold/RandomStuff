@@ -24,6 +24,7 @@ class OrderSerializer(Serializer[Order]):
 
     # ---- Core protocol ----
     def dumps(self, obj: Order, format: Optional[str] = None, context: dict | None = None) -> bytes:
+
         fmt = format or self.preferred_format()
         formatter = self.get_formatter(fmt)
 
@@ -31,7 +32,7 @@ class OrderSerializer(Serializer[Order]):
         order_tablular = self._to_table(order_dict)
       
 
-        return formatter.dumps(order_tablular)
+        return formatter.dumps(order_tablular, context=context)
 
     def loads(self, data: bytes, format: Optional[str] = None) -> Order:
         fmt = format or self.preferred_format()

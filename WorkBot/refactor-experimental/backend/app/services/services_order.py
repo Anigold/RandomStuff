@@ -28,7 +28,7 @@ class OrderServices:
 
         self.generate_vendor_upload  = GenerateVendorUploadFile(self.repo)
         self.generate_vendor_uploads = GenerateVendorUploadFiles(
-            self.get_orders_by_vendor,
+            self.get_order,
             self.generate_vendor_upload
         )
 

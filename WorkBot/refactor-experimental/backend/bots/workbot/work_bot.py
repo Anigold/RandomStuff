@@ -158,9 +158,6 @@ class WorkBot:
             except Exception as e:
                 self.logger.warning(f'[Archive] Skipped {order}: {e}')
 
-    def combine_orders(self, vendors: list) -> None:
-        return self.orders.combine_orders(vendors)
-
     def get_transfers(self, stores: list[str] = None, start_date: str = None, end_date: str = None) -> list[Transfer]:
         '''
         Retrieves saved transfer objects from file based on optional filters.
@@ -218,13 +215,13 @@ class WorkBot:
     
             vendor_info = self.vendors.get_vendor(order.vendor)
 
-            context_map[order] = {
+            context_map[f'{order.store}|{order.vendor}'] = {
                 'store':       order.store,
                 'vendor_info': vendor_info,
                 'date_str':    order.date,
             }
-
-        self.logger.debug(f'Context map built with {len(context_map)} entries. Delegating to OrderServices.')
+            
+        self.logger.info(f'Context map built with {len(context_map)} entries. Delegating to OrderServices.')
 
         result_paths = self.orders.generate_vendor_uploads(
             vendors=vendors,
