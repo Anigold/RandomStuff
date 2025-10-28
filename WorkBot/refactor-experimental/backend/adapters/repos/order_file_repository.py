@@ -93,7 +93,7 @@ class OrderFileRepository(OrderRepository):
            row = [item_name] + [quantities.get(store, 0) for store in store_names]
            rows.append(row)
 
-        pprint(item_map)
+      
 
         # ---- Step 2: prepare workbook ----
         # wb = Workbook()

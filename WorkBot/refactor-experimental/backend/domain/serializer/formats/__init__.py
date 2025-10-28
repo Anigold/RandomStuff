@@ -9,14 +9,14 @@ from .vendor_formats import *
 
 _FORMATTERS: Dict[str, BaseFormatter] = {
 
-    'xlsx':             ExcelFormatter,
-    'csv':              CsvFormatter,
-    'json':             JSONFormatter,
-    'sysco':            SyscoFormatter,
-    'hillnmarkes':      HillNMarkesFormatter,
-    'unfi':             UNFIFormatter, 
-    'performance food': PerformanceFoodFormatter,
-    'us foods':         USFoodsFormatter,
+    'xlsx':               ExcelFormatter,
+    'csv':                CsvFormatter,
+    'json':               JSONFormatter,
+    'sysco':              SyscoFormatter,
+    'hill & markes':      HillNMarkesFormatter,
+    'unfi':               UNFIFormatter, 
+    'performance food':   PerformanceFoodFormatter,
+    'us foods':           USFoodsFormatter,
 
 }
 

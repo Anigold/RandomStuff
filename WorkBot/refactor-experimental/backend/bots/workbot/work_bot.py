@@ -24,6 +24,7 @@ from backend.app.services import (
     OrderServices,
     VendorServices,
     StoreServices,
+    TransferServices,
     EmailServices,
     FileLocator
 )
@@ -52,8 +53,9 @@ from backend.adapters.downloads.threaded_download_adapter import ThreadedDownloa
 from backend.adapters.repos.order_file_repository import OrderFileRepository
 from backend.adapters.repos.vendor_file_repository import VendorFileRepository
 from backend.adapters.repos.store_file_repository import StoreFileRepository
+from backend.adapters.repos.transfer_file_repository import TransferRepository
 
-
+from backend.infra.config.settings import DEFAULT_TRANSFER_ORIGIN
 
 from backend.infra.paths import (
     ORDER_FILES_DIR,
@@ -72,7 +74,7 @@ class WorkBot:
     def __init__(self):
         self.logger.info('Initializing WorkBot...')
 
-        self.orders, self.vendors, self.stores = self._init_domain_services()
+        self.orders, self.vendors, self.stores, self.transfers = self._init_domain_services()
 
         self.craft_bot = self._init_craftable_bot()
 
@@ -90,8 +92,9 @@ class WorkBot:
 
         downloader = ThreadedDownloadAdapter(watch_dir=DOWNLOADS_PATH)
 
+        order_repo = OrderFileRepository(base_dir=ORDER_FILES_DIR, uploads_dir=UPLOAD_FILES_DIR)
         orders = OrderServices(
-            repo=OrderFileRepository(base_dir=ORDER_FILES_DIR, uploads_dir=UPLOAD_FILES_DIR),
+            repo=order_repo,
             downloads=downloader
         )
 
@@ -105,7 +108,13 @@ class WorkBot:
             downloads=downloader
         )
 
-        return orders, vendors, stores
+        transfers = TransferServices(
+            repo=TransferRepository(),
+            order_repo=order_repo,
+            default_origin_store=DEFAULT_TRANSFER_ORIGIN
+        )
+
+        return orders, vendors, stores, transfers
 
     def _init_craftable_bot(self) -> None:
         username, password = get_craftable_username_password()
@@ -178,7 +187,7 @@ class WorkBot:
 
     def convert_order_to_transfer(self, destination, vendor, origin):
         self.logger.info(f'Beginning order-transfer conversion: {destination}-{vendor} -> {origin}')
-        order = self.get_orders([destination], [vendor], formats=['xlsx'])[0]
+        order = self.get_orders([destination], [vendor])[0]
         origin = 'Bakery' if order.vendor == 'Ithaca Bakery' else order.vendor # YOU NEED TO FIX THIS FOR WHEN YOU HAVE TO DO IT FOR A DIFFERENT STORE
 
         transfer_items = [
@@ -193,7 +202,7 @@ class WorkBot:
             transfer_date=order.date
         )
 
-        return self.transfer_coordinator.save_transfer(transfer=transfer)
+        return self.transfers.save(transfer=transfer)
 
 
     def generate_vendor_upload_files(

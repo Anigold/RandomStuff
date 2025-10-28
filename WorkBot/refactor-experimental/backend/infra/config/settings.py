@@ -13,3 +13,5 @@ EMAIL_PROVIDER = get_env_var('WORKBOT_EMAIL_PROVIDER', 'outlook').lower()
 
 # Optional values with fallback
 LOG_LEVEL = get_env_var('LOG_LEVEL', required=False) or 'INFO'
+
+DEFAULT_TRANSFER_ORIGIN = 'Bakery'

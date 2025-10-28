@@ -2954,3 +2954,280 @@ AttributeError: 'NoneType' object has no attribute 'get'
 2025-10-27 13:29:10,459 - INFO - backend.app.cli.cli.CLI - (cli.py:450) - Command 'generate_vendor_order_emails' executed successfully.
 2025-10-27 13:43:43,806 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
 2025-10-27 13:43:43,810 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-10-28 07:22:56,372 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-10-28 07:22:56,379 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-10-28 07:22:56,396 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-28 07:22:56,396 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-10-28 07:22:56,417 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 14 commands from backend.app.cli.commands.workbot
+2025-10-28 07:22:56,417 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-10-28 07:23:04,286 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-10-28 07:26:09,452 - INFO - backend.app.cli.cli.CLI - (cli.py:450) - Command 'download_orders' executed successfully.
+2025-10-28 07:29:25,409 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'Hill & Markes'])
+2025-10-28 07:29:25,605 - ERROR - backend.app.cli.cli.CLI - (cli.py:455) - [Error] generate_vendor_upload_files failed: No vendor file found for Hill & Markes
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 449, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 216, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\vendors.py", line 19, in __call__
+    return self.repo.get(name)
+           ~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\repos\vendor_file_repository.py", line 29, in get
+    raise FileNotFoundError(f"No vendor file found for {name}")
+FileNotFoundError: No vendor file found for Hill & Markes
+2025-10-28 07:29:40,313 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'Hill n_markes'])
+2025-10-28 07:29:40,431 - ERROR - backend.app.cli.cli.CLI - (cli.py:455) - [Error] generate_vendor_upload_files failed: 'NoneType' object has no attribute 'store'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 449, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 226, in generate_vendor_upload_files
+    result_paths = self.orders.generate_vendor_uploads(
+        vendors=vendors,
+    ...<3 lines>...
+        context_map=context_map
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 138, in __call__
+    context = context_map.get(f'{order.store}|{order.vendor}')
+                                 ^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'store'
+2025-10-28 07:33:00,874 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'Hill & Markes'])
+2025-10-28 07:33:00,998 - ERROR - backend.app.cli.cli.CLI - (cli.py:455) - [Error] generate_vendor_upload_files failed: No vendor file found for Hill & Markes
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 449, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 216, in generate_vendor_upload_files
+    vendor_info = self.vendors.get_vendor(order.vendor)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\vendors.py", line 19, in __call__
+    return self.repo.get(name)
+           ~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\repos\vendor_file_repository.py", line 29, in get
+    raise FileNotFoundError(f"No vendor file found for {name}")
+FileNotFoundError: No vendor file found for Hill & Markes
+2025-10-28 07:42:04,196 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-28 07:42:04,200 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-10-28 07:42:07,731 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-10-28 07:42:07,735 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-10-28 07:42:07,752 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-28 07:42:07,752 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-10-28 07:42:07,766 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 14 commands from backend.app.cli.commands.workbot
+2025-10-28 07:42:07,766 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-10-28 07:42:08,879 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'Hill & Markes'])
+2025-10-28 07:42:09,044 - ERROR - backend.app.cli.cli.CLI - (cli.py:455) - [Error] generate_vendor_upload_files failed: 'hill & markes'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 449, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 226, in generate_vendor_upload_files
+    result_paths = self.orders.generate_vendor_uploads(
+        vendors=vendors,
+    ...<3 lines>...
+        context_map=context_map
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 139, in __call__
+    outs.append(self.gen_upload(order, context))
+                ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 111, in __call__
+    return self.repo.generate_vendor_upload_file(order, context)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\repos\order_file_repository.py", line 57, in generate_vendor_upload_file
+    formatter = self._engine.serializer.get_formatter(order.vendor.strip().lower())
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\serializer\serializers\order.py", line 58, in get_formatter
+    return get_formatter(fmt)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\serializer\formats\__init__.py", line 26, in get_formatter
+    return _FORMATTERS[fmt]()
+           ~~~~~~~~~~~^^^^^
+KeyError: 'hill & markes'
+2025-10-28 07:42:53,285 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-28 07:42:53,289 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-10-28 07:42:56,198 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-10-28 07:42:56,202 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-10-28 07:42:56,209 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-28 07:42:56,209 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-10-28 07:42:56,223 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 14 commands from backend.app.cli.commands.workbot
+2025-10-28 07:42:56,223 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-10-28 07:42:56,936 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'Hill & Markes'])
+2025-10-28 07:42:57,093 - ERROR - backend.app.cli.cli.CLI - (cli.py:455) - [Error] generate_vendor_upload_files failed: 'str' object has no attribute 'sku'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 449, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 226, in generate_vendor_upload_files
+    result_paths = self.orders.generate_vendor_uploads(
+        vendors=vendors,
+    ...<3 lines>...
+        context_map=context_map
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 139, in __call__
+    outs.append(self.gen_upload(order, context))
+                ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 111, in __call__
+    return self.repo.generate_vendor_upload_file(order, context)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\repos\order_file_repository.py", line 59, in generate_vendor_upload_file
+    return self._engine.save(order, format=order.vendor, context=context, path_override=dest_path)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\generic_file_adapter.py", line 56, in save
+    data = self.serializer.dumps(obj, format=fmt, context=context)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\serializer\serializers\order.py", line 35, in dumps
+    return formatter.dumps(order_tablular, context=context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\serializer\formats\vendor_formats\hill_n_markes.py", line 8, in dumps
+    rows = [[i.sku, i.quantity] for i in data]
+             ^^^^^
+AttributeError: 'str' object has no attribute 'sku'
+2025-10-28 07:43:19,446 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-28 07:43:19,449 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-10-28 07:43:22,289 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-10-28 07:43:22,294 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-10-28 07:43:22,301 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-28 07:43:22,301 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-10-28 07:43:22,314 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 14 commands from backend.app.cli.commands.workbot
+2025-10-28 07:43:22,314 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-10-28 07:43:23,322 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'Hill & Markes'])
+2025-10-28 07:43:23,509 - ERROR - backend.app.cli.cli.CLI - (cli.py:455) - [Error] generate_vendor_upload_files failed: 'list' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 449, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 226, in generate_vendor_upload_files
+    result_paths = self.orders.generate_vendor_uploads(
+        vendors=vendors,
+    ...<3 lines>...
+        context_map=context_map
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 139, in __call__
+    outs.append(self.gen_upload(order, context))
+                ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 111, in __call__
+    return self.repo.generate_vendor_upload_file(order, context)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\repos\order_file_repository.py", line 59, in generate_vendor_upload_file
+    return self._engine.save(order, format=order.vendor, context=context, path_override=dest_path)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\generic_file_adapter.py", line 56, in save
+    data = self.serializer.dumps(obj, format=fmt, context=context)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\serializer\serializers\order.py", line 35, in dumps
+    return formatter.dumps(order_tablular, context=context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\serializer\formats\vendor_formats\hill_n_markes.py", line 9, in dumps
+    return super().dumps(headers + rows, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\serializer\formats\excel_format.py", line 29, in dumps
+    ws.append(obj.get("headers", []))
+              ^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2025-10-28 07:44:01,896 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-28 07:44:01,899 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-10-28 07:44:04,742 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-10-28 07:44:04,747 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-10-28 07:44:04,753 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-28 07:44:04,753 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-10-28 07:44:04,766 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 14 commands from backend.app.cli.commands.workbot
+2025-10-28 07:44:04,766 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-10-28 07:44:05,531 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'Hill & Markes'])
+2025-10-28 07:44:05,845 - INFO - backend.app.cli.cli.CLI - (cli.py:450) - Command 'generate_vendor_upload_files' executed successfully.
+2025-10-28 07:45:35,334 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer'])
+2025-10-28 07:53:56,491 - INFO - backend.app.cli.cli.CLI - (cli.py:450) - Command 'download_orders' executed successfully.
+2025-10-28 08:19:26,556 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_upload_files (args=['--vendors', 'Hill & Markes'])
+2025-10-28 08:19:26,990 - INFO - backend.app.cli.cli.CLI - (cli.py:450) - Command 'generate_vendor_upload_files' executed successfully.
+2025-10-28 08:19:57,573 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_upload_files (args=['--vendors', 'UNFI'])
+2025-10-28 08:19:57,987 - INFO - backend.app.cli.cli.CLI - (cli.py:450) - Command 'generate_vendor_upload_files' executed successfully.
+2025-10-28 08:20:57,140 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-28 08:20:57,144 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-10-28 08:21:00,147 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-10-28 08:21:00,153 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-10-28 08:21:00,168 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-28 08:21:00,168 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-10-28 08:21:00,183 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 14 commands from backend.app.cli.commands.workbot
+2025-10-28 08:21:00,183 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-10-28 08:21:00,959 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_upload_files (args=['--vendors', 'UNFI'])
+2025-10-28 08:21:01,319 - INFO - backend.app.cli.cli.CLI - (cli.py:450) - Command 'generate_vendor_upload_files' executed successfully.
+2025-10-28 08:21:08,584 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_upload_files (args=['--vendors', 'Hill & Markes'])
+2025-10-28 08:21:09,007 - INFO - backend.app.cli.cli.CLI - (cli.py:450) - Command 'generate_vendor_upload_files' executed successfully.
+2025-10-28 08:23:24,828 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: convert_order_to_transfer (args=['--origin', 'Bakery', '--vendor', 'Ithaca Bakery', '--destination', 'Collegetown'])
+2025-10-28 08:23:24,828 - ERROR - backend.app.cli.cli.CLI - (cli.py:455) - [Error] convert_order_to_transfer failed: WorkBot.get_orders() got an unexpected keyword argument 'formats'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 449, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\convert_order_to_transfer.py", line 29, in command
+    self.context.workbot.convert_order_to_transfer(parsed_args.destination, parsed_args.vendor, parsed_args.origin)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 181, in convert_order_to_transfer
+    order = self.get_orders([destination], [vendor], formats=['xlsx'])[0]
+            ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: WorkBot.get_orders() got an unexpected keyword argument 'formats'
+2025-10-28 08:24:03,466 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-28 08:24:03,469 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-10-28 08:24:06,401 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-10-28 08:24:06,406 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-10-28 08:24:06,422 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-10-28 08:24:06,422 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-10-28 08:24:06,436 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 14 commands from backend.app.cli.commands.workbot
+2025-10-28 08:24:06,436 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-10-28 08:24:07,541 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: convert_order_to_transfer (args=['--origin', 'Bakery', '--vendor', 'Ithaca Bakery', '--destination', 'Collegetown'])
+2025-10-28 08:24:07,586 - ERROR - backend.app.cli.cli.CLI - (cli.py:455) - [Error] convert_order_to_transfer failed: 'WorkBot' object has no attribute 'transfer_coordinator'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 449, in _dispatch_command
+    self.commands[command].command(args) if args else self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\convert_order_to_transfer.py", line 29, in command
+    self.context.workbot.convert_order_to_transfer(parsed_args.destination, parsed_args.vendor, parsed_args.origin)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 196, in convert_order_to_transfer
+    return self.transfer_coordinator.save_transfer(transfer=transfer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'WorkBot' object has no attribute 'transfer_coordinator'
+2025-10-28 12:56:39,702 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Triphammer', '--vendors', 'Peters Supply'])
+2025-10-28 12:56:39,931 - INFO - backend.app.cli.cli.CLI - (cli.py:450) - Command 'generate_vendor_order_emails' executed successfully.
+2025-10-28 12:59:25,951 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Triphammer', '--vendors', 'Peters Supply'])
+2025-10-28 12:59:26,477 - INFO - backend.app.cli.cli.CLI - (cli.py:450) - Command 'generate_vendor_order_emails' executed successfully.
+2025-10-28 13:51:08,409 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Triphammer', '--vendors', 'SANICO'])
+2025-10-28 13:51:35,674 - INFO - backend.app.cli.cli.CLI - (cli.py:450) - Command 'download_orders' executed successfully.
+2025-10-28 13:52:09,449 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'SANICO'])
+2025-10-28 13:52:09,617 - INFO - backend.app.cli.cli.CLI - (cli.py:450) - Command 'generate_vendor_order_emails' executed successfully.
+2025-10-28 13:54:17,723 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'SANICO'])
+2025-10-28 13:54:18,167 - INFO - backend.app.cli.cli.CLI - (cli.py:450) - Command 'generate_vendor_order_emails' executed successfully.
+2025-10-28 13:54:57,227 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer', '--vendors', 'SANICO'])
+2025-10-28 13:54:57,925 - INFO - backend.app.cli.cli.CLI - (cli.py:450) - Command 'generate_vendor_order_emails' executed successfully.
+2025-10-28 14:32:29,170 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-28 14:32:29,174 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.

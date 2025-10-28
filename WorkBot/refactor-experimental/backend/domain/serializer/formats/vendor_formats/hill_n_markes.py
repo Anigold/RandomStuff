@@ -5,5 +5,5 @@ class HillNMarkesFormatter(ExcelFormatter):
     
     def dumps(self, data: List[List[Any]], **kwargs) -> bytes:
         headers = ['Key Word', 'Quantity']
-        rows = [[i.sku, i.quantity] for i in data]
-        return super().dumps(headers + rows, **kwargs)
+        rows = [[i[0], i[2]] for i in data['rows']] # Need to normalize to fix arbitrary indexing
+        return super().dumps({'headers': headers, 'rows': rows})
