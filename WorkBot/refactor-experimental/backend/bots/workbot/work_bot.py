@@ -53,7 +53,7 @@ from backend.adapters.downloads.threaded_download_adapter import ThreadedDownloa
 from backend.adapters.repos.order_file_repository import OrderFileRepository
 from backend.adapters.repos.vendor_file_repository import VendorFileRepository
 from backend.adapters.repos.store_file_repository import StoreFileRepository
-from backend.adapters.repos.transfer_file_repository import TransferRepository
+from backend.adapters.repos.transfer_file_repository import TransferFileRepository
 
 from backend.infra.config.settings import DEFAULT_TRANSFER_ORIGIN
 
@@ -62,7 +62,8 @@ from backend.infra.paths import (
     DOWNLOADS_PATH,
     VENDOR_FILES_DIR,
     STORE_FILES_DIR,
-    UPLOAD_FILES_DIR
+    UPLOAD_FILES_DIR,
+    TRANSFER_FILES_DIR
     )
 
 from typing import List
@@ -93,6 +94,7 @@ class WorkBot:
         downloader = ThreadedDownloadAdapter(watch_dir=DOWNLOADS_PATH)
 
         order_repo = OrderFileRepository(base_dir=ORDER_FILES_DIR, uploads_dir=UPLOAD_FILES_DIR)
+
         orders = OrderServices(
             repo=order_repo,
             downloads=downloader
@@ -109,7 +111,7 @@ class WorkBot:
         )
 
         transfers = TransferServices(
-            repo=TransferRepository(),
+            repo=TransferFileRepository(base_dir=TRANSFER_FILES_DIR),
             order_repo=order_repo,
             default_origin_store=DEFAULT_TRANSFER_ORIGIN
         )
@@ -145,7 +147,8 @@ class WorkBot:
         return self.craft_bot.delete_orders(stores, vendors)
 
     def input_craftable_transfers(self):
-        transfers = self.get_transfers()
+        transfers = self.transfers.list_transfers()
+        self.logger.info(transfers)
         return self.craft_bot.input_transfers(transfers)
 
     def download_audits(self, stores: list[str], start_date: str, end_date: str) -> None:
@@ -159,15 +162,15 @@ class WorkBot:
     def archive_all_current_orders(self, stores: list[str] = None, vendors: list[str] = None) -> None:
         vendors = vendors or []
 
-        orders = self.get_orders(stores, vendors, formats=['xlsx'])
+        orders = self.get_orders(stores, vendors)
 
         for order in orders:
             try:
-                self.orders.archive_order_file(order)
+                self.orders.archive_order(order)
             except Exception as e:
                 self.logger.warning(f'[Archive] Skipped {order}: {e}')
 
-    def get_transfers(self, stores: list[str] = None, start_date: str = None, end_date: str = None) -> list[Transfer]:
+    def get_transfers(self) -> list[Transfer]:
         '''
         Retrieves saved transfer objects from file based on optional filters.
 
@@ -179,11 +182,7 @@ class WorkBot:
         Returns:
             list[Transfer]: List of parsed transfer domain objects.
         '''
-        return self.transfer_coordinator.get_transfers_from_file(
-            stores=stores,
-            start_date=start_date,
-            end_date=end_date
-        )
+        return self.transfers.list_transfers()
 
     def convert_order_to_transfer(self, destination, vendor, origin):
         self.logger.info(f'Beginning order-transfer conversion: {destination}-{vendor} -> {origin}')
@@ -202,7 +201,7 @@ class WorkBot:
             transfer_date=order.date
         )
 
-        return self.transfers.save(transfer=transfer)
+        return self.transfers.save_transfer(transfer=transfer)
 
 
     def generate_vendor_upload_files(

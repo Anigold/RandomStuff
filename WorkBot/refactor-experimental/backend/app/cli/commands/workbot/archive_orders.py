@@ -7,8 +7,8 @@ class ArchiveOrders(Command):
 
     def arguments(self):
         parser = argparse.ArgumentParser(prog=self.name, description='Archives all current, un-archived orders.')
-        parser.add_argument('--stores', nargs='+', required=True, help='List of stores.')
-        parser.add_argument('--vendors', nargs='+', help='List of vendors.')
+        parser.add_argument('--stores', nargs='+', default=self.context.get_stores(), help='List of stores.')
+        parser.add_argument('--vendors', nargs='+', default=self.context.get_vendors(), help='List of vendors.')
         return parser
 
     def autocomplete(self, flag: str, text: str):

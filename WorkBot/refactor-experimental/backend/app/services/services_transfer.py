@@ -18,8 +18,12 @@ class TransferServices:
 
     def __post_init__(self) -> None:
         
+        self.list_transfers = ListTransfers(self.repo)
+        self.save_transfer = SaveTransfer(self.repo)
+        
         self.convert_order_to_transfer = CreateTransferFromOrder(
             self.repo,
             self.order_repo,
             self.default_origin_store
         )
+        

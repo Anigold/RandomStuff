@@ -88,6 +88,14 @@ class SaveOrder:
         self.logger.info(f"Saving order {order.vendor} / {order.store} / {order.date}")
         return self.repo.save(order)
 
+@Logger.attach_logger
+@dataclass(frozen=True)
+class ArchiveOrder:
+    repo: OrderRepository
+    def __call__(self, order: Order) -> int:
+        self.logger.info(f"Archiving order {order.vendor} / {order.store} / {order.date}")
+        return self.repo.archive_order(order)
+
 
 @Logger.attach_logger
 @dataclass(frozen=True)

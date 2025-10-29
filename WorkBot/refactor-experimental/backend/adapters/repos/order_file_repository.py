@@ -45,6 +45,11 @@ class OrderFileRepository(OrderRepository):
         self._engine.save(order, format="xlsx")
         return 1
 
+    def archive_order(self, order: Order) -> None:
+        order_file_path = self._engine.get_file_path(order, format='xlsx')
+        archive_path = self._engine.get_file_path(order, format='xlsx', category='archive')
+        return self._engine.move(order_file_path, archive_path, overwrite=True)
+
     def remove(self, vendor: str, store: str, date: str | None = None) -> None:
         try:
             order = self.get(vendor, store, date)

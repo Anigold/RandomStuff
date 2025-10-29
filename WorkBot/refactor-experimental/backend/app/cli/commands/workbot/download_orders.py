@@ -7,7 +7,7 @@ class DownloadOrders(Command):
 
     def arguments(self):
         parser = argparse.ArgumentParser(prog="download_orders", description="Download orders from vendors.")
-        parser.add_argument("--stores", nargs="+", required=True, help="List of store names.")
+        parser.add_argument("--stores", nargs="+", default=self.context.get_stores(), help="List of store names.")
         parser.add_argument("--vendors", nargs="+", help="List of vendors (default: all).")
         return parser
 

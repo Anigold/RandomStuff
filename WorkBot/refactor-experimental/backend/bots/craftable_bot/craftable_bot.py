@@ -502,7 +502,7 @@ class CraftableBot(SeleniumBotMixin):
 
         # NEED TO UPDATE SO IT CAN CHOOSE THE CORRECT MONTH!!!!!
         self.logger.info(f'Selecting calendar date: {transfer.transfer_date}')
-        transfer_date_obj = datetime.strptime(transfer.transfer_date, '%Y-%m-%d') 
+        transfer_date_obj = datetime.strptime(transfer.transfer_date, '%Y%m%d') 
 
         self._change_calendar_date(transfer_date_obj)
 

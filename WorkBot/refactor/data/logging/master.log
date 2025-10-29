@@ -9138,3 +9138,5 @@ ValueError: Invalid filename format: combined_orders.xlsx
 2025-10-27 07:03:57,189 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:65) - Retrieving order files: stores=[[]], vendors=[['Ithaca Bakery']], formats=['xlsx']
 2025-10-27 07:03:57,214 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:107) - Retrieved 4 order files.
 2025-10-27 07:03:57,315 - INFO - cli.cli.CLI - (cli.py:421) - Command 'combine_orders' executed successfully.
+2025-10-29 06:52:54,641 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
+2025-10-29 06:52:54,661 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.

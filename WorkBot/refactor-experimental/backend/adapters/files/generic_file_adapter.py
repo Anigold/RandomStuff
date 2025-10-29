@@ -1,7 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Generic, TypeVar, Optional
+from typing import Generic, TypeVar, Optional, List
 
 from backend.app.ports.files import GenericFilePort
 from backend.app.ports.generic import BlobStore, Serializer, Namer
@@ -27,7 +27,7 @@ class GenericFileAdapter(GenericFilePort, Generic[T]):
     def ensure_dir(self, path: Path) -> None:
         self.store.ensure_dir(path)
 
-    def get_file_path(self, obj: T, format,  category: str | None = None) -> Path:
+    def get_file_path(self, obj: T, format, category: str | None = None) -> Path:
         return self.namer.path_for(obj, format=format, category=category)
     
     def parse_filename(self, filename: str) -> dict:
@@ -49,7 +49,7 @@ class GenericFileAdapter(GenericFilePort, Generic[T]):
     def save(self, obj: T, format = None, context: dict | None = None, path_override: Path | None = None):
         
         fmt = format or self.serializer.preferred_format()
-
+        
         path = path_override or self.get_file_path(obj, format=fmt)
         self.store.ensure_dir(path.parent)
         
@@ -74,7 +74,7 @@ class GenericFileAdapter(GenericFilePort, Generic[T]):
         - metadata extraction to Namer.parse_path_metadata()
         """
         base = self.get_directory()
-        matches: list[T] = []
+        matches: List[T] = []
 
         for path in self.store.iter_files(base):
 
