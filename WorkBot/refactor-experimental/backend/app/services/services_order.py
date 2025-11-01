@@ -25,7 +25,7 @@ class OrderServices:
         self.save_order     = SaveOrder(self.repo)
         self.remove_order   = RemoveOrder(self.repo)
         self.archive_order  = ArchiveOrder(self.repo)
-        self.combine_orders = CombineOrders(self.repo)
+        self.combine_orders = CombineOrders(self.repo, self.get_orders_by_vendor)
 
         self.generate_vendor_upload  = GenerateVendorUploadFile(self.repo)
         self.generate_vendor_uploads = GenerateVendorUploadFiles(

@@ -47,8 +47,14 @@ class OrderFileRepository(OrderRepository):
 
     def archive_order(self, order: Order) -> None:
         order_file_path = self._engine.get_file_path(order, format='xlsx')
-        archive_path = self._engine.get_file_path(order, format='xlsx', category='archive')
-        return self._engine.move(order_file_path, archive_path, overwrite=True)
+        order_file_path_pdf = self._engine.get_file_path(order, format='pdf')
+
+        archive_path_excel = self._engine.get_file_path(order, format='xlsx', category='archive')
+        archive_path_pdf = self._engine.get_file_path(order, format='pdf', category='archive')
+
+        self._engine.move(order_file_path, archive_path_excel, overwrite=True)
+        self._engine.move(order_file_path_pdf, archive_path_pdf, overwrite=True)
+        return
 
     def remove(self, vendor: str, store: str, date: str | None = None) -> None:
         try:
@@ -88,11 +94,13 @@ class OrderFileRepository(OrderRepository):
         # ---- Step 1: collect all unique item names ----
         item_map: dict[str, dict[str, float]] = defaultdict(lambda: defaultdict(float))
         store_names = sorted({o.store for o in orders})
+        headers = ['Item Name'].extend(store_names)
 
         for order in orders:
             for item in order.items:
                 item_map[item.name][order.store] += float(item.quantity)
 
+        
         rows = []
         for item_name, quantities in sorted(item_map.items()):
            row = [item_name] + [quantities.get(store, 0) for store in store_names]

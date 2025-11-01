@@ -154,7 +154,9 @@ class WorkBot:
     def download_audits(self, stores: list[str], start_date: str, end_date: str) -> None:
         self.craft_bot.download_audits(stores, start_date, end_date)
 
-
+    def combine_orders(self, vendor: str) -> None:
+        return self.orders.combine_orders(vendor)
+    
     def get_orders(self, stores: list[str], vendors: list[str]) -> list[Order]:
         self.logger.info(f'Retrieving orders for: stores={stores}, vendors={vendors}')
         return self.orders.get_orders(stores=stores, vendors=vendors)
