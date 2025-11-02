@@ -46,11 +46,13 @@ class OrderFileRepository(OrderRepository):
         return 1
 
     def archive_order(self, order: Order) -> None:
-        order_file_path = self._engine.get_file_path(order, format='xlsx')
+        # Should probably make this more dynamic for when order file type(s) change...
+        
+        order_file_path     = self._engine.get_file_path(order, format='xlsx')
         order_file_path_pdf = self._engine.get_file_path(order, format='pdf')
 
-        archive_path_excel = self._engine.get_file_path(order, format='xlsx', category='archive')
-        archive_path_pdf = self._engine.get_file_path(order, format='pdf', category='archive')
+        archive_path_excel  = self._engine.get_file_path(order, format='xlsx', category='archive')
+        archive_path_pdf    = self._engine.get_file_path(order, format='pdf', category='archive')
 
         self._engine.move(order_file_path, archive_path_excel, overwrite=True)
         self._engine.move(order_file_path_pdf, archive_path_pdf, overwrite=True)

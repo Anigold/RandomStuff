@@ -1,5 +1,5 @@
 from backend.infra.config.secrets.env_loader import get_env_variable
-
+from datetime import datetime
 
 def generate_craftablebot_args():
     username = get_env_variable('CRAFTABLE_USERNAME')
@@ -36,3 +36,20 @@ def convert_date_format(date_str: str, input_format: str, output_format: str) ->
             return date_obj.strftime(output_format)
         except ValueError:
             return f'Invalid date format: {date_str}. Expected format: {input_format}'
+        
+from functools import wraps
+
+def with_session(login=False):
+    """Decorator ensuring login/session state before action."""
+    def decorator(fn):
+        @wraps(fn)
+        def wrapper(self, *args, **kwargs):
+            if login and not getattr(self, "is_logged_in", False):
+                self.login()
+            try:
+                return fn(self, *args, **kwargs)
+            finally:
+                if getattr(self, "auto_close", False):
+                    self.close()
+        return wrapper
+    return decorator

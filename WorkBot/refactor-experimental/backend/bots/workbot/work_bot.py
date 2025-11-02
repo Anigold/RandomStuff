@@ -1,22 +1,13 @@
+# Standard Library
 from datetime import datetime
-import socket
-from collections import defaultdict
 from pathlib import Path
+from typing import List
 
-
-
+# Third-Party Libraries
 from openpyxl import load_workbook
 
-
-
+# Internal
 from backend.infra.logger import Logger
-
-
-
-
-from backend.bots.craftable_bot.helpers import get_craftable_username_password
-
-
 
 from backend.bots.craftable_bot.craftable_bot import CraftableBot
 
@@ -26,120 +17,55 @@ from backend.app.services import (
     StoreServices,
     TransferServices,
     EmailServices,
-    FileLocator
 )
-
-
 
 from backend.domain.models import (
     Order,
     Transfer, TransferItem,
     Vendor,
-    Store
+    Store,
+    Item
 )
+from backend.adapters.emailer.emailer import Email
 
 
-
-
-from backend.adapters.emailer.emailer import Emailer, Email
-from backend.adapters.emailer.services.gmail_service import GmailService
-from backend.adapters.emailer.services.outlook_service import OutlookService
-from backend.adapters.emailer.registry import EmailProviderRegistry
-
-
-from backend.adapters.downloads.threaded_download_adapter import ThreadedDownloadAdapter
-
-
-from backend.adapters.repos.order_file_repository import OrderFileRepository
-from backend.adapters.repos.vendor_file_repository import VendorFileRepository
-from backend.adapters.repos.store_file_repository import StoreFileRepository
-from backend.adapters.repos.transfer_file_repository import TransferFileRepository
-
-from backend.infra.config.settings import DEFAULT_TRANSFER_ORIGIN
-
-from backend.infra.paths import (
-    ORDER_FILES_DIR,
-    DOWNLOADS_PATH,
-    VENDOR_FILES_DIR,
-    STORE_FILES_DIR,
-    UPLOAD_FILES_DIR,
-    TRANSFER_FILES_DIR
-    )
-
-from typing import List
-
-
+# ==========================================================
+#                         WORKBOT
+# ==========================================================
+"""
+Coordinates all system domains (Orders, Vendors, Transfers, Emails)
+and automates Craftable operations.
+"""
 @Logger.attach_logger
 class WorkBot:
  
-    def __init__(self):
+# ------------------------------------------------------
+# INIT / SETUP
+# ------------------------------------------------------
+    def __init__(self,
+                orders_service:    OrderServices,
+                transfers_service: TransferServices,
+                vendors_service:   VendorServices,
+                stores_service:    StoreServices,
+                emails_service:    EmailServices,
+                craftable_bot:     CraftableBot,
+                 ):
         self.logger.info('Initializing WorkBot...')
 
-        self.orders, self.vendors, self.stores, self.transfers = self._init_domain_services()
+        self.orders = orders_service
+        self.transfers = transfers_service
+        self.vendors = vendors_service
+        self.stores = stores_service
 
-        self.craft_bot = self._init_craftable_bot()
+        self.emails = emails_service
 
-        self.locator = FileLocator(
-            orders_repo=self.orders.repo,
-            vendors_repo=self.vendors.repo,
-            stores_repo=self.stores.repo
-        )
-
-        self.emails = self._init_email_services()
+        self.craft_bot = craftable_bot
 
         self.logger.info('WorkBot initialized successfully.')
 
-    def _init_domain_services(self) -> None:
-
-        downloader = ThreadedDownloadAdapter(watch_dir=DOWNLOADS_PATH)
-
-        order_repo = OrderFileRepository(base_dir=ORDER_FILES_DIR, uploads_dir=UPLOAD_FILES_DIR)
-
-        orders = OrderServices(
-            repo=order_repo,
-            downloads=downloader
-        )
-
-        vendors = VendorServices(
-            repo=VendorFileRepository(base_dir=VENDOR_FILES_DIR),
-            downloads=downloader
-        )
-
-        stores = StoreServices(
-            repo=StoreFileRepository(base_dir=STORE_FILES_DIR),
-            downloads=downloader
-        )
-
-        transfers = TransferServices(
-            repo=TransferFileRepository(base_dir=TRANSFER_FILES_DIR),
-            order_repo=order_repo,
-            default_origin_store=DEFAULT_TRANSFER_ORIGIN
-        )
-
-        return orders, vendors, stores, transfers
-
-    def _init_craftable_bot(self) -> None:
-        username, password = get_craftable_username_password()
-        return CraftableBot(username, password, orders=self.orders)
-
-    def _init_email_services(self) -> EmailServices:
-        """Initialize email subsystem (emailer + service)."""
-        try:
-            provider = EmailProviderRegistry.get("outlook")
-            emailer = Emailer(provider)
-            self.logger.info("Emailer initialized using provider: outlook")
-        except Exception as e:
-            self.logger.warning(f"Emailer could not be initialized ({e}); continuing without email support.")
-            emailer = None
-
-        return EmailServices(
-            emailer=emailer,
-            orders=self.orders,
-            vendors=self.vendors,
-            locator=self.locator,
-        )
-
-
+# ------------------------------------------------------
+# CRAFTABLE BOT ACTIONS
+# ------------------------------------------------------
     def download_craftable_orders(self, stores, vendors=[], download_pdf=True, update=True):
         return self.craft_bot.download_orders(stores, vendors, download_pdf=download_pdf, update=update)
 
@@ -154,6 +80,14 @@ class WorkBot:
     def download_audits(self, stores: list[str], start_date: str, end_date: str) -> None:
         self.craft_bot.download_audits(stores, start_date, end_date)
 
+    def add_items_to_craftable_order(self, store: str, vendor: str, items: List[Item]) -> None:
+        ...
+    
+    def remove_items_from_craftable_order(self, store: str, vendor: str, items: List[Item]) -> None:
+        ...
+# ------------------------------------------------------
+# ORDER MANAGEMENT
+# ------------------------------------------------------
     def combine_orders(self, vendor: str) -> None:
         return self.orders.combine_orders(vendor)
     
@@ -172,6 +106,9 @@ class WorkBot:
             except Exception as e:
                 self.logger.warning(f'[Archive] Skipped {order}: {e}')
 
+# ------------------------------------------------------
+# TRANSFER MANAGEMENT
+# ------------------------------------------------------
     def get_transfers(self) -> list[Transfer]:
         '''
         Retrieves saved transfer objects from file based on optional filters.
@@ -187,71 +124,36 @@ class WorkBot:
         return self.transfers.list_transfers()
 
     def convert_order_to_transfer(self, destination, vendor, origin):
-        self.logger.info(f'Beginning order-transfer conversion: {destination}-{vendor} -> {origin}')
-        order = self.get_orders([destination], [vendor])[0]
-        origin = 'Bakery' if order.vendor == 'Ithaca Bakery' else order.vendor # YOU NEED TO FIX THIS FOR WHEN YOU HAVE TO DO IT FOR A DIFFERENT STORE
+            self.logger.info(f'Beginning order-transfer conversion: {destination}-{vendor} -> {origin}')
+            order = self.get_orders([destination], [vendor])[0]
+            origin = 'Bakery' if order.vendor == 'Ithaca Bakery' else order.vendor # YOU NEED TO FIX THIS FOR WHEN YOU HAVE TO DO IT FOR A DIFFERENT STORE
 
-        transfer_items = [
-            TransferItem(name=item.name, quantity=item.quantity)
-            for item in order.items
-        ]
+            transfer_items = [
+                TransferItem(name=item.name, quantity=item.quantity)
+                for item in order.items
+            ]
 
-        transfer = Transfer(
-            transfer_items=transfer_items,
-            origin=origin,
-            destination=order.store,
-            transfer_date=order.date
-        )
+            transfer = Transfer(
+                transfer_items=transfer_items,
+                origin=origin,
+                destination=order.store,
+                transfer_date=order.date
+            )
 
-        return self.transfers.save_transfer(transfer=transfer)
+            return self.transfers.save_transfer(transfer=transfer)
 
-
-    def generate_vendor_upload_files(
-        self,
-        stores: list[str],
-        vendors: list[str],
-        start_date: str = None,
-        end_date: str = None
-    ) -> list[Path]:
-
-        self.logger.info(f'Generating vendor upload files for stores={stores}, vendors={vendors}, '
-                         f'start_date={start_date}, end_date={end_date}')
-
-        orders = self.get_orders(stores, vendors)
-        self.logger.info(f'Found {len(orders)} orders to process.')
-
-        context_map = {}
-        for order in orders:
-    
-            vendor_info = self.vendors.get_vendor(order.vendor)
-
-            context_map[f'{order.store}|{order.vendor}'] = {
-                'store':       order.store,
-                'vendor_info': vendor_info,
-                'date_str':    order.date,
-            }
-            
-        self.logger.info(f'Context map built with {len(context_map)} entries. Delegating to OrderServices.')
-
-        result_paths = self.orders.generate_vendor_uploads(
-            vendors=vendors,
-            stores=stores,
-            start_date=start_date,
-            end_date=end_date,
-            context_map=context_map
-        )
-
-        self.logger.info(f'Vendor upload file generation complete. {len(result_paths)} files created.')
-
-        return result_paths
-
+# ------------------------------------------------------
+# EMAIL OPERATIONS
+# ------------------------------------------------------
     def generate_vendor_order_emails(self, vendors: list[str], stores: list[str] = []) -> list[Email]:
         return self.emails.send_vendor_order_emails(stores=stores, vendors=vendors)
 
     def generate_store_order_emails(self, stores: list[str]):
         return self.emails.send_store_order_emails(stores=stores)
 
-
+# ------------------------------------------------------
+# SUPPORT / LOOKUP
+# ------------------------------------------------------ 
     def list_all_vendors(self) -> List[Vendor]:
         return self.vendors.list_vendors()
     
@@ -264,24 +166,47 @@ class WorkBot:
     def get_store_information(self, store_name: str) -> dict:
         return self.stores.get_store(store_name)
 
-    def close_craftable_session(self):
-        self.craft_bot.close_session()
+# ------------------------------------------------------
+# FILE GENERATION
+# ------------------------------------------------------ 
+    def generate_vendor_upload_files(
+                self,
+                stores: list[str],
+                vendors: list[str],
+                start_date: str = None,
+                end_date: str = None
+            ) -> list[Path]:
 
-    def welcome_to_work(self) -> str:
-        today = self._get_today_date_and_day()
-        return f'''\n{today[1]}, {today[0]}'''
+                self.logger.info(f'Generating vendor upload files for stores={stores}, vendors={vendors}, '
+                                f'start_date={start_date}, end_date={end_date}')
 
-    def shutdown(self) -> None:
-        self.close_craftable_session()
-        print('Exiting WorkBot CLI.')
+                orders = self.get_orders(stores, vendors)
+                self.logger.info(f'Found {len(orders)} orders to process.')
 
-    def _get_today_date_and_day(self):
-        today = datetime.today()
-        day_of_week = today.strftime('%A')
-        day = today.day
-        suffix = 'th' if 11 <= day <= 13 else {1: 'st', 2: 'nd', 3: 'rd'}.get(day % 10, 'th')
-        long_date = today.strftime(f'%B {day}{suffix}, %Y')
-        return long_date, day_of_week
+                context_map = {}
+                for order in orders:
+            
+                    vendor_info = self.vendors.get_vendor(order.vendor)
+
+                    context_map[f'{order.store}|{order.vendor}'] = {
+                        'store':       order.store,
+                        'vendor_info': vendor_info,
+                        'date_str':    order.date,
+                    }
+                    
+                self.logger.info(f'Context map built with {len(context_map)} entries. Delegating to OrderServices.')
+
+                result_paths = self.orders.generate_vendor_uploads(
+                    vendors=vendors,
+                    stores=stores,
+                    start_date=start_date,
+                    end_date=end_date,
+                    context_map=context_map
+                )
+
+                self.logger.info(f'Vendor upload file generation complete. {len(result_paths)} files created.')
+
+                return result_paths
 
     def split_natalies(self) -> None:
         natalies_excel_path = Path('C:/Users/Will/Desktop/Natalies.xlsx')
@@ -293,13 +218,10 @@ class WorkBot:
             if row[0].value and row[0].value.strip()
         ]
 
-        orders_files = self.orders.get_order_files(
+        orders = self.get_orders(
             stores=['Bakery', 'Easthill', 'Collegetown', 'Triphammer', 'Downtown'],
-            vendors=['Performance Food', 'FingerLakes Farms'],
-            formats=['xlsx']
+            vendors=['Performance Food', 'FingerLakes Farms']
         )
-
-        orders = [self.orders.read_order_from_file(order) for order in orders_files]
 
         store_indices = {
             'Collegetown': 2,
@@ -320,3 +242,25 @@ class WorkBot:
                             sheet.cell(row=row, column=col).value = item.quantity
 
         workbook.save('C:/Users/Will/Desktop/Natalies.xlsx')
+   
+# ------------------------------------------------------
+# MAINTENANCE / UTILITIES
+# ------------------------------------------------------  
+    def close_craftable_session(self):
+        self.craft_bot.close_session()
+
+    def welcome_to_work(self) -> str:
+        today = self._get_today_date_and_day()
+        return f'''\n{today[1]}, {today[0]}'''
+
+    def shutdown(self) -> None:
+        self.close_craftable_session()
+        print('Exiting WorkBot CLI.')
+
+    def _get_today_date_and_day(self):
+        today = datetime.today()
+        day_of_week = today.strftime('%A')
+        day = today.day
+        suffix = 'th' if 11 <= day <= 13 else {1: 'st', 2: 'nd', 3: 'rd'}.get(day % 10, 'th')
+        long_date = today.strftime(f'%B {day}{suffix}, %Y')
+        return long_date, day_of_week

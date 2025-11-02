@@ -4957,3 +4957,75 @@ TypeError: CombineOrders.command() missing 1 required positional argument: 'args
 2025-11-01 14:16:02,763 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'combine_orders' executed successfully.
 2025-11-01 14:27:44,181 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
 2025-11-01 14:27:44,183 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-11-02 06:52:54,737 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-11-02 06:52:54,746 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-11-02 06:52:54,753 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-11-02 06:52:54,753 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-11-02 06:52:54,777 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 14 commands from backend.app.cli.commands.workbot
+2025-11-02 06:52:54,777 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-11-02 06:52:56,704 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=[])
+2025-11-02 07:02:24,618 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'download_orders' executed successfully.
+2025-11-02 08:11:35,033 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-11-02 08:13:26,330 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'download_orders' executed successfully.
+2025-11-02 08:17:23,662 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: split_natalies (args=[])
+2025-11-02 08:17:23,682 - ERROR - backend.app.cli.cli.CLI - (cli.py:465) - [Error] split_natalies failed: SplitNatalies.command() missing 1 required positional argument: 'args'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 451, in _dispatch_command
+    self.commands[command].command(args)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\split_natalies.py", line 23, in command
+    self.context.workbot.split_natalies()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 296, in split_natalies
+    orders_files = self.orders.get_order_files(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'OrderServices' object has no attribute 'get_order_files'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 454, in _dispatch_command
+    self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TypeError: SplitNatalies.command() missing 1 required positional argument: 'args'
+2025-11-02 08:17:23,731 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'split_natalies' executed successfully.
+2025-11-02 09:07:22,692 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-11-02 09:07:22,699 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-11-02 09:07:26,298 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-11-02 09:07:26,306 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-11-02 09:07:26,322 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-11-02 09:07:26,322 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-11-02 09:07:26,344 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 14 commands from backend.app.cli.commands.workbot
+2025-11-02 09:07:26,344 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-11-02 09:07:27,425 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: split_natalies (args=[])
+2025-11-02 09:07:28,320 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'split_natalies' executed successfully.
+2025-11-02 10:28:32,910 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-11-02 10:28:32,917 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-11-02 10:29:25,885 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-11-02 10:29:25,891 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-11-02 10:29:25,907 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-11-02 10:29:25,907 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-11-02 10:29:25,926 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 14 commands from backend.app.cli.commands.workbot
+2025-11-02 10:29:25,926 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-11-02 10:30:31,715 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-11-02 10:32:19,247 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'download_orders' executed successfully.
+2025-11-02 11:04:12,670 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--vendors', 'Performance Food', 'FingerLakes Farms'])
+2025-11-02 11:06:13,536 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'download_orders' executed successfully.
+2025-11-02 11:12:02,115 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_order_emails (args=['--vendors', 'FingerLakes Farms', 'Copper Horse Coffee', 'Equal Exchange'])
+2025-11-02 11:12:02,116 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'generate_vendor_order_emails' executed successfully.
+2025-11-02 11:12:13,507 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_order_emails (args=['--vendors', 'FingerLakes Farms', 'Copper Horse Coffee', 'Equal Exchange', '--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer'])
+2025-11-02 11:12:16,862 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'generate_vendor_order_emails' executed successfully.
+2025-11-02 11:14:49,149 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Bakery', '--vendors', 'Copper Horse Coffee', 'Coffee Depot LLC'])
+2025-11-02 11:15:19,177 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'download_orders' executed successfully.
+2025-11-02 11:15:42,453 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_order_emails (args=['--vendors', 'FingerLakes Farms', 'Copper Horse Coffee', 'Equal Exchange', 'Coffee Depot LLC', '--stores', 'Bakery', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer'])
+2025-11-02 11:15:46,202 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'generate_vendor_order_emails' executed successfully.
+2025-11-02 11:37:49,001 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Syracuse'])
+2025-11-02 11:39:28,168 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'download_orders' executed successfully.
+2025-11-02 11:48:22,064 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_upload_files (args=['--vendors', 'Sysco', 'Performance Food', 'US Foods'])
+2025-11-02 11:48:24,613 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'generate_vendor_upload_files' executed successfully.
+2025-11-02 11:58:33,949 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_store_order_emails (args=[])
+2025-11-02 11:58:33,952 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'generate_store_order_emails' executed successfully.
+2025-11-02 11:58:45,397 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_store_order_emails (args=['--stores', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer'])
+2025-11-02 11:58:55,735 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'generate_store_order_emails' executed successfully.
+2025-11-02 12:49:52,495 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-11-02 12:49:52,499 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.

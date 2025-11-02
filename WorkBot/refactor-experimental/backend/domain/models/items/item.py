@@ -12,10 +12,10 @@ class Item:
     Represents a unique item in the system, potentially purchased from multiple vendors
     and stocked at multiple stores.
     '''
-    name: str
-    id: str = field(default_factory=lambda: str(uuid.uuid4()))
+    name:        str
+    id:          str = field(default_factory=lambda: str(uuid.uuid4()))
     vendor_info: Dict[str, List[VendorItemInfo]] = field(default_factory=dict)
-    store_info: Dict[str, StoreItemInfo] = field(default_factory=dict)
+    store_info:  Dict[str, List[StoreItemInfo]]  = field(default_factory=dict)
 
     def add_vendor_info(self, vendor: str, info: VendorItemInfo) -> None:
         if vendor not in self.vendor_info:

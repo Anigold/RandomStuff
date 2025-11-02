@@ -1,33 +1,31 @@
+# Standard Library
 from datetime import datetime
-from pathlib import Path
-import os
 import time
 
-from backend.infra.paths import DOWNLOADS_PATH
+# Third-Party Libraries
+from pynput.keyboard import Key, Controller
 
-from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import TimeoutException, NoSuchElementException, StaleElementReferenceException
+
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains 
-from selenium.common.exceptions import StaleElementReferenceException
+
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support.ui import Select
-from selenium.webdriver.chrome.webdriver import WebDriver
 
-from pynput.keyboard import Key, Controller
-from openpyxl import Workbook, load_workbook
+# Internal
+from backend.infra.paths import DOWNLOADS_PATH
+from backend.infra.logger import Logger
 
-from backend.domain.models import Item, Order, OrderItem, Transfer 
+from backend.domain.models import Order, OrderItem, Transfer 
 
 from backend.app.services.services_order import OrderServices
 
-from backend.infra.logger import Logger
+
 from backend.helpers.datetimes import convert_date_format, string_to_datetime
 
 from backend.bots.bot_mixins import SeleniumBotMixin
-from selenium.webdriver.common.by import By
-from selenium.common.exceptions import TimeoutException, NoSuchElementException, StaleElementReferenceException
-
 
 
 def temporary_login(func):
@@ -47,6 +45,9 @@ def login_necessary(func):
         return func(self, *args, **kwargs)
     return wrapper
 
+# ==========================================================
+#                      CRAFTABLE BOT
+# ==========================================================
 '''
 Craftable Bot utlizes Selenium to interact with the Craftable website. 
 '''
@@ -90,28 +91,7 @@ class CraftableBot(SeleniumBotMixin):
 
         self.is_logged_in = False
         
-# region ---- Legacy Code -------------------------------
-    # def __enter__(self):
-    #     self.logger.info('Starting CraftableBot session.')
-    #     self.login()
-    #     return self
-    
-    # def __exit__(self, type, value, traceback):
-    #     self.logger.info('Ending CraftableBot session.')
-    #     try:
-    #         self.close_session()
-    #     except Exception as e:
-    #         self.logger.warning(f'Issue with closing session: {e}')
 
-    #     time.sleep(2) # Prevents race condition with OS program manager
-    #     return True
-# endregion
-
-    # @Logger.log_exceptions
-    # @property
-    # def fresh_command(self):
-    #     # syntactic sugar: @self.fresh_command
-    #     return self.fresh
     
 # region ---- Session Page Control ----------------------
     
@@ -222,7 +202,11 @@ class CraftableBot(SeleniumBotMixin):
             return cls.site_map[key].format(store_id=cls.stores[store])
         
         return cls.site_map[key]
-   
+
+    def go_to_page(self, page: str, store: str | None = None) -> None:
+        url = self.get_url(page, store=store)
+        return self.driver.get(url)
+
 # endregion 
 
 # region ---- Order Downloading -------------------------
@@ -255,8 +239,7 @@ class CraftableBot(SeleniumBotMixin):
         for store in stores:
             
             self.logger.info(f'Accessing order page for {store}.')
-            store_order_url = self.get_url('orders_page', store=store)
-            self.driver.get(store_order_url)
+            self.go_to_page('orders_page', store=store)
             time.sleep(6)
             
             table_rows = self._get_order_table_rows()
@@ -285,6 +268,8 @@ class CraftableBot(SeleniumBotMixin):
     
     def _process_order_row(self, store: str, row, vendors: list, download_pdf: bool, update: bool) -> None:
         '''Processes a single order row: extracts data, downloads order, and saves it.'''
+        # This should probably just return the Order domain object and let the higher-level components deal with the saving, etc.
+        # Probably shouldn't even know about the Order domain object, but we'll re-assess later.
 
         row_data = row.find_elements(By.XPATH, './td')
         row_date_text = row_data[2].text
@@ -432,6 +417,19 @@ class CraftableBot(SeleniumBotMixin):
 
 
    # endregion
+
+# region ---- Order Updating ----------------------------
+    def add_item_to_order(self, store: str, vendor: str, item_name: str, quantity: float) -> None:
+        self.go_to_page('orders_page', store=store)
+        time.sleep(6)
+
+        order_table_rows = self._get_order_table_rows()
+        
+
+    def remove_item_from_order(self, store: str, vendor: str, item_name: str, quantity: str) -> None:
+        ...
+
+# endregion
 
 # region ---- Order Transfers ---------------------------
     @SeleniumBotMixin.with_session(login=True)

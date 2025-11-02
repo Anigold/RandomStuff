@@ -6,11 +6,10 @@ class VendorItemInfo:
     '''
     Represents a vendor-specific version of an item.
     '''
-    sku: str
-    unit: str
+    sku:      str
+    unit:     str
     quantity: float
-    cost: float
-    case_size: str
+    cost:     float
 
     def to_dict(self) -> dict:
         return asdict(self)
