@@ -7,7 +7,7 @@ class GenerateVendorOrderEmails(Command):
 
     def arguments(self):
         parser = argparse.ArgumentParser(prog=self.name, description='Create an order email for the specified vendors and stores.')
-        parser.add_argument('--stores', nargs='+', required=True, help='List of stores.')
+        parser.add_argument('--stores', nargs='+', default=self.context.get_stores(), help='List of stores.')
         parser.add_argument('--vendors', nargs='+', required=True, help='List of vendors.')
         return parser
 

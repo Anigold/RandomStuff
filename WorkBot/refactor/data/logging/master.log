@@ -9140,3 +9140,38 @@ ValueError: Invalid filename format: combined_orders.xlsx
 2025-10-27 07:03:57,315 - INFO - cli.cli.CLI - (cli.py:421) - Command 'combine_orders' executed successfully.
 2025-10-29 06:52:54,641 - INFO - cli.cli.CLI - (cli.py:347) - CLI interrupted by user (Ctrl+C / EOF).
 2025-10-29 06:52:54,661 - INFO - cli.cli.CLI - (cli.py:390) - Exiting CLI and saving history.
+2025-11-03 07:27:19,614 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:54) - Initializing WorkBot...
+2025-11-03 07:27:19,651 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:74) - WorkBot initialized successfully.
+2025-11-03 07:27:19,651 - INFO - cli.cli.CLI - (cli.py:40) - Initializing CLI.
+2025-11-03 07:27:19,669 - INFO - cli.cli.CLI - (cli.py:95) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\data\cli\.cli_history
+2025-11-03 07:27:19,669 - INFO - cli.cli.CLI - (cli.py:48) - CLI initialized successfully with 24 commands.
+2025-11-03 07:27:19,670 - INFO - cli.cli.CLI - (cli.py:321) - CLI session started.
+2025-11-03 07:27:28,081 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: combine_orders (args=['--vendors', 'Ithaca Bakery'])
+2025-11-03 07:27:28,081 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:122) - Combining orders for 1 vendors.
+2025-11-03 07:27:28,082 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:65) - Retrieving order files: stores=[[]], vendors=[['Ithaca Bakery']], formats=['xlsx']
+2025-11-03 07:27:28,084 - ERROR - cli.cli.CLI - (cli.py:426) - [Error] combine_orders failed: Invalid filename format: Ithaca Bakery_Collegetown_20251031.xlsx
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\cli.py", line 420, in _dispatch_command
+    self.commands[command](args) if args else self.commands[command]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\cli\workbot_cli.py", line 273, in cmd_combine_orders
+    self.workbot.combine_orders(parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\bots\workbot\work_bot.py", line 110, in combine_orders
+    self.order_coordinator.combine_orders(vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\coordinators\order_coordinator.py", line 123, in combine_orders
+    return self.file_handler.combine_orders_by_store(vendors)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\storage\file\order_file_handler.py", line 133, in combine_orders_by_store
+    order_paths = self.get_order_files(stores=[], vendors=[vendor])
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\storage\file\order_file_handler.py", line 103, in get_order_files
+    meta = self.filename_strategy.parse(file.name)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor\backend\serializer\filename_strategies\order_filename_strategy.py", line 28, in parse
+    raise ValueError(f'Invalid filename format: {filename}')
+ValueError: Invalid filename format: Ithaca Bakery_Collegetown_20251031.xlsx
+2025-11-03 07:28:53,665 - INFO - cli.cli.CLI - (cli.py:419) - Dispatching command: combine_orders (args=['--vendors', 'Ithaca Bakery'])
+2025-11-03 07:28:53,665 - INFO - backend.coordinators.order_coordinator.OrderCoordinator - (order_coordinator.py:122) - Combining orders for 1 vendors.
+2025-11-03 07:28:53,666 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:65) - Retrieving order files: stores=[[]], vendors=[['Ithaca Bakery']], formats=['xlsx']
+2025-11-03 07:28:53,674 - INFO - backend.storage.file.order_file_handler.OrderFileHandler - (order_file_handler.py:107) - Retrieved 5 order files.
+2025-11-03 07:28:53,733 - INFO - cli.cli.CLI - (cli.py:421) - Command 'combine_orders' executed successfully.

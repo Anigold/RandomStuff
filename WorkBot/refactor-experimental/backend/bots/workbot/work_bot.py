@@ -264,3 +264,6 @@ class WorkBot:
         suffix = 'th' if 11 <= day <= 13 else {1: 'st', 2: 'nd', 3: 'rd'}.get(day % 10, 'th')
         long_date = today.strftime(f'%B {day}{suffix}, %Y')
         return long_date, day_of_week
+
+    def testing_function(self, stores: str, vendors: str) -> None:
+        return self.craft_bot.new_download_orders(stores, vendors)
