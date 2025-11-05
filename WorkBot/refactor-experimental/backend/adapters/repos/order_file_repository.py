@@ -45,6 +45,10 @@ class OrderFileRepository(OrderRepository):
         self._engine.save(order, format="xlsx")
         return 1
 
+    def save_combined(self, combined_bytes: bytes) -> None:
+        self._engine.store.write_bytes()
+
+
     def archive_order(self, order: Order) -> None:
         # Should probably make this more dynamic for when order file type(s) change...
         
@@ -81,14 +85,16 @@ class OrderFileRepository(OrderRepository):
         """
         Create a combined Excel sheet showing item quantities by store.
 
+        Assumes all orders share a common vendor for file-saving name
+        conventions (e.g. orders > vendor > combined_order.xlsx).
+
         Args:
             orders: List of Order objects across different stores.
-            dest_path: Optional output path. If None, a timestamped file is created.
 
         Returns:
-            Path to the created Excel file.
+            None
         """
-        combined = OrderCombiner.combine(orders)
+        # combined = OrderCombiner.combine(orders)
 
         if not orders:
             raise ValueError("No orders provided for combination.")
@@ -96,19 +102,32 @@ class OrderFileRepository(OrderRepository):
         # ---- Step 1: collect all unique item names ----
         item_map: dict[str, dict[str, float]] = defaultdict(lambda: defaultdict(float))
         store_names = sorted({o.store for o in orders})
-        headers = ['Item Name'].extend(store_names)
+
+        headers = ['Item Name']
+        headers.extend(store_names)
 
         for order in orders:
             for item in order.items:
                 item_map[item.name][order.store] += float(item.quantity)
-
-        
+    
         rows = []
         for item_name, quantities in sorted(item_map.items()):
-           row = [item_name] + [quantities.get(store, 0) for store in store_names]
+           row = [item_name] + [quantities.get(store, '') for store in store_names]
            rows.append(row)
 
-      
+        output = {'headers': headers, 'rows': rows, 'metadata': {}}
+        self.logger.info(f'Combine orders output: {output}')
+        excel_formatter = self._engine.serializer.get_formatter('xlsx')
+        file_data = excel_formatter.dumps(output)
+
+
+        dest_path = (
+            self._engine.namer.base_dir()
+            / orders[0].vendor
+            / f"combined_orders_{orders[0].vendor}.xlsx"
+        ).resolve()
+        self._engine.save_data(file_data, path_override=dest_path)
+        # 
 
         # ---- Step 2: prepare workbook ----
         # wb = Workbook()

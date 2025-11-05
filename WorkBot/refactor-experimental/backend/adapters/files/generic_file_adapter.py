@@ -58,6 +58,19 @@ class GenericFileAdapter(GenericFilePort, Generic[T]):
         self.store.write_bytes(path, data, overwrite=True)
         return path
     
+    def save_data(self, data: bytes, path_override: Path, overwrite: bool = True):
+        """
+        THIS NEEDS TO BE INCORPORATED INTO THE SYSTEM BETTER.
+        HACKY HACKY HACKY
+        """
+        if not path_override:
+            raise ValueError("path_override is required for saving raw data")
+
+        self.store.ensure_dir(path_override.parent)
+        self.store.write_bytes(path_override, data, overwrite=overwrite)
+        self.logger.info(f"Saved raw data to {path_override}")
+        return path_override
+    
     def remove(self, path):
         self.store.remove(path) if self.store.exists(path) else None
 

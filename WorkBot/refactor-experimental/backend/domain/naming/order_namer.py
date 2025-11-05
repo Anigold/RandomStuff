@@ -32,12 +32,15 @@ class OrderFilenameStrategy(Namer[Order]):
         return self.base_dir() / order.vendor
     
     def path_for(self, order: Order, *, format: str, category: str | None = None) -> Path:
+
         if not category:
             return (self.directory_for(order) / self.filename(order, format=format)).resolve()
         if category == 'upload':
             return (self.upload_path_for(order) / self.filename(order, format=format)).resolve()
         if category == 'archive':
             return (self.directory_for(order) / 'Completed Orders' / self.filename(order, format=format)).resolve()
+        if category == 'combined':
+            return (None)
 
     def upload_path_for(self, order: Order) -> Path:
         return self._upload_base / order.vendor
