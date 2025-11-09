@@ -18,12 +18,12 @@ from pprint import pprint
 class OrderFileRepository(OrderRepository):
     """File-backed implementation of OrderRepository using GenericFileAdapter."""
 
-    def __init__(self, base_dir: Path, uploads_dir: Path):
+    def __init__(self, base_dir: Path, uploads_dir: Path, archive_dir: Path):
         self._uploads_dir = uploads_dir
         self._engine = GenericFileAdapter[Order](
             store=LocalBlobStore(),
             serializer=OrderSerializer(),
-            namer=OrderFilenameStrategy(orders_base_dir=base_dir, uploads_base_dir=uploads_dir),
+            namer=OrderFilenameStrategy(orders_base_dir=base_dir, uploads_base_dir=uploads_dir, archive_dir=archive_dir),
         )
 
     # ---- Repository API ----
@@ -41,13 +41,11 @@ class OrderFileRepository(OrderRepository):
     def list_by_store(self, store: str) -> list[Order]:
         return [o for o in self.list_all() if o.store == store]
 
-    def save(self, order: Order) -> int:
+    def save(self, order: Order) -> None:
         self._engine.save(order, format="xlsx")
-        return 1
 
-    def save_combined(self, combined_bytes: bytes) -> None:
+    def save_data(self, data: bytes) -> None:
         self._engine.store.write_bytes()
-
 
     def archive_order(self, order: Order) -> None:
         # Should probably make this more dynamic for when order file type(s) change...
@@ -100,65 +98,39 @@ class OrderFileRepository(OrderRepository):
             raise ValueError("No orders provided for combination.")
 
         # ---- Step 1: collect all unique item names ----
-        item_map: dict[str, dict[str, float]] = defaultdict(lambda: defaultdict(float))
+        item_map: dict[str, dict[str, float]] = {}
         store_names = sorted({o.store for o in orders})
 
         headers = ['Item Name']
         headers.extend(store_names)
 
         for order in orders:
+
+            store = order.store
             for item in order.items:
-                item_map[item.name][order.store] += float(item.quantity)
-    
+
+                if item.name not in item_map:
+                    item_map[item.name] = {store: float(item.quantity)}
+                    continue
+
+                if store not in item_map[item.name]:
+                    item_map[item.name][store] = float(item.quantity)
+                    continue
+
         rows = []
         for item_name, quantities in sorted(item_map.items()):
            row = [item_name] + [quantities.get(store, '') for store in store_names]
            rows.append(row)
 
         output = {'headers': headers, 'rows': rows, 'metadata': {}}
-        self.logger.info(f'Combine orders output: {output}')
+        # self.logger.info(f'Combine orders output: {output}')
         excel_formatter = self._engine.serializer.get_formatter('xlsx')
         file_data = excel_formatter.dumps(output)
 
-
+        # NEED TO REFACTOR THIS TO ENSURE FILE LOCATION AGNOSTICISM
         dest_path = (
             self._engine.namer.base_dir()
             / orders[0].vendor
             / f"combined_orders_{orders[0].vendor}.xlsx"
         ).resolve()
         self._engine.save_data(file_data, path_override=dest_path)
-        # 
-
-        # ---- Step 2: prepare workbook ----
-        # wb = Workbook()
-        # ws = wb.active
-        # ws.title = "Combined Orders"
-
-        # # ---- Step 3: write headers ----
-        # headers = ["Item Name"] + store_names
-        # ws.append(headers)
-
-        # # ---- Step 4: write rows ----
-        # for item_name, quantities in sorted(item_map.items()):
-        #     row = [item_name] + [quantities.get(store, 0) for store in store_names]
-        #     ws.append(row)
-
-        # # ---- Step 5: adjust column widths ----
-        # for col_idx, header in enumerate(headers, start=1):
-        #     column_letter = get_column_letter(col_idx)
-        #     ws.column_dimensions[column_letter].width = max(12, len(header) + 2)
-
-        # # ---- Step 6: determine destination path ----
-        # if dest_path is None:
-        #     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        #     dest_path = self.base_dir / f"combined_orders_{timestamp}.xlsx"
-
-        # # ---- Step 7: ensure directory exists ----
-        # dest_path.parent.mkdir(parents=True, exist_ok=True)
-
-        # # ---- Step 8: save workbook ----
-        # wb.save(dest_path)
-        # return dest_path
-
-
-        

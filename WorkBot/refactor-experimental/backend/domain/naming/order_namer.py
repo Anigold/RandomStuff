@@ -11,9 +11,10 @@ class OrderFilenameStrategy(Namer[Order]):
           Downtown_UNFI_2025-09-20.pdf
     """
 
-    def __init__(self, orders_base_dir: Path, uploads_base_dir: Path):
+    def __init__(self, orders_base_dir: Path, uploads_base_dir: Path, archive_dir: Path):
         self._base = orders_base_dir
         self._upload_base = uploads_base_dir
+        self._archive_base = archive_dir
 
     def base_dir(self) -> Path:
         """Return the base directory where all order files live."""
@@ -38,12 +39,15 @@ class OrderFilenameStrategy(Namer[Order]):
         if category == 'upload':
             return (self.upload_path_for(order) / self.filename(order, format=format)).resolve()
         if category == 'archive':
-            return (self.directory_for(order) / 'Completed Orders' / self.filename(order, format=format)).resolve()
+            return (self.archive_path_for(order) / self.filename(order, format=format)).resolve()
         if category == 'combined':
             return (None)
 
     def upload_path_for(self, order: Order) -> Path:
         return self._upload_base / order.vendor
+    
+    def archive_path_for(self, order: Order) -> Path:
+        return self._archive_base / order.vendor
     
     def parse_metadata_for_filename(
         self, *, store: str, vendor: str, date: str | None = None, format: str = "xlsx"

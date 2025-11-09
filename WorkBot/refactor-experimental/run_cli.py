@@ -6,7 +6,8 @@ from backend.infra.paths import (
     UPLOAD_FILES_DIR,
     VENDOR_FILES_DIR,
     TRANSFER_FILES_DIR,
-    STORE_FILES_DIR
+    STORE_FILES_DIR,
+    ORDER_ARCHIVE_FILES_DIR
 )
 
 from backend.infra.config.settings import DEFAULT_TRANSFER_ORIGIN
@@ -44,7 +45,7 @@ if __name__ == '__main__':
     from backend.adapters.downloads.threaded_download_adapter import ThreadedDownloadAdapter
     from backend.app.services.file_locator import FileLocator
 
-    orders_repo    = OrderFileRepository(ORDER_FILES_DIR, UPLOAD_FILES_DIR)
+    orders_repo    = OrderFileRepository(ORDER_FILES_DIR, UPLOAD_FILES_DIR, ORDER_ARCHIVE_FILES_DIR)
     vendors_repo   = VendorFileRepository(VENDOR_FILES_DIR)
     transfers_repo = TransferFileRepository(TRANSFER_FILES_DIR)
     stores_repo    = StoreFileRepository(STORE_FILES_DIR)

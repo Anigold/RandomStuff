@@ -76,6 +76,7 @@ class CombineOrders:
         self.logger.info(f'Merging all orders for: {vendors}')
         for vendor in vendors:
             orders = self.list_by_vendor(vendor)
+            self.logger.info(f'{orders}')
             self.repo.generate_combined_orders_file(orders=orders)
             self.logger.info(f'Merge for {vendor} complete.')
         self.logger.info(f'Merging complete.')

@@ -59,7 +59,7 @@ class CraftableBot(SeleniumBotMixin):
 
     site_map = {
             'login_page':    'https://app.craftable.com/signin',
-            'orders_page':   'https://app.craftable.com/buyer/2/{store_id}/orders/list',
+            'orders':   'https://app.craftable.com/buyer/2/{store_id}/orders/list',
             'transfer_page': 'https://app.craftable.com/buyer/2/{store_id}/transfers/list',
             'audit_page':    'https://app.craftable.com/director/2/583/audits/history/list'
     }
@@ -204,7 +204,7 @@ class CraftableBot(SeleniumBotMixin):
         
         return cls.site_map[key]
 
-    def go_to_page(self, page: str, store: str | None = None) -> None:
+    def goto_page(self, page: str, store: str | None = None) -> None:
         url = self.get_url(page, store=store)
         return self.driver.get(url)
 
@@ -270,7 +270,7 @@ class CraftableBot(SeleniumBotMixin):
         for store in stores:
             
             self.logger.info(f'Accessing order page for {store}.')
-            self.go_to_page('orders_page', store=store)
+            self.goto_page('orders_page', store=store)
             time.sleep(6)
             
             table_rows = self._get_order_table_rows()
@@ -289,60 +289,226 @@ class CraftableBot(SeleniumBotMixin):
         return
     
     @SeleniumBotMixin.with_session(login=True)
-    def new_download_orders(self, stores: List[str], vendors: List[str], download_pdf: bool = True, update: bool = True) -> None:
+    def new_download_orders(self, 
+                            stores: List[str], 
+                            vendors: List[str], 
+                            download_pdf: bool = True, 
+                            update: bool = True
+                            ) -> None:
         self.logger.info(f'Beginning download protocol for: stores: {stores}, vendors: {vendors}, download_pdf: {download_pdf}, update: {update}')
 
         empty_vendors = True if not vendors else False
 
         for store in stores:
+            
+            '''
+            If there aren't supplied vendors, we want to then download all available orders.
+            We ensure this by going to the order page and scanning all of the orders and saving the
+            vendor names to a list. We use this list in place of the "vendors" argument. 
 
-            if empty_vendors: # Download all vendors
+            We will have to do this for each store, so we reset the list at the end of the loop.
+            '''
+            if empty_vendors:
                 
                 vendors: list = []
 
-                self.go_to_page('orders_page', store=store)
-                self._wait_for((By.XPATH, '//tbody'), timeout=45)
+                self.goto_page('orders', store=store)
+                self._wait_for((By.XPATH, '//tbody'), timeout=45) # Wait for the orders table to load.
 
-                order_rows = self._get_order_table_rows()
+                order_rows = self._get_orders_table_rows()
+
+                if not order_rows: 
+                    self.logger.info(f'No vendors found in {store}\'s vendor page...skipping')
+                    continue
 
                 for order_row in order_rows:
-                    row_metadata = order_row.find_elements(By.XPATH, './td')
-                    vendor_name = row_metadata[3].text
 
-                    vendors.append(vendor_name)
-            
+                    order_row_metadata = self._scrape_order_row_metadata(order_row)
+
+                    if 'vendor' in order_row_metadata:
+                        vendors.append(order_row_metadata['vendor'])
+
             for vendor in vendors:
-
-                self.goto_order(store, vendor)
                 
-                time.sleep(3)
+                order_items: list = []
 
-                order_table = self.driver.find_element(By.TAG_NAME, 'tbody')
-                order_table_rows = order_table.find_elements(By.TAG_NAME, 'tr')
-                items = self._scrape_order(order_table_rows)
+                self.goto_order(store=store, vendor=vendor)
+                self._wait_for((By.XPATH, '//tbody'), timeout=45) # Wait for the order items table to load.
 
-                date = self.driver.find_element(By.XPATH, '//div/br').text
-                order_to_check_update = Order(store=store, vendor=vendor, date=date, items=items)
-                if update and self._update_existing_order(order_to_check_update):
-                    self.logger.info(f'Order for {vendor} is up-to-date. Skipping.')
-                    self.driver.back()
-                    time.sleep(2)
-                    return 
+                # ORDER DATE
+                order_date_label = self.driver.find_element(By.XPATH, '//div/label[text()="Order Date"]')
+                order_date_div = order_date_label.find_element(By.XPATH, "./ancestor::div[1]")
+                order_date_text = order_date_div.text.replace("ORDER DATE", "").strip()
 
-                self.logger.info(f'Saving order for {vendor}.')
-                order_to_save = Order(store=store, vendor=vendor, date=date, items=items)
-                self.orders.save_order(order_to_save)
+                self.logger.info(f'Found date: {order_date_text}')
+                
+                # order_date = order_date_div.find_element(By.XPATH, ".//text()[normalize-space()][not(parent::label)]").strip()
+                
+                order_date_formatted = convert_date_format(order_date_text, '%m/%d/%Y', '%Y%m%d')
 
-                time.sleep(1)
+                # ORDER ITEMS
+                order_item_rows = self._get_order_item_table_rows()
 
+                for order_item_row in order_item_rows:
 
+                    order_item_info = self._scrape_order_item_row_info(order_item_row)
+
+                    order_item = OrderItem(
+                        sku=order_item_info['sku'],
+                        name=order_item_info['name'],
+                        quantity=order_item_info['quantity'],
+                        cost_per=order_item_info['price'],
+                        total_cost=order_item_info['extended_price']
+                        )
+                    
+                    order_items.append(order_item)
+
+                order = Order(
+                    store=store,
+                    vendor=vendor,
+                    date=order_date_formatted,
+                    items=order_items
+                )
+
+                # SAVE/UPDATE CHECK
+                if update and self._update_existing_order(order):
+                    self.logger.info(f'{store}\'s order for {vendor} is already up-to-date...skipping.')
+                    continue
+                
+                # SAVE
+                self.logger.info(f'Saving order: {order}')
+                self.orders.save_order(order)
+
+                # DOWNLOAD PDF
                 if download_pdf:
-                    self.orders.expect_downloaded_pdf(order_to_save, match=lambda f: 'Order.pdf')
+                    self.orders.expect_downloaded_pdf(order, match=lambda f: 'Order.pdf')
                     self._download_order_pdf()
+                    time.sleep(2) # Otherwise it goes way too fast.
+            
+            if empty_vendors: vendors = []
+                
 
-            if empty_vendors:
-                vendors = None
+    def _get_orders_table_rows(self) -> None:
+        '''Assumes the driver is already pointed at an order page.
+        
+        Scan the HTML for the corresponding order data (i.e. table-list of orders)
+        and return the list of order rows.
+        '''
+
+        try:
+            table_body = self.driver.find_element(By.XPATH, './/tbody')
+            return table_body.find_elements(By.XPATH, './tr')
+        except Exception as e:
+            self.logger.warning(f'Failed to retrieve order table: {e}')
+            return []
+
+    def _scrape_order_row_metadata(self, order_row) -> dict:
+        '''Given a Selenmium table row HTML element, <tr>, scrape the following 
+        and return in a dict:
+
+        OrderDate
+        Vendor
+        Total
+        OrderCreator
+        '''
+
+        row_data = order_row.find_elements(By.TAG_NAME, 'td')
+        return {
+            'order_date': row_data[2].text,
+            'vendor':     row_data[3].text,
+            'total':      row_data[5].text,
+            'creator':    row_data[6].text
+        }
+
+        # for store in stores:
+
+        #     if empty_vendors: # Download all vendors
+                
+        #         vendors: list = []
+
+        #         self.go_to_page('orders_page', store=store)
+        #         self._wait_for((By.XPATH, '//tbody'), timeout=45)
+
+        #         order_rows = self._get_order_table_rows()
+
+        #         for order_row in order_rows:
+        #             row_metadata = order_row.find_elements(By.XPATH, './td')
+        #             vendor_name = row_metadata[3].text
+
+        #             vendors.append(vendor_name)
+            
+        #     for vendor in vendors:
+
+        #         self.goto_order(store, vendor)
+                
+        #         time.sleep(3)
+
+        #         order_table = self.driver.find_element(By.TAG_NAME, 'tbody')
+        #         order_table_rows = order_table.find_elements(By.TAG_NAME, 'tr')
+        #         items = self._scrape_order(order_table_rows)
+
+        #         date = self.driver.find_element(By.XPATH, '//div/br').text
+        #         order_to_check_update = Order(store=store, vendor=vendor, date=date, items=items)
+        #         if update and self._update_existing_order(order_to_check_update):
+        #             self.logger.info(f'Order for {vendor} is up-to-date. Skipping.')
+        #             self.driver.back()
+        #             time.sleep(2)
+        #             return 
+
+        #         self.logger.info(f'Saving order for {vendor}.')
+        #         order_to_save = Order(store=store, vendor=vendor, date=date, items=items)
+        #         self.orders.save_order(order_to_save)
+
+        #         time.sleep(1)
+
+
+        #         if download_pdf:
+        #             self.orders.expect_downloaded_pdf(order_to_save, match=lambda f: 'Order.pdf')
+        #             self._download_order_pdf()
+
+        #     if empty_vendors:
+        #         vendors = None
    
+    def _get_order_item_table_rows(self) -> list:
+        '''Assumes the driver is already pointed at an order items page.
+        
+        Scan the current HTML for the order items and return a list of order item rows.
+        '''
+        try:
+            table_body = self.driver.find_element(By.XPATH, './/tbody')
+            return table_body.find_elements(By.XPATH, './tr')
+        except Exception as e:
+            self.logger.warning(f'Failed to retrieve order table: {e}')
+            return []
+
+    def _scrape_order_item_row_info(self, order_item_row) -> dict:
+        '''Given a Selenmium table row HTML element, <tr>, scrape the following 
+        and return in a dict:
+
+        SKU
+        Name
+        PackSize
+        Quantity
+        Price
+        ExtendedPrice
+        '''
+
+        order_item_row_data = order_item_row.find_elements(By.TAG_NAME, 'td')
+        return {
+            'sku':            order_item_row_data[2].text,
+            'name':           order_item_row_data[3].find_element(By.XPATH, './/a').text,
+            'pack_size':      order_item_row_data[4].text,
+            'quantity':       order_item_row_data[5].text,
+            'price':          order_item_row_data[6].text.replace('$', '').replace(',', ''),
+            'extended_price': order_item_row_data[7].text.replace('$', '').replace(',', '')
+        }
+
+
+
+
+
+
+
     def _get_order_table_rows(self) -> list:
         '''Returns all order rows in the table, handling stale references.'''
         try:
@@ -509,7 +675,7 @@ class CraftableBot(SeleniumBotMixin):
 
     def goto_order(self, store: str, vendor: str) -> None:
 
-        self.go_to_page('orders_page', store=store)
+        self.goto_page('orders', store=store)
         self._wait_for((By.XPATH, '//tbody'), timeout=45)
 
         order_rows = self._get_order_table_rows()
@@ -553,6 +719,9 @@ class CraftableBot(SeleniumBotMixin):
 
     def move_item_between_vendors(self, store: str, item: str, vendor_from: str, vendor_to: str) -> None:
         self.add_item_to_order(store, vendor_to, item)
+    
+    def split_item_between_vendors(self, vendor_a: str, vendor_b: str, split_ratio: float = .50) -> None:
+        ...
 
 # endregion
 

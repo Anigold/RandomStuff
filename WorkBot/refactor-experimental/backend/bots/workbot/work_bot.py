@@ -52,10 +52,10 @@ class WorkBot:
                  ):
         self.logger.info('Initializing WorkBot...')
 
-        self.orders = orders_service
+        self.orders =    orders_service
         self.transfers = transfers_service
-        self.vendors = vendors_service
-        self.stores = stores_service
+        self.vendors =   vendors_service
+        self.stores =    stores_service
 
         self.emails = emails_service
 
