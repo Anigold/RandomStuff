@@ -1687,3 +1687,747 @@ ValueError: time data '2025-08-01' does not match format '%Y%m%d'
 2025-11-09 15:42:52,777 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
 2025-11-09 15:42:53,020 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Collegetown / Equal Exchange / 20251107.
 2025-11-09 15:42:53,082 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Collegetown, vendor=Equal Exchange, data=20251107, items=4 >
+2025-11-10 07:03:31,746 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:112) - Logging into Craftable.
+2025-11-10 07:03:39,188 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:136) - Login successful.
+2025-11-10 07:03:39,188 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:298) - Beginning download protocol for: stores: ['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors: None, download_pdf: True, update: True
+2025-11-10 07:03:42,716 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found UNFI in Bakery's order list.
+2025-11-10 07:03:43,828 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in UNFI order.
+2025-11-10 07:03:43,874 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/08/2025
+2025-11-10 07:03:44,680 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / UNFI / 20251108.
+2025-11-10 07:03:44,817 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=UNFI, data=20251108, items=13 >
+2025-11-10 07:03:48,737 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Performance Food in Bakery's order list.
+2025-11-10 07:03:49,843 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Performance Food order.
+2025-11-10 07:03:49,877 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/08/2025
+2025-11-10 07:03:51,645 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / Performance Food / 20251108.
+2025-11-10 07:03:51,709 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=Performance Food, data=20251108, items=29 >
+2025-11-10 07:03:55,605 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found FingerLakes Farms in Bakery's order list.
+2025-11-10 07:03:56,709 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in FingerLakes Farms order.
+2025-11-10 07:03:56,744 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/08/2025
+2025-11-10 07:03:57,497 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / FingerLakes Farms / 20251108.
+2025-11-10 07:03:57,559 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=FingerLakes Farms, data=20251108, items=13 >
+2025-11-10 07:04:01,424 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Sysco in Bakery's order list.
+2025-11-10 07:04:02,523 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Sysco order.
+2025-11-10 07:04:02,565 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/08/2025
+2025-11-10 07:04:03,957 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / Sysco / 20251108.
+2025-11-10 07:04:04,020 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=Sysco, data=20251108, items=24 >
+2025-11-10 07:04:07,984 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Hillcrest Dairy in Bakery's order list.
+2025-11-10 07:04:09,086 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Hillcrest Dairy order.
+2025-11-10 07:04:09,120 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/08/2025
+2025-11-10 07:04:09,246 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / Hillcrest Dairy / 20251108.
+2025-11-10 07:04:09,309 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=Hillcrest Dairy, data=20251108, items=2 >
+2025-11-10 07:04:13,117 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Coca-Cola in Bakery's order list.
+2025-11-10 07:04:14,225 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Coca-Cola order.
+2025-11-10 07:04:14,261 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/09/2025
+2025-11-10 07:04:14,785 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / Coca-Cola / 20251109.
+2025-11-10 07:04:14,847 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=Coca-Cola, data=20251109, items=9 >
+2025-11-10 07:04:19,001 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found US Foods in Bakery's order list.
+2025-11-10 07:04:20,104 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in US Foods order.
+2025-11-10 07:04:20,140 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/09/2025
+2025-11-10 07:04:21,470 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / US Foods / 20251109.
+2025-11-10 07:04:21,534 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=US Foods, data=20251109, items=23 >
+2025-11-10 07:04:25,068 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found DUTCH VALLEY FOOD DIST in Bakery's order list.
+2025-11-10 07:04:26,193 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in DUTCH VALLEY FOOD DIST order.
+2025-11-10 07:04:26,229 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/09/2025
+2025-11-10 07:04:26,357 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / DUTCH VALLEY FOOD DIST / 20251109.
+2025-11-10 07:04:26,419 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=DUTCH VALLEY FOOD DIST, data=20251109, items=2 >
+2025-11-10 07:04:30,378 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Coffee Depot LLC in Bakery's order list.
+2025-11-10 07:04:31,487 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Coffee Depot LLC order.
+2025-11-10 07:04:31,524 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/09/2025
+2025-11-10 07:04:31,651 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / Coffee Depot LLC / 20251109.
+2025-11-10 07:04:31,715 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=Coffee Depot LLC, data=20251109, items=2 >
+2025-11-10 07:04:35,733 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Finger Lakes Coffee Roasters in Bakery's order list.
+2025-11-10 07:04:36,851 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Finger Lakes Coffee Roasters order.
+2025-11-10 07:04:36,885 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/09/2025
+2025-11-10 07:04:36,953 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / Finger Lakes Coffee Roasters / 20251109.
+2025-11-10 07:04:37,016 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=Finger Lakes Coffee Roasters, data=20251109, items=1 >
+2025-11-10 07:04:41,047 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Equal Exchange in Bakery's order list.
+2025-11-10 07:04:42,147 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Equal Exchange order.
+2025-11-10 07:04:42,182 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/09/2025
+2025-11-10 07:04:42,711 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / Equal Exchange / 20251109.
+2025-11-10 07:04:42,776 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=Equal Exchange, data=20251109, items=9 >
+2025-11-10 07:04:46,846 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Copper Horse Coffee in Bakery's order list.
+2025-11-10 07:04:47,956 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Copper Horse Coffee order.
+2025-11-10 07:04:47,990 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/09/2025
+2025-11-10 07:04:48,288 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / Copper Horse Coffee / 20251109.
+2025-11-10 07:04:48,350 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=Copper Horse Coffee, data=20251109, items=5 >
+2025-11-10 07:04:52,395 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Webstaurant in Bakery's order list.
+2025-11-10 07:04:53,501 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Webstaurant order.
+2025-11-10 07:04:53,531 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/09/2025
+2025-11-10 07:04:53,758 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / Webstaurant / 20251109.
+2025-11-10 07:04:53,828 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=Webstaurant, data=20251109, items=4 >
+2025-11-10 07:04:57,510 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found BJ's in Bakery's order list.
+2025-11-10 07:04:58,624 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in BJ's order.
+2025-11-10 07:04:58,658 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/09/2025
+2025-11-10 07:04:58,727 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / BJ's / 20251109.
+2025-11-10 07:04:58,789 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=BJ's, data=20251109, items=1 >
+2025-11-10 07:05:02,468 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Hill & Markes in Bakery's order list.
+2025-11-10 07:05:03,577 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Hill & Markes order.
+2025-11-10 07:05:03,612 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/09/2025
+2025-11-10 07:05:03,682 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / Hill & Markes / 20251109.
+2025-11-10 07:05:03,745 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=Hill & Markes, data=20251109, items=1 >
+2025-11-10 07:05:09,304 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Sysco in Collegetown's order list.
+2025-11-10 07:05:10,427 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Sysco order.
+2025-11-10 07:05:10,467 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:05:11,639 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Collegetown / Sysco / 20251107.
+2025-11-10 07:05:11,703 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Collegetown, vendor=Sysco, data=20251107, items=20 >
+2025-11-10 07:05:15,543 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found US Foods in Collegetown's order list.
+2025-11-10 07:05:16,650 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in US Foods order.
+2025-11-10 07:05:16,686 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:05:18,000 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Collegetown / US Foods / 20251107.
+2025-11-10 07:05:18,063 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Collegetown, vendor=US Foods, data=20251107, items=21 >
+2025-11-10 07:05:21,518 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Performance Food in Collegetown's order list.
+2025-11-10 07:05:22,634 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Performance Food order.
+2025-11-10 07:05:22,672 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:05:23,895 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Collegetown / Performance Food / 20251107.
+2025-11-10 07:05:23,956 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Collegetown, vendor=Performance Food, data=20251107, items=21 >
+2025-11-10 07:05:27,842 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Ithaca Bakery in Collegetown's order list.
+2025-11-10 07:05:28,954 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Ithaca Bakery order.
+2025-11-10 07:05:28,991 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:05:31,399 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Collegetown / Ithaca Bakery / 20251107.
+2025-11-10 07:05:31,466 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Collegetown, vendor=Ithaca Bakery, data=20251107, items=42 >
+2025-11-10 07:05:35,154 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Regional Distributors, Inc. in Collegetown's order list.
+2025-11-10 07:05:36,265 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Regional Distributors, Inc. order.
+2025-11-10 07:05:36,305 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:05:36,898 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Collegetown / Regional Distributors, Inc. / 20251107.
+2025-11-10 07:05:36,960 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Collegetown, vendor=Regional Distributors, Inc., data=20251107, items=10 >
+2025-11-10 07:05:40,943 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Hill & Markes in Collegetown's order list.
+2025-11-10 07:05:42,052 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Hill & Markes order.
+2025-11-10 07:05:42,091 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:05:42,608 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Collegetown / Hill & Markes / 20251107.
+2025-11-10 07:05:42,671 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Collegetown, vendor=Hill & Markes, data=20251107, items=9 >
+2025-11-10 07:05:46,620 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Johnston Paper in Collegetown's order list.
+2025-11-10 07:05:47,726 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Johnston Paper order.
+2025-11-10 07:05:47,761 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:05:47,885 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Collegetown / Johnston Paper / 20251107.
+2025-11-10 07:05:47,947 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Collegetown, vendor=Johnston Paper, data=20251107, items=2 >
+2025-11-10 07:05:51,946 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Hillcrest Dairy in Collegetown's order list.
+2025-11-10 07:05:53,057 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Hillcrest Dairy order.
+2025-11-10 07:05:53,091 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:05:53,385 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Collegetown / Hillcrest Dairy / 20251107.
+2025-11-10 07:05:53,446 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Collegetown, vendor=Hillcrest Dairy, data=20251107, items=5 >
+2025-11-10 07:05:56,967 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Coca-Cola in Collegetown's order list.
+2025-11-10 07:05:58,096 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Coca-Cola order.
+2025-11-10 07:05:58,132 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:05:58,929 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Collegetown / Coca-Cola / 20251107.
+2025-11-10 07:05:58,991 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Collegetown, vendor=Coca-Cola, data=20251107, items=14 >
+2025-11-10 07:06:02,636 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Peters Supply in Collegetown's order list.
+2025-11-10 07:06:03,739 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Peters Supply order.
+2025-11-10 07:06:03,776 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:06:04,015 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Collegetown / Peters Supply / 20251107.
+2025-11-10 07:06:04,079 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Collegetown, vendor=Peters Supply, data=20251107, items=4 >
+2025-11-10 07:06:08,053 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Equal Exchange in Collegetown's order list.
+2025-11-10 07:06:09,161 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Equal Exchange order.
+2025-11-10 07:06:09,198 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:06:09,436 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Collegetown / Equal Exchange / 20251107.
+2025-11-10 07:06:09,499 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Collegetown, vendor=Equal Exchange, data=20251107, items=4 >
+2025-11-10 07:06:13,089 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found UNFI in Collegetown's order list.
+2025-11-10 07:06:14,193 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in UNFI order.
+2025-11-10 07:06:14,227 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:06:15,038 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Collegetown / UNFI / 20251107.
+2025-11-10 07:06:15,100 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Collegetown, vendor=UNFI, data=20251107, items=14 >
+2025-11-10 07:06:19,131 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Coffee Depot LLC in Collegetown's order list.
+2025-11-10 07:06:20,235 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Coffee Depot LLC order.
+2025-11-10 07:06:20,271 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:06:20,739 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Collegetown / Coffee Depot LLC / 20251107.
+2025-11-10 07:06:20,801 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Collegetown, vendor=Coffee Depot LLC, data=20251107, items=8 >
+2025-11-10 07:06:24,523 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found DUTCH VALLEY FOOD DIST in Collegetown's order list.
+2025-11-10 07:06:25,625 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in DUTCH VALLEY FOOD DIST order.
+2025-11-10 07:06:25,661 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:06:25,731 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Collegetown / DUTCH VALLEY FOOD DIST / 20251107.
+2025-11-10 07:06:25,792 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Collegetown, vendor=DUTCH VALLEY FOOD DIST, data=20251107, items=1 >
+2025-11-10 07:06:29,411 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found A.L. George in Collegetown's order list.
+2025-11-10 07:06:30,520 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in A.L. George order.
+2025-11-10 07:06:30,554 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:06:30,798 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Collegetown / A.L. George / 20251107.
+2025-11-10 07:06:30,860 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Collegetown, vendor=A.L. George, data=20251107, items=4 >
+2025-11-10 07:06:34,924 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found FingerLakes Farms in Collegetown's order list.
+2025-11-10 07:06:36,034 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in FingerLakes Farms order.
+2025-11-10 07:06:36,071 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:06:36,369 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Collegetown / FingerLakes Farms / 20251107.
+2025-11-10 07:06:36,434 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Collegetown, vendor=FingerLakes Farms, data=20251107, items=5 >
+2025-11-10 07:06:40,123 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found BALKAN BEVERAGE LLC in Collegetown's order list.
+2025-11-10 07:06:41,244 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in BALKAN BEVERAGE LLC order.
+2025-11-10 07:06:41,279 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:06:41,404 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Collegetown / BALKAN BEVERAGE LLC / 20251107.
+2025-11-10 07:06:41,466 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Collegetown, vendor=BALKAN BEVERAGE LLC, data=20251107, items=2 >
+2025-11-10 07:06:46,541 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Sysco in Downtown's order list.
+2025-11-10 07:06:47,671 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Sysco order.
+2025-11-10 07:06:47,708 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:06:48,235 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Downtown / Sysco / 20251107.
+2025-11-10 07:06:48,297 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Downtown, vendor=Sysco, data=20251107, items=9 >
+2025-11-10 07:06:52,192 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Hill & Markes in Downtown's order list.
+2025-11-10 07:06:53,298 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Hill & Markes order.
+2025-11-10 07:06:53,333 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:06:53,569 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Downtown / Hill & Markes / 20251107.
+2025-11-10 07:06:53,631 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Downtown, vendor=Hill & Markes, data=20251107, items=4 >
+2025-11-10 07:06:57,537 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Ithaca Bakery in Downtown's order list.
+2025-11-10 07:06:58,644 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Ithaca Bakery order.
+2025-11-10 07:06:58,678 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:07:00,877 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Downtown / Ithaca Bakery / 20251107.
+2025-11-10 07:07:00,939 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Downtown, vendor=Ithaca Bakery, data=20251107, items=36 >
+2025-11-10 07:07:04,808 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Copper Horse Coffee in Downtown's order list.
+2025-11-10 07:07:05,911 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Copper Horse Coffee order.
+2025-11-10 07:07:05,944 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:07:06,014 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Downtown / Copper Horse Coffee / 20251107.
+2025-11-10 07:07:06,076 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Downtown, vendor=Copper Horse Coffee, data=20251107, items=1 >
+2025-11-10 07:07:10,049 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found US Foods in Downtown's order list.
+2025-11-10 07:07:11,152 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in US Foods order.
+2025-11-10 07:07:11,187 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:07:11,490 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Downtown / US Foods / 20251107.
+2025-11-10 07:07:11,552 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Downtown, vendor=US Foods, data=20251107, items=5 >
+2025-11-10 07:07:15,507 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Equal Exchange in Downtown's order list.
+2025-11-10 07:07:16,615 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Equal Exchange order.
+2025-11-10 07:07:16,650 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:07:16,945 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Downtown / Equal Exchange / 20251107.
+2025-11-10 07:07:17,008 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Downtown, vendor=Equal Exchange, data=20251107, items=5 >
+2025-11-10 07:07:20,501 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Regional Distributors, Inc. in Downtown's order list.
+2025-11-10 07:07:21,632 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Regional Distributors, Inc. order.
+2025-11-10 07:07:21,667 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:07:21,963 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Downtown / Regional Distributors, Inc. / 20251107.
+2025-11-10 07:07:22,025 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Downtown, vendor=Regional Distributors, Inc., data=20251107, items=5 >
+2025-11-10 07:07:25,946 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found SANICO in Downtown's order list.
+2025-11-10 07:07:27,050 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in SANICO order.
+2025-11-10 07:07:27,082 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:07:27,152 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Downtown / SANICO / 20251107.
+2025-11-10 07:07:27,214 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Downtown, vendor=SANICO, data=20251107, items=1 >
+2025-11-10 07:07:31,117 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found FingerLakes Farms in Downtown's order list.
+2025-11-10 07:07:32,218 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in FingerLakes Farms order.
+2025-11-10 07:07:32,260 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:07:32,676 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Downtown / FingerLakes Farms / 20251107.
+2025-11-10 07:07:32,738 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Downtown, vendor=FingerLakes Farms, data=20251107, items=7 >
+2025-11-10 07:07:36,778 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Performance Food in Downtown's order list.
+2025-11-10 07:07:37,886 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Performance Food order.
+2025-11-10 07:07:37,922 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:07:38,727 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Downtown / Performance Food / 20251107.
+2025-11-10 07:07:38,789 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Downtown, vendor=Performance Food, data=20251107, items=14 >
+2025-11-10 07:07:42,779 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found UNFI in Downtown's order list.
+2025-11-10 07:07:43,879 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in UNFI order.
+2025-11-10 07:07:43,917 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:07:44,855 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Downtown / UNFI / 20251107.
+2025-11-10 07:07:44,917 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Downtown, vendor=UNFI, data=20251107, items=16 >
+2025-11-10 07:07:48,455 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Hillcrest Dairy in Downtown's order list.
+2025-11-10 07:07:49,594 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Hillcrest Dairy order.
+2025-11-10 07:07:49,629 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:07:49,876 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Downtown / Hillcrest Dairy / 20251107.
+2025-11-10 07:07:49,940 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Downtown, vendor=Hillcrest Dairy, data=20251107, items=4 >
+2025-11-10 07:07:53,982 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Coca-Cola in Downtown's order list.
+2025-11-10 07:07:55,092 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Coca-Cola order.
+2025-11-10 07:07:55,126 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:07:55,252 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Downtown / Coca-Cola / 20251107.
+2025-11-10 07:07:55,315 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Downtown, vendor=Coca-Cola, data=20251107, items=2 >
+2025-11-10 07:07:58,882 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Peters Supply in Downtown's order list.
+2025-11-10 07:08:00,011 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Peters Supply order.
+2025-11-10 07:08:00,044 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:08:00,288 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Downtown / Peters Supply / 20251107.
+2025-11-10 07:08:00,352 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Downtown, vendor=Peters Supply, data=20251107, items=4 >
+2025-11-10 07:08:04,362 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Coffee Depot LLC in Downtown's order list.
+2025-11-10 07:08:05,474 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Coffee Depot LLC order.
+2025-11-10 07:08:05,509 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:08:05,689 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Downtown / Coffee Depot LLC / 20251107.
+2025-11-10 07:08:05,753 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Downtown, vendor=Coffee Depot LLC, data=20251107, items=3 >
+2025-11-10 07:08:09,782 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Johnston Paper in Downtown's order list.
+2025-11-10 07:08:10,898 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Johnston Paper order.
+2025-11-10 07:08:10,931 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:08:11,002 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Downtown / Johnston Paper / 20251107.
+2025-11-10 07:08:11,064 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Downtown, vendor=Johnston Paper, data=20251107, items=1 >
+2025-11-10 07:08:17,174 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found US Foods in Easthill's order list.
+2025-11-10 07:08:18,282 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in US Foods order.
+2025-11-10 07:08:18,318 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/06/2025
+2025-11-10 07:08:19,191 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Easthill / US Foods / 20251106.
+2025-11-10 07:08:19,255 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Easthill, vendor=US Foods, data=20251106, items=15 >
+2025-11-10 07:08:23,115 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Ithaca Bakery in Easthill's order list.
+2025-11-10 07:08:24,225 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Ithaca Bakery order.
+2025-11-10 07:08:24,263 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/06/2025
+2025-11-10 07:08:26,958 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Easthill / Ithaca Bakery / 20251106.
+2025-11-10 07:08:27,020 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Easthill, vendor=Ithaca Bakery, data=20251106, items=41 >
+2025-11-10 07:08:31,126 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Equal Exchange in Easthill's order list.
+2025-11-10 07:08:32,227 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Equal Exchange order.
+2025-11-10 07:08:32,263 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/06/2025
+2025-11-10 07:08:32,672 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Easthill / Equal Exchange / 20251106.
+2025-11-10 07:08:32,734 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Easthill, vendor=Equal Exchange, data=20251106, items=7 >
+2025-11-10 07:08:36,171 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Performance Food in Easthill's order list.
+2025-11-10 07:08:37,300 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Performance Food order.
+2025-11-10 07:08:37,337 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/06/2025
+2025-11-10 07:08:38,371 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Easthill / Performance Food / 20251106.
+2025-11-10 07:08:38,433 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Easthill, vendor=Performance Food, data=20251106, items=18 >
+2025-11-10 07:08:41,931 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found FingerLakes Farms in Easthill's order list.
+2025-11-10 07:08:43,039 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in FingerLakes Farms order.
+2025-11-10 07:08:43,075 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/06/2025
+2025-11-10 07:08:43,655 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Easthill / FingerLakes Farms / 20251106.
+2025-11-10 07:08:43,717 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Easthill, vendor=FingerLakes Farms, data=20251106, items=10 >
+2025-11-10 07:08:47,212 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Hill & Markes in Easthill's order list.
+2025-11-10 07:08:48,331 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Hill & Markes order.
+2025-11-10 07:08:48,365 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/06/2025
+2025-11-10 07:08:48,824 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Easthill / Hill & Markes / 20251106.
+2025-11-10 07:08:48,885 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Easthill, vendor=Hill & Markes, data=20251106, items=8 >
+2025-11-10 07:08:52,382 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Bo's Bones in Easthill's order list.
+2025-11-10 07:08:53,528 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Bo's Bones order.
+2025-11-10 07:08:53,564 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/06/2025
+2025-11-10 07:08:53,632 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Easthill / Bo's Bones / 20251106.
+2025-11-10 07:08:53,694 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Easthill, vendor=Bo's Bones, data=20251106, items=1 >
+2025-11-10 07:08:57,650 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Coca-Cola in Easthill's order list.
+2025-11-10 07:08:58,763 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Coca-Cola order.
+2025-11-10 07:08:58,797 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/06/2025
+2025-11-10 07:08:59,159 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Easthill / Coca-Cola / 20251106.
+2025-11-10 07:08:59,222 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Easthill, vendor=Coca-Cola, data=20251106, items=6 >
+2025-11-10 07:09:02,757 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Sysco in Easthill's order list.
+2025-11-10 07:09:03,883 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Sysco order.
+2025-11-10 07:09:03,918 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/06/2025
+2025-11-10 07:09:04,776 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Easthill / Sysco / 20251106.
+2025-11-10 07:09:04,838 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Easthill, vendor=Sysco, data=20251106, items=15 >
+2025-11-10 07:09:08,790 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Copper Horse Coffee in Easthill's order list.
+2025-11-10 07:09:09,895 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Copper Horse Coffee order.
+2025-11-10 07:09:09,933 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/06/2025
+2025-11-10 07:09:10,405 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Easthill / Copper Horse Coffee / 20251106.
+2025-11-10 07:09:10,467 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Easthill, vendor=Copper Horse Coffee, data=20251106, items=8 >
+2025-11-10 07:09:13,995 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Peters Supply in Easthill's order list.
+2025-11-10 07:09:15,169 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Peters Supply order.
+2025-11-10 07:09:15,208 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/06/2025
+2025-11-10 07:09:15,419 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Easthill / Peters Supply / 20251106.
+2025-11-10 07:09:15,502 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Easthill, vendor=Peters Supply, data=20251106, items=3 >
+2025-11-10 07:09:19,561 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found UNFI in Easthill's order list.
+2025-11-10 07:09:20,669 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in UNFI order.
+2025-11-10 07:09:20,709 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/06/2025
+2025-11-10 07:09:22,910 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Easthill / UNFI / 20251106.
+2025-11-10 07:09:22,977 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Easthill, vendor=UNFI, data=20251106, items=37 >
+2025-11-10 07:09:27,050 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Regional Distributors, Inc. in Easthill's order list.
+2025-11-10 07:09:28,164 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Regional Distributors, Inc. order.
+2025-11-10 07:09:28,202 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/06/2025
+2025-11-10 07:09:28,522 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Easthill / Regional Distributors, Inc. / 20251106.
+2025-11-10 07:09:28,585 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Easthill, vendor=Regional Distributors, Inc., data=20251106, items=5 >
+2025-11-10 07:09:32,643 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found SANICO in Easthill's order list.
+2025-11-10 07:09:33,749 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in SANICO order.
+2025-11-10 07:09:33,794 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/06/2025
+2025-11-10 07:09:33,946 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Easthill / SANICO / 20251106.
+2025-11-10 07:09:34,017 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Easthill, vendor=SANICO, data=20251106, items=2 >
+2025-11-10 07:09:38,090 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Hillcrest Dairy in Easthill's order list.
+2025-11-10 07:09:39,203 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Hillcrest Dairy order.
+2025-11-10 07:09:39,241 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/06/2025
+2025-11-10 07:09:39,578 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Easthill / Hillcrest Dairy / 20251106.
+2025-11-10 07:09:39,642 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Easthill, vendor=Hillcrest Dairy, data=20251106, items=5 >
+2025-11-10 07:09:43,835 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Coffee Depot LLC in Easthill's order list.
+2025-11-10 07:09:44,956 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Coffee Depot LLC order.
+2025-11-10 07:09:44,993 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/06/2025
+2025-11-10 07:09:45,249 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Easthill / Coffee Depot LLC / 20251106.
+2025-11-10 07:09:45,319 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Easthill, vendor=Coffee Depot LLC, data=20251106, items=4 >
+2025-11-10 07:09:49,421 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Johnston Paper in Easthill's order list.
+2025-11-10 07:09:50,532 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Johnston Paper order.
+2025-11-10 07:09:50,567 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/06/2025
+2025-11-10 07:09:50,698 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Easthill / Johnston Paper / 20251106.
+2025-11-10 07:09:50,768 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Easthill, vendor=Johnston Paper, data=20251106, items=2 >
+2025-11-10 07:09:54,487 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found DUTCH VALLEY FOOD DIST in Easthill's order list.
+2025-11-10 07:09:55,603 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in DUTCH VALLEY FOOD DIST order.
+2025-11-10 07:09:55,637 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/06/2025
+2025-11-10 07:09:55,712 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Easthill / DUTCH VALLEY FOOD DIST / 20251106.
+2025-11-10 07:09:55,780 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Easthill, vendor=DUTCH VALLEY FOOD DIST, data=20251106, items=1 >
+2025-11-10 07:09:59,484 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Hen of the Woods in Easthill's order list.
+2025-11-10 07:10:00,594 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Hen of the Woods order.
+2025-11-10 07:10:00,630 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/08/2025
+2025-11-10 07:10:00,708 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Easthill / Hen of the Woods / 20251108.
+2025-11-10 07:10:00,776 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Easthill, vendor=Hen of the Woods, data=20251108, items=1 >
+2025-11-10 07:10:04,448 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Katz Specialty Food Group, LLC in Easthill's order list.
+2025-11-10 07:10:05,560 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Katz Specialty Food Group, LLC order.
+2025-11-10 07:10:05,595 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/08/2025
+2025-11-10 07:10:05,668 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Easthill / Katz Specialty Food Group, LLC / 20251108.
+2025-11-10 07:10:05,733 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Easthill, vendor=Katz Specialty Food Group, LLC, data=20251108, items=1 >
+2025-11-10 07:10:10,704 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Regional Distributors, Inc. in Syracuse's order list.
+2025-11-10 07:10:11,842 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Regional Distributors, Inc. order.
+2025-11-10 07:10:11,877 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:10:12,593 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Syracuse / Regional Distributors, Inc. / 20251107.
+2025-11-10 07:10:12,672 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Syracuse, vendor=Regional Distributors, Inc., data=20251107, items=8 >
+2025-11-10 07:10:16,595 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Ithaca Bakery in Syracuse's order list.
+2025-11-10 07:10:17,764 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Ithaca Bakery order.
+2025-11-10 07:10:17,811 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:10:19,385 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Syracuse / Ithaca Bakery / 20251107.
+2025-11-10 07:10:19,465 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Syracuse, vendor=Ithaca Bakery, data=20251107, items=22 >
+2025-11-10 07:10:22,983 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Hill & Markes in Syracuse's order list.
+2025-11-10 07:10:24,103 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Hill & Markes order.
+2025-11-10 07:10:24,145 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:10:24,663 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Syracuse / Hill & Markes / 20251107.
+2025-11-10 07:10:24,747 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Syracuse, vendor=Hill & Markes, data=20251107, items=7 >
+2025-11-10 07:10:28,185 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found US Foods in Syracuse's order list.
+2025-11-10 07:10:29,308 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in US Foods order.
+2025-11-10 07:10:29,345 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:10:30,048 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Syracuse / US Foods / 20251107.
+2025-11-10 07:10:30,120 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Syracuse, vendor=US Foods, data=20251107, items=11 >
+2025-11-10 07:10:34,032 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Performance Food in Syracuse's order list.
+2025-11-10 07:10:35,138 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Performance Food order.
+2025-11-10 07:10:35,183 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:10:36,306 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Syracuse / Performance Food / 20251107.
+2025-11-10 07:10:36,372 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Syracuse, vendor=Performance Food, data=20251107, items=19 >
+2025-11-10 07:10:40,238 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found UNFI in Syracuse's order list.
+2025-11-10 07:10:41,343 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in UNFI order.
+2025-11-10 07:10:41,377 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:10:41,803 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Syracuse / UNFI / 20251107.
+2025-11-10 07:10:41,867 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Syracuse, vendor=UNFI, data=20251107, items=7 >
+2025-11-10 07:10:45,358 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Sysco in Syracuse's order list.
+2025-11-10 07:10:46,470 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Sysco order.
+2025-11-10 07:10:46,507 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:10:47,222 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Syracuse / Sysco / 20251107.
+2025-11-10 07:10:47,287 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Syracuse, vendor=Sysco, data=20251107, items=12 >
+2025-11-10 07:10:51,204 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Peters Supply in Syracuse's order list.
+2025-11-10 07:10:52,317 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Peters Supply order.
+2025-11-10 07:10:52,354 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:10:52,549 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Syracuse / Peters Supply / 20251107.
+2025-11-10 07:10:52,613 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Syracuse, vendor=Peters Supply, data=20251107, items=3 >
+2025-11-10 07:10:56,122 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found FingerLakes Farms in Syracuse's order list.
+2025-11-10 07:10:57,279 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in FingerLakes Farms order.
+2025-11-10 07:10:57,312 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:10:57,386 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Syracuse / FingerLakes Farms / 20251107.
+2025-11-10 07:10:57,457 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Syracuse, vendor=FingerLakes Farms, data=20251107, items=1 >
+2025-11-10 07:11:01,430 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Hillcrest Dairy in Syracuse's order list.
+2025-11-10 07:11:02,544 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Hillcrest Dairy order.
+2025-11-10 07:11:02,579 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:11:02,765 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Syracuse / Hillcrest Dairy / 20251107.
+2025-11-10 07:11:02,830 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Syracuse, vendor=Hillcrest Dairy, data=20251107, items=3 >
+2025-11-10 07:11:06,349 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Equal Exchange in Syracuse's order list.
+2025-11-10 07:11:07,478 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Equal Exchange order.
+2025-11-10 07:11:07,515 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:11:07,836 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Syracuse / Equal Exchange / 20251107.
+2025-11-10 07:11:07,899 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Syracuse, vendor=Equal Exchange, data=20251107, items=5 >
+2025-11-10 07:11:11,868 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Coffee Depot LLC in Syracuse's order list.
+2025-11-10 07:11:12,981 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Coffee Depot LLC order.
+2025-11-10 07:11:13,018 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:11:13,713 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Syracuse / Coffee Depot LLC / 20251107.
+2025-11-10 07:11:13,793 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Syracuse, vendor=Coffee Depot LLC, data=20251107, items=11 >
+2025-11-10 07:11:17,827 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Pepsi in Syracuse's order list.
+2025-11-10 07:11:18,934 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Pepsi order.
+2025-11-10 07:11:18,969 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:11:19,102 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Syracuse / Pepsi / 20251107.
+2025-11-10 07:11:19,165 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Syracuse, vendor=Pepsi, data=20251107, items=2 >
+2025-11-10 07:11:24,838 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Sysco in Triphammer's order list.
+2025-11-10 07:11:25,952 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Sysco order.
+2025-11-10 07:11:25,998 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:11:27,794 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / Sysco / 20251107.
+2025-11-10 07:11:27,863 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=Sysco, data=20251107, items=30 >
+2025-11-10 07:11:31,391 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Ithaca Bakery in Triphammer's order list.
+2025-11-10 07:11:32,520 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Ithaca Bakery order.
+2025-11-10 07:11:32,557 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:11:34,456 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / Ithaca Bakery / 20251107.
+2025-11-10 07:11:34,519 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=Ithaca Bakery, data=20251107, items=31 >
+2025-11-10 07:11:38,006 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Johnston Paper in Triphammer's order list.
+2025-11-10 07:11:39,140 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Johnston Paper order.
+2025-11-10 07:11:39,175 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:11:39,584 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / Johnston Paper / 20251107.
+2025-11-10 07:11:39,647 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=Johnston Paper, data=20251107, items=7 >
+2025-11-10 07:11:43,517 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Performance Food in Triphammer's order list.
+2025-11-10 07:11:44,623 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Performance Food order.
+2025-11-10 07:11:44,661 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:11:46,451 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / Performance Food / 20251107.
+2025-11-10 07:11:46,513 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=Performance Food, data=20251107, items=31 >
+2025-11-10 07:11:50,014 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found UNFI in Triphammer's order list.
+2025-11-10 07:11:51,136 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in UNFI order.
+2025-11-10 07:11:51,174 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:11:52,666 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / UNFI / 20251107.
+2025-11-10 07:11:52,737 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=UNFI, data=20251107, items=24 >
+2025-11-10 07:11:56,249 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Hillcrest Dairy in Triphammer's order list.
+2025-11-10 07:11:57,388 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Hillcrest Dairy order.
+2025-11-10 07:11:57,422 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:11:57,657 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / Hillcrest Dairy / 20251107.
+2025-11-10 07:11:57,720 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=Hillcrest Dairy, data=20251107, items=4 >
+2025-11-10 07:12:01,224 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found FingerLakes Farms in Triphammer's order list.
+2025-11-10 07:12:02,357 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in FingerLakes Farms order.
+2025-11-10 07:12:02,391 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:12:02,969 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / FingerLakes Farms / 20251107.
+2025-11-10 07:12:03,063 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=FingerLakes Farms, data=20251107, items=10 >
+2025-11-10 07:12:06,594 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found US Foods in Triphammer's order list.
+2025-11-10 07:12:07,784 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in US Foods order.
+2025-11-10 07:12:07,820 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:12:09,380 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / US Foods / 20251107.
+2025-11-10 07:12:09,446 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=US Foods, data=20251107, items=25 >
+2025-11-10 07:12:13,051 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Hill & Markes in Triphammer's order list.
+2025-11-10 07:12:14,159 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Hill & Markes order.
+2025-11-10 07:12:14,193 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:12:14,672 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / Hill & Markes / 20251107.
+2025-11-10 07:12:14,734 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=Hill & Markes, data=20251107, items=8 >
+2025-11-10 07:12:18,288 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Peters Supply in Triphammer's order list.
+2025-11-10 07:12:19,429 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Peters Supply order.
+2025-11-10 07:12:19,463 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:12:19,757 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / Peters Supply / 20251107.
+2025-11-10 07:12:19,821 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=Peters Supply, data=20251107, items=5 >
+2025-11-10 07:12:23,862 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Webstaurant in Triphammer's order list.
+2025-11-10 07:12:24,971 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Webstaurant order.
+2025-11-10 07:12:25,006 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:12:25,076 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / Webstaurant / 20251107.
+2025-11-10 07:12:25,139 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=Webstaurant, data=20251107, items=1 >
+2025-11-10 07:12:29,154 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Regional Distributors, Inc. in Triphammer's order list.
+2025-11-10 07:12:30,259 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Regional Distributors, Inc. order.
+2025-11-10 07:12:30,294 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:12:30,754 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / Regional Distributors, Inc. / 20251107.
+2025-11-10 07:12:30,818 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=Regional Distributors, Inc., data=20251107, items=8 >
+2025-11-10 07:12:34,840 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Copper Horse Coffee in Triphammer's order list.
+2025-11-10 07:12:35,950 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Copper Horse Coffee order.
+2025-11-10 07:12:35,986 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:12:36,397 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / Copper Horse Coffee / 20251107.
+2025-11-10 07:12:36,459 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=Copper Horse Coffee, data=20251107, items=7 >
+2025-11-10 07:12:40,461 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Equal Exchange in Triphammer's order list.
+2025-11-10 07:12:41,569 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Equal Exchange order.
+2025-11-10 07:12:41,606 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:12:41,905 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / Equal Exchange / 20251107.
+2025-11-10 07:12:41,969 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=Equal Exchange, data=20251107, items=5 >
+2025-11-10 07:12:46,051 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Coffee Depot LLC in Triphammer's order list.
+2025-11-10 07:12:47,157 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Coffee Depot LLC order.
+2025-11-10 07:12:47,192 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:12:47,428 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / Coffee Depot LLC / 20251107.
+2025-11-10 07:12:47,490 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=Coffee Depot LLC, data=20251107, items=4 >
+2025-11-10 07:12:51,093 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Coca-Cola in Triphammer's order list.
+2025-11-10 07:12:52,215 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Coca-Cola order.
+2025-11-10 07:12:52,249 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:12:52,823 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / Coca-Cola / 20251107.
+2025-11-10 07:12:52,886 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=Coca-Cola, data=20251107, items=10 >
+2025-11-10 07:12:56,983 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found A.L. George in Triphammer's order list.
+2025-11-10 07:12:58,161 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in A.L. George order.
+2025-11-10 07:12:58,194 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:12:58,321 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / A.L. George / 20251107.
+2025-11-10 07:12:58,384 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=A.L. George, data=20251107, items=2 >
+2025-11-10 07:13:02,507 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Bo's Bones in Triphammer's order list.
+2025-11-10 07:13:03,611 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Bo's Bones order.
+2025-11-10 07:13:03,644 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:13:03,836 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / Bo's Bones / 20251107.
+2025-11-10 07:13:03,898 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=Bo's Bones, data=20251107, items=3 >
+2025-11-10 07:13:08,069 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found DUTCH VALLEY FOOD DIST in Triphammer's order list.
+2025-11-10 07:13:09,176 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in DUTCH VALLEY FOOD DIST order.
+2025-11-10 07:13:09,210 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 07:13:09,281 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / DUTCH VALLEY FOOD DIST / 20251107.
+2025-11-10 07:13:09,343 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=DUTCH VALLEY FOOD DIST, data=20251107, items=1 >
+2025-11-10 07:13:13,450 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Vegan Epicure in Triphammer's order list.
+2025-11-10 07:13:14,555 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Vegan Epicure order.
+2025-11-10 07:13:14,588 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/09/2025
+2025-11-10 07:13:14,658 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / Vegan Epicure / 20251109.
+2025-11-10 07:13:14,721 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=Vegan Epicure, data=20251109, items=1 >
+2025-11-10 07:13:18,834 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Russo Produce in Triphammer's order list.
+2025-11-10 07:13:19,940 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Russo Produce order.
+2025-11-10 07:13:19,983 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/09/2025
+2025-11-10 07:13:20,845 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / Russo Produce / 20251109.
+2025-11-10 07:13:20,907 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=Russo Produce, data=20251109, items=15 >
+2025-11-10 08:30:25,855 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:112) - Logging into Craftable.
+2025-11-10 08:30:33,399 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:136) - Login successful.
+2025-11-10 08:30:33,399 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:298) - Beginning download protocol for: stores: ['Bakery'], vendors: None, download_pdf: True, update: True
+2025-11-10 08:30:37,018 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found UNFI in Bakery's order list.
+2025-11-10 08:30:38,155 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in UNFI order.
+2025-11-10 08:30:38,199 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/08/2025
+2025-11-10 08:30:38,969 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / UNFI / 20251108.
+2025-11-10 08:30:39,039 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=UNFI, data=20251108, items=13 >
+2025-11-10 08:30:42,684 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Performance Food in Bakery's order list.
+2025-11-10 08:30:43,803 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Performance Food order.
+2025-11-10 08:30:43,839 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/08/2025
+2025-11-10 08:30:45,609 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / Performance Food / 20251108.
+2025-11-10 08:30:45,675 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=Performance Food, data=20251108, items=29 >
+2025-11-10 08:30:49,556 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found FingerLakes Farms in Bakery's order list.
+2025-11-10 08:30:50,661 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in FingerLakes Farms order.
+2025-11-10 08:30:50,697 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/08/2025
+2025-11-10 08:30:51,472 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / FingerLakes Farms / 20251108.
+2025-11-10 08:30:51,534 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=FingerLakes Farms, data=20251108, items=13 >
+2025-11-10 08:30:55,369 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Sysco in Bakery's order list.
+2025-11-10 08:30:56,481 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Sysco order.
+2025-11-10 08:30:56,518 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/08/2025
+2025-11-10 08:30:57,924 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / Sysco / 20251108.
+2025-11-10 08:30:57,986 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=Sysco, data=20251108, items=24 >
+2025-11-10 08:31:01,369 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Hillcrest Dairy in Bakery's order list.
+2025-11-10 08:31:02,490 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Hillcrest Dairy order.
+2025-11-10 08:31:02,524 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/08/2025
+2025-11-10 08:31:02,880 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / Hillcrest Dairy / 20251108.
+2025-11-10 08:31:02,941 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=Hillcrest Dairy, data=20251108, items=6 >
+2025-11-10 08:31:07,025 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Coca-Cola in Bakery's order list.
+2025-11-10 08:31:08,135 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Coca-Cola order.
+2025-11-10 08:31:08,172 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/09/2025
+2025-11-10 08:31:08,720 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / Coca-Cola / 20251109.
+2025-11-10 08:31:08,782 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=Coca-Cola, data=20251109, items=9 >
+2025-11-10 08:31:12,707 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found US Foods in Bakery's order list.
+2025-11-10 08:31:13,872 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in US Foods order.
+2025-11-10 08:31:13,908 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/09/2025
+2025-11-10 08:31:15,319 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / US Foods / 20251109.
+2025-11-10 08:31:15,381 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=US Foods, data=20251109, items=24 >
+2025-11-10 08:31:19,335 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found DUTCH VALLEY FOOD DIST in Bakery's order list.
+2025-11-10 08:31:20,436 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in DUTCH VALLEY FOOD DIST order.
+2025-11-10 08:31:20,470 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/09/2025
+2025-11-10 08:31:20,655 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / DUTCH VALLEY FOOD DIST / 20251109.
+2025-11-10 08:31:20,718 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=DUTCH VALLEY FOOD DIST, data=20251109, items=3 >
+2025-11-10 08:31:24,226 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Coffee Depot LLC in Bakery's order list.
+2025-11-10 08:31:25,356 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Coffee Depot LLC order.
+2025-11-10 08:31:25,391 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/09/2025
+2025-11-10 08:31:25,529 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / Coffee Depot LLC / 20251109.
+2025-11-10 08:31:25,591 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=Coffee Depot LLC, data=20251109, items=2 >
+2025-11-10 08:31:29,765 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Finger Lakes Coffee Roasters in Bakery's order list.
+2025-11-10 08:31:30,869 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Finger Lakes Coffee Roasters order.
+2025-11-10 08:31:30,904 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/09/2025
+2025-11-10 08:31:30,975 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / Finger Lakes Coffee Roasters / 20251109.
+2025-11-10 08:31:31,036 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=Finger Lakes Coffee Roasters, data=20251109, items=1 >
+2025-11-10 08:31:34,944 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Equal Exchange in Bakery's order list.
+2025-11-10 08:31:36,049 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Equal Exchange order.
+2025-11-10 08:31:36,087 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/09/2025
+2025-11-10 08:31:36,620 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / Equal Exchange / 20251109.
+2025-11-10 08:31:36,686 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=Equal Exchange, data=20251109, items=9 >
+2025-11-10 08:31:40,685 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Copper Horse Coffee in Bakery's order list.
+2025-11-10 08:31:41,791 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Copper Horse Coffee order.
+2025-11-10 08:31:41,824 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/09/2025
+2025-11-10 08:31:42,141 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / Copper Horse Coffee / 20251109.
+2025-11-10 08:31:42,203 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=Copper Horse Coffee, data=20251109, items=5 >
+2025-11-10 08:31:46,239 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Webstaurant in Bakery's order list.
+2025-11-10 08:31:47,347 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Webstaurant order.
+2025-11-10 08:31:47,382 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/09/2025
+2025-11-10 08:31:47,854 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / Webstaurant / 20251109.
+2025-11-10 08:31:47,917 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=Webstaurant, data=20251109, items=8 >
+2025-11-10 08:31:51,506 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found BJ's in Bakery's order list.
+2025-11-10 08:31:52,611 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in BJ's order.
+2025-11-10 08:31:52,645 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/09/2025
+2025-11-10 08:31:52,771 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / BJ's / 20251109.
+2025-11-10 08:31:52,832 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=BJ's, data=20251109, items=2 >
+2025-11-10 08:31:56,859 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Hill & Markes in Bakery's order list.
+2025-11-10 08:31:57,968 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Hill & Markes order.
+2025-11-10 08:31:58,002 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/09/2025
+2025-11-10 08:31:58,075 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / Hill & Markes / 20251109.
+2025-11-10 08:31:58,136 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=Hill & Markes, data=20251109, items=1 >
+2025-11-10 08:32:01,724 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Regional Distributors, Inc. in Bakery's order list.
+2025-11-10 08:32:02,834 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Regional Distributors, Inc. order.
+2025-11-10 08:32:02,869 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/10/2025
+2025-11-10 08:32:04,104 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / Regional Distributors, Inc. / 20251110.
+2025-11-10 08:32:04,165 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=Regional Distributors, Inc., data=20251110, items=21 >
+2025-11-10 08:32:07,767 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Hillcrest Foods in Bakery's order list.
+2025-11-10 08:32:08,880 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Hillcrest Foods order.
+2025-11-10 08:32:08,916 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/10/2025
+2025-11-10 08:32:10,247 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / Hillcrest Foods / 20251110.
+2025-11-10 08:32:10,312 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=Hillcrest Foods, data=20251110, items=21 >
+2025-11-10 08:32:13,932 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Lentz in Bakery's order list.
+2025-11-10 08:32:15,045 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Lentz order.
+2025-11-10 08:32:15,084 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/10/2025
+2025-11-10 08:32:15,277 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / Lentz / 20251110.
+2025-11-10 08:32:15,339 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=Lentz, data=20251110, items=3 >
+2025-11-10 08:32:19,404 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found BALKAN BEVERAGE LLC in Bakery's order list.
+2025-11-10 08:32:20,515 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in BALKAN BEVERAGE LLC order.
+2025-11-10 08:32:20,549 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/10/2025
+2025-11-10 08:32:20,622 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / BALKAN BEVERAGE LLC / 20251110.
+2025-11-10 08:32:20,686 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=BALKAN BEVERAGE LLC, data=20251110, items=1 >
+2025-11-10 08:32:24,755 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found A.L. George in Bakery's order list.
+2025-11-10 08:32:25,868 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in A.L. George order.
+2025-11-10 08:32:25,904 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/10/2025
+2025-11-10 08:32:26,352 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / A.L. George / 20251110.
+2025-11-10 08:32:26,418 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=A.L. George, data=20251110, items=7 >
+2025-11-10 08:32:30,114 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Keck's Food Service in Bakery's order list.
+2025-11-10 08:32:31,223 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Keck's Food Service order.
+2025-11-10 08:32:31,258 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/10/2025
+2025-11-10 08:32:31,968 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / Keck's Food Service / 20251110.
+2025-11-10 08:32:32,042 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=Keck's Food Service, data=20251110, items=12 >
+2025-11-10 08:32:36,220 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Regional Access Inc. in Bakery's order list.
+2025-11-10 08:32:37,344 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Regional Access Inc. order.
+2025-11-10 08:32:37,378 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/10/2025
+2025-11-10 08:32:37,458 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / Regional Access Inc. / 20251110.
+2025-11-10 08:32:37,521 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=Regional Access Inc., data=20251110, items=1 >
+2025-11-10 08:32:41,680 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Dawn in Bakery's order list.
+2025-11-10 08:32:42,797 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Dawn order.
+2025-11-10 08:32:42,831 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/10/2025
+2025-11-10 08:32:43,382 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / Dawn / 20251110.
+2025-11-10 08:32:43,449 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=Dawn, data=20251110, items=8 >
+2025-11-10 08:32:47,588 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Palmer in Bakery's order list.
+2025-11-10 08:32:48,704 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Palmer order.
+2025-11-10 08:32:48,739 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/10/2025
+2025-11-10 08:32:48,826 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Bakery / Palmer / 20251110.
+2025-11-10 08:32:48,892 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Bakery, vendor=Palmer, data=20251110, items=1 >
+2025-11-10 13:11:21,564 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:112) - Logging into Craftable.
+2025-11-10 13:11:28,990 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:136) - Login successful.
+2025-11-10 13:11:28,990 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:298) - Beginning download protocol for: stores: ['Triphammer'], vendors: None, download_pdf: True, update: True
+2025-11-10 13:11:33,074 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Sysco in Triphammer's order list.
+2025-11-10 13:11:34,192 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Sysco order.
+2025-11-10 13:11:34,240 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 13:11:36,007 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / Sysco / 20251107.
+2025-11-10 13:11:36,080 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=Sysco, data=20251107, items=30 >
+2025-11-10 13:11:39,989 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Ithaca Bakery in Triphammer's order list.
+2025-11-10 13:11:41,098 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Ithaca Bakery order.
+2025-11-10 13:11:41,135 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 13:11:43,053 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / Ithaca Bakery / 20251107.
+2025-11-10 13:11:43,118 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=Ithaca Bakery, data=20251107, items=32 >
+2025-11-10 13:11:47,019 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Johnston Paper in Triphammer's order list.
+2025-11-10 13:11:48,124 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Johnston Paper order.
+2025-11-10 13:11:48,161 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 13:11:48,633 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / Johnston Paper / 20251107.
+2025-11-10 13:11:48,697 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=Johnston Paper, data=20251107, items=8 >
+2025-11-10 13:11:52,127 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Performance Food in Triphammer's order list.
+2025-11-10 13:11:53,235 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Performance Food order.
+2025-11-10 13:11:53,269 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 13:11:55,048 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / Performance Food / 20251107.
+2025-11-10 13:11:55,111 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=Performance Food, data=20251107, items=31 >
+2025-11-10 13:11:59,026 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found UNFI in Triphammer's order list.
+2025-11-10 13:12:00,133 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in UNFI order.
+2025-11-10 13:12:00,171 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 13:12:01,673 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / UNFI / 20251107.
+2025-11-10 13:12:01,736 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=UNFI, data=20251107, items=24 >
+2025-11-10 13:12:05,206 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Hillcrest Dairy in Triphammer's order list.
+2025-11-10 13:12:06,312 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Hillcrest Dairy order.
+2025-11-10 13:12:06,346 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 13:12:06,589 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / Hillcrest Dairy / 20251107.
+2025-11-10 13:12:06,652 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=Hillcrest Dairy, data=20251107, items=4 >
+2025-11-10 13:12:10,128 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found FingerLakes Farms in Triphammer's order list.
+2025-11-10 13:12:11,244 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in FingerLakes Farms order.
+2025-11-10 13:12:11,281 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 13:12:11,864 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / FingerLakes Farms / 20251107.
+2025-11-10 13:12:11,927 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=FingerLakes Farms, data=20251107, items=10 >
+2025-11-10 13:12:15,831 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found US Foods in Triphammer's order list.
+2025-11-10 13:12:16,932 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in US Foods order.
+2025-11-10 13:12:16,969 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 13:12:18,551 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / US Foods / 20251107.
+2025-11-10 13:12:18,614 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=US Foods, data=20251107, items=26 >
+2025-11-10 13:12:22,568 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Hill & Markes in Triphammer's order list.
+2025-11-10 13:12:23,674 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Hill & Markes order.
+2025-11-10 13:12:23,712 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 13:12:24,308 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / Hill & Markes / 20251107.
+2025-11-10 13:12:24,371 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=Hill & Markes, data=20251107, items=10 >
+2025-11-10 13:12:27,894 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Peters Supply in Triphammer's order list.
+2025-11-10 13:12:29,076 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Peters Supply order.
+2025-11-10 13:12:29,111 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 13:12:29,414 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / Peters Supply / 20251107.
+2025-11-10 13:12:29,478 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=Peters Supply, data=20251107, items=5 >
+2025-11-10 13:12:33,091 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Webstaurant in Triphammer's order list.
+2025-11-10 13:12:34,218 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Webstaurant order.
+2025-11-10 13:12:34,253 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 13:12:34,327 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / Webstaurant / 20251107.
+2025-11-10 13:12:34,389 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=Webstaurant, data=20251107, items=1 >
+2025-11-10 13:12:37,947 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Regional Distributors, Inc. in Triphammer's order list.
+2025-11-10 13:12:39,074 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Regional Distributors, Inc. order.
+2025-11-10 13:12:39,112 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 13:12:39,647 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / Regional Distributors, Inc. / 20251107.
+2025-11-10 13:12:39,711 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=Regional Distributors, Inc., data=20251107, items=9 >
+2025-11-10 13:12:43,719 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Copper Horse Coffee in Triphammer's order list.
+2025-11-10 13:12:44,887 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Copper Horse Coffee order.
+2025-11-10 13:12:44,923 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 13:12:45,344 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / Copper Horse Coffee / 20251107.
+2025-11-10 13:12:45,407 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=Copper Horse Coffee, data=20251107, items=7 >
+2025-11-10 13:12:49,419 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Equal Exchange in Triphammer's order list.
+2025-11-10 13:12:50,531 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Equal Exchange order.
+2025-11-10 13:12:50,568 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 13:12:50,874 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / Equal Exchange / 20251107.
+2025-11-10 13:12:50,936 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=Equal Exchange, data=20251107, items=5 >
+2025-11-10 13:12:54,553 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Coffee Depot LLC in Triphammer's order list.
+2025-11-10 13:12:55,657 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Coffee Depot LLC order.
+2025-11-10 13:12:55,692 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 13:12:55,930 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / Coffee Depot LLC / 20251107.
+2025-11-10 13:12:55,995 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=Coffee Depot LLC, data=20251107, items=4 >
+2025-11-10 13:13:00,188 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Coca-Cola in Triphammer's order list.
+2025-11-10 13:13:01,315 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Coca-Cola order.
+2025-11-10 13:13:01,367 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 13:13:01,975 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / Coca-Cola / 20251107.
+2025-11-10 13:13:02,037 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=Coca-Cola, data=20251107, items=10 >
+2025-11-10 13:13:06,229 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found A.L. George in Triphammer's order list.
+2025-11-10 13:13:07,368 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in A.L. George order.
+2025-11-10 13:13:07,403 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 13:13:07,534 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / A.L. George / 20251107.
+2025-11-10 13:13:07,599 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=A.L. George, data=20251107, items=2 >
+2025-11-10 13:13:11,357 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Bo's Bones in Triphammer's order list.
+2025-11-10 13:13:12,482 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Bo's Bones order.
+2025-11-10 13:13:12,518 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 13:13:12,720 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / Bo's Bones / 20251107.
+2025-11-10 13:13:12,785 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=Bo's Bones, data=20251107, items=3 >
+2025-11-10 13:13:16,922 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found DUTCH VALLEY FOOD DIST in Triphammer's order list.
+2025-11-10 13:13:18,032 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in DUTCH VALLEY FOOD DIST order.
+2025-11-10 13:13:18,069 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/07/2025
+2025-11-10 13:13:18,142 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / DUTCH VALLEY FOOD DIST / 20251107.
+2025-11-10 13:13:18,207 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=DUTCH VALLEY FOOD DIST, data=20251107, items=1 >
+2025-11-10 13:13:22,359 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Vegan Epicure in Triphammer's order list.
+2025-11-10 13:13:23,466 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Vegan Epicure order.
+2025-11-10 13:13:23,502 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/09/2025
+2025-11-10 13:13:23,578 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / Vegan Epicure / 20251109.
+2025-11-10 13:13:23,646 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=Vegan Epicure, data=20251109, items=1 >
+2025-11-10 13:13:27,327 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:694) - Found Russo Produce in Triphammer's order list.
+2025-11-10 13:13:28,439 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:701) - Now in Russo Produce order.
+2025-11-10 13:13:28,478 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:343) - Found date: 11/09/2025
+2025-11-10 13:13:29,382 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:1315) - [Order Update] Initiating update protocol for Triphammer / Russo Produce / 20251109.
+2025-11-10 13:13:29,446 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:379) - Saving order: < Order store=Triphammer, vendor=Russo Produce, data=20251109, items=15 >

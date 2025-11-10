@@ -262,34 +262,34 @@ class CraftableBot(SeleniumBotMixin):
 
     '''
 
-    @SeleniumBotMixin.with_session(login=True)
-    @Logger.log_exceptions
-    def download_orders(self, stores: list, vendors=list, download_pdf=True, update=True) -> None:
+    # @SeleniumBotMixin.with_session(login=True)
+    # @Logger.log_exceptions
+    # def download_orders(self, stores: list, vendors=list, download_pdf=True, update=True) -> None:
        
-        self.logger.info('Starting order download protocol.')
-        for store in stores:
+    #     self.logger.info('Starting order download protocol.')
+    #     for store in stores:
             
-            self.logger.info(f'Accessing order page for {store}.')
-            self.goto_page('orders_page', store=store)
-            time.sleep(6)
+    #         self.logger.info(f'Accessing order page for {store}.')
+    #         self.goto_page('orders_page', store=store)
+    #         time.sleep(6)
             
-            table_rows = self._get_order_table_rows()
-            if not table_rows:
-                self.logger.info(f'No more orders found for {store}. Moving to next store.')
-                break 
+    #         table_rows = self._get_order_table_rows()
+    #         if not table_rows:
+    #             self.logger.info(f'No more orders found for {store}. Moving to next store.')
+    #             break 
 
-            for pos in range(len(table_rows)):
-                stale_reference_table_rows = self._get_order_table_rows() # Refresh to avoid stale references
-                self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
+    #         for pos in range(len(table_rows)):
+    #             stale_reference_table_rows = self._get_order_table_rows() # Refresh to avoid stale references
+    #             self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
 
-        self.logger.info('Order download complete.')
-        self.logger.info('Closing WebDriver session.')
-        self.end_session()
+    #     self.logger.info('Order download complete.')
+    #     self.logger.info('Closing WebDriver session.')
+    #     self.end_session()
 
-        return
+    #     return
     
     @SeleniumBotMixin.with_session(login=True)
-    def new_download_orders(self, 
+    def download_orders(self, 
                             stores: List[str], 
                             vendors: List[str], 
                             download_pdf: bool = True, 

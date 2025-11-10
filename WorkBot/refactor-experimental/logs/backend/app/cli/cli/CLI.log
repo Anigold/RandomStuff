@@ -7476,3 +7476,29 @@ TypeError: Testing.command() missing 1 required positional argument: 'args'
 2025-11-09 15:42:57,133 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'testing' executed successfully.
 2025-11-09 15:44:03,819 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
 2025-11-09 15:44:03,821 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-11-10 07:03:16,838 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-11-10 07:03:16,847 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-11-10 07:03:16,865 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-11-10 07:03:16,865 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-11-10 07:03:16,905 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-11-10 07:03:16,905 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-11-10 07:03:31,155 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=[])
+2025-11-10 07:13:25,414 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'download_orders' executed successfully.
+2025-11-10 07:21:41,576 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: combine_orders (args=['--vendors', 'Ithaca Bakery'])
+2025-11-10 07:21:47,371 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'combine_orders' executed successfully.
+2025-11-10 07:28:58,952 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: combine_orders (args=['--vendors', 'Ithaca Bakery'])
+2025-11-10 07:29:00,248 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'combine_orders' executed successfully.
+2025-11-10 08:30:24,275 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-11-10 08:32:52,963 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'download_orders' executed successfully.
+2025-11-10 08:33:20,566 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_order_emails (args=['--vendors', 'Hillcrest Foods'])
+2025-11-10 08:33:21,799 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'generate_vendor_order_emails' executed successfully.
+2025-11-10 08:38:35,730 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_order_emails (args=['--vendors', 'Hillcrest Dairy'])
+2025-11-10 08:38:36,637 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'generate_vendor_order_emails' executed successfully.
+2025-11-10 11:55:10,012 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_order_emails (args=['--vendors', 'A.L. George'])
+2025-11-10 11:55:10,789 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'generate_vendor_order_emails' executed successfully.
+2025-11-10 13:11:19,153 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Triphammer'])
+2025-11-10 13:13:33,527 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'download_orders' executed successfully.
+2025-11-10 13:51:25,918 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_order_emails (args=['--vendors', 'Russo Produce'])
+2025-11-10 13:51:26,615 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'generate_vendor_order_emails' executed successfully.
+2025-11-10 15:06:16,931 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-11-10 15:06:16,936 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
