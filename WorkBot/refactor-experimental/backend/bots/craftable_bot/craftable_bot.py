@@ -1,3 +1,11 @@
+# ==========================================================
+#                      CRAFTABLE BOT
+# ==========================================================
+'''
+Craftable Bot utlizes Selenium to interact with and automate 
+tasks through the Craftable website. 
+'''
+
 # Standard Library
 from datetime import datetime
 import time
@@ -7,51 +15,22 @@ from typing import List
 from pynput.keyboard import Key, Controller
 
 from selenium.common.exceptions import TimeoutException, NoSuchElementException, StaleElementReferenceException
-
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains 
-
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
 # Internal
 from backend.infra.paths import DOWNLOADS_PATH
 from backend.infra.logger import Logger
-
 from backend.domain.models import Order, OrderItem, Transfer 
-
 from backend.app.services.services_order import OrderServices
-
-
+from backend.app.services.services_transfer import TransferServices
 from backend.helpers.datetimes import convert_date_format, string_to_datetime
-
 from backend.bots.bot_mixins import SeleniumBotMixin
 
 
-def temporary_login(func):
-    def wrapper(self, *args, **kwargs):
-        self.login()
-        try:
-            return func(self, *args, **kwargs)
-        finally:
-            self.close_session()
-    return wrapper
-
-
-def login_necessary(func):
-    def wrapper(self, *args, **kwargs):
-        if not self.is_logged_in:
-            self.login()
-        return func(self, *args, **kwargs)
-    return wrapper
-
-# ==========================================================
-#                      CRAFTABLE BOT
-# ==========================================================
-'''
-Craftable Bot utlizes Selenium to interact with the Craftable website. 
-'''
 @Logger.attach_logger
 class CraftableBot(SeleniumBotMixin):
 
@@ -84,11 +63,12 @@ class CraftableBot(SeleniumBotMixin):
 # endregion
 
     def __init__(self, username: str, password: str, 
-                 orders: OrderServices = None):
+                 orders: OrderServices = None, transfers: TransferServices = None):
         
         super().__init__(DOWNLOADS_PATH, username=username, password=password)
 
         self.orders = orders
+        self.transfers = transfers
 
         self.is_logged_in = False
         
@@ -263,11 +243,11 @@ class CraftableBot(SeleniumBotMixin):
     '''    
     @SeleniumBotMixin.with_session(login=True)
     def download_orders(self, 
-                            stores: List[str], 
-                            vendors: List[str], 
-                            download_pdf: bool = True, 
-                            update: bool = True
-                            ) -> None:
+                        stores: List[str], 
+                        vendors: List[str], 
+                        download_pdf: bool = True, 
+                        update: bool = True
+                        ) -> None:
         self.logger.info(f'Beginning download protocol for: stores: {stores}, vendors: {vendors}, download_pdf: {download_pdf}, update: {update}')
 
         empty_vendors = True if not vendors else False
@@ -281,30 +261,10 @@ class CraftableBot(SeleniumBotMixin):
 
             We will have to do this for each store, so we reset the list at the end of the loop.
             '''
+
             if empty_vendors:
-                
-                # try:
-                #     vendors = self._compose_vendor_list_for_full_download()
-                # except:
-
-
-                vendors: list = []
-
-                self.goto_page('orders', store=store)
-                self._wait_for((By.XPATH, '//tbody'), timeout=45) # Wait for the orders table to load.
-
-                order_rows = self._get_orders_table_rows()
-
-                if not order_rows: 
-                    self.logger.info(f'No vendors found in {store}\'s vendor page...skipping')
-                    continue
-
-                for order_row in order_rows:
-
-                    order_row_metadata = self._scrape_order_row_metadata(order_row)
-
-                    if 'vendor' in order_row_metadata:
-                        vendors.append(order_row_metadata['vendor'])
+                vendors = self._get_all_vendors_from_orders_page(store)
+                if not vendors: continue
 
             for vendor in vendors:
                 
@@ -313,33 +273,8 @@ class CraftableBot(SeleniumBotMixin):
                 self.goto_order(store=store, vendor=vendor)
                 self._wait_for((By.XPATH, '//tbody'), timeout=45) # Wait for the order items table to load.
 
-                # ORDER DATE
-                order_date_label = self.driver.find_element(By.XPATH, '//div/label[text()="Order Date"]')
-                order_date_div = order_date_label.find_element(By.XPATH, "./ancestor::div[1]")
-                order_date_text = order_date_div.text.replace("ORDER DATE", "").strip()
-
-                self.logger.info(f'Found date: {order_date_text}')
-                
-                # order_date = order_date_div.find_element(By.XPATH, ".//text()[normalize-space()][not(parent::label)]").strip()
-                
-                order_date_formatted = convert_date_format(order_date_text, '%m/%d/%Y', '%Y%m%d')
-
-                # ORDER ITEMS
-                order_item_rows = self._get_order_item_table_rows()
-
-                for order_item_row in order_item_rows:
-
-                    order_item_info = self._scrape_order_item_row_info(order_item_row)
-
-                    order_item = OrderItem(
-                        sku=order_item_info['sku'],
-                        name=order_item_info['name'],
-                        quantity=order_item_info['quantity'],
-                        cost_per=order_item_info['price'],
-                        total_cost=order_item_info['extended_price']
-                        )
-                    
-                    order_items.append(order_item)
+                order_date_formatted = self._get_order_date_from_order_page()
+                order_items = self._get_order_items_from_order_page()
 
                 order = Order(
                     store=store,
@@ -364,9 +299,10 @@ class CraftableBot(SeleniumBotMixin):
                     time.sleep(2) # Otherwise it goes way too fast.
             
             if empty_vendors: vendors = []
-                
-    def _compose_vendor_list_for_full_download(self) -> list[str]:
-        vendors: list = []
+
+    def _get_all_vendors_from_orders_page(self, store: str) -> list[str]:
+
+        vendors: list[str] = []
 
         self.goto_page('orders', store=store)
         self._wait_for((By.XPATH, '//tbody'), timeout=45) # Wait for the orders table to load.
@@ -374,8 +310,8 @@ class CraftableBot(SeleniumBotMixin):
         order_rows = self._get_orders_table_rows()
 
         if not order_rows: 
-            # self.logger.info(f'No vendors found...skipping')
-            return
+            self.logger.info(f'No vendors found in {store}\'s vendor page...skipping')
+            return []
 
         for order_row in order_rows:
 
@@ -383,10 +319,40 @@ class CraftableBot(SeleniumBotMixin):
 
             if 'vendor' in order_row_metadata:
                 vendors.append(order_row_metadata['vendor'])
-
-        return vendors
         
-    def _get_orders_table_rows(self) -> None:
+        return vendors
+
+    def _get_order_date_from_order_page(self) -> str:
+
+        order_date_label = self.driver.find_element(By.XPATH, '//div/label[text()="Order Date"]')
+        order_date_div   = order_date_label.find_element(By.XPATH, "./ancestor::div[1]")
+        order_date_text  = order_date_div.text.replace("ORDER DATE", "").strip()
+
+        return convert_date_format(order_date_text, '%m/%d/%Y', '%Y%m%d')
+
+    def _get_order_items_from_order_page(self) -> list:
+
+        order_items: list = []
+
+        order_item_rows = self._get_order_item_table_rows()
+
+        for order_item_row in order_item_rows:
+
+            order_item_info = self._scrape_order_item_row_info(order_item_row)
+
+            order_item = OrderItem(
+                sku=order_item_info['sku'],
+                name=order_item_info['name'],
+                quantity=order_item_info['quantity'],
+                cost_per=order_item_info['price'],
+                total_cost=order_item_info['extended_price']
+                )
+            
+            order_items.append(order_item)
+
+        return order_items
+
+    def _get_orders_table_rows(self) -> list:
         '''Assumes the driver is already pointed at an order page.
         
         Scan the HTML for the corresponding order data (i.e. table-list of orders)
@@ -500,76 +466,27 @@ class CraftableBot(SeleniumBotMixin):
             'price':          order_item_row_data[6].text.replace('$', '').replace(',', ''),
             'extended_price': order_item_row_data[7].text.replace('$', '').replace(',', '')
         }
-
-
-
-
-
-
-
-    def _get_order_table_rows(self) -> list:
-        '''Returns all order rows in the table, handling stale references.'''
-        try:
-            table_body = self.driver.find_element(By.XPATH, './/tbody')
-            return table_body.find_elements(By.XPATH, './tr')
-        except Exception as e:
-            self.logger.warning(f'Failed to retrieve order table: {e}')
-            return []
     
-    def _process_order_row(self, store: str, row, vendors: list, download_pdf: bool, update: bool) -> None:
-        '''Processes a single order row: extracts data, downloads order, and saves it.'''
-        # This should probably just return the Order domain object and let the higher-level components deal with the saving, etc.
-        # Probably shouldn't even know about the Order domain object, but we'll re-assess later.
+    def _download_order_pdf(self) -> None:
+        '''
+        Assumes the current driver is 'looking at' an order page.
 
-        row_data = row.find_elements(By.XPATH, './td')
-        row_date_text = row_data[2].text
-        row_vendor_name = row_data[3].text
-        row_date_formatted = convert_date_format(row_date_text, '%m/%d/%Y', '%Y%m%d')
-
-        if vendors and row_vendor_name not in vendors:
-            self.logger.debug(f'Skipping vendor {row_vendor_name}.')
-            return 
-
-        self.logger.info(f'Retrieving order for {row_vendor_name} ({row_date_text}).')
-
-        row_data[2].click()
-        
-        self._wait_for((By.TAG_NAME, 'table'), timeout=45, condition='clickable')
-       
-        items = self._scrape_order()
-
-        order_to_check_update = Order(store=store, vendor=row_vendor_name, date=row_date_formatted, items=items)
-        if update and self._update_existing_order(order_to_check_update):
-            self.logger.info(f'Order for {row_vendor_name} is up-to-date. Skipping.')
-            self.driver.back()
-            time.sleep(2)
-            return 
-
-        self.logger.info(f'Saving order for {row_vendor_name}.')
-        order_to_save = Order(store=store, vendor=row_vendor_name, date=row_date_formatted, items=items)
-        self.orders.save_order(order_to_save)
-
-        time.sleep(1)
-
-
-        if download_pdf:
-            self.orders.expect_downloaded_pdf(order_to_save, match=lambda f: 'Order.pdf')
-            self._download_order_pdf()
-
-        self.driver.back()
-        time.sleep(3)
-        return 
-
-    # def _find_order_row(self, table_rows, vendor_name, date_text):
-    #     '''Finds the correct order row by vendor name and order date.'''
-    #     for row in table_rows:
-    #         row_data = row.find_elements(By.XPATH, './td')
-    #         if len(row_data) < 4:
-    #             continue  # Skip malformed rows
-    #         if row_data[2].text == date_text and row_data[3].text == vendor_name:
-    #             return row
-    #     return None
+        Clicks the download button on the order page.
+        '''
+        download_button = self.driver.find_element(By.CLASS_NAME, 'fa-download')
+        ActionChains(self.driver).key_down(Keys.CONTROL).click(download_button).perform()
+        return
     
+    def _update_existing_order(self, order: Order) -> bool:
+        '''
+        Requests that the OrderCoordinator handle the update check and replacement
+        if the new order differs from the existing one.
+
+        Returns True if the file is identical (no update needed),
+        False if the new file should be written.
+        '''
+        self.logger.info(f'[Order Update] Initiating update protocol for {order.store} / {order.vendor} / {order.date}.')
+        return self.orders.check_and_update_order(order)
 
 # endregion
    
@@ -676,7 +593,7 @@ class CraftableBot(SeleniumBotMixin):
         self.goto_page('orders', store=store)
         self._wait_for((By.XPATH, '//tbody'), timeout=45)
 
-        order_rows = self._get_order_table_rows()
+        order_rows = self._get_orders_table_rows()
 
         if not order_rows:
             self.logger.info(f'No orders found in {store}\'s order list.')
@@ -904,10 +821,10 @@ class CraftableBot(SeleniumBotMixin):
                 add_transfer_item_button = self.driver.find_element(By.XPATH, './/button[text()="Add Transfer Line"]')
                 add_transfer_item_button.click()
                 WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.XPATH, './/div[@class="_c-notification__content"][text()="Successfully added a Transfer Line"]')))
-                self.logger.info(f'Item {item.name} addedd successfully.')
+                self.logger.debug(f'Item {item.name} addedd successfully.')
                 break
             except Exception as e:
-                self.logger.info(f'Attempt {attempt+1} failed for {item.name}: {e}')
+                self.logger.warning(f'Attempt {attempt+1} failed for {item.name}: {e}')
                 # self.logger.info('Closing add-item window and trying again.')
                 # back_button = self.driver.find_element(By.XPATH, './/button[text()='Back']')
                 # back_button.click()
@@ -1246,73 +1163,6 @@ class CraftableBot(SeleniumBotMixin):
     
 
     '''HELPER FUNCTIONS'''
-    
-    def _run_save_protocol() -> None:
-        keyboard = Controller()
-
-        keyboard.press(Key.ctrl)
-        keyboard.press('s')
-        keyboard.release(Key.ctrl)
-        keyboard.release('s')
-
-        time.sleep(2)
-              
-        keyboard.press(Key.enter)
-        keyboard.release(Key.enter)
-
-        return
-    
-    '''
-    Assumes the current driver is 'looking at' an order page.
-
-    Scrapes the current page for order data and returns the data 
-    as a 2-D list.
-    '''
-    def _scrape_order(self) -> list[OrderItem]:
-        order_table = self.driver.find_element(By.TAG_NAME, 'tbody')
-        item_rows   = order_table.find_elements(By.TAG_NAME, 'tr')
-
-        items = []
-        for item in item_rows:
-            item_info = item.find_elements(By.TAG_NAME, 'td')
-        
-            item_sku   = item_info[2].text
-            item_name  = item_info[3].find_element(By.XPATH, './/a').text
-            quantity   = item_info[5].text
-            cost_per   = item_info[6].text.replace('$', '').replace(',', '')
-            total_cost = item_info[7].text.replace('$', '').replace(',', '')
-
-            items.append(OrderItem(
-                item_sku, 
-                item_name, 
-                quantity, 
-                cost_per, 
-                total_cost
-            ))
-            
-        return items
-    
-    '''
-    Assumes the current driver is 'looking at' an order page.
-
-    Clicks the download button on the order page.
-    '''
-    def _download_order_pdf(self) -> None:
-        download_button = self.driver.find_element(By.CLASS_NAME, 'fa-download')
-        ActionChains(self.driver).key_down(Keys.CONTROL).click(download_button).perform()
-        return
-       
-    def _update_existing_order(self, order: Order) -> bool:
-        '''
-        Requests that the OrderCoordinator handle the update check and replacement
-        if the new order differs from the existing one.
-
-        Returns True if the file is identical (no update needed),
-        False if the new file should be written.
-        '''
-        self.logger.info(f'[Order Update] Initiating update protocol for {order.store} / {order.vendor} / {order.date}.')
-        return self.orders.check_and_update_order(order)
-
     def _change_calendar_date(self, transfer_datetime: datetime) -> None:
        
         try:

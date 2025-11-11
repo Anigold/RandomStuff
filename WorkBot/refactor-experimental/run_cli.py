@@ -1,3 +1,6 @@
+# ==========================================================
+#                        RUN FILE
+# ==========================================================
 '''
 Run file for WorkBot CLI.
 Bootstraps repositories, infrastructure, services, bots, and launches the CLI interface.
@@ -132,7 +135,7 @@ def create_craftable_bot(services):
     
     username, password = generate_craftablebot_args()
 
-    return CraftableBot(username, password, services['orders'])
+    return CraftableBot(username, password, services['orders'], services['transfers'])
 
 def create_workbot(services, emailer, craft_bot):
     '''

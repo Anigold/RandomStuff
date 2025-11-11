@@ -1,3 +1,11 @@
+# ==========================================================
+#                         WORKBOT
+# ==========================================================
+"""
+Coordinates all system domains (Orders, Vendors, Transfers, Emails)
+and automates Craftable operations.
+"""
+
 # Standard Library
 from datetime import datetime
 from pathlib import Path
@@ -8,9 +16,7 @@ from openpyxl import load_workbook
 
 # Internal
 from backend.infra.logger import Logger
-
 from backend.bots.craftable_bot.craftable_bot import CraftableBot
-
 from backend.app.services import (
     OrderServices,
     VendorServices,
@@ -18,7 +24,6 @@ from backend.app.services import (
     TransferServices,
     EmailServices,
 )
-
 from backend.domain.models import (
     Order,
     Transfer, TransferItem,
@@ -29,13 +34,6 @@ from backend.domain.models import (
 from backend.adapters.emailer.emailer import Email
 
 
-# ==========================================================
-#                         WORKBOT
-# ==========================================================
-"""
-Coordinates all system domains (Orders, Vendors, Transfers, Emails)
-and automates Craftable operations.
-"""
 @Logger.attach_logger
 class WorkBot:
  
@@ -85,6 +83,7 @@ class WorkBot:
     
     def remove_items_from_craftable_order(self, store: str, vendor: str, items: List[Item]) -> None:
         ...
+
 # ------------------------------------------------------
 # ORDER MANAGEMENT
 # ------------------------------------------------------
@@ -124,23 +123,23 @@ class WorkBot:
         return self.transfers.list_transfers()
 
     def convert_order_to_transfer(self, destination, vendor, origin):
-            self.logger.info(f'Beginning order-transfer conversion: {destination}-{vendor} -> {origin}')
-            order = self.get_orders([destination], [vendor])[0]
-            origin = 'Bakery' if order.vendor == 'Ithaca Bakery' else order.vendor # YOU NEED TO FIX THIS FOR WHEN YOU HAVE TO DO IT FOR A DIFFERENT STORE
+        self.logger.info(f'Beginning order-transfer conversion: {destination}-{vendor} -> {origin}')
+        order = self.get_orders([destination], [vendor])[0]
+        origin = 'Bakery' if order.vendor == 'Ithaca Bakery' else order.vendor # YOU NEED TO FIX THIS FOR WHEN YOU HAVE TO DO IT FOR A DIFFERENT STORE
 
-            transfer_items = [
-                TransferItem(name=item.name, quantity=item.quantity)
-                for item in order.items
-            ]
+        transfer_items = [
+            TransferItem(name=item.name, quantity=item.quantity)
+            for item in order.items
+        ]
 
-            transfer = Transfer(
-                transfer_items=transfer_items,
-                origin=origin,
-                destination=order.store,
-                transfer_date=order.date
-            )
+        transfer = Transfer(
+            transfer_items=transfer_items,
+            origin=origin,
+            destination=order.store,
+            transfer_date=order.date
+        )
 
-            return self.transfers.save_transfer(transfer=transfer)
+        return self.transfers.save_transfer(transfer=transfer)
 
 # ------------------------------------------------------
 # EMAIL OPERATIONS
@@ -267,3 +266,4 @@ class WorkBot:
 
     def testing_function(self, stores: str, vendors: str) -> None:
         return self.craft_bot.new_download_orders(stores, vendors)
+    

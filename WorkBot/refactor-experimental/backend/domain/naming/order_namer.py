@@ -54,7 +54,6 @@ class OrderFilenameStrategy(Namer[Order]):
     ) -> Path | str:
         return f"{store}_{vendor}_*.{format}" if (date is None or date == '*') else f"{store}_{vendor}_{date}.{format}"
     
-    
     def parse_filename_for_metadata(self, filename: str) -> dict:
         """Extract store, vendor, and date back from a filename."""
         stem = Path(filename).stem  # remove extension
