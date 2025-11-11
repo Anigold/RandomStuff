@@ -236,9 +236,7 @@ class CraftableBot(SeleniumBotMixin):
     None
 
     Will scrape the Craftable order page for each store and selected vendors, download and generate the appropriate
-    files, and save in the ORDER_FILES_PATH.
-
-    i. Assumes the bot is currrently logged in.
+    files, and save in the ORDER_FILES_PATH. If no vendors supplied, we assume all vendors are wanted. 
 
     '''    
     @SeleniumBotMixin.with_session(login=True)
@@ -273,13 +271,13 @@ class CraftableBot(SeleniumBotMixin):
                 self.goto_order(store=store, vendor=vendor)
                 self._wait_for((By.XPATH, '//tbody'), timeout=45) # Wait for the order items table to load.
 
-                order_date_formatted = self._get_order_date_from_order_page()
+                order_date = self._get_order_date_from_order_page()
                 order_items = self._get_order_items_from_order_page()
 
                 order = Order(
                     store=store,
                     vendor=vendor,
-                    date=order_date_formatted,
+                    date=order_date,
                     items=order_items
                 )
 

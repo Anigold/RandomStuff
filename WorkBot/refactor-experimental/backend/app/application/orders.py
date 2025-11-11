@@ -180,24 +180,29 @@ class ExpectDownloadedPdf:
 @dataclass(frozen=True)
 class CheckAndUpdateOrder:
     """
-    Returns True if an equivalent order already exists (no update needed).
-    Returns False if no existing order or if it differs (caller can proceed to save).
-    No direct file IO here; we use repo.get(...) to fetch existing if present.
+    Read it like a question.
+
+    (Yes.) Returns True if no existing order or if it differs.
+    (No.)  Returns False if an equivalent order already exists (no update needed).
+
     """
     repo: OrderRepository
 
     def __call__(self, order: Order) -> bool:
+
         try:
             existing = self.repo.get(order.vendor, order.store, date=order.date)
         except FileNotFoundError:
             self.logger.info("[Order Update] No existing order found for same vendor/store/date")
-            return False
+            return True
         except Exception as e:
             self.logger.warning(f"[Order Update] Failed to fetch existing order: {e}. Proceeding as changed.")
-            return False
+            return True
+        
         same = _same(existing, order)
         self.logger.info("[Order Update] Unchanged — skip overwrite." if same else "[Order Update] Changed — overwrite needed.")
-        return same
+
+        return not same # Gross, but for semantic consistency
 
 @Logger.attach_logger
 @dataclass(frozen=True)

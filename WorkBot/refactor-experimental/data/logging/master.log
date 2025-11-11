@@ -7774,3 +7774,70 @@ TypeError: DownloadOrders.command() missing 1 required positional argument: 'arg
 2025-11-11 12:52:21,176 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'generate_vendor_order_emails' executed successfully.
 2025-11-11 13:30:30,486 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
 2025-11-11 13:30:30,490 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-11-11 15:07:49,749 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:51) - Initializing WorkBot...
+2025-11-11 15:07:49,749 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:62) - WorkBot initialized successfully.
+2025-11-11 15:07:49,750 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-11-11 15:07:49,778 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-11-11 15:07:49,797 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-11-11 15:07:49,798 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-11-11 15:07:50,074 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-11-11 15:07:50,074 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-11-11 15:08:09,383 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: help (args=[])
+2025-11-11 15:08:09,387 - INFO - backend.adapters.files.local_blob_store.LocalBlobStore - (local_blob_store.py:80) - C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores
+2025-11-11 15:08:09,960 - INFO - backend.adapters.files.generic_file_adapter.GenericFileAdapter - (generic_file_adapter.py:103) - Skipping unreadable file C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\vendors\__init__.py: 'py'
+2025-11-11 15:08:09,964 - INFO - backend.adapters.files.local_blob_store.LocalBlobStore - (local_blob_store.py:80) - C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores
+2025-11-11 15:08:09,967 - INFO - backend.adapters.files.local_blob_store.LocalBlobStore - (local_blob_store.py:80) - C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores
+2025-11-11 15:08:09,970 - INFO - backend.adapters.files.local_blob_store.LocalBlobStore - (local_blob_store.py:80) - C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores
+2025-11-11 15:08:09,972 - INFO - backend.adapters.files.local_blob_store.LocalBlobStore - (local_blob_store.py:80) - C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores
+2025-11-11 15:08:09,976 - INFO - backend.adapters.files.local_blob_store.LocalBlobStore - (local_blob_store.py:80) - C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores
+2025-11-11 15:08:09,980 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'help' executed successfully.
+2025-11-11 15:09:15,451 - INFO - backend.app.cli.cli.CLI - (cli.py:370) - User requested CLI shutdown.
+2025-11-11 15:09:15,453 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-11-11 15:09:35,272 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:51) - Initializing WorkBot...
+2025-11-11 15:09:35,272 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:62) - WorkBot initialized successfully.
+2025-11-11 15:09:35,272 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-11-11 15:09:35,279 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-11-11 15:09:35,308 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-11-11 15:09:35,308 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-11-11 15:09:35,325 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-11-11 15:09:35,326 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-11-11 15:09:59,661 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: help (args=[])
+2025-11-11 15:09:59,664 - INFO - backend.adapters.files.local_blob_store.LocalBlobStore - (local_blob_store.py:80) - C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores
+2025-11-11 15:09:59,679 - INFO - backend.adapters.files.generic_file_adapter.GenericFileAdapter - (generic_file_adapter.py:103) - Skipping unreadable file C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\vendors\__init__.py: 'py'
+2025-11-11 15:09:59,681 - INFO - backend.adapters.files.local_blob_store.LocalBlobStore - (local_blob_store.py:80) - C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores
+2025-11-11 15:09:59,684 - INFO - backend.adapters.files.local_blob_store.LocalBlobStore - (local_blob_store.py:80) - C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores
+2025-11-11 15:09:59,687 - INFO - backend.adapters.files.local_blob_store.LocalBlobStore - (local_blob_store.py:80) - C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores
+2025-11-11 15:09:59,690 - INFO - backend.adapters.files.local_blob_store.LocalBlobStore - (local_blob_store.py:80) - C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores
+2025-11-11 15:09:59,694 - INFO - backend.adapters.files.local_blob_store.LocalBlobStore - (local_blob_store.py:80) - C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores
+2025-11-11 15:09:59,699 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'help' executed successfully.
+2025-11-11 15:11:20,064 - INFO - backend.app.cli.cli.CLI - (cli.py:370) - User requested CLI shutdown.
+2025-11-11 15:11:20,066 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-11-11 15:42:41,683 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:51) - Initializing WorkBot...
+2025-11-11 15:42:41,684 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:62) - WorkBot initialized successfully.
+2025-11-11 15:42:41,684 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-11-11 15:42:41,691 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-11-11 15:42:41,717 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-11-11 15:42:41,739 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-11-11 15:42:41,760 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-11-11 15:42:41,760 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-11-11 15:42:51,132 - INFO - backend.adapters.files.local_blob_store.LocalBlobStore - (local_blob_store.py:80) - C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores
+2025-11-11 15:42:51,190 - INFO - backend.adapters.files.local_blob_store.LocalBlobStore - (local_blob_store.py:80) - C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores
+2025-11-11 15:42:53,083 - INFO - backend.adapters.files.local_blob_store.LocalBlobStore - (local_blob_store.py:80) - C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores
+2025-11-11 15:42:53,085 - INFO - backend.adapters.files.local_blob_store.LocalBlobStore - (local_blob_store.py:80) - C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores
+2025-11-11 15:42:53,088 - INFO - backend.adapters.files.local_blob_store.LocalBlobStore - (local_blob_store.py:80) - C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores
+2025-11-11 15:42:53,090 - INFO - backend.adapters.files.local_blob_store.LocalBlobStore - (local_blob_store.py:80) - C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores
+2025-11-11 15:42:55,267 - INFO - backend.adapters.files.local_blob_store.LocalBlobStore - (local_blob_store.py:80) - C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores
+2025-11-11 15:42:55,270 - INFO - backend.adapters.files.local_blob_store.LocalBlobStore - (local_blob_store.py:80) - C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores
+2025-11-11 15:43:01,309 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Bakery', '--vendors', 'UNFI'])
+2025-11-11 15:43:01,311 - INFO - backend.adapters.files.local_blob_store.LocalBlobStore - (local_blob_store.py:80) - C:\Users\User\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\config\stores
+2025-11-11 15:43:06,306 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:92) - Logging into Craftable.
+2025-11-11 15:43:13,747 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:116) - Login successful.
+2025-11-11 15:43:13,747 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:249) - Beginning download protocol for: stores: ['Bakery'], vendors: ['UNFI'], download_pdf: True, update: True
+2025-11-11 15:43:15,137 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:607) - Found UNFI in Bakery's order list.
+2025-11-11 15:43:16,400 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:614) - Now in UNFI order.
+2025-11-11 15:43:17,416 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:486) - [Order Update] Initiating update protocol for Bakery / UNFI / 20251108.
+2025-11-11 15:43:17,463 - INFO - backend.app.application.orders.CheckAndUpdateOrder - (orders.py:203) - [Order Update] Changed — overwrite needed.
+2025-11-11 15:43:17,463 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:286) - Bakery's order for UNFI is already up-to-date...skipping.
+2025-11-11 15:43:19,291 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'download_orders' executed successfully.
+2025-11-11 15:52:20,419 - INFO - backend.app.cli.cli.CLI - (cli.py:370) - User requested CLI shutdown.
+2025-11-11 15:52:20,421 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
