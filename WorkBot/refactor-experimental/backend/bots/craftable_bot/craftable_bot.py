@@ -260,34 +260,7 @@ class CraftableBot(SeleniumBotMixin):
 
     i. Assumes the bot is currrently logged in.
 
-    '''
-
-    # @SeleniumBotMixin.with_session(login=True)
-    # @Logger.log_exceptions
-    # def download_orders(self, stores: list, vendors=list, download_pdf=True, update=True) -> None:
-       
-    #     self.logger.info('Starting order download protocol.')
-    #     for store in stores:
-            
-    #         self.logger.info(f'Accessing order page for {store}.')
-    #         self.goto_page('orders_page', store=store)
-    #         time.sleep(6)
-            
-    #         table_rows = self._get_order_table_rows()
-    #         if not table_rows:
-    #             self.logger.info(f'No more orders found for {store}. Moving to next store.')
-    #             break 
-
-    #         for pos in range(len(table_rows)):
-    #             stale_reference_table_rows = self._get_order_table_rows() # Refresh to avoid stale references
-    #             self._process_order_row(store, stale_reference_table_rows[pos], vendors, download_pdf, update)
-
-    #     self.logger.info('Order download complete.')
-    #     self.logger.info('Closing WebDriver session.')
-    #     self.end_session()
-
-    #     return
-    
+    '''    
     @SeleniumBotMixin.with_session(login=True)
     def download_orders(self, 
                             stores: List[str], 
@@ -302,7 +275,7 @@ class CraftableBot(SeleniumBotMixin):
         for store in stores:
             
             '''
-            If there aren't supplied vendors, we want to then download all available orders.
+            If there aren't supplied vendors, we want to download all available orders.
             We ensure this by going to the order page and scanning all of the orders and saving the
             vendor names to a list. We use this list in place of the "vendors" argument. 
 
@@ -310,6 +283,11 @@ class CraftableBot(SeleniumBotMixin):
             '''
             if empty_vendors:
                 
+                # try:
+                #     vendors = self._compose_vendor_list_for_full_download()
+                # except:
+
+
                 vendors: list = []
 
                 self.goto_page('orders', store=store)
@@ -387,7 +365,27 @@ class CraftableBot(SeleniumBotMixin):
             
             if empty_vendors: vendors = []
                 
+    def _compose_vendor_list_for_full_download(self) -> list[str]:
+        vendors: list = []
 
+        self.goto_page('orders', store=store)
+        self._wait_for((By.XPATH, '//tbody'), timeout=45) # Wait for the orders table to load.
+
+        order_rows = self._get_orders_table_rows()
+
+        if not order_rows: 
+            # self.logger.info(f'No vendors found...skipping')
+            return
+
+        for order_row in order_rows:
+
+            order_row_metadata = self._scrape_order_row_metadata(order_row)
+
+            if 'vendor' in order_row_metadata:
+                vendors.append(order_row_metadata['vendor'])
+
+        return vendors
+        
     def _get_orders_table_rows(self) -> None:
         '''Assumes the driver is already pointed at an order page.
         
