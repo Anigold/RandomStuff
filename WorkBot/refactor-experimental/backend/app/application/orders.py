@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional, Callable, List
+from pprint import pprint
 
 from backend.app.ports import OrderRepository, DownloadPort
 from backend.domain.models import Order
@@ -191,7 +192,7 @@ class CheckAndUpdateOrder:
     def __call__(self, order: Order) -> bool:
 
         try:
-            existing = self.repo.get(order.vendor, order.store, date=order.date)
+            existing = self.repo.get(order.store, order.vendor, date=order.date)
         except FileNotFoundError:
             self.logger.info("[Order Update] No existing order found for same vendor/store/date")
             return True
@@ -200,7 +201,7 @@ class CheckAndUpdateOrder:
             return True
         
         same = _same(existing, order)
-        self.logger.info("[Order Update] Unchanged — skip overwrite." if same else "[Order Update] Changed — overwrite needed.")
+        self.logger.info("[Order Update] Unchanged - skip overwrite." if same else "[Order Update] Changed - overwrite needed.")
 
         return not same # Gross, but for semantic consistency
 

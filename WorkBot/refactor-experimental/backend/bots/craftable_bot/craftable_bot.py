@@ -282,17 +282,28 @@ class CraftableBot(SeleniumBotMixin):
                 )
 
                 # SAVE/UPDATE CHECK
-                if update and self._update_existing_order(order):
+                need_to_update = self._update_existing_order(order)
+                if (not update) or (not need_to_update):
                     self.logger.info(f'{store}\'s order for {vendor} is already up-to-date...skipping.')
                     continue
-                
+               
                 # SAVE
                 self.logger.info(f'Saving order: {order}')
                 self.orders.save_order(order)
 
                 # DOWNLOAD PDF
                 if download_pdf:
-                    self.orders.expect_downloaded_pdf(order, match=lambda f: 'Order.pdf')
+
+                    # folder_name = f"{vendor}_{store}_{order_date}"
+                    # order_dir = (DOWNLOADS_PATH / folder_name).resolve()
+                    # order_dir.mkdir(parents=True, exist_ok=True)
+
+                    # self.driver.execute_cdp_cmd(
+                    #     "Page.setDownloadBehavior",
+                    #     {"behavior": "allow", "downloadPath": str(order_dir)},
+                    # )
+
+                    self.orders.expect_downloaded_pdf(order, match=lambda f: f'Order.pdf')
                     self._download_order_pdf()
                     time.sleep(2) # Otherwise it goes way too fast.
             
@@ -500,7 +511,7 @@ class CraftableBot(SeleniumBotMixin):
             #     self.logger.warning(f'Invalid store name: {store}, Skipping.')
             #     continue
 
-            store_orders_url = self.get_url('orders_page', store=store)
+            store_orders_url = self.get_url('orders', store=store)
             print(store_orders_url)
             self.logger.debug(f'Navigating to: {store_orders_url}')
             self.driver.get(store_orders_url)
@@ -526,7 +537,7 @@ class CraftableBot(SeleniumBotMixin):
                     table_rows.pop()
                     continue
 
-                self.logger.info(f'Deleting order: {row_vendor_name} ({row_date_text})')
+                # self.logger.info(f'Deleting order: {row_vendor_name} ({row_date_text})')
                 self._delete_order(row)
                 
                 # self.driver.back()

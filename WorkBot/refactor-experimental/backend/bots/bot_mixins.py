@@ -1,5 +1,7 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
+from pathlib import Path
+
 from openpyxl import load_workbook, Workbook
 import re
 import time
@@ -169,7 +171,6 @@ class SeleniumBotMixin(ABC):
         except (TimeoutException, NoSuchElementException, StaleElementReferenceException):
             return None
         
-
     def wait_for_elements(
         self,
         locator: tuple,
@@ -201,7 +202,8 @@ class SeleniumBotMixin(ABC):
         except (TimeoutException, NoSuchElementException, StaleElementReferenceException):
             return None
 
-
+    def change_download_location(self, new_path: Path) -> None:
+        ...
 
 
 
