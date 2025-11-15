@@ -8585,3 +8585,452 @@ TypeError: GenerateVendorUploadFiles.command() missing 1 required positional arg
 2025-11-12 14:17:49,127 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'generate_vendor_order_emails' executed successfully.
 2025-11-12 15:58:57,392 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
 2025-11-12 15:58:57,398 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-11-15 08:15:42,634 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-11-15 08:15:42,644 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-11-15 08:15:42,659 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-11-15 08:15:42,659 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-11-15 08:15:42,681 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-11-15 08:15:42,681 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-11-15 08:15:49,228 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: archive_orders (args=[])
+2025-11-15 08:15:53,175 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'archive_orders' executed successfully.
+2025-11-15 08:16:05,309 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Collegetown', 'Easthill', 'Downtown', 'Triphammer'])
+2025-11-15 08:22:14,799 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'download_orders' executed successfully.
+2025-11-15 08:51:27,773 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-11-15 08:52:03,392 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'download_orders' executed successfully.
+2025-11-15 08:52:23,886 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_upload_files (args=['--vendors', 'UNFI'])
+2025-11-15 08:52:24,267 - ERROR - backend.app.cli.cli.CLI - (cli.py:465) - [Error] generate_vendor_upload_files failed: GenerateVendorUploadFiles.command() missing 1 required positional argument: 'args'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 451, in _dispatch_command
+    self.commands[command].command(args)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\generate_vendor_upload_files.py", line 30, in command
+    paths = self.context.workbot.generate_vendor_upload_files(
+        stores=parsed_args.stores,
+    ...<2 lines>...
+        end_date=parsed_args.end_date
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 198, in generate_vendor_upload_files
+    result_paths = self.orders.generate_vendor_uploads(
+        vendors=vendors,
+    ...<3 lines>...
+        context_map=context_map
+    )
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\orders.py", line 149, in __call__
+    context = context_map.get(f'{order.store}|{order.vendor}')
+                                 ^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'store'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 454, in _dispatch_command
+    self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TypeError: GenerateVendorUploadFiles.command() missing 1 required positional argument: 'args'
+2025-11-15 08:52:24,315 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'generate_vendor_upload_files' executed successfully.
+2025-11-15 08:52:35,183 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Syracuse'])
+2025-11-15 08:54:06,862 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'download_orders' executed successfully.
+2025-11-15 08:54:17,103 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_upload_files (args=['--vendors', 'UNFI'])
+2025-11-15 08:54:17,509 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'generate_vendor_upload_files' executed successfully.
+2025-11-15 08:56:09,616 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Downtown', '--vendors', 'UNFI'])
+2025-11-15 08:56:26,721 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'download_orders' executed successfully.
+2025-11-15 08:56:35,417 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Downtown', '--vendors', 'UNFI'])
+2025-11-15 08:56:35,494 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'generate_vendor_upload_files' executed successfully.
+2025-11-15 10:40:46,163 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Syracuse', '--vendors', 'Performance Food'])
+2025-11-15 10:40:46,261 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'generate_vendor_upload_files' executed successfully.
+2025-11-15 10:41:23,122 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Syracuse'])
+2025-11-15 10:42:37,510 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'download_orders' executed successfully.
+2025-11-15 10:45:12,764 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Syracuse', '--vendors', 'Performance Food'])
+2025-11-15 10:45:12,854 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'generate_vendor_upload_files' executed successfully.
+2025-11-15 10:45:45,269 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Syracuse', '--vendors', 'Performance Food'])
+2025-11-15 10:45:45,346 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'generate_vendor_upload_files' executed successfully.
+2025-11-15 12:36:26,500 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-11-15 12:36:26,507 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-11-15 12:38:00,787 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-11-15 12:38:00,794 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-11-15 12:38:00,809 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-11-15 12:38:00,809 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-11-15 12:38:00,831 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-11-15 12:38:00,831 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-11-15 12:38:21,596 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Bakery', '--vendors', 'UNFI'])
+2025-11-15 12:38:41,157 - ERROR - backend.app.cli.cli.CLI - (cli.py:465) - [Error] download_orders failed: DownloadOrders.command() missing 1 required positional argument: 'args'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 451, in _dispatch_command
+    self.commands[command].command(args)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\download_orders.py", line 28, in command
+    self.context.workbot.download_craftable_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 75, in download_craftable_orders
+    for result in results:
+                  ^^^^^^^
+TypeError: 'NoneType' object is not iterable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 454, in _dispatch_command
+    self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TypeError: DownloadOrders.command() missing 1 required positional argument: 'args'
+2025-11-15 12:38:41,369 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'download_orders' executed successfully.
+2025-11-15 12:39:23,804 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-11-15 12:39:23,807 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-11-15 12:39:29,569 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-11-15 12:39:29,576 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-11-15 12:39:29,597 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-11-15 12:39:29,597 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-11-15 12:39:29,623 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-11-15 12:39:29,623 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-11-15 12:39:34,656 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Bakery', '--vendors', 'UNFI'])
+2025-11-15 12:39:54,183 - ERROR - backend.app.cli.cli.CLI - (cli.py:465) - [Error] download_orders failed: DownloadOrders.command() missing 1 required positional argument: 'args'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 451, in _dispatch_command
+    self.commands[command].command(args)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\download_orders.py", line 28, in command
+    self.context.workbot.download_craftable_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 75, in download_craftable_orders
+    for result in results:
+                  ^^^^^^^
+TypeError: 'NoneType' object is not iterable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 454, in _dispatch_command
+    self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TypeError: DownloadOrders.command() missing 1 required positional argument: 'args'
+2025-11-15 12:39:54,187 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'download_orders' executed successfully.
+2025-11-15 12:41:45,056 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-11-15 12:41:45,061 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-11-15 12:41:48,131 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-11-15 12:41:48,136 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-11-15 12:41:48,142 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-11-15 12:41:48,142 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-11-15 12:41:48,156 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-11-15 12:41:48,156 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-11-15 12:41:49,092 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Bakery', '--vendors', 'UNFI'])
+2025-11-15 12:42:08,824 - ERROR - backend.app.cli.cli.CLI - (cli.py:465) - [Error] download_orders failed: DownloadOrders.command() missing 1 required positional argument: 'args'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 451, in _dispatch_command
+    self.commands[command].command(args)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\download_orders.py", line 28, in command
+    self.context.workbot.download_craftable_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 75, in download_craftable_orders
+    for result in results:
+                  ^^^^^^^
+TypeError: 'NoneType' object is not iterable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 454, in _dispatch_command
+    self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TypeError: DownloadOrders.command() missing 1 required positional argument: 'args'
+2025-11-15 12:42:08,828 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'download_orders' executed successfully.
+2025-11-15 12:43:03,835 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-11-15 12:43:03,838 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-11-15 12:43:06,978 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-11-15 12:43:06,983 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-11-15 12:43:06,989 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-11-15 12:43:06,990 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-11-15 12:43:07,005 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-11-15 12:43:07,005 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-11-15 12:43:36,743 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Bakery', '--vendors', 'UNFI'])
+2025-11-15 12:43:56,498 - ERROR - backend.app.cli.cli.CLI - (cli.py:465) - [Error] download_orders failed: DownloadOrders.command() missing 1 required positional argument: 'args'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 451, in _dispatch_command
+    self.commands[command].command(args)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\download_orders.py", line 28, in command
+    self.context.workbot.download_craftable_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 76, in download_craftable_orders
+    for result in results:
+                  ^^^^^^^
+TypeError: 'NoneType' object is not iterable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 454, in _dispatch_command
+    self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TypeError: DownloadOrders.command() missing 1 required positional argument: 'args'
+2025-11-15 12:43:56,502 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'download_orders' executed successfully.
+2025-11-15 12:53:25,511 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-11-15 12:53:25,514 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-11-15 12:53:28,850 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-11-15 12:53:28,855 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-11-15 12:53:28,861 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-11-15 12:53:28,861 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-11-15 12:53:28,875 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-11-15 12:53:28,875 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-11-15 12:53:40,314 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Bakery', '--vendors', 'UNFI'])
+2025-11-15 12:53:59,947 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'download_orders' executed successfully.
+2025-11-15 12:55:21,794 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-11-15 12:55:21,796 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-11-15 12:55:24,694 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-11-15 12:55:24,699 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-11-15 12:55:24,705 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-11-15 12:55:24,705 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-11-15 12:55:24,720 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-11-15 12:55:24,720 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-11-15 12:55:25,549 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Bakery', '--vendors', 'UNFI'])
+2025-11-15 12:55:45,156 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'download_orders' executed successfully.
+2025-11-15 12:58:45,656 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-11-15 12:58:45,661 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-11-15 12:58:48,531 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-11-15 12:58:48,536 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-11-15 12:58:48,542 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-11-15 12:58:48,542 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-11-15 12:58:48,557 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-11-15 12:58:48,557 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-11-15 12:58:49,507 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Bakery', '--vendors', 'UNFI'])
+2025-11-15 12:59:09,037 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'download_orders' executed successfully.
+2025-11-15 13:00:51,812 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-11-15 13:00:51,817 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-11-15 13:00:54,733 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-11-15 13:00:54,738 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-11-15 13:00:54,745 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-11-15 13:00:54,745 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-11-15 13:00:54,760 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-11-15 13:00:54,760 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-11-15 13:00:56,535 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Bakery', '--vendors', 'UNFI'])
+2025-11-15 13:01:16,525 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'download_orders' executed successfully.
+2025-11-15 13:02:10,833 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Bakery', '--vendors', 'UNFI'])
+2025-11-15 13:02:13,531 - ERROR - backend.app.cli.cli.CLI - (cli.py:465) - [Error] download_orders failed: DownloadOrders.command() missing 1 required positional argument: 'args'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 451, in _dispatch_command
+    self.commands[command].command(args)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\download_orders.py", line 28, in command
+    self.context.workbot.download_craftable_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 73, in download_craftable_orders
+    results = self.craft_bot.download_orders(stores, vendors, download_pdf=download_pdf, update=update)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\bot_mixins.py", line 96, in wrapper
+    with self.session(login=login):
+         ~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Will\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\bot_mixins.py", line 72, in session
+    self.start_session()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\bot_mixins.py", line 43, in start_session
+    self._driver       = create_driver(options)
+                         ~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\helpers.py", line 19, in create_driver
+    return uc.Chrome(options=options, use_subprocess=True)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\undetected_chromedriver\__init__.py", line 258, in __init__
+    self.patcher.auto()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\undetected_chromedriver\patcher.py", line 179, in auto
+    return self.patch()
+           ~~~~~~~~~~^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\undetected_chromedriver\patcher.py", line 230, in patch
+    return self.is_binary_patched()
+           ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\undetected_chromedriver\patcher.py", line 339, in is_binary_patched
+    with io.open(executable_path, "rb") as fh:
+         ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 454, in _dispatch_command
+    self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TypeError: DownloadOrders.command() missing 1 required positional argument: 'args'
+2025-11-15 13:02:13,569 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'download_orders' executed successfully.
+2025-11-15 13:02:13,694 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-11-15 13:02:13,697 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-11-15 13:02:16,710 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-11-15 13:02:16,715 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-11-15 13:02:16,721 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-11-15 13:02:16,721 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-11-15 13:02:16,736 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-11-15 13:02:16,736 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-11-15 13:02:17,506 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Bakery', '--vendors', 'UNFI'])
+2025-11-15 13:02:36,881 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'download_orders' executed successfully.
+2025-11-15 13:04:50,291 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-11-15 13:04:50,293 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-11-15 13:04:53,736 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-11-15 13:04:53,741 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-11-15 13:04:53,748 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-11-15 13:04:53,748 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-11-15 13:04:53,762 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-11-15 13:04:53,762 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-11-15 13:04:54,911 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Bakery', '--vendors', 'UNFI'])
+2025-11-15 13:05:14,626 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'download_orders' executed successfully.
+2025-11-15 14:27:50,307 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-11-15 14:27:50,316 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-11-15 14:29:40,154 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-11-15 14:29:40,160 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-11-15 14:29:40,167 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-11-15 14:29:40,167 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-11-15 14:29:40,198 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-11-15 14:29:40,198 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-11-15 14:29:41,640 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: testing (args=[])
+2025-11-15 14:29:42,307 - ERROR - backend.app.cli.cli.CLI - (cli.py:465) - [Error] testing failed: Testing.command() missing 1 required positional argument: 'args'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 451, in _dispatch_command
+    self.commands[command].command(args)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\testing.py", line 26, in command
+    self.context.workbot.testing_function()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 353, in testing_function
+    self.transfers.archive_transfer(t)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\application\transfers.py", line 56, in __call__
+    self.repo.archive_order(transfer)
+    ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'TransferFileRepository' object has no attribute 'archive_order'. Did you mean: 'archive_transfer'?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 454, in _dispatch_command
+    self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TypeError: Testing.command() missing 1 required positional argument: 'args'
+2025-11-15 14:29:42,314 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'testing' executed successfully.
+2025-11-15 14:30:06,733 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-11-15 14:30:06,736 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-11-15 14:30:09,900 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-11-15 14:30:09,906 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-11-15 14:30:09,921 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-11-15 14:30:09,921 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-11-15 14:30:09,938 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-11-15 14:30:09,938 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-11-15 14:30:11,264 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: testing (args=[])
+2025-11-15 14:30:11,576 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'testing' executed successfully.
+2025-11-15 14:31:07,809 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: convert_order_to_transfer (args=['--destination', 'Collegetown', '--vendor', 'Ithaca Bakery', '--origin', 'Bakery'])
+2025-11-15 14:31:07,890 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'convert_order_to_transfer' executed successfully.
+2025-11-15 14:31:10,209 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: input_transfers (args=[])
+2025-11-15 14:33:52,956 - ERROR - backend.app.cli.cli.CLI - (cli.py:465) - [Error] input_transfers failed: InputTransfers.command() missing 1 required positional argument: 'args'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 451, in _dispatch_command
+    self.commands[command].command(args)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\input_transfers.py", line 22, in command
+    self.context.workbot.input_craftable_transfers()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 155, in input_craftable_transfers
+    self.craft_bot.input_transfers(transfers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\bot_mixins.py", line 97, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 651, in input_transfers
+    self.input_transfer(transfer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 670, in input_transfer
+    self._enter_transfer_details(transfer)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 713, in _enter_transfer_details
+    transfer_date_obj = datetime.strptime(transfer.transfer_date, '%Y%m%d')
+  File "C:\Users\Will\AppData\Local\Programs\Python\Python313\Lib\_strptime.py", line 674, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+                                    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\AppData\Local\Programs\Python\Python313\Lib\_strptime.py", line 453, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+                     (data_string, format))
+ValueError: time data '2025-08-01' does not match format '%Y%m%d'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 454, in _dispatch_command
+    self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TypeError: InputTransfers.command() missing 1 required positional argument: 'args'
+2025-11-15 14:33:52,963 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'input_transfers' executed successfully.
+2025-11-15 14:37:07,781 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-11-15 14:37:07,787 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-11-15 14:37:11,192 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-11-15 14:37:11,197 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-11-15 14:37:11,218 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-11-15 14:37:11,218 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-11-15 14:37:11,236 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-11-15 14:37:11,236 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-11-15 14:37:13,425 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: input_transfers (args=[])
+2025-11-15 14:38:47,480 - ERROR - backend.app.cli.cli.CLI - (cli.py:465) - [Error] input_transfers failed: InputTransfers.command() missing 1 required positional argument: 'args'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 451, in _dispatch_command
+    self.commands[command].command(args)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\input_transfers.py", line 22, in command
+    self.context.workbot.input_craftable_transfers()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 155, in input_craftable_transfers
+    self.craft_bot.input_transfers(transfers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\bot_mixins.py", line 97, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 652, in input_transfers
+    self.input_transfer(transfer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\bot_mixins.py", line 97, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 670, in input_transfer
+    self._enter_transfer_details(transfer)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 713, in _enter_transfer_details
+    transfer_date_obj = datetime.strptime(transfer.transfer_date, '%Y%m%d')
+  File "C:\Users\Will\AppData\Local\Programs\Python\Python313\Lib\_strptime.py", line 674, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+                                    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Will\AppData\Local\Programs\Python\Python313\Lib\_strptime.py", line 453, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+                     (data_string, format))
+ValueError: time data '2025-08-01' does not match format '%Y%m%d'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 454, in _dispatch_command
+    self.commands[command].command()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TypeError: InputTransfers.command() missing 1 required positional argument: 'args'
+2025-11-15 14:38:47,489 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'input_transfers' executed successfully.
+2025-11-15 14:40:38,011 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: testing (args=[])
+2025-11-15 14:40:38,338 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'testing' executed successfully.
+2025-11-15 14:40:52,209 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-11-15 14:40:52,212 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-11-15 14:40:55,276 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-11-15 14:40:55,281 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-11-15 14:40:55,296 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-11-15 14:40:55,296 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-11-15 14:40:55,311 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-11-15 14:40:55,311 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-11-15 14:40:56,460 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: testing (args=[])
+2025-11-15 14:40:56,794 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'testing' executed successfully.
+2025-11-15 14:41:11,073 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-11-15 14:41:11,075 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-11-15 14:41:14,390 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-11-15 14:41:14,396 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-11-15 14:41:14,403 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-11-15 14:41:14,403 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-11-15 14:41:14,420 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-11-15 14:41:14,421 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-11-15 14:41:19,053 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: input_transfers (args=[])
+2025-11-15 14:42:39,794 - INFO - backend.app.cli.cli.CLI - (cli.py:460) - Command 'input_transfers' executed successfully.
+2025-11-15 14:44:45,590 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-11-15 14:44:45,592 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.

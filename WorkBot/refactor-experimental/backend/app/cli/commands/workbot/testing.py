@@ -6,9 +6,7 @@ class Testing(Command):
     name = 'testing'
 
     def arguments(self):
-        parser = argparse.ArgumentParser(prog=self.name, description="Testing the GoToOrder")
-        parser.add_argument("--stores", nargs='+', default=self.context.get_stores(), help="A single store name.")
-        parser.add_argument("--vendors", nargs='+', help="A single vendor name.")
+        parser = argparse.ArgumentParser(prog=self.name, description="Testing the ArchiveTransfers")
         return parser
 
     def autocomplete(self, flag: str, text: str):
@@ -25,7 +23,7 @@ class Testing(Command):
         parser = self.arguments()
         parsed_args = parser.parse_args(args)
         try:
-            self.context.workbot.testing_function(parsed_args.stores, parsed_args.vendors)
+            self.context.workbot.testing_function()
         except SystemExit:
             pass  # Prevent argparse from exiting CLI loop
 

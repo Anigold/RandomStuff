@@ -77,7 +77,6 @@ class LocalBlobStore(BlobStore):
 
     def list_paths(self, base: Path, pattern: str = "*") -> list[Path]:
         base = base.resolve()
-        self.logger.info(base)
         if not base.exists():
             return []
         return sorted(base.rglob(pattern))

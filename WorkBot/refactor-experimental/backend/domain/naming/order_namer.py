@@ -12,8 +12,8 @@ class OrderFilenameStrategy(Namer[Order]):
     """
 
     def __init__(self, orders_base_dir: Path, uploads_base_dir: Path, archive_dir: Path):
-        self._base = orders_base_dir
-        self._upload_base = uploads_base_dir
+        self._base         = orders_base_dir
+        self._upload_base  = uploads_base_dir
         self._archive_base = archive_dir
 
     def base_dir(self) -> Path:

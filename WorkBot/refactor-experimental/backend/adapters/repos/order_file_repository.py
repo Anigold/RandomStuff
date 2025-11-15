@@ -23,7 +23,11 @@ class OrderFileRepository(OrderRepository):
         self._engine = GenericFileAdapter[Order](
             store=LocalBlobStore(),
             serializer=OrderSerializer(),
-            namer=OrderFilenameStrategy(orders_base_dir=base_dir, uploads_base_dir=uploads_dir, archive_dir=archive_dir),
+            namer=OrderFilenameStrategy(
+                orders_base_dir=base_dir,
+                uploads_base_dir=uploads_dir, 
+                archive_dir=archive_dir
+            ),
         )
 
     # ---- Repository API ----

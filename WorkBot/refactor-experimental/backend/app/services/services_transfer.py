@@ -20,6 +20,7 @@ class TransferServices:
         
         self.list_transfers = ListTransfers(self.repo)
         self.save_transfer  = SaveTransfer(self.repo)
+        self.archive_transfer = ArchiveTransfer(self.repo)
         
         self.convert_order_to_transfer = CreateTransferFromOrder(
             self.repo,

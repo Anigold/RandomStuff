@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 from backend.app.ports import (
     OrderRepository, 
-    DownloadPort
+    DownloadManagerPort
 )
 
 from backend.app.application.orders import *
@@ -12,7 +12,7 @@ from backend.app.application.orders import *
 class OrderServices:
 
     repo:      OrderRepository
-    downloads: DownloadPort
+    downloads: DownloadManagerPort
 
     def __post_init__(self) -> None:
         
@@ -33,7 +33,8 @@ class OrderServices:
             self.generate_vendor_upload
         )
 
-        self.expect_downloaded_pdf = ExpectDownloadedPdf(self.repo, self.downloads)
+        self.ingest_downloaded_file = IngestDownloadedFile(self.repo, self.downloads)
+        # self.expect_downloaded_pdf = ExpectDownloadedPdf(self.repo, self.downloads)
         self.check_and_update_order = CheckAndUpdateOrder(self.repo)
 
         self.generate_store_order_email = GenerateStoreOrderEmail(self.repo)

@@ -6,7 +6,6 @@ Run file for WorkBot CLI.
 Bootstraps repositories, infrastructure, services, bots, and launches the CLI interface.
 '''
 
-
 from backend.app.cli.workbot_cli import WorkBotCLI
 from backend.app.ports.repos import Repository
 from backend.infra.paths import (
@@ -16,7 +15,8 @@ from backend.infra.paths import (
     VENDOR_FILES_DIR,
     TRANSFER_FILES_DIR,
     STORE_FILES_DIR,
-    ORDER_ARCHIVE_FILES_DIR
+    ORDER_ARCHIVE_FILES_DIR,
+    TRANSFER_ARCHIVE_FILES_DIR,
 )
 from backend.infra.config.settings import DEFAULT_TRANSFER_ORIGIN
 
@@ -48,7 +48,7 @@ def create_repositories() -> dict[str, Repository]:
 
     orders_repo    = OrderFileRepository(ORDER_FILES_DIR, UPLOAD_FILES_DIR, ORDER_ARCHIVE_FILES_DIR)
     vendors_repo   = VendorFileRepository(VENDOR_FILES_DIR)
-    transfers_repo = TransferFileRepository(TRANSFER_FILES_DIR)
+    transfers_repo = TransferFileRepository(TRANSFER_FILES_DIR, TRANSFER_ARCHIVE_FILES_DIR)
     stores_repo    = StoreFileRepository(STORE_FILES_DIR)
 
     return {
@@ -66,14 +66,16 @@ def create_infra(repos) -> dict:
         - ThreadedDownloadAdapter for concurrent downloads.
         - FileLocator for resolving paths to vendor/store/order files.
     '''
-    from backend.adapters.downloads.threaded_download_adapter import ThreadedDownloadAdapter
+    # from backend.adapters.downloads.threaded_download_adapter import ThreadedDownloadAdapter
+    from backend.adapters.downloads.local_download_manager import LocalDownloadManager
     from backend.app.services.file_locator import FileLocator
 
-    downloader = ThreadedDownloadAdapter(DOWNLOADS_PATH)
+    # downloader = ThreadedDownloadAdapter(DOWNLOADS_PATH)
+    download_manager = LocalDownloadManager(DOWNLOADS_PATH)
     file_locator = FileLocator(repos['orders'], repos['vendors'], repos['stores'])
 
     return {
-        'downloader': downloader,
+        'downloader': download_manager,
         'locator': file_locator
     }
 
@@ -123,7 +125,7 @@ def create_email_service(services, infra):
         locator=infra['locator']
     )
 
-def create_craftable_bot(services):
+def create_craftable_bot(infra):
     '''
     Initialize the CraftableBot for interacting with the Craftable platform.
 
@@ -135,9 +137,9 @@ def create_craftable_bot(services):
     
     username, password = generate_craftablebot_args()
 
-    return CraftableBot(username, password, services['orders'], services['transfers'])
+    return CraftableBot(username, password, infra['downloader'], DOWNLOADS_PATH)   
 
-def create_workbot(services, emailer, craft_bot):
+def create_workbot(services, infra, emailer, craft_bot):
     '''
     Compose the top-level WorkBot controller.
 
@@ -149,7 +151,8 @@ def create_workbot(services, emailer, craft_bot):
     return WorkBot(
         services['orders'], services['transfers'], services['vendors'], services['stores'],
         emailer,
-        craft_bot
+        craft_bot,
+        infra['downloader']
     )
 
 def create_cli(work_bot):
@@ -162,8 +165,8 @@ def main() -> None:
     infra           = create_infra(repos)
     services        = create_domain_services(repos, infra)
     emails_service  = create_email_service(services, infra)
-    craft_bot       = create_craftable_bot(services)
-    work_bot        = create_workbot(services, emails_service, craft_bot)
+    craft_bot       = create_craftable_bot(infra)
+    work_bot        = create_workbot(services, infra, emails_service, craft_bot)
 
     cli = create_cli(work_bot)
     cli.start(WELCOME_BANNER)

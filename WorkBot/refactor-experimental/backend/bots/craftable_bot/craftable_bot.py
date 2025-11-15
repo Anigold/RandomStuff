@@ -14,7 +14,7 @@ from typing import List
 # Third-Party Libraries
 from pynput.keyboard import Key, Controller
 
-from selenium.common.exceptions import TimeoutException, NoSuchElementException, StaleElementReferenceException
+from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains 
@@ -22,11 +22,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
 # Internal
-from backend.infra.paths import DOWNLOADS_PATH
 from backend.infra.logger import Logger
-from backend.domain.models import Order, OrderItem, Transfer 
-from backend.app.services.services_order import OrderServices
-from backend.app.services.services_transfer import TransferServices
+from backend.domain.models import Transfer, BotOrderResult
 from backend.helpers.datetimes import convert_date_format, string_to_datetime
 from backend.bots.bot_mixins import SeleniumBotMixin
 
@@ -38,7 +35,7 @@ class CraftableBot(SeleniumBotMixin):
 
     site_map = {
             'login_page':    'https://app.craftable.com/signin',
-            'orders':   'https://app.craftable.com/buyer/2/{store_id}/orders/list',
+            'orders':        'https://app.craftable.com/buyer/2/{store_id}/orders/list',
             'transfer_page': 'https://app.craftable.com/buyer/2/{store_id}/transfers/list',
             'audit_page':    'https://app.craftable.com/director/2/583/audits/history/list'
     }
@@ -62,13 +59,11 @@ class CraftableBot(SeleniumBotMixin):
     
 # endregion
 
-    def __init__(self, username: str, password: str, 
-                 orders: OrderServices = None, transfers: TransferServices = None):
+    def __init__(self, username: str, password: str, download_manager, downloads_path):
         
-        super().__init__(DOWNLOADS_PATH, username=username, password=password)
+        super().__init__(downloads_path, username=username, password=password)
 
-        self.orders = orders
-        self.transfers = transfers
+        self.download_manager = download_manager
 
         self.is_logged_in = False
         
@@ -239,6 +234,7 @@ class CraftableBot(SeleniumBotMixin):
     files, and save in the ORDER_FILES_PATH. If no vendors supplied, we assume all vendors are wanted. 
 
     '''    
+  
     @SeleniumBotMixin.with_session(login=True)
     def download_orders(self, 
                         stores: List[str], 
@@ -247,6 +243,8 @@ class CraftableBot(SeleniumBotMixin):
                         update: bool = True
                         ) -> None:
         self.logger.info(f'Beginning download protocol for: stores: {stores}, vendors: {vendors}, download_pdf: {download_pdf}, update: {update}')
+
+        results: list = []
 
         empty_vendors = True if not vendors else False
 
@@ -266,48 +264,52 @@ class CraftableBot(SeleniumBotMixin):
 
             for vendor in vendors:
                 
-                order_items: list = []
+                try:
+                    order_items: list = []
 
-                self.goto_order(store=store, vendor=vendor)
-                self._wait_for((By.XPATH, '//tbody'), timeout=45) # Wait for the order items table to load.
+                    self.goto_order(store=store, vendor=vendor)
+                    self._wait_for((By.XPATH, '//tbody'), timeout=45) # Wait for the order items table to load.
 
-                order_date = self._get_order_date_from_order_page()
-                order_items = self._get_order_items_from_order_page()
+                    order_date = self._get_order_date_from_order_page()
+                    order_items = self._get_order_items_from_order_page()
 
-                order = Order(
-                    store=store,
-                    vendor=vendor,
-                    date=order_date,
-                    items=order_items
-                )
+                    # DOWNLOAD PDF
+                    if download_pdf: 
 
-                # SAVE/UPDATE CHECK
-                need_to_update = self._update_existing_order(order)
-                if (not update) or (not need_to_update):
-                    self.logger.info(f'{store}\'s order for {vendor} is already up-to-date...skipping.')
-                    continue
-               
-                # SAVE
-                self.logger.info(f'Saving order: {order}')
-                self.orders.save_order(order)
+                        token = self.download_manager.start_session()
+                        self.download_manager.attach_to_browser(token, self.driver)
 
-                # DOWNLOAD PDF
-                if download_pdf:
+                        self._download_order_pdf()
+                        time.sleep(2) # Otherwise it goes way too fast.
 
-                    # folder_name = f"{vendor}_{store}_{order_date}"
-                    # order_dir = (DOWNLOADS_PATH / folder_name).resolve()
-                    # order_dir.mkdir(parents=True, exist_ok=True)
+                    results.append(
+                        BotOrderResult(
+                            store=store,
+                            vendor=vendor,
+                            date=order_date,
+                            success=True,
+                            data=order_items,
+                            download_token=token,
+                            message='Order downloaded'
+                        )
+                    )
 
-                    # self.driver.execute_cdp_cmd(
-                    #     "Page.setDownloadBehavior",
-                    #     {"behavior": "allow", "downloadPath": str(order_dir)},
-                    # )
+                except Exception as e:
+                    results.append(
+                        BotOrderResult(
+                            store=store,
+                            vendor=vendor,
+                            date="",
+                            success=False,
+                            message=f"Failed: {e}",
+                            data=None,
+                            download_token=None
+                        )
+                    )
 
-                    self.orders.expect_downloaded_pdf(order, match=lambda f: f'Order.pdf')
-                    self._download_order_pdf()
-                    time.sleep(2) # Otherwise it goes way too fast.
-            
-            if empty_vendors: vendors = []
+            if empty_vendors: vendors = [] # Reset vendors for next store
+        
+        return results
 
     def _get_all_vendors_from_orders_page(self, store: str) -> list[str]:
 
@@ -349,15 +351,15 @@ class CraftableBot(SeleniumBotMixin):
 
             order_item_info = self._scrape_order_item_row_info(order_item_row)
 
-            order_item = OrderItem(
-                sku=order_item_info['sku'],
-                name=order_item_info['name'],
-                quantity=order_item_info['quantity'],
-                cost_per=order_item_info['price'],
-                total_cost=order_item_info['extended_price']
-                )
+            # order_item = OrderItem(
+            #     sku=order_item_info['sku'],
+            #     name=order_item_info['name'],
+            #     quantity=order_item_info['quantity'],
+            #     cost_per=order_item_info['price'],
+            #     total_cost=order_item_info['extended_price']
+            #     )
             
-            order_items.append(order_item)
+            order_items.append(order_item_info)
 
         return order_items
 
@@ -486,16 +488,6 @@ class CraftableBot(SeleniumBotMixin):
         ActionChains(self.driver).key_down(Keys.CONTROL).click(download_button).perform()
         return
     
-    def _update_existing_order(self, order: Order) -> bool:
-        '''
-        Requests that the OrderCoordinator handle the update check and replacement
-        if the new order differs from the existing one.
-
-        Returns True if the file is identical (no update needed),
-        False if the new file should be written.
-        '''
-        self.logger.info(f'[Order Update] Initiating update protocol for {order.store} / {order.vendor} / {order.date}.')
-        return self.orders.check_and_update_order(order)
 
 # endregion
    
@@ -650,6 +642,7 @@ class CraftableBot(SeleniumBotMixin):
 # endregion
 
 # region ---- Order Transfers ---------------------------
+    
     @SeleniumBotMixin.with_session(login=True)
     @Logger.log_exceptions
     def input_transfers(self, transfers: list) -> None:
@@ -660,12 +653,11 @@ class CraftableBot(SeleniumBotMixin):
         self.logger.info('Transfers complete.')
         return
     
+    @SeleniumBotMixin.with_session(login=True)
     @Logger.log_exceptions
     def input_transfer(self, transfer: Transfer) -> None:
-        
-            
+             
         self.logger.info(f'Starting transfer protocol for {len(transfer.transfer_items)} items from {transfer.origin} to {transfer.destination} on {transfer.transfer_date}')
-        if not self.is_logged_in: self.login()
 
         time.sleep(3)
 
@@ -807,7 +799,7 @@ class CraftableBot(SeleniumBotMixin):
         for pos, i in enumerate(item_choices):
             item_choice = i.text.split(' ')
             item_choice = ' '.join(item_choice[:-1])
-            print(item_choice, flush=True)
+     
             if item_choice == item.name:
                 item_choices[pos].click()
                 item_chosen = True
@@ -1179,7 +1171,7 @@ class CraftableBot(SeleniumBotMixin):
         except:
             print('Calendar not found.', flush=True)
 
-        print('Checking year, month, and days.', flush=True)
+ 
         calendar_current_month      = self.driver.find_element(By.CLASS_NAME, 'cur-month')
         calendar_current_year_input = self.driver.find_element(By.CLASS_NAME, 'cur-year')
 
@@ -1191,7 +1183,7 @@ class CraftableBot(SeleniumBotMixin):
         # print(current_month_value, flush=True)
         # print(desired_month_value, flush=True)
         if current_month_value != transfer_datetime.month:
-            print('Changing month', flush=True)
+       
             if current_month_value > transfer_datetime.month:
                 # Click back
                 for _ in range(current_month_value - transfer_datetime.month + 1):

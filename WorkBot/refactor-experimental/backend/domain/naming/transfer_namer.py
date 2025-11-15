@@ -11,8 +11,9 @@ class TransferFilenameStrategy(Namer[Transfer]):
           Downtown_Triphammer_2025-09-20.pdf
     """
 
-    def __init__(self, transfers_base_dir: Path):
+    def __init__(self, transfers_base_dir: Path, archive_dir: Path):
         self._base = transfers_base_dir
+        self._archive = archive_dir
 
     def base_dir(self) -> Path:
         """Return the base directory where all order files live."""
@@ -30,10 +31,17 @@ class TransferFilenameStrategy(Namer[Transfer]):
     def directory_for(self, transfer: Transfer) -> Path:
         return self.base_dir()
     
-    def path_for(self, transfer: Transfer, *, format: str, category: str | None = None) -> Path:
-        return (self.directory_for(transfer) / self.filename(transfer, format=format)).resolve()
-        
+    def archive_path_for(self, transfer: Transfer) -> Path:
+        return self._archive
     
+    def path_for(self, transfer: Transfer, *, format: str, category: str | None = None) -> Path:
+
+        if not category:
+            return (self.directory_for(transfer) / self.filename(transfer, format=format)).resolve()
+        if category == 'archive':
+            return (self.archive_path_for(transfer) / self.filename(transfer, format=format)).resolve()
+        
+        return (self.directory_for(transfer) / self.filename(transfer, format=format)).resolve()
     # def upload_path_for(self, order: Order) -> Path:
     #     return self._upload_base / order.vendor
     

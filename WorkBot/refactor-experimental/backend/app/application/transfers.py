@@ -44,3 +44,13 @@ class SaveTransfer:
     def __call__(self, transfer: Transfer) -> Transfer:
         return self.repo.save(transfer)
     
+
+@Logger.attach_logger
+@dataclass(frozen=True)
+class ArchiveTransfer:
+
+    repo: TransferRepository
+
+    def __call__(self, transfer: Transfer) -> None:
+        self.logger.info(f'Archiving transfer: {transfer}')
+        self.repo.archive_transfer(transfer)

@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from typing import Optional, Callable, List
 from pprint import pprint
 
-from backend.app.ports import OrderRepository, DownloadPort
+from backend.app.ports import OrderRepository, DownloadPort, DownloadManagerPort
 from backend.domain.models import Order
 from backend.infra.logger import Logger
 
@@ -151,30 +151,54 @@ class GenerateVendorUploadFiles:
         return outs
 
 
+# @Logger.attach_logger
+# @dataclass(frozen=True)
+# class ExpectDownloadedPdf:
+#     """
+#     Watches for one download and delegates ingesting it to the repository.
+#     App layer doesn't compute paths or change suffixes.
+#     """
+#     repo: OrderRepository
+#     downloads: DownloadPort
+
+#     def __call__(self, order: Order, match: Optional[Callable] = None, timeout: int = 30) -> None:
+#         self.logger.info(f"Expecting downloaded PDF for {order.vendor} / {order.store} / {order.date}")
+
+#         # Default match rule if caller doesn't provide one
+#         matcher = match or (lambda f: f.name.lower().endswith(".pdf"))
+
+#         def handle(file_path):
+#             # Delegate the storage/placement details to the repository.
+#             self.repo.ingest_downloaded_attachment(order, src_path=file_path, kind="pdf")
+#             self.logger.info(f"Ingested downloaded PDF: {file_path}")
+
+#         self.downloads.on_download_once(match_fn=matcher, callback=handle, timeout=timeout)
+
 @Logger.attach_logger
 @dataclass(frozen=True)
-class ExpectDownloadedPdf:
-    """
-    Watches for one download and delegates ingesting it to the repository.
-    App layer doesn't compute paths or change suffixes.
-    """
+class IngestDownloadedFile:
+
     repo: OrderRepository
-    downloads: DownloadPort
+    downloads: DownloadManagerPort
 
-    def __call__(self, order: Order, match: Optional[Callable] = None, timeout: int = 30) -> None:
-        self.logger.info(f"Expecting downloaded PDF for {order.vendor} / {order.store} / {order.date}")
+    def __call__(self, order: Order, token, kind: str = 'pdf') -> None:
 
-        # Default match rule if caller doesn't provide one
-        matcher = match or (lambda f: f.name.lower().endswith(".pdf"))
+        files = self.downloads.collect(token, f'*.{kind}')
 
-        def handle(file_path):
-            # Delegate the storage/placement details to the repository.
-            self.repo.ingest_downloaded_attachment(order, src_path=file_path, kind="pdf")
-            self.logger.info(f"Ingested downloaded PDF: {file_path}")
+        if not files:
+            self.logger.warning(f'No downloaded {kind} files found for {order.vendor}/{order.store}')
+            return
+        
+        for f in files:
+            self.repo.ingest_downloaded_attachment(
+                order=order,
+                src_path=f,
+                kind=kind,
+            )
 
-        self.downloads.on_download_once(match_fn=matcher, callback=handle, timeout=timeout)
+        self.downloads.cleanup(token)
 
-
+    
 # ========== DIFF / VALIDATION ==========
 
 @Logger.attach_logger

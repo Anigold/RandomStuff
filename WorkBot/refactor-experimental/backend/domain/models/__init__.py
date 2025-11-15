@@ -14,11 +14,13 @@ from .transfers.transfer_item import TransferItem
 
 from .vendors.vendor import Vendor, ContactInfo, ScheduleEntry, OrderingInfo
 
+from .bot_results import BotOrderResult
 __all__ = [
     'Order', 'OrderItem',
     'Audit',
     'Item', 'StoreItemInfo', 'VendorItemInfo',
     'Store', 'StoreContact',
     'Transfer', 'TransferItem',
-    'Vendor', 'ContactInfo', 'ScheduleEntry', 'OrderingInfo'
+    'Vendor', 'ContactInfo', 'ScheduleEntry', 'OrderingInfo',
+    'BotOrderResult'
 ]

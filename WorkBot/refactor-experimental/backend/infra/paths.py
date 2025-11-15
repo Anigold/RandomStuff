@@ -14,10 +14,12 @@ DOWNLOADS_PATH          = DATA_STORAGE_DIR / 'downloads'
 UPLOAD_FILES_DIR        = DATA_STORAGE_DIR / 'upload_files'
 ITEMS_DATA_FILE         = DATA_STORAGE_DIR / 'items'
 
-TRANSFER_FILES_DIR = DATA_STORAGE_DIR / 'transfers'
-TODOS_DIR          = DATA_STORAGE_DIR / 'todos'
+TRANSFER_FILES_DIR         = DATA_STORAGE_DIR / 'transfers'
+TRANSFER_ARCHIVE_FILES_DIR = DATA_STORAGE_DIR / 'transfer_archive'
 
-DATABASE_PATH           = DATA_STORAGE_DIR / 'inventory.db'
+TODOS_DIR = DATA_STORAGE_DIR / 'todos'
+
+DATABASE_PATH = DATA_STORAGE_DIR / 'inventory.db'
 
 # ====================================
 # ||      INFRASTRUCTURE DATA       ||

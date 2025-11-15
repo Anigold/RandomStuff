@@ -25,14 +25,15 @@ from backend.app.services import (
     EmailServices,
 )
 from backend.domain.models import (
-    Order,
+    Order, OrderItem,
     Transfer, TransferItem,
     Vendor,
     Store,
-    Item
+    Item,
+    BotOrderResult
 )
 from backend.adapters.emailer.emailer import Email
-
+from backend.adapters.downloads.local_download_manager import LocalDownloadManager
 
 @Logger.attach_logger
 class WorkBot:
@@ -47,33 +48,114 @@ class WorkBot:
                 stores_service:    StoreServices,
                 emails_service:    EmailServices,
                 craftable_bot:     CraftableBot,
+                download_manager:  LocalDownloadManager
                  ):
         self.logger.info('Initializing WorkBot...')
 
-        self.orders =    orders_service
+        self.orders    = orders_service
         self.transfers = transfers_service
-        self.vendors =   vendors_service
-        self.stores =    stores_service
+        self.vendors   = vendors_service
+        self.stores    = stores_service
 
         self.emails = emails_service
 
         self.craft_bot = craftable_bot
+
+        self.download_manager = download_manager
 
         self.logger.info('WorkBot initialized successfully.')
 
 # ------------------------------------------------------
 # CRAFTABLE BOT ACTIONS
 # ------------------------------------------------------
-    def download_craftable_orders(self, stores, vendors=[], download_pdf=True, update=True):
-        return self.craft_bot.download_orders(stores, vendors, download_pdf=download_pdf, update=update)
+    def download_craftable_orders(self, stores, vendors=[], download_pdf=True, update=True) -> None:
 
+        # Download orders from Craftable
+        results = self.craft_bot.download_orders(stores, vendors, download_pdf=download_pdf, update=update)
+        for result in results:
+            
+            if not result.success:
+                self.logger.warning(f'[{result.store}/{result.vendor}] FAILED: {result.message}')
+                continue
+
+            try:
+
+                order = self._convert_to_domain_order_object(result)
+
+                # UPDATE CHECK
+                need_to_update = self._update_existing_order(order)
+                if (not update) or (not need_to_update):
+                    self.logger.info(f'{order.store}\'s order for {order.vendor} is already up-to-date...skipping.')
+                    if result.download_token: self.download_manager.cleanup(result.download_token)
+                    continue
+                
+                # SAVE ORDER FILE
+                self.orders.save_order(order)
+
+                # PDF SAVE CHECK
+                if download_pdf and result.download_token:
+
+                    files = self.download_manager.collect(
+                        result.download_token,
+                        pattern='*.pdf'
+                    )
+
+                    if not files:
+                        self.logger.warning(f'No PDF file found for {order.store}/{order.vendor} using token: {result.download_token.id}')
+
+                    else:
+                        for fp in files:
+                            self.orders.ingest_downloaded_attachment(order, fp, 'pdf')
+                            self.logger.info(f'[PDF] Ingested: {fp.name} for {order.store}/{order.vendor}')
+                
+                if result.download_token:
+                    self.download_manager.cleanup(result.download_token)
+
+            except Exception as e:
+                self.logger.error(
+                    f"Error processing Craftable order ({result.store}/{result.vendor}): {e}",
+                    exc_info=True
+                )
+
+        self.logger.info(f'Craftable order sync completed successfully.')
+
+    def _convert_to_domain_order_object(self, order_data: BotOrderResult) -> Order:
+        return Order(
+            store=order_data.store,
+            vendor=order_data.vendor,
+            date=order_data.date,
+            items=[
+                OrderItem(
+                    sku=i.get('sku', ''),
+                    name=i.get('name', ''),
+                    quantity=float(i.get('quantity', 0)),
+                    cost_per=float(i.get('price', 0)),
+                    total_cost=float(i.get('extended_price', 0)),
+                ) for i in order_data.data
+            ],
+        )
+    
+    def _update_existing_order(self, order: Order) -> bool:
+        '''
+        Requests that the OrderCoordinator handle the update check and replacement
+        if the new order differs from the existing one.
+
+        Returns True if the file is identical (no update needed),
+        False if the new file should be written.
+        '''
+        self.logger.info(f'[Order Update] Initiating update protocol for {order.store} / {order.vendor} / {order.date}.')
+        return self.orders.check_and_update_order(order)
+    
     def delete_craftable_orders(self, stores, vendors=[]):
         return self.craft_bot.delete_orders(stores, vendors)
 
     def input_craftable_transfers(self):
         transfers = self.transfers.list_transfers()
-        self.logger.info(transfers)
-        return self.craft_bot.input_transfers(transfers)
+        
+        self.craft_bot.input_transfers(transfers)
+
+        for t in transfers:
+            self.transfers.archive_transfer(t)
 
     def download_audits(self, stores: list[str], start_date: str, end_date: str) -> None:
         self.craft_bot.download_audits(stores, start_date, end_date)
@@ -264,6 +346,9 @@ class WorkBot:
         long_date = today.strftime(f'%B {day}{suffix}, %Y')
         return long_date, day_of_week
 
-    def testing_function(self, stores: str, vendors: str) -> None:
-        return self.craft_bot.new_download_orders(stores, vendors)
+    def testing_function(self, ) -> None:
+        transfers = self.transfers.list_transfers()
+
+        for t in transfers:
+            self.transfers.archive_transfer(t)
     
