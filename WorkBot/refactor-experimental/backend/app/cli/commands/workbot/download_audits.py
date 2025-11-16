@@ -10,7 +10,7 @@ class DownloadAudits(Command):
             prog=self.name,
             description='Downloads audits from Craftable.'
         )
-        parser.add_argument('--stores', nargs='+', default=['Bakery', 'Collegetown', 'Triphammer', 'Downtown', 'Easthill'], help='An active store.')
+        parser.add_argument('--stores', nargs='+', default=self.context.get_stores(), help='An active store.')
         parser.add_argument('--start_date', help='Date in mm/dd/yyyy format.')
         parser.add_argument('--end_date', help='Date in mm/dd/yyyy format.')
         return parser

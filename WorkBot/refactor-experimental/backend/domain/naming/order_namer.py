@@ -28,10 +28,7 @@ class OrderFilenameStrategy(Namer[Order]):
         )
         ext = "xlsx" if format in ("excel", "xlsx") else format
         return f"{obj.vendor}_{obj.store}_{date_str}.{ext}"
-
-    def directory_for(self, order: Order) -> Path:
-        return self.base_dir() / order.vendor
-    
+ 
     def path_for(self, order: Order, *, format: str, category: str | None = None) -> Path:
 
         if not category:
@@ -42,7 +39,10 @@ class OrderFilenameStrategy(Namer[Order]):
             return (self.archive_path_for(order) / self.filename(order, format=format)).resolve()
         if category == 'combined':
             return (None)
-
+        
+    def directory_for(self, order: Order) -> Path:
+        return self._base / order.vendor
+    
     def upload_path_for(self, order: Order) -> Path:
         return self._upload_base / order.vendor
     

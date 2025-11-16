@@ -1,8 +1,10 @@
-# backend/adapters/downloads/local_download_manager.py
 from pathlib import Path
 import uuid, shutil, time
-from backend.infra.logger import Logger
 from dataclasses import dataclass
+
+from backend.infra.logger import Logger
+from backend.errors.boundaries.infra import InfraBoundary
+
 
 @dataclass(frozen=True)
 class DownloadToken:
@@ -13,8 +15,6 @@ class DownloadToken:
 class LocalDownloadManager:
     """
     Full token-based file download manager.
-    Bots get opaque tokens, not filesystem paths.
-    Managers map tokens -> folders privately.
     """
 
     def __init__(self, base_downloads_path: Path):
@@ -25,14 +25,19 @@ class LocalDownloadManager:
     # Session creation
     # -------------------------------------------------------------
     def start_session(self) -> DownloadToken:
-        token = DownloadToken(id=str(uuid.uuid4()))
-        session_dir = (self.base / "sessions" / token.id).resolve()
-        session_dir.mkdir(parents=True, exist_ok=True)
 
-        self.sessions[token.id] = session_dir
-        self.logger.info(f"[DownloadManager] Session {token.id} -> {session_dir}")
+        def operation():
 
-        return token
+            token = DownloadToken(id=str(uuid.uuid4()))
+            session_dir = (self.base / "sessions" / token.id).resolve()
+            session_dir.mkdir(parents=True, exist_ok=True)
+
+            self.sessions[token.id] = session_dir
+            self.logger.info(f"[DownloadManager] Session {token.id} -> {session_dir}")
+
+            return token
+    
+        return InfraBoundary.run(operation)
 
     # -------------------------------------------------------------
     # Attach Chrome/WebDriver to this session

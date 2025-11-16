@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional, Callable, List
+from pathlib import Path
 from pprint import pprint
 
 from backend.app.ports import OrderRepository, DownloadPort, DownloadManagerPort
@@ -181,22 +182,14 @@ class IngestDownloadedFile:
     repo: OrderRepository
     downloads: DownloadManagerPort
 
-    def __call__(self, order: Order, token, kind: str = 'pdf') -> None:
+    def __call__(self, order: Order, file_path: Path, kind: str = 'pdf') -> None:
 
-        files = self.downloads.collect(token, f'*.{kind}')
+        self.repo.ingest_downloaded_attachment(
+            order=order,
+            src_path=file_path,
+            kind=kind,
+        )
 
-        if not files:
-            self.logger.warning(f'No downloaded {kind} files found for {order.vendor}/{order.store}')
-            return
-        
-        for f in files:
-            self.repo.ingest_downloaded_attachment(
-                order=order,
-                src_path=f,
-                kind=kind,
-            )
-
-        self.downloads.cleanup(token)
 
     
 # ========== DIFF / VALIDATION ==========

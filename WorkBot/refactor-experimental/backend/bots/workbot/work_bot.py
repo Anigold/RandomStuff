@@ -105,7 +105,7 @@ class WorkBot:
 
                     else:
                         for fp in files:
-                            self.orders.ingest_downloaded_attachment(order, fp, 'pdf')
+                            self.orders.ingest_downloaded_file(order, fp, 'pdf')
                             self.logger.info(f'[PDF] Ingested: {fp.name} for {order.store}/{order.vendor}')
                 
                 if result.download_token:
