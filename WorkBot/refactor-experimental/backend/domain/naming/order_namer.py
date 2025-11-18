@@ -1,8 +1,7 @@
 from pathlib import Path
 from datetime import datetime
 from backend.domain.models import Order
-from backend.app.ports.generic import Namer
-
+from backend.core.interfaces.namer import Namer
 
 class OrderFilenameStrategy(Namer[Order]):
     """

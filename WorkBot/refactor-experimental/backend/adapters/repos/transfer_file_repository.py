@@ -1,7 +1,7 @@
 from backend.app.ports.repos import TransferRepository
 from pathlib import Path
 from backend.adapters.files.generic_file_adapter import GenericFileAdapter
-from backend.adapters.files.local_blob_store import LocalBlobStore
+from backend.infra.filesystem.local_blob_store import LocalBlobStore
 
 from backend.domain.models import Transfer
 from backend.domain.serializer.serializers.transfer import TransferSerializer

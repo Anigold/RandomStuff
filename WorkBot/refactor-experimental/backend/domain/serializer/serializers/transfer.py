@@ -1,13 +1,10 @@
-# backend/domain/serializers/vendor_serializer.py
-
 from pathlib import Path
 from typing import Any, Dict, Optional
-import json
 from backend.domain.models import Transfer, TransferItem
-from backend.app.ports.generic import Serializer
+from backend.core.interfaces.serializer import Serializer
 from ..formats import get_formatter 
 from backend.infra.logger import Logger
-from ..formats.base_format import BaseFormatter
+from backend.core.interfaces.formatter import BaseFormatter
 
 @Logger.attach_logger
 class TransferSerializer(Serializer[Transfer]):

@@ -86,10 +86,10 @@ def create_domain_services(repos, infra) -> dict:
     Wires together repositories and supporting infrastructure
     for Orders, Vendors, Transfers, and Stores.
     '''
-    from backend.app.services.services_order import OrderServices
-    from backend.app.services.services_transfer import TransferServices
-    from backend.app.services.services_vendor import VendorServices
-    from backend.app.services.services_store import StoreServices
+    from backend.app.services.order_service import OrderServices
+    from backend.app.services.transfer_service import TransferServices
+    from backend.app.services.vendor_service import VendorServices
+    from backend.app.services.store_service import StoreServices
 
     downloader = infra['downloader']
 
@@ -112,7 +112,7 @@ def create_email_service(services, infra):
     Connects the emailer provider with domain services
     for automated communication and report delivery.
     '''
-    from backend.app.services.services_emailer import EmailServices
+    from backend.app.services.email_service import EmailServices
     from backend.adapters.emailer.emailer import Emailer, Email
     from backend.adapters.emailer.registry import EmailProviderRegistry
 

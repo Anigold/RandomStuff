@@ -7,7 +7,7 @@ from backend.domain.models import Vendor
 from backend.infra.paths import VENDOR_FILES_DIR
 
 from backend.adapters.files.generic_file_adapter import GenericFileAdapter
-from backend.adapters.files.local_blob_store import LocalBlobStore
+from backend.infra.filesystem.local_blob_store import LocalBlobStore
 
 from backend.domain.models import Vendor
 from backend.domain.naming.vendor_namer import VendorFilenameStrategy

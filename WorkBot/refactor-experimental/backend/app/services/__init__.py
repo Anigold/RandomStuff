@@ -1,8 +1,8 @@
-from .services_order import OrderServices
-from .services_store import StoreServices
-from .services_vendor import VendorServices
-from .services_transfer import TransferServices
-from .services_emailer import EmailServices
+from .order_service import OrderServices
+from .store_service import StoreServices
+from .vendor_service import VendorServices
+from .transfer_service import TransferServices
+from .email_service import EmailServices
 from.file_locator import FileLocator
 
 __all__ = [

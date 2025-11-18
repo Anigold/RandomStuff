@@ -79,3 +79,7 @@
 2025-11-10 07:29:00,216 - INFO - backend.app.application.orders.CombineOrders - (orders.py:79) - [< Order store=Collegetown, vendor=Ithaca Bakery, data=20251107, items=42 >, < Order store=Downtown, vendor=Ithaca Bakery, data=20251107, items=36 >, < Order store=Easthill, vendor=Ithaca Bakery, data=20251106, items=41 >, < Order store=Syracuse, vendor=Ithaca Bakery, data=20251107, items=22 >, < Order store=Triphammer, vendor=Ithaca Bakery, data=20251107, items=31 >]
 2025-11-10 07:29:00,248 - INFO - backend.app.application.orders.CombineOrders - (orders.py:81) - Merge for Ithaca Bakery complete.
 2025-11-10 07:29:00,248 - INFO - backend.app.application.orders.CombineOrders - (orders.py:82) - Merging complete.
+2025-11-17 07:34:50,401 - INFO - backend.app.application.orders.CombineOrders - (orders.py:78) - Merging all orders for: ['Ithaca Bakery']
+2025-11-17 07:34:51,968 - INFO - backend.app.application.orders.CombineOrders - (orders.py:81) - [< Order store=Collegetown, vendor=Ithaca Bakery, data=20251114, items=37 >, < Order store=Downtown, vendor=Ithaca Bakery, data=20251114, items=33 >, < Order store=Easthill, vendor=Ithaca Bakery, data=20251114, items=45 >, < Order store=Syracuse, vendor=Ithaca Bakery, data=20251114, items=18 >, < Order store=Triphammer, vendor=Ithaca Bakery, data=20251114, items=25 >]
+2025-11-17 07:34:51,993 - INFO - backend.app.application.orders.CombineOrders - (orders.py:83) - Merge for Ithaca Bakery complete.
+2025-11-17 07:34:51,994 - INFO - backend.app.application.orders.CombineOrders - (orders.py:84) - Merging complete.

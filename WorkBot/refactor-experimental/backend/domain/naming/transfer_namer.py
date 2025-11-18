@@ -1,7 +1,7 @@
 from pathlib import Path
 from datetime import datetime
 from backend.domain.models import Transfer
-from backend.app.ports.generic import Namer
+from backend.core.interfaces.namer import Namer
 
 
 class TransferFilenameStrategy(Namer[Transfer]):

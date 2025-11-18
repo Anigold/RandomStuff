@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 from typing import Any, Dict
-from .base_format import BaseFormatter
+from backend.core.interfaces.formatter import BaseFormatter
 
 class JSONFormatter(BaseFormatter[Dict[str, Any]]):
     """Domain-agnostic JSON formatter: expects a dict with 'headers' and 'rows'."""

@@ -1,13 +1,13 @@
 from pathlib import Path
 from typing import Optional, List
 from backend.domain.models import Order, OrderItem
-from backend.app.ports.generic import Serializer
+from backend.core.interfaces.serializer import Serializer
 from ..formats import get_formatter
 from pprint import pprint
 from collections import defaultdict
 
 from backend.infra.logger import Logger
-from ..formats.base_format import BaseFormatter
+from backend.core.interfaces.formatter import BaseFormatter
 
 @Logger.attach_logger
 class OrderSerializer(Serializer[Order]):

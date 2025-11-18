@@ -1,10 +1,12 @@
 from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Generic, TypeVar, Optional, List
+from typing import Generic, TypeVar, List
 
 from backend.app.ports.files import GenericFilePort
-from backend.app.ports.generic import BlobStore, Serializer, Namer
+from backend.app.ports.generic import BlobStore
+from backend.core.interfaces.namer import Namer
+from backend.core.interfaces.serializer import Serializer
 from backend.infra.logger import Logger
 
 T = TypeVar("T")

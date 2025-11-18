@@ -7,7 +7,7 @@ from backend.adapters.files.generic_file_adapter import GenericFileAdapter
 from backend.domain.serializer.serializers.order import OrderSerializer
 from backend.domain.naming.order_namer import OrderFilenameStrategy
 from backend.domain.models import Order
-from backend.adapters.files.local_blob_store import LocalBlobStore
+from backend.infra.filesystem.local_blob_store import LocalBlobStore
 from backend.infra.logger import Logger
 
 from backend.domain.models.orders.combine_orders import OrderCombiner

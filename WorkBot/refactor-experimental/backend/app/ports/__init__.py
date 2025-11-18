@@ -1,7 +1,7 @@
 from .downloads import DownloadPort, DownloadManagerPort
 from .files import GenericFilePort
 from .repos import OrderRepository, VendorRepository, StoreRepository, TransferRepository
-from .generic import BlobStore, Serializer, Namer
+from .generic import BlobStore
 from .locator import LocatorPort
 
 __all__ = [
@@ -14,7 +14,5 @@ __all__ = [
     'StoreRepository',
     'TransferRepository',
     'BlobStore',
-    'Serializer',
-    'Namer',
     'LocatorPort',
 ]

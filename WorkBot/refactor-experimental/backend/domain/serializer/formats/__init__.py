@@ -1,6 +1,6 @@
 from typing import Dict
 
-from .base_format import BaseFormatter
+from backend.core.interfaces.formatter import BaseFormatter
 from .excel_format import ExcelFormatter
 from .csv_format import CsvFormatter
 from .json_format import JSONFormatter

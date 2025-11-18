@@ -1,6 +1,6 @@
 from backend.app.ports.repos import StoreRepository
 from backend.adapters.files.generic_file_adapter import GenericFileAdapter
-from backend.adapters.files.local_blob_store import LocalBlobStore
+from backend.infra.filesystem.local_blob_store import LocalBlobStore
 from pathlib import Path
 from backend.domain.models import Store
 from backend.domain.serializer.serializers.store import StoreSerializer

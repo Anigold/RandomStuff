@@ -1,11 +1,8 @@
-# backend/app/formatters/csv_formatter.py
-
 from io import StringIO
 from pathlib import Path
 from typing import Any, Dict, List
 import csv
-from .base_format import BaseFormatter
-
+from backend.core.interfaces.formatter import BaseFormatter
 
 class CsvFormatter(BaseFormatter):
     """Domain-agnostic CSV formatter: expects a dict with 'headers' and 'rows'."""

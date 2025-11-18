@@ -1,0 +1,263 @@
+C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend/
+    file_tree.py
+    file_tree.txt
+    adapters/
+        downloads/
+            local_download_manager.py
+            threaded_download_adapter.py
+            __init__.py
+        emailer/
+            emailer.py
+            registry.py
+            __init__.py
+            services/
+                gmail_service.py
+                outlook_service.py
+                service.py
+                __init__.py
+            templates/
+                store_orders_email.txt
+        files/
+            generic_file_adapter.py
+            local_blob_store.py
+            __init__.py
+        repos/
+            order_file_repository.py
+            store_file_repository.py
+            transfer_file_repository.py
+            vendor_file_repository.py
+            __init__.py
+    app/
+        cli/
+            .cli_history
+            cli.py
+            workbot_cli.py
+            __init__.py
+            commands/
+                command.py
+                command_context.py
+                builtin/
+                    clear_history.py
+                    help.py
+                    shutdown.py
+                    __init__.py
+                workbot/
+                    archive_orders.py
+                    combine_orders.py
+                    convert_order_to_transfer.py
+                    delete_orders.py
+                    download_audits.py
+                    download_orders.py
+                    generate_store_order_emails.py
+                    generate_vendor_order_emails.py
+                    generate_vendor_upload_files.py
+                    input_transfers.py
+                    list_orders.py
+                    open_directory.py
+                    split_natalies.py
+                    testing.py
+                    vendor_information.py
+                    workbot_context.py
+        ports/
+            downloads.py
+            files.py
+            generic.py
+            locator.py
+            repos.py
+            __init__.py
+        services/
+            email_services.py
+            file_locator.py
+            order_services.py
+            store_services.py
+            transfer_services.py
+            vendor_services.py
+            __init__.py
+    bots/
+        bot_mixins.py
+        bot_results.py
+        BrowserBot.py
+        helpers.py
+        craftable_bot/
+            craftable_bot.py
+            helpers.py
+            __init__.py
+        workbot/
+            work_bot.py
+            work_result.py
+            __init__.py
+    core/
+        components/
+            infra_component.py
+            repository_component.py
+            service_component.py
+            workbot_component.py
+        interfaces/
+            formatter.py
+            mapper.py
+            namer.py
+            serializer.py
+            transformer.py
+    domain/
+        models/
+            to_do.py
+            __init__.py
+            audits/
+                audit.py
+            items/
+                item.py
+                store_item_info.py
+                vendor_item_info.py
+            orders/
+                combine_orders.py
+                order.py
+                order_item.py
+            stores/
+                store.py
+            transfers/
+                transfer.py
+                transfer_item.py
+            vendors/
+                vendor.py
+        naming/
+            order_namer.py
+            store_namer.py
+            transfer_namer.py
+            vendor_namer.py
+            __init__.py
+        serializer/
+            formats/
+                csv_format.py
+                excel_format.py
+                json_format.py
+                txt_format.py
+                __init__.py
+                vendor_formats/
+                    hill_n_markes.py
+                    performance_food.py
+                    sysco.py
+                    unfi.py
+                    us_foods.py
+                    __init__.py
+            serializers/
+                order.py
+                store.py
+                transfer.py
+                vendor.py
+        transformers/
+            order_to_transfer.py
+            __init__.py
+        validation/
+            order_diff.py
+            __init__.py
+    errors/
+        error_bus.py
+        exceptions.py
+        __init__.py
+        boundaries/
+            infra.py
+            repo.py
+            service.py
+            workbot.py
+    helpers/
+        datetimes.py
+    infra/
+        logger.py
+        paths.py
+        __init__.py
+        config/
+            settings.py
+            __init__.py
+            secrets/
+                env_loader.py
+                __init__.py
+            stores/
+                Bakery.json
+                Collegetown.json
+                Downtown.json
+                Easthill.json
+                Syracuse.json
+                Triphammer.json
+            vendors/
+                A.L. George.json
+                BALKAN BEVERAGE LLC.json
+                BJ's.json
+                Bo's Bones.json
+                Coco-Cola.json
+                Coffee Depot LLC.json
+                Copper Horse Coffee.json
+                Dawn.json
+                DUTCH VALLEY FOOD DIST.json
+                Equal Exchange.json
+                Farmer Ground Flour.json
+                FingerLakes Farms.json
+                Harney and Sons Tea.json
+                Hill & Markes.json
+                Hillcrest Dairy.json
+                Hillcrest Foods.json
+                Ithaca Bakery.json
+                Johnston Paper.json
+                Keck's Food Service.json
+                Lentz.json
+                Nuts.json
+                Odeko In.json
+                Performance Food.json
+                Peters Supply.json
+                Regional Access Inc.json
+                Regional Distributors, Inc.json
+                Russo Produce.json
+                SANICO.json
+                Sysco.json
+                ULINE.json
+                UNFI.json
+                US Foods.json
+                Vegan Epicure.json
+                Webstaurant.json
+                __init__.py
+    tests/
+        conftest.py
+        __init__.py
+        adapters/
+            downloads/
+                test_threaded_download_adapter.py
+            emailer/
+                test_emailer_core.py
+                test_registry.py
+                services/
+                    test_gmail_service.py
+                    test_mock_service.py
+                    test_outlook_service.py
+            repos/
+                test_order_file_repository.py
+        app/
+            conftest.py
+            ports/
+                test_downloads_port.py
+                test_generic_ports.py
+            services/
+                test_file_locator.py
+                test_services_email.py
+                test_services_order.py
+                test_services_store.py
+                test_services_vendor.py
+        bots/
+            craftable_bot/
+                test_craftable_bot.py
+                test_craftable_helpers.py
+            workbot/
+                test_workbot_commands.py
+                test_workbot_init.py
+        fixtures/
+            fake_orders.py
+            fake_vendors.py
+            sample_order.xlsx
+            sample_vendor_upload.xlsx
+        infra/
+            test_errors.py
+            test_logger.py
+            test_paths.py
+        integration/
+            test_craftable_integration.py
+            test_email_generation_flow.py
+            test_order_file_roundtrip.py
+            test_vendor_upload_flow.py

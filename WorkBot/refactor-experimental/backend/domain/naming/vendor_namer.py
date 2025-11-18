@@ -1,6 +1,6 @@
 from pathlib import Path
 from backend.domain.models import Vendor
-from backend.app.ports.generic import Namer
+from backend.core.interfaces.namer import Namer
 import re
 
 class VendorFilenameStrategy(Namer[Vendor]):

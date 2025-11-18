@@ -24,7 +24,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 # Internal
 from backend.infra.logger import Logger
 from backend.domain.models import Transfer, BotOrderResult
-from backend.helpers.datetimes import convert_date_format, string_to_datetime
+from backend.core.utils.datetimes import convert_date_format, string_to_datetime
 from backend.bots.bot_mixins import SeleniumBotMixin
 
 

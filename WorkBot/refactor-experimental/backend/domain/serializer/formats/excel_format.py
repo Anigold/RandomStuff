@@ -1,11 +1,8 @@
-# backend/app/formatters/excel_formatter.py
-
 from io import BytesIO
 from pathlib import Path
 from typing import Any, Dict, List
 from openpyxl import Workbook, load_workbook
-from .base_format import BaseFormatter
-
+from backend.core.interfaces.formatter import BaseFormatter
 
 class ExcelFormatter(BaseFormatter):
     """Domain-agnostic Excel formatter: expects a dict with 'headers' and 'rows'."""
