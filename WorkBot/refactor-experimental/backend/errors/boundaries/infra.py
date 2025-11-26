@@ -6,8 +6,9 @@ from backend.errors.exceptions import (
     SeleniumError, SeleniumTimeoutError,
 )
 from backend.errors.error_bus import ErrorBus, ErrorEvent
+from .base import BoundaryMixin
 
-class InfraBoundary:
+class InfraBoundary(BoundaryMixin):
 
     @staticmethod
     def run(fn, *args, **kwargs):

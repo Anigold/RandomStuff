@@ -63,7 +63,7 @@ def create_infra(repos) -> dict:
     Build shared infrastructure components.
 
     Includes:
-        - ThreadedDownloadAdapter for concurrent downloads.
+        - DownloadManager for concurrent downloads.
         - FileLocator for resolving paths to vendor/store/order files.
     '''
     # from backend.adapters.downloads.threaded_download_adapter import ThreadedDownloadAdapter

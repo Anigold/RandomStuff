@@ -213,8 +213,7 @@ class CraftableBot(SeleniumBotMixin):
 
 
 # endregion 
-
-    
+   
 # region ---- Order Downloading -------------------------
     
     ''' Download orders from Craftable.
@@ -270,8 +269,12 @@ class CraftableBot(SeleniumBotMixin):
                     self.goto_order(store=store, vendor=vendor)
                     self._wait_for((By.XPATH, '//tbody'), timeout=45) # Wait for the order items table to load.
 
-                    order_date = self._get_order_date_from_order_page()
+                    order_date  = self._get_order_date_from_order_page()
                     order_items = self._get_order_items_from_order_page()
+
+                    if not order_items:
+                        self.logger.info(f'No items found in order...skipping.')
+                        continue
 
                     # DOWNLOAD PDF
                     if download_pdf: 
@@ -394,55 +397,6 @@ class CraftableBot(SeleniumBotMixin):
             'total':      row_data[5].text,
             'creator':    row_data[6].text
         }
-
-        # for store in stores:
-
-        #     if empty_vendors: # Download all vendors
-                
-        #         vendors: list = []
-
-        #         self.go_to_page('orders_page', store=store)
-        #         self._wait_for((By.XPATH, '//tbody'), timeout=45)
-
-        #         order_rows = self._get_order_table_rows()
-
-        #         for order_row in order_rows:
-        #             row_metadata = order_row.find_elements(By.XPATH, './td')
-        #             vendor_name = row_metadata[3].text
-
-        #             vendors.append(vendor_name)
-            
-        #     for vendor in vendors:
-
-        #         self.goto_order(store, vendor)
-                
-        #         time.sleep(3)
-
-        #         order_table = self.driver.find_element(By.TAG_NAME, 'tbody')
-        #         order_table_rows = order_table.find_elements(By.TAG_NAME, 'tr')
-        #         items = self._scrape_order(order_table_rows)
-
-        #         date = self.driver.find_element(By.XPATH, '//div/br').text
-        #         order_to_check_update = Order(store=store, vendor=vendor, date=date, items=items)
-        #         if update and self._update_existing_order(order_to_check_update):
-        #             self.logger.info(f'Order for {vendor} is up-to-date. Skipping.')
-        #             self.driver.back()
-        #             time.sleep(2)
-        #             return 
-
-        #         self.logger.info(f'Saving order for {vendor}.')
-        #         order_to_save = Order(store=store, vendor=vendor, date=date, items=items)
-        #         self.orders.save_order(order_to_save)
-
-        #         time.sleep(1)
-
-
-        #         if download_pdf:
-        #             self.orders.expect_downloaded_pdf(order_to_save, match=lambda f: 'Order.pdf')
-        #             self._download_order_pdf()
-
-        #     if empty_vendors:
-        #         vendors = None
    
     def _get_order_item_table_rows(self) -> list:
         '''Assumes the driver is already pointed at an order items page.
@@ -467,16 +421,18 @@ class CraftableBot(SeleniumBotMixin):
         Price
         ExtendedPrice
         '''
-
-        order_item_row_data = order_item_row.find_elements(By.TAG_NAME, 'td')
-        return {
-            'sku':            order_item_row_data[2].text,
-            'name':           order_item_row_data[3].find_element(By.XPATH, './/a').text,
-            'pack_size':      order_item_row_data[4].text,
-            'quantity':       order_item_row_data[5].text,
-            'price':          order_item_row_data[6].text.replace('$', '').replace(',', ''),
-            'extended_price': order_item_row_data[7].text.replace('$', '').replace(',', '')
-        }
+        try:
+            order_item_row_data = order_item_row.find_elements(By.TAG_NAME, 'td')
+            return {
+                'sku':            order_item_row_data[2].text,
+                'name':           order_item_row_data[3].find_element(By.XPATH, './/a').text,
+                'pack_size':      order_item_row_data[4].text,
+                'quantity':       order_item_row_data[5].text,
+                'price':          order_item_row_data[6].text.replace('$', '').replace(',', ''),
+                'extended_price': order_item_row_data[7].text.replace('$', '').replace(',', '')
+            }
+        except:
+            return None
     
     def _download_order_pdf(self) -> None:
         '''
@@ -504,7 +460,6 @@ class CraftableBot(SeleniumBotMixin):
             #     continue
 
             store_orders_url = self.get_url('orders', store=store)
-            print(store_orders_url)
             self.logger.debug(f'Navigating to: {store_orders_url}')
             self.driver.get(store_orders_url)
             time.sleep(6)
