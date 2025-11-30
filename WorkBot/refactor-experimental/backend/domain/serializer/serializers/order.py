@@ -51,7 +51,7 @@ class OrderSerializer(Serializer[Order]):
         formatter = self.get_formatter(fmt)
 
         payload = formatter.load_path(path, context=context)
-    
+
         return self.from_table(payload)
 
     def get_formatter(self, fmt: str) -> BaseFormatter:
@@ -143,6 +143,7 @@ class OrderSerializer(Serializer[Order]):
 
         items = []
         for row in rows:
+
             item_sku, item_name, qty, cost_per, total_cost = row
             item = {
                 'sku': item_sku,

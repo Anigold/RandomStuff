@@ -40,10 +40,10 @@ class OrderFileRepository(OrderRepository):
         return [self._engine.read_from_path(p) for p in self._engine.list_files("*.xlsx")]
 
     def list_by_vendor(self, vendor: str) -> list[Order]:
-        return [o for o in self.list_all() if o.vendor == vendor]
+        return [self._engine.read_from_path(p) for p in self._engine.list_files(f"*{vendor}*.xlsx")]
 
     def list_by_store(self, store: str) -> list[Order]:
-        return [o for o in self.list_all() if o.store == store]
+        return [self._engine.read_from_path(p) for p in self._engine.list_files(f"*{store}*.xlsx")]
 
     def save(self, order: Order) -> None:
         self._engine.save(order, format="xlsx")

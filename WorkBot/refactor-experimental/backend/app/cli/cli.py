@@ -449,11 +449,8 @@ class CLI:
 
             try:
                 self.commands[command].command(args)
-            except:
-                try:
-                    self.commands[command].command()
-                except Exception as e:
-                    self._handle_error(command, e)
+            except Exception as e:
+                self._handle_error(command, e)
             
 
             # self.commands[command].command(args) if args else self.commands[command].command()

@@ -6,3 +6,28 @@
 2025-11-24 06:04:34,750 - INFO - backend.app.services.order_service.CombineOrders - (order_service.py:89) - [< Order store=Collegetown, vendor=Ithaca Bakery, data=20251121, items=49 >, < Order store=Downtown, vendor=Ithaca Bakery, data=20251121, items=36 >, < Order store=Easthill, vendor=Ithaca Bakery, data=20251122, items=39 >, < Order store=Syracuse, vendor=Ithaca Bakery, data=20251121, items=15 >, < Order store=Triphammer, vendor=Ithaca Bakery, data=20251121, items=28 >]
 2025-11-24 06:04:34,775 - INFO - backend.app.services.order_service.CombineOrders - (order_service.py:91) - Merge for Ithaca Bakery complete.
 2025-11-24 06:04:34,776 - INFO - backend.app.services.order_service.CombineOrders - (order_service.py:92) - Merging complete.
+2025-11-30 08:18:41,364 - INFO - backend.app.services.order_service.CombineOrders - (order_service.py:86) - Merging all orders for: ['Coffee Depot LLC']
+2025-11-30 08:20:43,141 - INFO - backend.app.services.order_service.CombineOrders - (order_service.py:86) - Merging all orders for: ['Ithaca Bakery']
+2025-11-30 08:22:33,639 - INFO - backend.app.services.order_service.CombineOrders - (order_service.py:86) - Merging all orders for: ['Ithaca Bakery']
+2025-11-30 08:23:40,680 - INFO - backend.app.services.order_service.CombineOrders - (order_service.py:86) - Merging all orders for: ['Ithaca Bakery']
+2025-11-30 08:24:19,577 - INFO - backend.app.services.order_service.CombineOrders - (order_service.py:86) - Merging all orders for: ['Ithaca Bakery']
+2025-11-30 08:42:17,953 - INFO - backend.app.services.order_service.CombineOrders - (order_service.py:86) - Merging all orders for: ['Coffee Depot LLC']
+2025-11-30 08:43:03,121 - INFO - backend.app.services.order_service.CombineOrders - (order_service.py:86) - Merging all orders for: ['Coffee Depot LLC']
+2025-11-30 08:44:29,820 - INFO - backend.app.services.order_service.CombineOrders - (order_service.py:86) - Merging all orders for: ['Coffee Depot LLC']
+2025-11-30 08:46:46,422 - INFO - backend.app.services.order_service.CombineOrders - (order_service.py:86) - Merging all orders for: ['Coffee Depot LLC']
+2025-11-30 08:47:49,560 - INFO - backend.app.services.order_service.CombineOrders - (order_service.py:86) - Merging all orders for: ['Coffee Depot LLC']
+2025-11-30 08:48:48,457 - INFO - backend.app.services.order_service.CombineOrders - (order_service.py:86) - Merging all orders for: ['Coffee Depot LLC']
+2025-11-30 08:49:59,546 - INFO - backend.app.services.order_service.CombineOrders - (order_service.py:86) - Merging all orders for: ['Coffee Depot LLC']
+2025-11-30 08:50:00,282 - INFO - backend.app.services.order_service.CombineOrders - (order_service.py:89) - [< Order store=Bakery, vendor=Coffee Depot LLC, data=20251130, items=3 >, < Order store=Collegetown, vendor=Coffee Depot LLC, data=20251126, items=6 >, < Order store=Downtown, vendor=Coffee Depot LLC, data=20251128, items=4 >, < Order store=Easthill, vendor=Coffee Depot LLC, data=20251128, items=6 >, < Order store=Syracuse, vendor=Coffee Depot LLC, data=20251126, items=2 >, < Order store=Triphammer, vendor=Coffee Depot LLC, data=20251128, items=11 >]
+2025-11-30 08:50:00,304 - INFO - backend.app.services.order_service.CombineOrders - (order_service.py:91) - Merge for Coffee Depot LLC complete.
+2025-11-30 08:50:00,304 - INFO - backend.app.services.order_service.CombineOrders - (order_service.py:92) - Merging complete.
+2025-11-30 08:50:55,020 - INFO - backend.app.services.order_service.CombineOrders - (order_service.py:86) - Merging all orders for: ['Coffee Depot LLC']
+2025-11-30 08:56:01,786 - INFO - backend.app.services.order_service.CombineOrders - (order_service.py:86) - Merging all orders for: ['Coffee Depot LLC']
+2025-11-30 08:56:31,033 - INFO - backend.app.services.order_service.CombineOrders - (order_service.py:86) - Merging all orders for: ['Coffee Depot LLC']
+2025-11-30 08:56:31,394 - INFO - backend.app.services.order_service.CombineOrders - (order_service.py:89) - Orders: [< Order store=Bakery, vendor=Coffee Depot LLC, data=20251130, items=3 >, < Order store=Collegetown, vendor=Coffee Depot LLC, data=20251126, items=6 >, < Order store=Downtown, vendor=Coffee Depot LLC, data=20251128, items=4 >, < Order store=Easthill, vendor=Coffee Depot LLC, data=20251128, items=6 >, < Order store=Syracuse, vendor=Coffee Depot LLC, data=20251126, items=2 >, < Order store=Triphammer, vendor=Coffee Depot LLC, data=20251128, items=11 >]
+2025-11-30 08:56:31,408 - INFO - backend.app.services.order_service.CombineOrders - (order_service.py:91) - Merge for Coffee Depot LLC complete.
+2025-11-30 08:56:31,408 - INFO - backend.app.services.order_service.CombineOrders - (order_service.py:92) - Merging complete.
+2025-11-30 08:57:54,099 - INFO - backend.app.services.order_service.CombineOrders - (order_service.py:86) - Merging all orders for: ['Coffee Depot LLC']
+2025-11-30 08:57:54,126 - INFO - backend.app.services.order_service.CombineOrders - (order_service.py:89) - Orders: [< Order store=Bakery, vendor=Coffee Depot LLC, data=20251130, items=3 >, < Order store=Collegetown, vendor=Coffee Depot LLC, data=20251126, items=6 >, < Order store=Downtown, vendor=Coffee Depot LLC, data=20251128, items=4 >, < Order store=Easthill, vendor=Coffee Depot LLC, data=20251128, items=6 >, < Order store=Syracuse, vendor=Coffee Depot LLC, data=20251126, items=2 >, < Order store=Triphammer, vendor=Coffee Depot LLC, data=20251128, items=11 >]
+2025-11-30 08:57:54,140 - INFO - backend.app.services.order_service.CombineOrders - (order_service.py:91) - Merge for Coffee Depot LLC complete.
+2025-11-30 08:57:54,140 - INFO - backend.app.services.order_service.CombineOrders - (order_service.py:92) - Merging complete.
