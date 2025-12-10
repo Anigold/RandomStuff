@@ -9,5 +9,5 @@ class Order:
         self.items  = items or []
 
     def __repr__(self) -> str:
-        return f'< Order store={self.store}, vendor={self.vendor}, data={self.date}, items={len(self.items)} >'
+        return f'< Order store={self.store}, vendor={self.vendor}, date={self.date}, items={len(self.items)} >'
     

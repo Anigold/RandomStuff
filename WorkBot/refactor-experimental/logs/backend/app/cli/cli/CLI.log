@@ -138,3 +138,1378 @@ ValueError: too many values to unpack (expected 5)
 2025-11-30 09:15:54,008 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
 2025-11-30 09:16:23,424 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_order_emails (args=['--vendors', 'Coffee Depot LLC'])
 2025-11-30 09:16:24,268 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'generate_vendor_order_emails' executed successfully.
+2025-12-01 06:52:47,400 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-01 06:52:47,407 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-01 06:52:47,414 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-01 06:52:47,414 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-01 06:52:47,436 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-12-01 06:52:47,436 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-01 06:53:00,474 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--vendors', 'Ithaca Bakery'])
+2025-12-01 06:53:47,819 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-01 06:54:34,443 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: combine_orders (args=['--vendors', 'Ithaca Bakery'])
+2025-12-01 06:54:34,554 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'combine_orders' executed successfully.
+2025-12-01 07:27:09,815 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: convert_order_to_transfer (args=['--origin', 'Bakery', '--vendor', 'Ithaca Bakery', '--destination', 'Syracuse'])
+2025-12-01 07:27:09,865 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'convert_order_to_transfer' executed successfully.
+2025-12-01 07:27:58,863 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: input_transfers (args=[])
+2025-12-01 07:33:32,389 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'input_transfers' executed successfully.
+2025-12-01 07:36:11,822 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-12-01 07:38:15,516 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-01 07:49:28,537 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--vendors', 'FingerLakes Farms'])
+2025-12-01 07:50:05,980 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-01 07:50:40,227 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_order_emails (args=['--vendors', 'FingerLakes Farms'])
+2025-12-01 07:50:41,779 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'generate_vendor_order_emails' executed successfully.
+2025-12-01 07:51:44,908 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_upload_files (args=['--vendors', 'Hill & Markes', '--stores', 'Syracuse'])
+2025-12-01 07:51:44,997 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'generate_vendor_upload_files' executed successfully.
+2025-12-01 07:54:32,885 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_order_emails (args=['--vendors', 'A.L. George', 'BALKAN BEVERAGE LLC', 'Hillcrest Dairy'])
+2025-12-01 07:54:35,098 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'generate_vendor_order_emails' executed successfully.
+2025-12-01 07:57:13,375 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_order_emails (args=['--vendors', 'Hillcrest Foods'])
+2025-12-01 07:57:13,834 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'generate_vendor_order_emails' executed successfully.
+2025-12-02 07:02:43,902 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-02 07:02:43,913 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-02 07:02:43,930 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-02 07:02:43,930 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-02 07:02:43,962 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-12-02 07:02:43,962 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-02 07:02:46,819 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=[])
+2025-12-02 07:12:43,588 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-02 07:59:06,446 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_order_emails (args=['--vendors', 'Peters Supply', 'SANICO'])
+2025-12-02 07:59:08,027 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'generate_vendor_order_emails' executed successfully.
+2025-12-02 08:30:43,176 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_order_emails (args=['--vendors', 'Russo Produce'])
+2025-12-02 08:30:43,922 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'generate_vendor_order_emails' executed successfully.
+2025-12-02 10:59:39,481 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--vendors', 'Hill & Markes'])
+2025-12-02 11:00:26,405 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-02 11:00:39,537 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_upload_files (args=['--vendors', 'Hill & Markes'])
+2025-12-02 11:00:40,004 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'generate_vendor_upload_files' executed successfully.
+2025-12-02 11:43:13,932 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--vendors', 'SANICO', 'Peters Supply'])
+2025-12-02 11:44:13,284 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-02 11:44:30,494 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_order_emails (args=['--vendors', 'SANICO', 'Peters Supply'])
+2025-12-02 11:44:32,467 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'generate_vendor_order_emails' executed successfully.
+2025-12-02 11:45:15,981 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Bakery', '--vendors', 'SANICO'])
+2025-12-02 11:45:34,881 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-02 11:46:21,678 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_order_emails (args=['--vendors', 'SANICO'])
+2025-12-02 11:46:22,537 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'generate_vendor_order_emails' executed successfully.
+2025-12-02 11:47:22,039 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--vendors', 'Peters Supply', '--stores', 'Bakery'])
+2025-12-02 11:47:41,094 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-02 11:49:01,800 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_order_emails (args=['--vendors', 'Peters Supply'])
+2025-12-02 11:49:02,360 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'generate_vendor_order_emails' executed successfully.
+2025-12-03 06:21:59,428 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=[])
+2025-12-03 06:22:04,293 - ERROR - backend.app.cli.cli.CLI - (cli.py:462) - [Error] download_orders failed: Message: session not created: cannot connect to chrome at 127.0.0.1:64175
+from session not created: This version of ChromeDriver only supports Chrome version 143
+Current browser version is 142.0.7444.176
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x1240d23
+	0x1240d64
+	0x102e6dd
+	0x106a958
+	0x1069992
+	0x105fbe5
+	0x105fa16
+	0x10a7826
+	0x10a7047
+	0x109b2e6
+	0x106d321
+	0x106e1d4
+	0x1494d64
+	0x149031b
+	0x14acbfa
+	0x125ac28
+	0x1262c2d
+	0x1249028
+	0x12491e9
+	0x1233578
+	0x7704fcc9
+	0x779982ae
+	0x7799827e
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 451, in _dispatch_command
+    self.commands[command].command(args)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\download_orders.py", line 28, in command
+    self.context.workbot.download_craftable_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 74, in download_craftable_orders
+    results = self.craft_bot.download_orders(stores, vendors, download_pdf=download_pdf, update=update)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\bot_mixins.py", line 96, in wrapper
+    with self.session(login=login):
+         ~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Will\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\bot_mixins.py", line 72, in session
+    self.start_session()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\bot_mixins.py", line 43, in start_session
+    self._driver       = create_driver(options)
+                         ~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\helpers.py", line 19, in create_driver
+    return uc.Chrome(options=options, use_subprocess=True)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\undetected_chromedriver\__init__.py", line 466, in __init__
+    super(Chrome, self).__init__(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        service=service,
+        ^^^^^^^^^^^^^^^^
+        options=options,
+        ^^^^^^^^^^^^^^^^
+        keep_alive=keep_alive,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 45, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        browser_name=DesiredCapabilities.CHROME["browserName"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        keep_alive=keep_alive,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\chromium\webdriver.py", line 66, in __init__
+    super().__init__(command_executor=executor, options=options)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 250, in __init__
+    self.start_session(capabilities)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\undetected_chromedriver\__init__.py", line 724, in start_session
+    super(selenium.webdriver.chrome.webdriver.WebDriver, self).start_session(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        capabilities
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 342, in start_session
+    response = self.execute(Command.NEW_SESSION, caps)["value"]
+               ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 429, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.SessionNotCreatedException: Message: session not created: cannot connect to chrome at 127.0.0.1:64175
+from session not created: This version of ChromeDriver only supports Chrome version 143
+Current browser version is 142.0.7444.176
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x1240d23
+	0x1240d64
+	0x102e6dd
+	0x106a958
+	0x1069992
+	0x105fbe5
+	0x105fa16
+	0x10a7826
+	0x10a7047
+	0x109b2e6
+	0x106d321
+	0x106e1d4
+	0x1494d64
+	0x149031b
+	0x14acbfa
+	0x125ac28
+	0x1262c2d
+	0x1249028
+	0x12491e9
+	0x1233578
+	0x7704fcc9
+	0x779982ae
+	0x7799827e
+
+2025-12-03 06:22:04,516 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-03 06:24:04,875 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=[])
+2025-12-03 06:24:10,540 - ERROR - backend.app.cli.cli.CLI - (cli.py:462) - [Error] download_orders failed: Message: session not created: cannot connect to chrome at 127.0.0.1:64240
+from session not created: This version of ChromeDriver only supports Chrome version 143
+Current browser version is 142.0.7444.176
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0xca0d23
+	0xca0d64
+	0xa8e6dd
+	0xaca958
+	0xac9992
+	0xabfbe5
+	0xabfa16
+	0xb07826
+	0xb07047
+	0xafb2e6
+	0xacd321
+	0xace1d4
+	0xef4d64
+	0xef031b
+	0xf0cbfa
+	0xcbac28
+	0xcc2c2d
+	0xca9028
+	0xca91e9
+	0xc93578
+	0x7704fcc9
+	0x779982ae
+	0x7799827e
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 451, in _dispatch_command
+    self.commands[command].command(args)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\download_orders.py", line 28, in command
+    self.context.workbot.download_craftable_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 74, in download_craftable_orders
+    results = self.craft_bot.download_orders(stores, vendors, download_pdf=download_pdf, update=update)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\bot_mixins.py", line 97, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 261, in download_orders
+    vendors = self._get_all_vendors_from_orders_page(store)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 321, in _get_all_vendors_from_orders_page
+    self.goto_page('orders', store=store)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 184, in goto_page
+    return self.driver.get(url)
+           ^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\bot_mixins.py", line 118, in driver
+    self.start_session()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\bot_mixins.py", line 43, in start_session
+    self._driver       = create_driver(options)
+                         ~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\helpers.py", line 19, in create_driver
+    return uc.Chrome(options=options, use_subprocess=True)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\undetected_chromedriver\__init__.py", line 466, in __init__
+    super(Chrome, self).__init__(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        service=service,
+        ^^^^^^^^^^^^^^^^
+        options=options,
+        ^^^^^^^^^^^^^^^^
+        keep_alive=keep_alive,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 45, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        browser_name=DesiredCapabilities.CHROME["browserName"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        keep_alive=keep_alive,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\chromium\webdriver.py", line 66, in __init__
+    super().__init__(command_executor=executor, options=options)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 250, in __init__
+    self.start_session(capabilities)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\undetected_chromedriver\__init__.py", line 724, in start_session
+    super(selenium.webdriver.chrome.webdriver.WebDriver, self).start_session(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        capabilities
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 342, in start_session
+    response = self.execute(Command.NEW_SESSION, caps)["value"]
+               ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 429, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.SessionNotCreatedException: Message: session not created: cannot connect to chrome at 127.0.0.1:64240
+from session not created: This version of ChromeDriver only supports Chrome version 143
+Current browser version is 142.0.7444.176
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0xca0d23
+	0xca0d64
+	0xa8e6dd
+	0xaca958
+	0xac9992
+	0xabfbe5
+	0xabfa16
+	0xb07826
+	0xb07047
+	0xafb2e6
+	0xacd321
+	0xace1d4
+	0xef4d64
+	0xef031b
+	0xf0cbfa
+	0xcbac28
+	0xcc2c2d
+	0xca9028
+	0xca91e9
+	0xc93578
+	0x7704fcc9
+	0x779982ae
+	0x7799827e
+
+2025-12-03 06:24:10,579 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-03 06:24:21,923 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-03 06:24:21,928 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-03 06:24:26,057 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-03 06:24:26,067 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-03 06:24:26,084 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-03 06:24:26,084 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-03 06:24:26,110 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-12-03 06:24:26,110 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-03 06:24:26,845 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=[])
+2025-12-03 06:34:18,766 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-03 06:36:00,444 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: delete_orders (args=['--stores', 'Collegetown', 'Triphammer', 'Easthill', 'Downtown'])
+2025-12-03 06:44:39,757 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'delete_orders' executed successfully.
+2025-12-03 07:52:02,404 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-12-03 07:53:03,741 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-03 10:16:25,928 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-03 10:16:25,931 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-03 10:16:31,881 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-03 10:16:31,886 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-03 10:16:31,901 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-03 10:16:31,901 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-03 10:16:31,916 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-12-03 10:16:31,916 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-03 10:16:38,040 - WARNING - backend.app.cli.cli.CLI - (cli.py:328) - Autocomplete error for command='vendor_information', flag='--vendor': 'list' object is not callable
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 316, in _get_autocomplete_values
+    completions = handler(flag, text)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\vendor_information.py", line 20, in autocomplete
+    return [option for option in flags.get(flag, [])() if option.startswith(text)]
+                                 ~~~~~~~~~~~~~~~~~~~^^
+TypeError: 'list' object is not callable
+2025-12-03 10:16:39,619 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: vendor_information (args=['--vendor', 'Sysco'])
+2025-12-03 10:16:39,619 - ERROR - backend.app.cli.cli.CLI - (cli.py:462) - [Error] vendor_information failed: 'VendorServices' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 451, in _dispatch_command
+    self.commands[command].command(args)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\vendor_information.py", line 26, in command
+    vendor_info = self.context.workbot.get_vendor_information(parsed_args.vendor)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 245, in get_vendor_information
+    return self.vendors.get(vendor_name)
+           ^^^^^^^^^^^^^^^^
+AttributeError: 'VendorServices' object has no attribute 'get'
+2025-12-03 10:16:39,623 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'vendor_information' executed successfully.
+2025-12-03 10:18:23,409 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-03 10:18:23,413 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-03 10:18:26,302 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-03 10:18:26,306 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-03 10:18:26,322 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-03 10:18:26,322 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-03 10:18:26,336 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-12-03 10:18:26,336 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-03 10:18:27,909 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: vendor_information (args=['--vendor', 'Sysco'])
+2025-12-03 10:18:27,935 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'vendor_information' executed successfully.
+2025-12-03 10:19:15,461 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: vendor_information (args=['--vendor', 'Sysco'])
+2025-12-03 10:19:15,479 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'vendor_information' executed successfully.
+2025-12-03 10:21:59,821 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-03 10:21:59,824 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-03 10:22:02,887 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-03 10:22:02,891 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-03 10:22:02,898 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-03 10:22:02,898 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-03 10:22:02,927 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-12-03 10:22:02,927 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-03 10:22:04,176 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: vendor_information (args=['--vendor', 'Sysco'])
+2025-12-03 10:22:04,181 - ERROR - backend.app.cli.cli.CLI - (cli.py:462) - [Error] vendor_information failed: VendorInformation._format_phone_number() takes 1 positional argument but 2 were given
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 451, in _dispatch_command
+    self.commands[command].command(args)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\vendor_information.py", line 28, in command
+    print(f'{self._format_vendor_info(vendor_info)}\n')
+             ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\vendor_information.py", line 45, in _format_vendor_info
+    [c.name, c.title, c.email, self._format_phone_number(c.phone)] for c in contacts
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+TypeError: VendorInformation._format_phone_number() takes 1 positional argument but 2 were given
+2025-12-03 10:22:04,183 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'vendor_information' executed successfully.
+2025-12-03 10:22:12,685 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-03 10:22:12,692 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-03 10:22:15,497 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-03 10:22:15,501 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-03 10:22:15,508 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-03 10:22:15,508 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-03 10:22:15,536 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-12-03 10:22:15,536 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-03 10:22:16,376 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: vendor_information (args=['--vendor', 'Sysco'])
+2025-12-03 10:22:16,381 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'vendor_information' executed successfully.
+2025-12-03 10:22:24,094 - WARNING - backend.app.cli.cli.CLI - (cli.py:328) - Autocomplete error for command='vendor_information', flag='--vendor': 'list' object is not callable
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 316, in _get_autocomplete_values
+    completions = handler(flag, text)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\vendor_information.py", line 20, in autocomplete
+    return [option for option in flags.get(flag, [])() if option.startswith(text)]
+                                 ~~~~~~~~~~~~~~~~~~~^^
+TypeError: 'list' object is not callable
+2025-12-03 10:22:25,526 - WARNING - backend.app.cli.cli.CLI - (cli.py:328) - Autocomplete error for command='vendor_information', flag='--vendor': 'list' object is not callable
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 316, in _get_autocomplete_values
+    completions = handler(flag, text)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\vendor_information.py", line 20, in autocomplete
+    return [option for option in flags.get(flag, [])() if option.startswith(text)]
+                                 ~~~~~~~~~~~~~~~~~~~^^
+TypeError: 'list' object is not callable
+2025-12-03 10:22:26,614 - WARNING - backend.app.cli.cli.CLI - (cli.py:328) - Autocomplete error for command='vendor_information', flag='--vendor': 'list' object is not callable
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 316, in _get_autocomplete_values
+    completions = handler(flag, text)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\vendor_information.py", line 20, in autocomplete
+    return [option for option in flags.get(flag, [])() if option.startswith(text)]
+                                 ~~~~~~~~~~~~~~~~~~~^^
+TypeError: 'list' object is not callable
+2025-12-03 10:22:27,134 - WARNING - backend.app.cli.cli.CLI - (cli.py:328) - Autocomplete error for command='vendor_information', flag='--vendor': 'list' object is not callable
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 316, in _get_autocomplete_values
+    completions = handler(flag, text)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\vendor_information.py", line 20, in autocomplete
+    return [option for option in flags.get(flag, [])() if option.startswith(text)]
+                                 ~~~~~~~~~~~~~~~~~~~^^
+TypeError: 'list' object is not callable
+2025-12-03 10:22:28,526 - WARNING - backend.app.cli.cli.CLI - (cli.py:328) - Autocomplete error for command='vendor_information', flag='--vendor': 'list' object is not callable
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 316, in _get_autocomplete_values
+    completions = handler(flag, text)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\vendor_information.py", line 20, in autocomplete
+    return [option for option in flags.get(flag, [])() if option.startswith(text)]
+                                 ~~~~~~~~~~~~~~~~~~~^^
+TypeError: 'list' object is not callable
+2025-12-03 10:22:33,928 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: vendor_information (args=['--vendor', 'Regional Distributors Inc.'])
+2025-12-03 10:22:33,932 - ERROR - backend.app.cli.cli.CLI - (cli.py:462) - [Error] vendor_information failed: No vendor file found for Regional Distributors Inc.
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 451, in _dispatch_command
+    self.commands[command].command(args)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\vendor_information.py", line 26, in command
+    vendor_info = self.context.workbot.get_vendor_information(parsed_args.vendor)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 245, in get_vendor_information
+    return self.vendors.get_vendor(vendor_name)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\services\vendor_service.py", line 22, in __call__
+    return self.repo.get(name)
+           ~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\repos\vendor_file_repository.py", line 29, in get
+    raise FileNotFoundError(f"No vendor file found for {name}")
+FileNotFoundError: No vendor file found for Regional Distributors Inc.
+2025-12-03 10:22:33,934 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'vendor_information' executed successfully.
+2025-12-03 10:22:46,912 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: vendor_information (args=['--vendor', 'Regional Distributors, Inc'])
+2025-12-03 10:22:46,931 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'vendor_information' executed successfully.
+2025-12-03 10:23:40,439 - WARNING - backend.app.cli.cli.CLI - (cli.py:328) - Autocomplete error for command='vendor_information', flag='--vendor': 'list' object is not callable
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 316, in _get_autocomplete_values
+    completions = handler(flag, text)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\vendor_information.py", line 20, in autocomplete
+    return [option for option in flags.get(flag, [])() if option.startswith(text)]
+                                 ~~~~~~~~~~~~~~~~~~~^^
+TypeError: 'list' object is not callable
+2025-12-03 10:23:42,015 - WARNING - backend.app.cli.cli.CLI - (cli.py:328) - Autocomplete error for command='vendor_information', flag='--vendor': 'list' object is not callable
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 316, in _get_autocomplete_values
+    completions = handler(flag, text)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\vendor_information.py", line 20, in autocomplete
+    return [option for option in flags.get(flag, [])() if option.startswith(text)]
+                                 ~~~~~~~~~~~~~~~~~~~^^
+TypeError: 'list' object is not callable
+2025-12-03 10:23:42,983 - WARNING - backend.app.cli.cli.CLI - (cli.py:328) - Autocomplete error for command='vendor_information', flag='--vendor': 'list' object is not callable
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 316, in _get_autocomplete_values
+    completions = handler(flag, text)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\vendor_information.py", line 20, in autocomplete
+    return [option for option in flags.get(flag, [])() if option.startswith(text)]
+                                 ~~~~~~~~~~~~~~~~~~~^^
+TypeError: 'list' object is not callable
+2025-12-03 10:23:43,607 - WARNING - backend.app.cli.cli.CLI - (cli.py:328) - Autocomplete error for command='vendor_information', flag='--vendor': 'list' object is not callable
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 316, in _get_autocomplete_values
+    completions = handler(flag, text)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\vendor_information.py", line 20, in autocomplete
+    return [option for option in flags.get(flag, [])() if option.startswith(text)]
+                                 ~~~~~~~~~~~~~~~~~~~^^
+TypeError: 'list' object is not callable
+2025-12-03 10:23:43,967 - WARNING - backend.app.cli.cli.CLI - (cli.py:328) - Autocomplete error for command='vendor_information', flag='--vendor': 'list' object is not callable
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 316, in _get_autocomplete_values
+    completions = handler(flag, text)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\vendor_information.py", line 20, in autocomplete
+    return [option for option in flags.get(flag, [])() if option.startswith(text)]
+                                 ~~~~~~~~~~~~~~~~~~~^^
+TypeError: 'list' object is not callable
+2025-12-03 10:23:44,271 - WARNING - backend.app.cli.cli.CLI - (cli.py:328) - Autocomplete error for command='vendor_information', flag='--vendor': 'list' object is not callable
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 316, in _get_autocomplete_values
+    completions = handler(flag, text)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\vendor_information.py", line 20, in autocomplete
+    return [option for option in flags.get(flag, [])() if option.startswith(text)]
+                                 ~~~~~~~~~~~~~~~~~~~^^
+TypeError: 'list' object is not callable
+2025-12-03 10:23:44,471 - WARNING - backend.app.cli.cli.CLI - (cli.py:328) - Autocomplete error for command='vendor_information', flag='--vendor': 'list' object is not callable
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 316, in _get_autocomplete_values
+    completions = handler(flag, text)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\vendor_information.py", line 20, in autocomplete
+    return [option for option in flags.get(flag, [])() if option.startswith(text)]
+                                 ~~~~~~~~~~~~~~~~~~~^^
+TypeError: 'list' object is not callable
+2025-12-03 10:23:44,655 - WARNING - backend.app.cli.cli.CLI - (cli.py:328) - Autocomplete error for command='vendor_information', flag='--vendor': 'list' object is not callable
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 316, in _get_autocomplete_values
+    completions = handler(flag, text)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\vendor_information.py", line 20, in autocomplete
+    return [option for option in flags.get(flag, [])() if option.startswith(text)]
+                                 ~~~~~~~~~~~~~~~~~~~^^
+TypeError: 'list' object is not callable
+2025-12-03 10:23:45,319 - WARNING - backend.app.cli.cli.CLI - (cli.py:328) - Autocomplete error for command='vendor_information', flag='--vendor': 'list' object is not callable
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 316, in _get_autocomplete_values
+    completions = handler(flag, text)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\vendor_information.py", line 20, in autocomplete
+    return [option for option in flags.get(flag, [])() if option.startswith(text)]
+                                 ~~~~~~~~~~~~~~~~~~~^^
+TypeError: 'list' object is not callable
+2025-12-03 10:23:45,519 - WARNING - backend.app.cli.cli.CLI - (cli.py:328) - Autocomplete error for command='vendor_information', flag='--vendor': 'list' object is not callable
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 316, in _get_autocomplete_values
+    completions = handler(flag, text)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\vendor_information.py", line 20, in autocomplete
+    return [option for option in flags.get(flag, [])() if option.startswith(text)]
+                                 ~~~~~~~~~~~~~~~~~~~^^
+TypeError: 'list' object is not callable
+2025-12-03 10:27:37,715 - WARNING - backend.app.cli.cli.CLI - (cli.py:328) - Autocomplete error for command='vendor_information', flag='--vendor': 'list' object is not callable
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 316, in _get_autocomplete_values
+    completions = handler(flag, text)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\vendor_information.py", line 20, in autocomplete
+    return [option for option in flags.get(flag, [])() if option.startswith(text)]
+                                 ~~~~~~~~~~~~~~~~~~~^^
+TypeError: 'list' object is not callable
+2025-12-03 10:27:41,414 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: vendor_information (args=['--vendor', "Sweet Sam's"])
+2025-12-03 10:27:41,418 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'vendor_information' executed successfully.
+2025-12-03 10:27:56,955 - WARNING - backend.app.cli.cli.CLI - (cli.py:328) - Autocomplete error for command='vendor_information', flag='--vendor': 'list' object is not callable
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 316, in _get_autocomplete_values
+    completions = handler(flag, text)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\vendor_information.py", line 20, in autocomplete
+    return [option for option in flags.get(flag, [])() if option.startswith(text)]
+                                 ~~~~~~~~~~~~~~~~~~~^^
+TypeError: 'list' object is not callable
+2025-12-03 10:28:00,806 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: vendor_information (args=['--vendor', 'Performance Foods'])
+2025-12-03 10:28:00,809 - ERROR - backend.app.cli.cli.CLI - (cli.py:462) - [Error] vendor_information failed: No vendor file found for Performance Foods
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 451, in _dispatch_command
+    self.commands[command].command(args)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\vendor_information.py", line 26, in command
+    vendor_info = self.context.workbot.get_vendor_information(parsed_args.vendor)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 245, in get_vendor_information
+    return self.vendors.get_vendor(vendor_name)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\services\vendor_service.py", line 22, in __call__
+    return self.repo.get(name)
+           ~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\repos\vendor_file_repository.py", line 29, in get
+    raise FileNotFoundError(f"No vendor file found for {name}")
+FileNotFoundError: No vendor file found for Performance Foods
+2025-12-03 10:28:00,811 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'vendor_information' executed successfully.
+2025-12-03 10:28:04,213 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: vendor_information (args=['--vendor', 'Performance Food'])
+2025-12-03 10:28:04,219 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'vendor_information' executed successfully.
+2025-12-03 10:28:09,076 - WARNING - backend.app.cli.cli.CLI - (cli.py:328) - Autocomplete error for command='vendor_information', flag='--vendor': 'list' object is not callable
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 316, in _get_autocomplete_values
+    completions = handler(flag, text)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\vendor_information.py", line 20, in autocomplete
+    return [option for option in flags.get(flag, [])() if option.startswith(text)]
+                                 ~~~~~~~~~~~~~~~~~~~^^
+TypeError: 'list' object is not callable
+2025-12-03 10:29:49,189 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-03 10:29:49,191 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-03 10:29:52,717 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-03 10:29:52,726 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-03 10:29:52,745 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-03 10:29:52,745 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-03 10:29:52,766 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-12-03 10:29:52,766 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-03 10:30:13,733 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-03 10:30:13,735 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-03 10:30:16,857 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-03 10:30:16,861 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-03 10:30:16,868 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-03 10:30:16,868 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-03 10:30:16,897 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-12-03 10:30:16,897 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-03 10:30:27,889 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: vendor_information (args=['--vendor', 'Regional Distributors, Inc'])
+2025-12-03 10:30:27,894 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'vendor_information' executed successfully.
+2025-12-03 10:38:51,069 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-03 10:38:51,073 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-03 10:38:53,992 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-03 10:38:53,997 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-03 10:38:54,013 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-03 10:38:54,013 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-03 10:38:54,042 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-12-03 10:38:54,042 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-03 10:38:55,410 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: vendor_information (args=['--vendor', 'Regional Distributors, Inc'])
+2025-12-03 10:38:55,414 - ERROR - backend.app.cli.cli.CLI - (cli.py:462) - [Error] vendor_information failed: 'VendorInformation' object has no attribute '_format_vendor_info'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 451, in _dispatch_command
+    self.commands[command].command(args)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\vendor_information.py", line 28, in command
+    print(f'{self._format_vendor_info(vendor_info)}\n')
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'VendorInformation' object has no attribute '_format_vendor_info'
+2025-12-03 10:38:55,417 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'vendor_information' executed successfully.
+2025-12-03 10:39:06,374 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-03 10:39:06,376 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-03 10:39:09,108 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-03 10:39:09,112 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-03 10:39:09,119 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-03 10:39:09,119 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-03 10:39:09,148 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-12-03 10:39:09,148 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-03 10:39:09,802 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: vendor_information (args=['--vendor', 'Regional Distributors, Inc'])
+2025-12-03 10:39:09,807 - ERROR - backend.app.cli.cli.CLI - (cli.py:462) - [Error] vendor_information failed: 'VendorInformation' object has no attribute 'format_vendor_information'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 451, in _dispatch_command
+    self.commands[command].command(args)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\vendor_information.py", line 28, in command
+    print(f'{self.format_vendor_information(vendor_info)}\n')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'VendorInformation' object has no attribute 'format_vendor_information'
+2025-12-03 10:39:09,809 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'vendor_information' executed successfully.
+2025-12-03 10:39:40,526 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-03 10:39:40,529 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-03 10:39:43,371 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-03 10:39:43,376 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-03 10:39:43,383 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-03 10:39:43,383 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-03 10:39:43,411 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-12-03 10:39:43,412 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-03 10:39:44,161 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: vendor_information (args=['--vendor', 'Regional Distributors, Inc'])
+2025-12-03 10:39:44,165 - ERROR - backend.app.cli.cli.CLI - (cli.py:462) - [Error] vendor_information failed: 'Vendor' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 451, in _dispatch_command
+    self.commands[command].command(args)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\vendor_information.py", line 28, in command
+    print(f'{self.format_vendor_information(vendor_info)}\n')
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\vendor_information.py", line 70, in format_vendor_information
+    ['Vendor Name', data.get('name', '')],
+                    ^^^^^^^^
+AttributeError: 'Vendor' object has no attribute 'get'
+2025-12-03 10:39:44,168 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'vendor_information' executed successfully.
+2025-12-03 10:44:57,851 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-03 10:44:57,854 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-03 10:45:00,687 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-03 10:45:00,692 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-03 10:45:00,699 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-03 10:45:00,699 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-03 10:45:00,718 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-12-03 10:45:00,718 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-03 10:45:01,438 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: vendor_information (args=['--vendor', 'Regional Distributors, Inc'])
+2025-12-03 10:45:01,444 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'vendor_information' executed successfully.
+2025-12-03 10:45:27,958 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: vendor_information (args=['--vendor', 'Regional Distributors, Inc'])
+2025-12-03 10:45:27,965 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'vendor_information' executed successfully.
+2025-12-03 10:45:28,604 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-03 10:45:28,609 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-03 10:45:31,646 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-03 10:45:31,651 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-03 10:45:31,657 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-03 10:45:31,658 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-03 10:45:31,687 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-12-03 10:45:31,687 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-03 10:45:32,375 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: vendor_information (args=['--vendor', 'Regional Distributors, Inc'])
+2025-12-03 10:45:32,381 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'vendor_information' executed successfully.
+2025-12-03 10:45:51,694 - WARNING - backend.app.cli.cli.CLI - (cli.py:443) - Unknown command entered: 'cls'
+2025-12-03 10:45:52,278 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: vendor_information (args=['--vendor', 'Regional Distributors, Inc'])
+2025-12-03 10:45:52,284 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'vendor_information' executed successfully.
+2025-12-03 10:45:53,412 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-03 10:45:53,417 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-03 10:45:56,103 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-03 10:45:56,108 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-03 10:45:56,126 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-03 10:45:56,126 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-03 10:45:56,158 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-12-03 10:45:56,158 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-03 10:45:56,823 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: vendor_information (args=['--vendor', 'Regional Distributors, Inc'])
+2025-12-03 10:45:56,829 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'vendor_information' executed successfully.
+2025-12-03 10:46:25,191 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: vendor_information (args=['--vendor', 'Hillcrest Dairy'])
+2025-12-03 10:46:25,196 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'vendor_information' executed successfully.
+2025-12-03 10:46:44,653 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-03 10:46:44,657 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-03 10:46:47,842 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-03 10:46:47,846 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-03 10:46:47,861 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-03 10:46:47,861 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-03 10:46:47,891 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-12-03 10:46:47,891 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-03 10:46:48,568 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: vendor_information (args=['--vendor', 'Hillcrest Dairy'])
+2025-12-03 10:46:48,574 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'vendor_information' executed successfully.
+2025-12-03 10:47:14,869 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-03 10:47:14,873 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-03 10:47:17,725 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-03 10:47:17,729 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-03 10:47:17,736 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-03 10:47:17,736 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-03 10:47:17,764 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-12-03 10:47:17,765 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-03 10:47:18,385 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: vendor_information (args=['--vendor', 'Hillcrest Dairy'])
+2025-12-03 10:47:18,391 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'vendor_information' executed successfully.
+2025-12-03 10:47:26,421 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-03 10:47:26,426 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-03 10:47:29,394 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-03 10:47:29,399 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-03 10:47:29,406 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-03 10:47:29,406 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-03 10:47:29,424 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-12-03 10:47:29,424 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-03 10:47:36,545 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: vendor_information (args=['--vendor', 'Sysco'])
+2025-12-03 10:47:36,550 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'vendor_information' executed successfully.
+2025-12-03 14:04:28,925 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Bakery', 'Collegetown'])
+2025-12-03 14:05:56,785 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-03 14:06:36,654 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: archive_orders (args=[])
+2025-12-03 14:06:44,026 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'archive_orders' executed successfully.
+2025-12-03 14:06:49,311 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Bakery', 'Collegetown'])
+2025-12-03 14:08:18,267 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-03 14:18:13,717 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Triphammer'])
+2025-12-03 14:19:04,460 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-03 14:22:14,047 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_upload_files (args=['--vendors', 'Sysco', 'Performance Food', 'US Foods'])
+2025-12-03 14:22:14,640 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'generate_vendor_upload_files' executed successfully.
+2025-12-03 14:31:59,765 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_order_emails (args=['--stores', 'Collegetown', 'Bakery', '--vendors', 'FingerLakes Farms'])
+2025-12-03 14:32:00,533 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'generate_vendor_order_emails' executed successfully.
+2025-12-03 14:32:13,437 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_order_emails (args=['--vendors', 'Russo Produce'])
+2025-12-03 14:32:13,843 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'generate_vendor_order_emails' executed successfully.
+2025-12-06 07:13:10,457 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-06 07:13:10,464 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-06 07:13:10,482 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-06 07:13:10,482 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-06 07:13:10,507 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-12-06 07:13:10,507 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-06 07:13:11,736 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: archive_orders (args=[])
+2025-12-06 07:13:14,857 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'archive_orders' executed successfully.
+2025-12-06 07:13:30,568 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer'])
+2025-12-06 07:18:36,962 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-06 07:36:57,182 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer'])
+2025-12-06 07:42:46,232 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-06 07:43:55,242 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Syracuse'])
+2025-12-06 07:45:15,143 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-06 09:57:01,648 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-12-06 09:57:36,817 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-06 09:57:50,113 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Downtown'])
+2025-12-06 09:59:19,991 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-06 10:00:44,235 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_upload_files (args=['--vendors', 'UNFI'])
+2025-12-06 10:00:44,590 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'generate_vendor_upload_files' executed successfully.
+2025-12-06 10:25:39,018 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_upload_files (args=['--stores', 'Syracuse', '--vendors', 'Performance Food'])
+2025-12-06 10:25:39,102 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'generate_vendor_upload_files' executed successfully.
+2025-12-07 07:26:30,389 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-07 07:26:30,399 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-07 07:26:30,406 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-07 07:26:30,406 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-07 07:26:30,436 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-12-07 07:26:30,436 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-07 07:26:38,065 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: combine_orders (args=['--vendors', 'Ithaca Bakery'])
+2025-12-07 07:26:38,099 - ERROR - backend.app.cli.cli.CLI - (cli.py:462) - [Error] combine_orders failed: unsupported operand type(s) for *: 'NoneType' and 'NoneType'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 451, in _dispatch_command
+    self.commands[command].command(args)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\combine_orders.py", line 25, in command
+    self.context.workbot.combine_orders(parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 173, in combine_orders
+    return self.orders.combine_orders(vendor)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\services\order_service.py", line 88, in __call__
+    orders = self.list_by_vendor(vendor)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\services\order_service.py", line 37, in __call__
+    return self.repo.list_by_vendor(vendor)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\repos\order_file_repository.py", line 43, in list_by_vendor
+    return [self._engine.read_from_path(p) for p in self._engine.list_files(f"*{vendor}*.xlsx")]
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\generic_file_adapter.py", line 46, in read_from_path
+    return self.serializer.load_path(path, meta)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\serializer\serializers\order.py", line 55, in load_path
+    return self.from_table(payload)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\serializer\serializers\order.py", line 162, in from_table
+    return self.from_dict(data)
+           ~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\serializer\serializers\order.py", line 107, in from_dict
+    OrderItem(
+    ~~~~~~~~~^
+        sku=i.get("sku", ""),
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        total_cost=i.get("total_cost", 0),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\models\orders\order_item.py", line 8, in __init__
+    self.total_cost = total_cost or (quantity * cost_per)
+                                     ~~~~~~~~~^~~~~~~~~~
+TypeError: unsupported operand type(s) for *: 'NoneType' and 'NoneType'
+2025-12-07 07:26:38,215 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'combine_orders' executed successfully.
+2025-12-07 07:26:57,017 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: combine_orders (args=['--vendors', 'Ithaca Bakery'])
+2025-12-07 07:26:57,108 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'combine_orders' executed successfully.
+2025-12-07 07:40:27,522 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-12-07 07:41:55,339 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-07 10:00:49,467 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: split_natalies (args=[])
+2025-12-07 10:00:49,864 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'split_natalies' executed successfully.
+2025-12-07 10:05:56,938 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-07 10:05:56,941 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-07 11:39:35,386 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-07 11:39:35,392 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-07 11:39:35,408 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-07 11:39:35,408 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-07 11:39:35,428 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-12-07 11:39:35,428 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-07 11:39:37,561 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=[])
+2025-12-07 11:47:34,653 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-07 12:08:59,724 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: split_natalies (args=[])
+2025-12-07 12:09:00,095 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'split_natalies' executed successfully.
+2025-12-07 12:10:44,076 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--vendors', 'FingerLakes Farms', 'Performance Food'])
+2025-12-07 12:12:03,011 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-07 12:12:19,989 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_order_emails (args=['--vendors', 'FingerLakes Farms'])
+2025-12-07 12:12:21,091 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'generate_vendor_order_emails' executed successfully.
+2025-12-07 12:12:50,726 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_order_emails (args=['--vendors', 'Copper Horse Coffee', 'Coffee Depot LLC', 'Equal Exchange'])
+2025-12-07 12:12:53,570 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'generate_vendor_order_emails' executed successfully.
+2025-12-07 12:13:58,390 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_order_emails (args=['--vendors', "Bo's Bones"])
+2025-12-07 12:13:58,511 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'generate_vendor_order_emails' executed successfully.
+2025-12-07 12:42:05,696 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_upload_files (args=['--vendors', 'Sysco', 'Performance Food', 'US Foods'])
+2025-12-07 12:42:06,788 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'generate_vendor_upload_files' executed successfully.
+2025-12-07 13:02:24,957 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Triphammer'])
+2025-12-07 13:04:31,109 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-07 13:05:39,567 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_upload_files (args=['--vendors', 'Sysco', 'US Foods', 'Performance Food', '--stores', 'Triphammer'])
+2025-12-07 13:05:39,789 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'generate_vendor_upload_files' executed successfully.
+2025-12-07 13:54:18,229 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: convert_order_to_transfer (args=['--origin', 'Bakery', '--vendor', 'Ithaca Bakery', '--destination', 'Syracuse'])
+2025-12-07 13:54:18,315 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'convert_order_to_transfer' executed successfully.
+2025-12-07 13:54:43,989 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: input_transfers (args=[])
+2025-12-07 13:55:06,723 - ERROR - backend.app.cli.cli.CLI - (cli.py:462) - [Error] input_transfers failed: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//a[text()="New Transfer"]"}
+  (Session info: chrome=143.0.7499.41); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x4d0d23
+	0x4d0d64
+	0x2be6dd
+	0x3093a5
+	0x30977b
+	0x350382
+	0x32b534
+	0x34db13
+	0x32b2e6
+	0x2fd321
+	0x2fe1d4
+	0x724d64
+	0x72031b
+	0x73cbfa
+	0x4eac28
+	0x4f2c2d
+	0x4d9028
+	0x4d91e9
+	0x4c3578
+	0x7704fcc9
+	0x779982ae
+	0x7799827e
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 451, in _dispatch_command
+    self.commands[command].command(args)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\input_transfers.py", line 22, in command
+    self.context.workbot.input_craftable_transfers()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 155, in input_craftable_transfers
+    self.craft_bot.input_transfers(transfers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\bot_mixins.py", line 97, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 607, in input_transfers
+    self.input_transfer(transfer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\bot_mixins.py", line 97, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\infra\logger.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 624, in input_transfer
+    self._start_new_transfer()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\craftable_bot\craftable_bot.py", line 636, in _start_new_transfer
+    new_transfer_button = self.driver.find_element(By.XPATH, '//a[text()="New Transfer"]')
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 888, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 429, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\venv\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//a[text()="New Transfer"]"}
+  (Session info: chrome=143.0.7499.41); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x4d0d23
+	0x4d0d64
+	0x2be6dd
+	0x3093a5
+	0x30977b
+	0x350382
+	0x32b534
+	0x34db13
+	0x32b2e6
+	0x2fd321
+	0x2fe1d4
+	0x724d64
+	0x72031b
+	0x73cbfa
+	0x4eac28
+	0x4f2c2d
+	0x4d9028
+	0x4d91e9
+	0x4c3578
+	0x7704fcc9
+	0x779982ae
+	0x7799827e
+
+2025-12-07 13:55:06,780 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'input_transfers' executed successfully.
+2025-12-07 13:57:49,380 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: input_transfers (args=[])
+2025-12-07 14:00:13,073 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'input_transfers' executed successfully.
+2025-12-08 07:12:33,451 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-08 07:12:33,458 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-08 07:12:33,465 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-08 07:12:33,465 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-08 07:12:33,488 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-12-08 07:12:33,488 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-08 07:12:38,962 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=[])
+2025-12-08 07:21:07,068 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-08 07:21:16,015 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: combine_orders (args=['--vendors', 'Ithaca Bakery'])
+2025-12-08 07:21:16,031 - ERROR - backend.app.cli.cli.CLI - (cli.py:462) - [Error] combine_orders failed: too many values to unpack (expected 5)
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 451, in _dispatch_command
+    self.commands[command].command(args)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\combine_orders.py", line 25, in command
+    self.context.workbot.combine_orders(parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 173, in combine_orders
+    return self.orders.combine_orders(vendor)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\services\order_service.py", line 88, in __call__
+    orders = self.list_by_vendor(vendor)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\services\order_service.py", line 37, in __call__
+    return self.repo.list_by_vendor(vendor)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\repos\order_file_repository.py", line 43, in list_by_vendor
+    return [self._engine.read_from_path(p) for p in self._engine.list_files(f"*{vendor}*.xlsx")]
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\adapters\files\generic_file_adapter.py", line 46, in read_from_path
+    return self.serializer.load_path(path, meta)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\serializer\serializers\order.py", line 55, in load_path
+    return self.from_table(payload)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\domain\serializer\serializers\order.py", line 147, in from_table
+    item_sku, item_name, qty, cost_per, total_cost = row
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 5)
+2025-12-08 07:21:16,120 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'combine_orders' executed successfully.
+2025-12-08 07:21:40,807 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: combine_orders (args=['--vendors', 'Ithaca Bakery'])
+2025-12-08 07:21:40,920 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'combine_orders' executed successfully.
+2025-12-08 08:03:47,687 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-12-08 08:05:51,530 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-08 08:06:10,907 - ERROR - backend.app.cli.cli.CLI - (cli.py:436) - Failed to parse input 'generate_vendor_order_emails --vendors Hillcrest Foods" "Hillcrest Dairy"': No closing quotation
+2025-12-08 08:06:15,387 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_order_emails (args=['--vendors', 'Hillcrest Foods', 'Hillcrest Dairy'])
+2025-12-08 08:06:18,051 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'generate_vendor_order_emails' executed successfully.
+2025-12-08 08:11:46,780 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Bakery', '--vendors', 'A.L. George'])
+2025-12-08 08:12:05,586 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-08 08:12:20,405 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_order_emails (args=['--vendors', 'A.L. George', 'BALKAN BEVERAGE LLC'])
+2025-12-08 08:12:21,457 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'generate_vendor_order_emails' executed successfully.
+2025-12-08 08:54:25,903 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_upload_files (args=['--vendors', 'Hill & Markes', '--stores', 'Syracuse'])
+2025-12-08 08:54:26,023 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'generate_vendor_upload_files' executed successfully.
+2025-12-08 13:59:17,258 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: combine_orders (args=['--vendors', 'FingerLakes Farms'])
+2025-12-08 13:59:17,463 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'combine_orders' executed successfully.
+2025-12-08 13:59:44,091 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Triphammer'])
+2025-12-08 14:01:53,947 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-08 14:06:17,502 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Triphammer'])
+2025-12-08 14:08:39,375 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-08 14:08:47,576 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_order_emails (args=['--vendors', 'Russo Produce'])
+2025-12-08 14:08:48,001 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'generate_vendor_order_emails' executed successfully.
+2025-12-09 06:44:27,057 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-09 06:44:27,065 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-09 06:44:27,083 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-09 06:44:27,083 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-09 06:44:27,106 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-12-09 06:44:27,106 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-09 06:44:44,737 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=[])
+2025-12-09 06:53:55,837 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-09 07:54:00,393 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-12-09 07:56:24,078 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-09 08:57:26,964 - INFO - backend.app.cli.cli.CLI - (cli.py:370) - User requested CLI shutdown.
+2025-12-09 08:57:26,966 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-09 11:52:11,184 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-09 11:52:11,190 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-09 11:52:11,206 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-09 11:52:11,206 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-09 11:52:11,226 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-12-09 11:52:11,226 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-09 11:52:19,562 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--vendors', 'Hill & Markes'])
+2025-12-09 11:53:06,842 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-09 11:56:33,111 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_upload_files (args=['--vendors', 'Hill & Markes'])
+2025-12-09 11:56:33,548 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'generate_vendor_upload_files' executed successfully.
+2025-12-09 12:24:04,380 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_order_emails (args=['--vendors', 'SANICO'])
+2025-12-09 12:24:05,095 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'generate_vendor_order_emails' executed successfully.
+2025-12-09 12:41:49,601 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_order_emails (args=['--vendors', 'Peters Supply'])
+2025-12-09 12:41:50,332 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'generate_vendor_order_emails' executed successfully.
+2025-12-10 07:31:22,828 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-10 07:31:22,837 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-10 07:31:22,853 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-10 07:31:22,853 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-10 07:31:22,879 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 15 commands from backend.app.cli.commands.workbot
+2025-12-10 07:31:22,879 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-10 07:31:25,097 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=[])
+2025-12-10 07:40:50,552 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-10 07:41:07,018 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: delete_orders (args=['--stores', 'Easthill', 'Downtown', 'Collegetown', 'Triphammer'])
+2025-12-10 07:49:23,532 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'delete_orders' executed successfully.
+2025-12-10 10:07:05,076 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-10 10:07:05,083 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-10 10:07:10,527 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-10 10:07:10,532 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-10 10:07:10,547 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-10 10:07:10,547 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-10 10:07:10,579 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 16 commands from backend.app.cli.commands.workbot
+2025-12-10 10:07:10,579 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-10 10:07:18,110 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: display_vendor_orders (args=['--vendor', 'Sysco'])
+2025-12-10 10:07:18,218 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'display_vendor_orders' executed successfully.
+2025-12-10 10:07:24,726 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: display_vendor_orders (args=['--vendor', 'Performance Food'])
+2025-12-10 10:07:25,060 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'display_vendor_orders' executed successfully.
+2025-12-10 10:08:15,795 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-10 10:08:15,797 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-10 10:08:19,420 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-10 10:08:19,424 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-10 10:08:19,439 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-10 10:08:19,440 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-10 10:08:19,467 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 16 commands from backend.app.cli.commands.workbot
+2025-12-10 10:08:19,467 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-10 10:08:20,759 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: display_vendor_orders (args=['--vendor', 'Performance Food'])
+2025-12-10 10:08:20,760 - ERROR - backend.app.cli.cli.CLI - (cli.py:462) - [Error] display_vendor_orders failed: 'NoneType' object is not iterable
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 451, in _dispatch_command
+    self.commands[command].command(args)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\display_vendor_orders.py", line 28, in command
+    orders = self.context.workbot.get_orders_by_vendor(parsed_args.vendor, parsed_args.stores)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 180, in get_orders_by_vendor
+    return self.get_orders(stores=stores, vendors=[vendor])
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\bots\workbot\work_bot.py", line 177, in get_orders
+    return self.orders.get_orders(stores=stores, vendors=vendors)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\services\order_service.py", line 68, in __call__
+    for store in stores:
+                 ^^^^^^
+TypeError: 'NoneType' object is not iterable
+2025-12-10 10:08:20,767 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'display_vendor_orders' executed successfully.
+2025-12-10 10:08:43,444 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-10 10:08:43,447 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-10 10:08:46,194 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-10 10:08:46,198 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-10 10:08:46,205 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-10 10:08:46,205 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-10 10:08:46,232 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 16 commands from backend.app.cli.commands.workbot
+2025-12-10 10:08:46,232 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-10 10:08:47,111 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: display_vendor_orders (args=['--vendor', 'Performance Food'])
+2025-12-10 10:08:47,287 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'display_vendor_orders' executed successfully.
+2025-12-10 10:15:34,104 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-10 10:15:34,106 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-10 10:15:37,634 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-10 10:15:37,638 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-10 10:15:37,645 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-10 10:15:37,645 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-10 10:15:37,673 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 16 commands from backend.app.cli.commands.workbot
+2025-12-10 10:15:37,673 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-10 10:15:38,756 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: display_vendor_orders (args=['--vendor', 'Performance Food'])
+2025-12-10 10:15:38,921 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'display_vendor_orders' executed successfully.
+2025-12-10 10:17:15,193 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-10 10:17:15,195 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-10 10:17:18,014 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-10 10:17:18,018 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-10 10:17:18,025 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-10 10:17:18,025 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-10 10:17:33,595 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-10 10:17:33,599 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-10 10:17:33,605 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-10 10:17:33,605 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-10 10:17:33,635 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 16 commands from backend.app.cli.commands.workbot
+2025-12-10 10:17:33,635 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-10 10:17:34,565 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: display_vendor_orders (args=['--vendor', 'Performance Food'])
+2025-12-10 10:17:34,731 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'display_vendor_orders' executed successfully.
+2025-12-10 10:18:37,306 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-10 10:18:37,308 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-10 10:18:41,428 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-10 10:18:41,432 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-10 10:18:41,439 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-10 10:18:41,439 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-10 10:18:41,470 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 16 commands from backend.app.cli.commands.workbot
+2025-12-10 10:18:41,470 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-10 10:18:42,550 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: display_vendor_orders (args=['--vendor', 'Performance Food'])
+2025-12-10 10:18:42,718 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'display_vendor_orders' executed successfully.
+2025-12-10 10:19:28,915 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-10 10:19:28,917 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-10 10:19:32,138 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-10 10:19:32,143 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-10 10:19:32,149 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-10 10:19:32,149 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-10 10:19:32,178 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 16 commands from backend.app.cli.commands.workbot
+2025-12-10 10:19:32,178 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-10 10:19:32,830 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: display_vendor_orders (args=['--vendor', 'Performance Food'])
+2025-12-10 10:19:32,996 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'display_vendor_orders' executed successfully.
+2025-12-10 10:19:40,987 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-10 10:19:40,989 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-10 10:19:44,012 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-10 10:19:44,016 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-10 10:19:44,023 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-10 10:19:44,023 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-10 10:19:44,052 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 16 commands from backend.app.cli.commands.workbot
+2025-12-10 10:19:44,052 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-10 10:19:44,662 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: display_vendor_orders (args=['--vendor', 'Performance Food'])
+2025-12-10 10:19:44,834 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'display_vendor_orders' executed successfully.
+2025-12-10 10:20:05,787 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-10 10:20:05,789 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-10 10:20:10,798 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-10 10:20:10,802 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-10 10:20:10,809 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-10 10:20:10,809 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-10 10:20:10,837 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 16 commands from backend.app.cli.commands.workbot
+2025-12-10 10:20:10,837 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-10 10:20:11,670 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: display_vendor_orders (args=['--vendor', 'Performance Food'])
+2025-12-10 10:20:11,836 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'display_vendor_orders' executed successfully.
+2025-12-10 10:20:30,363 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-10 10:20:30,365 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-10 10:20:33,471 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-10 10:20:33,476 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-10 10:20:33,482 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-10 10:20:33,482 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-10 10:20:33,500 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 16 commands from backend.app.cli.commands.workbot
+2025-12-10 10:20:33,500 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-10 10:20:34,191 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: display_vendor_orders (args=['--vendor', 'Performance Food'])
+2025-12-10 10:20:34,358 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'display_vendor_orders' executed successfully.
+2025-12-10 10:20:55,788 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-10 10:20:55,790 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-10 10:20:58,777 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-10 10:20:58,782 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-10 10:20:58,788 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-10 10:20:58,788 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-10 10:20:58,817 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 16 commands from backend.app.cli.commands.workbot
+2025-12-10 10:20:58,817 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-10 10:20:59,615 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: display_vendor_orders (args=['--vendor', 'Performance Food'])
+2025-12-10 10:20:59,781 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'display_vendor_orders' executed successfully.
+2025-12-10 10:21:50,740 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-10 10:21:50,742 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-10 10:21:53,720 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-10 10:21:53,724 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-10 10:21:53,730 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-10 10:21:53,731 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-10 10:21:53,759 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 16 commands from backend.app.cli.commands.workbot
+2025-12-10 10:21:53,759 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-10 10:21:54,408 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: display_vendor_orders (args=['--vendor', 'Performance Food'])
+2025-12-10 10:21:54,573 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'display_vendor_orders' executed successfully.
+2025-12-10 11:15:12,072 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: archive_orders (args=[])
+2025-12-10 11:15:18,333 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'archive_orders' executed successfully.
+2025-12-10 11:15:25,888 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: archive_orders (args=[])
+2025-12-10 11:15:28,142 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'archive_orders' executed successfully.
+2025-12-10 11:36:58,427 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-10 11:36:58,431 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-10 11:37:02,742 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-10 11:37:02,747 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-10 11:37:02,762 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-10 11:37:02,762 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-10 11:37:02,777 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 16 commands from backend.app.cli.commands.workbot
+2025-12-10 11:37:02,777 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-10 11:37:04,294 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: archive_orders (args=[])
+2025-12-10 11:37:06,980 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'archive_orders' executed successfully.
+2025-12-10 11:37:22,891 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-10 11:37:22,893 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-10 11:37:26,115 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-10 11:37:26,119 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-10 11:37:26,126 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-10 11:37:26,126 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-10 11:37:26,141 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 16 commands from backend.app.cli.commands.workbot
+2025-12-10 11:37:26,141 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-10 11:37:27,151 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: archive_orders (args=[])
+2025-12-10 11:37:29,253 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'archive_orders' executed successfully.
+2025-12-10 11:45:34,032 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-10 11:45:34,034 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-10 11:45:37,033 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-10 11:45:37,037 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-10 11:45:37,044 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-10 11:45:37,044 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-10 11:45:37,058 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 16 commands from backend.app.cli.commands.workbot
+2025-12-10 11:45:37,058 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-10 11:45:38,307 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: archive_orders (args=[])
+2025-12-10 11:45:40,564 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'archive_orders' executed successfully.
+2025-12-10 12:22:52,177 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2025-12-10 12:23:53,499 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-10 12:25:46,458 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: display_vendor_orders (args=['--vendor', 'Sysco'])
+2025-12-10 12:25:46,530 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'display_vendor_orders' executed successfully.
+2025-12-10 12:25:59,650 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: display_vendor_orders (args=['--vendor', 'Performance Food'])
+2025-12-10 12:25:59,723 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'display_vendor_orders' executed successfully.
+2025-12-10 12:26:10,890 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: display_vendor_orders (args=['--vendor', 'US Foods'])
+2025-12-10 12:26:10,968 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'display_vendor_orders' executed successfully.
+2025-12-10 12:26:20,122 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: display_vendor_orders (args=['--vendor', 'FingerLakes Farms'])
+2025-12-10 12:26:20,194 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'display_vendor_orders' executed successfully.
+2025-12-10 12:27:15,435 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_upload_files (args=['--vendors', 'Sysco', 'Performance Food', 'US Foods'])
+2025-12-10 12:27:15,784 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'generate_vendor_upload_files' executed successfully.
+2025-12-10 12:30:32,444 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: display_vendor_orders (args=['--vendor', "Sweet Sam's Baking Company, LLC"])
+2025-12-10 12:30:32,521 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'display_vendor_orders' executed successfully.
+2025-12-10 12:37:54,998 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-10 12:37:55,001 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-10 12:37:58,595 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-10 12:37:58,600 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-10 12:37:58,616 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-10 12:37:58,616 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-10 12:37:58,648 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 17 commands from backend.app.cli.commands.workbot
+2025-12-10 12:37:58,648 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-10 12:38:09,049 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: display_order (args=['--vendor', "Sweet Sam's Baking Company, LLC", '--store', 'Bakery'])
+2025-12-10 12:38:09,065 - ERROR - backend.app.cli.cli.CLI - (cli.py:462) - [Error] display_order failed: 'list' object has no attribute 'id'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 451, in _dispatch_command
+    self.commands[command].command(args)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\display_order.py", line 39, in command
+    print(f"Order ID:    {order.id}")
+                          ^^^^^^^^
+AttributeError: 'list' object has no attribute 'id'
+2025-12-10 12:38:09,069 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'display_order' executed successfully.
+2025-12-10 12:38:36,318 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-10 12:38:36,321 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-10 12:38:39,365 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-10 12:38:39,369 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-10 12:38:39,388 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-10 12:38:39,388 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-10 12:38:39,420 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 17 commands from backend.app.cli.commands.workbot
+2025-12-10 12:38:39,420 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-10 12:38:40,075 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: display_order (args=['--vendor', "Sweet Sam's Baking Company, LLC", '--store', 'Bakery'])
+2025-12-10 12:38:40,091 - ERROR - backend.app.cli.cli.CLI - (cli.py:462) - [Error] display_order failed: 'list' object has no attribute 'vendor'
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 451, in _dispatch_command
+    self.commands[command].command(args)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\display_order.py", line 39, in command
+    print(f"Vendor:      {order.vendor}")
+                          ^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'vendor'
+2025-12-10 12:38:40,094 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'display_order' executed successfully.
+2025-12-10 12:38:57,591 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-10 12:38:57,594 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-10 12:39:00,406 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-10 12:39:00,410 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-10 12:39:00,417 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-10 12:39:00,417 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-10 12:39:00,447 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 17 commands from backend.app.cli.commands.workbot
+2025-12-10 12:39:00,447 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-10 12:39:01,027 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: display_order (args=['--vendor', "Sweet Sam's Baking Company, LLC", '--store', 'Bakery'])
+2025-12-10 12:39:01,045 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'display_order' executed successfully.
+2025-12-10 12:39:08,177 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: display_order (args=['--vendor', 'Peters Supply'])
+2025-12-10 12:39:08,178 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'display_order' executed successfully.
+2025-12-10 12:39:13,665 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: display_order (args=['--vendor', 'Peters Supply', '--store', 'Bakery'])
+2025-12-10 12:39:13,674 - ERROR - backend.app.cli.cli.CLI - (cli.py:462) - [Error] display_order failed: list index out of range
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\cli.py", line 451, in _dispatch_command
+    self.commands[command].command(args)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend\app\cli\commands\workbot\display_order.py", line 29, in command
+    order = self.context.workbot.get_orders(stores=[parsed_args.store], vendors=[parsed_args.vendor])[0]
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+2025-12-10 12:39:13,678 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'display_order' executed successfully.
+2025-12-10 12:39:38,983 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-10 12:39:38,987 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-10 12:39:42,295 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-10 12:39:42,300 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-10 12:39:42,314 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-10 12:39:42,314 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-10 12:39:42,343 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 17 commands from backend.app.cli.commands.workbot
+2025-12-10 12:39:42,343 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-10 12:39:46,282 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: display_order (args=['--vendor', 'Peters Supply', '--store', 'Bakery'])
+2025-12-10 12:39:46,293 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'display_order' executed successfully.
+2025-12-10 12:39:49,906 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: display_order (args=['--vendor', "Sweet Sam's Baking Company, LLC", '--store', 'Bakery'])
+2025-12-10 12:39:49,925 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'display_order' executed successfully.
+2025-12-10 14:13:58,790 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Triphammer', 'Collegetown'])
+2025-12-10 14:15:22,560 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-10 14:16:06,439 - ERROR - backend.app.cli.cli.CLI - (cli.py:436) - Failed to parse input 'download_orders --stores "Bakery: --vendors "DUTCH VALLEY FOOD DIST"': No closing quotation
+2025-12-10 14:16:11,878 - ERROR - backend.app.cli.cli.CLI - (cli.py:436) - Failed to parse input 'download_orders --stores "Bakery: --vendors "DUTCH VALLEY FOOD DIST"': No closing quotation
+2025-12-10 14:16:19,591 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Bakery', '--vendors', 'DUTCH VALLEY FOOD DIST'])
+2025-12-10 14:16:50,205 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-10 14:16:50,208 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-10 14:16:56,097 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-10 14:16:56,103 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-10 14:16:56,121 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-10 14:16:56,122 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-10 14:16:56,148 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 17 commands from backend.app.cli.commands.workbot
+2025-12-10 14:16:56,148 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-10 14:17:03,168 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: download_orders (args=['--stores', 'Bakery', '--vendors', 'DUTCH VALLEY FOOD DIST'])
+2025-12-10 14:17:22,376 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'download_orders' executed successfully.
+2025-12-10 14:21:27,109 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: display_vendor_orders (args=['--vendor', 'FingerLakes Farms'])
+2025-12-10 14:21:27,200 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'display_vendor_orders' executed successfully.
+2025-12-10 14:21:41,662 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_order_emails (args=['--vendors', 'FingerLakes Farms'])
+2025-12-10 14:21:42,214 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'generate_vendor_order_emails' executed successfully.
+2025-12-10 14:22:05,551 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_order_emails (args=['--vendors', 'Russo Produce'])
+2025-12-10 14:22:05,880 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'generate_vendor_order_emails' executed successfully.
+2025-12-10 14:27:23,416 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-10 14:27:23,418 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-10 14:27:26,617 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-10 14:27:26,622 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-10 14:27:26,638 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-10 14:27:26,638 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-10 14:27:26,658 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 17 commands from backend.app.cli.commands.workbot
+2025-12-10 14:27:26,658 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-10 14:27:35,740 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: display_vendor_orders (args=['--vendor', 'Sysco'])
+2025-12-10 14:27:35,845 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'display_vendor_orders' executed successfully.
+2025-12-10 14:28:21,637 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: display_order (args=['--vendor', 'Sysco', '--store', 'Bakery'])
+2025-12-10 14:28:21,656 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'display_order' executed successfully.
+2025-12-10 14:28:58,404 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-10 14:28:58,406 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-10 14:29:01,227 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-10 14:29:01,231 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-10 14:29:01,248 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-10 14:29:01,248 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-10 14:29:01,268 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 17 commands from backend.app.cli.commands.workbot
+2025-12-10 14:29:01,268 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-10 14:29:01,951 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: display_order (args=['--vendor', 'Sysco', '--store', 'Bakery'])
+2025-12-10 14:29:01,973 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'display_order' executed successfully.
+2025-12-10 14:31:02,184 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-10 14:31:02,187 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-10 14:31:05,487 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-10 14:31:05,491 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-10 14:31:05,498 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-10 14:31:05,498 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-10 14:31:05,518 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 17 commands from backend.app.cli.commands.workbot
+2025-12-10 14:31:05,518 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-10 14:31:06,323 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: display_order (args=['--vendor', 'Sysco', '--store', 'Bakery'])
+2025-12-10 14:31:06,346 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'display_order' executed successfully.
+2025-12-10 14:31:29,753 - INFO - backend.app.cli.cli.CLI - (cli.py:376) - CLI interrupted by user (Ctrl+C / EOF).
+2025-12-10 14:31:29,756 - INFO - backend.app.cli.cli.CLI - (cli.py:419) - Exiting CLI and saving history.
+2025-12-10 14:31:32,774 - INFO - backend.app.cli.cli.CLI - (cli.py:34) - Initializing CLI.
+2025-12-10 14:31:32,780 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 1 commands from backend.app.cli.commands.builtin
+2025-12-10 14:31:32,786 - INFO - backend.app.cli.cli.CLI - (cli.py:101) - Loaded command history from C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\data\cli\.cli_history
+2025-12-10 14:31:32,786 - INFO - backend.app.cli.cli.CLI - (cli.py:42) - CLI initialized successfully with 1 commands.
+2025-12-10 14:31:32,808 - INFO - backend.app.cli.cli.CLI - (cli.py:77) - Loaded 17 commands from backend.app.cli.commands.workbot
+2025-12-10 14:31:32,808 - INFO - backend.app.cli.cli.CLI - (cli.py:350) - CLI session started.
+2025-12-10 14:31:33,516 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: display_order (args=['--vendor', 'Sysco', '--store', 'Bakery'])
+2025-12-10 14:31:33,538 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'display_order' executed successfully.
+2025-12-10 14:32:42,206 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: generate_vendor_upload_files (args=['--vendors', 'Performance Food', 'US Foods', 'Sysco'])
+2025-12-10 14:32:42,766 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'generate_vendor_upload_files' executed successfully.
+2025-12-10 15:32:45,134 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: convert_order_to_transfer (args=['--origin', 'Bakery', '--vendor', 'Ithaca Bakery', '--destination', 'Collegetown'])
+2025-12-10 15:32:45,243 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'convert_order_to_transfer' executed successfully.
+2025-12-10 15:32:48,173 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: convert_order_to_transfer (args=['--origin', 'Bakery', '--vendor', 'Ithaca Bakery', '--destination', 'Easthill'])
+2025-12-10 15:32:48,212 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'convert_order_to_transfer' executed successfully.
+2025-12-10 15:33:15,942 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: convert_order_to_transfer (args=['--origin', 'Bakery', '--vendor', 'Ithaca Bakery', '--destination', 'Downtown'])
+2025-12-10 15:33:15,998 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'convert_order_to_transfer' executed successfully.
+2025-12-10 15:33:18,902 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: convert_order_to_transfer (args=['--origin', 'Bakery', '--vendor', 'Ithaca Bakery', '--destination', 'Triphammer'])
+2025-12-10 15:33:18,970 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'convert_order_to_transfer' executed successfully.
+2025-12-10 15:33:32,046 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: archive_orders (args=['--vendors', 'Ithaca Bakery'])
+2025-12-10 15:33:32,163 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'archive_orders' executed successfully.
+2025-12-10 15:33:45,854 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: archive_orders (args=['--vendors', 'Ithaca Bakery'])
+2025-12-10 15:33:45,941 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'archive_orders' executed successfully.
+2025-12-10 15:37:11,548 - INFO - backend.app.cli.cli.CLI - (cli.py:448) - Dispatching command: input_transfers (args=[])
+2025-12-10 16:02:12,621 - INFO - backend.app.cli.cli.CLI - (cli.py:457) - Command 'input_transfers' executed successfully.

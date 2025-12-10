@@ -176,6 +176,9 @@ class WorkBot:
         self.logger.info(f'Retrieving orders for: stores={stores}, vendors={vendors}')
         return self.orders.get_orders(stores=stores, vendors=vendors)
 
+    def get_orders_by_vendor(self, vendor: str, stores: list[str] = []) -> list[Order]:
+        return self.get_orders(stores=stores, vendors=[vendor])
+    
     def archive_all_current_orders(self, stores: list[str] = None, vendors: list[str] = None) -> None:
         vendors = vendors or []
 
