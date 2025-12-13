@@ -28,7 +28,12 @@ class DisplayVendorOrders(Command):
             parsed_args = parser.parse_args(args)
             orders = self.context.workbot.get_orders_by_vendor(parsed_args.vendor, parsed_args.stores)
             print('')
+            print(f'{parsed_args.vendor}')
+            print('')
             print(self._format_orders_table(orders))
+            print('')
+            total = sum(order.total_cost for order in orders)
+            print(f'Total Cost: ${total:,.2f}')
             print('')
         except SystemExit:
             pass

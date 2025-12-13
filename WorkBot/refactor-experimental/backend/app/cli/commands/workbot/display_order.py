@@ -73,6 +73,7 @@ class DisplayOrder(Command):
 
     def _format_order_items_table(self, order_items: list):
 
+        headers = ['Store', 'Date (dd-mm-yyyy)', 'Items', 'Total Cost']
         rows = []
         for o in order_items:
             rows.append([
@@ -81,5 +82,5 @@ class DisplayOrder(Command):
                 len(o.items),
                 f'${self._get_total_cost(o.items):,.02f}'
             ])
-        headers = ['Store', 'Date (dd-mm-yyyy)', 'Items', 'Total Cost']
+        
         return tabulate(rows, headers=headers, tablefmt="github")
