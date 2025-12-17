@@ -105,7 +105,7 @@ class VendorInformation(Command):
             ["Ordering Methods", ", ".join(ordering.method) or "None"],
             ["Order Email", ordering.email or ""],
             ["Portal URL", ordering.portal_url or ""],
-            ["Ordering Phone", ordering.phone_number or ""]
+            ["Ordering Phone", self._format_phone_number(ordering.phone_number) or ""]
         ]
         ordering_output = tabulate(ordering_table, tablefmt='plain')
 

@@ -164,7 +164,7 @@ class CLI:
             options = self._complete_commands(text)
         else:
             options = self._complete_arguments(buffer, text)
-        
+
         return options[state] if state < len(options) else None
 
     def _complete_commands(self, text: str) -> list[str]:

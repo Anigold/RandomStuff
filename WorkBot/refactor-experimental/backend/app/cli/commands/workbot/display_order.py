@@ -41,6 +41,13 @@ class DisplayOrder(Command):
                 print(f"Store:       {order.store}")
                 print()
 
+                order_total = sum(item.total_cost for item in order.items)
+                print(f"Order Total: ${order_total:,.2f}")
+
+                total_cases = sum(item.quantity for item in order.items)
+                print(f'Total Cases: {total_cases}\n')
+
+
                 # -------------------------
                 # Item Table
                 # -------------------------
@@ -61,12 +68,8 @@ class DisplayOrder(Command):
                 headers = ["SKU", "Item Name", "Qty", "Cost Per ($)", "Total ($)"]
                 table = tabulate(rows, headers=headers, tablefmt="github", floatfmt=',.2f')
                 print(table)
+                print()
 
-                # -------------------------
-                # Order Total
-                # -------------------------
-                order_total = sum(item.total_cost for item in order.items)
-                print(f"\nOrder Total: ${order_total:,.2f}\n")
         except SystemExit:
             pass
 

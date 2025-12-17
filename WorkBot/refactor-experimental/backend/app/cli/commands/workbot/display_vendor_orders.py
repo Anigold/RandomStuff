@@ -53,7 +53,8 @@ class DisplayVendorOrders(Command):
                 o.store,
                 convert_date_format(o.date, '%Y%m%d', '%d-%m-%Y'),
                 len(o.items),
+                sum(item.quantity for item in o.items),
                 f'${self._get_total_cost(o.items):,.02f}'
             ])
-        headers = ['Store', 'Date (dd-mm-yyyy)', 'Items', 'Total Cost']
+        headers = ['Store', 'Date (dd-mm-yyyy)', 'Items', 'Cases', 'Total Cost']
         return tabulate(rows, headers=headers, tablefmt="github")
