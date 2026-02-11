@@ -1152,7 +1152,12 @@ class CraftableBot(SeleniumBotMixin):
                     time.sleep(1)
 
         calendar = self.driver.find_element(By.CLASS_NAME, 'dayContainer')
-        today = calendar.find_element(By.XPATH, f'.//span[@class="flatpickr-day "][text()="{transfer_datetime.day}"]')
+        today = None
+        try:
+            today = calendar.find_element(By.XPATH, f'.//span[@class="flatpickr-day "][text()="{transfer_datetime.day}"]')
+        except:
+            today = calendar.find_element(By.XPATH, f'.//span[@class="flatpickr-day selected"][text()="{transfer_datetime.day}"]')
+        
         today.click()
         time.sleep(2)
 

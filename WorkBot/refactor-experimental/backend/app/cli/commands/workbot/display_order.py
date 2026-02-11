@@ -56,8 +56,9 @@ class DisplayOrder(Command):
                     return
 
                 rows = []
-                for item in order.items:
+                for pos, item in enumerate(order.items):
                     rows.append([
+                        pos+1,
                         item.sku,
                         item.name,
                         item.quantity,
@@ -65,7 +66,7 @@ class DisplayOrder(Command):
                         item.total_cost,
                     ])
 
-                headers = ["SKU", "Item Name", "Qty", "Cost Per ($)", "Total ($)"]
+                headers = ["#", "SKU", "Item Name", "Qty", "Cost Per ($)", "Total ($)"]
                 table = tabulate(rows, headers=headers, tablefmt="github", floatfmt=',.2f')
                 print(table)
                 print()
