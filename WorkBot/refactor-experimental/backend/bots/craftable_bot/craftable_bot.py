@@ -877,21 +877,31 @@ class CraftableBot(SeleniumBotMixin):
         # calendar_current_year_input.send_keys(date.year)
 
         # print(calendar_current_month.text, flush=True)
-        current_month_value = self._get_month_value(calendar_current_month.text)
-        # print(f'Current calendar month {current_month_value}.', flush=True)
-        # print(f'Inputted date month {date.month}.', flush=True)
+        current_calendar_month_value = self._get_month_value(calendar_current_month.text)
+        current_calendar_year_value = calendar_current_year_input.text
+
+        print(f'Calendar Date Shown: {current_calendar_month_value} / {current_calendar_year_value}')
+
+
 
         time.sleep(5)
-        if current_month_value != date.month:
+        calendar_movement_direction = -1 # -1 goes to the past, 1 goes to the future
+        if current_calendar_year_value != date.year:
+            if current_calendar_year_value > date.year: calendar_movement_direction = -1
+            else: calendar_movement_direction = 1
+
+        
+
+        if current_calendar_month_value != date.month:
             # print('Changing month', flush=True)
-            if current_month_value > date.month:
+            if current_calendar_month_value > date.month:
                 # Click back
-                for _ in range(current_month_value - date.month):
+                for _ in range(current_calendar_month_value - date.month):
                     previous_month_button = calendar.find_element(By.CLASS_NAME, 'flatpickr-prev-month')
                     previous_month_button.click()
                     time.sleep(1)
-            if current_month_value < date.month:
-                for _ in range(date.month - current_month_value):
+            if current_calendar_month_value < date.month:
+                for _ in range(date.month - current_calendar_month_value):
                     next_month_button = calendar.find_element(By.CLASS_NAME, 'flatpickr-next-month')
                     next_month_button.click()
                     time.sleep(1)
