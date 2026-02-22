@@ -26,6 +26,7 @@ from backend.infra.logger import Logger
 from backend.domain.models import Transfer, BotOrderResult
 from backend.core.utils.datetimes import convert_date_format, string_to_datetime
 from backend.bots.bot_mixins import SeleniumBotMixin
+from backend.core.utils.flatpickr_calendar_controller import FP, FlatpickrWidgets
 
 
 @Logger.attach_logger
@@ -857,60 +858,6 @@ class CraftableBot(SeleniumBotMixin):
 
         self.logger.info('Stores filter updated successfully.')
 
-    def _change_calendar_to_date(self, calendar, date: datetime) -> None:
-
-        date = string_to_datetime(date)
-        
-        try:
-            self.logger.debug('Attempting to open flatpickr calendar.')
-            calendar.click()
-            WebDriverWait(calendar, 30).until(EC.element_to_be_clickable((By.CLASS_NAME, 'flatpickr-calendar')))
-        except:
-            self.logger.error('Calendar did not open when clicked.')
-
-        self.logger.debug('Calendar opened successfully.')
-        time.sleep(5)
-
-        calendar_current_month      = calendar.find_element(By.CLASS_NAME, 'cur-month')
-        calendar_current_year_input = calendar.find_element(By.CLASS_NAME, 'cur-year')
-
-        # calendar_current_year_input.send_keys(date.year)
-
-        # print(calendar_current_month.text, flush=True)
-        current_calendar_month_value = self._get_month_value(calendar_current_month.text)
-        current_calendar_year_value = calendar_current_year_input.text
-
-        print(f'Calendar Date Shown: {current_calendar_month_value} / {current_calendar_year_value}')
-
-
-
-        time.sleep(5)
-        calendar_movement_direction = -1 # -1 goes to the past, 1 goes to the future
-        if current_calendar_year_value != date.year:
-            if current_calendar_year_value > date.year: calendar_movement_direction = -1
-            else: calendar_movement_direction = 1
-
-        
-
-        if current_calendar_month_value != date.month:
-            # print('Changing month', flush=True)
-            if current_calendar_month_value > date.month:
-                # Click back
-                for _ in range(current_calendar_month_value - date.month):
-                    previous_month_button = calendar.find_element(By.CLASS_NAME, 'flatpickr-prev-month')
-                    previous_month_button.click()
-                    time.sleep(1)
-            if current_calendar_month_value < date.month:
-                for _ in range(date.month - current_calendar_month_value):
-                    next_month_button = calendar.find_element(By.CLASS_NAME, 'flatpickr-next-month')
-                    next_month_button.click()
-                    time.sleep(1)
-
-        day_container = calendar.find_element(By.CLASS_NAME, 'dayContainer')
-        today = day_container.find_element(By.XPATH, f'.//span[@class="flatpickr-day "][text()="{date.day}"]')
-        today.click()
-        time.sleep(10)
-
     def _set_date_filters(self, start_date: str, end_date: str) -> None:
         
         self.logger.info(f'Setting audit "Date" filters: {start_date} to {end_date}.')
@@ -918,8 +865,16 @@ class CraftableBot(SeleniumBotMixin):
         from_date_filter = self.driver.find_element(By.XPATH, '//div[label[text()="From Date"]]')
         to_date_filter = self.driver.find_element(By.XPATH, '//div[label[text()="To Date"]]')
 
-        self._change_calendar_to_date(from_date_filter, start_date)
-        self._change_calendar_to_date(to_date_filter, end_date)
+        calendar_controller = FlatpickrWidgets(self.driver)
+
+        start_date = string_to_datetime(start_date)
+        end_date   = string_to_datetime(end_date)
+
+        calendar_controller.pick_date('From Date', start_date)
+        calendar_controller.pick_date('To Date', end_date)
+        
+        # self._change_calendar_to_date(from_date_filter, start_date)
+        # self._change_calendar_to_date(to_date_filter, end_date)
 
         self.logger.info('Date filters updated successfully.')
 
@@ -989,9 +944,6 @@ class CraftableBot(SeleniumBotMixin):
             self.driver.switch_to.window(self.driver.window_handles[0])
             time.sleep(2)
 
-
-
-
     @SeleniumBotMixin.with_session(login=True)
     @Logger.log_exceptions
     def download_audits(self, stores: list[str], start_date: str, end_date: str) -> None:
@@ -1034,96 +986,6 @@ class CraftableBot(SeleniumBotMixin):
             self._download_audits_from_table()
         except:
             raise ValueError()
-
-
-
-
-
-
-
-
-
-        # time.sleep(10)
-        # try:
-        #     audit_list_table = self.driver.find_element(By.TAG_NAME, 'table')
-        #     self.logger.info('Audit table loaded.')
-        # except:
-        #     self.logger.info('Could not find audit list table, ending audit download.')
-        #     raise ValueError()
-        
-        # # Set to correct store(s)
-        # try:
-        #     stores_dropdown = self.driver.find_element(By.XPATH, '//button[text()="Stores"]')
-        #     stores_dropdown.click()
-        #     time.sleep(5)
-
-        #     all_stores_option = self.driver.find_element(By.XPATH, f'//div[text()="All Stores"]')
-        #     time.sleep(1)
-        #     all_stores_option.click()
-            # time.sleep(1)
-            # all_stores_option.click()
-            # time.sleep(1)
-            # for store in stores:
-            #     store_text_input = self.driver.find_element(By.ID, 'text-input')
-            #     store_text_input.clear()
-            #     store_text_input.send_keys(store_audit_name)
-            #     time.sleep(2)
-            #     dropdown_option = self.driver.find_element(By.XPATH, f'//div[text()="{store_audit_name}"]')
-
-            #     # NEED TO CHECK IF STORE IS ALREADY TOGGLED
-            #     dropdown_option.click()
-            #     time.sleep(2)
-
-        # except:
-        #     raise ValueError()
-        # # Set starting date
-        # # Set ending date
-        # try:
-        #     self.logger.info('Searching for table rows.')
-        #     audit_rows = audit_list_table.find_elements(By.TAG_NAME, 'tr')
-        #     self.logger.info('Table rows found.')
-        # except:
-        #     self.logger.info('Unable to find table rows, ending audit download.')
-        #     raise ValueError()
-        
-        # self.logger.info(f'Found {len(audit_rows)} rows.')
-        # for pos, row in enumerate(audit_rows):
-        #     self.logger.info(f'Processing row {pos+1} of {len(audit_rows)}.')
-        #     cols = row.find_elements(By.TAG_NAME, 'td')
-        #     store, date, closed_time, auditor, audit_type, inventory_cost = cols
-
-        #     date_hyperlink = date.find_element(By.TAG_NAME, 'a')
-
-        #     original_tab = self.driver.current_window_handle
-
-        #     actions = ActionChains(self.driver)
-        #     actions.key_down(Keys.CONTROL).click(date_hyperlink).key_up(Keys.CONTROL).perform()
-
-        #     # self.driver.execute_script("window.open(arguments[0].href, '_blank');", date_hyperlink)
-        #     time.sleep(5)
-
-        #     self.driver.switch_to.window(self.driver.window_handles[-1])
-        #     time.sleep(5)
-
-        #     # download_filename = f'{store.text} - Foodager - Audit {date[-1:-5]}-{date[0:2]}-{date[3:5]}.xlsx'
-        #     try:
-        #         time.sleep(5)
-        #         self.logger.info(f'Attempting download of row {pos+1}.')
-        #         download_button = self.driver.find_element(By.CLASS_NAME, 'fa-download')
-        #         download_button.click()
-        #         time.sleep(5)
-        #         self.logger.info('Download success')
-        #     except:
-        #         self.logger.info('Unable to download audit, skipping.')
-        #         self.driver.close()
-
-            
-
-            # self.driver.close()
-            # self.driver.switch_to.window(original_tab)
-            
-
-
 
 # endregion
     

@@ -30,3 +30,5 @@ class DownloadAudits(Command):
             self.context.workbot.download_audits(parsed_args.stores, parsed_args.start_date, parsed_args.end_date)
         except:
             print('oops')
+
+        print('\nAudits downloaded successfully.\n')

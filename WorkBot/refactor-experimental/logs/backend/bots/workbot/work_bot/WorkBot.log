@@ -1149,3 +1149,1186 @@ Symbols not available. Dumping unresolved backtrace:
 2026-02-15 14:01:17,972 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:284) - Context map built with 18 entries. Delegating to OrderServices.
 2026-02-15 14:01:18,627 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:294) - Vendor upload file generation complete. 18 files created.
 2026-02-15 14:04:06,159 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Triphammer'], vendors=['Performance Food']
+2026-02-16 07:06:53,671 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:53) - Initializing WorkBot...
+2026-02-16 07:06:53,672 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:66) - WorkBot initialized successfully.
+2026-02-16 07:15:20,751 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Hillcrest Dairy / 20260214.
+2026-02-16 07:15:20,827 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for Hillcrest Dairy is already up-to-date...skipping.
+2026-02-16 07:15:20,828 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / FingerLakes Farms / 20260214.
+2026-02-16 07:15:20,895 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/FingerLakes Farms
+2026-02-16 07:15:20,896 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Sysco / 20260215.
+2026-02-16 07:15:20,933 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for Sysco is already up-to-date...skipping.
+2026-02-16 07:15:20,934 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Performance Food / 20260215.
+2026-02-16 07:15:20,976 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for Performance Food is already up-to-date...skipping.
+2026-02-16 07:15:20,977 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / US Foods / 20260215.
+2026-02-16 07:15:21,015 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for US Foods is already up-to-date...skipping.
+2026-02-16 07:15:21,016 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Keck's Food Service / 20260215.
+2026-02-16 07:15:21,053 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for Keck's Food Service is already up-to-date...skipping.
+2026-02-16 07:15:21,054 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Coffee Depot LLC / 20260215.
+2026-02-16 07:15:21,116 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Coffee Depot LLC
+2026-02-16 07:15:21,117 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Finger Lakes Coffee Roasters / 20260215.
+2026-02-16 07:15:21,175 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Finger Lakes Coffee Roasters
+2026-02-16 07:15:21,176 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Equal Exchange / 20260215.
+2026-02-16 07:15:21,213 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for Equal Exchange is already up-to-date...skipping.
+2026-02-16 07:15:21,214 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Copper Horse Coffee / 20260215.
+2026-02-16 07:15:21,273 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Copper Horse Coffee
+2026-02-16 07:15:21,274 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Webstaurant / 20260215.
+2026-02-16 07:15:21,311 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for Webstaurant is already up-to-date...skipping.
+2026-02-16 07:15:21,312 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / BJ's / 20260215.
+2026-02-16 07:15:21,348 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for BJ's is already up-to-date...skipping.
+2026-02-16 07:15:21,349 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Coca-Cola / 20260215.
+2026-02-16 07:15:21,386 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for Coca-Cola is already up-to-date...skipping.
+2026-02-16 07:15:21,387 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / US Foods / 20260213.
+2026-02-16 07:15:21,425 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for US Foods is already up-to-date...skipping.
+2026-02-16 07:15:21,425 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Ithaca Bakery / 20260213.
+2026-02-16 07:15:21,487 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/Ithaca Bakery
+2026-02-16 07:15:21,488 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Performance Food / 20260213.
+2026-02-16 07:15:21,526 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for Performance Food is already up-to-date...skipping.
+2026-02-16 07:15:21,527 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Sysco / 20260213.
+2026-02-16 07:15:21,564 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for Sysco is already up-to-date...skipping.
+2026-02-16 07:15:21,565 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Hillcrest Dairy / 20260213.
+2026-02-16 07:15:21,601 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for Hillcrest Dairy is already up-to-date...skipping.
+2026-02-16 07:15:21,602 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Regional Distributors, Inc. / 20260213.
+2026-02-16 07:15:21,639 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for Regional Distributors, Inc. is already up-to-date...skipping.
+2026-02-16 07:15:21,640 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Copper Horse Coffee / 20260213.
+2026-02-16 07:15:21,677 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for Copper Horse Coffee is already up-to-date...skipping.
+2026-02-16 07:15:21,678 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Hill & Markes / 20260213.
+2026-02-16 07:15:21,715 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for Hill & Markes is already up-to-date...skipping.
+2026-02-16 07:15:21,716 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Johnston Paper / 20260213.
+2026-02-16 07:15:21,753 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for Johnston Paper is already up-to-date...skipping.
+2026-02-16 07:15:21,753 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Peters Supply / 20260213.
+2026-02-16 07:15:21,790 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for Peters Supply is already up-to-date...skipping.
+2026-02-16 07:15:21,791 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Coffee Depot LLC / 20260213.
+2026-02-16 07:15:21,851 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/Coffee Depot LLC
+2026-02-16 07:15:21,852 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / UNFI / 20260213.
+2026-02-16 07:15:21,889 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for UNFI is already up-to-date...skipping.
+2026-02-16 07:15:21,890 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Coca-Cola / 20260213.
+2026-02-16 07:15:21,929 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for Coca-Cola is already up-to-date...skipping.
+2026-02-16 07:15:21,929 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / A.L. George / 20260213.
+2026-02-16 07:15:21,966 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for A.L. George is already up-to-date...skipping.
+2026-02-16 07:15:21,967 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / FingerLakes Farms / 20260213.
+2026-02-16 07:15:22,028 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/FingerLakes Farms
+2026-02-16 07:15:22,028 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / BALKAN BEVERAGE LLC / 20260213.
+2026-02-16 07:15:22,069 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for BALKAN BEVERAGE LLC is already up-to-date...skipping.
+2026-02-16 07:15:22,069 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Ithaca Bakery / 20260213.
+2026-02-16 07:15:22,142 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Downtown/Ithaca Bakery
+2026-02-16 07:15:22,143 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Hill & Markes / 20260213.
+2026-02-16 07:15:22,186 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for Hill & Markes is already up-to-date...skipping.
+2026-02-16 07:15:22,187 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Peters Supply / 20260213.
+2026-02-16 07:15:22,229 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for Peters Supply is already up-to-date...skipping.
+2026-02-16 07:15:22,230 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Copper Horse Coffee / 20260213.
+2026-02-16 07:15:22,271 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for Copper Horse Coffee is already up-to-date...skipping.
+2026-02-16 07:15:22,271 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / US Foods / 20260213.
+2026-02-16 07:15:22,310 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for US Foods is already up-to-date...skipping.
+2026-02-16 07:15:22,311 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Equal Exchange / 20260213.
+2026-02-16 07:15:22,349 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for Equal Exchange is already up-to-date...skipping.
+2026-02-16 07:15:22,349 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / SANICO / 20260213.
+2026-02-16 07:15:22,387 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for SANICO is already up-to-date...skipping.
+2026-02-16 07:15:22,388 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Coca-Cola / 20260213.
+2026-02-16 07:15:22,425 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for Coca-Cola is already up-to-date...skipping.
+2026-02-16 07:15:22,426 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Sysco / 20260213.
+2026-02-16 07:15:22,463 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for Sysco is already up-to-date...skipping.
+2026-02-16 07:15:22,464 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / UNFI / 20260213.
+2026-02-16 07:15:22,501 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for UNFI is already up-to-date...skipping.
+2026-02-16 07:15:22,502 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Performance Food / 20260213.
+2026-02-16 07:15:22,538 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for Performance Food is already up-to-date...skipping.
+2026-02-16 07:15:22,539 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Hillcrest Dairy / 20260213.
+2026-02-16 07:15:22,576 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for Hillcrest Dairy is already up-to-date...skipping.
+2026-02-16 07:15:22,577 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / FingerLakes Farms / 20260213.
+2026-02-16 07:15:22,614 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for FingerLakes Farms is already up-to-date...skipping.
+2026-02-16 07:15:22,615 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Coffee Depot LLC / 20260213.
+2026-02-16 07:15:22,674 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Downtown/Coffee Depot LLC
+2026-02-16 07:15:22,675 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Johnston Paper / 20260213.
+2026-02-16 07:15:22,712 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for Johnston Paper is already up-to-date...skipping.
+2026-02-16 07:15:22,713 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Regional Distributors, Inc. / 20260213.
+2026-02-16 07:15:22,749 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for Regional Distributors, Inc. is already up-to-date...skipping.
+2026-02-16 07:15:22,750 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Wegmans / 20260213.
+2026-02-16 07:15:22,807 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Downtown/Wegmans
+2026-02-16 07:15:22,807 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / US Foods / 20260213.
+2026-02-16 07:15:22,846 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for US Foods is already up-to-date...skipping.
+2026-02-16 07:15:22,846 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Regional Distributors, Inc. / 20260213.
+2026-02-16 07:15:22,883 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for Regional Distributors, Inc. is already up-to-date...skipping.
+2026-02-16 07:15:22,884 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / UNFI / 20260213.
+2026-02-16 07:15:22,921 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for UNFI is already up-to-date...skipping.
+2026-02-16 07:15:22,921 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / DUTCH VALLEY FOOD DIST / 20260213.
+2026-02-16 07:15:22,958 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for DUTCH VALLEY FOOD DIST is already up-to-date...skipping.
+2026-02-16 07:15:22,959 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Ithaca Bakery / 20260213.
+2026-02-16 07:15:23,022 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/Ithaca Bakery
+2026-02-16 07:15:23,023 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Equal Exchange / 20260213.
+2026-02-16 07:15:23,059 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for Equal Exchange is already up-to-date...skipping.
+2026-02-16 07:15:23,060 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Coca-Cola / 20260213.
+2026-02-16 07:15:23,097 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for Coca-Cola is already up-to-date...skipping.
+2026-02-16 07:15:23,098 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Copper Horse Coffee / 20260213.
+2026-02-16 07:15:23,135 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for Copper Horse Coffee is already up-to-date...skipping.
+2026-02-16 07:15:23,136 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Bo's Bones / 20260213.
+2026-02-16 07:15:23,194 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/Bo's Bones
+2026-02-16 07:15:23,195 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Coffee Depot LLC / 20260213.
+2026-02-16 07:15:23,253 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/Coffee Depot LLC
+2026-02-16 07:15:23,253 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Performance Food / 20260213.
+2026-02-16 07:15:23,291 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for Performance Food is already up-to-date...skipping.
+2026-02-16 07:15:23,291 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Hill & Markes / 20260213.
+2026-02-16 07:15:23,329 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for Hill & Markes is already up-to-date...skipping.
+2026-02-16 07:15:23,330 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Peters Supply / 20260213.
+2026-02-16 07:15:23,366 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for Peters Supply is already up-to-date...skipping.
+2026-02-16 07:15:23,367 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Sysco / 20260213.
+2026-02-16 07:15:23,403 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for Sysco is already up-to-date...skipping.
+2026-02-16 07:15:23,404 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Johnston Paper / 20260213.
+2026-02-16 07:15:23,443 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for Johnston Paper is already up-to-date...skipping.
+2026-02-16 07:15:23,444 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / FingerLakes Farms / 20260213.
+2026-02-16 07:15:23,502 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/FingerLakes Farms
+2026-02-16 07:15:23,503 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Hillcrest Dairy / 20260213.
+2026-02-16 07:15:23,540 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for Hillcrest Dairy is already up-to-date...skipping.
+2026-02-16 07:15:23,540 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Regional Distributors, Inc. / 20260213.
+2026-02-16 07:15:23,577 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for Regional Distributors, Inc. is already up-to-date...skipping.
+2026-02-16 07:15:23,578 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / US Foods / 20260213.
+2026-02-16 07:15:23,615 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for US Foods is already up-to-date...skipping.
+2026-02-16 07:15:23,616 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Ithaca Bakery / 20260213.
+2026-02-16 07:15:23,677 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Syracuse/Ithaca Bakery
+2026-02-16 07:15:23,678 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Performance Food / 20260213.
+2026-02-16 07:15:23,715 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for Performance Food is already up-to-date...skipping.
+2026-02-16 07:15:23,716 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / UNFI / 20260213.
+2026-02-16 07:15:23,752 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for UNFI is already up-to-date...skipping.
+2026-02-16 07:15:23,753 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Sysco / 20260213.
+2026-02-16 07:15:23,791 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for Sysco is already up-to-date...skipping.
+2026-02-16 07:15:23,791 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Peters Supply / 20260213.
+2026-02-16 07:15:23,831 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for Peters Supply is already up-to-date...skipping.
+2026-02-16 07:15:23,832 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Hillcrest Dairy / 20260213.
+2026-02-16 07:15:23,869 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for Hillcrest Dairy is already up-to-date...skipping.
+2026-02-16 07:15:23,870 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Equal Exchange / 20260213.
+2026-02-16 07:15:23,907 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for Equal Exchange is already up-to-date...skipping.
+2026-02-16 07:15:23,908 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Hill & Markes / 20260213.
+2026-02-16 07:15:23,945 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for Hill & Markes is already up-to-date...skipping.
+2026-02-16 07:15:23,946 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Coffee Depot LLC / 20260213.
+2026-02-16 07:15:24,004 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Syracuse/Coffee Depot LLC
+2026-02-16 07:15:24,004 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Johnston Paper / 20260213.
+2026-02-16 07:15:24,041 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for Johnston Paper is already up-to-date...skipping.
+2026-02-16 07:15:24,042 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Johnston Paper / 20260213.
+2026-02-16 07:15:24,078 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Johnston Paper is already up-to-date...skipping.
+2026-02-16 07:15:24,079 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Regional Distributors, Inc. / 20260213.
+2026-02-16 07:15:24,117 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Regional Distributors, Inc. is already up-to-date...skipping.
+2026-02-16 07:15:24,118 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Hill & Markes / 20260213.
+2026-02-16 07:15:24,156 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Hill & Markes is already up-to-date...skipping.
+2026-02-16 07:15:24,156 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Russo Produce / 20260213.
+2026-02-16 07:15:24,218 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Russo Produce
+2026-02-16 07:15:24,219 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / UNFI / 20260213.
+2026-02-16 07:15:24,256 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for UNFI is already up-to-date...skipping.
+2026-02-16 07:15:24,257 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / US Foods / 20260213.
+2026-02-16 07:15:24,295 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for US Foods is already up-to-date...skipping.
+2026-02-16 07:15:24,296 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / FingerLakes Farms / 20260213.
+2026-02-16 07:15:24,355 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/FingerLakes Farms
+2026-02-16 07:15:24,356 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Hillcrest Dairy / 20260213.
+2026-02-16 07:15:24,393 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Hillcrest Dairy is already up-to-date...skipping.
+2026-02-16 07:15:24,394 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Sysco / 20260213.
+2026-02-16 07:15:24,432 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Sysco is already up-to-date...skipping.
+2026-02-16 07:15:24,433 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Performance Food / 20260213.
+2026-02-16 07:15:24,472 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Performance Food is already up-to-date...skipping.
+2026-02-16 07:15:24,473 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Ithaca Bakery / 20260213.
+2026-02-16 07:15:24,536 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Ithaca Bakery
+2026-02-16 07:15:24,536 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Equal Exchange / 20260213.
+2026-02-16 07:15:24,584 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Equal Exchange is already up-to-date...skipping.
+2026-02-16 07:15:24,585 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Peters Supply / 20260213.
+2026-02-16 07:15:24,625 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Peters Supply is already up-to-date...skipping.
+2026-02-16 07:15:24,626 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Copper Horse Coffee / 20260213.
+2026-02-16 07:15:24,689 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Copper Horse Coffee
+2026-02-16 07:15:24,689 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Coffee Depot LLC / 20260213.
+2026-02-16 07:15:24,753 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Coffee Depot LLC
+2026-02-16 07:15:24,753 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Coca-Cola / 20260213.
+2026-02-16 07:15:24,793 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Coca-Cola is already up-to-date...skipping.
+2026-02-16 07:15:24,794 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / A.L. George / 20260213.
+2026-02-16 07:15:24,834 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for A.L. George is already up-to-date...skipping.
+2026-02-16 07:15:24,835 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:120) - Craftable order sync completed successfully.
+2026-02-16 08:24:44,517 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Hillcrest Dairy / 20260214.
+2026-02-16 08:24:44,613 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Hillcrest Dairy
+2026-02-16 08:24:44,614 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / FingerLakes Farms / 20260214.
+2026-02-16 08:24:44,680 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/FingerLakes Farms
+2026-02-16 08:24:44,680 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Sysco / 20260215.
+2026-02-16 08:24:44,720 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for Sysco is already up-to-date...skipping.
+2026-02-16 08:24:44,721 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Performance Food / 20260215.
+2026-02-16 08:24:44,762 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for Performance Food is already up-to-date...skipping.
+2026-02-16 08:24:44,763 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / US Foods / 20260215.
+2026-02-16 08:24:44,803 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for US Foods is already up-to-date...skipping.
+2026-02-16 08:24:44,804 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Keck's Food Service / 20260215.
+2026-02-16 08:24:44,866 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Keck's Food Service
+2026-02-16 08:24:44,867 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Coffee Depot LLC / 20260215.
+2026-02-16 08:24:44,929 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Coffee Depot LLC
+2026-02-16 08:24:44,930 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Finger Lakes Coffee Roasters / 20260215.
+2026-02-16 08:24:44,991 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Finger Lakes Coffee Roasters
+2026-02-16 08:24:44,991 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Equal Exchange / 20260215.
+2026-02-16 08:24:45,030 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for Equal Exchange is already up-to-date...skipping.
+2026-02-16 08:24:45,031 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Copper Horse Coffee / 20260215.
+2026-02-16 08:24:45,094 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Copper Horse Coffee
+2026-02-16 08:24:45,095 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Webstaurant / 20260215.
+2026-02-16 08:24:45,156 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Webstaurant
+2026-02-16 08:24:45,156 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / BJ's / 20260215.
+2026-02-16 08:24:45,194 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for BJ's is already up-to-date...skipping.
+2026-02-16 08:24:45,195 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Coca-Cola / 20260215.
+2026-02-16 08:24:45,234 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for Coca-Cola is already up-to-date...skipping.
+2026-02-16 08:24:45,235 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Regional Distributors, Inc. / 20260216.
+2026-02-16 08:24:45,283 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Regional Distributors, Inc.
+2026-02-16 08:24:45,284 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Hillcrest Foods / 20260216.
+2026-02-16 08:24:45,328 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Hillcrest Foods
+2026-02-16 08:24:45,328 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Casa / 20260216.
+2026-02-16 08:24:45,405 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Casa
+2026-02-16 08:24:45,405 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Farmer Ground Flour / 20260216.
+2026-02-16 08:24:45,450 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Farmer Ground Flour
+2026-02-16 08:24:45,451 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Dawn / 20260216.
+2026-02-16 08:24:45,495 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Dawn
+2026-02-16 08:24:45,496 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Lentz / 20260216.
+2026-02-16 08:24:45,543 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Lentz
+2026-02-16 08:24:45,544 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Hill & Markes / 20260216.
+2026-02-16 08:24:45,589 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Hill & Markes
+2026-02-16 08:24:45,590 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / BALKAN BEVERAGE LLC / 20260216.
+2026-02-16 08:24:45,636 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/BALKAN BEVERAGE LLC
+2026-02-16 08:24:45,637 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / A.L. George / 20260216.
+2026-02-16 08:24:45,684 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/A.L. George
+2026-02-16 08:24:45,685 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / DUTCH VALLEY FOOD DIST / 20260216.
+2026-02-16 08:24:45,731 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/DUTCH VALLEY FOOD DIST
+2026-02-16 08:24:45,731 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:120) - Craftable order sync completed successfully.
+2026-02-16 08:24:57,579 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors=['Hillcrest Foods']
+2026-02-16 08:25:04,602 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors=['Hillcrest Dairy']
+2026-02-16 08:27:21,939 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:267) - Generating vendor upload files for stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors=['Hill & Markes'], start_date=None, end_date=None
+2026-02-16 08:27:21,940 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors=['Hill & Markes']
+2026-02-16 08:27:22,182 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:271) - Found 6 orders to process.
+2026-02-16 08:27:22,213 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:284) - Context map built with 6 entries. Delegating to OrderServices.
+2026-02-16 08:27:22,488 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:294) - Vendor upload file generation complete. 6 files created.
+2026-02-16 08:28:12,467 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Syracuse'], vendors=['Hill & Markes']
+2026-02-16 08:57:21,717 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors=['Regional Distributors, Inc.']
+2026-02-16 09:08:54,324 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors=['A.L. George']
+2026-02-16 09:10:53,491 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / A.L. George / 20260213.
+2026-02-16 09:10:53,547 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/A.L. George
+2026-02-16 09:10:53,548 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / A.L. George / 20260213.
+2026-02-16 09:10:53,600 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/A.L. George
+2026-02-16 09:10:53,601 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:120) - Craftable order sync completed successfully.
+2026-02-16 09:11:01,022 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors=['A.L. George']
+2026-02-16 09:11:54,966 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors=['BALKAN BEVERAGE LLC']
+2026-02-16 09:12:03,100 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Collegetown'], vendors=['BALKAN BEVERAGE LLC']
+2026-02-16 09:12:23,516 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery'], vendors=['BALKAN BEVERAGE LLC']
+2026-02-16 09:13:39,383 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors=['Lentz']
+2026-02-16 09:14:34,320 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery'], vendors=['Lentz']
+2026-02-16 09:14:42,774 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery'], vendors=['Lentz']
+2026-02-16 13:09:45,271 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Johnston Paper / 20260213.
+2026-02-16 13:09:45,364 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Johnston Paper
+2026-02-16 13:09:45,365 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Regional Distributors, Inc. / 20260213.
+2026-02-16 13:09:45,418 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Regional Distributors, Inc.
+2026-02-16 13:09:45,418 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Hill & Markes / 20260213.
+2026-02-16 13:09:45,469 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Hill & Markes
+2026-02-16 13:09:45,469 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Russo Produce / 20260213.
+2026-02-16 13:09:45,511 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Russo Produce is already up-to-date...skipping.
+2026-02-16 13:09:45,512 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / UNFI / 20260213.
+2026-02-16 13:09:45,552 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for UNFI is already up-to-date...skipping.
+2026-02-16 13:09:45,553 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / US Foods / 20260213.
+2026-02-16 13:09:45,621 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/US Foods
+2026-02-16 13:09:45,622 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / FingerLakes Farms / 20260213.
+2026-02-16 13:09:45,684 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/FingerLakes Farms
+2026-02-16 13:09:45,685 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Hillcrest Dairy / 20260213.
+2026-02-16 13:09:45,713 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Hillcrest Dairy is already up-to-date...skipping.
+2026-02-16 13:09:45,714 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Sysco / 20260213.
+2026-02-16 13:09:45,754 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Sysco is already up-to-date...skipping.
+2026-02-16 13:09:45,755 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Performance Food / 20260213.
+2026-02-16 13:09:45,797 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Performance Food is already up-to-date...skipping.
+2026-02-16 13:09:45,798 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Ithaca Bakery / 20260213.
+2026-02-16 13:09:45,864 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Ithaca Bakery
+2026-02-16 13:09:45,864 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Equal Exchange / 20260213.
+2026-02-16 13:09:45,904 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Equal Exchange is already up-to-date...skipping.
+2026-02-16 13:09:45,905 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Peters Supply / 20260213.
+2026-02-16 13:09:45,945 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Peters Supply is already up-to-date...skipping.
+2026-02-16 13:09:45,946 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Copper Horse Coffee / 20260213.
+2026-02-16 13:09:46,008 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Copper Horse Coffee
+2026-02-16 13:09:46,008 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Coffee Depot LLC / 20260213.
+2026-02-16 13:09:46,070 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Coffee Depot LLC
+2026-02-16 13:09:46,070 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Coca-Cola / 20260213.
+2026-02-16 13:09:46,111 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Coca-Cola is already up-to-date...skipping.
+2026-02-16 13:09:46,112 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / A.L. George / 20260213.
+2026-02-16 13:09:46,142 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for A.L. George is already up-to-date...skipping.
+2026-02-16 13:09:46,143 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / SANICO / 20260216.
+2026-02-16 13:09:46,191 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/SANICO
+2026-02-16 13:09:46,192 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:120) - Craftable order sync completed successfully.
+2026-02-16 13:11:35,850 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Triphammer'], vendors=['Johnston Paper']
+2026-02-16 14:06:21,605 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Regional Distributors, Inc. / 20260216.
+2026-02-16 14:06:21,637 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for Regional Distributors, Inc. is already up-to-date...skipping.
+2026-02-16 14:06:21,638 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Regional Distributors, Inc. / 20260213.
+2026-02-16 14:06:21,667 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for Regional Distributors, Inc. is already up-to-date...skipping.
+2026-02-16 14:06:21,668 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Regional Distributors, Inc. / 20260213.
+2026-02-16 14:06:21,694 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for Regional Distributors, Inc. is already up-to-date...skipping.
+2026-02-16 14:06:21,695 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Regional Distributors, Inc. / 20260213.
+2026-02-16 14:06:21,807 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for Regional Distributors, Inc. is already up-to-date...skipping.
+2026-02-16 14:06:21,808 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Regional Distributors, Inc. / 20260213.
+2026-02-16 14:06:21,836 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for Regional Distributors, Inc. is already up-to-date...skipping.
+2026-02-16 14:06:21,837 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Regional Distributors, Inc. / 20260213.
+2026-02-16 14:06:21,878 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Regional Distributors, Inc. is already up-to-date...skipping.
+2026-02-16 14:06:21,879 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:120) - Craftable order sync completed successfully.
+2026-02-16 14:06:39,607 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Triphammer'], vendors=['Regional Distributors, Inc.']
+2026-02-16 14:09:40,169 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Collegetown'], vendors=['Regional Distributors, Inc.']
+2026-02-16 14:11:22,059 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Syracuse'], vendors=['Regional Distributors, Inc.']
+2026-02-16 14:12:49,716 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Downtown'], vendors=['Regional Distributors, Inc.']
+2026-02-16 14:13:28,589 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Easthill'], vendors=['Regional Distributors, Inc.']
+2026-02-16 14:14:25,118 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery'], vendors=['Regional Distributors, Inc.']
+2026-02-16 14:19:07,698 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery'], vendors=["Keck's Food Service"]
+2026-02-16 14:22:59,709 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Triphammer'], vendors=['Webstaurant']
+2026-02-17 06:38:13,036 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Hillcrest Dairy / 20260214.
+2026-02-17 06:38:13,132 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for Hillcrest Dairy is already up-to-date...skipping.
+2026-02-17 06:38:13,133 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / FingerLakes Farms / 20260214.
+2026-02-17 06:38:13,196 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/FingerLakes Farms
+2026-02-17 06:38:13,196 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Sysco / 20260215.
+2026-02-17 06:38:13,240 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for Sysco is already up-to-date...skipping.
+2026-02-17 06:38:13,241 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Performance Food / 20260215.
+2026-02-17 06:38:13,281 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for Performance Food is already up-to-date...skipping.
+2026-02-17 06:38:13,282 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / US Foods / 20260215.
+2026-02-17 06:38:13,322 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for US Foods is already up-to-date...skipping.
+2026-02-17 06:38:13,323 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Keck's Food Service / 20260215.
+2026-02-17 06:38:13,350 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for Keck's Food Service is already up-to-date...skipping.
+2026-02-17 06:38:13,350 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Coffee Depot LLC / 20260215.
+2026-02-17 06:38:13,400 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Coffee Depot LLC
+2026-02-17 06:38:13,401 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Finger Lakes Coffee Roasters / 20260215.
+2026-02-17 06:38:13,450 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Finger Lakes Coffee Roasters
+2026-02-17 06:38:13,451 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Equal Exchange / 20260215.
+2026-02-17 06:38:13,490 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for Equal Exchange is already up-to-date...skipping.
+2026-02-17 06:38:13,491 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Copper Horse Coffee / 20260215.
+2026-02-17 06:38:13,539 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Copper Horse Coffee
+2026-02-17 06:38:13,540 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Webstaurant / 20260215.
+2026-02-17 06:38:13,567 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for Webstaurant is already up-to-date...skipping.
+2026-02-17 06:38:13,568 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / BJ's / 20260215.
+2026-02-17 06:38:13,608 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for BJ's is already up-to-date...skipping.
+2026-02-17 06:38:13,609 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Coca-Cola / 20260215.
+2026-02-17 06:38:13,649 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for Coca-Cola is already up-to-date...skipping.
+2026-02-17 06:38:13,650 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Regional Distributors, Inc. / 20260216.
+2026-02-17 06:38:13,676 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for Regional Distributors, Inc. is already up-to-date...skipping.
+2026-02-17 06:38:13,677 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Hillcrest Foods / 20260216.
+2026-02-17 06:38:13,704 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for Hillcrest Foods is already up-to-date...skipping.
+2026-02-17 06:38:13,705 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Casa / 20260216.
+2026-02-17 06:38:13,785 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Casa
+2026-02-17 06:38:13,785 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Farmer Ground Flour / 20260216.
+2026-02-17 06:38:13,812 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for Farmer Ground Flour is already up-to-date...skipping.
+2026-02-17 06:38:13,813 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Dawn / 20260216.
+2026-02-17 06:38:13,840 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for Dawn is already up-to-date...skipping.
+2026-02-17 06:38:13,840 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Lentz / 20260216.
+2026-02-17 06:38:13,867 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for Lentz is already up-to-date...skipping.
+2026-02-17 06:38:13,868 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Hill & Markes / 20260216.
+2026-02-17 06:38:13,894 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for Hill & Markes is already up-to-date...skipping.
+2026-02-17 06:38:13,895 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / BALKAN BEVERAGE LLC / 20260216.
+2026-02-17 06:38:13,922 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for BALKAN BEVERAGE LLC is already up-to-date...skipping.
+2026-02-17 06:38:13,923 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / A.L. George / 20260216.
+2026-02-17 06:38:13,950 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for A.L. George is already up-to-date...skipping.
+2026-02-17 06:38:13,951 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / DUTCH VALLEY FOOD DIST / 20260216.
+2026-02-17 06:38:13,978 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for DUTCH VALLEY FOOD DIST is already up-to-date...skipping.
+2026-02-17 06:38:13,979 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / US Foods / 20260213.
+2026-02-17 06:38:14,020 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for US Foods is already up-to-date...skipping.
+2026-02-17 06:38:14,021 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Ithaca Bakery / 20260213.
+2026-02-17 06:38:14,076 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/Ithaca Bakery
+2026-02-17 06:38:14,077 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Performance Food / 20260213.
+2026-02-17 06:38:14,117 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for Performance Food is already up-to-date...skipping.
+2026-02-17 06:38:14,118 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Sysco / 20260213.
+2026-02-17 06:38:14,158 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for Sysco is already up-to-date...skipping.
+2026-02-17 06:38:14,159 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Hillcrest Dairy / 20260213.
+2026-02-17 06:38:14,198 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for Hillcrest Dairy is already up-to-date...skipping.
+2026-02-17 06:38:14,199 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Regional Distributors, Inc. / 20260213.
+2026-02-17 06:38:14,226 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for Regional Distributors, Inc. is already up-to-date...skipping.
+2026-02-17 06:38:14,226 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Copper Horse Coffee / 20260213.
+2026-02-17 06:38:14,273 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for Copper Horse Coffee is already up-to-date...skipping.
+2026-02-17 06:38:14,274 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Hill & Markes / 20260213.
+2026-02-17 06:38:14,318 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for Hill & Markes is already up-to-date...skipping.
+2026-02-17 06:38:14,319 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Johnston Paper / 20260213.
+2026-02-17 06:38:14,376 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for Johnston Paper is already up-to-date...skipping.
+2026-02-17 06:38:14,377 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Peters Supply / 20260213.
+2026-02-17 06:38:14,456 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for Peters Supply is already up-to-date...skipping.
+2026-02-17 06:38:14,457 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Coffee Depot LLC / 20260213.
+2026-02-17 06:38:14,538 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/Coffee Depot LLC
+2026-02-17 06:38:14,540 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / UNFI / 20260213.
+2026-02-17 06:38:14,603 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for UNFI is already up-to-date...skipping.
+2026-02-17 06:38:14,604 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Coca-Cola / 20260213.
+2026-02-17 06:38:14,648 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for Coca-Cola is already up-to-date...skipping.
+2026-02-17 06:38:14,648 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / A.L. George / 20260213.
+2026-02-17 06:38:14,677 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for A.L. George is already up-to-date...skipping.
+2026-02-17 06:38:14,677 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / FingerLakes Farms / 20260213.
+2026-02-17 06:38:14,736 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/FingerLakes Farms
+2026-02-17 06:38:14,737 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / BALKAN BEVERAGE LLC / 20260213.
+2026-02-17 06:38:14,781 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for BALKAN BEVERAGE LLC is already up-to-date...skipping.
+2026-02-17 06:38:14,782 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Ithaca Bakery / 20260213.
+2026-02-17 06:38:14,838 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Downtown/Ithaca Bakery
+2026-02-17 06:38:14,838 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Hill & Markes / 20260213.
+2026-02-17 06:38:14,882 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for Hill & Markes is already up-to-date...skipping.
+2026-02-17 06:38:14,883 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Peters Supply / 20260213.
+2026-02-17 06:38:14,924 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for Peters Supply is already up-to-date...skipping.
+2026-02-17 06:38:14,925 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Copper Horse Coffee / 20260213.
+2026-02-17 06:38:14,970 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for Copper Horse Coffee is already up-to-date...skipping.
+2026-02-17 06:38:14,970 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / US Foods / 20260213.
+2026-02-17 06:38:15,013 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for US Foods is already up-to-date...skipping.
+2026-02-17 06:38:15,014 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Equal Exchange / 20260213.
+2026-02-17 06:38:15,058 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for Equal Exchange is already up-to-date...skipping.
+2026-02-17 06:38:15,059 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / SANICO / 20260213.
+2026-02-17 06:38:15,099 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for SANICO is already up-to-date...skipping.
+2026-02-17 06:38:15,099 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Coca-Cola / 20260213.
+2026-02-17 06:38:15,138 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for Coca-Cola is already up-to-date...skipping.
+2026-02-17 06:38:15,139 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Sysco / 20260213.
+2026-02-17 06:38:15,178 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for Sysco is already up-to-date...skipping.
+2026-02-17 06:38:15,179 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / UNFI / 20260213.
+2026-02-17 06:38:15,219 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for UNFI is already up-to-date...skipping.
+2026-02-17 06:38:15,220 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Performance Food / 20260213.
+2026-02-17 06:38:15,259 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for Performance Food is already up-to-date...skipping.
+2026-02-17 06:38:15,259 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Hillcrest Dairy / 20260213.
+2026-02-17 06:38:15,297 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for Hillcrest Dairy is already up-to-date...skipping.
+2026-02-17 06:38:15,298 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / FingerLakes Farms / 20260213.
+2026-02-17 06:38:15,337 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for FingerLakes Farms is already up-to-date...skipping.
+2026-02-17 06:38:15,338 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Coffee Depot LLC / 20260213.
+2026-02-17 06:38:15,389 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Downtown/Coffee Depot LLC
+2026-02-17 06:38:15,390 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Johnston Paper / 20260213.
+2026-02-17 06:38:15,429 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for Johnston Paper is already up-to-date...skipping.
+2026-02-17 06:38:15,430 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Regional Distributors, Inc. / 20260213.
+2026-02-17 06:38:15,457 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for Regional Distributors, Inc. is already up-to-date...skipping.
+2026-02-17 06:38:15,457 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Wegmans / 20260213.
+2026-02-17 06:38:15,505 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Downtown/Wegmans
+2026-02-17 06:38:15,506 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / US Foods / 20260213.
+2026-02-17 06:38:15,545 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for US Foods is already up-to-date...skipping.
+2026-02-17 06:38:15,546 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Regional Distributors, Inc. / 20260213.
+2026-02-17 06:38:15,573 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for Regional Distributors, Inc. is already up-to-date...skipping.
+2026-02-17 06:38:15,574 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / UNFI / 20260213.
+2026-02-17 06:38:15,612 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for UNFI is already up-to-date...skipping.
+2026-02-17 06:38:15,613 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / DUTCH VALLEY FOOD DIST / 20260213.
+2026-02-17 06:38:15,651 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for DUTCH VALLEY FOOD DIST is already up-to-date...skipping.
+2026-02-17 06:38:15,651 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Ithaca Bakery / 20260213.
+2026-02-17 06:38:15,704 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/Ithaca Bakery
+2026-02-17 06:38:15,705 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Equal Exchange / 20260213.
+2026-02-17 06:38:15,743 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for Equal Exchange is already up-to-date...skipping.
+2026-02-17 06:38:15,743 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Coca-Cola / 20260213.
+2026-02-17 06:38:15,782 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for Coca-Cola is already up-to-date...skipping.
+2026-02-17 06:38:15,783 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Copper Horse Coffee / 20260213.
+2026-02-17 06:38:15,821 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for Copper Horse Coffee is already up-to-date...skipping.
+2026-02-17 06:38:15,822 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Bo's Bones / 20260213.
+2026-02-17 06:38:15,872 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/Bo's Bones
+2026-02-17 06:38:15,873 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Coffee Depot LLC / 20260213.
+2026-02-17 06:38:15,925 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/Coffee Depot LLC
+2026-02-17 06:38:15,925 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Performance Food / 20260213.
+2026-02-17 06:38:15,965 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for Performance Food is already up-to-date...skipping.
+2026-02-17 06:38:15,966 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Hill & Markes / 20260213.
+2026-02-17 06:38:16,006 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for Hill & Markes is already up-to-date...skipping.
+2026-02-17 06:38:16,007 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Peters Supply / 20260213.
+2026-02-17 06:38:16,047 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for Peters Supply is already up-to-date...skipping.
+2026-02-17 06:38:16,048 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Sysco / 20260213.
+2026-02-17 06:38:16,105 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for Sysco is already up-to-date...skipping.
+2026-02-17 06:38:16,107 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Johnston Paper / 20260213.
+2026-02-17 06:38:16,166 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for Johnston Paper is already up-to-date...skipping.
+2026-02-17 06:38:16,167 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / FingerLakes Farms / 20260213.
+2026-02-17 06:38:16,229 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/FingerLakes Farms
+2026-02-17 06:38:16,230 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Hillcrest Dairy / 20260213.
+2026-02-17 06:38:16,271 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for Hillcrest Dairy is already up-to-date...skipping.
+2026-02-17 06:38:16,272 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Regional Distributors, Inc. / 20260213.
+2026-02-17 06:38:16,320 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for Regional Distributors, Inc. is already up-to-date...skipping.
+2026-02-17 06:38:16,321 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / US Foods / 20260213.
+2026-02-17 06:38:16,362 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for US Foods is already up-to-date...skipping.
+2026-02-17 06:38:16,363 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Ithaca Bakery / 20260213.
+2026-02-17 06:38:16,415 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Syracuse/Ithaca Bakery
+2026-02-17 06:38:16,416 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Performance Food / 20260213.
+2026-02-17 06:38:16,454 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for Performance Food is already up-to-date...skipping.
+2026-02-17 06:38:16,455 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / UNFI / 20260213.
+2026-02-17 06:38:16,494 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for UNFI is already up-to-date...skipping.
+2026-02-17 06:38:16,495 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Sysco / 20260213.
+2026-02-17 06:38:16,533 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for Sysco is already up-to-date...skipping.
+2026-02-17 06:38:16,534 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Peters Supply / 20260213.
+2026-02-17 06:38:16,572 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for Peters Supply is already up-to-date...skipping.
+2026-02-17 06:38:16,573 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Hillcrest Dairy / 20260213.
+2026-02-17 06:38:16,610 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for Hillcrest Dairy is already up-to-date...skipping.
+2026-02-17 06:38:16,611 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Equal Exchange / 20260213.
+2026-02-17 06:38:16,650 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for Equal Exchange is already up-to-date...skipping.
+2026-02-17 06:38:16,650 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Hill & Markes / 20260213.
+2026-02-17 06:38:16,689 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for Hill & Markes is already up-to-date...skipping.
+2026-02-17 06:38:16,689 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Coffee Depot LLC / 20260213.
+2026-02-17 06:38:16,738 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Syracuse/Coffee Depot LLC
+2026-02-17 06:38:16,739 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Johnston Paper / 20260213.
+2026-02-17 06:38:16,777 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for Johnston Paper is already up-to-date...skipping.
+2026-02-17 06:38:16,778 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Johnston Paper / 20260213.
+2026-02-17 06:38:16,805 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Johnston Paper is already up-to-date...skipping.
+2026-02-17 06:38:16,806 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Regional Distributors, Inc. / 20260213.
+2026-02-17 06:38:16,834 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Regional Distributors, Inc. is already up-to-date...skipping.
+2026-02-17 06:38:16,834 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Hill & Markes / 20260213.
+2026-02-17 06:38:16,862 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Hill & Markes is already up-to-date...skipping.
+2026-02-17 06:38:16,863 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Russo Produce / 20260213.
+2026-02-17 06:38:16,890 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Russo Produce is already up-to-date...skipping.
+2026-02-17 06:38:16,891 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / UNFI / 20260213.
+2026-02-17 06:38:16,931 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for UNFI is already up-to-date...skipping.
+2026-02-17 06:38:16,932 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / US Foods / 20260213.
+2026-02-17 06:38:16,962 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for US Foods is already up-to-date...skipping.
+2026-02-17 06:38:16,963 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / FingerLakes Farms / 20260213.
+2026-02-17 06:38:17,014 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/FingerLakes Farms
+2026-02-17 06:38:17,014 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Hillcrest Dairy / 20260213.
+2026-02-17 06:38:17,052 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Hillcrest Dairy is already up-to-date...skipping.
+2026-02-17 06:38:17,053 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Sysco / 20260213.
+2026-02-17 06:38:17,094 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Sysco is already up-to-date...skipping.
+2026-02-17 06:38:17,095 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Performance Food / 20260213.
+2026-02-17 06:38:17,136 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Performance Food is already up-to-date...skipping.
+2026-02-17 06:38:17,137 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Ithaca Bakery / 20260213.
+2026-02-17 06:38:17,192 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Ithaca Bakery
+2026-02-17 06:38:17,193 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Equal Exchange / 20260213.
+2026-02-17 06:38:17,231 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Equal Exchange is already up-to-date...skipping.
+2026-02-17 06:38:17,232 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Peters Supply / 20260213.
+2026-02-17 06:38:17,271 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Peters Supply is already up-to-date...skipping.
+2026-02-17 06:38:17,272 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Copper Horse Coffee / 20260213.
+2026-02-17 06:38:17,321 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Copper Horse Coffee
+2026-02-17 06:38:17,321 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Coffee Depot LLC / 20260213.
+2026-02-17 06:38:17,370 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Coffee Depot LLC
+2026-02-17 06:38:17,371 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Coca-Cola / 20260213.
+2026-02-17 06:38:17,411 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Coca-Cola is already up-to-date...skipping.
+2026-02-17 06:38:17,412 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / A.L. George / 20260213.
+2026-02-17 06:38:17,440 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for A.L. George is already up-to-date...skipping.
+2026-02-17 06:38:17,440 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / SANICO / 20260216.
+2026-02-17 06:38:17,468 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for SANICO is already up-to-date...skipping.
+2026-02-17 06:38:17,468 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:120) - Craftable order sync completed successfully.
+2026-02-17 07:40:15,314 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery'], vendors=['Dawn']
+2026-02-18 06:50:38,752 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors=['SANICO']
+2026-02-18 06:50:46,766 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Triphammer'], vendors=['SANICO']
+2026-02-21 06:16:40,841 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:53) - Initializing WorkBot...
+2026-02-21 06:16:40,842 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:66) - WorkBot initialized successfully.
+2026-02-21 06:16:50,158 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors=['A.L. George', 'BALKAN BEVERAGE LLC', "BJ's", "Bo's Bones", 'Coca-Cola', 'Coffee Depot LLC', 'Copper Horse Coffee', 'DUTCH VALLEY FOOD DIST', 'Dawn', 'Equal Exchange', 'Farmer Ground Flour', 'Finger Lakes Coffee Roasters', 'FingerLakes Farms', "Grandma's Coffee Cakes", 'Harney and Sons Tea', 'Hill & Markes', 'Hillcrest Dairy', 'Hillcrest Foods', 'Ithaca Bakery', 'Johnston Paper', 'KEHE DISTRIBUTORS', "Keck's Food Service", 'Kwik Lok', 'Lentz', 'Motherworks,LLC', 'Nuts.com', 'Odeko In.', 'Opici Family Distributing', 'Palmer', 'Paper Rolls .com', 'Pepsi', 'Performance Food', 'Peters Supply', 'Regional Access Inc', 'Regional Distributors, Inc.', 'Russo Produce', 'SANICO', "Sweet Sam's Baking Company, LLC", 'Sysco', 'ULINE', 'UNFI', 'US Foods', 'Vegan Epicure', 'Webstaurant', 'Worlds Best Cheeses']
+2026-02-21 06:16:59,525 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors=['A.L. George', 'BALKAN BEVERAGE LLC', "BJ's", "Bo's Bones", 'Coca-Cola', 'Coffee Depot LLC', 'Copper Horse Coffee', 'DUTCH VALLEY FOOD DIST', 'Dawn', 'Equal Exchange', 'Farmer Ground Flour', 'Finger Lakes Coffee Roasters', 'FingerLakes Farms', "Grandma's Coffee Cakes", 'Harney and Sons Tea', 'Hill & Markes', 'Hillcrest Dairy', 'Hillcrest Foods', 'Ithaca Bakery', 'Johnston Paper', 'KEHE DISTRIBUTORS', "Keck's Food Service", 'Kwik Lok', 'Lentz', 'Motherworks,LLC', 'Nuts.com', 'Odeko In.', 'Opici Family Distributing', 'Palmer', 'Paper Rolls .com', 'Pepsi', 'Performance Food', 'Peters Supply', 'Regional Access Inc', 'Regional Distributors, Inc.', 'Russo Produce', 'SANICO', "Sweet Sam's Baking Company, LLC", 'Sysco', 'ULINE', 'UNFI', 'US Foods', 'Vegan Epicure', 'Webstaurant', 'Worlds Best Cheeses']
+2026-02-21 06:17:06,164 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors=['A.L. George', 'BALKAN BEVERAGE LLC', "BJ's", "Bo's Bones", 'Coca-Cola', 'Coffee Depot LLC', 'Copper Horse Coffee', 'DUTCH VALLEY FOOD DIST', 'Dawn', 'Equal Exchange', 'Farmer Ground Flour', 'Finger Lakes Coffee Roasters', 'FingerLakes Farms', "Grandma's Coffee Cakes", 'Harney and Sons Tea', 'Hill & Markes', 'Hillcrest Dairy', 'Hillcrest Foods', 'Ithaca Bakery', 'Johnston Paper', 'KEHE DISTRIBUTORS', "Keck's Food Service", 'Kwik Lok', 'Lentz', 'Motherworks,LLC', 'Nuts.com', 'Odeko In.', 'Opici Family Distributing', 'Palmer', 'Paper Rolls .com', 'Pepsi', 'Performance Food', 'Peters Supply', 'Regional Access Inc', 'Regional Distributors, Inc.', 'Russo Produce', 'SANICO', "Sweet Sam's Baking Company, LLC", 'Sysco', 'ULINE', 'UNFI', 'US Foods', 'Vegan Epicure', 'Webstaurant', 'Worlds Best Cheeses']
+2026-02-21 06:25:36,081 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / US Foods / 20260220.
+2026-02-21 06:25:36,123 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/US Foods
+2026-02-21 06:25:36,123 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Sysco / 20260220.
+2026-02-21 06:25:36,157 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/Sysco
+2026-02-21 06:25:36,158 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Ithaca Bakery / 20260220.
+2026-02-21 06:25:36,193 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/Ithaca Bakery
+2026-02-21 06:25:36,194 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Performance Food / 20260220.
+2026-02-21 06:25:36,226 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/Performance Food
+2026-02-21 06:25:36,227 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Hillcrest Dairy / 20260220.
+2026-02-21 06:25:36,260 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/Hillcrest Dairy
+2026-02-21 06:25:36,261 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Hill & Markes / 20260220.
+2026-02-21 06:25:36,294 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/Hill & Markes
+2026-02-21 06:25:36,295 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Equal Exchange / 20260220.
+2026-02-21 06:25:36,327 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/Equal Exchange
+2026-02-21 06:25:36,327 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Copper Horse Coffee / 20260220.
+2026-02-21 06:25:36,359 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/Copper Horse Coffee
+2026-02-21 06:25:36,359 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Regional Distributors, Inc. / 20260220.
+2026-02-21 06:25:36,392 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/Regional Distributors, Inc.
+2026-02-21 06:25:36,393 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Johnston Paper / 20260220.
+2026-02-21 06:25:36,425 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/Johnston Paper
+2026-02-21 06:25:36,426 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Peters Supply / 20260220.
+2026-02-21 06:25:36,458 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/Peters Supply
+2026-02-21 06:25:36,459 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Coca-Cola / 20260220.
+2026-02-21 06:25:36,492 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/Coca-Cola
+2026-02-21 06:25:36,492 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Webstaurant / 20260220.
+2026-02-21 06:25:36,525 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/Webstaurant
+2026-02-21 06:25:36,526 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Coffee Depot LLC / 20260220.
+2026-02-21 06:25:36,560 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/Coffee Depot LLC
+2026-02-21 06:25:36,561 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / DUTCH VALLEY FOOD DIST / 20260220.
+2026-02-21 06:25:36,594 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/DUTCH VALLEY FOOD DIST
+2026-02-21 06:25:36,594 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / UNFI / 20260220.
+2026-02-21 06:25:36,631 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/UNFI
+2026-02-21 06:25:36,631 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / BJ's / 20260220.
+2026-02-21 06:25:36,666 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/BJ's
+2026-02-21 06:25:36,667 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / A.L. George / 20260220.
+2026-02-21 06:25:36,702 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/A.L. George
+2026-02-21 06:25:36,702 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / FingerLakes Farms / 20260220.
+2026-02-21 06:25:36,738 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/FingerLakes Farms
+2026-02-21 06:25:36,739 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / BALKAN BEVERAGE LLC / 20260220.
+2026-02-21 06:25:36,774 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/BALKAN BEVERAGE LLC
+2026-02-21 06:25:36,774 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Ithaca Bakery / 20260220.
+2026-02-21 06:25:36,811 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Ithaca Bakery
+2026-02-21 06:25:36,812 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Hill & Markes / 20260220.
+2026-02-21 06:25:36,848 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Hill & Markes
+2026-02-21 06:25:36,849 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Johnston Paper / 20260220.
+2026-02-21 06:25:36,885 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Johnston Paper
+2026-02-21 06:25:36,886 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Russo Produce / 20260220.
+2026-02-21 06:25:36,922 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Russo Produce
+2026-02-21 06:25:36,922 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / UNFI / 20260220.
+2026-02-21 06:25:36,960 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/UNFI
+2026-02-21 06:25:36,961 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / US Foods / 20260220.
+2026-02-21 06:25:36,998 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/US Foods
+2026-02-21 06:25:36,999 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / FingerLakes Farms / 20260220.
+2026-02-21 06:25:37,037 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/FingerLakes Farms
+2026-02-21 06:25:37,037 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Hillcrest Dairy / 20260220.
+2026-02-21 06:25:37,076 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Hillcrest Dairy
+2026-02-21 06:25:37,076 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Sysco / 20260220.
+2026-02-21 06:25:37,114 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Sysco
+2026-02-21 06:25:37,115 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Performance Food / 20260220.
+2026-02-21 06:25:37,152 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Performance Food
+2026-02-21 06:25:37,153 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Peters Supply / 20260220.
+2026-02-21 06:25:37,191 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Peters Supply
+2026-02-21 06:25:37,191 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Regional Distributors, Inc. / 20260220.
+2026-02-21 06:25:37,229 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Regional Distributors, Inc.
+2026-02-21 06:25:37,230 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Webstaurant / 20260220.
+2026-02-21 06:25:37,266 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Webstaurant
+2026-02-21 06:25:37,266 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Copper Horse Coffee / 20260220.
+2026-02-21 06:25:37,304 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Copper Horse Coffee
+2026-02-21 06:25:37,304 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Equal Exchange / 20260220.
+2026-02-21 06:25:37,344 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Equal Exchange
+2026-02-21 06:25:37,344 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Coffee Depot LLC / 20260220.
+2026-02-21 06:25:37,385 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Coffee Depot LLC
+2026-02-21 06:25:37,385 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Coca-Cola / 20260220.
+2026-02-21 06:25:37,438 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Coca-Cola
+2026-02-21 06:25:37,439 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / A.L. George / 20260220.
+2026-02-21 06:25:37,484 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/A.L. George
+2026-02-21 06:25:37,485 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / BJ's / 20260220.
+2026-02-21 06:25:37,528 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/BJ's
+2026-02-21 06:25:37,528 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Ithaca Bakery / 20260220.
+2026-02-21 06:25:37,575 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/Ithaca Bakery
+2026-02-21 06:25:37,576 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / US Foods / 20260220.
+2026-02-21 06:25:37,617 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/US Foods
+2026-02-21 06:25:37,618 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Equal Exchange / 20260220.
+2026-02-21 06:25:37,657 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/Equal Exchange
+2026-02-21 06:25:37,657 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Performance Food / 20260220.
+2026-02-21 06:25:37,697 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/Performance Food
+2026-02-21 06:25:37,698 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Sysco / 20260220.
+2026-02-21 06:25:37,741 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/Sysco
+2026-02-21 06:25:37,741 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Hill & Markes / 20260220.
+2026-02-21 06:25:37,782 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/Hill & Markes
+2026-02-21 06:25:37,783 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Johnston Paper / 20260220.
+2026-02-21 06:25:37,822 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/Johnston Paper
+2026-02-21 06:25:37,822 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Regional Distributors, Inc. / 20260220.
+2026-02-21 06:25:37,861 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/Regional Distributors, Inc.
+2026-02-21 06:25:37,862 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Coca-Cola / 20260220.
+2026-02-21 06:25:37,901 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/Coca-Cola
+2026-02-21 06:25:37,902 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Copper Horse Coffee / 20260220.
+2026-02-21 06:25:37,941 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/Copper Horse Coffee
+2026-02-21 06:25:37,941 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Peters Supply / 20260220.
+2026-02-21 06:25:37,982 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/Peters Supply
+2026-02-21 06:25:37,983 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / UNFI / 20260220.
+2026-02-21 06:25:38,023 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/UNFI
+2026-02-21 06:25:38,024 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Webstaurant / 20260220.
+2026-02-21 06:25:38,062 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/Webstaurant
+2026-02-21 06:25:38,062 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / BALKAN BEVERAGE LLC / 20260220.
+2026-02-21 06:25:38,100 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/BALKAN BEVERAGE LLC
+2026-02-21 06:25:38,101 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Hillcrest Dairy / 20260220.
+2026-02-21 06:25:38,143 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/Hillcrest Dairy
+2026-02-21 06:25:38,143 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Coffee Depot LLC / 20260220.
+2026-02-21 06:25:38,188 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/Coffee Depot LLC
+2026-02-21 06:25:38,189 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / FingerLakes Farms / 20260220.
+2026-02-21 06:25:38,231 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/FingerLakes Farms
+2026-02-21 06:25:38,232 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / DUTCH VALLEY FOOD DIST / 20260220.
+2026-02-21 06:25:38,277 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/DUTCH VALLEY FOOD DIST
+2026-02-21 06:25:38,277 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / BJ's / 20260220.
+2026-02-21 06:25:38,310 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/BJ's
+2026-02-21 06:25:38,310 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Ithaca Bakery / 20260220.
+2026-02-21 06:25:38,356 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Downtown/Ithaca Bakery
+2026-02-21 06:25:38,357 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Sysco / 20260220.
+2026-02-21 06:25:38,404 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Downtown/Sysco
+2026-02-21 06:25:38,404 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / US Foods / 20260220.
+2026-02-21 06:25:38,456 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Downtown/US Foods
+2026-02-21 06:25:38,456 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Coca-Cola / 20260220.
+2026-02-21 06:25:38,506 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Downtown/Coca-Cola
+2026-02-21 06:25:38,507 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / UNFI / 20260220.
+2026-02-21 06:25:38,561 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Downtown/UNFI
+2026-02-21 06:25:38,561 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Performance Food / 20260220.
+2026-02-21 06:25:38,606 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Downtown/Performance Food
+2026-02-21 06:25:38,607 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Hillcrest Dairy / 20260220.
+2026-02-21 06:25:38,649 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Downtown/Hillcrest Dairy
+2026-02-21 06:25:38,650 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / FingerLakes Farms / 20260220.
+2026-02-21 06:25:38,693 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Downtown/FingerLakes Farms
+2026-02-21 06:25:38,694 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Hill & Markes / 20260220.
+2026-02-21 06:25:38,736 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Downtown/Hill & Markes
+2026-02-21 06:25:38,737 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Peters Supply / 20260220.
+2026-02-21 06:25:38,780 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Downtown/Peters Supply
+2026-02-21 06:25:38,780 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Regional Distributors, Inc. / 20260220.
+2026-02-21 06:25:38,823 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Downtown/Regional Distributors, Inc.
+2026-02-21 06:25:38,824 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Copper Horse Coffee / 20260220.
+2026-02-21 06:25:38,856 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Downtown/Copper Horse Coffee
+2026-02-21 06:25:38,856 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Equal Exchange / 20260220.
+2026-02-21 06:25:38,899 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Downtown/Equal Exchange
+2026-02-21 06:25:38,899 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / SANICO / 20260220.
+2026-02-21 06:25:38,943 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Downtown/SANICO
+2026-02-21 06:25:38,943 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Coffee Depot LLC / 20260220.
+2026-02-21 06:25:38,989 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Downtown/Coffee Depot LLC
+2026-02-21 06:25:38,989 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / DUTCH VALLEY FOOD DIST / 20260220.
+2026-02-21 06:25:39,022 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Downtown/DUTCH VALLEY FOOD DIST
+2026-02-21 06:25:39,023 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Johnston Paper / 20260220.
+2026-02-21 06:25:39,065 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Downtown/Johnston Paper
+2026-02-21 06:25:39,066 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Hill & Markes / 20260220.
+2026-02-21 06:25:39,110 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Syracuse/Hill & Markes
+2026-02-21 06:25:39,111 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Ithaca Bakery / 20260220.
+2026-02-21 06:25:39,155 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Syracuse/Ithaca Bakery
+2026-02-21 06:25:39,156 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / US Foods / 20260220.
+2026-02-21 06:25:39,200 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Syracuse/US Foods
+2026-02-21 06:25:39,200 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Regional Distributors, Inc. / 20260220.
+2026-02-21 06:25:39,244 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Syracuse/Regional Distributors, Inc.
+2026-02-21 06:25:39,244 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Performance Food / 20260220.
+2026-02-21 06:25:39,289 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Syracuse/Performance Food
+2026-02-21 06:25:39,290 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / UNFI / 20260220.
+2026-02-21 06:25:39,334 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Syracuse/UNFI
+2026-02-21 06:25:39,335 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Sysco / 20260220.
+2026-02-21 06:25:39,380 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Syracuse/Sysco
+2026-02-21 06:25:39,380 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Peters Supply / 20260220.
+2026-02-21 06:25:39,423 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Syracuse/Peters Supply
+2026-02-21 06:25:39,423 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / FingerLakes Farms / 20260220.
+2026-02-21 06:25:39,466 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Syracuse/FingerLakes Farms
+2026-02-21 06:25:39,466 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Hillcrest Dairy / 20260220.
+2026-02-21 06:25:39,509 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Syracuse/Hillcrest Dairy
+2026-02-21 06:25:39,510 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Coca-Cola / 20260220.
+2026-02-21 06:25:39,552 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Syracuse/Coca-Cola
+2026-02-21 06:25:39,552 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Equal Exchange / 20260220.
+2026-02-21 06:25:39,597 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Syracuse/Equal Exchange
+2026-02-21 06:25:39,597 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Coffee Depot LLC / 20260220.
+2026-02-21 06:25:39,640 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Syracuse/Coffee Depot LLC
+2026-02-21 06:25:39,641 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:120) - Craftable order sync completed successfully.
+2026-02-21 06:26:03,870 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors=['UNFI']
+2026-02-21 07:23:22,604 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors=['Webstaurant']
+2026-02-21 07:23:30,009 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Collegetown'], vendors=['Webstaurant']
+2026-02-21 07:24:45,706 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Easthill'], vendors=['Webstaurant']
+2026-02-21 07:24:50,802 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Triphammer'], vendors=['Webstaurant']
+2026-02-21 07:26:46,205 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors=['BALKAN BEVERAGE LLC']
+2026-02-21 07:26:54,803 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Easthill'], vendors=['BALKAN BEVERAGE LLC']
+2026-02-21 07:27:55,372 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Triphammer'], vendors=['Webstaurant']
+2026-02-21 07:35:29,699 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:267) - Generating vendor upload files for stores=['Syracuse'], vendors=['Performance Food'], start_date=None, end_date=None
+2026-02-21 07:35:29,699 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Syracuse'], vendors=['Performance Food']
+2026-02-21 07:35:29,751 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:271) - Found 1 orders to process.
+2026-02-21 07:35:29,755 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:284) - Context map built with 1 entries. Delegating to OrderServices.
+2026-02-21 07:35:29,787 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:294) - Vendor upload file generation complete. 1 files created.
+2026-02-21 07:38:18,139 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Syracuse'], vendors=['Sysco']
+2026-02-21 07:41:22,325 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Ithaca Bakery / 20260220.
+2026-02-21 07:41:22,407 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Syracuse/Ithaca Bakery
+2026-02-21 07:41:22,410 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:120) - Craftable order sync completed successfully.
+2026-02-21 07:44:34,176 - WARNING - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:78) - [Bakery/Ithaca Bakery] FAILED: Failed: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//div/label[text()="Order Date"]"}
+  (Session info: chrome=144.0.7559.133); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x505093
+	0x5050d4
+	0x2fb490
+	0x3458da
+	0x345b7b
+	0x387b42
+	0x368204
+	0x385341
+	0x367f56
+	0x3396c9
+	0x33a484
+	0x757e34
+	0x7530c9
+	0x770add
+	0x51db38
+	0x5258ad
+	0x50d848
+	0x50da12
+	0x4f75fa
+	0x752efcc9
+	0x772082ae
+	0x7720827e
+
+2026-02-21 07:44:34,176 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Ithaca Bakery / 20260220.
+2026-02-21 07:44:34,460 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/Ithaca Bakery
+2026-02-21 07:44:34,461 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Ithaca Bakery / 20260220.
+2026-02-21 07:44:34,515 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Downtown/Ithaca Bakery
+2026-02-21 07:44:34,516 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Ithaca Bakery / 20260220.
+2026-02-21 07:44:34,568 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/Ithaca Bakery
+2026-02-21 07:44:34,569 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Ithaca Bakery / 20260220.
+2026-02-21 07:44:34,613 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Syracuse/Ithaca Bakery
+2026-02-21 07:44:34,614 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Ithaca Bakery / 20260220.
+2026-02-21 07:44:34,664 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Ithaca Bakery
+2026-02-21 07:44:34,665 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:120) - Craftable order sync completed successfully.
+2026-02-21 07:45:38,364 - WARNING - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:78) - [Bakery/Ithaca Bakery] FAILED: Failed: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//div/label[text()="Order Date"]"}
+  (Session info: chrome=144.0.7559.133); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0xff5093
+	0xff50d4
+	0xdeb490
+	0xe358da
+	0xe35b7b
+	0xe77b42
+	0xe58204
+	0xe75341
+	0xe57f56
+	0xe296c9
+	0xe2a484
+	0x1247e34
+	0x12430c9
+	0x1260add
+	0x100db38
+	0x10158ad
+	0xffd848
+	0xffda12
+	0xfe75fa
+	0x752efcc9
+	0x772082ae
+	0x7720827e
+
+2026-02-21 07:45:38,365 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Ithaca Bakery / 20260220.
+2026-02-21 07:45:38,434 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/Ithaca Bakery
+2026-02-21 07:45:38,435 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Ithaca Bakery / 20260220.
+2026-02-21 07:45:38,498 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Downtown/Ithaca Bakery
+2026-02-21 07:45:38,498 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Ithaca Bakery / 20260220.
+2026-02-21 07:45:38,564 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/Ithaca Bakery
+2026-02-21 07:45:38,565 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Ithaca Bakery / 20260220.
+2026-02-21 07:45:38,618 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Syracuse/Ithaca Bakery
+2026-02-21 07:45:38,619 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Ithaca Bakery / 20260220.
+2026-02-21 07:45:38,673 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Ithaca Bakery
+2026-02-21 07:45:38,673 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:120) - Craftable order sync completed successfully.
+2026-02-21 08:59:23,122 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:53) - Initializing WorkBot...
+2026-02-21 08:59:23,122 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:66) - WorkBot initialized successfully.
+2026-02-21 09:05:17,544 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:53) - Initializing WorkBot...
+2026-02-21 09:05:17,544 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:66) - WorkBot initialized successfully.
+2026-02-21 09:06:59,101 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:53) - Initializing WorkBot...
+2026-02-21 09:06:59,102 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:66) - WorkBot initialized successfully.
+2026-02-21 09:08:55,914 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:53) - Initializing WorkBot...
+2026-02-21 09:08:55,914 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:66) - WorkBot initialized successfully.
+2026-02-21 09:10:09,533 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:53) - Initializing WorkBot...
+2026-02-21 09:10:09,534 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:66) - WorkBot initialized successfully.
+2026-02-21 10:28:58,745 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:53) - Initializing WorkBot...
+2026-02-21 10:28:58,746 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:66) - WorkBot initialized successfully.
+2026-02-21 10:30:20,941 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:53) - Initializing WorkBot...
+2026-02-21 10:30:20,941 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:66) - WorkBot initialized successfully.
+2026-02-21 10:31:26,559 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:53) - Initializing WorkBot...
+2026-02-21 10:31:26,559 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:66) - WorkBot initialized successfully.
+2026-02-21 10:33:59,071 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:53) - Initializing WorkBot...
+2026-02-21 10:33:59,071 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:66) - WorkBot initialized successfully.
+2026-02-21 10:37:51,272 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:53) - Initializing WorkBot...
+2026-02-21 10:37:51,272 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:66) - WorkBot initialized successfully.
+2026-02-21 10:40:01,065 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:53) - Initializing WorkBot...
+2026-02-21 10:40:01,065 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:66) - WorkBot initialized successfully.
+2026-02-21 10:47:17,062 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:53) - Initializing WorkBot...
+2026-02-21 10:47:17,062 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:66) - WorkBot initialized successfully.
+2026-02-21 11:37:38,687 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / UNFI / 20260221.
+2026-02-21 11:37:38,799 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/UNFI
+2026-02-21 11:37:38,800 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / UNFI / 20260220.
+2026-02-21 11:37:38,842 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for UNFI is already up-to-date...skipping.
+2026-02-21 11:37:38,843 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / UNFI / 20260220.
+2026-02-21 11:37:38,904 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Downtown/UNFI
+2026-02-21 11:37:38,905 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / UNFI / 20260220.
+2026-02-21 11:37:38,943 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for UNFI is already up-to-date...skipping.
+2026-02-21 11:37:38,944 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / UNFI / 20260220.
+2026-02-21 11:37:39,005 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Syracuse/UNFI
+2026-02-21 11:37:39,006 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / UNFI / 20260220.
+2026-02-21 11:37:39,050 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for UNFI is already up-to-date...skipping.
+2026-02-21 11:37:39,051 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:120) - Craftable order sync completed successfully.
+2026-02-21 11:38:26,448 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:267) - Generating vendor upload files for stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors=['UNFI'], start_date=None, end_date=None
+2026-02-21 11:38:26,448 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors=['UNFI']
+2026-02-21 11:38:26,643 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:271) - Found 6 orders to process.
+2026-02-21 11:38:26,688 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:284) - Context map built with 6 entries. Delegating to OrderServices.
+2026-02-21 11:38:26,872 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:294) - Vendor upload file generation complete. 6 files created.
+2026-02-21 11:42:06,795 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors=['Hillcrest Dairy']
+2026-02-21 11:42:21,498 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Downtown'], vendors=['Hillcrest Dairy']
+2026-02-21 11:42:27,674 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Collegetown'], vendors=['Hillcrest Dairy']
+2026-02-21 11:42:51,460 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery'], vendors=['Hillcrest Dairy']
+2026-02-21 11:43:14,058 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Triphammer'], vendors=['Hillcrest Dairy']
+2026-02-21 11:47:03,678 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:214) - Beginning order-transfer conversion: Collegetown-Ithaca Bakery -> Bakery
+2026-02-21 11:47:03,678 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Collegetown'], vendors=['Ithaca Bakery']
+2026-02-21 11:47:06,590 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:214) - Beginning order-transfer conversion: Easthill-Ithaca Bakery -> Bakery
+2026-02-21 11:47:06,590 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Easthill'], vendors=['Ithaca Bakery']
+2026-02-21 11:47:09,390 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:214) - Beginning order-transfer conversion: Downtown-Ithaca Bakery -> Bakery
+2026-02-21 11:47:09,390 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Downtown'], vendors=['Ithaca Bakery']
+2026-02-21 11:47:11,462 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:214) - Beginning order-transfer conversion: Triphammer-Ithaca Bakery -> Bakery
+2026-02-21 11:47:11,462 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Triphammer'], vendors=['Ithaca Bakery']
+2026-02-22 07:48:02,311 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Finger Lakes Coffee Roasters / 20260215.
+2026-02-22 07:48:02,458 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Finger Lakes Coffee Roasters
+2026-02-22 07:48:02,459 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Webstaurant / 20260215.
+2026-02-22 07:48:02,515 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Webstaurant
+2026-02-22 07:48:02,516 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Farmer Ground Flour / 20260216.
+2026-02-22 07:48:02,569 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Farmer Ground Flour
+2026-02-22 07:48:02,570 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / DUTCH VALLEY FOOD DIST / 20260216.
+2026-02-22 07:48:02,618 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/DUTCH VALLEY FOOD DIST
+2026-02-22 07:48:02,619 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Paper Rolls .com / 20260217.
+2026-02-22 07:48:02,668 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Paper Rolls .com
+2026-02-22 07:48:02,668 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Russo Produce / 20260218.
+2026-02-22 07:48:02,714 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Russo Produce
+2026-02-22 07:48:02,714 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / UNFI / 20260221.
+2026-02-22 07:48:02,800 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/UNFI
+2026-02-22 07:48:02,800 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Performance Food / 20260221.
+2026-02-22 07:48:02,850 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Performance Food
+2026-02-22 07:48:02,851 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / FingerLakes Farms / 20260221.
+2026-02-22 07:48:02,901 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/FingerLakes Farms
+2026-02-22 07:48:02,902 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Sysco / 20260221.
+2026-02-22 07:48:02,950 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Sysco
+2026-02-22 07:48:02,951 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Hillcrest Dairy / 20260221.
+2026-02-22 07:48:02,998 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Hillcrest Dairy
+2026-02-22 07:48:02,999 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / US Foods / 20260220.
+2026-02-22 07:48:03,040 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for US Foods is already up-to-date...skipping.
+2026-02-22 07:48:03,041 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Sysco / 20260220.
+2026-02-22 07:48:03,084 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for Sysco is already up-to-date...skipping.
+2026-02-22 07:48:03,085 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Ithaca Bakery / 20260220.
+2026-02-22 07:48:03,164 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/Ithaca Bakery
+2026-02-22 07:48:03,165 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Performance Food / 20260220.
+2026-02-22 07:48:03,213 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for Performance Food is already up-to-date...skipping.
+2026-02-22 07:48:03,214 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Hillcrest Dairy / 20260220.
+2026-02-22 07:48:03,285 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/Hillcrest Dairy
+2026-02-22 07:48:03,286 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Hill & Markes / 20260220.
+2026-02-22 07:48:03,331 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for Hill & Markes is already up-to-date...skipping.
+2026-02-22 07:48:03,332 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Equal Exchange / 20260220.
+2026-02-22 07:48:03,376 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for Equal Exchange is already up-to-date...skipping.
+2026-02-22 07:48:03,377 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Copper Horse Coffee / 20260220.
+2026-02-22 07:48:03,419 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for Copper Horse Coffee is already up-to-date...skipping.
+2026-02-22 07:48:03,420 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Regional Distributors, Inc. / 20260220.
+2026-02-22 07:48:03,467 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for Regional Distributors, Inc. is already up-to-date...skipping.
+2026-02-22 07:48:03,468 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Johnston Paper / 20260220.
+2026-02-22 07:48:03,515 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for Johnston Paper is already up-to-date...skipping.
+2026-02-22 07:48:03,517 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Peters Supply / 20260220.
+2026-02-22 07:48:03,564 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for Peters Supply is already up-to-date...skipping.
+2026-02-22 07:48:03,565 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Coca-Cola / 20260220.
+2026-02-22 07:48:03,608 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for Coca-Cola is already up-to-date...skipping.
+2026-02-22 07:48:03,609 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Webstaurant / 20260220.
+2026-02-22 07:48:03,654 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for Webstaurant is already up-to-date...skipping.
+2026-02-22 07:48:03,655 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Coffee Depot LLC / 20260220.
+2026-02-22 07:48:03,752 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/Coffee Depot LLC
+2026-02-22 07:48:03,753 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / DUTCH VALLEY FOOD DIST / 20260220.
+2026-02-22 07:48:03,815 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for DUTCH VALLEY FOOD DIST is already up-to-date...skipping.
+2026-02-22 07:48:03,816 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / UNFI / 20260220.
+2026-02-22 07:48:03,871 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for UNFI is already up-to-date...skipping.
+2026-02-22 07:48:03,872 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / BJ's / 20260220.
+2026-02-22 07:48:03,946 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/BJ's
+2026-02-22 07:48:03,947 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / A.L. George / 20260220.
+2026-02-22 07:48:03,988 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for A.L. George is already up-to-date...skipping.
+2026-02-22 07:48:03,989 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / FingerLakes Farms / 20260220.
+2026-02-22 07:48:04,032 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for FingerLakes Farms is already up-to-date...skipping.
+2026-02-22 07:48:04,033 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / BALKAN BEVERAGE LLC / 20260220.
+2026-02-22 07:48:04,074 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Collegetown's order for BALKAN BEVERAGE LLC is already up-to-date...skipping.
+2026-02-22 07:48:04,075 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Ithaca Bakery / 20260220.
+2026-02-22 07:48:04,147 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Downtown/Ithaca Bakery
+2026-02-22 07:48:04,148 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Sysco / 20260220.
+2026-02-22 07:48:04,199 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for Sysco is already up-to-date...skipping.
+2026-02-22 07:48:04,200 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / US Foods / 20260220.
+2026-02-22 07:48:04,315 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for US Foods is already up-to-date...skipping.
+2026-02-22 07:48:04,316 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Coca-Cola / 20260220.
+2026-02-22 07:48:04,359 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for Coca-Cola is already up-to-date...skipping.
+2026-02-22 07:48:04,360 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / UNFI / 20260220.
+2026-02-22 07:48:04,402 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for UNFI is already up-to-date...skipping.
+2026-02-22 07:48:04,403 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Performance Food / 20260220.
+2026-02-22 07:48:04,444 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for Performance Food is already up-to-date...skipping.
+2026-02-22 07:48:04,445 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Hillcrest Dairy / 20260220.
+2026-02-22 07:48:04,492 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for Hillcrest Dairy is already up-to-date...skipping.
+2026-02-22 07:48:04,493 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / FingerLakes Farms / 20260220.
+2026-02-22 07:48:04,537 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for FingerLakes Farms is already up-to-date...skipping.
+2026-02-22 07:48:04,538 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Hill & Markes / 20260220.
+2026-02-22 07:48:04,585 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for Hill & Markes is already up-to-date...skipping.
+2026-02-22 07:48:04,586 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Peters Supply / 20260220.
+2026-02-22 07:48:04,631 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for Peters Supply is already up-to-date...skipping.
+2026-02-22 07:48:04,633 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Regional Distributors, Inc. / 20260220.
+2026-02-22 07:48:04,678 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for Regional Distributors, Inc. is already up-to-date...skipping.
+2026-02-22 07:48:04,680 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Copper Horse Coffee / 20260220.
+2026-02-22 07:48:04,745 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Downtown/Copper Horse Coffee
+2026-02-22 07:48:04,746 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Equal Exchange / 20260220.
+2026-02-22 07:48:04,786 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for Equal Exchange is already up-to-date...skipping.
+2026-02-22 07:48:04,787 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / SANICO / 20260220.
+2026-02-22 07:48:04,827 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for SANICO is already up-to-date...skipping.
+2026-02-22 07:48:04,828 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Coffee Depot LLC / 20260220.
+2026-02-22 07:48:04,892 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Downtown/Coffee Depot LLC
+2026-02-22 07:48:04,893 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / DUTCH VALLEY FOOD DIST / 20260220.
+2026-02-22 07:48:04,934 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for DUTCH VALLEY FOOD DIST is already up-to-date...skipping.
+2026-02-22 07:48:04,935 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Johnston Paper / 20260220.
+2026-02-22 07:48:04,975 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Downtown's order for Johnston Paper is already up-to-date...skipping.
+2026-02-22 07:48:04,976 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Ithaca Bakery / 20260220.
+2026-02-22 07:48:05,047 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/Ithaca Bakery
+2026-02-22 07:48:05,047 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / US Foods / 20260220.
+2026-02-22 07:48:05,114 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/US Foods
+2026-02-22 07:48:05,115 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Equal Exchange / 20260220.
+2026-02-22 07:48:05,177 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/Equal Exchange
+2026-02-22 07:48:05,177 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Performance Food / 20260220.
+2026-02-22 07:48:05,218 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for Performance Food is already up-to-date...skipping.
+2026-02-22 07:48:05,219 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Sysco / 20260220.
+2026-02-22 07:48:05,283 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/Sysco
+2026-02-22 07:48:05,283 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Hill & Markes / 20260220.
+2026-02-22 07:48:05,346 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/Hill & Markes
+2026-02-22 07:48:05,347 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Johnston Paper / 20260220.
+2026-02-22 07:48:05,387 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for Johnston Paper is already up-to-date...skipping.
+2026-02-22 07:48:05,388 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Regional Distributors, Inc. / 20260220.
+2026-02-22 07:48:05,452 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/Regional Distributors, Inc.
+2026-02-22 07:48:05,453 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Coca-Cola / 20260220.
+2026-02-22 07:48:05,519 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/Coca-Cola
+2026-02-22 07:48:05,519 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Copper Horse Coffee / 20260220.
+2026-02-22 07:48:05,559 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for Copper Horse Coffee is already up-to-date...skipping.
+2026-02-22 07:48:05,560 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Peters Supply / 20260220.
+2026-02-22 07:48:05,600 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for Peters Supply is already up-to-date...skipping.
+2026-02-22 07:48:05,601 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / UNFI / 20260220.
+2026-02-22 07:48:05,642 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for UNFI is already up-to-date...skipping.
+2026-02-22 07:48:05,643 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Hillcrest Dairy / 20260220.
+2026-02-22 07:48:05,707 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/Hillcrest Dairy
+2026-02-22 07:48:05,707 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Coffee Depot LLC / 20260220.
+2026-02-22 07:48:05,772 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/Coffee Depot LLC
+2026-02-22 07:48:05,773 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / FingerLakes Farms / 20260220.
+2026-02-22 07:48:05,813 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for FingerLakes Farms is already up-to-date...skipping.
+2026-02-22 07:48:05,814 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / DUTCH VALLEY FOOD DIST / 20260220.
+2026-02-22 07:48:05,854 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Easthill's order for DUTCH VALLEY FOOD DIST is already up-to-date...skipping.
+2026-02-22 07:48:05,855 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / BJ's / 20260220.
+2026-02-22 07:48:05,918 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/BJ's
+2026-02-22 07:48:05,919 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Hill & Markes / 20260220.
+2026-02-22 07:48:05,959 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for Hill & Markes is already up-to-date...skipping.
+2026-02-22 07:48:05,960 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Ithaca Bakery / 20260220.
+2026-02-22 07:48:06,026 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Syracuse/Ithaca Bakery
+2026-02-22 07:48:06,026 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / US Foods / 20260220.
+2026-02-22 07:48:06,069 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for US Foods is already up-to-date...skipping.
+2026-02-22 07:48:06,070 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Regional Distributors, Inc. / 20260220.
+2026-02-22 07:48:06,112 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for Regional Distributors, Inc. is already up-to-date...skipping.
+2026-02-22 07:48:06,113 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Performance Food / 20260220.
+2026-02-22 07:48:06,157 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for Performance Food is already up-to-date...skipping.
+2026-02-22 07:48:06,158 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / UNFI / 20260220.
+2026-02-22 07:48:06,217 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for UNFI is already up-to-date...skipping.
+2026-02-22 07:48:06,218 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Sysco / 20260220.
+2026-02-22 07:48:06,269 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for Sysco is already up-to-date...skipping.
+2026-02-22 07:48:06,270 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Peters Supply / 20260220.
+2026-02-22 07:48:06,316 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for Peters Supply is already up-to-date...skipping.
+2026-02-22 07:48:06,317 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / FingerLakes Farms / 20260220.
+2026-02-22 07:48:06,360 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for FingerLakes Farms is already up-to-date...skipping.
+2026-02-22 07:48:06,361 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Hillcrest Dairy / 20260220.
+2026-02-22 07:48:06,402 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for Hillcrest Dairy is already up-to-date...skipping.
+2026-02-22 07:48:06,403 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Coca-Cola / 20260220.
+2026-02-22 07:48:06,445 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for Coca-Cola is already up-to-date...skipping.
+2026-02-22 07:48:06,446 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Equal Exchange / 20260220.
+2026-02-22 07:48:06,488 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for Equal Exchange is already up-to-date...skipping.
+2026-02-22 07:48:06,489 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Coffee Depot LLC / 20260220.
+2026-02-22 07:48:06,551 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Syracuse/Coffee Depot LLC
+2026-02-22 07:48:06,552 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Ithaca Bakery / 20260220.
+2026-02-22 07:48:06,619 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Ithaca Bakery
+2026-02-22 07:48:06,619 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Hill & Markes / 20260220.
+2026-02-22 07:48:06,659 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Hill & Markes is already up-to-date...skipping.
+2026-02-22 07:48:06,660 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Johnston Paper / 20260220.
+2026-02-22 07:48:06,700 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Johnston Paper is already up-to-date...skipping.
+2026-02-22 07:48:06,701 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Russo Produce / 20260220.
+2026-02-22 07:48:06,742 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Russo Produce is already up-to-date...skipping.
+2026-02-22 07:48:06,743 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / UNFI / 20260220.
+2026-02-22 07:48:06,785 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for UNFI is already up-to-date...skipping.
+2026-02-22 07:48:06,785 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / US Foods / 20260220.
+2026-02-22 07:48:06,828 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for US Foods is already up-to-date...skipping.
+2026-02-22 07:48:06,829 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / FingerLakes Farms / 20260220.
+2026-02-22 07:48:06,897 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/FingerLakes Farms
+2026-02-22 07:48:06,897 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Hillcrest Dairy / 20260220.
+2026-02-22 07:48:06,967 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Hillcrest Dairy
+2026-02-22 07:48:06,968 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Sysco / 20260220.
+2026-02-22 07:48:07,009 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Sysco is already up-to-date...skipping.
+2026-02-22 07:48:07,010 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Performance Food / 20260220.
+2026-02-22 07:48:07,052 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Performance Food is already up-to-date...skipping.
+2026-02-22 07:48:07,053 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Peters Supply / 20260220.
+2026-02-22 07:48:07,094 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Peters Supply is already up-to-date...skipping.
+2026-02-22 07:48:07,095 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Regional Distributors, Inc. / 20260220.
+2026-02-22 07:48:07,135 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Regional Distributors, Inc. is already up-to-date...skipping.
+2026-02-22 07:48:07,136 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Copper Horse Coffee / 20260220.
+2026-02-22 07:48:07,201 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Copper Horse Coffee
+2026-02-22 07:48:07,202 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Equal Exchange / 20260220.
+2026-02-22 07:48:07,243 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Equal Exchange is already up-to-date...skipping.
+2026-02-22 07:48:07,244 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Coffee Depot LLC / 20260220.
+2026-02-22 07:48:07,310 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Coffee Depot LLC
+2026-02-22 07:48:07,311 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Coca-Cola / 20260220.
+2026-02-22 07:48:07,353 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Coca-Cola is already up-to-date...skipping.
+2026-02-22 07:48:07,354 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / A.L. George / 20260220.
+2026-02-22 07:48:07,395 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for A.L. George is already up-to-date...skipping.
+2026-02-22 07:48:07,395 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / BJ's / 20260220.
+2026-02-22 07:48:07,449 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/BJ's
+2026-02-22 07:48:07,450 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:120) - Craftable order sync completed successfully.
+2026-02-22 08:07:44,315 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:53) - Initializing WorkBot...
+2026-02-22 08:07:44,315 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:66) - WorkBot initialized successfully.
+2026-02-22 08:08:00,137 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:53) - Initializing WorkBot...
+2026-02-22 08:08:00,138 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:66) - WorkBot initialized successfully.
+2026-02-22 09:35:28,686 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Finger Lakes Coffee Roasters / 20260215.
+2026-02-22 09:35:28,800 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Finger Lakes Coffee Roasters
+2026-02-22 09:35:28,801 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / UNFI / 20260221.
+2026-02-22 09:35:28,845 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for UNFI is already up-to-date...skipping.
+2026-02-22 09:35:28,846 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Performance Food / 20260221.
+2026-02-22 09:35:28,922 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Performance Food
+2026-02-22 09:35:28,923 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / FingerLakes Farms / 20260221.
+2026-02-22 09:35:28,996 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/FingerLakes Farms
+2026-02-22 09:35:28,997 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Sysco / 20260221.
+2026-02-22 09:35:29,090 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Sysco
+2026-02-22 09:35:29,091 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Hillcrest Dairy / 20260221.
+2026-02-22 09:35:29,141 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Bakery's order for Hillcrest Dairy is already up-to-date...skipping.
+2026-02-22 09:35:29,142 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Coca-Cola / 20260222.
+2026-02-22 09:35:29,202 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Coca-Cola
+2026-02-22 09:35:29,203 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / US Foods / 20260222.
+2026-02-22 09:35:29,264 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/US Foods
+2026-02-22 09:35:29,265 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Keck's Food Service / 20260222.
+2026-02-22 09:35:29,320 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Keck's Food Service
+2026-02-22 09:35:29,322 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Coffee Depot LLC / 20260222.
+2026-02-22 09:35:29,392 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Coffee Depot LLC
+2026-02-22 09:35:29,393 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Equal Exchange / 20260222.
+2026-02-22 09:35:29,457 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Equal Exchange
+2026-02-22 09:35:29,458 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Webstaurant / 20260222.
+2026-02-22 09:35:29,537 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Webstaurant
+2026-02-22 09:35:29,538 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Copper Horse Coffee / 20260222.
+2026-02-22 09:35:29,592 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Copper Horse Coffee
+2026-02-22 09:35:29,593 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Russo Produce / 20260222.
+2026-02-22 09:35:29,667 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Russo Produce
+2026-02-22 09:35:29,668 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:120) - Craftable order sync completed successfully.
+2026-02-22 09:36:29,055 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors=['Sysco']
+2026-02-22 09:37:03,464 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors=['Performance Food']
+2026-02-22 09:37:20,416 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors=['Equal Exchange']
+2026-02-22 09:37:31,646 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Collegetown'], vendors=['Equal Exchange']
+2026-02-22 10:12:12,040 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery', 'Easthill', 'Collegetown', 'Triphammer', 'Downtown'], vendors=['Performance Food', 'FingerLakes Farms']
+2026-02-22 10:20:10,437 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / Performance Food / 20260221.
+2026-02-22 10:20:10,493 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/Performance Food
+2026-02-22 10:20:10,494 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Bakery / FingerLakes Farms / 20260221.
+2026-02-22 10:20:10,546 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Bakery/FingerLakes Farms
+2026-02-22 10:20:10,547 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / Performance Food / 20260220.
+2026-02-22 10:20:10,598 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/Performance Food
+2026-02-22 10:20:10,599 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Collegetown / FingerLakes Farms / 20260220.
+2026-02-22 10:20:10,649 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Collegetown/FingerLakes Farms
+2026-02-22 10:20:10,650 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / Performance Food / 20260220.
+2026-02-22 10:20:10,701 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Downtown/Performance Food
+2026-02-22 10:20:10,701 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Downtown / FingerLakes Farms / 20260220.
+2026-02-22 10:20:10,753 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Downtown/FingerLakes Farms
+2026-02-22 10:20:10,754 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / Performance Food / 20260220.
+2026-02-22 10:20:10,805 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/Performance Food
+2026-02-22 10:20:10,805 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Easthill / FingerLakes Farms / 20260220.
+2026-02-22 10:20:10,858 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Easthill/FingerLakes Farms
+2026-02-22 10:20:10,858 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / Performance Food / 20260220.
+2026-02-22 10:20:10,887 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for Performance Food is already up-to-date...skipping.
+2026-02-22 10:20:10,888 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Syracuse / FingerLakes Farms / 20260220.
+2026-02-22 10:20:10,939 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Syracuse's order for FingerLakes Farms is already up-to-date...skipping.
+2026-02-22 10:20:10,941 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Performance Food / 20260220.
+2026-02-22 10:20:11,024 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Performance Food
+2026-02-22 10:20:11,025 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / FingerLakes Farms / 20260220.
+2026-02-22 10:20:11,084 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/FingerLakes Farms
+2026-02-22 10:20:11,085 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:120) - Craftable order sync completed successfully.
+2026-02-22 10:20:17,731 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:267) - Generating vendor upload files for stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors=['FingerLakes Farms'], start_date=None, end_date=None
+2026-02-22 10:20:17,731 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors=['FingerLakes Farms']
+2026-02-22 10:20:17,960 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:271) - Found 6 orders to process.
+2026-02-22 10:20:17,980 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:284) - Context map built with 6 entries. Delegating to OrderServices.
+2026-02-22 10:21:14,900 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors=["Bo's Bones"]
+2026-02-22 10:21:45,036 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors=['Pepsi']
+2026-02-22 10:24:08,429 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors=['FingerLakes Farms']
+2026-02-22 10:59:11,939 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors=['Hillcrest Dairy']
+2026-02-22 10:59:25,400 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Syracuse'], vendors=['Hillcrest Dairy']
+2026-02-22 11:07:54,775 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors=['Coca-Cola']
+2026-02-22 11:08:57,831 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Triphammer'], vendors=['Coca-Cola']
+2026-02-22 11:19:01,204 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Collegetown'], vendors=['Coca-Cola']
+2026-02-22 11:21:01,389 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Easthill'], vendors=['Coca-Cola']
+2026-02-22 11:25:40,792 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Downtown'], vendors=['Coca-Cola']
+2026-02-22 11:26:50,625 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery'], vendors=['Coca-Cola']
+2026-02-22 11:29:03,362 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Collegetown'], vendors=['Coca-Cola']
+2026-02-22 11:57:05,284 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Ithaca Bakery / 20260220.
+2026-02-22 11:57:05,390 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Ithaca Bakery
+2026-02-22 11:57:05,390 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Hill & Markes / 20260220.
+2026-02-22 11:57:05,433 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Hill & Markes is already up-to-date...skipping.
+2026-02-22 11:57:05,434 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Johnston Paper / 20260220.
+2026-02-22 11:57:05,473 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Johnston Paper is already up-to-date...skipping.
+2026-02-22 11:57:05,474 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Russo Produce / 20260220.
+2026-02-22 11:57:05,538 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Russo Produce
+2026-02-22 11:57:05,539 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / UNFI / 20260220.
+2026-02-22 11:57:05,579 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for UNFI is already up-to-date...skipping.
+2026-02-22 11:57:05,580 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / US Foods / 20260220.
+2026-02-22 11:57:05,646 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/US Foods
+2026-02-22 11:57:05,647 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / FingerLakes Farms / 20260220.
+2026-02-22 11:57:05,687 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/FingerLakes Farms
+2026-02-22 11:57:05,688 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Hillcrest Dairy / 20260220.
+2026-02-22 11:57:05,715 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Hillcrest Dairy is already up-to-date...skipping.
+2026-02-22 11:57:05,716 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Sysco / 20260220.
+2026-02-22 11:57:05,769 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Sysco
+2026-02-22 11:57:05,769 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Performance Food / 20260220.
+2026-02-22 11:57:05,837 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Performance Food
+2026-02-22 11:57:05,837 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Peters Supply / 20260220.
+2026-02-22 11:57:05,879 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Peters Supply is already up-to-date...skipping.
+2026-02-22 11:57:05,880 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Regional Distributors, Inc. / 20260220.
+2026-02-22 11:57:05,920 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Regional Distributors, Inc. is already up-to-date...skipping.
+2026-02-22 11:57:05,921 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Copper Horse Coffee / 20260220.
+2026-02-22 11:57:05,975 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Copper Horse Coffee
+2026-02-22 11:57:05,975 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Equal Exchange / 20260220.
+2026-02-22 11:57:06,003 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Equal Exchange is already up-to-date...skipping.
+2026-02-22 11:57:06,004 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Coffee Depot LLC / 20260220.
+2026-02-22 11:57:06,056 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Coffee Depot LLC
+2026-02-22 11:57:06,057 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Coca-Cola / 20260220.
+2026-02-22 11:57:06,084 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for Coca-Cola is already up-to-date...skipping.
+2026-02-22 11:57:06,085 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / A.L. George / 20260220.
+2026-02-22 11:57:06,125 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:88) - Triphammer's order for A.L. George is already up-to-date...skipping.
+2026-02-22 11:57:06,127 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / BJ's / 20260220.
+2026-02-22 11:57:06,190 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/BJ's
+2026-02-22 11:57:06,191 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Webstaurant / 20260222.
+2026-02-22 11:57:06,251 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Webstaurant
+2026-02-22 11:57:06,252 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:146) - [Order Update] Initiating update protocol for Triphammer / Vegan Epicure / 20260222.
+2026-02-22 11:57:06,298 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:109) - [PDF] Ingested: Order.pdf for Triphammer/Vegan Epicure
+2026-02-22 11:57:06,299 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:120) - Craftable order sync completed successfully.
+2026-02-22 12:08:53,323 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:267) - Generating vendor upload files for stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors=['Performance Food', 'US Foods', 'Sysco'], start_date=None, end_date=None
+2026-02-22 12:08:53,323 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors=['Performance Food', 'US Foods', 'Sysco']
+2026-02-22 12:08:53,984 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:271) - Found 18 orders to process.
+2026-02-22 12:08:54,043 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:284) - Context map built with 18 entries. Delegating to OrderServices.
+2026-02-22 12:08:54,643 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:294) - Vendor upload file generation complete. 18 files created.
+2026-02-22 12:33:41,592 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Easthill'], vendors=['Performance Food']
+2026-02-22 12:42:24,161 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Downtown'], vendors=['Performance Food', 'US Foods', 'Sysco']
+2026-02-22 12:42:51,606 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Downtown'], vendors=['Performance Food']
+2026-02-22 12:47:42,753 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Syracuse'], vendors=['Performance Food']
+2026-02-22 12:52:21,727 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors=['Webstaurant']
+2026-02-22 12:52:34,125 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Collegetown'], vendors=['Webstaurant']
+2026-02-22 12:52:44,949 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Easthill'], vendors=['Webstaurant']
+2026-02-22 12:52:57,446 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Triphammer'], vendors=['Webstaurant']
+2026-02-22 12:53:04,478 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Downtown'], vendors=['Webstaurant']
+2026-02-22 12:54:20,809 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:176) - Retrieving orders for: stores=['Syracuse'], vendors=['Ithaca Bakery']
