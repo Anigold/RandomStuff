@@ -1,14 +1,31 @@
+from dataclasses import dataclass
+from pathlib import Path
 
+AUDIT_TYPES = {'FULL', 'PARTIAL'}
 
+@dataclass
+class AuditItem:
+
+    item_name:   str
+    count_unit:  str
+    on_hand:     str[float]
+    category:    str
+    subcategory: str
+    unit_price:  str[float]
+    total_price: str[float]
+
+    
+@dataclass
 class Audit:
 
-    def __init__(self, store, date, audit_type, auditor) -> None:
-        self.store      = store
-        self.date       = date
-        self.audit_type = audit_type
-        self.auditor    = auditor
+    store: str
+    date: str
+    audit_type: str
+    auditor: str
 
-    def __repr__(self) -> str:
-        return f'< Audit store={self.store}, date={self.date}, audit_type={self.audit_type}, auditor={self.auditor} >'
+    items: list[AuditItem]
+
+    def load_items_from_sheet(self, sheet_path: Path) -> None:
+        ...
     
     

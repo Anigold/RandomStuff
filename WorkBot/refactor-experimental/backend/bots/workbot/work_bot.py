@@ -30,6 +30,7 @@ from backend.domain.models import (
     Vendor,
     Store,
     Item,
+    Audit,
     BotOrderResult
 )
 from backend.adapters.emailer.emailer import Email
@@ -228,6 +229,21 @@ class WorkBot:
         )
 
         return self.transfers.save_transfer(transfer=transfer)
+
+# ------------------------------------------------------
+# AUDIT MANAGEMENT
+# ------------------------------------------------------
+    def get_audits(self, stores: list[str] = []) -> list[Audit]:
+        ...
+
+    def get_archived_audits(self, start_date: str, end_date: str, stores: list[str] = []) -> list[Audit]:
+        ...
+
+    def combine_audits(self, stores: list[str] = []) -> None:
+        ...
+
+    def archive_all_current_audits(self, stores: list[str] = []) -> None:
+        ...
 
 # ------------------------------------------------------
 # EMAIL OPERATIONS
