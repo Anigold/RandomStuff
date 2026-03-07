@@ -1,7 +1,7 @@
 from .orders.order import Order
 from .orders.order_item import OrderItem
 
-from .audits.audit import Audit
+from .audits.audit import Audit, AuditItem
 
 from .items.item import Item
 from .items.store_item_info import StoreItemInfo
@@ -14,14 +14,14 @@ from .transfers.transfer_item import TransferItem
 
 from .vendors.vendor import Vendor, ContactInfo, ScheduleEntry, OrderingInfo
 
-from ...bots.bot_results import BotOrderResult
+from ...bots.bot_results import BotOrderResult, BotAuditResult
 
 __all__ = [
     'Order', 'OrderItem',
-    'Audit',
+    'Audit', 'AuditItem',
     'Item', 'StoreItemInfo', 'VendorItemInfo',
     'Store', 'StoreContact',
     'Transfer', 'TransferItem',
     'Vendor', 'ContactInfo', 'ScheduleEntry', 'OrderingInfo',
-    'BotOrderResult'
+    'BotOrderResult', 'BotAuditResult'
 ]

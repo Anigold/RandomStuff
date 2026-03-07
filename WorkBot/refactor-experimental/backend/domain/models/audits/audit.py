@@ -7,12 +7,7 @@ AUDIT_TYPES = {'FULL', 'PARTIAL'}
 class AuditItem:
 
     item_name:   str
-    count_unit:  str
-    on_hand:     str[float]
-    category:    str
-    subcategory: str
-    unit_price:  str[float]
-    total_price: str[float]
+    on_hand:     str
 
     
 @dataclass

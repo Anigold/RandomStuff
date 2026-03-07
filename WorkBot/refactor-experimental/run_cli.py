@@ -17,6 +17,7 @@ from backend.infra.paths import (
     STORE_FILES_DIR,
     ORDER_ARCHIVE_FILES_DIR,
     TRANSFER_ARCHIVE_FILES_DIR,
+    AUDIT_FILES_DIR, AUDIT_ARCHIVE_FILES_DIR
 )
 from backend.infra.config.settings import DEFAULT_TRANSFER_ORIGIN
 
@@ -41,21 +42,20 @@ def create_repositories() -> dict[str, Repository]:
         A dictionary containing repositories for orders, vendors,
         transfers, and stores.
     '''
-    from backend.adapters.repos.order_file_repository import OrderFileRepository
-    from backend.adapters.repos.transfer_file_repository import TransferFileRepository
-    from backend.adapters.repos.vendor_file_repository import VendorFileRepository
-    from backend.adapters.repos.store_file_repository import StoreFileRepository
-
-    orders_repo    = OrderFileRepository(ORDER_FILES_DIR, UPLOAD_FILES_DIR, ORDER_ARCHIVE_FILES_DIR)
-    vendors_repo   = VendorFileRepository(VENDOR_FILES_DIR)
-    transfers_repo = TransferFileRepository(TRANSFER_FILES_DIR, TRANSFER_ARCHIVE_FILES_DIR)
-    stores_repo    = StoreFileRepository(STORE_FILES_DIR)
+    from backend.adapters.repos import (
+        OrderFileRepository,
+        TransferFileRepository,
+        VendorFileRepository,
+        StoreFileRepository,
+        AuditFileRepository
+    )
 
     return {
-        'orders':    orders_repo,
-        'vendors':   vendors_repo,
-        'transfers': transfers_repo,
-        'stores':    stores_repo
+        'orders':    OrderFileRepository(ORDER_FILES_DIR, UPLOAD_FILES_DIR, ORDER_ARCHIVE_FILES_DIR),
+        'vendors':   VendorFileRepository(VENDOR_FILES_DIR),
+        'transfers': TransferFileRepository(TRANSFER_FILES_DIR, TRANSFER_ARCHIVE_FILES_DIR),
+        'stores':    StoreFileRepository(STORE_FILES_DIR),
+        'audits':    AuditFileRepository(AUDIT_FILES_DIR, AUDIT_ARCHIVE_FILES_DIR)
     }
 
 def create_infra(repos) -> dict:
@@ -86,23 +86,22 @@ def create_domain_services(repos, infra) -> dict:
     Wires together repositories and supporting infrastructure
     for Orders, Vendors, Transfers, and Stores.
     '''
-    from backend.app.services.order_service import OrderServices
-    from backend.app.services.transfer_service import TransferServices
-    from backend.app.services.vendor_service import VendorServices
-    from backend.app.services.store_service import StoreServices
-
+    from backend.app.services import (
+        OrderServices,
+        TransferServices,
+        VendorServices,
+        StoreServices,
+        AuditServices
+    )
     downloader = infra['downloader']
 
-    orders_service    = OrderServices(repos['orders'], downloader)
-    vendors_service   = VendorServices(repos['vendors'], downloader)
-    transfers_service = TransferServices(repos['transfers'], repos['orders'], DEFAULT_TRANSFER_ORIGIN)
-    stores_service    = StoreServices(repos['stores'], downloader)
-
     return {
-        'orders':    orders_service,
-        'vendors':   vendors_service,
-        'transfers': transfers_service,
-        'stores':    stores_service
+        'orders':    OrderServices(repos['orders'], downloader),
+        'vendors':   VendorServices(repos['vendors'], downloader),
+        'transfers': TransferServices(repos['transfers'], repos['orders'], DEFAULT_TRANSFER_ORIGIN),
+        'stores':    StoreServices(repos['stores'], downloader),
+        'audits':    AuditServices(repos['audits'], downloader)
+
     }
 
 def create_email_service(services, infra):
@@ -149,7 +148,7 @@ def create_workbot(services, infra, emailer, craft_bot):
     from backend.bots.workbot.work_bot import WorkBot
 
     return WorkBot(
-        services['orders'], services['transfers'], services['vendors'], services['stores'],
+        services['orders'], services['transfers'], services['vendors'], services['stores'], services['audits'],
         emailer,
         craft_bot,
         infra['downloader']

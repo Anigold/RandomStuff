@@ -23,10 +23,12 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 # Internal
 from backend.infra.logger import Logger
-from backend.domain.models import Transfer, BotOrderResult
+from backend.domain.models import Transfer, BotOrderResult, BotAuditResult
 from backend.core.utils.datetimes import convert_date_format, string_to_datetime
 from backend.bots.bot_mixins import SeleniumBotMixin
 from backend.core.utils.flatpickr_calendar_controller import FP, FlatpickrWidgets
+
+from backend.adapters.downloads.local_download_manager import StagedFile
 
 
 @Logger.attach_logger
@@ -265,6 +267,8 @@ class CraftableBot(SeleniumBotMixin):
             for vendor in vendors:
                 
                 try:
+
+                    artifacts = []
                     order_items: list = []
 
                     self.goto_order(store=store, vendor=vendor)
@@ -279,24 +283,25 @@ class CraftableBot(SeleniumBotMixin):
 
                     # DOWNLOAD PDF
                     if download_pdf: 
+                        
+                        with self.download_manager.session(self.driver) as dl:
+                            self._download_order_pdf()
+                            pdf_paths = dl.wait_for("*.pdf", timeout=60)
+                            # persist to a non-session folder (e.g. base/tmp)
+                            persisted = dl.persist(pdf_paths, self.download_manager.base / "staged")
+                            artifacts.extend([StagedFile(path=p, kind="pdf", source="craftable-order") for p in persisted])
 
-                        token = self.download_manager.start_session()
-                        self.download_manager.attach_to_browser(token, self.driver)
-
-                        self._download_order_pdf()
-                        time.sleep(2) # Otherwise it goes way too fast.
-
-                    results.append(
-                        BotOrderResult(
-                            store=store,
-                            vendor=vendor,
-                            date=order_date,
-                            success=True,
-                            data=order_items,
-                            download_token=token,
-                            message='Order downloaded'
+                        results.append(
+                            BotOrderResult(
+                                store=store,
+                                vendor=vendor,
+                                date=order_date,
+                                success=True,
+                                data=order_items,
+                                artifacts=artifacts,
+                                message='Order downloaded'
+                            )
                         )
-                    )
 
                 except Exception as e:
                     results.append(
@@ -307,11 +312,11 @@ class CraftableBot(SeleniumBotMixin):
                             success=False,
                             message=f"Failed: {e}",
                             data=None,
-                            download_token=None
+                            artifacts=[]
                         )
                     )
 
-            if empty_vendors: vendors = [] # Reset vendors for next store
+            if empty_vendors: vendors = [] # Reset for next store
         
         return results
 
@@ -907,46 +912,124 @@ class CraftableBot(SeleniumBotMixin):
         
         return True
 
-    def _download_audits_from_table(self) -> None:
+    def _download_audits_from_table(self) -> list[BotAuditResult]:
+
+        results: list[BotAuditResult] = []
 
         audit_table_rows = self.driver.find_elements(By.TAG_NAME, 'tr') # Only 1 table on the page
         table_cols = ['Store', 'Date', 'Audit Closed Time', 'Auditor', 'Type', 'Inventory']
 
         for pos, row in enumerate(audit_table_rows):
-            self.logger.info(f'Processing row {pos+1} of {len(audit_table_rows)}.')
-            cols = row.find_elements(By.TAG_NAME, 'td')
-            store, date, closed_time, auditor, audit_type, inventory_cost = cols
 
-            date_hyperlink = date.find_element(By.TAG_NAME, 'a')
+            try:
 
-            original_tab = self.driver.current_window_handle
 
-            actions = ActionChains(self.driver)
-            actions.key_down(Keys.CONTROL).click(date_hyperlink).key_up(Keys.CONTROL).perform()
+            
+                cols = row.find_elements(By.TAG_NAME, 'td')
+                store, date, closed_time, auditor, audit_type, inventory_cost = cols
 
-            # self.driver.execute_script("window.open(arguments[0].href, '_blank');", date_hyperlink)
-            time.sleep(5)
+                hints = {
+                    'store_text': store.text.strip(),
+                    "date_text": date.text.strip(),
+                    "closed_time_text": closed_time.text.strip(),
+                    "auditor_text": auditor.text.strip(),
+                    "audit_type_text": audit_type.text.strip(),
+                    "inventory_cost_text": inventory_cost.text.strip(),
+                    "row_index": pos,
+                }
 
-            self.driver.switch_to.window(self.driver.window_handles[-1])
+                date_hyperlink = date.find_element(By.TAG_NAME, 'a')
+
+                # original_tab = self.driver.current_window_handle
+
+                actions = ActionChains(self.driver)
+                actions.key_down(Keys.CONTROL).click(date_hyperlink).key_up(Keys.CONTROL).perform()
+
+                # self.driver.execute_script("window.open(arguments[0].href, '_blank');", date_hyperlink)
+                time.sleep(5)
+
+                self.driver.switch_to.window(self.driver.window_handles[-1])
+                
+                artifacts: list[StagedFile] = []
+                with self.download_manager.session(self.driver) as dl:
+                    download_btn = self.driver.find_element(By.CLASS_NAME, "fa-download")
+
+                    def trigger():
+                        download_btn.click()
+
+                    artifacts.extend(
+                        dl.trigger_and_stage(
+                            trigger=trigger,
+                            pattern="*.xlsx",
+                            kind="xlsx",
+                            source="craftable-audit",
+                            timeout=120,
+                        )
+                    )
+                
+                self.driver.close()
+                self.driver.switch_to.window(self.driver.window_handles[0])
+                time.sleep(0.5)
+
+                if not artifacts:
+                    results.append(
+                        BotAuditResult(
+                            success=False,
+                            message="No XLSX downloaded for audit row",
+                            artifacts=[],
+                            hints=hints,
+                        )
+                    )
+                    continue
+
+                results.append(
+                    BotAuditResult(
+                        success=True,
+                        message="Audit downloaded",
+                        artifacts=artifacts,
+                        hints=hints,
+                    )
+                )
+
+            except Exception as e:
+                # Always attempt to recover tab focus if something went wrong
+                try:
+                    if len(self.driver.window_handles) > 1:
+                        self.driver.close()
+                    self.driver.switch_to.window(self.driver.window_handles[0])
+                except Exception:
+                    pass
+
+                results.append(
+                    BotAuditResult(
+                        success=False,
+                        message=f"Failed row {pos}: {e}",
+                        artifacts=[],
+                        hints={"row_index": pos},
+                    )
+                )
+
+        return results
+    
+
 
             # download_filename = f'{store.text} - Foodager - Audit {date[-1:-5]}-{date[0:2]}-{date[3:5]}.xlsx'
-            try:
-                time.sleep(5)
-                self.logger.info(f'Attempting download of row {pos+1}.')
-                download_button = self.driver.find_element(By.CLASS_NAME, 'fa-download')
-                download_button.click()
-                time.sleep(15)
-                self.logger.info('Download success')
-                self.driver.close()
-            except:
-                self.logger.info('Unable to download audit, skipping.')
+            # try:
+            #     time.sleep(5)
+            #     self.logger.info(f'Attempting download of row {pos+1}.')
+            #     download_button = self.driver.find_element(By.CLASS_NAME, 'fa-download')
+            #     download_button.click()
+            #     time.sleep(15)
+            #     self.logger.info('Download success')
+            #     self.driver.close()
+            # except:
+            #     self.logger.info('Unable to download audit, skipping.')
             
-            self.driver.switch_to.window(self.driver.window_handles[0])
-            time.sleep(2)
+
 
     @SeleniumBotMixin.with_session(login=True)
     @Logger.log_exceptions
-    def download_audits(self, stores: list[str], start_date: str, end_date: str) -> None:
+    def download_audits(self, stores: list[str], start_date: str, end_date: str) -> list[BotAuditResult]:
 
         # store_audit_name = self.get_audit_store_name(store)
 
@@ -983,7 +1066,7 @@ class CraftableBot(SeleniumBotMixin):
         
         # Download Filtered Audits
         try:
-            self._download_audits_from_table()
+            return self._download_audits_from_table()
         except:
             raise ValueError()
 

@@ -188,7 +188,6 @@ class GenerateVendorUploadFiles:
 class IngestDownloadedFile:
 
     repo: OrderRepository
-    downloads: DownloadManagerPort
 
     def __call__(self, order: Order, file_path: Path, kind: str = 'pdf') -> None:
 
@@ -295,7 +294,7 @@ class OrderServices:
             self.generate_vendor_upload
         )
 
-        self.ingest_downloaded_file = IngestDownloadedFile(self.repo, self.downloads)
+        self.ingest_downloaded_file = IngestDownloadedFile(self.repo)
         # self.expect_downloaded_pdf = ExpectDownloadedPdf(self.repo, self.downloads)
         self.check_and_update_order = CheckAndUpdateOrder(self.repo)
 

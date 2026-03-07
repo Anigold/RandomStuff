@@ -23,6 +23,7 @@ from backend.app.services import (
     StoreServices,
     TransferServices,
     EmailServices,
+    AuditServices
 )
 from backend.domain.models import (
     Order, OrderItem,
@@ -47,6 +48,7 @@ class WorkBot:
                 transfers_service: TransferServices,
                 vendors_service:   VendorServices,
                 stores_service:    StoreServices,
+                audits_service:    AuditServices,
                 emails_service:    EmailServices,
                 craftable_bot:     CraftableBot,
                 download_manager:  LocalDownloadManager
@@ -57,6 +59,7 @@ class WorkBot:
         self.transfers = transfers_service
         self.vendors   = vendors_service
         self.stores    = stores_service
+        self.audits    = audits_service
 
         self.emails = emails_service
 
@@ -87,36 +90,30 @@ class WorkBot:
                 need_to_update = self._update_existing_order(order)
                 if (not update) or (not need_to_update):
                     self.logger.info(f'{order.store}\'s order for {order.vendor} is already up-to-date...skipping.')
-                    if result.download_token: self.download_manager.cleanup(result.download_token)
                     continue
                 
                 # SAVE ORDER FILE
                 self.orders.save_order(order)
-
-                # PDF SAVE CHECK
-                if download_pdf and result.download_token:
-
-                    files = self.download_manager.collect(
-                        result.download_token,
-                        pattern='*.pdf'
-                    )
-
-                    if not files:
-                        self.logger.warning(f'No PDF file found for {order.store}/{order.vendor} using token: {result.download_token.id}')
-
-                    else:
-                        for fp in files:
-                            self.orders.ingest_downloaded_file(order, fp, 'pdf')
-                            self.logger.info(f'[PDF] Ingested: {fp.name} for {order.store}/{order.vendor}')
-                
-                if result.download_token:
-                    self.download_manager.cleanup(result.download_token)
+                    
+                if download_pdf and result.artifacts:
+                    for art in result.artifacts:
+                        try:
+                            self.orders.ingest_downloaded_file(order, art.path, art.kind)
+                            self.logger.info(
+                                f"[{art.kind.upper()}] Ingested: {art.path.name} for {order.store}/{order.vendor}"
+                            )
+                        except Exception as e:
+                            self.logger.warning(
+                                f"Failed ingest for {order.store}/{order.vendor} file={art.path}: {e}",
+                                exc_info=True,
+                            )
 
             except Exception as e:
                 self.logger.error(
                     f"Error processing Craftable order ({result.store}/{result.vendor}): {e}",
-                    exc_info=True
+                    exc_info=True,
                 )
+                
 
         self.logger.info(f'Craftable order sync completed successfully.')
 
@@ -159,7 +156,25 @@ class WorkBot:
             self.transfers.archive_transfer(t)
 
     def download_audits(self, stores: list[str], start_date: str, end_date: str) -> None:
-        self.craft_bot.download_audits(stores, start_date, end_date)
+        results = self.craft_bot.download_audits(stores, start_date, end_date)
+
+        for r in results:
+            if not r.success:
+                self.logger.warning(f"[AUDIT] FAILED: {r.message} hints={r.hints}")
+                continue
+
+            try:
+                # Most audits should be exactly one xlsx artifact
+                for art in r.artifacts:
+                    self.audits.ingest_downloaded_file(
+                        xlsx_path=art.path,
+                        hints=r.hints,
+                        source=art.source,
+                    )
+            except Exception as e:
+                self.logger.error(f"[AUDIT] Error ingesting audit: {e}", exc_info=True)
+
+        self.logger.info("Audit download completed.")
 
     def add_items_to_craftable_order(self, store: str, vendor: str, items: List[Item]) -> None:
         ...

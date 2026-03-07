@@ -1,6 +1,7 @@
 from dataclasses import dataclass
-from typing import Optional, Dict, Any
-from backend.adapters.downloads.local_download_manager import DownloadToken
+from backend.adapters.downloads.local_download_manager import StagedFile
+from typing import Any
+
 
 
 @dataclass
@@ -20,10 +21,17 @@ class BotOrderResult:
     date: str
 
     success: bool
+    artifacts: list[StagedFile]
+
     message: str = ""
+    
+    data: list[dict] = None
 
-    # raw scraped dict: { store, vendor, date, items[] }
-    data: Optional[Dict[str, Any]] = None
 
-    # Download token from DownloadManager
-    download_token: Optional[DownloadToken] = None
+@dataclass
+class BotAuditResult:
+    success: bool
+    message: str
+    artifacts: list[StagedFile]
+    hints: dict[str, Any]  
+  
