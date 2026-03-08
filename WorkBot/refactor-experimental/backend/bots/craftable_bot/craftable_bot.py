@@ -27,6 +27,7 @@ from backend.domain.models import Transfer, BotOrderResult, BotAuditResult
 from backend.core.utils.datetimes import convert_date_format, string_to_datetime
 from backend.bots.bot_mixins import SeleniumBotMixin
 from backend.core.utils.flatpickr_calendar_controller import FP, FlatpickrWidgets
+from backend.core.normalization.store_names import StoreNameNormalizer
 
 from backend.adapters.downloads.local_download_manager import StagedFile
 
@@ -286,22 +287,25 @@ class CraftableBot(SeleniumBotMixin):
                         
                         with self.download_manager.session(self.driver) as dl:
                             self._download_order_pdf()
-                            pdf_paths = dl.wait_for("*.pdf", timeout=60)
-                            # persist to a non-session folder (e.g. base/tmp)
-                            persisted = dl.persist(pdf_paths, self.download_manager.base / "staged")
-                            artifacts.extend([StagedFile(path=p, kind="pdf", source="craftable-order") for p in persisted])
-
-                        results.append(
-                            BotOrderResult(
-                                store=store,
-                                vendor=vendor,
-                                date=order_date,
-                                success=True,
-                                data=order_items,
-                                artifacts=artifacts,
-                                message='Order downloaded'
+                            artifacts.extend(
+                                dl.stage_files(
+                                    pattern="*.pdf",
+                                    kind="pdf",
+                                    source="craftable-order",
+                                    timeout=60,
+                                )
                             )
+                    results.append(
+                        BotOrderResult(
+                            store=store,
+                            vendor=vendor,
+                            date=order_date,
+                            success=True,
+                            data=order_items,
+                            artifacts=artifacts,
+                            message='Order downloaded'
                         )
+                    )
 
                 except Exception as e:
                     results.append(
@@ -800,16 +804,7 @@ class CraftableBot(SeleniumBotMixin):
 # region ---- Audit Downloading -------------------------
 
     def get_audit_store_name(self, store: str) -> str:
-        store_audit_name_map = {
-            'Bakery':       'Ithaca Bakery - Meadow St',
-            'Triphammer':   'Ithaca Bakery - Triphammer Rd',
-            'Collegetown':  'Collegetown Bagels - College Ave',
-            'Easthill':     'Collegetown Bagels - East Hill Plaza',
-            'Downtown':     'Collegetown Bagels - State St',
-            'Syracuse':     'Collegetown Bagels - Syracuse',
-        }
-
-        return store_audit_name_map.get(store, '')
+        return StoreNameNormalizer.to_craftable_audit(store)
 
     def _set_audit_stores_filter(self, stores: list[str]) -> None:
             
@@ -926,10 +921,12 @@ class CraftableBot(SeleniumBotMixin):
 
             
                 cols = row.find_elements(By.TAG_NAME, 'td')
+                if len(cols) < 6: continue
+
                 store, date, closed_time, auditor, audit_type, inventory_cost = cols
 
                 hints = {
-                    'store_text': store.text.strip(),
+                    "store_text": StoreNameNormalizer.to_canonical(store.text.strip()),
                     "date_text": date.text.strip(),
                     "closed_time_text": closed_time.text.strip(),
                     "auditor_text": auditor.text.strip(),
@@ -946,15 +943,15 @@ class CraftableBot(SeleniumBotMixin):
                 actions.key_down(Keys.CONTROL).click(date_hyperlink).key_up(Keys.CONTROL).perform()
 
                 # self.driver.execute_script("window.open(arguments[0].href, '_blank');", date_hyperlink)
-                time.sleep(5)
+                time.sleep(2)
 
                 self.driver.switch_to.window(self.driver.window_handles[-1])
                 
-                artifacts: list[StagedFile] = []
+                artifacts = []
                 with self.download_manager.session(self.driver) as dl:
-                    download_btn = self.driver.find_element(By.CLASS_NAME, "fa-download")
-
+                    
                     def trigger():
+                        download_btn = self.driver.find_element(By.CLASS_NAME, "fa-download")
                         download_btn.click()
 
                     artifacts.extend(

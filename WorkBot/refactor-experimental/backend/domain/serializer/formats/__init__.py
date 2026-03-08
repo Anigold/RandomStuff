@@ -7,6 +7,8 @@ from .json_format import JSONFormatter
 
 from .vendor_formats import * 
 
+from .craftable.audit_format import CraftableAuditFormatter
+
 _FORMATTERS: Dict[str, BaseFormatter] = {
 
     'xlsx':               ExcelFormatter,
@@ -17,7 +19,7 @@ _FORMATTERS: Dict[str, BaseFormatter] = {
     'unfi':               UNFIFormatter, 
     'performance food':   PerformanceFoodFormatter,
     'us foods':           USFoodsFormatter,
-
+    'audit':             CraftableAuditFormatter
 }
 
 def get_formatter(fmt: str) -> BaseFormatter:

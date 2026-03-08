@@ -189,7 +189,7 @@ class IngestDownloadedFile:
 
     repo: OrderRepository
 
-    def __call__(self, order: Order, file_path: Path, kind: str = 'pdf') -> None:
+    def __call__(self, order: Order, file_path: Path, kind: str = 'pdf') -> Path:
 
         self.repo.ingest_downloaded_attachment(
             order=order,

@@ -98,6 +98,7 @@ class WorkBot:
                 if download_pdf and result.artifacts:
                     for art in result.artifacts:
                         try:
+                            # self.logger.info(f"About to ingest artifact: {art.path} exists={art.path.exists()}")
                             self.orders.ingest_downloaded_file(order, art.path, art.kind)
                             self.logger.info(
                                 f"[{art.kind.upper()}] Ingested: {art.path.name} for {order.store}/{order.vendor}"
@@ -166,11 +167,16 @@ class WorkBot:
             try:
                 # Most audits should be exactly one xlsx artifact
                 for art in r.artifacts:
-                    self.audits.ingest_downloaded_file(
-                        xlsx_path=art.path,
+                    audit  = self.audits.import_downloaded_audit(
+                        
+                        file_path=art.path,
                         hints=r.hints,
-                        source=art.source,
+                        source='audit'
+                        
                     )
+                self.logger.info(
+                    f"[AUDIT] Imported {art.path.name} -> {audit.store}/{audit.audit_type}/{audit.date}"
+                )
             except Exception as e:
                 self.logger.error(f"[AUDIT] Error ingesting audit: {e}", exc_info=True)
 

@@ -63,12 +63,19 @@ class IngestDownloadedFile:
             kind=kind,
         )
 
+@Logger.attach_logger
+@dataclass(frozen=True)
+class ImportDownloadedAudit:
+
+    repo: AuditRepository
+
+    def __call__(self, file_path: Path, hints: dict | None = None, source: str | None = 'audit') -> Audit:
+        return self.repo.import_downloaded_audit(src_path=file_path, hints=hints, source=source)
 
 @dataclass
 class AuditServices:
 
     repo: AuditRepository
-    downloads: DownloadManagerPort
 
     def __post_init__(self) -> None:
         
@@ -77,3 +84,10 @@ class AuditServices:
         self.archive_transfer = ArchiveAudit(self.repo)
         
         self.ingest_downloaded_file = IngestDownloadedFile(self.repo)
+        self.import_downloaded_audit = ImportDownloadedAudit(self.repo)
+
+    def ingest_downloaded_audit(self, file_path: Path, hints: dict, source: str | None = None) -> Audit:
+        audit = self.parser.parse_metadata(file_path=file_path, hints=hints)
+        self.save_audit(audit)
+        self.ingest_downloaded_file(audit, file_path, kind="xlsx")
+        return audit

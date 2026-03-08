@@ -100,7 +100,7 @@ def create_domain_services(repos, infra) -> dict:
         'vendors':   VendorServices(repos['vendors'], downloader),
         'transfers': TransferServices(repos['transfers'], repos['orders'], DEFAULT_TRANSFER_ORIGIN),
         'stores':    StoreServices(repos['stores'], downloader),
-        'audits':    AuditServices(repos['audits'], downloader)
+        'audits':    AuditServices(repos['audits'])
 
     }
 

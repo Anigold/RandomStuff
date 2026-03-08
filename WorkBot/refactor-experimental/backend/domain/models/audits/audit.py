@@ -7,6 +7,7 @@ AUDIT_TYPES = {'FULL', 'PARTIAL'}
 class AuditItem:
 
     item_name:   str
+    count_unit:  str
     on_hand:     str
 
     

@@ -117,16 +117,20 @@ class DownloadSession:
         source: str | None = None,
         timeout: int = 30,
         poll: float = 0.25,
+        require_stable: bool = True,
     ) -> list[StagedFile]:
-        files = self.wait_for(pattern=pattern, timeout=timeout, poll=poll)
+        files = self.wait_for(
+            pattern=pattern,
+            timeout=timeout,
+            poll=poll,
+            require_stable=require_stable,
+        )
         if not files:
             return []
 
         token = self.token
         staged_dir = (self._mgr.staged_base / token.id).resolve()
         staged_dir.mkdir(parents=True, exist_ok=True)
-
-
 
         persisted: list[StagedFile] = []
 
@@ -136,7 +140,7 @@ class DownloadSession:
             persisted.append(StagedFile(path=dest, kind=kind, source=source))
 
         return persisted
-
+    
     def trigger_and_stage(
         self,
         trigger: Callable[[], None],
