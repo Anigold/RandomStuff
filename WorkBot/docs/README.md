@@ -56,20 +56,15 @@ This separation allows operational workflows to evolve without tightly coupling 
 
 # High-Level Architecture
 CLI
-│
-▼
+&darr;
 WorkBot (Application Entry Point)
-│
-▼
+&darr;
 Application Services
-│
-▼
+&darr;
 Domain Models
-│
-▼
+&darr;
 Ports / Interfaces
-│
-▼
+&darr;
 Adapters
 (Craftable Bot, Email, File System, Repositories)
 
