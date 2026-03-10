@@ -1,7 +1,6 @@
-C:\Users\golds\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend/
+C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\backend/
     file_tree.py
     file_tree.txt
-    file_tree___OLD.txt
     adapters/
         downloads/
             local_download_manager.py
@@ -20,9 +19,9 @@ C:\Users\golds\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\b
                 store_orders_email.txt
         files/
             generic_file_adapter.py
+            local_blob_store.py
             __init__.py
         repos/
-            audit_file_repository.py
             order_file_repository.py
             store_file_repository.py
             transfer_file_repository.py
@@ -47,11 +46,6 @@ C:\Users\golds\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\b
                     combine_orders.py
                     convert_order_to_transfer.py
                     delete_orders.py
-                    display_all_orders.py
-                    display_audit.py
-                    display_order.py
-                    display_store_orders.py
-                    display_vendor_orders.py
                     download_audits.py
                     download_orders.py
                     generate_store_order_emails.py
@@ -72,13 +66,12 @@ C:\Users\golds\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\b
             repos.py
             __init__.py
         services/
-            audit_service.py
-            email_service.py
+            email_services.py
             file_locator.py
-            order_service.py
-            store_service.py
-            transfer_service.py
-            vendor_service.py
+            order_services.py
+            store_services.py
+            transfer_services.py
+            vendor_services.py
             __init__.py
     bots/
         bot_mixins.py
@@ -89,8 +82,6 @@ C:\Users\golds\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\b
             craftable_bot.py
             helpers.py
             __init__.py
-            helpers/
-                flatpickr_calendar_helper.py
         workbot/
             work_bot.py
             work_result.py
@@ -107,19 +98,7 @@ C:\Users\golds\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\b
             namer.py
             serializer.py
             transformer.py
-        normalization/
-            ids.py
-            store_names.py
-        utils/
-            datetimes.py
-            flatpickr_calendar_controller.py
-            migrate_vendor_ids.py
     domain/
-        factories/
-            item_factory.py
-            order_factory.py
-            store_factory.py
-            vendor_factory.py
         models/
             to_do.py
             __init__.py
@@ -127,7 +106,6 @@ C:\Users\golds\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\b
                 audit.py
             items/
                 item.py
-                new_item.py
                 store_item_info.py
                 vendor_item_info.py
             orders/
@@ -142,8 +120,6 @@ C:\Users\golds\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\b
             vendors/
                 vendor.py
         naming/
-            audit_namer.py
-            item_namer.py
             order_namer.py
             store_namer.py
             transfer_namer.py
@@ -156,8 +132,6 @@ C:\Users\golds\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\b
                 json_format.py
                 txt_format.py
                 __init__.py
-                craftable/
-                    audit_format.py
                 vendor_formats/
                     hill_n_markes.py
                     performance_food.py
@@ -166,8 +140,6 @@ C:\Users\golds\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\b
                     us_foods.py
                     __init__.py
             serializers/
-                audit.py
-                item.py
                 order.py
                 store.py
                 transfer.py
@@ -175,16 +147,20 @@ C:\Users\golds\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\b
         transformers/
             order_to_transfer.py
             __init__.py
+        validation/
+            order_diff.py
+            __init__.py
     errors/
         error_bus.py
         exceptions.py
         __init__.py
         boundaries/
-            application.py
-            base.py
             infra.py
             repo.py
             service.py
+            workbot.py
+    helpers/
+        datetimes.py
     infra/
         logger.py
         paths.py
@@ -214,9 +190,7 @@ C:\Users\golds\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\b
                 DUTCH VALLEY FOOD DIST.json
                 Equal Exchange.json
                 Farmer Ground Flour.json
-                Finger Lakes Coffee Roasters.json
                 FingerLakes Farms.json
-                Grandma's Coffee Cake.json
                 Harney and Sons Tea.json
                 Hill & Markes.json
                 Hillcrest Dairy.json
@@ -224,124 +198,19 @@ C:\Users\golds\projects\IthacaBakery\RandomStuff\WorkBot\refactor-experimental\b
                 Ithaca Bakery.json
                 Johnston Paper.json
                 Keck's Food Service.json
-                KEHE DISTRIBUTORS.json
-                Kwik Lok.json
                 Lentz.json
-                Motherworks,LLC.json
                 Nuts.json
                 Odeko In.json
-                Opici Family Distributing.json
-                Palmer.json
-                Paper Rolls.json
-                Pepsi.json
                 Performance Food.json
                 Peters Supply.json
                 Regional Access Inc.json
                 Regional Distributors, Inc.json
                 Russo Produce.json
                 SANICO.json
-                Sweet Sam's Baking Company, LLC.json
                 Sysco.json
                 ULINE.json
                 UNFI.json
                 US Foods.json
                 Vegan Epicure.json
                 Webstaurant.json
-                Worlds Best Cheeses.json
                 __init__.py
-            vendors copy/
-                A.L. George.json
-                BALKAN BEVERAGE LLC.json
-                BJ's.json
-                Bo's Bones.json
-                Coco-Cola.json
-                Coffee Depot LLC.json
-                Copper Horse Coffee.json
-                Dawn.json
-                DUTCH VALLEY FOOD DIST.json
-                Equal Exchange.json
-                Farmer Ground Flour.json
-                Finger Lakes Coffee Roasters.json
-                FingerLakes Farms.json
-                Grandma's Coffee Cake.json
-                Harney and Sons Tea.json
-                Hill & Markes.json
-                Hillcrest Dairy.json
-                Hillcrest Foods.json
-                Ithaca Bakery.json
-                Johnston Paper.json
-                Keck's Food Service.json
-                KEHE DISTRIBUTORS.json
-                Kwik Lok.json
-                Lentz.json
-                Motherworks,LLC.json
-                Nuts.json
-                Odeko In.json
-                Opici Family Distributing.json
-                Palmer.json
-                Paper Rolls.json
-                Pepsi.json
-                Performance Food.json
-                Peters Supply.json
-                Regional Access Inc.json
-                Regional Distributors, Inc.json
-                Russo Produce.json
-                SANICO.json
-                Sweet Sam's Baking Company, LLC.json
-                Sysco.json
-                ULINE.json
-                UNFI.json
-                US Foods.json
-                Vegan Epicure.json
-                Webstaurant.json
-                Worlds Best Cheeses.json
-                __init__.py
-        filesystem/
-            local_blob_store.py
-    tests/
-        conftest.py
-        __init__.py
-        adapters/
-            downloads/
-                test_threaded_download_adapter.py
-            emailer/
-                test_emailer_core.py
-                test_registry.py
-                services/
-                    test_gmail_service.py
-                    test_mock_service.py
-                    test_outlook_service.py
-            repos/
-                test_order_file_repository.py
-        app/
-            conftest.py
-            ports/
-                test_downloads_port.py
-                test_generic_ports.py
-            services/
-                test_file_locator.py
-                test_services_email.py
-                test_services_order.py
-                test_services_store.py
-                test_services_vendor.py
-        bots/
-            craftable_bot/
-                test_craftable_bot.py
-                test_craftable_helpers.py
-            workbot/
-                test_workbot_commands.py
-                test_workbot_init.py
-        fixtures/
-            fake_orders.py
-            fake_vendors.py
-            sample_order.xlsx
-            sample_vendor_upload.xlsx
-        infra/
-            test_errors.py
-            test_logger.py
-            test_paths.py
-        integration/
-            test_craftable_integration.py
-            test_email_generation_flow.py
-            test_order_file_roundtrip.py
-            test_vendor_upload_flow.py

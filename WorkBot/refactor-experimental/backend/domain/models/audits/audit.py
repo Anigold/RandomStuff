@@ -21,7 +21,4 @@ class Audit:
 
     items: list[AuditItem]
 
-    def load_items_from_sheet(self, sheet_path: Path) -> None:
-        ...
-    
     
