@@ -6,6 +6,8 @@ from backend.core.interfaces.serializer import Serializer
 from ..formats import get_formatter  # registry, like in OrderSerializer
 from backend.infra.logger import Logger
 
+from backend.core.normalization.ids import IdGenerator
+
 @Logger.attach_logger
 class VendorSerializer(Serializer[Vendor]):
     """
@@ -52,6 +54,7 @@ class VendorSerializer(Serializer[Vendor]):
     # ----------------- Domain <-> dict -----------------
     def to_dict(self, vendor: Vendor) -> dict:
         return {
+            'id': vendor.id,
             "name": vendor.name,
             "order_format": vendor.order_format,
             "special_notes": vendor.special_notes,
@@ -85,6 +88,7 @@ class VendorSerializer(Serializer[Vendor]):
 
     def from_dict(self, data: dict) -> Vendor:
         return Vendor(
+            id=data.get('id', IdGenerator.vendor_id()),
             name=data["name"],
             order_format=data.get("order_format", ""),
             special_notes=data.get("special_notes", ""),
@@ -119,6 +123,7 @@ class VendorSerializer(Serializer[Vendor]):
     # ----------------- Domain <-> table -----------------
     def _to_table(self, data: dict) -> dict[str, Any]:
         headers = [
+            'id',
             "name",
             "order_format",
             "special_notes",
@@ -146,6 +151,7 @@ class VendorSerializer(Serializer[Vendor]):
         for c in contacts:
             for s in schedules:
                 rows.append([
+                    data.get('id', ''),
                     data.get("name", ""),
                     data.get("order_format", ""),
                     data.get("special_notes", ""),
@@ -176,6 +182,7 @@ class VendorSerializer(Serializer[Vendor]):
         first_row = rows[0]
 
         data = {
+            "id": first_row[headers.index("id")] if "id" in headers else IdGenerator.vendor_id(),
             "name": first_row[headers.index("name")],
             "order_format": first_row[headers.index("order_format")],
             "special_notes": first_row[headers.index("special_notes")],

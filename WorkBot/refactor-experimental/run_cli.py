@@ -97,7 +97,7 @@ def create_domain_services(repos, infra) -> dict:
 
     return {
         'orders':    OrderServices(repos['orders'], downloader),
-        'vendors':   VendorServices(repos['vendors'], downloader),
+        'vendors':   VendorServices(repos['vendors']),
         'transfers': TransferServices(repos['transfers'], repos['orders'], DEFAULT_TRANSFER_ORIGIN),
         'stores':    StoreServices(repos['stores'], downloader),
         'audits':    AuditServices(repos['audits'])

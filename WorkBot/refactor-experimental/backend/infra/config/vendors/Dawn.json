@@ -13,16 +13,20 @@
     }
   ],
   "ordering": {
-    "method": ["portal"],
+    "method": [
+      "portal"
+    ],
     "email": "",
     "portal_url": "https://www.dawnfoods.com/shop/",
     "phone_number": "",
     "schedule": [
-        {
-            "order_day": "Monday",
-            "delivery_days": ["Friday"],
-            "cutoff_time": "3:00 PM"
-        } 
+      {
+        "order_day": "Monday",
+        "delivery_days": [
+          "Friday"
+        ],
+        "cutoff_time": "3:00 PM"
+      }
     ]
   },
   "store_ids": {
@@ -31,5 +35,6 @@
     "Triphammer": "",
     "Easthill": "",
     "Downtown": ""
-  }
+  },
+  "id": "ven_SY66UGKHT1"
 }

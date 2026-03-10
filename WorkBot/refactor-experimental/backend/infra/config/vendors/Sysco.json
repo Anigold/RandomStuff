@@ -13,19 +13,25 @@
     }
   ],
   "ordering": {
-    "method": ["portal"],
+    "method": [
+      "portal"
+    ],
     "email": "",
     "portal_url": "https://shop.sysco.com/",
     "phone_number": "",
     "schedule": [
       {
         "order_day": "Sunday",
-        "delivery_days": ["Monday"],
+        "delivery_days": [
+          "Monday"
+        ],
         "cutoff_time": "5:00 PM"
       },
       {
         "order_day": "Wednesday",
-        "delivery_days": ["Thursday"],
+        "delivery_days": [
+          "Thursday"
+        ],
         "cutoff_time": "5:00 PM"
       }
     ]
@@ -37,5 +43,6 @@
     "Easthill": "027-739284",
     "Downtown": "027-880356",
     "Syracuse": "027-893832"
-  }
+  },
+  "id": "ven_84NFPNHHMU"
 }

@@ -1,15 +1,11 @@
 from __future__ import annotations
+
 from dataclasses import dataclass
+
 from backend.app.ports import VendorRepository, DownloadPort
-
-
-
-from dataclasses import dataclass
-
 from backend.domain.models import Vendor
+from backend.domain.factories.vendor_factory import VendorFactory
 from backend.infra.logger import Logger
-
-from backend.app.ports import VendorRepository
 # ---- Queries ----
 
 @Logger.attach_logger
@@ -18,8 +14,17 @@ class GetVendor:
     
     repo: VendorRepository
 
-    def __call__(self, name: str) -> Vendor:
-        return self.repo.get(name)
+    def __call__(self, vendor_id: str) -> Vendor:
+        return self.repo.get(vendor_id)
+    
+
+@Logger.attach_logger
+@dataclass(frozen=True)
+class GetVendorByName:
+    repo: VendorRepository
+
+    def __call__(self, name: str) -> Vendor | None:
+        return self.repo.get_by_name(name)
 
 
 @Logger.attach_logger
@@ -30,6 +35,30 @@ class ListVendors:
 
     def __call__(self) -> list[Vendor]:
         return self.repo.list_all()
+    
+
+
+    
+@Logger.attach_logger
+@dataclass(frozen=True)
+class CreateVendor:
+    repo: VendorRepository
+    factory: VendorFactory
+
+    def __call__(self, *, name: str, **kwargs) -> Vendor:
+        vendor = self.factory.create(name=name, **kwargs)
+        self.repo.save(vendor)
+        return vendor
+    
+
+
+@Logger.attach_logger
+@dataclass(frozen=True)
+class RemoveVendor:
+    repo: VendorRepository
+
+    def __call__(self, vendor_id: str) -> None:
+        self.repo.remove(vendor_id)
 
 
 # ---- Commands ----
@@ -57,15 +86,16 @@ class ListVendors:
 @dataclass
 class VendorServices:
 
-    repo:      VendorRepository
-    downloads: DownloadPort
+    repo: VendorRepository
 
     def __post_init__(self):
-        self.get_vendor   = GetVendor(self.repo)
+
+        factory = VendorFactory(self.repo)
+
+        self.get_vendor = GetVendor(self.repo)
+        self.get_vendor_by_name = GetVendorByName(self.repo)
+        
         self.list_vendors = ListVendors(self.repo)
-
-    # def get_vendor_info(self, name: str):
-    #     return self.repo.get_vendor(name)
-
-    # def list_all_vendors(self):
-    #     return self.repo.list_vendors()
+        
+        self.create_vendor = CreateVendor(self.repo, factory)
+        self.remove_vendor = RemoveVendor(self.repo)

@@ -13,16 +13,20 @@
     }
   ],
   "ordering": {
-    "method": ["email"],
+    "method": [
+      "email"
+    ],
     "email": "orders@equalexchange.coop",
     "portal_url": "",
     "phone_number": "",
     "schedule": [
-        {
-            "order_day": "Sunday",
-            "delivery_days": ["Wednesday"],
-            "cutoff_time": "3:00 PM"
-        } 
+      {
+        "order_day": "Sunday",
+        "delivery_days": [
+          "Wednesday"
+        ],
+        "cutoff_time": "3:00 PM"
+      }
     ]
   },
   "store_ids": {
@@ -31,5 +35,6 @@
     "Triphammer": "",
     "Easthill": "",
     "Downtown": ""
-  }
+  },
+  "id": "ven_MMJ9YUX1ED"
 }

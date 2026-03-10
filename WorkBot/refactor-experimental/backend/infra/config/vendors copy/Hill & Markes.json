@@ -1,0 +1,40 @@
+{
+  "name": "Hill & Markes",
+  "order_format": "",
+  "special_notes": "",
+  "min_order_value": 350,
+  "min_order_cases": 0,
+  "internal_contacts": [
+    {
+      "name": "Mike Schoemaker",
+      "title": "Sales Representative",
+      "email": "mschoemaker@hillnmarkes.com",
+      "phone": "3156575562"
+    }
+  ],
+  "ordering": {
+    "method": ["portal_url"],
+    "email": "",
+    "portal_url": "https://www.hillnmarkes.com/",
+    "phone_number": "",
+    "schedule": [
+      {
+        "order_day": "Monday",
+        "delivery_days": ["Tuesday"],
+        "cutoff_time": "3:00 PM"
+      },
+      {
+        "order_day": "Wednesday",
+        "delivery_days": ["Friday"],
+        "cutoff_time": "3:00 PM"
+      }
+    ]
+  },
+  "store_ids": {
+    "Bakery": "00001",
+    "Collegetown": "00002",
+    "Triphammer": "00006",
+    "Easthill": "00010",
+    "Downtown": "00018"
+  }
+}

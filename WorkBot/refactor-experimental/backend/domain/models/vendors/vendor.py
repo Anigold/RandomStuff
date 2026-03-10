@@ -29,6 +29,7 @@ class OrderingInfo:
 @dataclass
 class Vendor:
     name:                 str
+    id:                   str
     order_format:         str = ''
     special_notes:        str = ''
     min_order_value:      float = 0

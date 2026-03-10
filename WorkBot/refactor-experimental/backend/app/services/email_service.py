@@ -62,7 +62,7 @@ class EmailServices:
 
         for vendor_name, vendor_orders in grouped.items():
             try:
-                vendor_info = self.vendors.get_vendor(vendor_name)
+                vendor_info = self.vendors.get_vendor_by_name(vendor_name)
             except Exception as e:
                 self.logger.warning(f"Could not fetch vendor info for {vendor_name}: {e}")
                 continue

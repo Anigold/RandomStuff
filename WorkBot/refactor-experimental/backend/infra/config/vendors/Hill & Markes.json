@@ -13,19 +13,25 @@
     }
   ],
   "ordering": {
-    "method": ["portal_url"],
+    "method": [
+      "portal_url"
+    ],
     "email": "",
     "portal_url": "https://www.hillnmarkes.com/",
     "phone_number": "",
     "schedule": [
       {
         "order_day": "Monday",
-        "delivery_days": ["Tuesday"],
+        "delivery_days": [
+          "Tuesday"
+        ],
         "cutoff_time": "3:00 PM"
       },
       {
         "order_day": "Wednesday",
-        "delivery_days": ["Friday"],
+        "delivery_days": [
+          "Friday"
+        ],
         "cutoff_time": "3:00 PM"
       }
     ]
@@ -36,5 +42,6 @@
     "Triphammer": "00006",
     "Easthill": "00010",
     "Downtown": "00018"
-  }
+  },
+  "id": "ven_AU9VORNALG"
 }

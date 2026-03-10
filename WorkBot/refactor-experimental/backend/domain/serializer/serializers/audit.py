@@ -119,7 +119,7 @@ class AuditSerializer(Serializer[Audit]):
     # -------- Domain <-> tabular --------
     def _to_table(self, data: Dict[str, Any]) -> Dict[str, Any]:
         return {
-            'headers': ['Name', 'Total Quantity'],
+            'headers': ['Name', 'Count Unit', 'Total Quantity'],
             'rows': [[i['item_name'], i['count_unit'], i['on_hand']] for i in data['items']],
             'metadata': {
                 'store': data['store'],
@@ -138,8 +138,9 @@ class AuditSerializer(Serializer[Audit]):
         idx = {str(h).strip().lower(): i for i, h in enumerate(headers)}
 
         # Expect these exact header names from _to_table()
-        name_i = idx.get("name")
-        qty_i = idx.get("total quantity")
+        name_i = idx.get("Name")
+        count_unit_i = idx.get('Count Unit')
+        qty_i = idx.get("Total Quantity")
 
         if name_i is None or qty_i is None:
             raise ValueError(
@@ -150,11 +151,13 @@ class AuditSerializer(Serializer[Audit]):
         for r in rows:
             # Defensive: allow shorter rows
             name = r[name_i] if name_i < len(r) else ""
+            count_unit = r[count_unit_i] if count_unit_i < len(r) else None
             qty = r[qty_i] if qty_i < len(r) else None
 
             items.append(
                 AuditItem(
                     item_name=str(name).strip(),
+                    count_unit=str(count_unit).strip(),
                     on_hand=self._coerce_float(qty),
                 )
             )
@@ -197,7 +200,7 @@ class AuditSerializer(Serializer[Audit]):
         idx = {str(h).strip().lower(): i for i, h in enumerate(headers) if h}
 
         item_name_i   = self._find_column(idx, ["item", "item name", "name"])
-        on_hand_i     = self._find_column(idx, ["on hand", "quantity", "total quantity"])
+        on_hand_i     = self._find_column(idx, ["on hand", "quantity", "total quantity", 'total'])
         count_unit_i  = self._find_column(idx, ["count unit", "unit"])
         # category_i    = self._find_column(idx, ["category"])
         # subcategory_i = self._find_column(idx, ["subcategory"])
@@ -222,7 +225,6 @@ class AuditSerializer(Serializer[Audit]):
                 )
             )
 
-        self.logger.info(f'CURRENT AUDIT DATE LOOKS LIKE: {str(metadata.get("date_text", "")).strip()}')
         return Audit(
             store=str(metadata.get("store_text", "")).strip(),
             date=convert_date_format(str(metadata.get("date_text", "")).strip(), '%m/%d/%Y', '%Y-%m-%d'),

@@ -285,7 +285,10 @@ class WorkBot:
         return self.stores.list_stores()
     
     def get_vendor_information(self, vendor_name: str) -> Vendor:
-        return self.vendors.get_vendor(vendor_name)
+        return self.vendors.get_vendor_by_name(vendor_name)
+
+    def get_vendor_by_id(self, vendor_id: str) -> Vendor:
+        self.vendors.get_vendor(vendor_id)
 
     def get_store_information(self, store_name: str) -> dict:
         return self.stores.get_store(store_name)
@@ -310,7 +313,7 @@ class WorkBot:
                 context_map = {}
                 for order in orders:
             
-                    vendor_info = self.vendors.get_vendor(order.vendor)
+                    vendor_info = self.vendors.get_vendor_by_name(order.vendor)
 
                     context_map[f'{order.store}|{order.vendor}'] = {
                         'store':       order.store,
@@ -390,8 +393,4 @@ class WorkBot:
         return long_date, day_of_week
 
     def testing_function(self, ) -> None:
-        transfers = self.transfers.list_transfers()
-
-        for t in transfers:
-            self.transfers.archive_transfer(t)
-    
+        ...

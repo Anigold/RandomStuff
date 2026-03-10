@@ -1,0 +1,40 @@
+{
+  "name": "Johnston Paper",
+  "order_format": "",
+  "special_notes": "",
+  "min_order_value": 250,
+  "min_order_cases": 0,
+  "internal_contacts": [
+    {
+      "name": "Mike Schoemaker",
+      "title": "Sales Representative",
+      "email": "mschoemaker@hillnmarkes.com",
+      "phone": "3156575562"
+    }
+  ],
+  "ordering": {
+    "method": ["portal_url"],
+    "email": "",
+    "portal_url": "https://www.johnston.biz/",
+    "phone_number": "",
+    "schedule": [
+      {
+        "order_day": "Monday",
+        "delivery_days": ["Tuesday"],
+        "cutoff_time": "2:00 PM"
+      },
+      {
+        "order_day": "Tuesday",
+        "delivery_days": ["Thursday"],
+        "cutoff_time": "3:00 PM"
+      }
+    ]
+  },
+  "store_ids": {
+    "Bakery": "COLL08",
+    "Collegetown": "COLL06",
+    "Triphammer": "COLL07",
+    "Easthill": "COLL10",
+    "Downtown": "COLL09"
+  }
+}

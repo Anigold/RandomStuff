@@ -13,14 +13,20 @@
     }
   ],
   "ordering": {
-    "method": ["email", "portal", "phone"],
+    "method": [
+      "email",
+      "portal",
+      "phone"
+    ],
     "email": "purchasing@ithacabakery.com",
     "portal_url": "https://app.craftable.com/",
     "phone_number": "6072737110",
     "schedule": [
       {
         "order_day": "Friday",
-        "delivery_days": ["Monday"],
+        "delivery_days": [
+          "Monday"
+        ],
         "cutoff_time": "5:00 PM"
       }
     ]
@@ -31,5 +37,6 @@
     "Triphammer": "",
     "Easthill": "",
     "Downtown": ""
-  }
+  },
+  "id": "ven_6E40ST1FDA"
 }

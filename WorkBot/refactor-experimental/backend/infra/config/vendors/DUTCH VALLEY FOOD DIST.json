@@ -13,16 +13,20 @@
     }
   ],
   "ordering": {
-    "method": ["portal"],
+    "method": [
+      "portal"
+    ],
     "email": "",
     "portal_url": "https://www.dutchvalleyfoods.com/",
     "phone_number": "",
     "schedule": [
-        {
-            "order_day": "Wednesday",
-            "delivery_days": ["Monday"],
-            "cutoff_time": "3:00 PM"
-        } 
+      {
+        "order_day": "Wednesday",
+        "delivery_days": [
+          "Monday"
+        ],
+        "cutoff_time": "3:00 PM"
+      }
     ]
   },
   "store_ids": {
@@ -31,5 +35,6 @@
     "Triphammer": "",
     "Easthill": "",
     "Downtown": ""
-  }
+  },
+  "id": "ven_IRRA3HNF56"
 }
