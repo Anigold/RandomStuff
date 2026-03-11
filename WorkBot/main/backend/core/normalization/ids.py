@@ -1,5 +1,3 @@
-# backend/core/ids.py
-
 from __future__ import annotations
 
 import secrets
@@ -27,6 +25,7 @@ class IdGenerator:
         "transfer": "trn",
     }
 
+    '''GENERATORS'''
     @classmethod
     def generate(
         cls,
@@ -42,7 +41,7 @@ class IdGenerator:
             itm_T9M2L8P1G7
         """
         prefix = cls._prefix_for(entity_type)
-        token = cls._random_token(length)
+        token  = cls._random_token(length)
         return f"{prefix}_{token}"
 
     @classmethod
@@ -79,6 +78,7 @@ class IdGenerator:
             f"after {max_attempts} attempts."
         )
 
+    '''DOMAIN ID CONVENIENCE GENERATORS'''
     @classmethod
     def vendor_id(cls, *, length: int = DEFAULT_LENGTH) -> str:
         return cls.generate("vendor", length=length)
@@ -193,6 +193,7 @@ class IdGenerator:
             max_attempts=max_attempts,
         )
 
+    '''UTILS'''
     @classmethod
     def _prefix_for(cls, entity_type: str) -> str:
         try:

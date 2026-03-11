@@ -88,7 +88,7 @@ class VendorSerializer(Serializer[Vendor]):
 
     def from_dict(self, data: dict) -> Vendor:
         return Vendor(
-            id=data.get('id', IdGenerator.vendor_id()),
+            id=data['id'],
             name=data["name"],
             order_format=data.get("order_format", ""),
             special_notes=data.get("special_notes", ""),
@@ -182,7 +182,7 @@ class VendorSerializer(Serializer[Vendor]):
         first_row = rows[0]
 
         data = {
-            "id": first_row[headers.index("id")] if "id" in headers else IdGenerator.vendor_id(),
+            "id": first_row[headers.index("id")],
             "name": first_row[headers.index("name")],
             "order_format": first_row[headers.index("order_format")],
             "special_notes": first_row[headers.index("special_notes")],
