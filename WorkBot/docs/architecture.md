@@ -240,19 +240,19 @@ Repositories translate between domain models and these storage formats.
 
 Dependencies should generally follow this direction:
 
-CLI
-↓
-WorkBot
-↓
-Application Services
-↓
-Domain Models
-↓
-Ports
-↓
-Adapters
-↓
-Infrastructure
+CLI  
+↓  
+WorkBot  
+↓  
+Application Services  
+↓  
+Domain Models  
+↓  
+Ports  
+↓  
+Adapters  
+↓  
+Infrastructure  
 
 Higher layers may depend on lower layers, but not vice versa.
 
@@ -296,28 +296,28 @@ When extending WorkBot:
 
 ### Add new operational workflows
 
-Implement new application services.
+Implement new application services.  
 backend/app/services
 
 ---
 
 ### Add new automation
 
-Implement new bots or bot helpers.
+Implement new bots or bot helpers.  
 backend/bots
 
 ---
 
 ### Add new external integrations
 
-Create adapters implementing existing ports.
+Create adapters implementing existing ports.  
 backend/adapters
 
 ---
 
 ### Add new domain concepts
 
-Create domain models and serializers.
+Create domain models and serializers.  
 backend/domain
 
 ---
@@ -331,7 +331,6 @@ WorkBot prioritizes:
 - clear separation of concerns
 - extensibility of workflows
 
-The architecture is intentionally pragmatic rather than rigidly theoretical.
 
 ---
 
@@ -342,6 +341,5 @@ Potential future improvements may include:
 - additional automation bots
 - expanded vendor integration formats
 - enhanced reporting and auditing capabilities
-- additional operational workflows
 
 The architecture is designed to support these expansions without major restructuring.

@@ -75,15 +75,15 @@ Adapters
 # Repository Layout
 
 
-backend/
-adapters/ External integrations (email, downloads, repositories)
-app/ Application layer (services, CLI, ports)
-bots/ Automation agents (Craftable interaction, WorkBot orchestrator)
-core/ Shared abstractions, utilities, normalization
-domain/ Business models and domain logic
-infra/ Infrastructure configuration and runtime utilities
-errors/ Error handling framework
-tests/ Unit and integration tests
+backend/  
+    adapters/  External integrations (email, downloads, repositories)  
+    app/       Application layer (services, CLI, ports)  
+    bots/      Automation agents (Craftable interaction, WorkBot orchestrator)  
+    core/      Shared abstractions, utilities, normalization  
+    domain/    Business models and domain logic  
+    infra/     Infrastructure configuration and runtime utilities  
+    errors/    Error handling framework  
+    tests/     Unit and integration tests  
 
 ---
 
