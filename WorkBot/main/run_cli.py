@@ -6,7 +6,7 @@ Run file for WorkBot CLI.
 Bootstraps repositories, infrastructure, services, bots, and launches the CLI interface.
 '''
 
-from backend.app.cli.workbot_cli import WorkBotCLI
+
 from backend.app.ports.repos import Repository
 from backend.infra.paths import (
     DOWNLOADS_PATH,
@@ -155,6 +155,8 @@ def create_workbot(services, infra, emailer, craft_bot):
     )
 
 def create_cli(work_bot):
+
+    from backend.app.cli.workbot_cli import WorkBotCLI
     return WorkBotCLI(work_bot)
 
 def main() -> None:

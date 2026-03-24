@@ -102,6 +102,21 @@ class CLI:
 
         readline.set_history_length(100)
 
+
+    def _display_matches(self, substitution: str, matches: list[str], longest_match_length: int) -> None:
+        """
+        Display completion matches vertically, one per line, then redraw the prompt + buffer.
+        """
+        buffer = readline.get_line_buffer()
+        prompt = 'WorkBot> '
+
+        print()
+
+        for match in matches:
+            print(match)
+
+        print(f"{prompt}{buffer}", end='', flush=True)
+
     # endregion
 
     # region ---- Autocompletion Core ----
@@ -229,7 +244,7 @@ class CLI:
         matches = re.findall(self.FLAG_REGEX_PATTERN, buffer)
 
         last_token = tokens[-1] if tokens else ''
-        last_token_stripped = last_token.strip(''').strip(''')
+        last_token_stripped = last_token.strip("'").strip('"')
         last_flag = self._get_last_valid_flag(matches, possible_flags)
         
         # Case 1: Typing or completing a flag

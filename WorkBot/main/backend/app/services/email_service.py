@@ -177,7 +177,7 @@ class EmailServices:
 
     def _build_store_body(self, store_name: str, orders: List[Order]) -> str:
         today = datetime.now().strftime("%B %d, %Y")
-        lines = [f"Hi {store_name},", "", f"Here are your orders for the week of {today}:"]
+        lines = [f"Hi {store_name},", "", f"Here are your requested orders for the week of {today}:"]
         for order in orders:
             lines.append(f"\n{order.vendor}")
             for item in order.items:

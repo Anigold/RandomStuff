@@ -17,12 +17,14 @@ class IdGenerationError(RuntimeError):
 class IdGenerator:
 
     _PREFIXES: Final[dict[str, str]] = {
-        "vendor": "ven",
-        "item": "itm",
-        "store": "str",
-        "order": "ord",
-        "audit": "aud",
+
+        "vendor":   "ven",
+        "item":     "itm",
+        "store":    "str",
+        "order":    "ord",
+        "audit":    "aud",
         "transfer": "trn",
+        
     }
 
     '''GENERATORS'''

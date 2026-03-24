@@ -6,12 +6,12 @@ class StoreNameNormalizer:
     """
 
     _canonical_to_craftable_audit = {
-        "Bakery": "Ithaca Bakery - Meadow St",
-        "Triphammer": "Ithaca Bakery - Triphammer Rd",
+        "Bakery":      "Ithaca Bakery - Meadow St",
+        "Triphammer":  "Ithaca Bakery - Triphammer Rd",
         "Collegetown": "Collegetown Bagels - College Ave",
-        "Easthill": "Collegetown Bagels - East Hill Plaza",
-        "Downtown": "Collegetown Bagels - State St",
-        "Syracuse": "Collegetown Bagels - Syracuse",
+        "Easthill":    "Collegetown Bagels - East Hill Plaza",
+        "Downtown":    "Collegetown Bagels - State St",
+        "Syracuse":    "Collegetown Bagels - Syracuse",
     }
 
     _craftable_audit_to_canonical = {
