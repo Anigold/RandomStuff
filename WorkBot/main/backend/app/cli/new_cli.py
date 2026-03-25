@@ -3,8 +3,9 @@ from __future__ import annotations
 import importlib
 import pkgutil
 import shlex
+import sys
 from dataclasses import dataclass
-from typing import Callable, Iterable, Optional
+from typing import Callable, Iterable, Optional, Any
 
 from prompt_toolkit import PromptSession
 from prompt_toolkit.completion import Completer, Completion
@@ -28,15 +29,23 @@ class CLICompleter(Completer):
     def __init__(self, cli: "CLI"):
         self.cli = cli
 
-    def get_completions(self, document: Document, complete_event) -> Iterable[Completion]:
-        text = document.text_before_cursor
+    def get_completions(
+        self,
+        document: Document,
+        complete_event,
+    ) -> Iterable[Completion]:
+        text_before_cursor = document.text_before_cursor
         word_before_cursor = document.get_word_before_cursor(WORD=True)
 
-        items = self.cli.get_completion_items(text, word_before_cursor)
+        items = self.cli.get_completion_items(
+            buffer_text=text_before_cursor,
+            word_before_cursor=word_before_cursor,
+        )
 
         for item in items:
+            text = self.cli._quote_if_needed(item.value)
             yield Completion(
-                text=item.value,
+                text=text,
                 start_position=-len(word_before_cursor),
                 display=item.value,
                 display_meta=item.description,
@@ -73,21 +82,46 @@ class CLI:
     def prompt(self) -> str:
         return self.session.prompt("WorkBot> ")
 
-    def cmdloop(self) -> None:
+    def start(
+        self,
+        welcome_screen: str = '\nWelcome to your CLI. Type "help" to see available commands.\n',
+    ) -> None:
+        self.logger.info("CLI session started.")
+        print(welcome_screen)
+        self._run()
+
+    def _run(self) -> None:
         while True:
             try:
-                raw = self.prompt().strip()
-                if not raw:
+                user_input = self.prompt().strip()
+                if not user_input:
                     continue
 
-                self.handle_command(raw)
+                self.logger.debug(f"User input received: {user_input}")
 
-            except (EOFError, KeyboardInterrupt):
-                print()
+                command, args = self._parse_input(user_input)
+                if not command:
+                    continue
+
+                if command in ("exit", "quit"):
+                    self.logger.info("User requested CLI shutdown.")
+                    break
+
+                self._dispatch_command(command, args)
+
+            except (KeyboardInterrupt, EOFError):
+                self.logger.info("CLI interrupted by user.")
+                print("\nExiting CLI.")
                 break
             except Exception as e:
                 self.logger.exception("Unhandled CLI error.")
                 print(f"Error: {e}")
+
+        self._exit()
+
+    def _persist_history(self) -> None:
+        # FileHistory persists automatically.
+        pass
 
     # ==========================================================
     # Command registration
@@ -136,10 +170,24 @@ class CLI:
     ) -> list[CompletionItem]:
         stripped = buffer_text.lstrip()
 
-        if not stripped or " " not in stripped:
+        if not stripped:
             return self._complete_commands_with_metadata(word_before_cursor)
 
-        return self._complete_arguments_with_metadata(buffer_text, word_before_cursor)
+        try:
+            tokens = shlex.split(buffer_text)
+        except ValueError:
+            tokens = buffer_text.split()
+
+        if not tokens:
+            return self._complete_commands_with_metadata(word_before_cursor)
+
+        if len(tokens) == 1 and not buffer_text.endswith(" "):
+            return self._complete_commands_with_metadata(word_before_cursor)
+
+        return self._complete_arguments_with_metadata(
+            buffer=buffer_text,
+            text=word_before_cursor,
+        )
 
     def _complete_commands_with_metadata(self, text: str) -> list[CompletionItem]:
         items: list[CompletionItem] = []
@@ -170,36 +218,59 @@ class CLI:
 
         command_name = tokens[0]
         cmd_obj = self.commands.get(command_name)
-
         if not cmd_obj:
             return []
 
-        possible_flags = self._get_command_flags(command_name)
+        parser = self._get_command_parser(command_name)
+        if not parser:
+            return []
 
+        possible_flags = list(parser._option_string_actions.keys())
         trailing_space = buffer.endswith(" ")
+
         current_token = "" if trailing_space else (tokens[-1] if tokens else "")
-        previous_token = tokens[-1] if trailing_space and tokens else (
-            tokens[-2] if len(tokens) >= 2 else ""
-        )
 
-        # Completing a flag
-        if current_token.startswith("--") or (
-            trailing_space and (not previous_token or not previous_token.startswith("--"))
-        ):
-            return self._complete_flags_with_metadata(command_name, text)
+        # Case 1: currently typing a flag
+        if current_token.startswith("--"):
+            return self._complete_flags_with_metadata(command_name, text, tokens)
 
-        # Completing a value for a flag
-        flag_for_values = None
-        if trailing_space and tokens and tokens[-1].startswith("--"):
-            flag_for_values = tokens[-1]
-        elif len(tokens) >= 2 and tokens[-2].startswith("--"):
-            flag_for_values = tokens[-2]
+        # Case 2: just typed command + space
+        if len(tokens) == 1 and trailing_space:
+            return self._complete_flags_with_metadata(command_name, text, tokens)
 
-        if flag_for_values and flag_for_values in possible_flags:
+        active_flag = self._get_active_flag(tokens[1:], possible_flags)
+        if not active_flag:
+            return self._complete_flags_with_metadata(command_name, text, tokens)
+
+        action = parser._option_string_actions.get(active_flag)
+        if not action:
+            return []
+
+        if not self._flag_takes_value(action):
+            return self._complete_flags_with_metadata(command_name, text, tokens)
+
+        # If current token is a value for the active flag, complete values.
+        values_for_active_flag = self._get_flag_values(tokens[1:], active_flag, possible_flags)
+
+        # If the user just ended a value with a space, keep completing values for multi flags.
+        if trailing_space:
+            if self._flag_accepts_multiple(action):
+                return self._complete_flag_values_with_metadata(
+                    command_name=command_name,
+                    flag=active_flag,
+                    text=text,
+                    existing_values=values_for_active_flag,
+                )
+            return self._complete_flags_with_metadata(command_name, text, tokens)
+
+        # Non-trailing-space case:
+        # if the current token is not a flag, it's probably a value in progress.
+        if current_token and not current_token.startswith("--"):
             return self._complete_flag_values_with_metadata(
-                command_name,
-                flag_for_values,
-                text,
+                command_name=command_name,
+                flag=active_flag,
+                text=text,
+                existing_values=values_for_active_flag,
             )
 
         return []
@@ -208,19 +279,26 @@ class CLI:
         self,
         command_name: str,
         text: str,
+        tokens: list[str],
     ) -> list[CompletionItem]:
-        cmd_obj = self.commands.get(command_name)
-        parser = cmd_obj.arguments() if hasattr(cmd_obj, "arguments") else None
-
+        parser = self._get_command_parser(command_name)
         if not parser:
             return []
 
+        used_flags = {token for token in tokens if token.startswith("--")}
         items: list[CompletionItem] = []
 
         for flag, action in parser._option_string_actions.items():
-            if flag.startswith(text):
-                help_text = getattr(action, "help", "") or ""
-                items.append(CompletionItem(value=flag, description=help_text))
+            if not flag.startswith(text):
+                continue
+
+            # For now, don't suggest the same flag twice.
+            # You can relax this later for append-style arguments if desired.
+            if flag in used_flags:
+                continue
+
+            help_text = getattr(action, "help", "") or ""
+            items.append(CompletionItem(value=flag, description=help_text))
 
         return sorted(items, key=lambda item: item.value)
 
@@ -229,7 +307,10 @@ class CLI:
         command_name: str,
         flag: str,
         text: str,
+        existing_values: list[str] | None = None,
     ) -> list[CompletionItem]:
+        existing_values = existing_values or []
+
         cmd_obj = self.commands.get(command_name)
         handler = self.autocomplete_registry.get(command_name)
 
@@ -242,20 +323,101 @@ class CLI:
         items: list[CompletionItem] = []
 
         for entry in completions:
-            if isinstance(entry, CompletionItem):
-                if entry.value.startswith(text):
-                    items.append(entry)
+            item = self._normalize_completion_entry(entry)
+            if not item:
+                continue
 
-            elif isinstance(entry, tuple) and len(entry) == 2:
-                value, description = entry
-                if value.startswith(text):
-                    items.append(CompletionItem(value=value, description=description))
+            if not item.value.startswith(text):
+                continue
 
-            elif isinstance(entry, str):
-                if entry.startswith(text):
-                    items.append(CompletionItem(value=entry, description=""))
+            if item.value in existing_values:
+                continue
+
+            items.append(item)
 
         return sorted(items, key=lambda item: item.value)
+
+    # ==========================================================
+    # Completion helpers
+    # ==========================================================
+
+    def _normalize_completion_entry(self, entry: Any) -> CompletionItem | None:
+        if isinstance(entry, CompletionItem):
+            return entry
+
+        if isinstance(entry, tuple) and len(entry) == 2:
+            value, description = entry
+            return CompletionItem(value=str(value), description=str(description))
+
+        if isinstance(entry, str):
+            return CompletionItem(value=entry, description="")
+
+        return None
+
+    def _get_command_parser(self, command_name: str):
+        cmd_obj = self.commands.get(command_name)
+        if not cmd_obj or not hasattr(cmd_obj, "arguments"):
+            return None
+
+        parser = cmd_obj.arguments()
+        return parser
+
+    def _get_active_flag(
+        self,
+        tokens: list[str],
+        possible_flags: list[str],
+    ) -> str | None:
+        active_flag = None
+
+        for token in tokens:
+            if token in possible_flags:
+                active_flag = token
+            elif token.startswith("--"):
+                active_flag = None
+
+        return active_flag
+
+    def _get_flag_values(
+        self,
+        tokens: list[str],
+        target_flag: str,
+        possible_flags: list[str],
+    ) -> list[str]:
+        values: list[str] = []
+        collecting = False
+
+        for token in tokens:
+            if token == target_flag:
+                collecting = True
+                values = []
+                continue
+
+            if token in possible_flags:
+                if collecting:
+                    break
+                continue
+
+            if token.startswith("--"):
+                if collecting:
+                    break
+                continue
+
+            if collecting:
+                values.append(token)
+
+        return values
+
+    def _flag_takes_value(self, action: Any) -> bool:
+        # Boolean flags like store_true / store_false do not take a value.
+        if getattr(action, "nargs", None) == 0:
+            return False
+
+        # argparse store_true/store_false typically use const and nargs=0
+        # but nargs=0 check is the main one we need.
+        return True
+
+    def _flag_accepts_multiple(self, action: Any) -> bool:
+        return getattr(action, "nargs", None) in ("+", "*")
 
     # ==========================================================
     # Helpers
@@ -274,65 +436,58 @@ class CLI:
         return ""
 
     def _get_command_flags(self, command_name: str) -> list[str]:
-        cmd_obj = self.commands.get(command_name)
-        if hasattr(cmd_obj, "arguments"):
-            parser = cmd_obj.arguments()
-            if parser:
-                return list(parser._option_string_actions.keys())
+        parser = self._get_command_parser(command_name)
+        if parser:
+            return list(parser._option_string_actions.keys())
         return []
 
     def register_autocomplete(self, command: str, handler: Callable) -> None:
         self.autocomplete_registry[command] = handler
 
+    def _quote_if_needed(self, value: str) -> str:
+        """
+        Quote completion values that contain whitespace.
+        """
+        if " " in value or "&" in value:
+            return shlex.quote(value)
+        return value
     # ==========================================================
-    # Your existing execution hook
+    # Input parsing and dispatch
     # ==========================================================
 
     def handle_command(self, raw: str) -> None:
-        """
-        Replace this with your existing parse/dispatch logic.
-        """
-        print(f"Executing: {raw}")
+        command, args = self._parse_input(raw)
+        if not command:
+            return
+        self._dispatch_command(command, args)
 
+    def _parse_input(self, user_input: str) -> tuple[Optional[str], list[str]]:
+        try:
+            args = shlex.split(user_input)
+            command, params = args[0], args[1:]
+            self.logger.debug(f"Parsed command='{command}', args={params}")
+            return command, params
+        except ValueError as ve:
+            self.logger.error(f"Failed to parse input '{user_input}': {ve}")
+            print(f"Error parsing input: {ve}")
+            return None, []
 
+    def _dispatch_command(self, command: str, args: list[str]) -> None:
+        if command not in self.commands:
+            self.logger.warning(f"Unknown command entered: '{command}'")
+            print(f'Unknown command: "{command}". Type "help" for available commands.')
+            return
 
-    def start(
-            self,
-            welcome_screen: str = '\nWelcome to your CLI. Type "help" to see available commands.\n',
-        ) -> None:
-            self.logger.info("CLI session started.")
-            print(welcome_screen)
-            self._run()
+        try:
+            self.logger.info(f"Dispatching command: {command} (args={args})")
+            self.commands[command].command(args)
+            self.logger.info(f"Command '{command}' executed successfully.")
+        except Exception as e:
+            self._handle_error(command, e)
 
-    def _run(self) -> None:
-        while True:
-            try:
-                user_input = self.session.prompt("WorkBot> ").strip()
-                if not user_input:
-                    continue
-
-                self.logger.debug(f"User input received: {user_input}")
-
-                command, args = self._parse_input(user_input)
-                if not command:
-                    continue
-
-                if command in ("exit", "quit"):
-                    self.logger.info("User requested CLI shutdown.")
-                    break
-
-                self._dispatch_command(command, args)
-
-            except (KeyboardInterrupt, EOFError):
-                self.logger.info("CLI interrupted by user.")
-                print("\nExiting CLI.")
-                break
-
-        self._exit()
-
-    def _persist_history(self) -> None:
-        # prompt_toolkit FileHistory persists automatically
-        pass
+    def _handle_error(self, context: str, exception: Exception) -> None:
+        self.logger.error(f"[Error] {context} failed: {exception}", exc_info=True)
+        print(f"[Error] {context}: {exception}")
 
     def _exit(self) -> None:
         self.logger.info("Exiting CLI.")

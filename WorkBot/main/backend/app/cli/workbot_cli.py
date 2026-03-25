@@ -1,6 +1,6 @@
 from backend.infra.logger import Logger
 from backend.bots.workbot.work_bot import WorkBot
-from .new_cli import CLI
+from .panel_cli import CLI
 from .commands.workbot.workbot_context import WorkBotCommandContext
 
 
