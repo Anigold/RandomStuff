@@ -117,7 +117,7 @@ class EmailServices:
             subject     = f"Orders for the Week: {store_name}"
             body        = self._build_store_body(store_name, store_orders)
             attachments = self._get_order_attachments(store_orders)
-
+            
             email = Email(
                 to=("store@example.com",),  # TODO: Pull from store info
                 subject=subject,

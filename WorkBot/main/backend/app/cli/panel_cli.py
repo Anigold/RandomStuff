@@ -43,6 +43,7 @@ from prompt_toolkit.styles import Style
 from prompt_toolkit.widgets import Frame, TextArea
 from prompt_toolkit.layout.controls import FormattedTextControl
 from prompt_toolkit.layout.menus import MultiColumnCompletionsMenu
+from prompt_toolkit.clipboard.pyperclip import PyperclipClipboard
 
 
 from backend.infra.logger import Logger
@@ -370,6 +371,7 @@ class CLI:
             key_bindings=kb,
             full_screen=True,
             mouse_support=True,
+            clipboard=PyperclipClipboard(),
             style=Style.from_dict(
                 {
                     "frame.label": "bold",
@@ -396,7 +398,23 @@ class CLI:
             self.append_console(f"> {raw}")
             self.handle_command(raw)
 
-        @kb.add("c-c")
+        @kb.add("c-x", "c")
+        def copy_selected_from_side_panel(event) -> None:
+            if not event.app.layout.has_focus(self.side_output):
+                # self.append_console("[Info] Focus the side panel first (F7).")
+                return
+
+            buffer = self.side_output.buffer
+
+            if not buffer.document.selection:
+                # self.append_console("[Info] No text selected.")
+                return
+
+            data = buffer.copy_selection()
+            event.app.clipboard.set_data(data)
+            # self.append_console("[Info] Selected text copied to clipboard.")
+
+        # @kb.add("c-c")
         @kb.add("c-q")
         def _(event) -> None:
             event.app.exit()

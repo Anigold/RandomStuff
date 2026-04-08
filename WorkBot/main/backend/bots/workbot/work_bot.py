@@ -272,7 +272,7 @@ class WorkBot:
     def generate_vendor_order_emails(self, vendors: list[str], stores: list[str] = []) -> list[Email]:
         return self.emails.send_vendor_order_emails(stores=stores, vendors=vendors)
 
-    def generate_store_order_emails(self, stores: list[str]):
+    def generate_store_order_emails(self, stores: list[str]) -> None:
         return self.emails.send_store_order_emails(stores=stores)
 
 # ------------------------------------------------------
