@@ -393,4 +393,6 @@ class WorkBot:
         return long_date, day_of_week
 
     def testing_function(self, ) -> None:
-        ...
+        from backend.core.utils.import_items_from_craftable import run_indexing
+
+        run_indexing()

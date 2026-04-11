@@ -1,3 +1,6 @@
+# A LOT OF THIS IS AN GENERATED CODE...
+# TODO: Parse through this and make it human.
+
 from __future__ import annotations
 
 import calendar as calmod

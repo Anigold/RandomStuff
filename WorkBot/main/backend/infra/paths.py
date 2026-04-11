@@ -13,7 +13,7 @@ CLI_HISTORY_FILE        = DATA_STORAGE_DIR / 'cli' / '.cli_history'
 MASTER_LOG_FILE         = DATA_STORAGE_DIR / 'logging' / 'master.log'
 DOWNLOADS_PATH          = DATA_STORAGE_DIR / 'downloads'
 UPLOAD_FILES_DIR        = DATA_STORAGE_DIR / 'upload_files'
-ITEMS_DATA_FILE         = DATA_STORAGE_DIR / 'items'
+ITEM_FILES_DIR          = DATA_STORAGE_DIR / 'items'
 
 TRANSFER_FILES_DIR         = DATA_STORAGE_DIR / 'transfers'
 TRANSFER_ARCHIVE_FILES_DIR = DATA_STORAGE_DIR / 'transfer_archive'
