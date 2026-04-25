@@ -1,16 +1,15 @@
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass
+from typing import Optional
 
 
-@dataclass(eq=True, frozen=False)
+@dataclass
 class VendorItemInfo:
-    '''
-    Represents a vendor-specific version of an item.
-    '''
-    vendor:   str
-    sku:      str
-    unit:     str
-    quantity: float
-    cost:     float
+    vendor: str
 
-    def to_dict(self) -> dict:
-        return asdict(self)
+    sku: str
+    order_unit: str
+    unit_size: Optional[float] = None
+
+    price: Optional[float] = None
+
+    is_primary: bool = False

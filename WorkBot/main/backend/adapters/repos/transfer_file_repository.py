@@ -27,7 +27,7 @@ class TransferFileRepository(TransferRepository):
         self._engine.save(transfer, format='xlsx')
 
     def list_all(self) -> List[Transfer]:
-        self.logger.info([self._engine.read_from_path(p) for p in self._engine.list_files("*.xlsx")])
+        # self.logger.info([self._engine.read_from_path(p) for p in self._engine.list_files("*.xlsx")])
         return [self._engine.read_from_path(p) for p in self._engine.list_files("*.xlsx")]
     
     def archive_transfer(self, transfer: Transfer) -> None:

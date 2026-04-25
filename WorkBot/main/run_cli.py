@@ -17,7 +17,8 @@ from backend.infra.paths import (
     STORE_FILES_DIR,
     ORDER_ARCHIVE_FILES_DIR,
     TRANSFER_ARCHIVE_FILES_DIR,
-    AUDIT_FILES_DIR, AUDIT_ARCHIVE_FILES_DIR
+    AUDIT_FILES_DIR, AUDIT_ARCHIVE_FILES_DIR,
+    ITEM_FILES_DIR
 )
 from backend.infra.config.settings import DEFAULT_TRANSFER_ORIGIN
 
@@ -47,7 +48,8 @@ def create_repositories() -> dict[str, Repository]:
         TransferFileRepository,
         VendorFileRepository,
         StoreFileRepository,
-        AuditFileRepository
+        AuditFileRepository,
+        ItemFileRepository,
     )
 
     return {
@@ -55,7 +57,8 @@ def create_repositories() -> dict[str, Repository]:
         'vendors':   VendorFileRepository(VENDOR_FILES_DIR),
         'transfers': TransferFileRepository(TRANSFER_FILES_DIR, TRANSFER_ARCHIVE_FILES_DIR),
         'stores':    StoreFileRepository(STORE_FILES_DIR),
-        'audits':    AuditFileRepository(AUDIT_FILES_DIR, AUDIT_ARCHIVE_FILES_DIR)
+        'audits':    AuditFileRepository(AUDIT_FILES_DIR, AUDIT_ARCHIVE_FILES_DIR),
+        'items':     ItemFileRepository(ITEM_FILES_DIR)
     }
 
 def create_infra(repos) -> dict:
@@ -91,7 +94,8 @@ def create_domain_services(repos, infra) -> dict:
         TransferServices,
         VendorServices,
         StoreServices,
-        AuditServices
+        AuditServices,
+        ItemServices
     )
     downloader = infra['downloader']
 
@@ -100,7 +104,8 @@ def create_domain_services(repos, infra) -> dict:
         'vendors':   VendorServices(repos['vendors']),
         'transfers': TransferServices(repos['transfers'], repos['orders'], DEFAULT_TRANSFER_ORIGIN),
         'stores':    StoreServices(repos['stores'], downloader),
-        'audits':    AuditServices(repos['audits'])
+        'audits':    AuditServices(repos['audits']),
+        'items':     ItemServices(repos['items'])
 
     }
 
@@ -148,7 +153,7 @@ def create_workbot(services, infra, emailer, craft_bot):
     from backend.bots.workbot.work_bot import WorkBot
 
     return WorkBot(
-        services['orders'], services['transfers'], services['vendors'], services['stores'], services['audits'], # Maybe **kwargs bundle instead?
+        services['orders'], services['transfers'], services['vendors'], services['stores'], services['audits'], services['items'], # Maybe **kwargs bundle instead?
         emailer,
         craft_bot,
         infra['downloader']

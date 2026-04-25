@@ -10,6 +10,7 @@ and automates Craftable operations.
 from datetime import datetime
 from pathlib import Path
 from typing import List
+from pprint import pprint
 
 # Third-Party Libraries
 from openpyxl import load_workbook
@@ -23,7 +24,8 @@ from backend.app.services import (
     StoreServices,
     TransferServices,
     EmailServices,
-    AuditServices
+    AuditServices,
+    ItemServices
 )
 from backend.domain.models import (
     Order, OrderItem,
@@ -49,6 +51,7 @@ class WorkBot:
                 vendors_service:   VendorServices,
                 stores_service:    StoreServices,
                 audits_service:    AuditServices,
+                items_service:     ItemServices,
                 emails_service:    EmailServices,
                 craftable_bot:     CraftableBot,
                 download_manager:  LocalDownloadManager
@@ -60,6 +63,7 @@ class WorkBot:
         self.vendors   = vendors_service
         self.stores    = stores_service
         self.audits    = audits_service
+        self.items     = items_service
 
         self.emails = emails_service
 
@@ -266,6 +270,17 @@ class WorkBot:
     def archive_all_current_audits(self, stores: list[str] = []) -> None:
         ...
 
+
+# ------------------------------------------------------
+# ITEM MANAGEMENT
+# ------------------------------------------------------
+    def get_item_by_name(self, item_name: str) -> Item:
+        return self.items.get_item_by_name(item_name)
+        
+
+
+
+
 # ------------------------------------------------------
 # EMAIL OPERATIONS
 # ------------------------------------------------------
@@ -284,6 +299,11 @@ class WorkBot:
     def list_all_stores(self) -> List[Store]:
         return self.stores.list_stores()
     
+    def list_all_items(self) -> list[Item]:
+        return self.items.list_items()
+
+
+
     def get_vendor_information(self, vendor_name: str) -> Vendor:
         return self.vendors.get_vendor_by_name(vendor_name)
 
@@ -393,6 +413,5 @@ class WorkBot:
         return long_date, day_of_week
 
     def testing_function(self, ) -> None:
-        from backend.core.utils.import_items_from_craftable import run_indexing
-
-        run_indexing()
+        items = self.list_all_items()
+        

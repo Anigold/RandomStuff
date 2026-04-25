@@ -131,15 +131,15 @@ class PerformanceFoodBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
         item_info = {}
         for row in row_info:
             print(row, flush=True)
-            item_sku  = row[5]
+            item_sku  = row[6]
             item_name = row[1]
 
 
             '''
             This is the ugliest hack ever
             '''
-            if not row[6]: continue
-            pack_size_info = row[6]
+            if not row[7]: continue
+            pack_size_info = row[7]
 
             # print(pack_size_info, flush=True)
             pack_info      = pack_size_info[1].split(' ')
@@ -153,7 +153,7 @@ class PerformanceFoodBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
             else:
                 quantity, units = PricingBotMixin.helper_format_size_units(f'{self.special_cases[item_sku]['pack']} {self.special_cases[item_sku]['unit']}')
 
-            cost = float(row[8].replace('$', ''))
+            cost = float(row[9].replace('$', ''))
 
             if item_name not in item_info:
                 item_info[item_name] = {
@@ -161,7 +161,7 @@ class PerformanceFoodBot(VendorBot, SeleniumBotMixin, PricingBotMixin):
                     'quantity': quantity,
                     'units': PricingBotMixin.normalize_units(units),
                     'cost': cost,
-                    'case_size': row[6]
+                    'case_size': row[7]
 
                 }
 

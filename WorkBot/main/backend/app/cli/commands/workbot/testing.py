@@ -7,13 +7,19 @@ class Testing(Command):
 
     def arguments(self):
         parser = argparse.ArgumentParser(prog=self.name, description="Testing the ArchiveTransfers")
+
+        parser.add_argument(
+            "--item",
+            required=True,
+            help="The vendor to which the order belongs.",
+        )
+        
         return parser
 
     def autocomplete(self, flag: str, text: str):
         
         flags = {
-            '--stores': self.context.get_stores,
-            '--vendors': self.context.get_vendors
+            '--item': self.context.get_items
         }
         
         return [option for option in flags.get(flag, [])() if option.startswith(text)]

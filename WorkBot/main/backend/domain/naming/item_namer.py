@@ -1,7 +1,7 @@
 from pathlib import Path
 from backend.domain.models import Item
 from backend.core.interfaces.namer import Namer
-import re
+
 
 class ItemFilenameStrategy(Namer[Item]):
 
@@ -9,27 +9,39 @@ class ItemFilenameStrategy(Namer[Item]):
         self._base = base
 
     def base_dir(self) -> Path:
-        """Return the base directory where all vendor files live."""
+        """Return the base directory where all item files live."""
         return self._base
 
-    def _sanitize(self, name: str) -> str:
-        safe = name.replace("&", "and")
-        safe = safe.replace(" ", "_")
-        safe = re.sub(r"[^A-Za-z0-9_.-]", "", safe)  # strip anything else risky
-        return safe
-
     def filename(self, obj: Item, *, format: str) -> str:
+        """
+        Use the stable item ID as the filename so renaming an item
+        does not change its persisted file path.
+        """
         ext = "json" if format in ("json", "yaml") else format
-        return f"{self._sanitize(obj.name)}.{ext}"
+        return f"{obj.id}.{ext}"
 
-    def directory_for(self, store: Item) -> Path:
-        """Stores do not need subdirectories; keep everything flat."""
+    def directory_for(self, item: Item) -> Path:
+        """Items do not need subdirectories; keep everything flat."""
         return self.base_dir()
 
     def path_for(self, item: Item, *, format: str) -> Path:
         return (self.directory_for(item) / self.filename(item, format=format)).resolve()
 
-    def parse_filename_for_metadata(self, filename: str) -> dict[str, str]:
-        """Extract store name from a filename."""
-        stem = Path(filename).stem
-        return {"name": stem.replace("_", " ")}
+    def parse_filename_for_metadata(self, filename: str) -> dict:
+        """
+        Extract minimal metadata from the filename for adapter/serializer use.
+        """
+        path = Path(filename)
+        return {
+            "id": path.stem,
+            "format": path.suffix.lstrip(".").lower(),
+            "filename": path.name,
+        }
+
+    def parse_path_metadata(self, path: Path) -> dict:
+        """
+        GenericFileAdapter.find() relies on this for file discovery filtering.
+        """
+        meta = self.parse_filename_for_metadata(path.name)
+        meta["path"] = str(path)
+        return meta

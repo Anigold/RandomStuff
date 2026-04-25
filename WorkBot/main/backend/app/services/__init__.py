@@ -5,6 +5,7 @@ from .transfer_service import TransferServices
 from .email_service import EmailServices
 from .file_locator import FileLocator
 from .audit_service import AuditServices
+from .item_service import ItemServices
 
 __all__ = [
     'OrderServices',
@@ -13,5 +14,6 @@ __all__ = [
     'TransferServices',
     'EmailServices',
     'FileLocator',
-    'AuditServices'
+    'AuditServices',
+    'ItemServices'
 ]
