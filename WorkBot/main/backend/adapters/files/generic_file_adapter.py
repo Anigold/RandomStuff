@@ -102,7 +102,8 @@ class GenericFileAdapter(GenericFilePort, Generic[T]):
                 try:
                     matches.append(self.read_from_path(path))
                 except Exception as e:
-                    self.logger.info(f"Skipping unreadable file {path}: {e}")
+                    # self.logger.info(f"Skipping unreadable file {path}: {e}")
+                    pass
         return matches
         
     def preferred_format(self) -> str:

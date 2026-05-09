@@ -26,13 +26,8 @@ class WorkBotCommandContext:
     def get_items(self) -> List[str]:
         """Return all known item names."""
         try:
-            return sorted(
-                {
-                    item.name.strip()
-                    for item in self.workbot.list_all_items()
-                    if getattr(item, "name", None) and item.name.strip()
-                }
-            )
+            return sorted(self.workbot.list_all_item_names())
+        
         except Exception as e:
             print(f"[Warning] Could not load items: {e}")
             return []

@@ -35,7 +35,17 @@ class GetItemByName:
 
     def __call__(self, item_name: str) -> Item:
         return self.repo.get_by_name(item_name)
-    
+
+
+@Logger.attach_logger
+@dataclass(frozen=True)
+class GetAllItemNames:
+
+    repo: ItemRepository
+
+    def __call__(self) -> list[str]:
+        return self.repo.get_item_names()
+
 
 @Logger.attach_logger
 @dataclass(frozen=True)
@@ -66,6 +76,15 @@ class RemoveItem:
     def __call__(self, item_id: str) -> None:
         ...
 
+@Logger.attach_logger
+@dataclass(frozen=True)
+class UpdateItem:
+
+    repo: ItemRepository
+
+    def __call__(self, item_id: str, updater: Callable) -> None:
+        self.repo.update(item_id, updater)
+
 
 @dataclass
 class ItemServices:
@@ -78,6 +97,8 @@ class ItemServices:
         self.get_item = GetItem(self.repo)
         self.get_item_by_name = GetItemByName(self.repo)
         self.list_items = ListItems(self.repo)
+        self.get_all_item_names = GetAllItemNames(self.repo)
 
         self.create_item = CreateItem(self.repo)
         self.remove = RemoveItem(self.repo)
+        self.update = UpdateItem(self.repo)

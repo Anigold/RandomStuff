@@ -87,7 +87,7 @@ def produce_pricing_and_email(driver) -> None:
     emailer.display_email(email)
     return
 
-def download_pricing_sheets(driver, vendors=['Russo Produce',], guides=['IBProduce']) -> None:
+def download_pricing_sheets(driver, vendors=['Russo Produce', 'Sysco', 'Performance Food', 'US Foods'], guides=['IBProduce']) -> None:
 
     for vendor in vendors:
 
@@ -298,7 +298,7 @@ if __name__ == '__main__':
     
     '''Pricing Sheet Protocol'''
     options = create_options(DOWNLOAD_PATH)
-    driver  = uc.Chrome(options=options, use_subprocess=True)
+    driver  = uc.Chrome(options=options, use_subprocess=True, version_main=147)
     download_pricing_sheets(driver)
     delete_all_files_without_extension(PRICING_FILES_PATH / 'VendorSheets', '.xlsx')
     input('Press ENTER to stop waiting.')

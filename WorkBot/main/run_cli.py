@@ -162,6 +162,7 @@ def create_workbot(services, infra, emailer, craft_bot):
 def create_cli(work_bot):
 
     from backend.app.cli.workbot_cli import WorkBotCLI
+    
     return WorkBotCLI(work_bot)
 
 def main() -> None:

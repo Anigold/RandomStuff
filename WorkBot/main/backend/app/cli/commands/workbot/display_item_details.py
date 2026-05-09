@@ -52,17 +52,6 @@ class DisplayItemDetails(Command):
                     target="console",
                 )
 
-            # order = orders[0]
-
-            # if not order.items:
-            #     return CommandResult(
-            #         kind="text",
-            #         payload=self._format_order_summary(order),
-            #         target="side",
-            #         title="Order Summary",
-            #         summary="Order found, but no items were present.",
-            #     )
-
             detail_text = self._format_item_detail(item)
 
             return CommandResult(
@@ -95,4 +84,7 @@ Is Inventoried: {item.is_inventoried}
 {item.notes}
 {item.aliases}
 
+{[f'{i}\n' for i in item.store_info]}
+
+{[f'{v}\n' for v in item.vendor_info]}
 '''

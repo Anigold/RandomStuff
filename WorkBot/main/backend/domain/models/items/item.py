@@ -15,8 +15,8 @@ class Item:
 
     count_unit: Optional[str] = None
 
-    store_info: Dict[str, StoreItemInfo] = field(default_factory=dict)
-    vendor_info: Dict[str, VendorItemInfo] = field(default_factory=dict)
+    store_info: list[StoreItemInfo] = field(default_factory=list)
+    vendor_info: list[VendorItemInfo] = field(default_factory=list)
 
     is_active: bool = True
     is_inventoried: bool = True

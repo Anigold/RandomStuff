@@ -9,6 +9,8 @@ from backend.infra.filesystem.local_blob_store import LocalBlobStore
 from backend.infra.logger import Logger
 
 import json
+from typing import Callable, Any
+
 
 @Logger.attach_logger
 class ItemFileRepository(ItemRepository):
@@ -20,8 +22,6 @@ class ItemFileRepository(ItemRepository):
             serializer=ItemSerializer(default_format="json"),
             namer=ItemFilenameStrategy(base=base_dir),
         )
-        self.logger.info(f'LOOK HERE: {self._engine.get_directory()}')
-        self.logger.info(self._engine.store.list_paths(self._engine.get_directory(), "*.json"))
 
     # ---- Repository API ----
 
@@ -67,10 +67,25 @@ class ItemFileRepository(ItemRepository):
 
         return self._engine.read_from_path(item_file_path)
 
+    def get_item_names(self) -> list[str]:
+        
+        item_names: list[str] = []
+
+        index_path = (self._engine.get_directory() / 'index.json')
+        if not self._engine.store.exists(index_path):
+            raise FileNotFoundError(f'Index search file not found.')
+        
+        
+        with open(index_path, 'r') as f:
+            item_index = json.load(f)
+
+        return item_index.keys()
+
 
 
 
     def list_all(self) -> list[Item]:
+        
         items: list[Item] = []
 
         directory = self._engine.get_directory()
@@ -106,6 +121,24 @@ class ItemFileRepository(ItemRepository):
             overwrite=overwrite,
         )
 
+    def update(self, 
+        item_id: str, 
+        updater: Callable[[Item], Item], 
+        *args: Any, 
+        **kwargs: Any
+    ) -> Item:
+        
+        item = self.get(item_id)
+
+        updated = updater(item, *args, **kwargs)
+        item_to_save = updated if updated is not None else item
+
+        if item_to_save.id != item.id:
+            raise ValueError(f'Item ID cannot be changed during standard update: {item_id} --/-> {item_to_save.id}')
+
+        self.save(item_to_save)
+        return item_to_save
+    
     def remove(self, item_id: str) -> None:
         """
         Remove the item file if it exists.

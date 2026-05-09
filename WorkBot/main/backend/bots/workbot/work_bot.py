@@ -32,7 +32,7 @@ from backend.domain.models import (
     Transfer, TransferItem,
     Vendor,
     Store,
-    Item,
+    Item, StoreItemInfo, VendorItemInfo,
     Audit,
     BotOrderResult
 )
@@ -276,7 +276,10 @@ class WorkBot:
 # ------------------------------------------------------
     def get_item_by_name(self, item_name: str) -> Item:
         return self.items.get_item_by_name(item_name)
+    
+    # def update_item(self, item_name: str, vendor_name: str, vendor_info: VendorItemInfo) -> None:
         
+    #     item = 
 
 
 
@@ -302,13 +305,17 @@ class WorkBot:
     def list_all_items(self) -> list[Item]:
         return self.items.list_items()
 
-
-
+    def list_all_item_names(self) -> list[str]:
+        return self.items.get_all_item_names()
+    
     def get_vendor_information(self, vendor_name: str) -> Vendor:
         return self.vendors.get_vendor_by_name(vendor_name)
 
     def get_vendor_by_id(self, vendor_id: str) -> Vendor:
-        self.vendors.get_vendor(vendor_id)
+        return self.vendors.get_vendor(vendor_id)
+
+    def get_vendor_by_name(self, vendor_name: str) -> Vendor:
+        return self.vendors.get_vendor_by_name(vendor_name)
 
     def get_store_information(self, store_name: str) -> dict:
         return self.stores.get_store(store_name)
