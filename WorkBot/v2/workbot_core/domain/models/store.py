@@ -3,15 +3,16 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 
-@dataclass(slots=True)
+@dataclass(frozen=True, slots=True)
 class Store:
     id: str
     name: str
+
     is_active: bool = True
 
-    general_manager = None
-    inventory_clerk = None
+    general_manager: str | None = None
+    inventory_clerk: str | None = None
 
-    address: str = None
-    phone_number: str = None
-    special_notes: str = ''
+    address: str | None = None
+    phone_number: str | None = None
+    special_notes: str = ""

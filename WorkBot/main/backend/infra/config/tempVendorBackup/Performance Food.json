@@ -1,0 +1,47 @@
+{
+  "name": "Performance Food",
+  "order_format": "",
+  "special_notes": "",
+  "min_order_value": 0,
+  "min_order_cases": 20,
+  "internal_contacts": [
+    {
+      "name": "Martin Lasskorn",
+      "title": "Sales Representative",
+      "email": "martin.lasskorn@pfgc.com",
+      "phone": "6075920475"
+    }
+  ],
+  "ordering": {
+    "method": [
+      "portal_url"
+    ],
+    "email": "",
+    "portal_url": "https://www.customerfirstsolutions.com/",
+    "phone_number": "",
+    "schedule": [
+      {
+        "order_day": "Sunday",
+        "delivery_days": [
+          "Tuesday"
+        ],
+        "cutoff_time": "3:00 PM"
+      },
+      {
+        "order_day": "Wednesday",
+        "delivery_days": [
+          "Friday"
+        ],
+        "cutoff_time": "3:00 PM"
+      }
+    ]
+  },
+  "store_ids": {
+    "Bakery": "07110",
+    "Collegetown": "07111",
+    "Triphammer": "34254",
+    "Easthill": "34257",
+    "Downtown": "34256"
+  },
+  "id": "ven_SB8YIEA033"
+}

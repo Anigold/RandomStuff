@@ -1,0 +1,54 @@
+{
+  "name": "US Foods",
+  "order_format": "",
+  "special_notes": "",
+  "min_order_value": 0,
+  "min_order_cases": 0,
+  "internal_contacts": [
+    {
+      "name": "Dawn Morgan",
+      "title": "Sales Representative",
+      "email": "dawn.morgan@usfoods.com",
+      "phone": "3157788870"
+    },
+    {
+      "name": "Grant Carrier",
+      "title": "Territory Manager",
+      "email": "grant.carrier@usfoods.com",
+      "phone": "4434872342"
+    }
+  ],
+  "ordering": {
+    "method": [
+      "portal_url"
+    ],
+    "email": "",
+    "portal_url": "https://order.usfoods.com/desktop/order/imported-orders",
+    "phone_number": "",
+    "schedule": [
+      {
+        "order_day": "Sunday",
+        "delivery_days": [
+          "Tuesday"
+        ],
+        "cutoff_time": "3:00 PM"
+      },
+      {
+        "order_day": "Wednesday",
+        "delivery_days": [
+          "Friday"
+        ],
+        "cutoff_time": "3:00 PM"
+      }
+    ]
+  },
+  "store_ids": {
+    "Bakery": "91602987",
+    "Collegetown": "11602976",
+    "Triphammer": "1602994",
+    "Easthill": "31602998",
+    "Downtown": "21602990",
+    "Syracuse": "91669093"
+  },
+  "id": "ven_BRP4RR5F21"
+}

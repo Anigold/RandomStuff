@@ -73,7 +73,7 @@ class OrderFileRepository(OrderRepository):
             pass
 
     def generate_vendor_upload_file(self, order: Order, context: dict | None = None) -> None:
-        formatter = self._engine.serializer.get_formatter(order.vendor.strip().lower())
+        formatter = self._engine.serializer.get_formatter(self._sanitize_order_formatter_name(order.vendor))
         dest_path = self._engine.get_file_path(order, format=formatter.format_name(), category='upload')
         return self._engine.save(order, format=order.vendor, context=context, path_override=dest_path)
     
@@ -138,3 +138,8 @@ class OrderFileRepository(OrderRepository):
             / f"combined_orders_{orders[0].vendor}.xlsx"
         ).resolve()
         self._engine.save_data(file_data, path_override=dest_path)
+
+
+
+    def _sanitize_order_formatter_name(self, vendor_name: str) -> str:
+        return vendor_name.strip().lower().replace("'", '')

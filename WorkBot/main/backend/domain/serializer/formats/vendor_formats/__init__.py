@@ -3,6 +3,7 @@ from .sysco import SyscoFormatter
 from .unfi import UNFIFormatter
 from .performance_food import PerformanceFoodFormatter
 from .us_foods import USFoodsFormatter
+from .alberts_organics import AlbertsOrganicsFormatter
 
 __all__ = [
     'HillNMarkesFormatter',
@@ -10,4 +11,5 @@ __all__ = [
     'UNFIFormatter',
     'PerformanceFoodFormatter',
     'USFoodsFormatter',
+    'AlbertsOrganicsFormatter'
 ]

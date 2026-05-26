@@ -28,8 +28,8 @@ class SqlStoreRepository(SqlRepository[StoreRecord, Store]):
 
     def get_by_name(self, name: str) -> Store | None:
         statement = select(StoreRecord).where(StoreRecord.name == name)
-        return self._one_or_none_by_statement(statement)
+        return self._one_or_none(statement)
 
     def list_active(self) -> list[Store]:
         statement = select(StoreRecord).where(StoreRecord.is_active.is_(True))
-        return self._list_by_statement(statement)
+        return self._list(statement)

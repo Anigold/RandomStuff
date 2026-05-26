@@ -5,11 +5,11 @@ from logging.config import fileConfig
 from alembic import context
 from sqlalchemy import engine_from_config, pool
 
-from packages.workbot_core.config.settings import settings
-from packages.workbot_core.infrastructure.database.base import Base
+from workbot_core.config.settings import settings
+from workbot_core.infrastructure.database.base import Base
 
 # Import records so SQLAlchemy metadata is populated.
-from packages.workbot_core.infrastructure.database import records  # noqa: F401
+from workbot_core.infrastructure.database import records  # noqa: F401
 
 
 config = context.config

@@ -35,7 +35,6 @@ class ItemStoreInfoRecord(Base, TimestampMixin):
         index=True,
     )
 
-    store_item_name: Mapped[str | None] = mapped_column(String(255), nullable=True)
     count_unit: Mapped[str | None] = mapped_column(String(64), nullable=True)
     par: Mapped[Decimal | None] = mapped_column(Numeric(10, 3), nullable=True)
 

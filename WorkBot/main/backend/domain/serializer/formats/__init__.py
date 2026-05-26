@@ -19,10 +19,14 @@ _FORMATTERS: Dict[str, BaseFormatter] = {
     'unfi':               UNFIFormatter, 
     'performance food':   PerformanceFoodFormatter,
     'us foods':           USFoodsFormatter,
-    'audit':             CraftableAuditFormatter
+    'audit':              CraftableAuditFormatter,
+    'alberts organics':   AlbertsOrganicsFormatter,
 }
 
 def get_formatter(fmt: str) -> BaseFormatter:
     '''Retrieve a formatter by name, raises KeyError if not found.'''
-    fmt = fmt.strip().lower()
+    fmt = _sanitized_format_name(fmt)
     return _FORMATTERS[fmt]()
+
+def _sanitized_format_name(format_name: str) -> str:
+    return format_name.strip().lower().replace("'", '')
