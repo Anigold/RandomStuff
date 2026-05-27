@@ -7,6 +7,7 @@ from decimal import Decimal
 
 @dataclass(frozen=True, slots=True)
 class OrderLineImportRow:
+    
     source_item_name: str
 
     quantity: Decimal
@@ -21,6 +22,7 @@ class OrderLineImportRow:
 
 @dataclass(frozen=True, slots=True)
 class OrderImportRow:
+
     store_id: str
     vendor_id: str
 

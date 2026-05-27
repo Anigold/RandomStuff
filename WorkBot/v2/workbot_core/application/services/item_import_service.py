@@ -27,7 +27,15 @@ class ItemImportService:
             name=self._required_text(row.name, "item name"),
             category=self._clean_optional(row.category),
             subcategory=self._clean_optional(row.subcategory),
-            count_unit=self._clean_optional(row.count_unit),
+            count_unit_quantity=row.count_unit_quantity,
+            count_unit_measure=self._clean_optional(row.count_unit_measure),
+            custom_each_name=self._clean_optional(row.custom_each_name),
+            each_quantity=row.each_quantity,
+            each_measure=self._clean_optional(row.each_measure),
+            weight_quantity=row.weight_quantity,
+            weight_measure=self._clean_optional(row.weight_measure),
+            volume_quantity=row.volume_quantity,
+            volume_measure=self._clean_optional(row.volume_measure),
             is_active=row.is_active,
         )
 
@@ -37,7 +45,15 @@ class ItemImportService:
             name=self._required_text(row.name, "item name"),
             category=self._clean_optional(row.category),
             subcategory=self._clean_optional(row.subcategory),
-            count_unit=self._clean_optional(row.count_unit),
+            count_unit_quantity=row.count_unit_quantity,
+            count_unit_measure=self._clean_optional(row.count_unit_measure),
+            custom_each_name=self._clean_optional(row.custom_each_name),
+            each_quantity=row.each_quantity,
+            each_measure=self._clean_optional(row.each_measure),
+            weight_quantity=row.weight_quantity,
+            weight_measure=self._clean_optional(row.weight_measure),
+            volume_quantity=row.volume_quantity,
+            volume_measure=self._clean_optional(row.volume_measure),
             is_active=row.is_active,
         )
 

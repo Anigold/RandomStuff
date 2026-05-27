@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>WorkBot Item Admin</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 24px;
+      background: #f7f7f7;
+      color: #222;
+    }
+
+    h1, h2, h3 {
+      margin-bottom: 8px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    input, select {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 8px;
+      margin: 4px 0 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    label {
+      font-size: 13px;
+      font-weight: bold;
+      display: block;
+    }
+
+    button {
+      padding: 8px 12px;
+      border: 0;
+      border-radius: 4px;
+      cursor: pointer;
+      background: #222;
+      color: white;
+      margin-right: 6px;
+      margin-top: 4px;
+    }
+
+    button.secondary {
+      background: #666;
+    }
+
+    .item-list button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      margin-bottom: 6px;
+      background: #eee;
+      color: #222;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .row-card {
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 12px;
+      margin: 10px 0;
+      background: #fafafa;
+    }
+
+    .muted {
+      color: #666;
+      font-size: 13px;
+    }
+
+    .status {
+      padding: 10px;
+      border-radius: 4px;
+      background: #eef;
+      margin-bottom: 12px;
+      display: none;
+    }
+
+    .error {
+      background: #fee;
+      color: #900;
+    }
+  </style>
+</head>
+<body>
+  <h1>WorkBot Item Admin</h1>
+  <p class="muted">Temporary catalog editor for items, vendor info, and store info.</p>
+
+  <div id="status" class="status"></div>
+
+  <div class="layout">
+    <div class="card">
+      <h2>Find Item</h2>
+      <input id="searchInput" placeholder="Search item name..." />
+      <button onclick="searchItems()">Search</button>
+
+      <div id="itemResults" class="item-list" style="margin-top: 16px;"></div>
+    </div>
+
+    <div>
+      <div id="itemEditor" class="card" style="display:none;">
+        <h2>Edit Item</h2>
+
+        <input type="hidden" id="itemId" />
+
+        <label>Name</label>
+        <input id="itemName" />
+
+        <div class="grid-2">
+          <div>
+            <label>Category</label>
+            <input id="category" />
+          </div>
+          <div>
+            <label>Subcategory</label>
+            <input id="subcategory" />
+          </div>
+        </div>
+
+        <h3>Business Count Unit</h3>
+        <div class="grid-2">
+          <div>
+            <label>CU Qty</label>
+            <input id="countUnitQuantity" type="number" step="0.001" />
+          </div>
+          <div>
+            <label>CU Measure</label>
+            <input id="countUnitMeasure" placeholder="each, lb, bottle, steak..." />
+          </div>
+        </div>
+
+        <label>Custom Each Name</label>
+        <input id="customEachName" />
+
+        <h3>Each / Weight / Volume Metadata</h3>
+        <div class="grid-2">
+          <div>
+            <label>Each Qty</label>
+            <input id="eachQuantity" type="number" step="0.001" />
+          </div>
+          <div>
+            <label>Each Measure</label>
+            <input id="eachMeasure" />
+          </div>
+          <div>
+            <label>Weight Qty</label>
+            <input id="weightQuantity" type="number" step="0.001" />
+          </div>
+          <div>
+            <label>Weight Measure</label>
+            <input id="weightMeasure" />
+          </div>
+          <div>
+            <label>Volume Qty</label>
+            <input id="volumeQuantity" type="number" step="0.001" />
+          </div>
+          <div>
+            <label>Volume Measure</label>
+            <input id="volumeMeasure" />
+          </div>
+        </div>
+
+        <label>
+          <input id="itemActive" type="checkbox" style="width:auto;" />
+          Active
+        </label>
+
+        <button onclick="saveItem()">Save Item</button>
+      </div>
+
+      <div id="vendorInfoEditor" class="card" style="display:none;">
+        <h2>Vendor Info</h2>
+        <div id="vendorInfoList"></div>
+
+        <h3>Add Vendor Info</h3>
+        <div class="grid-3">
+          <div>
+            <label>Vendor</label>
+            <select id="newVendorId"></select>
+          </div>
+          <div>
+            <label>SKU</label>
+            <input id="newVendorSku" />
+          </div>
+          <div>
+            <label>Purchase Unit</label>
+            <input id="newPurchaseUnit" placeholder="case, bag, each..." />
+          </div>
+          <div>
+            <label>Pack Size</label>
+            <input id="newPackSize" type="number" step="0.001" />
+          </div>
+          <div>
+            <label>Price</label>
+            <input id="newPrice" type="number" step="0.01" />
+          </div>
+        </div>
+        <button onclick="addVendorInfo()">Add Vendor Info</button>
+      </div>
+
+      <div id="storeInfoEditor" class="card" style="display:none;">
+        <h2>Store Info</h2>
+        <div id="storeInfoList"></div>
+
+        <h3>Add Store Info</h3>
+        <div class="grid-3">
+          <div>
+            <label>Store</label>
+            <select id="newStoreId"></select>
+          </div>
+          <div>
+            <label>Count Unit</label>
+            <input id="newStoreCountUnit" />
+          </div>
+          <div>
+            <label>Par</label>
+            <input id="newStorePar" type="number" step="0.001" />
+          </div>
+        </div>
+        <button onclick="addStoreInfo()">Add Store Info</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+let currentItem = null;
+let vendors = [];
+let stores = [];
+
+function decimalOrNull(value) {
+  if (value === null || value === undefined || value === "") return null;
+  return Number(value);
+}
+
+function textOrNull(value) {
+  if (value === null || value === undefined) return null;
+  const cleaned = String(value).trim();
+  return cleaned === "" ? null : cleaned;
+}
+
+function showStatus(message, isError = false) {
+  const el = document.getElementById("status");
+  el.textContent = message;
+  el.className = isError ? "status error" : "status";
+  el.style.display = "block";
+}
+
+async function api(path, options = {}) {
+  const response = await fetch(path, {
+    headers: {
+      "Content-Type": "application/json",
+      ...(options.headers || {})
+    },
+    ...options
+  });
+
+  if (!response.ok) {
+    let detail = await response.text();
+    try {
+      detail = JSON.parse(detail).detail || detail;
+    } catch {}
+    throw new Error(detail);
+  }
+
+  if (response.status === 204) return null;
+  return await response.json();
+}
+
+async function loadLookups() {
+  vendors = await api("/api/vendors");
+  stores = await api("/api/stores");
+
+  const vendorSelect = document.getElementById("newVendorId");
+  vendorSelect.innerHTML = vendors
+    .map(v => `<option value="${v.id}">${v.name}</option>`)
+    .join("");
+
+  const storeSelect = document.getElementById("newStoreId");
+  storeSelect.innerHTML = stores
+    .map(s => `<option value="${s.id}">${s.name}</option>`)
+    .join("");
+}
+
+function vendorName(vendorId) {
+  const vendor = vendors.find(v => v.id === vendorId);
+  return vendor ? vendor.name : vendorId;
+}
+
+function storeName(storeId) {
+  const store = stores.find(s => s.id === storeId);
+  return store ? store.name : storeId;
+}
+
+async function searchItems() {
+  const search = document.getElementById("searchInput").value;
+  const results = await api(`/api/items?search=${encodeURIComponent(search)}`);
+
+  const container = document.getElementById("itemResults");
+
+  if (results.length === 0) {
+    container.innerHTML = "<p>No items found.</p>";
+    return;
+  }
+
+  container.innerHTML = results
+    .slice(0, 50)
+    .map(item => `
+      <button onclick="loadItem('${item.id}')">
+        ${item.name}
+        <br>
+        <span class="muted">${item.category || ""} ${item.subcategory || ""}</span>
+      </button>
+    `)
+    .join("");
+}
+
+async function loadItem(itemId) {
+  currentItem = await api(`/api/items/${itemId}`);
+
+  document.getElementById("itemEditor").style.display = "block";
+  document.getElementById("vendorInfoEditor").style.display = "block";
+  document.getElementById("storeInfoEditor").style.display = "block";
+
+  document.getElementById("itemId").value = currentItem.id;
+  document.getElementById("itemName").value = currentItem.name || "";
+  document.getElementById("category").value = currentItem.category || "";
+  document.getElementById("subcategory").value = currentItem.subcategory || "";
+
+  document.getElementById("countUnitQuantity").value = currentItem.count_unit_quantity || "";
+  document.getElementById("countUnitMeasure").value = currentItem.count_unit_measure || "";
+  document.getElementById("customEachName").value = currentItem.custom_each_name || "";
+
+  document.getElementById("eachQuantity").value = currentItem.each_quantity || "";
+  document.getElementById("eachMeasure").value = currentItem.each_measure || "";
+  document.getElementById("weightQuantity").value = currentItem.weight_quantity || "";
+  document.getElementById("weightMeasure").value = currentItem.weight_measure || "";
+  document.getElementById("volumeQuantity").value = currentItem.volume_quantity || "";
+  document.getElementById("volumeMeasure").value = currentItem.volume_measure || "";
+
+  document.getElementById("itemActive").checked = currentItem.is_active;
+
+  renderVendorInfo();
+  renderStoreInfo();
+
+  showStatus(`Loaded item: ${currentItem.name}`);
+}
+
+function renderVendorInfo() {
+  const container = document.getElementById("vendorInfoList");
+
+  if (!currentItem.vendor_info || currentItem.vendor_info.length === 0) {
+    container.innerHTML = "<p>No vendor info.</p>";
+    return;
+  }
+
+  container.innerHTML = currentItem.vendor_info.map(info => `
+    <div class="row-card">
+      <h3>${vendorName(info.vendor_id)}</h3>
+      <input type="hidden" id="vendor-info-id-${info.id}" value="${info.id}" />
+
+      <div class="grid-3">
+        <div>
+          <label>SKU</label>
+          <input id="vendor-sku-${info.id}" value="${info.vendor_sku || ""}" />
+        </div>
+        <div>
+          <label>Purchase Unit</label>
+          <input id="purchase-unit-${info.id}" value="${info.purchase_unit || ""}" />
+        </div>
+        <div>
+          <label>Pack Size</label>
+          <input id="pack-size-${info.id}" type="number" step="0.001" value="${info.pack_size || ""}" />
+        </div>
+        <div>
+          <label>Price</label>
+          <input id="price-${info.id}" type="number" step="0.01" value="${info.price || ""}" />
+        </div>
+      </div>
+
+      <label>
+        <input id="vendor-active-${info.id}" type="checkbox" style="width:auto;" ${info.is_active ? "checked" : ""} />
+        Active
+      </label>
+
+      <button onclick="saveVendorInfo('${info.id}')">Save Vendor Info</button>
+    </div>
+  `).join("");
+}
+
+function renderStoreInfo() {
+  const container = document.getElementById("storeInfoList");
+
+  if (!currentItem.store_info || currentItem.store_info.length === 0) {
+    container.innerHTML = "<p>No store info.</p>";
+    return;
+  }
+
+  container.innerHTML = currentItem.store_info.map(info => `
+    <div class="row-card">
+      <h3>${storeName(info.store_id)}</h3>
+
+      <div class="grid-3">
+        <div>
+          <label>Count Unit</label>
+          <input id="store-count-unit-${info.id}" value="${info.count_unit || ""}" />
+        </div>
+        <div>
+          <label>Par</label>
+          <input id="store-par-${info.id}" type="number" step="0.001" value="${info.par || ""}" />
+        </div>
+      </div>
+
+      <label>
+        <input id="store-active-${info.id}" type="checkbox" style="width:auto;" ${info.is_active ? "checked" : ""} />
+        Active
+      </label>
+
+      <button onclick="saveStoreInfo('${info.id}')">Save Store Info</button>
+    </div>
+  `).join("");
+}
+
+async function saveItem() {
+  const itemId = document.getElementById("itemId").value;
+
+  const payload = {
+    name: document.getElementById("itemName").value,
+    category: textOrNull(document.getElementById("category").value),
+    subcategory: textOrNull(document.getElementById("subcategory").value),
+
+    count_unit_quantity: decimalOrNull(document.getElementById("countUnitQuantity").value),
+    count_unit_measure: textOrNull(document.getElementById("countUnitMeasure").value),
+
+    custom_each_name: textOrNull(document.getElementById("customEachName").value),
+
+    each_quantity: decimalOrNull(document.getElementById("eachQuantity").value),
+    each_measure: textOrNull(document.getElementById("eachMeasure").value),
+
+    weight_quantity: decimalOrNull(document.getElementById("weightQuantity").value),
+    weight_measure: textOrNull(document.getElementById("weightMeasure").value),
+
+    volume_quantity: decimalOrNull(document.getElementById("volumeQuantity").value),
+    volume_measure: textOrNull(document.getElementById("volumeMeasure").value),
+
+    is_active: document.getElementById("itemActive").checked
+  };
+
+  try {
+    await api(`/api/items/${itemId}`, {
+      method: "PUT",
+      body: JSON.stringify(payload)
+    });
+
+    await loadItem(itemId);
+    showStatus("Item saved.");
+  } catch (error) {
+    showStatus(error.message, true);
+  }
+}
+
+async function saveVendorInfo(infoId) {
+  const payload = {
+    vendor_sku: textOrNull(document.getElementById(`vendor-sku-${infoId}`).value),
+    purchase_unit: textOrNull(document.getElementById(`purchase-unit-${infoId}`).value),
+    pack_size: decimalOrNull(document.getElementById(`pack-size-${infoId}`).value),
+    price: decimalOrNull(document.getElementById(`price-${infoId}`).value),
+    is_active: document.getElementById(`vendor-active-${infoId}`).checked
+  };
+
+  try {
+    await api(`/api/items/${currentItem.id}/vendor-info/${infoId}`, {
+      method: "PUT",
+      body: JSON.stringify(payload)
+    });
+
+    await loadItem(currentItem.id);
+    showStatus("Vendor info saved.");
+  } catch (error) {
+    showStatus(error.message, true);
+  }
+}
+
+async function saveStoreInfo(infoId) {
+  const payload = {
+    count_unit: textOrNull(document.getElementById(`store-count-unit-${infoId}`).value),
+    par: decimalOrNull(document.getElementById(`store-par-${infoId}`).value),
+    is_active: document.getElementById(`store-active-${infoId}`).checked
+  };
+
+  try {
+    await api(`/api/items/${currentItem.id}/store-info/${infoId}`, {
+      method: "PUT",
+      body: JSON.stringify(payload)
+    });
+
+    await loadItem(currentItem.id);
+    showStatus("Store info saved.");
+  } catch (error) {
+    showStatus(error.message, true);
+  }
+}
+
+async function addVendorInfo() {
+  const payload = {
+    vendor_id: document.getElementById("newVendorId").value,
+    vendor_sku: textOrNull(document.getElementById("newVendorSku").value),
+    purchase_unit: textOrNull(document.getElementById("newPurchaseUnit").value),
+    pack_size: decimalOrNull(document.getElementById("newPackSize").value),
+    price: decimalOrNull(document.getElementById("newPrice").value),
+    is_active: true
+  };
+
+  try {
+    await api(`/api/items/${currentItem.id}/vendor-info`, {
+      method: "POST",
+      body: JSON.stringify(payload)
+    });
+
+    document.getElementById("newVendorSku").value = "";
+    document.getElementById("newPurchaseUnit").value = "";
+    document.getElementById("newPackSize").value = "";
+    document.getElementById("newPrice").value = "";
+
+    await loadItem(currentItem.id);
+    showStatus("Vendor info added.");
+  } catch (error) {
+    showStatus(error.message, true);
+  }
+}
+
+async function addStoreInfo() {
+  const payload = {
+    store_id: document.getElementById("newStoreId").value,
+    count_unit: textOrNull(document.getElementById("newStoreCountUnit").value),
+    par: decimalOrNull(document.getElementById("newStorePar").value),
+    is_active: true
+  };
+
+  try {
+    await api(`/api/items/${currentItem.id}/store-info`, {
+      method: "POST",
+      body: JSON.stringify(payload)
+    });
+
+    document.getElementById("newStoreCountUnit").value = "";
+    document.getElementById("newStorePar").value = "";
+
+    await loadItem(currentItem.id);
+    showStatus("Store info added.");
+  } catch (error) {
+    showStatus(error.message, true);
+  }
+}
+
+loadLookups().catch(error => showStatus(error.message, true));
+</script>
+</body>
+</html>

@@ -43,7 +43,11 @@ def test_import_items_creates_item_with_vendor_and_store_info(db_session):
         name="Smoke Test Item",
         category="Test",
         subcategory="Smoke",
-        count_unit="each",
+        count_unit_quantity=Decimal("1"),
+        count_unit_measure="each",
+        custom_each_name="each",
+        each_quantity=Decimal("1"),
+        each_measure="each",
         is_active=True,
         vendor_info=(
             ItemVendorInfoImportRow(
@@ -95,7 +99,11 @@ def test_import_items_creates_item_with_vendor_and_store_info(db_session):
     assert saved_item.name == "Smoke Test Item"
     assert saved_item.category == "Test"
     assert saved_item.subcategory == "Smoke"
-    assert saved_item.count_unit == "each"
+    assert saved_item.count_unit_quantity == Decimal("1.000")
+    assert saved_item.count_unit_measure == "each"
+    assert saved_item.custom_each_name == "each"
+    assert saved_item.each_quantity == Decimal("1.000")
+    assert saved_item.each_measure == "each"
 
     assert saved_vendor_info is not None
     assert saved_vendor_info.vendor_id == vendor.id
@@ -132,7 +140,11 @@ def test_import_items_updates_existing_item(db_session):
         name="Smoke Test Item",
         category="Test",
         subcategory="Smoke",
-        count_unit="each",
+        count_unit_quantity=Decimal("1"),
+        count_unit_measure="each",
+        custom_each_name="each",
+        each_quantity=Decimal("1"),
+        each_measure="each",
         is_active=True,
         vendor_info=(
             ItemVendorInfoImportRow(
@@ -157,7 +169,11 @@ def test_import_items_updates_existing_item(db_session):
         name="Updated Smoke Test Item",
         category="Updated",
         subcategory="Smoke",
-        count_unit="case",
+        count_unit_quantity=Decimal("1"),
+        count_unit_measure="case",
+        custom_each_name="case",
+        each_quantity=Decimal("1"),
+        each_measure="case",
         is_active=True,
         vendor_info=(
             ItemVendorInfoImportRow(
@@ -204,7 +220,12 @@ def test_import_items_updates_existing_item(db_session):
     assert saved_item is not None
     assert saved_item.name == "Updated Smoke Test Item"
     assert saved_item.category == "Updated"
-    assert saved_item.count_unit == "case"
+    assert saved_item.subcategory == "Smoke"
+    assert saved_item.count_unit_quantity == Decimal("1.000")
+    assert saved_item.count_unit_measure == "case"
+    assert saved_item.custom_each_name == "case"
+    assert saved_item.each_quantity == Decimal("1.000")
+    assert saved_item.each_measure == "case"
 
     assert saved_vendor_info is not None
     assert saved_vendor_info.pack_size == Decimal("24.000")

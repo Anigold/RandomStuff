@@ -30,6 +30,15 @@ class ImportOrder:
         if errors:
             return ImportOrderResult(errors=tuple(errors))
 
+        existing = self._get_existing_order(row)
+
+        if existing is not None:
+            return ImportOrderResult(
+                order_id=existing.id,
+                created=False,
+                already_exists=True,
+            )
+
         try:
             order = self._service.create_order(row)
             self._orders.save(order)
@@ -39,6 +48,7 @@ class ImportOrder:
         return ImportOrderResult(
             order_id=order.id,
             created=True,
+            already_exists=False,
         )
 
     def _validate_references(self, row: OrderImportRow) -> list[str]:
@@ -53,4 +63,24 @@ class ImportOrder:
         if not row.lines:
             errors.append("Order must contain at least one line.")
 
+        if not row.source:
+            errors.append("Order source is required for duplicate import protection.")
+
+        if not row.source_reference:
+            errors.append(
+                "Order source_reference is required for duplicate import protection."
+            )
+
         return errors
+
+    def _get_existing_order(self, row: OrderImportRow):
+        if not row.source or not row.source_reference:
+            return None
+
+        return self._orders.get_by_source_reference(
+            store_id=row.store_id,
+            vendor_id=row.vendor_id,
+            order_date=row.order_date,
+            source=row.source,
+            source_reference=row.source_reference,
+        )

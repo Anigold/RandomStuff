@@ -15,6 +15,7 @@ from workbot_core.infrastructure.database.records.order_record import OrderRecor
 
 
 class SqlOrderRepository:
+    
     def __init__(self, session: Session) -> None:
         self._session = session
 
@@ -23,6 +24,34 @@ class SqlOrderRepository:
             select(OrderRecord)
             .options(selectinload(OrderRecord.lines))
             .where(OrderRecord.id == order_id)
+        )
+
+        record = self._session.scalars(statement).one_or_none()
+
+        if record is None:
+            return None
+
+        return order_record_to_domain(record)
+
+    def get_by_source_reference(
+        self,
+        *,
+        store_id: str,
+        vendor_id: str,
+        order_date: date,
+        source: str,
+        source_reference: str,
+    ) -> Order | None:
+        statement = (
+            select(OrderRecord)
+            .options(selectinload(OrderRecord.lines))
+            .where(
+                OrderRecord.store_id == store_id,
+                OrderRecord.vendor_id == vendor_id,
+                OrderRecord.order_date == order_date,
+                OrderRecord.source == source,
+                OrderRecord.source_reference == source_reference,
+            )
         )
 
         record = self._session.scalars(statement).one_or_none()

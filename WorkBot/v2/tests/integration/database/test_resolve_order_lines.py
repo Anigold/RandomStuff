@@ -30,7 +30,12 @@ from workbot_core.infrastructure.database.repositories.vendor_repository import 
 def test_resolve_order_lines_processes_matching_pending_line(db_session):
     store = Store(id="str_TEST", name="Bakery")
     vendor = Vendor(id="ven_TEST", name="Russo Produce")
-    item = Item(id="itm_TEST", name="Smoke Test Item", count_unit="each")
+    item = Item(
+        id="itm_TEST",
+        name="Smoke Test Item",
+        count_unit_quantity=Decimal("1"),
+        count_unit_measure="each",
+    )
     item_vendor_info = ItemVendorInfo(
         id="ivi_TEST",
         item_id=item.id,

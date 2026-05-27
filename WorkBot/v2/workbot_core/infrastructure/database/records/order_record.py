@@ -2,16 +2,28 @@ from __future__ import annotations
 
 from datetime import date
 
-from sqlalchemy import Date, ForeignKey, String, Text
+from sqlalchemy import Date, ForeignKey, String, Text, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from workbot_core.infrastructure.database.base import Base, TimestampMixin
 
 
 class OrderRecord(Base, TimestampMixin):
+
     __tablename__ = "orders"
 
     id: Mapped[str] = mapped_column(String(32), primary_key=True)
+
+    __table_args__ = (
+        UniqueConstraint(
+            "store_id",
+            "vendor_id",
+            "order_date",
+            "source",
+            "source_reference",
+            name="uq_order_source_import",
+        ),
+    )
 
     store_id: Mapped[str] = mapped_column(
         String(32),

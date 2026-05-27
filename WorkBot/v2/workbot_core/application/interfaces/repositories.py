@@ -97,8 +97,18 @@ class ItemStoreInfoRepository(Protocol):
 
 
 class OrderRepository(Protocol):
-
+    
     def get_by_id(self, order_id: str) -> Order | None: ...
+
+    def get_by_source_reference(
+        self,
+        *,
+        store_id: str,
+        vendor_id: str,
+        order_date: date,
+        source: str,
+        source_reference: str,
+    ) -> Order | None: ...
 
     def list_all(self) -> list[Order]: ...
 

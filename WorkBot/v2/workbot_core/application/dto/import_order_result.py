@@ -6,7 +6,10 @@ from dataclasses import dataclass, field
 @dataclass(frozen=True, slots=True)
 class ImportOrderResult:
     order_id: str | None = None
+
     created: bool = False
+    already_exists: bool = False
+
     errors: tuple[str, ...] = field(default_factory=tuple)
 
     @property

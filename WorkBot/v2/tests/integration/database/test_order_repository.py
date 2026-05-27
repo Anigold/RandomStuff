@@ -47,7 +47,8 @@ def seed_item_and_vendor_info(db_session, vendor: Vendor) -> tuple[Item, ItemVen
     item = Item(
         id="itm_TEST",
         name="Smoke Test Item",
-        count_unit="each",
+        count_unit_quantity=Decimal("1"),
+        count_unit_measure="each",
     )
 
     item_vendor_info = ItemVendorInfo(

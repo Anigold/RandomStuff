@@ -10,6 +10,7 @@ from workbot_core.utils.ids import IdGenerator
 
 
 class OrderImportService:
+    
     """Creates Order domain objects from import DTOs.
 
     This service does not save anything. It only translates import DTOs into

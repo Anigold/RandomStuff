@@ -1,10 +1,12 @@
 from __future__ import annotations
 
-from functools import lru_cache
+from collections.abc import Generator
 
-from packages.workbot_core.bootstrap.container import Container, build_container
+from sqlalchemy.orm import Session
+
+from workbot_core.infrastructure.database.session import create_session
 
 
-@lru_cache(maxsize=1)
-def get_container() -> Container:
-    return build_container()
+def get_db_session() -> Generator[Session, None, None]:
+    with create_session() as session:
+        yield session

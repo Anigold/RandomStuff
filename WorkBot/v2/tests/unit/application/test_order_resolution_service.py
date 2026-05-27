@@ -24,7 +24,8 @@ def test_processed_line_returns_replacement_with_snapshots():
     item = Item(
         id="itm_TEST",
         name="Smoke Test Item",
-        count_unit="each",
+        count_unit_quantity=Decimal("1"),
+        count_unit_measure="each",
     )
 
     item_vendor_info = ItemVendorInfo(

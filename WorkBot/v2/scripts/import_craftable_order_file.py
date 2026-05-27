@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 from datetime import date
 from pathlib import Path
+import hashlib
 
 from workbot_core.application.use_cases.import_order import ImportOrder
 from workbot_core.application.use_cases.resolve_order_lines import ResolveOrderLines
@@ -101,7 +102,7 @@ def main() -> None:
                 if args.delivery_date
                 else None
             ),
-            source_reference=str(args.path),
+            source_reference=file_sha256(args.path),
             sheet_name=args.sheet_name,
             sku_header=args.sku_header,
             item_name_header=args.item_header,
@@ -134,6 +135,9 @@ def main() -> None:
         elif import_result.has_errors:
             session.rollback()
             action = "rolled back due to import errors"
+        elif import_result.already_exists:
+            session.rollback()
+            action = "no changes; order already exists"
         elif resolve_result is not None and resolve_result.has_errors:
             session.rollback()
             action = "rolled back due to resolution errors"
@@ -147,6 +151,7 @@ def main() -> None:
     print(f"  Store:    {args.store}")
     print(f"  Vendor:   {args.vendor}")
     print(f"  Imported: {import_result.created}")
+    print(f"  Already exists: {import_result.already_exists}")
     print(f"  Order ID: {import_result.order_id}")
     print(f"  Errors:   {len(import_result.errors)}")
 
@@ -163,6 +168,15 @@ def main() -> None:
         for error in resolve_result.errors:
             print(f"  - {error}")
 
+
+def file_sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+
+    with path.open("rb") as file:
+        for chunk in iter(lambda: file.read(1024 * 1024), b""):
+            digest.update(chunk)
+
+    return digest.hexdigest()
 
 if __name__ == "__main__":
     main()

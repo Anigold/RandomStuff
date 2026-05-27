@@ -24,6 +24,7 @@ from workbot_core.infrastructure.database.repositories.vendor_repository import 
 
 
 def test_import_order_creates_pending_order_with_pending_lines(db_session):
+    
     store = Store(id="str_TEST", name="Bakery")
     vendor = Vendor(id="ven_TEST", name="Russo Produce")
 
@@ -87,6 +88,7 @@ def test_import_order_creates_pending_order_with_pending_lines(db_session):
 
 
 def test_import_order_fails_when_store_missing(db_session):
+
     vendor = Vendor(id="ven_TEST", name="Russo Produce")
 
     vendors = SqlVendorRepository(db_session)
@@ -119,6 +121,7 @@ def test_import_order_fails_when_store_missing(db_session):
 
 
 def test_import_order_fails_when_vendor_missing(db_session):
+
     store = Store(id="str_TEST", name="Bakery")
 
     stores = SqlStoreRepository(db_session)
@@ -151,6 +154,7 @@ def test_import_order_fails_when_vendor_missing(db_session):
 
 
 def test_import_order_fails_when_no_lines(db_session):
+
     store = Store(id="str_TEST", name="Bakery")
     vendor = Vendor(id="ven_TEST", name="Russo Produce")
 
@@ -178,3 +182,57 @@ def test_import_order_fails_when_no_lines(db_session):
 
     assert result.has_errors
     assert "Order must contain at least one line." in result.errors
+
+
+def test_import_order_does_not_create_duplicate_for_same_source_reference(db_session):
+    store = Store(id="str_TEST", name="Bakery")
+    vendor = Vendor(id="ven_TEST", name="Russo Produce")
+
+    stores = SqlStoreRepository(db_session)
+    vendors = SqlVendorRepository(db_session)
+    orders = SqlOrderRepository(db_session)
+
+    stores.save(store)
+    vendors.save(vendor)
+    db_session.commit()
+
+    row = OrderImportRow(
+        store_id=store.id,
+        vendor_id=vendor.id,
+        order_date=date(2026, 5, 26),
+        source="craftable",
+        source_reference="same-file-hash",
+        lines=(
+            OrderLineImportRow(
+                source_item_name="Smoke Test Item",
+                quantity=Decimal("12"),
+                unit="each",
+            ),
+        ),
+    )
+
+    use_case = ImportOrder(
+        orders=orders,
+        stores=stores,
+        vendors=vendors,
+    )
+
+    first_result = use_case.run(row)
+    db_session.commit()
+
+    second_result = use_case.run(row)
+    db_session.commit()
+
+    assert not first_result.has_errors
+    assert first_result.created is True
+    assert first_result.already_exists is False
+    assert first_result.order_id is not None
+
+    assert not second_result.has_errors
+    assert second_result.created is False
+    assert second_result.already_exists is True
+    assert second_result.order_id == first_result.order_id
+
+    all_orders = orders.list_all()
+
+    assert len(all_orders) == 1
