@@ -6393,3 +6393,991 @@ ValueError: too many values to unpack (expected 5)
 2026-06-01 06:35:57,250 - INFO - backend.app.services.order_service.CombineOrders - (order_service.py:90) - Merge for Ithaca Bakery complete.
 2026-06-01 06:35:57,250 - INFO - backend.app.services.order_service.CombineOrders - (order_service.py:91) - Merging complete.
 2026-06-01 06:35:57,251 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'combine_orders' executed successfully.
+2026-06-01 08:23:32,163 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: download_orders (args=['--stores', 'Bakery', '--vendors', 'Hillcrest Dairy'])
+2026-06-01 08:23:36,669 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:91) - Logging into Craftable.
+2026-06-01 08:23:44,154 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:115) - Login successful.
+2026-06-01 08:23:44,155 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:248) - Beginning download protocol for: stores: ['Bakery'], vendors: ['Hillcrest Dairy'], download_pdf: True, update: True
+2026-06-01 08:23:45,821 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Hillcrest Dairy in Bakery's order list.
+2026-06-01 08:23:46,939 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Hillcrest Dairy order.
+2026-06-01 08:23:47,373 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 34d4dbb6-cb60-4d11-8fdd-e82c97f29102 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\34d4dbb6-cb60-4d11-8fdd-e82c97f29102
+2026-06-01 08:23:48,739 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\34d4dbb6-cb60-4d11-8fdd-e82c97f29102
+2026-06-01 08:23:50,860 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Hillcrest Dairy / 20260530.
+2026-06-01 08:23:50,930 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 08:23:50,930 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Hillcrest Dairy / Bakery / 20260530
+2026-06-01 08:23:50,952 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Hillcrest Dairy
+2026-06-01 08:23:50,952 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:123) - Craftable order sync completed successfully.
+2026-06-01 08:23:50,952 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'download_orders' executed successfully.
+2026-06-01 08:24:00,265 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: generate_vendor_order_emails (args=['--vendors', 'Hillcrest Dairy'])
+2026-06-01 08:24:00,268 - INFO - backend.app.services.email_service.EmailServices - (email_service.py:53) - Preparing vendor order emails...
+2026-06-01 08:24:00,268 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:65) - Getting orders: vendors=['Hillcrest Dairy'], stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], dates=None
+2026-06-01 08:24:00,480 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:73) - Retrieved 6 orders.
+2026-06-01 08:24:00,927 - INFO - backend.app.services.email_service.EmailServices - (email_service.py:90) - Prepared 1 vendor email(s).
+2026-06-01 08:24:00,927 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'generate_vendor_order_emails' executed successfully.
+2026-06-01 08:24:44,698 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: archive_orders (args=['--vendors', 'Hillcrest Dairy', '--stores', 'Bakery'])
+2026-06-01 08:24:44,713 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Retrieving orders for: stores=['Bakery'], vendors=['Hillcrest Dairy']
+2026-06-01 08:24:44,713 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:65) - Getting orders: vendors=['Hillcrest Dairy'], stores=['Bakery'], dates=None
+2026-06-01 08:24:44,750 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:73) - Retrieved 1 orders.
+2026-06-01 08:24:44,750 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Hillcrest Dairy / Bakery / 20260523
+2026-06-01 08:24:44,754 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'archive_orders' executed successfully.
+2026-06-01 08:24:55,265 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: generate_vendor_order_emails (args=['--vendors', 'Hillcrest Dairy'])
+2026-06-01 08:24:55,268 - INFO - backend.app.services.email_service.EmailServices - (email_service.py:53) - Preparing vendor order emails...
+2026-06-01 08:24:55,268 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:65) - Getting orders: vendors=['Hillcrest Dairy'], stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], dates=None
+2026-06-01 08:24:55,461 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:73) - Retrieved 6 orders.
+2026-06-01 08:24:55,825 - INFO - backend.app.services.email_service.EmailServices - (email_service.py:90) - Prepared 1 vendor email(s).
+2026-06-01 08:24:55,825 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'generate_vendor_order_emails' executed successfully.
+2026-06-01 10:54:27,454 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:59) - Initializing WorkBot...
+2026-06-01 10:54:27,455 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:74) - WorkBot initialized successfully.
+2026-06-01 10:54:27,731 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:256) - Initializing CLI.
+2026-06-01 10:54:27,739 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:525) - Loaded 1 commands from backend.app.cli.commands.builtin
+2026-06-01 10:54:27,763 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:261) - CLI initialized successfully with 1 commands.
+2026-06-01 10:54:27,802 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:525) - Loaded 21 commands from backend.app.cli.commands.workbot
+2026-06-01 10:54:27,802 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:448) - CLI session started.
+2026-06-01 10:54:41,313 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: display_order (args=['--vendor', 'Hill & Markes', '--store', 'Syracuse'])
+2026-06-01 10:54:41,313 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Retrieving orders for: stores=['Syracuse'], vendors=['Hill & Markes']
+2026-06-01 10:54:41,314 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:65) - Getting orders: vendors=['Hill & Markes'], stores=['Syracuse'], dates=None
+2026-06-01 10:54:41,454 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:73) - Retrieved 1 orders.
+2026-06-01 10:54:41,459 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'display_order' executed successfully.
+2026-06-01 13:04:13,488 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: display_order (args=['--vendor', 'Regional Distributors, Inc.', '--store', 'Collegetown'])
+2026-06-01 13:04:13,491 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Retrieving orders for: stores=['Collegetown'], vendors=['Regional Distributors, Inc.']
+2026-06-01 13:04:13,492 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:65) - Getting orders: vendors=['Regional Distributors, Inc.'], stores=['Collegetown'], dates=None
+2026-06-01 13:04:13,631 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:73) - Retrieved 1 orders.
+2026-06-01 13:04:13,631 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'display_order' executed successfully.
+2026-06-01 13:09:02,398 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: display_order (args=['--vendor', 'Regional Distributors, Inc.', '--store', 'Easthill'])
+2026-06-01 13:09:02,399 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Retrieving orders for: stores=['Easthill'], vendors=['Regional Distributors, Inc.']
+2026-06-01 13:09:02,399 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:65) - Getting orders: vendors=['Regional Distributors, Inc.'], stores=['Easthill'], dates=None
+2026-06-01 13:09:02,449 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:73) - Retrieved 1 orders.
+2026-06-01 13:09:02,450 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'display_order' executed successfully.
+2026-06-01 13:12:33,548 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: display_order (args=['--vendor', 'Regional Distributors, Inc.', '--store', 'Downtown'])
+2026-06-01 13:12:33,549 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Retrieving orders for: stores=['Downtown'], vendors=['Regional Distributors, Inc.']
+2026-06-01 13:12:33,549 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:65) - Getting orders: vendors=['Regional Distributors, Inc.'], stores=['Downtown'], dates=None
+2026-06-01 13:12:33,595 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:73) - Retrieved 1 orders.
+2026-06-01 13:12:33,595 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'display_order' executed successfully.
+2026-06-01 13:14:15,070 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: display_order (args=['--vendor', 'Regional Distributors, Inc.', '--store', 'Syracuse'])
+2026-06-01 13:14:15,071 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Retrieving orders for: stores=['Syracuse'], vendors=['Regional Distributors, Inc.']
+2026-06-01 13:14:15,071 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:65) - Getting orders: vendors=['Regional Distributors, Inc.'], stores=['Syracuse'], dates=None
+2026-06-01 13:14:15,127 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:73) - Retrieved 1 orders.
+2026-06-01 13:14:15,127 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'display_order' executed successfully.
+2026-06-01 13:15:02,847 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: display_order (args=['--vendor', 'Regional Distributors, Inc.', '--store', 'Bakery'])
+2026-06-01 13:15:02,849 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Retrieving orders for: stores=['Bakery'], vendors=['Regional Distributors, Inc.']
+2026-06-01 13:15:02,849 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:65) - Getting orders: vendors=['Regional Distributors, Inc.'], stores=['Bakery'], dates=None
+2026-06-01 13:15:02,879 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:73) - Retrieved 0 orders.
+2026-06-01 13:15:02,879 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'display_order' executed successfully.
+2026-06-01 13:15:08,680 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2026-06-01 13:15:14,154 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:91) - Logging into Craftable.
+2026-06-01 13:15:22,129 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:115) - Login successful.
+2026-06-01 13:15:22,130 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:248) - Beginning download protocol for: stores: ['Bakery'], vendors: None, download_pdf: True, update: True
+2026-06-01 13:15:26,531 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Albert's Organics in Bakery's order list.
+2026-06-01 13:15:27,690 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Albert's Organics order.
+2026-06-01 13:15:28,258 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 68a48927-7bfb-460c-8151-96ee20205305 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\68a48927-7bfb-460c-8151-96ee20205305
+2026-06-01 13:15:29,899 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\68a48927-7bfb-460c-8151-96ee20205305
+2026-06-01 13:15:31,488 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found UNFI in Bakery's order list.
+2026-06-01 13:15:32,618 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in UNFI order.
+2026-06-01 13:15:34,062 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 1a805ec1-fb8a-482b-8fa3-ce971f4a608f -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\1a805ec1-fb8a-482b-8fa3-ce971f4a608f
+2026-06-01 13:15:35,448 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\1a805ec1-fb8a-482b-8fa3-ce971f4a608f
+2026-06-01 13:15:36,687 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Webstaurant in Bakery's order list.
+2026-06-01 13:15:37,876 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Webstaurant order.
+2026-06-01 13:15:38,683 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 51dc1720-3d2e-4326-a7bd-b115ba63e22c -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\51dc1720-3d2e-4326-a7bd-b115ba63e22c
+2026-06-01 13:15:40,056 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\51dc1720-3d2e-4326-a7bd-b115ba63e22c
+2026-06-01 13:15:41,308 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Performance Food in Bakery's order list.
+2026-06-01 13:15:42,461 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Performance Food order.
+2026-06-01 13:15:44,543 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 5d0396e2-d4b6-4872-8ae9-323eaccf89c5 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\5d0396e2-d4b6-4872-8ae9-323eaccf89c5
+2026-06-01 13:15:45,912 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\5d0396e2-d4b6-4872-8ae9-323eaccf89c5
+2026-06-01 13:15:47,192 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Sysco in Bakery's order list.
+2026-06-01 13:15:48,337 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Sysco order.
+2026-06-01 13:15:50,049 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 1fd516b1-7384-41ed-ade9-1d91801f49dd -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\1fd516b1-7384-41ed-ade9-1d91801f49dd
+2026-06-01 13:15:51,670 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\1fd516b1-7384-41ed-ade9-1d91801f49dd
+2026-06-01 13:15:53,251 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Hillcrest Dairy in Bakery's order list.
+2026-06-01 13:15:54,383 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Hillcrest Dairy order.
+2026-06-01 13:15:54,827 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 3cec2f4f-1d5b-47e0-a234-0c121c5cded2 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\3cec2f4f-1d5b-47e0-a234-0c121c5cded2
+2026-06-01 13:15:56,205 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\3cec2f4f-1d5b-47e0-a234-0c121c5cded2
+2026-06-01 13:15:57,976 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found FingerLakes Farms in Bakery's order list.
+2026-06-01 13:15:59,110 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in FingerLakes Farms order.
+2026-06-01 13:15:59,695 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 65e4a7ba-6f4a-481c-beaf-25e1b4635d81 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\65e4a7ba-6f4a-481c-beaf-25e1b4635d81
+2026-06-01 13:16:01,049 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\65e4a7ba-6f4a-481c-beaf-25e1b4635d81
+2026-06-01 13:16:02,421 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Hillcrest Foods in Bakery's order list.
+2026-06-01 13:16:03,552 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Hillcrest Foods order.
+2026-06-01 13:16:04,299 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 5f1c8bbd-d01a-47d5-852a-b2f7c44f9c0c -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\5f1c8bbd-d01a-47d5-852a-b2f7c44f9c0c
+2026-06-01 13:16:05,927 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\5f1c8bbd-d01a-47d5-852a-b2f7c44f9c0c
+2026-06-01 13:16:07,579 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Watermark Specialty Foods in Bakery's order list.
+2026-06-01 13:16:08,724 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Watermark Specialty Foods order.
+2026-06-01 13:16:09,282 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 2df9ec87-7ae8-45fb-8ed7-b08a6d361e84 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\2df9ec87-7ae8-45fb-8ed7-b08a6d361e84
+2026-06-01 13:16:10,889 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\2df9ec87-7ae8-45fb-8ed7-b08a6d361e84
+2026-06-01 13:16:12,538 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Coca-Cola in Bakery's order list.
+2026-06-01 13:16:13,672 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Coca-Cola order.
+2026-06-01 13:16:14,577 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 2dd51242-aac9-4a20-88c5-a6dba9abb74b -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\2dd51242-aac9-4a20-88c5-a6dba9abb74b
+2026-06-01 13:16:15,953 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\2dd51242-aac9-4a20-88c5-a6dba9abb74b
+2026-06-01 13:16:19,192 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found US Foods in Bakery's order list.
+2026-06-01 13:16:20,323 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in US Foods order.
+2026-06-01 13:16:21,991 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session d9b9689e-787c-4d9d-8308-664222c789c6 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\d9b9689e-787c-4d9d-8308-664222c789c6
+2026-06-01 13:16:23,355 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\d9b9689e-787c-4d9d-8308-664222c789c6
+2026-06-01 13:16:25,043 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found BakeMark in Bakery's order list.
+2026-06-01 13:16:26,170 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in BakeMark order.
+2026-06-01 13:16:26,292 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 3f6abcac-8b8f-40c7-b35a-762d8c46c642 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\3f6abcac-8b8f-40c7-b35a-762d8c46c642
+2026-06-01 13:16:27,905 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\3f6abcac-8b8f-40c7-b35a-762d8c46c642
+2026-06-01 13:16:29,627 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Keck's Food Service in Bakery's order list.
+2026-06-01 13:16:30,752 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Keck's Food Service order.
+2026-06-01 13:16:31,004 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 6e87ce23-0ff4-4593-9455-b2f61bf0ce76 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\6e87ce23-0ff4-4593-9455-b2f61bf0ce76
+2026-06-01 13:16:32,625 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\6e87ce23-0ff4-4593-9455-b2f61bf0ce76
+2026-06-01 13:16:34,362 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Coffee Depot LLC in Bakery's order list.
+2026-06-01 13:16:35,497 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Coffee Depot LLC order.
+2026-06-01 13:16:36,108 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 524be380-a137-4c07-8be7-14e6f39fef4f -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\524be380-a137-4c07-8be7-14e6f39fef4f
+2026-06-01 13:16:37,467 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\524be380-a137-4c07-8be7-14e6f39fef4f
+2026-06-01 13:16:39,193 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Odeko In. in Bakery's order list.
+2026-06-01 13:16:40,381 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Odeko In. order.
+2026-06-01 13:16:40,493 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 842aa9a4-0e8b-4f4f-8a28-973fc225ce86 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\842aa9a4-0e8b-4f4f-8a28-973fc225ce86
+2026-06-01 13:16:41,858 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\842aa9a4-0e8b-4f4f-8a28-973fc225ce86
+2026-06-01 13:16:43,355 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Finger Lakes Coffee Roasters in Bakery's order list.
+2026-06-01 13:16:44,488 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Finger Lakes Coffee Roasters order.
+2026-06-01 13:16:44,607 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session a87e51f2-cf1c-4358-8de8-9e1f41b97167 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\a87e51f2-cf1c-4358-8de8-9e1f41b97167
+2026-06-01 13:16:45,976 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\a87e51f2-cf1c-4358-8de8-9e1f41b97167
+2026-06-01 13:16:47,494 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Equal Exchange in Bakery's order list.
+2026-06-01 13:16:48,626 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Equal Exchange order.
+2026-06-01 13:16:49,197 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 1645b837-da0b-4572-b479-9ed659338750 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\1645b837-da0b-4572-b479-9ed659338750
+2026-06-01 13:16:50,799 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\1645b837-da0b-4572-b479-9ed659338750
+2026-06-01 13:16:52,330 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Harney and Sons Tea in Bakery's order list.
+2026-06-01 13:16:53,470 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Harney and Sons Tea order.
+2026-06-01 13:16:53,725 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 3b5026be-1f0b-42f5-8a45-1facd0f6821b -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\3b5026be-1f0b-42f5-8a45-1facd0f6821b
+2026-06-01 13:16:55,098 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\3b5026be-1f0b-42f5-8a45-1facd0f6821b
+2026-06-01 13:16:56,919 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found BJ's in Bakery's order list.
+2026-06-01 13:16:58,094 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in BJ's order.
+2026-06-01 13:16:58,212 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 9791576b-9e63-4cd8-80cf-616c8e52721c -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\9791576b-9e63-4cd8-80cf-616c8e52721c
+2026-06-01 13:16:59,588 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\9791576b-9e63-4cd8-80cf-616c8e52721c
+2026-06-01 13:17:01,149 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Copper Horse Coffee in Bakery's order list.
+2026-06-01 13:17:02,278 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Copper Horse Coffee order.
+2026-06-01 13:17:02,671 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 1d4d2a8b-e927-4db0-9ae4-773b98ee13a7 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\1d4d2a8b-e927-4db0-9ae4-773b98ee13a7
+2026-06-01 13:17:04,046 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\1d4d2a8b-e927-4db0-9ae4-773b98ee13a7
+2026-06-01 13:17:06,166 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Sweet Sam's Baking Company, LLC in Bakery's order list.
+2026-06-01 13:17:07,294 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Sweet Sam's Baking Company, LLC order.
+2026-06-01 13:17:07,804 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 4044fc82-9c65-409b-a040-f7e9916e9715 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\4044fc82-9c65-409b-a040-f7e9916e9715
+2026-06-01 13:17:09,198 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\4044fc82-9c65-409b-a040-f7e9916e9715
+2026-06-01 13:17:11,039 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Regional Distributors, Inc. in Bakery's order list.
+2026-06-01 13:17:12,232 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Regional Distributors, Inc. order.
+2026-06-01 13:17:12,769 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 08756fc0-b6bb-4273-8000-63d8dfc1710e -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\08756fc0-b6bb-4273-8000-63d8dfc1710e
+2026-06-01 13:17:14,403 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\08756fc0-b6bb-4273-8000-63d8dfc1710e
+2026-06-01 13:17:16,190 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Farmer Ground Flour in Bakery's order list.
+2026-06-01 13:17:17,318 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Farmer Ground Flour order.
+2026-06-01 13:17:17,442 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session eeeceb70-0f72-4db1-a5a8-956ebdba0c21 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\eeeceb70-0f72-4db1-a5a8-956ebdba0c21
+2026-06-01 13:17:19,067 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\eeeceb70-0f72-4db1-a5a8-956ebdba0c21
+2026-06-01 13:17:20,754 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Hill & Markes in Bakery's order list.
+2026-06-01 13:17:21,886 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Hill & Markes order.
+2026-06-01 13:17:22,120 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 88a74709-10d1-4dc8-a944-3f4ac140d9f8 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\88a74709-10d1-4dc8-a944-3f4ac140d9f8
+2026-06-01 13:17:23,490 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\88a74709-10d1-4dc8-a944-3f4ac140d9f8
+2026-06-01 13:17:25,241 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Albert's Organics / 20260530.
+2026-06-01 13:17:25,322 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:17:25,322 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Albert's Organics / Bakery / 20260530
+2026-06-01 13:17:25,374 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Albert's Organics
+2026-06-01 13:17:25,374 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / UNFI / 20260530.
+2026-06-01 13:17:25,435 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:17:25,435 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order UNFI / Bakery / 20260530
+2026-06-01 13:17:25,466 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/UNFI
+2026-06-01 13:17:25,467 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Webstaurant / 20260530.
+2026-06-01 13:17:25,524 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:17:25,524 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Webstaurant / Bakery / 20260530
+2026-06-01 13:17:25,546 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Webstaurant
+2026-06-01 13:17:25,546 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Performance Food / 20260530.
+2026-06-01 13:17:25,590 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:17:25,590 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Performance Food / Bakery / 20260530
+2026-06-01 13:17:25,613 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Performance Food
+2026-06-01 13:17:25,613 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Sysco / 20260530.
+2026-06-01 13:17:25,672 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:17:25,673 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Sysco / Bakery / 20260530
+2026-06-01 13:17:25,697 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Sysco
+2026-06-01 13:17:25,698 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Hillcrest Dairy / 20260530.
+2026-06-01 13:17:25,742 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Unchanged - skip overwrite.
+2026-06-01 13:17:25,743 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:96) - Bakery's order for Hillcrest Dairy is already up-to-date...skipping.
+2026-06-01 13:17:25,743 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / FingerLakes Farms / 20260530.
+2026-06-01 13:17:25,789 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Unchanged - skip overwrite.
+2026-06-01 13:17:25,789 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:96) - Bakery's order for FingerLakes Farms is already up-to-date...skipping.
+2026-06-01 13:17:25,789 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Hillcrest Foods / 20260531.
+2026-06-01 13:17:25,833 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Unchanged - skip overwrite.
+2026-06-01 13:17:25,833 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:96) - Bakery's order for Hillcrest Foods is already up-to-date...skipping.
+2026-06-01 13:17:25,833 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Watermark Specialty Foods / 20260531.
+2026-06-01 13:17:25,880 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Unchanged - skip overwrite.
+2026-06-01 13:17:25,881 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:96) - Bakery's order for Watermark Specialty Foods is already up-to-date...skipping.
+2026-06-01 13:17:25,881 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Coca-Cola / 20260531.
+2026-06-01 13:17:25,941 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:17:25,941 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Coca-Cola / Bakery / 20260531
+2026-06-01 13:17:25,964 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Coca-Cola
+2026-06-01 13:17:25,964 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / US Foods / 20260531.
+2026-06-01 13:17:26,026 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:17:26,026 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order US Foods / Bakery / 20260531
+2026-06-01 13:17:26,051 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/US Foods
+2026-06-01 13:17:26,051 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / BakeMark / 20260531.
+2026-06-01 13:17:26,095 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Unchanged - skip overwrite.
+2026-06-01 13:17:26,095 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:96) - Bakery's order for BakeMark is already up-to-date...skipping.
+2026-06-01 13:17:26,095 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Keck's Food Service / 20260531.
+2026-06-01 13:17:26,149 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:17:26,149 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Keck's Food Service / Bakery / 20260531
+2026-06-01 13:17:26,170 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Keck's Food Service
+2026-06-01 13:17:26,171 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Coffee Depot LLC / 20260531.
+2026-06-01 13:17:26,234 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:17:26,234 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Coffee Depot LLC / Bakery / 20260531
+2026-06-01 13:17:26,255 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Coffee Depot LLC
+2026-06-01 13:17:26,256 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Odeko In. / 20260531.
+2026-06-01 13:17:26,300 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:17:26,300 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Odeko In. / Bakery / 20260531
+2026-06-01 13:17:26,322 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Odeko In.
+2026-06-01 13:17:26,322 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Finger Lakes Coffee Roasters / 20260531.
+2026-06-01 13:17:26,380 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:17:26,380 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Finger Lakes Coffee Roasters / Bakery / 20260531
+2026-06-01 13:17:26,401 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Finger Lakes Coffee Roasters
+2026-06-01 13:17:26,401 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Equal Exchange / 20260531.
+2026-06-01 13:17:26,458 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:17:26,458 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Equal Exchange / Bakery / 20260531
+2026-06-01 13:17:26,480 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Equal Exchange
+2026-06-01 13:17:26,481 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Harney and Sons Tea / 20260531.
+2026-06-01 13:17:26,538 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Unchanged - skip overwrite.
+2026-06-01 13:17:26,538 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:96) - Bakery's order for Harney and Sons Tea is already up-to-date...skipping.
+2026-06-01 13:17:26,538 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / BJ's / 20260531.
+2026-06-01 13:17:26,621 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Unchanged - skip overwrite.
+2026-06-01 13:17:26,621 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:96) - Bakery's order for BJ's is already up-to-date...skipping.
+2026-06-01 13:17:26,621 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Copper Horse Coffee / 20260531.
+2026-06-01 13:17:26,693 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:17:26,693 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Copper Horse Coffee / Bakery / 20260531
+2026-06-01 13:17:26,716 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Copper Horse Coffee
+2026-06-01 13:17:26,717 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Sweet Sam's Baking Company, LLC / 20260601.
+2026-06-01 13:17:26,754 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:17:26,754 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Sweet Sam's Baking Company, LLC / Bakery / 20260601
+2026-06-01 13:17:26,780 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Sweet Sam's Baking Company, LLC
+2026-06-01 13:17:26,780 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Regional Distributors, Inc. / 20260601.
+2026-06-01 13:17:26,812 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:17:26,812 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Regional Distributors, Inc. / Bakery / 20260601
+2026-06-01 13:17:26,835 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Regional Distributors, Inc.
+2026-06-01 13:17:26,836 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Farmer Ground Flour / 20260601.
+2026-06-01 13:17:26,871 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:17:26,871 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Farmer Ground Flour / Bakery / 20260601
+2026-06-01 13:17:26,895 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Farmer Ground Flour
+2026-06-01 13:17:26,895 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Hill & Markes / 20260601.
+2026-06-01 13:17:26,946 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:17:26,947 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Hill & Markes / Bakery / 20260601
+2026-06-01 13:17:26,968 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Hill & Markes
+2026-06-01 13:17:26,968 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:123) - Craftable order sync completed successfully.
+2026-06-01 13:17:26,969 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'download_orders' executed successfully.
+2026-06-01 13:20:08,024 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: download_orders (args=['--stores', 'Triphammer'])
+2026-06-01 13:20:12,223 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:91) - Logging into Craftable.
+2026-06-01 13:20:19,852 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:115) - Login successful.
+2026-06-01 13:20:19,852 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:248) - Beginning download protocol for: stores: ['Triphammer'], vendors: None, download_pdf: True, update: True
+2026-06-01 13:20:23,361 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Ithaca Bakery in Triphammer's order list.
+2026-06-01 13:20:24,499 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Ithaca Bakery order.
+2026-06-01 13:20:27,361 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 03f6f6f5-41d6-47da-beec-3aa6eecf7646 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\03f6f6f5-41d6-47da-beec-3aa6eecf7646
+2026-06-01 13:20:28,728 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\03f6f6f5-41d6-47da-beec-3aa6eecf7646
+2026-06-01 13:20:29,948 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Sysco in Triphammer's order list.
+2026-06-01 13:20:31,097 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Sysco order.
+2026-06-01 13:20:33,627 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 661b6002-72ee-40fe-a4e8-d0f9d1cb1eeb -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\661b6002-72ee-40fe-a4e8-d0f9d1cb1eeb
+2026-06-01 13:20:35,003 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\661b6002-72ee-40fe-a4e8-d0f9d1cb1eeb
+2026-06-01 13:20:36,548 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Coca-Cola in Triphammer's order list.
+2026-06-01 13:20:37,669 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Coca-Cola order.
+2026-06-01 13:20:38,304 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session d390c1ad-3415-4655-b33e-4da64cbf7a55 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\d390c1ad-3415-4655-b33e-4da64cbf7a55
+2026-06-01 13:20:39,667 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\d390c1ad-3415-4655-b33e-4da64cbf7a55
+2026-06-01 13:20:41,188 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found UNFI in Triphammer's order list.
+2026-06-01 13:20:42,319 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in UNFI order.
+2026-06-01 13:20:43,798 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 20d6dd7a-62ad-4257-8d4d-edf7b2a8882d -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\20d6dd7a-62ad-4257-8d4d-edf7b2a8882d
+2026-06-01 13:20:45,164 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\20d6dd7a-62ad-4257-8d4d-edf7b2a8882d
+2026-06-01 13:20:46,721 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Performance Food in Triphammer's order list.
+2026-06-01 13:20:47,839 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Performance Food order.
+2026-06-01 13:20:50,792 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 708035c1-c07e-476f-81ad-ca426d982df5 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\708035c1-c07e-476f-81ad-ca426d982df5
+2026-06-01 13:20:52,153 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\708035c1-c07e-476f-81ad-ca426d982df5
+2026-06-01 13:20:53,334 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found FingerLakes Farms in Triphammer's order list.
+2026-06-01 13:20:54,478 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in FingerLakes Farms order.
+2026-06-01 13:20:55,491 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 02e61ff2-51c0-4ff8-a05b-4ae7c4871457 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\02e61ff2-51c0-4ff8-a05b-4ae7c4871457
+2026-06-01 13:20:56,848 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\02e61ff2-51c0-4ff8-a05b-4ae7c4871457
+2026-06-01 13:20:58,391 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Albert's Organics in Triphammer's order list.
+2026-06-01 13:20:59,504 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Albert's Organics order.
+2026-06-01 13:21:00,144 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session e98a39f4-dd2e-485a-9ed9-388836fdcf9b -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\e98a39f4-dd2e-485a-9ed9-388836fdcf9b
+2026-06-01 13:21:01,516 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\e98a39f4-dd2e-485a-9ed9-388836fdcf9b
+2026-06-01 13:21:03,130 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Hillcrest Dairy in Triphammer's order list.
+2026-06-01 13:21:04,242 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Hillcrest Dairy order.
+2026-06-01 13:21:04,597 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session dcac7b82-1abb-47dc-860e-00519213d1b5 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\dcac7b82-1abb-47dc-860e-00519213d1b5
+2026-06-01 13:21:05,968 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\dcac7b82-1abb-47dc-860e-00519213d1b5
+2026-06-01 13:21:07,209 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Hill & Markes in Triphammer's order list.
+2026-06-01 13:21:08,366 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Hill & Markes order.
+2026-06-01 13:21:09,476 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 332f1dcd-3c72-4ffe-9805-0b0812d8aee4 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\332f1dcd-3c72-4ffe-9805-0b0812d8aee4
+2026-06-01 13:21:11,081 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\332f1dcd-3c72-4ffe-9805-0b0812d8aee4
+2026-06-01 13:21:12,415 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Peters Supply in Triphammer's order list.
+2026-06-01 13:21:13,525 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Peters Supply order.
+2026-06-01 13:21:13,832 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session cf7e5f29-b321-46ac-bc81-793bad2e59c6 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\cf7e5f29-b321-46ac-bc81-793bad2e59c6
+2026-06-01 13:21:15,180 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\cf7e5f29-b321-46ac-bc81-793bad2e59c6
+2026-06-01 13:21:16,963 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Johnston Paper in Triphammer's order list.
+2026-06-01 13:21:19,170 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Johnston Paper order.
+2026-06-01 13:21:19,391 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 71363af4-cfb9-45f1-a12f-1c45f203a851 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\71363af4-cfb9-45f1-a12f-1c45f203a851
+2026-06-01 13:21:20,748 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\71363af4-cfb9-45f1-a12f-1c45f203a851
+2026-06-01 13:21:22,496 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Regional Distributors, Inc. in Triphammer's order list.
+2026-06-01 13:21:23,615 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Regional Distributors, Inc. order.
+2026-06-01 13:21:24,488 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session b96634a2-37b1-4af2-987e-494bbe927a92 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\b96634a2-37b1-4af2-987e-494bbe927a92
+2026-06-01 13:21:25,851 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\b96634a2-37b1-4af2-987e-494bbe927a92
+2026-06-01 13:21:27,734 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Copper Horse Coffee in Triphammer's order list.
+2026-06-01 13:21:28,841 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Copper Horse Coffee order.
+2026-06-01 13:21:29,005 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 826318da-eb71-4d30-8702-36c14f21b71f -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\826318da-eb71-4d30-8702-36c14f21b71f
+2026-06-01 13:21:30,367 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\826318da-eb71-4d30-8702-36c14f21b71f
+2026-06-01 13:21:32,091 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found US Foods in Triphammer's order list.
+2026-06-01 13:21:33,213 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in US Foods order.
+2026-06-01 13:21:35,031 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session b0beaf11-6444-464e-b3a4-ad69fce1bd65 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\b0beaf11-6444-464e-b3a4-ad69fce1bd65
+2026-06-01 13:21:36,401 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\b0beaf11-6444-464e-b3a4-ad69fce1bd65
+2026-06-01 13:21:37,814 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Equal Exchange in Triphammer's order list.
+2026-06-01 13:21:38,928 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Equal Exchange order.
+2026-06-01 13:21:39,278 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session ed455bc2-59eb-41cb-ab37-e39201a41b0b -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\ed455bc2-59eb-41cb-ab37-e39201a41b0b
+2026-06-01 13:21:40,655 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\ed455bc2-59eb-41cb-ab37-e39201a41b0b
+2026-06-01 13:21:42,154 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Coffee Depot LLC in Triphammer's order list.
+2026-06-01 13:21:43,271 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Coffee Depot LLC order.
+2026-06-01 13:21:43,784 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session f90ffb4f-672b-4143-9628-bbfc4b3cd336 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\f90ffb4f-672b-4143-9628-bbfc4b3cd336
+2026-06-01 13:21:45,134 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\f90ffb4f-672b-4143-9628-bbfc4b3cd336
+2026-06-01 13:21:46,612 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found A.L. George in Triphammer's order list.
+2026-06-01 13:21:47,725 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in A.L. George order.
+2026-06-01 13:21:48,128 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 6bd57dd0-b9e3-4e9f-bbb4-d126e1fed481 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\6bd57dd0-b9e3-4e9f-bbb4-d126e1fed481
+2026-06-01 13:21:49,491 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\6bd57dd0-b9e3-4e9f-bbb4-d126e1fed481
+2026-06-01 13:21:50,913 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found DUTCH VALLEY FOOD DIST in Triphammer's order list.
+2026-06-01 13:21:52,024 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in DUTCH VALLEY FOOD DIST order.
+2026-06-01 13:21:52,190 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 4951e247-0a7e-4ff6-8954-6b60f94ce0d6 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\4951e247-0a7e-4ff6-8954-6b60f94ce0d6
+2026-06-01 13:21:53,548 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\4951e247-0a7e-4ff6-8954-6b60f94ce0d6
+2026-06-01 13:21:55,837 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found BJ's in Triphammer's order list.
+2026-06-01 13:21:56,951 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in BJ's order.
+2026-06-01 13:21:57,060 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session abe3c9df-4890-4641-abf2-e3bf3b705a28 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\abe3c9df-4890-4641-abf2-e3bf3b705a28
+2026-06-01 13:21:58,682 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\abe3c9df-4890-4641-abf2-e3bf3b705a28
+2026-06-01 13:22:00,186 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Russo Produce in Triphammer's order list.
+2026-06-01 13:22:02,333 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Russo Produce order.
+2026-06-01 13:22:03,634 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 77f40b9b-5813-40e5-9501-39103e914ad2 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\77f40b9b-5813-40e5-9501-39103e914ad2
+2026-06-01 13:22:04,989 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\77f40b9b-5813-40e5-9501-39103e914ad2
+2026-06-01 13:22:06,741 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Webstaurant in Triphammer's order list.
+2026-06-01 13:22:07,868 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Webstaurant order.
+2026-06-01 13:22:08,133 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session de58c160-b9e7-4be4-8e48-a8c739742774 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\de58c160-b9e7-4be4-8e48-a8c739742774
+2026-06-01 13:22:09,499 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\de58c160-b9e7-4be4-8e48-a8c739742774
+2026-06-01 13:22:11,266 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found SANICO in Triphammer's order list.
+2026-06-01 13:22:12,386 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in SANICO order.
+2026-06-01 13:22:12,559 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session dce85031-9380-4eb4-8216-154e060585b3 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\dce85031-9380-4eb4-8216-154e060585b3
+2026-06-01 13:22:13,922 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\dce85031-9380-4eb4-8216-154e060585b3
+2026-06-01 13:22:15,673 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Triphammer / Ithaca Bakery / 20260529.
+2026-06-01 13:22:15,850 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:22:15,850 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Ithaca Bakery / Triphammer / 20260529
+2026-06-01 13:22:15,881 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Triphammer/Ithaca Bakery
+2026-06-01 13:22:15,881 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Triphammer / Sysco / 20260529.
+2026-06-01 13:22:15,925 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Unchanged - skip overwrite.
+2026-06-01 13:22:15,925 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:96) - Triphammer's order for Sysco is already up-to-date...skipping.
+2026-06-01 13:22:15,926 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Triphammer / Coca-Cola / 20260529.
+2026-06-01 13:22:15,971 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Unchanged - skip overwrite.
+2026-06-01 13:22:15,971 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:96) - Triphammer's order for Coca-Cola is already up-to-date...skipping.
+2026-06-01 13:22:15,971 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Triphammer / UNFI / 20260529.
+2026-06-01 13:22:16,016 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Unchanged - skip overwrite.
+2026-06-01 13:22:16,016 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:96) - Triphammer's order for UNFI is already up-to-date...skipping.
+2026-06-01 13:22:16,016 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Triphammer / Performance Food / 20260529.
+2026-06-01 13:22:16,063 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Unchanged - skip overwrite.
+2026-06-01 13:22:16,063 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:96) - Triphammer's order for Performance Food is already up-to-date...skipping.
+2026-06-01 13:22:16,063 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Triphammer / FingerLakes Farms / 20260529.
+2026-06-01 13:22:16,109 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:22:16,109 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order FingerLakes Farms / Triphammer / 20260529
+2026-06-01 13:22:16,131 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Triphammer/FingerLakes Farms
+2026-06-01 13:22:16,131 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Triphammer / Albert's Organics / 20260529.
+2026-06-01 13:22:16,174 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Unchanged - skip overwrite.
+2026-06-01 13:22:16,174 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:96) - Triphammer's order for Albert's Organics is already up-to-date...skipping.
+2026-06-01 13:22:16,174 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Triphammer / Hillcrest Dairy / 20260529.
+2026-06-01 13:22:16,219 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Unchanged - skip overwrite.
+2026-06-01 13:22:16,219 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:96) - Triphammer's order for Hillcrest Dairy is already up-to-date...skipping.
+2026-06-01 13:22:16,219 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Triphammer / Hill & Markes / 20260529.
+2026-06-01 13:22:16,264 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:22:16,264 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Hill & Markes / Triphammer / 20260529
+2026-06-01 13:22:16,287 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Triphammer/Hill & Markes
+2026-06-01 13:22:16,287 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Triphammer / Peters Supply / 20260529.
+2026-06-01 13:22:16,332 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:22:16,332 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Peters Supply / Triphammer / 20260529
+2026-06-01 13:22:16,353 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Triphammer/Peters Supply
+2026-06-01 13:22:16,353 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Triphammer / Johnston Paper / 20260529.
+2026-06-01 13:22:16,402 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:22:16,402 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Johnston Paper / Triphammer / 20260529
+2026-06-01 13:22:16,423 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Triphammer/Johnston Paper
+2026-06-01 13:22:16,423 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Triphammer / Regional Distributors, Inc. / 20260529.
+2026-06-01 13:22:16,468 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:22:16,468 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Regional Distributors, Inc. / Triphammer / 20260529
+2026-06-01 13:22:16,492 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Triphammer/Regional Distributors, Inc.
+2026-06-01 13:22:16,492 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Triphammer / Copper Horse Coffee / 20260529.
+2026-06-01 13:22:16,537 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Unchanged - skip overwrite.
+2026-06-01 13:22:16,538 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:96) - Triphammer's order for Copper Horse Coffee is already up-to-date...skipping.
+2026-06-01 13:22:16,538 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Triphammer / US Foods / 20260529.
+2026-06-01 13:22:16,582 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Unchanged - skip overwrite.
+2026-06-01 13:22:16,582 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:96) - Triphammer's order for US Foods is already up-to-date...skipping.
+2026-06-01 13:22:16,582 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Triphammer / Equal Exchange / 20260529.
+2026-06-01 13:22:16,625 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Unchanged - skip overwrite.
+2026-06-01 13:22:16,625 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:96) - Triphammer's order for Equal Exchange is already up-to-date...skipping.
+2026-06-01 13:22:16,625 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Triphammer / Coffee Depot LLC / 20260529.
+2026-06-01 13:22:16,671 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:22:16,671 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Coffee Depot LLC / Triphammer / 20260529
+2026-06-01 13:22:16,692 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Triphammer/Coffee Depot LLC
+2026-06-01 13:22:16,692 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Triphammer / A.L. George / 20260529.
+2026-06-01 13:22:16,743 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Unchanged - skip overwrite.
+2026-06-01 13:22:16,743 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:96) - Triphammer's order for A.L. George is already up-to-date...skipping.
+2026-06-01 13:22:16,743 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Triphammer / DUTCH VALLEY FOOD DIST / 20260529.
+2026-06-01 13:22:16,798 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Unchanged - skip overwrite.
+2026-06-01 13:22:16,798 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:96) - Triphammer's order for DUTCH VALLEY FOOD DIST is already up-to-date...skipping.
+2026-06-01 13:22:16,799 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Triphammer / BJ's / 20260531.
+2026-06-01 13:22:16,863 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Unchanged - skip overwrite.
+2026-06-01 13:22:16,863 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:96) - Triphammer's order for BJ's is already up-to-date...skipping.
+2026-06-01 13:22:16,863 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Triphammer / Russo Produce / 20260531.
+2026-06-01 13:22:16,952 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:22:16,952 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Russo Produce / Triphammer / 20260531
+2026-06-01 13:22:16,990 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Triphammer/Russo Produce
+2026-06-01 13:22:16,990 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Triphammer / Webstaurant / 20260531.
+2026-06-01 13:22:17,042 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:22:17,043 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Webstaurant / Triphammer / 20260531
+2026-06-01 13:22:17,075 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Triphammer/Webstaurant
+2026-06-01 13:22:17,075 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Triphammer / SANICO / 20260601.
+2026-06-01 13:22:17,109 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:22:17,109 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order SANICO / Triphammer / 20260601
+2026-06-01 13:22:17,136 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Triphammer/SANICO
+2026-06-01 13:22:17,136 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:123) - Craftable order sync completed successfully.
+2026-06-01 13:22:17,136 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'download_orders' executed successfully.
+2026-06-01 13:24:49,054 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: display_order (args=['--vendor', 'Regional Distributors, Inc.', '--store', 'Bakery'])
+2026-06-01 13:24:49,055 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Retrieving orders for: stores=['Bakery'], vendors=['Regional Distributors, Inc.']
+2026-06-01 13:24:49,055 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:65) - Getting orders: vendors=['Regional Distributors, Inc.'], stores=['Bakery'], dates=None
+2026-06-01 13:24:49,104 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:73) - Retrieved 1 orders.
+2026-06-01 13:24:49,104 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'display_order' executed successfully.
+2026-06-01 13:26:07,056 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: display_order (args=['--vendor', 'Regional Distributors, Inc.', '--store', 'Triphammer'])
+2026-06-01 13:26:07,057 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Retrieving orders for: stores=['Triphammer'], vendors=['Regional Distributors, Inc.']
+2026-06-01 13:26:07,057 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:65) - Getting orders: vendors=['Regional Distributors, Inc.'], stores=['Triphammer'], dates=None
+2026-06-01 13:26:07,109 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:73) - Retrieved 1 orders.
+2026-06-01 13:26:07,110 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'display_order' executed successfully.
+2026-06-01 13:41:56,886 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: display_order (args=['--vendor', "Keck's Food Service", '--store', 'Bakery'])
+2026-06-01 13:41:56,886 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Retrieving orders for: stores=['Bakery'], vendors=["Keck's Food Service"]
+2026-06-01 13:41:56,886 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:65) - Getting orders: vendors=["Keck's Food Service"], stores=['Bakery'], dates=None
+2026-06-01 13:41:56,947 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:73) - Retrieved 1 orders.
+2026-06-01 13:41:56,948 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'display_order' executed successfully.
+2026-06-01 13:45:15,450 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2026-06-01 13:45:20,053 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:91) - Logging into Craftable.
+2026-06-01 13:45:28,309 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:115) - Login successful.
+2026-06-01 13:45:28,309 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:248) - Beginning download protocol for: stores: ['Bakery'], vendors: None, download_pdf: True, update: True
+2026-06-01 13:45:32,544 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Albert's Organics in Bakery's order list.
+2026-06-01 13:45:33,707 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Albert's Organics order.
+2026-06-01 13:45:34,282 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 897c9f30-f20d-4840-932d-85f242066dce -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\897c9f30-f20d-4840-932d-85f242066dce
+2026-06-01 13:45:35,902 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\897c9f30-f20d-4840-932d-85f242066dce
+2026-06-01 13:45:37,811 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found UNFI in Bakery's order list.
+2026-06-01 13:45:38,950 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in UNFI order.
+2026-06-01 13:45:40,329 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 87505e1d-771f-4aff-99d2-913fac14df65 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\87505e1d-771f-4aff-99d2-913fac14df65
+2026-06-01 13:45:41,691 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\87505e1d-771f-4aff-99d2-913fac14df65
+2026-06-01 13:45:43,280 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Webstaurant in Bakery's order list.
+2026-06-01 13:45:44,396 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Webstaurant order.
+2026-06-01 13:45:45,143 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session b3e975b0-038b-49d0-a4c0-3940e5cdae9e -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\b3e975b0-038b-49d0-a4c0-3940e5cdae9e
+2026-06-01 13:45:46,507 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\b3e975b0-038b-49d0-a4c0-3940e5cdae9e
+2026-06-01 13:45:48,018 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Performance Food in Bakery's order list.
+2026-06-01 13:45:49,136 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Performance Food order.
+2026-06-01 13:45:51,072 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session f08f3140-e920-45bd-abcb-9dc5e9f9e9c1 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\f08f3140-e920-45bd-abcb-9dc5e9f9e9c1
+2026-06-01 13:45:52,432 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\f08f3140-e920-45bd-abcb-9dc5e9f9e9c1
+2026-06-01 13:45:53,630 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Sysco in Bakery's order list.
+2026-06-01 13:45:54,861 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Sysco order.
+2026-06-01 13:45:56,423 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 890d82e2-558a-40fc-aa80-b63d39a807bd -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\890d82e2-558a-40fc-aa80-b63d39a807bd
+2026-06-01 13:45:58,048 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\890d82e2-558a-40fc-aa80-b63d39a807bd
+2026-06-01 13:45:59,720 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Hillcrest Dairy in Bakery's order list.
+2026-06-01 13:46:00,833 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Hillcrest Dairy order.
+2026-06-01 13:46:01,269 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session f1586525-7ffd-455e-88c1-d7ef9b794c6e -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\f1586525-7ffd-455e-88c1-d7ef9b794c6e
+2026-06-01 13:46:02,619 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\f1586525-7ffd-455e-88c1-d7ef9b794c6e
+2026-06-01 13:46:03,840 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found FingerLakes Farms in Bakery's order list.
+2026-06-01 13:46:05,084 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in FingerLakes Farms order.
+2026-06-01 13:46:05,607 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 57dfd492-5477-4dd9-92ba-401ec151a958 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\57dfd492-5477-4dd9-92ba-401ec151a958
+2026-06-01 13:46:06,970 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\57dfd492-5477-4dd9-92ba-401ec151a958
+2026-06-01 13:46:08,698 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Hillcrest Foods in Bakery's order list.
+2026-06-01 13:46:09,825 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Hillcrest Foods order.
+2026-06-01 13:46:10,554 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 4d49aa80-3561-4099-a2b0-c61904f0b566 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\4d49aa80-3561-4099-a2b0-c61904f0b566
+2026-06-01 13:46:11,911 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\4d49aa80-3561-4099-a2b0-c61904f0b566
+2026-06-01 13:46:13,377 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Watermark Specialty Foods in Bakery's order list.
+2026-06-01 13:46:14,488 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Watermark Specialty Foods order.
+2026-06-01 13:46:15,021 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 9e83235b-3f6a-4fdb-a64f-56f9fcb3c9a8 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\9e83235b-3f6a-4fdb-a64f-56f9fcb3c9a8
+2026-06-01 13:46:16,381 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\9e83235b-3f6a-4fdb-a64f-56f9fcb3c9a8
+2026-06-01 13:46:17,820 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Coca-Cola in Bakery's order list.
+2026-06-01 13:46:18,933 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Coca-Cola order.
+2026-06-01 13:46:19,791 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 08136430-c9b1-41fa-b161-96bf24bbb24a -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\08136430-c9b1-41fa-b161-96bf24bbb24a
+2026-06-01 13:46:21,146 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\08136430-c9b1-41fa-b161-96bf24bbb24a
+2026-06-01 13:46:22,619 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found US Foods in Bakery's order list.
+2026-06-01 13:46:23,741 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in US Foods order.
+2026-06-01 13:46:25,312 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session c7da09ad-1076-4141-bf90-4a2b20acf395 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\c7da09ad-1076-4141-bf90-4a2b20acf395
+2026-06-01 13:46:26,671 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\c7da09ad-1076-4141-bf90-4a2b20acf395
+2026-06-01 13:46:28,682 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found BakeMark in Bakery's order list.
+2026-06-01 13:46:29,791 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in BakeMark order.
+2026-06-01 13:46:29,898 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session f2ff7cd1-f299-406a-a953-83ae76eac23e -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\f2ff7cd1-f299-406a-a953-83ae76eac23e
+2026-06-01 13:46:31,258 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\f2ff7cd1-f299-406a-a953-83ae76eac23e
+2026-06-01 13:46:32,782 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Keck's Food Service in Bakery's order list.
+2026-06-01 13:46:33,895 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Keck's Food Service order.
+2026-06-01 13:46:34,541 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 9518ad16-ff18-47d1-8ba0-ae7882c0e313 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\9518ad16-ff18-47d1-8ba0-ae7882c0e313
+2026-06-01 13:46:35,898 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\9518ad16-ff18-47d1-8ba0-ae7882c0e313
+2026-06-01 13:46:37,486 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Coffee Depot LLC in Bakery's order list.
+2026-06-01 13:46:38,608 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Coffee Depot LLC order.
+2026-06-01 13:46:39,187 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 11b748cb-7e28-4b09-b00a-0e096cef4800 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\11b748cb-7e28-4b09-b00a-0e096cef4800
+2026-06-01 13:46:40,550 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\11b748cb-7e28-4b09-b00a-0e096cef4800
+2026-06-01 13:46:42,244 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Odeko In. in Bakery's order list.
+2026-06-01 13:46:43,366 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Odeko In. order.
+2026-06-01 13:46:43,477 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 401f3826-360e-470c-ba86-2b02d0803c98 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\401f3826-360e-470c-ba86-2b02d0803c98
+2026-06-01 13:46:44,838 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\401f3826-360e-470c-ba86-2b02d0803c98
+2026-06-01 13:46:46,314 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Finger Lakes Coffee Roasters in Bakery's order list.
+2026-06-01 13:46:47,457 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Finger Lakes Coffee Roasters order.
+2026-06-01 13:46:47,594 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 66c88b2b-6b30-4b45-a9d9-8966db6729e7 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\66c88b2b-6b30-4b45-a9d9-8966db6729e7
+2026-06-01 13:46:49,206 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\66c88b2b-6b30-4b45-a9d9-8966db6729e7
+2026-06-01 13:46:52,336 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Equal Exchange in Bakery's order list.
+2026-06-01 13:46:56,543 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Equal Exchange order.
+2026-06-01 13:46:57,074 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session f263066d-4aee-4bfd-ba7d-4547770025a1 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\f263066d-4aee-4bfd-ba7d-4547770025a1
+2026-06-01 13:46:58,439 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\f263066d-4aee-4bfd-ba7d-4547770025a1
+2026-06-01 13:47:00,308 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Harney and Sons Tea in Bakery's order list.
+2026-06-01 13:47:01,427 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Harney and Sons Tea order.
+2026-06-01 13:47:01,678 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session cdd3f717-f82e-45ef-b2b6-984806bc38d2 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\cdd3f717-f82e-45ef-b2b6-984806bc38d2
+2026-06-01 13:47:03,041 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\cdd3f717-f82e-45ef-b2b6-984806bc38d2
+2026-06-01 13:47:04,798 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found BJ's in Bakery's order list.
+2026-06-01 13:47:05,923 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in BJ's order.
+2026-06-01 13:47:06,147 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 11fa144c-bb1b-4c6f-9a10-578095cf9d44 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\11fa144c-bb1b-4c6f-9a10-578095cf9d44
+2026-06-01 13:47:07,498 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\11fa144c-bb1b-4c6f-9a10-578095cf9d44
+2026-06-01 13:47:09,124 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Copper Horse Coffee in Bakery's order list.
+2026-06-01 13:47:10,259 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Copper Horse Coffee order.
+2026-06-01 13:47:10,613 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 521a40b2-b62a-46a8-833e-fd493d73e1c3 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\521a40b2-b62a-46a8-833e-fd493d73e1c3
+2026-06-01 13:47:11,984 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\521a40b2-b62a-46a8-833e-fd493d73e1c3
+2026-06-01 13:47:13,732 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Sweet Sam's Baking Company, LLC in Bakery's order list.
+2026-06-01 13:47:14,862 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Sweet Sam's Baking Company, LLC order.
+2026-06-01 13:47:15,341 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 30a03113-59e0-4f9b-98b2-af68fe98a5bb -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\30a03113-59e0-4f9b-98b2-af68fe98a5bb
+2026-06-01 13:47:16,699 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\30a03113-59e0-4f9b-98b2-af68fe98a5bb
+2026-06-01 13:47:18,934 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Regional Distributors, Inc. in Bakery's order list.
+2026-06-01 13:47:20,081 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Regional Distributors, Inc. order.
+2026-06-01 13:47:21,166 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session b7a9128b-0066-443f-9c64-6e70df819d52 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\b7a9128b-0066-443f-9c64-6e70df819d52
+2026-06-01 13:47:22,785 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\b7a9128b-0066-443f-9c64-6e70df819d52
+2026-06-01 13:47:24,657 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Farmer Ground Flour in Bakery's order list.
+2026-06-01 13:47:25,809 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Farmer Ground Flour order.
+2026-06-01 13:47:25,935 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 0f7e7e1b-7bf1-4e3f-b0f5-4ace3a07f2ac -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\0f7e7e1b-7bf1-4e3f-b0f5-4ace3a07f2ac
+2026-06-01 13:47:27,354 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\0f7e7e1b-7bf1-4e3f-b0f5-4ace3a07f2ac
+2026-06-01 13:47:30,791 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Hill & Markes in Bakery's order list.
+2026-06-01 13:47:31,923 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Hill & Markes order.
+2026-06-01 13:47:32,174 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 2ce9b60a-4bcc-46fc-b3dc-63b16c4c764a -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\2ce9b60a-4bcc-46fc-b3dc-63b16c4c764a
+2026-06-01 13:47:33,781 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\2ce9b60a-4bcc-46fc-b3dc-63b16c4c764a
+2026-06-01 13:47:35,729 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found A.L. George in Bakery's order list.
+2026-06-01 13:47:36,858 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in A.L. George order.
+2026-06-01 13:47:37,268 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 8370d42a-24aa-41ba-aae6-290a53483f9e -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\8370d42a-24aa-41ba-aae6-290a53483f9e
+2026-06-01 13:47:38,632 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\8370d42a-24aa-41ba-aae6-290a53483f9e
+2026-06-01 13:47:40,384 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Albert's Organics / 20260530.
+2026-06-01 13:47:40,482 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:47:40,482 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Albert's Organics / Bakery / 20260530
+2026-06-01 13:47:40,497 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Albert's Organics
+2026-06-01 13:47:40,498 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / UNFI / 20260530.
+2026-06-01 13:47:40,551 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:47:40,551 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order UNFI / Bakery / 20260530
+2026-06-01 13:47:40,568 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/UNFI
+2026-06-01 13:47:40,568 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Webstaurant / 20260530.
+2026-06-01 13:47:40,623 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:47:40,623 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Webstaurant / Bakery / 20260530
+2026-06-01 13:47:40,639 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Webstaurant
+2026-06-01 13:47:40,640 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Performance Food / 20260530.
+2026-06-01 13:47:40,688 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:47:40,688 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Performance Food / Bakery / 20260530
+2026-06-01 13:47:40,861 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Performance Food
+2026-06-01 13:47:40,861 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Sysco / 20260530.
+2026-06-01 13:47:40,914 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:47:40,914 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Sysco / Bakery / 20260530
+2026-06-01 13:47:40,929 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Sysco
+2026-06-01 13:47:40,930 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Hillcrest Dairy / 20260530.
+2026-06-01 13:47:40,963 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Unchanged - skip overwrite.
+2026-06-01 13:47:40,964 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:96) - Bakery's order for Hillcrest Dairy is already up-to-date...skipping.
+2026-06-01 13:47:40,964 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / FingerLakes Farms / 20260530.
+2026-06-01 13:47:40,997 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Unchanged - skip overwrite.
+2026-06-01 13:47:40,997 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:96) - Bakery's order for FingerLakes Farms is already up-to-date...skipping.
+2026-06-01 13:47:40,997 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Hillcrest Foods / 20260531.
+2026-06-01 13:47:41,034 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Unchanged - skip overwrite.
+2026-06-01 13:47:41,034 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:96) - Bakery's order for Hillcrest Foods is already up-to-date...skipping.
+2026-06-01 13:47:41,034 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Watermark Specialty Foods / 20260531.
+2026-06-01 13:47:41,068 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Unchanged - skip overwrite.
+2026-06-01 13:47:41,068 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:96) - Bakery's order for Watermark Specialty Foods is already up-to-date...skipping.
+2026-06-01 13:47:41,068 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Coca-Cola / 20260531.
+2026-06-01 13:47:41,117 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:47:41,117 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Coca-Cola / Bakery / 20260531
+2026-06-01 13:47:41,131 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Coca-Cola
+2026-06-01 13:47:41,131 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / US Foods / 20260531.
+2026-06-01 13:47:41,185 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:47:41,185 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order US Foods / Bakery / 20260531
+2026-06-01 13:47:41,199 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/US Foods
+2026-06-01 13:47:41,199 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / BakeMark / 20260531.
+2026-06-01 13:47:41,233 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Unchanged - skip overwrite.
+2026-06-01 13:47:41,233 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:96) - Bakery's order for BakeMark is already up-to-date...skipping.
+2026-06-01 13:47:41,233 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Keck's Food Service / 20260531.
+2026-06-01 13:47:41,271 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:47:41,271 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Keck's Food Service / Bakery / 20260531
+2026-06-01 13:47:41,307 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Keck's Food Service
+2026-06-01 13:47:41,307 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Coffee Depot LLC / 20260531.
+2026-06-01 13:47:41,355 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:47:41,355 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Coffee Depot LLC / Bakery / 20260531
+2026-06-01 13:47:41,369 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Coffee Depot LLC
+2026-06-01 13:47:41,370 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Odeko In. / 20260531.
+2026-06-01 13:47:41,416 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:47:41,416 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Odeko In. / Bakery / 20260531
+2026-06-01 13:47:41,451 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Odeko In.
+2026-06-01 13:47:41,451 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Finger Lakes Coffee Roasters / 20260531.
+2026-06-01 13:47:41,502 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:47:41,502 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Finger Lakes Coffee Roasters / Bakery / 20260531
+2026-06-01 13:47:41,516 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Finger Lakes Coffee Roasters
+2026-06-01 13:47:41,516 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Equal Exchange / 20260531.
+2026-06-01 13:47:41,567 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:47:41,567 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Equal Exchange / Bakery / 20260531
+2026-06-01 13:47:41,581 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Equal Exchange
+2026-06-01 13:47:41,581 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Harney and Sons Tea / 20260531.
+2026-06-01 13:47:41,622 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Unchanged - skip overwrite.
+2026-06-01 13:47:41,622 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:96) - Bakery's order for Harney and Sons Tea is already up-to-date...skipping.
+2026-06-01 13:47:41,622 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / BJ's / 20260531.
+2026-06-01 13:47:41,674 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:47:41,674 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order BJ's / Bakery / 20260531
+2026-06-01 13:47:41,745 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/BJ's
+2026-06-01 13:47:41,745 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Copper Horse Coffee / 20260531.
+2026-06-01 13:47:41,828 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:47:41,828 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Copper Horse Coffee / Bakery / 20260531
+2026-06-01 13:47:41,847 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Copper Horse Coffee
+2026-06-01 13:47:41,848 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Sweet Sam's Baking Company, LLC / 20260601.
+2026-06-01 13:47:41,902 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Unchanged - skip overwrite.
+2026-06-01 13:47:41,902 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:96) - Bakery's order for Sweet Sam's Baking Company, LLC is already up-to-date...skipping.
+2026-06-01 13:47:41,902 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Regional Distributors, Inc. / 20260601.
+2026-06-01 13:47:41,939 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:47:41,939 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Regional Distributors, Inc. / Bakery / 20260601
+2026-06-01 13:47:41,964 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Regional Distributors, Inc.
+2026-06-01 13:47:41,964 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Farmer Ground Flour / 20260601.
+2026-06-01 13:47:42,011 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Unchanged - skip overwrite.
+2026-06-01 13:47:42,011 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:96) - Bakery's order for Farmer Ground Flour is already up-to-date...skipping.
+2026-06-01 13:47:42,011 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Hill & Markes / 20260601.
+2026-06-01 13:47:42,070 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:47:42,070 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Hill & Markes / Bakery / 20260601
+2026-06-01 13:47:42,085 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Hill & Markes
+2026-06-01 13:47:42,085 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / A.L. George / 20260601.
+2026-06-01 13:47:42,131 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:47:42,131 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order A.L. George / Bakery / 20260601
+2026-06-01 13:47:42,156 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/A.L. George
+2026-06-01 13:47:42,156 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:123) - Craftable order sync completed successfully.
+2026-06-01 13:47:42,156 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'download_orders' executed successfully.
+2026-06-01 13:48:25,215 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: display_order (args=['--vendor', 'Regional Distributors, Inc.', '--store', 'Bakery'])
+2026-06-01 13:48:25,215 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Retrieving orders for: stores=['Bakery'], vendors=['Regional Distributors, Inc.']
+2026-06-01 13:48:25,215 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:65) - Getting orders: vendors=['Regional Distributors, Inc.'], stores=['Bakery'], dates=None
+2026-06-01 13:48:25,264 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:73) - Retrieved 1 orders.
+2026-06-01 13:48:25,265 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'display_order' executed successfully.
+2026-06-01 13:50:08,064 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: display_order (args=['--vendor', "Keck's Food Service", '--store', 'Bakery'])
+2026-06-01 13:50:08,065 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Retrieving orders for: stores=['Bakery'], vendors=["Keck's Food Service"]
+2026-06-01 13:50:08,065 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:65) - Getting orders: vendors=["Keck's Food Service"], stores=['Bakery'], dates=None
+2026-06-01 13:50:08,120 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:73) - Retrieved 1 orders.
+2026-06-01 13:50:08,120 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'display_order' executed successfully.
+2026-06-01 13:50:37,505 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: archive_orders (args=['--stores', 'Bakery'])
+2026-06-01 13:50:37,522 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Retrieving orders for: stores=['Bakery'], vendors=['A.L. George', "Albert's Organics", 'BALKAN BEVERAGE LLC', "BJ's", "Bo's Bones", 'Casa', 'Coca-Cola', 'Coffee Depot LLC', 'Copper Horse Coffee', 'Costco', 'DUTCH VALLEY FOOD DIST', 'Dawn', 'Equal Exchange', 'Farmer Ground Flour', 'Finger Lakes Coffee Roasters', 'FingerLakes Farms', "Grandma's Coffee Cakes", 'Harney and Sons Tea', 'Hill & Markes', 'Hillcrest Dairy', 'Hillcrest Foods', 'Ithaca Bakery', 'Johnston Paper', 'KEHE DISTRIBUTORS', "Keck's Food Service", 'Kwik Lok', 'Lentz', 'Motherworks,LLC', 'Nashville Wraps', 'Nuts.com', 'Odeko In.', 'Opici Family Distributing', 'Palmer', 'Paper Rolls .com', 'Pepsi', 'Performance Food', 'Peters Supply', 'Regional Access Inc', 'Regional Distributors, Inc.', 'Russo Produce', 'SANICO', 'Side Hill Acres', "Sweet Sam's Baking Company, LLC", 'Sysco', 'ULINE', 'UNFI', 'US Foods', 'Vegan Epicure', 'Watermark Specialty Foods', 'Webstaurant', 'Worlds Best Cheeses']
+2026-06-01 13:50:37,522 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:65) - Getting orders: vendors=['A.L. George', "Albert's Organics", 'BALKAN BEVERAGE LLC', "BJ's", "Bo's Bones", 'Casa', 'Coca-Cola', 'Coffee Depot LLC', 'Copper Horse Coffee', 'Costco', 'DUTCH VALLEY FOOD DIST', 'Dawn', 'Equal Exchange', 'Farmer Ground Flour', 'Finger Lakes Coffee Roasters', 'FingerLakes Farms', "Grandma's Coffee Cakes", 'Harney and Sons Tea', 'Hill & Markes', 'Hillcrest Dairy', 'Hillcrest Foods', 'Ithaca Bakery', 'Johnston Paper', 'KEHE DISTRIBUTORS', "Keck's Food Service", 'Kwik Lok', 'Lentz', 'Motherworks,LLC', 'Nashville Wraps', 'Nuts.com', 'Odeko In.', 'Opici Family Distributing', 'Palmer', 'Paper Rolls .com', 'Pepsi', 'Performance Food', 'Peters Supply', 'Regional Access Inc', 'Regional Distributors, Inc.', 'Russo Produce', 'SANICO', 'Side Hill Acres', "Sweet Sam's Baking Company, LLC", 'Sysco', 'ULINE', 'UNFI', 'US Foods', 'Vegan Epicure', 'Watermark Specialty Foods', 'Webstaurant', 'Worlds Best Cheeses'], stores=['Bakery'], dates=None
+2026-06-01 13:50:39,416 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:73) - Retrieved 31 orders.
+2026-06-01 13:50:39,417 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order A.L. George / Bakery / 20260523
+2026-06-01 13:50:39,425 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Albert's Organics / Bakery / 20260527
+2026-06-01 13:50:39,435 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order BJ's / Bakery / 20260531
+2026-06-01 13:50:39,442 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Coca-Cola / Bakery / 20260524
+2026-06-01 13:50:39,450 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Coffee Depot LLC / Bakery / 20260524
+2026-06-01 13:50:39,458 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Copper Horse Coffee / Bakery / 20260524
+2026-06-01 13:50:39,465 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order DUTCH VALLEY FOOD DIST / Bakery / 20260527
+2026-06-01 13:50:39,472 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Equal Exchange / Bakery / 20260524
+2026-06-01 13:50:39,478 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Farmer Ground Flour / Bakery / 20260601
+2026-06-01 13:50:39,484 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Finger Lakes Coffee Roasters / Bakery / 20260524
+2026-06-01 13:50:39,489 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order FingerLakes Farms / Bakery / 20260530
+2026-06-01 13:50:39,494 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Harney and Sons Tea / Bakery / 20260531
+2026-06-01 13:50:39,499 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Hill & Markes / Bakery / 20260526
+2026-06-01 13:50:39,504 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Hillcrest Dairy / Bakery / 20260530
+2026-06-01 13:50:39,510 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Hillcrest Foods / Bakery / 20260531
+2026-06-01 13:50:39,516 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Johnston Paper / Bakery / 20260526
+2026-06-01 13:50:39,521 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Keck's Food Service / Bakery / 20260524
+2026-06-01 13:50:39,526 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Lentz / Bakery / 20260525
+2026-06-01 13:50:39,531 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Odeko In. / Bakery / 20260531
+2026-06-01 13:50:39,537 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Performance Food / Bakery / 20260530
+2026-06-01 13:50:39,542 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Peters Supply / Bakery / 20260526
+2026-06-01 13:50:39,548 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Regional Distributors, Inc. / Bakery / 20260601
+2026-06-01 13:50:39,553 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Russo Produce / Bakery / 20260527
+2026-06-01 13:50:39,560 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order SANICO / Bakery / 20260526
+2026-06-01 13:50:39,565 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Side Hill Acres / Bakery / 20260524
+2026-06-01 13:50:39,570 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Sweet Sam's Baking Company, LLC / Bakery / 20260601
+2026-06-01 13:50:39,576 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Sysco / Bakery / 20260527
+2026-06-01 13:50:39,581 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order UNFI / Bakery / 20260523
+2026-06-01 13:50:39,588 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order US Foods / Bakery / 20260527
+2026-06-01 13:50:39,594 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Watermark Specialty Foods / Bakery / 20260531
+2026-06-01 13:50:39,598 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Webstaurant / Bakery / 20260524
+2026-06-01 13:50:39,603 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'archive_orders' executed successfully.
+2026-06-01 13:50:40,480 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: archive_orders (args=['--stores', 'Bakery'])
+2026-06-01 13:50:40,495 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Retrieving orders for: stores=['Bakery'], vendors=['A.L. George', "Albert's Organics", 'BALKAN BEVERAGE LLC', "BJ's", "Bo's Bones", 'Casa', 'Coca-Cola', 'Coffee Depot LLC', 'Copper Horse Coffee', 'Costco', 'DUTCH VALLEY FOOD DIST', 'Dawn', 'Equal Exchange', 'Farmer Ground Flour', 'Finger Lakes Coffee Roasters', 'FingerLakes Farms', "Grandma's Coffee Cakes", 'Harney and Sons Tea', 'Hill & Markes', 'Hillcrest Dairy', 'Hillcrest Foods', 'Ithaca Bakery', 'Johnston Paper', 'KEHE DISTRIBUTORS', "Keck's Food Service", 'Kwik Lok', 'Lentz', 'Motherworks,LLC', 'Nashville Wraps', 'Nuts.com', 'Odeko In.', 'Opici Family Distributing', 'Palmer', 'Paper Rolls .com', 'Pepsi', 'Performance Food', 'Peters Supply', 'Regional Access Inc', 'Regional Distributors, Inc.', 'Russo Produce', 'SANICO', 'Side Hill Acres', "Sweet Sam's Baking Company, LLC", 'Sysco', 'ULINE', 'UNFI', 'US Foods', 'Vegan Epicure', 'Watermark Specialty Foods', 'Webstaurant', 'Worlds Best Cheeses']
+2026-06-01 13:50:40,496 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:65) - Getting orders: vendors=['A.L. George', "Albert's Organics", 'BALKAN BEVERAGE LLC', "BJ's", "Bo's Bones", 'Casa', 'Coca-Cola', 'Coffee Depot LLC', 'Copper Horse Coffee', 'Costco', 'DUTCH VALLEY FOOD DIST', 'Dawn', 'Equal Exchange', 'Farmer Ground Flour', 'Finger Lakes Coffee Roasters', 'FingerLakes Farms', "Grandma's Coffee Cakes", 'Harney and Sons Tea', 'Hill & Markes', 'Hillcrest Dairy', 'Hillcrest Foods', 'Ithaca Bakery', 'Johnston Paper', 'KEHE DISTRIBUTORS', "Keck's Food Service", 'Kwik Lok', 'Lentz', 'Motherworks,LLC', 'Nashville Wraps', 'Nuts.com', 'Odeko In.', 'Opici Family Distributing', 'Palmer', 'Paper Rolls .com', 'Pepsi', 'Performance Food', 'Peters Supply', 'Regional Access Inc', 'Regional Distributors, Inc.', 'Russo Produce', 'SANICO', 'Side Hill Acres', "Sweet Sam's Baking Company, LLC", 'Sysco', 'ULINE', 'UNFI', 'US Foods', 'Vegan Epicure', 'Watermark Specialty Foods', 'Webstaurant', 'Worlds Best Cheeses'], stores=['Bakery'], dates=None
+2026-06-01 13:50:41,907 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:73) - Retrieved 13 orders.
+2026-06-01 13:50:41,907 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order A.L. George / Bakery / 20260601
+2026-06-01 13:50:41,912 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Albert's Organics / Bakery / 20260530
+2026-06-01 13:50:41,916 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Coca-Cola / Bakery / 20260531
+2026-06-01 13:50:41,921 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Coffee Depot LLC / Bakery / 20260531
+2026-06-01 13:50:41,925 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Copper Horse Coffee / Bakery / 20260531
+2026-06-01 13:50:41,931 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Equal Exchange / Bakery / 20260531
+2026-06-01 13:50:41,935 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Finger Lakes Coffee Roasters / Bakery / 20260531
+2026-06-01 13:50:41,939 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Hill & Markes / Bakery / 20260601
+2026-06-01 13:50:41,945 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Keck's Food Service / Bakery / 20260531
+2026-06-01 13:50:41,949 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Sysco / Bakery / 20260530
+2026-06-01 13:50:41,953 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order UNFI / Bakery / 20260530
+2026-06-01 13:50:41,957 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order US Foods / Bakery / 20260531
+2026-06-01 13:50:41,961 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Webstaurant / Bakery / 20260530
+2026-06-01 13:50:41,967 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'archive_orders' executed successfully.
+2026-06-01 13:50:42,648 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: archive_orders (args=['--stores', 'Bakery'])
+2026-06-01 13:50:42,664 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Retrieving orders for: stores=['Bakery'], vendors=['A.L. George', "Albert's Organics", 'BALKAN BEVERAGE LLC', "BJ's", "Bo's Bones", 'Casa', 'Coca-Cola', 'Coffee Depot LLC', 'Copper Horse Coffee', 'Costco', 'DUTCH VALLEY FOOD DIST', 'Dawn', 'Equal Exchange', 'Farmer Ground Flour', 'Finger Lakes Coffee Roasters', 'FingerLakes Farms', "Grandma's Coffee Cakes", 'Harney and Sons Tea', 'Hill & Markes', 'Hillcrest Dairy', 'Hillcrest Foods', 'Ithaca Bakery', 'Johnston Paper', 'KEHE DISTRIBUTORS', "Keck's Food Service", 'Kwik Lok', 'Lentz', 'Motherworks,LLC', 'Nashville Wraps', 'Nuts.com', 'Odeko In.', 'Opici Family Distributing', 'Palmer', 'Paper Rolls .com', 'Pepsi', 'Performance Food', 'Peters Supply', 'Regional Access Inc', 'Regional Distributors, Inc.', 'Russo Produce', 'SANICO', 'Side Hill Acres', "Sweet Sam's Baking Company, LLC", 'Sysco', 'ULINE', 'UNFI', 'US Foods', 'Vegan Epicure', 'Watermark Specialty Foods', 'Webstaurant', 'Worlds Best Cheeses']
+2026-06-01 13:50:42,664 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:65) - Getting orders: vendors=['A.L. George', "Albert's Organics", 'BALKAN BEVERAGE LLC', "BJ's", "Bo's Bones", 'Casa', 'Coca-Cola', 'Coffee Depot LLC', 'Copper Horse Coffee', 'Costco', 'DUTCH VALLEY FOOD DIST', 'Dawn', 'Equal Exchange', 'Farmer Ground Flour', 'Finger Lakes Coffee Roasters', 'FingerLakes Farms', "Grandma's Coffee Cakes", 'Harney and Sons Tea', 'Hill & Markes', 'Hillcrest Dairy', 'Hillcrest Foods', 'Ithaca Bakery', 'Johnston Paper', 'KEHE DISTRIBUTORS', "Keck's Food Service", 'Kwik Lok', 'Lentz', 'Motherworks,LLC', 'Nashville Wraps', 'Nuts.com', 'Odeko In.', 'Opici Family Distributing', 'Palmer', 'Paper Rolls .com', 'Pepsi', 'Performance Food', 'Peters Supply', 'Regional Access Inc', 'Regional Distributors, Inc.', 'Russo Produce', 'SANICO', 'Side Hill Acres', "Sweet Sam's Baking Company, LLC", 'Sysco', 'ULINE', 'UNFI', 'US Foods', 'Vegan Epicure', 'Watermark Specialty Foods', 'Webstaurant', 'Worlds Best Cheeses'], stores=['Bakery'], dates=None
+2026-06-01 13:50:43,922 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:73) - Retrieved 0 orders.
+2026-06-01 13:50:43,922 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'archive_orders' executed successfully.
+2026-06-01 13:50:44,656 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: archive_orders (args=['--stores', 'Bakery'])
+2026-06-01 13:50:44,671 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Retrieving orders for: stores=['Bakery'], vendors=['A.L. George', "Albert's Organics", 'BALKAN BEVERAGE LLC', "BJ's", "Bo's Bones", 'Casa', 'Coca-Cola', 'Coffee Depot LLC', 'Copper Horse Coffee', 'Costco', 'DUTCH VALLEY FOOD DIST', 'Dawn', 'Equal Exchange', 'Farmer Ground Flour', 'Finger Lakes Coffee Roasters', 'FingerLakes Farms', "Grandma's Coffee Cakes", 'Harney and Sons Tea', 'Hill & Markes', 'Hillcrest Dairy', 'Hillcrest Foods', 'Ithaca Bakery', 'Johnston Paper', 'KEHE DISTRIBUTORS', "Keck's Food Service", 'Kwik Lok', 'Lentz', 'Motherworks,LLC', 'Nashville Wraps', 'Nuts.com', 'Odeko In.', 'Opici Family Distributing', 'Palmer', 'Paper Rolls .com', 'Pepsi', 'Performance Food', 'Peters Supply', 'Regional Access Inc', 'Regional Distributors, Inc.', 'Russo Produce', 'SANICO', 'Side Hill Acres', "Sweet Sam's Baking Company, LLC", 'Sysco', 'ULINE', 'UNFI', 'US Foods', 'Vegan Epicure', 'Watermark Specialty Foods', 'Webstaurant', 'Worlds Best Cheeses']
+2026-06-01 13:50:44,671 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:65) - Getting orders: vendors=['A.L. George', "Albert's Organics", 'BALKAN BEVERAGE LLC', "BJ's", "Bo's Bones", 'Casa', 'Coca-Cola', 'Coffee Depot LLC', 'Copper Horse Coffee', 'Costco', 'DUTCH VALLEY FOOD DIST', 'Dawn', 'Equal Exchange', 'Farmer Ground Flour', 'Finger Lakes Coffee Roasters', 'FingerLakes Farms', "Grandma's Coffee Cakes", 'Harney and Sons Tea', 'Hill & Markes', 'Hillcrest Dairy', 'Hillcrest Foods', 'Ithaca Bakery', 'Johnston Paper', 'KEHE DISTRIBUTORS', "Keck's Food Service", 'Kwik Lok', 'Lentz', 'Motherworks,LLC', 'Nashville Wraps', 'Nuts.com', 'Odeko In.', 'Opici Family Distributing', 'Palmer', 'Paper Rolls .com', 'Pepsi', 'Performance Food', 'Peters Supply', 'Regional Access Inc', 'Regional Distributors, Inc.', 'Russo Produce', 'SANICO', 'Side Hill Acres', "Sweet Sam's Baking Company, LLC", 'Sysco', 'ULINE', 'UNFI', 'US Foods', 'Vegan Epicure', 'Watermark Specialty Foods', 'Webstaurant', 'Worlds Best Cheeses'], stores=['Bakery'], dates=None
+2026-06-01 13:50:45,858 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:73) - Retrieved 0 orders.
+2026-06-01 13:50:45,858 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'archive_orders' executed successfully.
+2026-06-01 13:50:49,369 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2026-06-01 13:50:53,647 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:91) - Logging into Craftable.
+2026-06-01 13:51:00,969 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:115) - Login successful.
+2026-06-01 13:51:00,970 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:248) - Beginning download protocol for: stores: ['Bakery'], vendors: None, download_pdf: True, update: True
+2026-06-01 13:51:36,158 - ERROR - backend.app.cli.panel_cli.CLI - (panel_cli.py:872) - [Error] download_orders failed: list index out of range
+Traceback (most recent call last):
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\backend\app\cli\panel_cli.py", line 825, in _dispatch_command
+    result = self.commands[command].command(args)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\backend\app\cli\commands\workbot\download_orders.py", line 28, in command
+    self.context.workbot.download_craftable_orders(parsed_args.stores, parsed_args.vendors)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\backend\bots\workbot\work_bot.py", line 82, in download_craftable_orders
+    results = self.craft_bot.download_orders(stores, vendors, download_pdf=download_pdf, update=update)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\backend\bots\bot_mixins.py", line 97, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\backend\bots\craftable_bot\craftable_bot.py", line 265, in download_orders
+    vendors = self._get_all_vendors_from_orders_page(store)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\backend\bots\craftable_bot\craftable_bot.py", line 342, in _get_all_vendors_from_orders_page
+    order_row_metadata = self._scrape_order_row_metadata(order_row)
+  File "C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\backend\bots\craftable_bot\craftable_bot.py", line 405, in _scrape_order_row_metadata
+    'order_date': row_data[2].text,
+                  ~~~~~~~~^^^
+IndexError: list index out of range
+2026-06-01 13:51:38,348 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:876) - Exiting CLI.
+2026-06-01 13:51:45,553 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:59) - Initializing WorkBot...
+2026-06-01 13:51:45,553 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:74) - WorkBot initialized successfully.
+2026-06-01 13:51:45,826 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:256) - Initializing CLI.
+2026-06-01 13:51:45,834 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:525) - Loaded 1 commands from backend.app.cli.commands.builtin
+2026-06-01 13:51:45,860 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:261) - CLI initialized successfully with 1 commands.
+2026-06-01 13:51:45,897 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:525) - Loaded 21 commands from backend.app.cli.commands.workbot
+2026-06-01 13:51:45,897 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:448) - CLI session started.
+2026-06-01 13:52:35,379 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: download_orders (args=['--stores', 'Bakery'])
+2026-06-01 13:52:40,003 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:91) - Logging into Craftable.
+2026-06-01 13:52:47,922 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:115) - Login successful.
+2026-06-01 13:52:47,922 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:248) - Beginning download protocol for: stores: ['Bakery'], vendors: None, download_pdf: True, update: True
+2026-06-01 13:52:52,662 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Albert's Organics in Bakery's order list.
+2026-06-01 13:52:53,818 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Albert's Organics order.
+2026-06-01 13:52:54,277 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 6fc005dc-1188-4d87-88c1-4322b1cdedd0 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\6fc005dc-1188-4d87-88c1-4322b1cdedd0
+2026-06-01 13:52:55,928 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\6fc005dc-1188-4d87-88c1-4322b1cdedd0
+2026-06-01 13:52:57,430 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found UNFI in Bakery's order list.
+2026-06-01 13:52:58,566 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in UNFI order.
+2026-06-01 13:52:59,906 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session ef46595a-6c15-4e37-a0d5-ae8db665da6e -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\ef46595a-6c15-4e37-a0d5-ae8db665da6e
+2026-06-01 13:53:01,277 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\ef46595a-6c15-4e37-a0d5-ae8db665da6e
+2026-06-01 13:53:02,807 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Webstaurant in Bakery's order list.
+2026-06-01 13:53:03,925 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Webstaurant order.
+2026-06-01 13:53:04,696 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session bb699244-c30a-413c-9303-59b824527020 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\bb699244-c30a-413c-9303-59b824527020
+2026-06-01 13:53:06,066 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\bb699244-c30a-413c-9303-59b824527020
+2026-06-01 13:53:07,307 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Performance Food in Bakery's order list.
+2026-06-01 13:53:08,581 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Performance Food order.
+2026-06-01 13:53:10,540 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 5a5caf53-12ee-4399-9ac2-2e1607ca00dc -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\5a5caf53-12ee-4399-9ac2-2e1607ca00dc
+2026-06-01 13:53:11,909 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\5a5caf53-12ee-4399-9ac2-2e1607ca00dc
+2026-06-01 13:53:13,454 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Sysco in Bakery's order list.
+2026-06-01 13:53:14,564 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Sysco order.
+2026-06-01 13:53:16,144 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 04f503c4-15d5-40c4-912b-ca708ddeafcf -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\04f503c4-15d5-40c4-912b-ca708ddeafcf
+2026-06-01 13:53:17,504 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\04f503c4-15d5-40c4-912b-ca708ddeafcf
+2026-06-01 13:53:19,074 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Hillcrest Dairy in Bakery's order list.
+2026-06-01 13:53:20,189 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Hillcrest Dairy order.
+2026-06-01 13:53:20,605 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session e38462c8-301a-4d44-a2a0-0af176cea3c7 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\e38462c8-301a-4d44-a2a0-0af176cea3c7
+2026-06-01 13:53:21,963 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\e38462c8-301a-4d44-a2a0-0af176cea3c7
+2026-06-01 13:53:23,364 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found FingerLakes Farms in Bakery's order list.
+2026-06-01 13:53:25,038 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in FingerLakes Farms order.
+2026-06-01 13:53:25,550 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 172216ce-e616-4014-a7bf-cbf00f225dee -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\172216ce-e616-4014-a7bf-cbf00f225dee
+2026-06-01 13:53:26,909 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\172216ce-e616-4014-a7bf-cbf00f225dee
+2026-06-01 13:53:28,488 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Hillcrest Foods in Bakery's order list.
+2026-06-01 13:53:29,612 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Hillcrest Foods order.
+2026-06-01 13:53:30,331 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session e6507274-168a-4d98-9a74-9a3d30ac4c4c -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\e6507274-168a-4d98-9a74-9a3d30ac4c4c
+2026-06-01 13:53:31,936 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\e6507274-168a-4d98-9a74-9a3d30ac4c4c
+2026-06-01 13:53:33,422 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Watermark Specialty Foods in Bakery's order list.
+2026-06-01 13:53:34,531 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Watermark Specialty Foods order.
+2026-06-01 13:53:35,060 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session f4a5e4cc-1a11-49b0-9bf1-bfdae936d07a -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\f4a5e4cc-1a11-49b0-9bf1-bfdae936d07a
+2026-06-01 13:53:36,429 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\f4a5e4cc-1a11-49b0-9bf1-bfdae936d07a
+2026-06-01 13:53:38,100 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Coca-Cola in Bakery's order list.
+2026-06-01 13:53:39,219 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Coca-Cola order.
+2026-06-01 13:53:40,055 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 88f9a3e5-a3f9-4952-bd81-a4a573ef3b4e -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\88f9a3e5-a3f9-4952-bd81-a4a573ef3b4e
+2026-06-01 13:53:41,410 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\88f9a3e5-a3f9-4952-bd81-a4a573ef3b4e
+2026-06-01 13:53:42,862 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found US Foods in Bakery's order list.
+2026-06-01 13:53:43,971 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in US Foods order.
+2026-06-01 13:53:45,597 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session a0528873-91d8-4f7e-ae23-283286839e19 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\a0528873-91d8-4f7e-ae23-283286839e19
+2026-06-01 13:53:46,941 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\a0528873-91d8-4f7e-ae23-283286839e19
+2026-06-01 13:53:48,572 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found BakeMark in Bakery's order list.
+2026-06-01 13:53:49,679 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in BakeMark order.
+2026-06-01 13:53:49,795 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session d29824f5-4c09-47de-a22d-198c0cc1705f -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\d29824f5-4c09-47de-a22d-198c0cc1705f
+2026-06-01 13:53:51,159 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\d29824f5-4c09-47de-a22d-198c0cc1705f
+2026-06-01 13:53:52,645 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Keck's Food Service in Bakery's order list.
+2026-06-01 13:53:53,759 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Keck's Food Service order.
+2026-06-01 13:53:54,395 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 164a6752-e2b4-4ad1-b4de-4728cd593f42 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\164a6752-e2b4-4ad1-b4de-4728cd593f42
+2026-06-01 13:53:55,764 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\164a6752-e2b4-4ad1-b4de-4728cd593f42
+2026-06-01 13:53:57,446 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Coffee Depot LLC in Bakery's order list.
+2026-06-01 13:53:58,555 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Coffee Depot LLC order.
+2026-06-01 13:53:59,142 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session bb0a0c5c-cfff-4ff7-9634-f54d0d8119ba -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\bb0a0c5c-cfff-4ff7-9634-f54d0d8119ba
+2026-06-01 13:54:00,755 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\bb0a0c5c-cfff-4ff7-9634-f54d0d8119ba
+2026-06-01 13:54:02,435 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Odeko In. in Bakery's order list.
+2026-06-01 13:54:03,554 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Odeko In. order.
+2026-06-01 13:54:03,680 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session dbeb8b4a-3091-4561-a4dc-d51fb2ce86c1 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\dbeb8b4a-3091-4561-a4dc-d51fb2ce86c1
+2026-06-01 13:54:05,035 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\dbeb8b4a-3091-4561-a4dc-d51fb2ce86c1
+2026-06-01 13:54:06,683 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Finger Lakes Coffee Roasters in Bakery's order list.
+2026-06-01 13:54:07,815 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Finger Lakes Coffee Roasters order.
+2026-06-01 13:54:07,928 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 8c10d921-2850-4f43-bf0f-e5cd94d818cc -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\8c10d921-2850-4f43-bf0f-e5cd94d818cc
+2026-06-01 13:54:09,292 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\8c10d921-2850-4f43-bf0f-e5cd94d818cc
+2026-06-01 13:54:11,101 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Equal Exchange in Bakery's order list.
+2026-06-01 13:54:12,217 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Equal Exchange order.
+2026-06-01 13:54:12,735 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session ccccfff2-3d01-4b52-8af4-87f3d3d51efc -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\ccccfff2-3d01-4b52-8af4-87f3d3d51efc
+2026-06-01 13:54:14,098 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\ccccfff2-3d01-4b52-8af4-87f3d3d51efc
+2026-06-01 13:54:15,782 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Harney and Sons Tea in Bakery's order list.
+2026-06-01 13:54:16,908 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Harney and Sons Tea order.
+2026-06-01 13:54:17,146 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 1c0d4aed-0d56-435d-8f4a-98a0c922d1e3 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\1c0d4aed-0d56-435d-8f4a-98a0c922d1e3
+2026-06-01 13:54:18,747 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\1c0d4aed-0d56-435d-8f4a-98a0c922d1e3
+2026-06-01 13:54:20,586 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found BJ's in Bakery's order list.
+2026-06-01 13:54:21,711 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in BJ's order.
+2026-06-01 13:54:21,935 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 91a1b3ee-a7e4-4c35-9805-630fae6d72f3 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\91a1b3ee-a7e4-4c35-9805-630fae6d72f3
+2026-06-01 13:54:23,280 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\91a1b3ee-a7e4-4c35-9805-630fae6d72f3
+2026-06-01 13:54:25,177 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Copper Horse Coffee in Bakery's order list.
+2026-06-01 13:54:26,313 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Copper Horse Coffee order.
+2026-06-01 13:54:26,661 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 1a424f61-48ad-4030-884d-182b680b1010 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\1a424f61-48ad-4030-884d-182b680b1010
+2026-06-01 13:54:28,032 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\1a424f61-48ad-4030-884d-182b680b1010
+2026-06-01 13:54:29,652 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Sweet Sam's Baking Company, LLC in Bakery's order list.
+2026-06-01 13:54:30,763 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Sweet Sam's Baking Company, LLC order.
+2026-06-01 13:54:31,241 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 42b50678-fd06-472b-863b-6ed580278e33 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\42b50678-fd06-472b-863b-6ed580278e33
+2026-06-01 13:54:32,605 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\42b50678-fd06-472b-863b-6ed580278e33
+2026-06-01 13:54:43,260 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Regional Distributors, Inc. in Bakery's order list.
+2026-06-01 13:54:44,378 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Regional Distributors, Inc. order.
+2026-06-01 13:54:45,388 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session a1654411-1234-4a22-9fae-6ed8ecf09451 -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\a1654411-1234-4a22-9fae-6ed8ecf09451
+2026-06-01 13:54:46,751 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\a1654411-1234-4a22-9fae-6ed8ecf09451
+2026-06-01 13:54:48,544 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Farmer Ground Flour in Bakery's order list.
+2026-06-01 13:54:49,689 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Farmer Ground Flour order.
+2026-06-01 13:54:49,799 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session 4268570e-b330-46de-961b-5d77ce8afffe -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\4268570e-b330-46de-961b-5d77ce8afffe
+2026-06-01 13:54:51,172 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\4268570e-b330-46de-961b-5d77ce8afffe
+2026-06-01 13:54:52,751 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Hill & Markes in Bakery's order list.
+2026-06-01 13:54:53,877 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Hill & Markes order.
+2026-06-01 13:54:54,105 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session ab8235ca-b2a1-4405-b2e8-c4e5c7924cdb -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\ab8235ca-b2a1-4405-b2e8-c4e5c7924cdb
+2026-06-01 13:54:55,470 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\ab8235ca-b2a1-4405-b2e8-c4e5c7924cdb
+2026-06-01 13:54:57,052 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found A.L. George in Bakery's order list.
+2026-06-01 13:54:58,169 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in A.L. George order.
+2026-06-01 13:54:58,576 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session a8d27d21-b5aa-4ffb-baaf-c70ffa944e2a -> C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\a8d27d21-b5aa-4ffb-baaf-c70ffa944e2a
+2026-06-01 13:54:59,947 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\a8d27d21-b5aa-4ffb-baaf-c70ffa944e2a
+2026-06-01 13:55:01,708 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Albert's Organics / 20260530.
+2026-06-01 13:55:01,733 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:55:01,733 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Albert's Organics / Bakery / 20260530
+2026-06-01 13:55:01,753 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Albert's Organics
+2026-06-01 13:55:01,753 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / UNFI / 20260530.
+2026-06-01 13:55:01,777 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:55:01,777 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order UNFI / Bakery / 20260530
+2026-06-01 13:55:01,792 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/UNFI
+2026-06-01 13:55:01,792 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Webstaurant / 20260530.
+2026-06-01 13:55:01,816 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:55:01,816 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Webstaurant / Bakery / 20260530
+2026-06-01 13:55:01,830 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Webstaurant
+2026-06-01 13:55:01,830 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Performance Food / 20260530.
+2026-06-01 13:55:01,855 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:55:01,855 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Performance Food / Bakery / 20260530
+2026-06-01 13:55:01,914 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Performance Food
+2026-06-01 13:55:01,915 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Sysco / 20260530.
+2026-06-01 13:55:01,939 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:55:01,939 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Sysco / Bakery / 20260530
+2026-06-01 13:55:01,953 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Sysco
+2026-06-01 13:55:01,953 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Hillcrest Dairy / 20260530.
+2026-06-01 13:55:01,978 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:55:01,978 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Hillcrest Dairy / Bakery / 20260530
+2026-06-01 13:55:02,003 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Hillcrest Dairy
+2026-06-01 13:55:02,003 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / FingerLakes Farms / 20260530.
+2026-06-01 13:55:02,028 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:55:02,028 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order FingerLakes Farms / Bakery / 20260530
+2026-06-01 13:55:02,051 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/FingerLakes Farms
+2026-06-01 13:55:02,051 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Hillcrest Foods / 20260531.
+2026-06-01 13:55:02,076 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:55:02,076 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Hillcrest Foods / Bakery / 20260531
+2026-06-01 13:55:02,099 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Hillcrest Foods
+2026-06-01 13:55:02,099 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Watermark Specialty Foods / 20260531.
+2026-06-01 13:55:02,124 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:55:02,124 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Watermark Specialty Foods / Bakery / 20260531
+2026-06-01 13:55:02,146 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Watermark Specialty Foods
+2026-06-01 13:55:02,146 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Coca-Cola / 20260531.
+2026-06-01 13:55:02,171 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:55:02,171 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Coca-Cola / Bakery / 20260531
+2026-06-01 13:55:02,185 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Coca-Cola
+2026-06-01 13:55:02,185 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / US Foods / 20260531.
+2026-06-01 13:55:02,210 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:55:02,210 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order US Foods / Bakery / 20260531
+2026-06-01 13:55:02,224 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/US Foods
+2026-06-01 13:55:02,225 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / BakeMark / 20260531.
+2026-06-01 13:55:02,255 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Unchanged - skip overwrite.
+2026-06-01 13:55:02,255 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:96) - Bakery's order for BakeMark is already up-to-date...skipping.
+2026-06-01 13:55:02,255 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Keck's Food Service / 20260531.
+2026-06-01 13:55:02,279 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:55:02,280 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Keck's Food Service / Bakery / 20260531
+2026-06-01 13:55:02,302 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Keck's Food Service
+2026-06-01 13:55:02,302 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Coffee Depot LLC / 20260531.
+2026-06-01 13:55:02,327 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:55:02,327 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Coffee Depot LLC / Bakery / 20260531
+2026-06-01 13:55:02,341 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Coffee Depot LLC
+2026-06-01 13:55:02,341 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Odeko In. / 20260531.
+2026-06-01 13:55:02,367 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:55:02,367 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Odeko In. / Bakery / 20260531
+2026-06-01 13:55:02,382 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Odeko In.
+2026-06-01 13:55:02,382 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Finger Lakes Coffee Roasters / 20260531.
+2026-06-01 13:55:02,408 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:55:02,408 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Finger Lakes Coffee Roasters / Bakery / 20260531
+2026-06-01 13:55:02,420 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Finger Lakes Coffee Roasters
+2026-06-01 13:55:02,420 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Equal Exchange / 20260531.
+2026-06-01 13:55:02,447 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:55:02,447 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Equal Exchange / Bakery / 20260531
+2026-06-01 13:55:02,462 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Equal Exchange
+2026-06-01 13:55:02,462 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Harney and Sons Tea / 20260531.
+2026-06-01 13:55:02,488 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:55:02,488 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Harney and Sons Tea / Bakery / 20260531
+2026-06-01 13:55:02,512 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Harney and Sons Tea
+2026-06-01 13:55:02,513 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / BJ's / 20260531.
+2026-06-01 13:55:02,539 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:55:02,540 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order BJ's / Bakery / 20260531
+2026-06-01 13:55:02,553 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/BJ's
+2026-06-01 13:55:02,553 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Copper Horse Coffee / 20260531.
+2026-06-01 13:55:02,580 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:55:02,580 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Copper Horse Coffee / Bakery / 20260531
+2026-06-01 13:55:02,594 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Copper Horse Coffee
+2026-06-01 13:55:02,594 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Sweet Sam's Baking Company, LLC / 20260601.
+2026-06-01 13:55:02,621 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:55:02,621 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Sweet Sam's Baking Company, LLC / Bakery / 20260601
+2026-06-01 13:55:02,635 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Sweet Sam's Baking Company, LLC
+2026-06-01 13:55:02,635 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Regional Distributors, Inc. / 20260601.
+2026-06-01 13:55:02,662 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:55:02,662 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Regional Distributors, Inc. / Bakery / 20260601
+2026-06-01 13:55:02,676 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Regional Distributors, Inc.
+2026-06-01 13:55:02,676 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Farmer Ground Flour / 20260601.
+2026-06-01 13:55:02,702 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:55:02,703 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Farmer Ground Flour / Bakery / 20260601
+2026-06-01 13:55:02,723 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Farmer Ground Flour
+2026-06-01 13:55:02,723 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / Hill & Markes / 20260601.
+2026-06-01 13:55:02,749 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:55:02,750 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Hill & Markes / Bakery / 20260601
+2026-06-01 13:55:02,763 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/Hill & Markes
+2026-06-01 13:55:02,763 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Bakery / A.L. George / 20260601.
+2026-06-01 13:55:02,790 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-06-01 13:55:02,790 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order A.L. George / Bakery / 20260601
+2026-06-01 13:55:02,804 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Bakery/A.L. George
+2026-06-01 13:55:02,804 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:123) - Craftable order sync completed successfully.
+2026-06-01 13:55:02,804 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'download_orders' executed successfully.
+2026-06-01 13:57:05,425 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: display_order (args=['--vendor', "Keck's Food Service", '--store', 'Bakery'])
+2026-06-01 13:57:05,426 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Retrieving orders for: stores=['Bakery'], vendors=["Keck's Food Service"]
+2026-06-01 13:57:05,426 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:65) - Getting orders: vendors=["Keck's Food Service"], stores=['Bakery'], dates=None
+2026-06-01 13:57:05,474 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:73) - Retrieved 1 orders.
+2026-06-01 13:57:05,475 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'display_order' executed successfully.
+2026-06-01 13:59:26,235 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: display_order (args=['--vendor', 'Johnston Paper', '--store', 'Triphammer'])
+2026-06-01 13:59:26,236 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Retrieving orders for: stores=['Triphammer'], vendors=['Johnston Paper']
+2026-06-01 13:59:26,236 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:65) - Getting orders: vendors=['Johnston Paper'], stores=['Triphammer'], dates=None
+2026-06-01 13:59:26,281 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:73) - Retrieved 1 orders.
+2026-06-01 13:59:26,282 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'display_order' executed successfully.
+2026-06-01 13:59:39,124 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: generate_vendor_order_emails (args=['--vendors', 'A.L. George'])
+2026-06-01 13:59:39,126 - INFO - backend.app.services.email_service.EmailServices - (email_service.py:53) - Preparing vendor order emails...
+2026-06-01 13:59:39,126 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:65) - Getting orders: vendors=['A.L. George'], stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], dates=None
+2026-06-01 13:59:39,355 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:73) - Retrieved 4 orders.
+2026-06-01 13:59:40,195 - INFO - backend.app.services.email_service.EmailServices - (email_service.py:90) - Prepared 1 vendor email(s).
+2026-06-01 13:59:40,195 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'generate_vendor_order_emails' executed successfully.
+2026-06-01 14:01:22,742 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: generate_vendor_order_emails (args=['--vendors', 'BALKAN BEVERAGE LLC'])
+2026-06-01 14:01:22,744 - INFO - backend.app.services.email_service.EmailServices - (email_service.py:53) - Preparing vendor order emails...
+2026-06-01 14:01:22,744 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:65) - Getting orders: vendors=['BALKAN BEVERAGE LLC'], stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], dates=None
+2026-06-01 14:01:22,927 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:73) - Retrieved 1 orders.
+2026-06-01 14:01:23,195 - INFO - backend.app.services.email_service.EmailServices - (email_service.py:90) - Prepared 1 vendor email(s).
+2026-06-01 14:01:23,195 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'generate_vendor_order_emails' executed successfully.
+2026-06-01 14:05:52,636 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: generate_vendor_order_emails (args=['--vendors', 'Russo Produce'])
+2026-06-01 14:05:52,639 - INFO - backend.app.services.email_service.EmailServices - (email_service.py:53) - Preparing vendor order emails...
+2026-06-01 14:05:52,639 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:65) - Getting orders: vendors=['Russo Produce'], stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], dates=None
+2026-06-01 14:05:52,846 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:73) - Retrieved 1 orders.
+2026-06-01 14:05:53,127 - INFO - backend.app.services.email_service.EmailServices - (email_service.py:90) - Prepared 1 vendor email(s).
+2026-06-01 14:05:53,128 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'generate_vendor_order_emails' executed successfully.
+2026-06-01 14:08:09,173 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: vendor_information (args=['--vendor', 'Side Hill Acres'])
+2026-06-01 14:08:09,189 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'vendor_information' executed successfully.
+2026-06-01 14:20:01,323 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: display_order (args=['--vendor', 'Webstaurant', '--store', 'Bakery'])
+2026-06-01 14:20:01,324 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Retrieving orders for: stores=['Bakery'], vendors=['Webstaurant']
+2026-06-01 14:20:01,324 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:65) - Getting orders: vendors=['Webstaurant'], stores=['Bakery'], dates=None
+2026-06-01 14:20:01,417 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:73) - Retrieved 1 orders.
+2026-06-01 14:20:01,418 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'display_order' executed successfully.

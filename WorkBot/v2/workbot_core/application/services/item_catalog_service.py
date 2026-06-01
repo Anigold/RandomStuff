@@ -38,8 +38,8 @@ class ItemCatalogService:
     ) -> ItemVendorInfo:
         return ItemVendorInfo(
             id=IdGenerator.item_vendor_info_id(),
-            item_id=command.item_id,
-            vendor_id=command.vendor_id,
+            item_id=self._required_text(command.item_id, 'item id'),
+            vendor_id=self._required_text(command.vendor_id, 'vendor id'),
             vendor_sku=self._clean_optional(command.vendor_sku),
             purchase_unit=self._clean_optional(command.purchase_unit),
             pack_size=command.pack_size,
@@ -53,8 +53,8 @@ class ItemCatalogService:
     ) -> ItemStoreInfo:
         return ItemStoreInfo(
             id=IdGenerator.item_store_info_id(),
-            item_id=command.item_id,
-            store_id=command.store_id,
+            item_id=self._required_text(command.item_id, 'item id'),
+            store_id=self._required_text(command.store_id, 'store id'),
             count_unit=self._clean_optional(command.count_unit),
             par=command.par,
             is_active=command.is_active,

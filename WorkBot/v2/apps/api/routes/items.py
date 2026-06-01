@@ -1,8 +1,9 @@
 from __future__ import annotations
 
+from dataclasses import replace
+
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from dataclasses import replace
 
 from apps.api.dependencies import get_db_session
 from apps.api.schemas.item_schema import (
@@ -13,15 +14,23 @@ from apps.api.schemas.item_schema import (
     ItemResponse,
     ItemStoreInfoResponse,
     ItemVendorInfoResponse,
+    UpdateItemRequest,
+    UpdateItemStoreInfoRequest,
+    UpdateItemVendorInfoRequest,
 )
 from workbot_core.application.dto.item_catalog_commands import (
     AddItemStoreInfoCommand,
     AddItemVendorInfoCommand,
     CreateItemCommand,
+    UpdateItemCommand,
 )
-from workbot_core.application.use_cases.add_item_store_information import AddItemStoreInfo
-from workbot_core.application.use_cases.add_item_vendor_information import AddItemVendorInfo
-from workbot_core.application.use_cases.create_item import CreateItem
+from workbot_core.application.use_cases.add_item_store_information import (
+    AddItemStoreInfo,
+)
+from workbot_core.application.use_cases.add_item_vendor_information import (
+    AddItemVendorInfo,
+)
+from workbot_core.application.use_cases.items.manage_items import ManageItems
 from workbot_core.infrastructure.database.repositories.item_repository import (
     SqlItemRepository,
 )
@@ -37,18 +46,6 @@ from workbot_core.infrastructure.database.repositories.store_repository import (
 from workbot_core.infrastructure.database.repositories.vendor_repository import (
     SqlVendorRepository,
 )
-from apps.api.schemas.item_schema import (
-    AddItemStoreInfoRequest,
-    AddItemVendorInfoRequest,
-    CreateItemRequest,
-    ItemDetailResponse,
-    ItemResponse,
-    ItemStoreInfoResponse,
-    ItemVendorInfoResponse,
-    UpdateItemRequest,
-    UpdateItemStoreInfoRequest,
-    UpdateItemVendorInfoRequest,
-)
 
 router = APIRouter(prefix="/items", tags=["items"])
 
@@ -56,19 +53,17 @@ router = APIRouter(prefix="/items", tags=["items"])
 @router.get("", response_model=list[ItemResponse])
 def list_items(
     search: str | None = None,
+    include_inactive: bool = True,
     session: Session = Depends(get_db_session),
 ) -> list[ItemResponse]:
-    items = SqlItemRepository(session)
-    all_items = items.list_all()
+    items = ManageItems(
+        items=SqlItemRepository(session),
+    ).list_items(
+        search=search,
+        include_inactive=include_inactive,
+    )
 
-    if search:
-        normalized = search.casefold().strip()
-        all_items = [
-            item for item in all_items
-            if normalized in item.name.casefold()
-        ]
-
-    return [_item_response(item) for item in all_items]
+    return [_item_response(item) for item in items]
 
 
 @router.get("/{item_id}", response_model=ItemDetailResponse)
@@ -76,14 +71,16 @@ def get_item(
     item_id: str,
     session: Session = Depends(get_db_session),
 ) -> ItemDetailResponse:
-    items = SqlItemRepository(session)
+    try:
+        item = ManageItems(
+            items=SqlItemRepository(session),
+        ).get_item(item_id)
+
+    except ValueError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+
     vendor_infos = SqlItemVendorInfoRepository(session)
     store_infos = SqlItemStoreInfoRepository(session)
-
-    item = items.get_by_id(item_id)
-
-    if item is None:
-        raise HTTPException(status_code=404, detail=f"Item not found: {item_id}")
 
     return ItemDetailResponse(
         **_item_response(item).model_dump(),
@@ -104,9 +101,9 @@ def create_item(
     session: Session = Depends(get_db_session),
 ) -> ItemResponse:
     try:
-        item = CreateItem(
+        item = ManageItems(
             items=SqlItemRepository(session),
-        ).run(
+        ).create_item(
             CreateItemCommand(
                 name=request.name,
                 category=request.category,
@@ -131,6 +128,62 @@ def create_item(
     except ValueError as exc:
         session.rollback()
         raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+
+@router.put("/{item_id}", response_model=ItemResponse)
+def update_item(
+    item_id: str,
+    request: UpdateItemRequest,
+    session: Session = Depends(get_db_session),
+) -> ItemResponse:
+    try:
+        item = ManageItems(
+            items=SqlItemRepository(session),
+        ).update_item(
+            UpdateItemCommand(
+                item_id=item_id,
+                name=request.name,
+                category=request.category,
+                subcategory=request.subcategory,
+                count_unit_quantity=request.count_unit_quantity,
+                count_unit_measure=request.count_unit_measure,
+                custom_each_name=request.custom_each_name,
+                each_quantity=request.each_quantity,
+                each_measure=request.each_measure,
+                weight_quantity=request.weight_quantity,
+                weight_measure=request.weight_measure,
+                volume_quantity=request.volume_quantity,
+                volume_measure=request.volume_measure,
+                is_active=request.is_active,
+            )
+        )
+
+        session.commit()
+
+        return _item_response(item)
+
+    except ValueError as exc:
+        session.rollback()
+        raise _http_error_from_value_error(exc) from exc
+
+
+@router.delete("/{item_id}", response_model=ItemResponse)
+def delete_item(
+    item_id: str,
+    session: Session = Depends(get_db_session),
+) -> ItemResponse:
+    try:
+        item = ManageItems(
+            items=SqlItemRepository(session),
+        ).deactivate_item(item_id)
+
+        session.commit()
+
+        return _item_response(item)
+
+    except ValueError as exc:
+        session.rollback()
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
 
 
 @router.post(
@@ -197,46 +250,6 @@ def add_item_store_info(
         session.commit()
 
         return _item_store_info_response(info)
-
-    except ValueError as exc:
-        session.rollback()
-        raise HTTPException(status_code=400, detail=str(exc)) from exc
-
-@router.put("/{item_id}", response_model=ItemResponse)
-def update_item(
-    item_id: str,
-    request: UpdateItemRequest,
-    session: Session = Depends(get_db_session),
-) -> ItemResponse:
-    items = SqlItemRepository(session)
-
-    item = items.get_by_id(item_id)
-
-    if item is None:
-        raise HTTPException(status_code=404, detail=f"Item not found: {item_id}")
-
-    try:
-        updated = replace(
-            item,
-            name=request.name,
-            category=request.category,
-            subcategory=request.subcategory,
-            count_unit_quantity=request.count_unit_quantity,
-            count_unit_measure=request.count_unit_measure,
-            custom_each_name=request.custom_each_name,
-            each_quantity=request.each_quantity,
-            each_measure=request.each_measure,
-            weight_quantity=request.weight_quantity,
-            weight_measure=request.weight_measure,
-            volume_quantity=request.volume_quantity,
-            volume_measure=request.volume_measure,
-            is_active=request.is_active,
-        )
-
-        items.save(updated)
-        session.commit()
-
-        return _item_response(updated)
 
     except ValueError as exc:
         session.rollback()
@@ -309,6 +322,16 @@ def update_item_store_info(
     session.commit()
 
     return _item_store_info_response(updated)
+
+
+def _http_error_from_value_error(exc: ValueError) -> HTTPException:
+    message = str(exc)
+
+    if "not found" in message.casefold():
+        return HTTPException(status_code=404, detail=message)
+
+    return HTTPException(status_code=400, detail=message)
+
 
 def _item_response(item) -> ItemResponse:
     return ItemResponse(
