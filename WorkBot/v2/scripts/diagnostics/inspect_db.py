@@ -4,7 +4,6 @@ from sqlalchemy import inspect
 
 from workbot_core.infrastructure.database.session import engine
 
-
 def main() -> None:
     inspector = inspect(engine)
 

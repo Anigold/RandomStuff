@@ -24,6 +24,8 @@ def vendor_record_to_domain(record: VendorRecord) -> Vendor:
         internal_contacts=_contacts_from_json(record.internal_contacts_json),
         ordering=_ordering_from_json(record.ordering_json),
         store_ids=tuple(record.store_ids_json or ()),
+        created_at=record.created_at,
+        updated_at=record.updated_at,
     )
 
 
@@ -39,6 +41,8 @@ def vendor_to_record(vendor: Vendor) -> VendorRecord:
         internal_contacts_json=_contacts_to_json(vendor.internal_contacts),
         ordering_json=_ordering_to_json(vendor.ordering),
         store_ids_json=list(vendor.store_ids),
+        created_at=vendor.created_at,
+        updated_at=vendor.updated_at,
     )
 
 
@@ -52,6 +56,8 @@ def update_vendor_record(record: VendorRecord, vendor: Vendor) -> None:
     record.internal_contacts_json = _contacts_to_json(vendor.internal_contacts)
     record.ordering_json = _ordering_to_json(vendor.ordering)
     record.store_ids_json = list(vendor.store_ids)
+    record.created_at = vendor.created_at
+    record.updated_at = vendor.updated_at
 
 
 def _contacts_to_json(contacts: tuple[ContactInfo, ...]) -> list[dict[str, str]]:

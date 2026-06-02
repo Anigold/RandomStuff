@@ -1,3 +1,5 @@
+# workbot_core/infrastructure/database/mappers/store_mapper.py
+
 from __future__ import annotations
 
 from workbot_core.domain.models.store import Store
@@ -14,6 +16,8 @@ def store_record_to_domain(record: StoreRecord) -> Store:
         address=record.address,
         phone_number=record.phone_number,
         special_notes=record.special_notes or "",
+        created_at=record.created_at,
+        updated_at=record.updated_at,
     )
 
 
@@ -27,6 +31,8 @@ def store_to_record(store: Store) -> StoreRecord:
         address=store.address,
         phone_number=store.phone_number,
         special_notes=store.special_notes,
+        created_at=store.created_at,
+        updated_at=store.updated_at,
     )
 
 
@@ -38,3 +44,5 @@ def update_store_record(record: StoreRecord, store: Store) -> None:
     record.address = store.address
     record.phone_number = store.phone_number
     record.special_notes = store.special_notes
+    record.created_at = store.created_at
+    record.updated_at = store.updated_at

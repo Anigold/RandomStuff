@@ -126,6 +126,49 @@ def start_api(venv_python: Path, project_root: Path) -> int:
         cwd=project_root,
     )
 
+def start_api_in_new_terminal(venv_python: Path, project_root: Path) -> int:
+    command = [
+        str(venv_python),
+        "-m",
+        "uvicorn",
+        "apps.api.main:app",
+        "--reload",
+        "--reload-dir",
+        "apps",
+        "--reload-dir",
+        "workbot_core",
+    ]
+
+    if os.name == "nt":
+        powershell_command = (
+            f"cd '{project_root}'; "
+            f"& '{venv_python}' -m uvicorn apps.api.main:app "
+            f"--reload --reload-dir apps --reload-dir workbot_core"
+        )
+
+        subprocess.Popen(
+            [
+                "powershell",
+                "-NoExit",
+                "-Command",
+                powershell_command,
+            ],
+            cwd=project_root,
+            creationflags=subprocess.CREATE_NEW_CONSOLE,
+        )
+
+        print()
+        print("Started API server in a new PowerShell window.")
+        return 0
+
+    subprocess.Popen(
+        command,
+        cwd=project_root,
+    )
+
+    print()
+    print("Started API server in a separate process.")
+    return 0
 
 def main() -> int:
     project_root = Path(__file__).resolve().parents[2]
@@ -145,7 +188,7 @@ def main() -> int:
     install_requirements_if_present(venv_python, project_root)
     check_required_packages(venv_python, project_root)
 
-    return start_api(venv_python, project_root)
+    return start_api_in_new_terminal(venv_python, project_root)
 
 
 if __name__ == "__main__":

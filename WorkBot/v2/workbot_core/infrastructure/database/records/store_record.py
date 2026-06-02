@@ -1,36 +1,29 @@
+# workbot_core/infrastructure/database/records/store_record.py
+
 from __future__ import annotations
 
-from sqlalchemy import Boolean, String, Text
+from datetime import datetime
+
+from sqlalchemy import DateTime, String
 from sqlalchemy.orm import Mapped, mapped_column
 
-from workbot_core.infrastructure.database.base import Base, TimestampMixin
+from workbot_core.infrastructure.database.base import Base
 
 
-class StoreRecord(Base, TimestampMixin):
+class StoreRecord(Base):
     __tablename__ = "stores"
 
-    id: Mapped[str] = mapped_column(String(32), primary_key=True)
+    id: Mapped[str] = mapped_column(String, primary_key=True)
+    name: Mapped[str] = mapped_column(String, nullable=False, unique=True)
 
-    name: Mapped[str] = mapped_column(
-        String(255),
-        unique=True,
-        nullable=False,
-    )
+    is_active: Mapped[bool] = mapped_column(default=True, nullable=False)
 
-    is_active: Mapped[bool] = mapped_column(
-        Boolean,
-        default=True,
-        nullable=False,
-    )
+    general_manager: Mapped[str | None] = mapped_column(String, nullable=True)
+    inventory_clerk: Mapped[str | None] = mapped_column(String, nullable=True)
 
-    general_manager: Mapped[str | None] = mapped_column(String(255), nullable=True)
-    inventory_clerk: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    address: Mapped[str | None] = mapped_column(String, nullable=True)
+    phone_number: Mapped[str | None] = mapped_column(String, nullable=True)
+    special_notes: Mapped[str] = mapped_column(String, default="", nullable=False)
 
-    address: Mapped[str | None] = mapped_column(String(255), nullable=True)
-    phone_number: Mapped[str | None] = mapped_column(String(64), nullable=True)
-
-    special_notes: Mapped[str] = mapped_column(
-        Text,
-        default="",
-        nullable=False,
-    )
+    created_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    updated_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)

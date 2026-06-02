@@ -1,6 +1,9 @@
+# workbot_core/domain/models/store.py
+
 from __future__ import annotations
 
 from dataclasses import dataclass
+from datetime import datetime
 
 
 @dataclass(frozen=True, slots=True)
@@ -16,3 +19,6 @@ class Store:
     address: str | None = None
     phone_number: str | None = None
     special_notes: str = ""
+
+    created_at: datetime | None = None
+    updated_at: datetime | None = None

@@ -7,7 +7,7 @@ from workbot_core.application.dto.item_import_row import (
     ItemStoreInfoImportRow,
     ItemVendorInfoImportRow,
 )
-from workbot_core.application.use_cases.import_items import ImportItems
+from workbot_core.application.use_cases.items.import_items import ImportItems
 from workbot_core.domain.models.store import Store
 from workbot_core.domain.models.vendor import Vendor
 from workbot_core.infrastructure.database.repositories.item_repository import (
