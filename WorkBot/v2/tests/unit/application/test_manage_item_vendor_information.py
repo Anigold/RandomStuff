@@ -5,48 +5,21 @@ from decimal import Decimal
 
 import pytest
 
+from tests.fakes.repositories import (
+    FakeItemRepository,
+    FakeItemVendorInfoRepository,
+    FakeVendorRepository,
+)
 from workbot_core.application.dto.item_catalog_commands import (
+    AddItemVendorInfoCommand,
     UpdateItemVendorInfoCommand,
 )
-from workbot_core.application.interfaces.repositories import ItemVendorInfoRepository
 from workbot_core.application.use_cases.manage_item_vendor_information import (
     ManageItemVendorInformation,
 )
+from workbot_core.domain.models.item import Item
 from workbot_core.domain.models.item_vendor_info import ItemVendorInfo
-
-
-class FakeItemVendorInfoRepository(ItemVendorInfoRepository):
-    def __init__(
-        self,
-        infos: list[ItemVendorInfo] | None = None,
-    ) -> None:
-        self._infos: dict[str, ItemVendorInfo] = {}
-
-        for info in infos or []:
-            self._infos[info.id] = info
-
-    def save(self, info: ItemVendorInfo) -> None:
-        self._infos[info.id] = info
-
-    def get_by_id(self, info_id: str) -> ItemVendorInfo | None:
-        return self._infos.get(info_id)
-
-    def list_for_item(self, item_id: str) -> list[ItemVendorInfo]:
-        return [
-            info
-            for info in self._infos.values()
-            if info.item_id == item_id
-        ]
-
-    def list_all(self) -> list[ItemVendorInfo]:
-        return list(self._infos.values())
-
-    def list_active(self) -> list[ItemVendorInfo]:
-        return [
-            info
-            for info in self._infos.values()
-            if info.is_active
-        ]
+from workbot_core.domain.models.vendor import Vendor
 
 
 def test_update_vendor_info_saves_updated_info() -> None:

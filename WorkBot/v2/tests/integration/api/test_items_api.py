@@ -16,7 +16,7 @@ from workbot_core.infrastructure.database.base import Base
 
 ITEMS_PATH = "/api/items"
 VENDORS_PATH = "/api/vendors"
-
+STORES_PATH = "/api/stores"
 
 @pytest.fixture
 def client(tmp_path: Path) -> Generator[TestClient, None, None]:
@@ -472,6 +472,144 @@ def test_delete_item_vendor_info_returns_404_for_wrong_item(
     assert response.status_code == 404
     assert response.json()["detail"] == f"Item vendor info not found: {info_id}"
 
+def test_add_item_store_info(client: TestClient) -> None:
+    item_id = _create_item(client, name="Malt Barrel")
+    store_id = _create_store(client, name="Ithaca Bakery")
+
+    response = client.post(
+        _item_store_info_collection_path(item_id),
+        json={
+            "store_id": store_id,
+            "count_unit": "bag",
+            "par": "6",
+            "is_active": True,
+        },
+    )
+
+    assert response.status_code == 201
+
+    data = response.json()
+
+    assert data["id"]
+    assert data["item_id"] == item_id
+    assert data["store_id"] == store_id
+    assert data["count_unit"] == "bag"
+    assert Decimal(data["par"]) == Decimal("6")
+    assert data["is_active"] is True
+
+
+def test_update_item_store_info(client: TestClient) -> None:
+    item_id = _create_item(client, name="Malt Barrel")
+    store_id = _create_store(client, name="Ithaca Bakery")
+    info_id = _add_item_store_info(client, item_id=item_id, store_id=store_id)
+
+    response = client.put(
+        _item_store_info_detail_path(item_id, info_id),
+        json={
+            "count_unit": "case",
+            "par": "12",
+            "is_active": True,
+        },
+    )
+
+    assert response.status_code == 200
+
+    data = response.json()
+
+    assert data["id"] == info_id
+    assert data["item_id"] == item_id
+    assert data["store_id"] == store_id
+    assert data["count_unit"] == "case"
+    assert Decimal(data["par"]) == Decimal("12")
+    assert data["is_active"] is True
+
+
+def test_update_item_store_info_returns_404_for_missing_info(
+    client: TestClient,
+) -> None:
+    item_id = _create_item(client, name="Malt Barrel")
+
+    response = client.put(
+        _item_store_info_detail_path(item_id, "isi_missing"),
+        json={
+            "count_unit": "case",
+            "par": "12",
+            "is_active": True,
+        },
+    )
+
+    assert response.status_code == 404
+    assert response.json()["detail"] == "Item store info not found: isi_missing"
+
+
+def test_update_item_store_info_returns_404_for_wrong_item(
+    client: TestClient,
+) -> None:
+    item_id = _create_item(client, name="Malt Barrel")
+    other_item_id = _create_item(client, name="Flour Bag")
+    store_id = _create_store(client, name="Ithaca Bakery")
+    info_id = _add_item_store_info(client, item_id=item_id, store_id=store_id)
+
+    response = client.put(
+        _item_store_info_detail_path(other_item_id, info_id),
+        json={
+            "count_unit": "case",
+            "par": "12",
+            "is_active": True,
+        },
+    )
+
+    assert response.status_code == 404
+    assert response.json()["detail"] == f"Item store info not found: {info_id}"
+
+
+def test_delete_item_store_info_deactivates_info(client: TestClient) -> None:
+    item_id = _create_item(client, name="Malt Barrel")
+    store_id = _create_store(client, name="Ithaca Bakery")
+    info_id = _add_item_store_info(client, item_id=item_id, store_id=store_id)
+
+    response = client.delete(
+        _item_store_info_detail_path(item_id, info_id),
+    )
+
+    assert response.status_code == 200
+
+    data = response.json()
+
+    assert data["id"] == info_id
+    assert data["item_id"] == item_id
+    assert data["store_id"] == store_id
+    assert data["is_active"] is False
+
+
+def test_delete_item_store_info_returns_404_for_missing_info(
+    client: TestClient,
+) -> None:
+    item_id = _create_item(client, name="Malt Barrel")
+
+    response = client.delete(
+        _item_store_info_detail_path(item_id, "isi_missing"),
+    )
+
+    assert response.status_code == 404
+    assert response.json()["detail"] == "Item store info not found: isi_missing"
+
+
+def test_delete_item_store_info_returns_404_for_wrong_item(
+    client: TestClient,
+) -> None:
+    item_id = _create_item(client, name="Malt Barrel")
+    other_item_id = _create_item(client, name="Flour Bag")
+    store_id = _create_store(client, name="Ithaca Bakery")
+    info_id = _add_item_store_info(client, item_id=item_id, store_id=store_id)
+
+    response = client.delete(
+        _item_store_info_detail_path(other_item_id, info_id),
+    )
+
+    assert response.status_code == 404
+    assert response.json()["detail"] == f"Item store info not found: {info_id}"
+
 
 def _create_item(client: TestClient, *, name: str) -> str:
     response = client.post(
@@ -535,3 +673,45 @@ def _item_vendor_info_collection_path(item_id: str) -> str:
 
 def _item_vendor_info_detail_path(item_id: str, info_id: str) -> str:
     return f"{_item_vendor_info_collection_path(item_id)}/{info_id}"
+
+def _create_store(client: TestClient, *, name: str) -> str:
+    response = client.post(
+        STORES_PATH,
+        json={
+            "name": name,
+            "is_active": True,
+        },
+    )
+
+    assert response.status_code == 201
+
+    return response.json()["id"]
+
+
+def _add_item_store_info(
+    client: TestClient,
+    *,
+    item_id: str,
+    store_id: str,
+) -> str:
+    response = client.post(
+        _item_store_info_collection_path(item_id),
+        json={
+            "store_id": store_id,
+            "count_unit": "bag",
+            "par": "6",
+            "is_active": True,
+        },
+    )
+
+    assert response.status_code == 201
+
+    return response.json()["id"]
+
+
+def _item_store_info_collection_path(item_id: str) -> str:
+    return f"{ITEMS_PATH}/{item_id}/store-info"
+
+
+def _item_store_info_detail_path(item_id: str, info_id: str) -> str:
+    return f"{_item_store_info_collection_path(item_id)}/{info_id}"
