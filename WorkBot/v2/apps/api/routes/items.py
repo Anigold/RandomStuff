@@ -23,6 +23,7 @@ from workbot_core.application.dto.item_catalog_commands import (
     AddItemVendorInfoCommand,
     CreateItemCommand,
     UpdateItemCommand,
+    UpdateItemVendorInfoCommand,
 )
 from workbot_core.application.use_cases.add_item_store_information import (
     AddItemStoreInfo,
@@ -31,6 +32,9 @@ from workbot_core.application.use_cases.add_item_vendor_information import (
     AddItemVendorInfo,
 )
 from workbot_core.application.use_cases.items.manage_items import ManageItems
+from workbot_core.application.use_cases.manage_item_vendor_information import (
+    ManageItemVendorInformation,
+)
 from workbot_core.infrastructure.database.repositories.item_repository import (
     SqlItemRepository,
 )
@@ -266,29 +270,28 @@ def update_item_vendor_info(
     request: UpdateItemVendorInfoRequest,
     session: Session = Depends(get_db_session),
 ) -> ItemVendorInfoResponse:
-    item_vendor_infos = SqlItemVendorInfoRepository(session)
-
-    info = item_vendor_infos.get_by_id(info_id)
-
-    if info is None or info.item_id != item_id:
-        raise HTTPException(
-            status_code=404,
-            detail=f"Item vendor info not found: {info_id}",
+    try:
+        info = ManageItemVendorInformation(
+            item_vendor_infos=SqlItemVendorInfoRepository(session),
+        ).update_vendor_info(
+            UpdateItemVendorInfoCommand(
+                item_id=item_id,
+                info_id=info_id,
+                vendor_sku=request.vendor_sku,
+                purchase_unit=request.purchase_unit,
+                pack_size=request.pack_size,
+                price=request.price,
+                is_active=request.is_active,
+            )
         )
 
-    updated = replace(
-        info,
-        vendor_sku=request.vendor_sku,
-        purchase_unit=request.purchase_unit,
-        pack_size=request.pack_size,
-        price=request.price,
-        is_active=request.is_active,
-    )
+        session.commit()
 
-    item_vendor_infos.save(updated)
-    session.commit()
+        return _item_vendor_info_response(info)
 
-    return _item_vendor_info_response(updated)
+    except ValueError as exc:
+        session.rollback()
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
 
 
 @router.put(
@@ -322,6 +325,32 @@ def update_item_store_info(
     session.commit()
 
     return _item_store_info_response(updated)
+
+
+@router.delete(
+    "/{item_id}/vendor-info/{info_id}",
+    response_model=ItemVendorInfoResponse,
+)
+def delete_item_vendor_info(
+    item_id: str,
+    info_id: str,
+    session: Session = Depends(get_db_session),
+) -> ItemVendorInfoResponse:
+    try:
+        info = ManageItemVendorInformation(
+            item_vendor_infos=SqlItemVendorInfoRepository(session),
+        ).deactivate_vendor_info(
+            item_id=item_id,
+            info_id=info_id,
+        )
+
+        session.commit()
+
+        return _item_vendor_info_response(info)
+
+    except ValueError as exc:
+        session.rollback()
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
 
 
 def _http_error_from_value_error(exc: ValueError) -> HTTPException:

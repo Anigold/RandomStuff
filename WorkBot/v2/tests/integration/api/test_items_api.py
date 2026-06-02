@@ -2,16 +2,20 @@ from __future__ import annotations
 
 from collections.abc import Generator
 from pathlib import Path
+from decimal import Decimal
 
 import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
-from sqlalchemy.engine import Engine
 from sqlalchemy.orm import Session, sessionmaker
 
 from apps.api.dependencies import get_db_session
 from apps.api.main import app
 from workbot_core.infrastructure.database.base import Base
+
+
+ITEMS_PATH = "/api/items"
+VENDORS_PATH = "/api/vendors"
 
 
 @pytest.fixture
@@ -51,10 +55,8 @@ def client(tmp_path: Path) -> Generator[TestClient, None, None]:
 
 
 def test_create_item(client: TestClient) -> None:
-    items_path = _items_collection_path()
-
     response = client.post(
-        items_path,
+        ITEMS_PATH,
         json={
             "name": "Malt Barrel",
             "category": "Dry Goods",
@@ -87,16 +89,14 @@ def test_create_item(client: TestClient) -> None:
 
 
 def test_create_item_rejects_duplicate_name(client: TestClient) -> None:
-    items_path = _items_collection_path()
-
     payload = {
         "name": "Malt Barrel",
         "category": "Dry Goods",
         "is_active": True,
     }
 
-    first_response = client.post(items_path, json=payload)
-    duplicate_response = client.post(items_path, json=payload)
+    first_response = client.post(ITEMS_PATH, json=payload)
+    duplicate_response = client.post(ITEMS_PATH, json=payload)
 
     assert first_response.status_code == 201
     assert duplicate_response.status_code == 400
@@ -104,10 +104,8 @@ def test_create_item_rejects_duplicate_name(client: TestClient) -> None:
 
 
 def test_list_items(client: TestClient) -> None:
-    items_path = _items_collection_path()
-
     client.post(
-        items_path,
+        ITEMS_PATH,
         json={
             "name": "Malt Barrel",
             "category": "Dry Goods",
@@ -115,7 +113,7 @@ def test_list_items(client: TestClient) -> None:
         },
     )
     client.post(
-        items_path,
+        ITEMS_PATH,
         json={
             "name": "Flour Bag",
             "category": "Dry Goods",
@@ -123,7 +121,7 @@ def test_list_items(client: TestClient) -> None:
         },
     )
 
-    response = client.get(items_path)
+    response = client.get(ITEMS_PATH)
 
     assert response.status_code == 200
 
@@ -135,10 +133,8 @@ def test_list_items(client: TestClient) -> None:
 
 
 def test_list_items_can_search_by_name(client: TestClient) -> None:
-    items_path = _items_collection_path()
-
     client.post(
-        items_path,
+        ITEMS_PATH,
         json={
             "name": "Malt Barrel",
             "category": "Dry Goods",
@@ -146,7 +142,7 @@ def test_list_items_can_search_by_name(client: TestClient) -> None:
         },
     )
     client.post(
-        items_path,
+        ITEMS_PATH,
         json={
             "name": "Flour Bag",
             "category": "Dry Goods",
@@ -154,7 +150,7 @@ def test_list_items_can_search_by_name(client: TestClient) -> None:
         },
     )
 
-    response = client.get(items_path, params={"search": "malt"})
+    response = client.get(ITEMS_PATH, params={"search": "malt"})
 
     assert response.status_code == 200
 
@@ -165,10 +161,8 @@ def test_list_items_can_search_by_name(client: TestClient) -> None:
 
 
 def test_get_item_detail(client: TestClient) -> None:
-    items_path = _items_collection_path()
-
     create_response = client.post(
-        items_path,
+        ITEMS_PATH,
         json={
             "name": "Malt Barrel",
             "category": "Dry Goods",
@@ -201,10 +195,8 @@ def test_get_item_detail_returns_404_for_missing_item(client: TestClient) -> Non
 
 
 def test_update_item(client: TestClient) -> None:
-    items_path = _items_collection_path()
-
     create_response = client.post(
-        items_path,
+        ITEMS_PATH,
         json={
             "name": "Malt Barrel",
             "category": "Dry Goods",
@@ -263,10 +255,8 @@ def test_update_item_returns_404_for_missing_item(client: TestClient) -> None:
 
 
 def test_update_item_rejects_duplicate_name(client: TestClient) -> None:
-    items_path = _items_collection_path()
-
     first_response = client.post(
-        items_path,
+        ITEMS_PATH,
         json={
             "name": "Original Item",
             "category": "Dry Goods",
@@ -274,7 +264,7 @@ def test_update_item_rejects_duplicate_name(client: TestClient) -> None:
         },
     )
     client.post(
-        items_path,
+        ITEMS_PATH,
         json={
             "name": "Duplicate Item",
             "category": "Dry Goods",
@@ -298,10 +288,8 @@ def test_update_item_rejects_duplicate_name(client: TestClient) -> None:
 
 
 def test_delete_item_deactivates_item(client: TestClient) -> None:
-    items_path = _items_collection_path()
-
     create_response = client.post(
-        items_path,
+        ITEMS_PATH,
         json={
             "name": "Malt Barrel",
             "category": "Dry Goods",
@@ -334,23 +322,216 @@ def test_delete_item_returns_404_for_missing_item(client: TestClient) -> None:
     assert response.json()["detail"] == "Item not found: itm_missing"
 
 
-def _items_collection_path() -> str:
-    for route in app.routes:
-        if getattr(route, "name", None) == "create_item":
-            return route.path
+def test_add_item_vendor_info(client: TestClient) -> None:
+    item_id = _create_item(client, name="Malt Barrel")
+    vendor_id = _create_vendor(client, name="Sysco")
 
-    raise AssertionError(
-        "Could not find FastAPI route named 'create_item'. "
-        "Check that apps.api.main includes the items router."
+    response = client.post(
+        _item_vendor_info_collection_path(item_id),
+        json={
+            "vendor_id": vendor_id,
+            "vendor_sku": "SYS-MALT",
+            "purchase_unit": "case",
+            "pack_size": "12",
+            "price": "42.50",
+            "is_active": True,
+        },
     )
+
+    assert response.status_code == 201
+
+    data = response.json()
+
+    assert data["id"]
+    assert data["item_id"] == item_id
+    assert data["vendor_id"] == vendor_id
+    assert data["vendor_sku"] == "SYS-MALT"
+    assert data["purchase_unit"] == "case"
+    assert Decimal(data["pack_size"]) == Decimal("12")
+    assert Decimal(data["price"]) == Decimal("42.50")
+    assert data["is_active"] is True
+
+
+def test_update_item_vendor_info(client: TestClient) -> None:
+    item_id = _create_item(client, name="Malt Barrel")
+    vendor_id = _create_vendor(client, name="Sysco")
+    info_id = _add_item_vendor_info(client, item_id=item_id, vendor_id=vendor_id)
+
+    response = client.put(
+        _item_vendor_info_detail_path(item_id, info_id),
+        json={
+            "vendor_sku": "UPDATED-SKU",
+            "purchase_unit": "bag",
+            "pack_size": "24",
+            "price": "84.75",
+            "is_active": True,
+        },
+    )
+
+    assert response.status_code == 200
+
+    data = response.json()
+
+    assert data["id"] == info_id
+    assert data["item_id"] == item_id
+    assert data["vendor_id"] == vendor_id
+    assert data["vendor_sku"] == "UPDATED-SKU"
+    assert data["purchase_unit"] == "bag"
+    assert Decimal(data["pack_size"]) == Decimal("24")
+    assert Decimal(data["price"]) == Decimal("84.75")
+    assert data["is_active"] is True
+
+
+def test_update_item_vendor_info_returns_404_for_missing_info(
+    client: TestClient,
+) -> None:
+    item_id = _create_item(client, name="Malt Barrel")
+
+    response = client.put(
+        _item_vendor_info_detail_path(item_id, "ivi_missing"),
+        json={
+            "vendor_sku": "UPDATED-SKU",
+            "purchase_unit": "bag",
+            "pack_size": "24",
+            "price": "84.75",
+            "is_active": True,
+        },
+    )
+
+    assert response.status_code == 404
+    assert response.json()["detail"] == "Item vendor info not found: ivi_missing"
+
+
+def test_update_item_vendor_info_returns_404_for_wrong_item(
+    client: TestClient,
+) -> None:
+    item_id = _create_item(client, name="Malt Barrel")
+    other_item_id = _create_item(client, name="Flour Bag")
+    vendor_id = _create_vendor(client, name="Sysco")
+    info_id = _add_item_vendor_info(client, item_id=item_id, vendor_id=vendor_id)
+
+    response = client.put(
+        _item_vendor_info_detail_path(other_item_id, info_id),
+        json={
+            "vendor_sku": "UPDATED-SKU",
+            "purchase_unit": "bag",
+            "pack_size": "24",
+            "price": "84.75",
+            "is_active": True,
+        },
+    )
+
+    assert response.status_code == 404
+    assert response.json()["detail"] == f"Item vendor info not found: {info_id}"
+
+
+def test_delete_item_vendor_info_deactivates_info(client: TestClient) -> None:
+    item_id = _create_item(client, name="Malt Barrel")
+    vendor_id = _create_vendor(client, name="Sysco")
+    info_id = _add_item_vendor_info(client, item_id=item_id, vendor_id=vendor_id)
+
+    response = client.delete(
+        _item_vendor_info_detail_path(item_id, info_id),
+    )
+
+    assert response.status_code == 200
+
+    data = response.json()
+
+    assert data["id"] == info_id
+    assert data["item_id"] == item_id
+    assert data["vendor_id"] == vendor_id
+    assert data["is_active"] is False
+
+
+def test_delete_item_vendor_info_returns_404_for_missing_info(
+    client: TestClient,
+) -> None:
+    item_id = _create_item(client, name="Malt Barrel")
+
+    response = client.delete(
+        _item_vendor_info_detail_path(item_id, "ivi_missing"),
+    )
+
+    assert response.status_code == 404
+    assert response.json()["detail"] == "Item vendor info not found: ivi_missing"
+
+
+def test_delete_item_vendor_info_returns_404_for_wrong_item(
+    client: TestClient,
+) -> None:
+    item_id = _create_item(client, name="Malt Barrel")
+    other_item_id = _create_item(client, name="Flour Bag")
+    vendor_id = _create_vendor(client, name="Sysco")
+    info_id = _add_item_vendor_info(client, item_id=item_id, vendor_id=vendor_id)
+
+    response = client.delete(
+        _item_vendor_info_detail_path(other_item_id, info_id),
+    )
+
+    assert response.status_code == 404
+    assert response.json()["detail"] == f"Item vendor info not found: {info_id}"
+
+
+def _create_item(client: TestClient, *, name: str) -> str:
+    response = client.post(
+        ITEMS_PATH,
+        json={
+            "name": name,
+            "category": "Dry Goods",
+            "is_active": True,
+        },
+    )
+
+    assert response.status_code == 201
+
+    return response.json()["id"]
+
+
+def _create_vendor(client: TestClient, *, name: str) -> str:
+    response = client.post(
+        VENDORS_PATH,
+        json={
+            "name": name,
+            "is_active": True,
+        },
+    )
+
+    assert response.status_code == 201
+
+    return response.json()["id"]
+
+
+def _add_item_vendor_info(
+    client: TestClient,
+    *,
+    item_id: str,
+    vendor_id: str,
+) -> str:
+    response = client.post(
+        _item_vendor_info_collection_path(item_id),
+        json={
+            "vendor_id": vendor_id,
+            "vendor_sku": "SYS-MALT",
+            "purchase_unit": "case",
+            "pack_size": "12",
+            "price": "42.50",
+            "is_active": True,
+        },
+    )
+
+    assert response.status_code == 201
+
+    return response.json()["id"]
 
 
 def _item_detail_path(item_id: str) -> str:
-    for route in app.routes:
-        if getattr(route, "name", None) == "get_item":
-            return route.path.replace("{item_id}", item_id)
+    return f"{ITEMS_PATH}/{item_id}"
 
-    raise AssertionError(
-        "Could not find FastAPI route named 'get_item'. "
-        "Check that apps.api.main includes the items router."
-    )
+
+def _item_vendor_info_collection_path(item_id: str) -> str:
+    return f"{ITEMS_PATH}/{item_id}/vendor-info"
+
+
+def _item_vendor_info_detail_path(item_id: str, info_id: str) -> str:
+    return f"{_item_vendor_info_collection_path(item_id)}/{info_id}"
