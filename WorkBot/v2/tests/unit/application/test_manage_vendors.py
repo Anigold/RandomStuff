@@ -80,7 +80,7 @@ def create_vendor(
                 min_order_cases=request.min_order_cases,
                 internal_contacts=_contact_info_commands(request.internal_contacts),
                 ordering=_ordering_info_command(request.ordering),
-                store_ids=tuple(request.store_ids),
+                store_references=tuple(request.store_ids),
             )
         )
 
@@ -113,7 +113,7 @@ def update_vendor(
                 min_order_cases=request.min_order_cases,
                 internal_contacts=_contact_info_commands(request.internal_contacts),
                 ordering=_ordering_info_command(request.ordering),
-                store_ids=tuple(request.store_ids),
+                store_references=tuple(request.store_ids),
             )
         )
 
@@ -217,7 +217,7 @@ def _vendor_response(vendor: Vendor) -> VendorResponse:
                 for entry in vendor.ordering.schedule
             ],
         ),
-        store_ids=list(vendor.store_ids),
+        store_references=list(vendor.store_ids),
         created_at=vendor.created_at,
         updated_at=vendor.updated_at,
     )

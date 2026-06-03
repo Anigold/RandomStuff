@@ -6,6 +6,11 @@ from decimal import Decimal
 from pydantic import BaseModel, Field
 
 
+class VendorStoreReferenceSchema(BaseModel):
+    store_id: str
+    vendor_store_reference: str = ""
+
+
 class ContactInfoSchema(BaseModel):
     name: str
     title: str = ""
@@ -41,7 +46,7 @@ class CreateVendorRequest(BaseModel):
     internal_contacts: list[ContactInfoSchema] = Field(default_factory=list)
     ordering: OrderingInfoSchema = Field(default_factory=OrderingInfoSchema)
 
-    store_ids: list[str] = Field(default_factory=list)
+    store_references: list[VendorStoreReferenceSchema] = Field(default_factory=list)
 
 
 class UpdateVendorRequest(BaseModel):
@@ -58,7 +63,7 @@ class UpdateVendorRequest(BaseModel):
     internal_contacts: list[ContactInfoSchema] = Field(default_factory=list)
     ordering: OrderingInfoSchema = Field(default_factory=OrderingInfoSchema)
 
-    store_ids: list[str] = Field(default_factory=list)
+    store_references: list[VendorStoreReferenceSchema] = Field(default_factory=list)
 
 
 class VendorResponse(BaseModel):
@@ -76,7 +81,7 @@ class VendorResponse(BaseModel):
     internal_contacts: list[ContactInfoSchema] = Field(default_factory=list)
     ordering: OrderingInfoSchema = Field(default_factory=OrderingInfoSchema)
 
-    store_ids: list[str] = Field(default_factory=list)
+    store_references: list[VendorStoreReferenceSchema] = Field(default_factory=list)
 
     created_at: datetime | None = None
     updated_at: datetime | None = None

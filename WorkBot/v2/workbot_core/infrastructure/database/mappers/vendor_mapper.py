@@ -8,6 +8,7 @@ from workbot_core.domain.models.vendor import (
     OrderingInfo,
     ScheduleEntry,
     Vendor,
+    VendorStoreReference,
 )
 from workbot_core.infrastructure.database.records.vendor_record import VendorRecord
 
@@ -23,7 +24,9 @@ def vendor_record_to_domain(record: VendorRecord) -> Vendor:
         min_order_cases=record.min_order_cases or 0,
         internal_contacts=_contacts_from_json(record.internal_contacts_json),
         ordering=_ordering_from_json(record.ordering_json),
-        store_ids=tuple(record.store_ids_json or ()),
+        store_references=_store_references_from_json(
+            record.store_references_json
+        ),
         created_at=record.created_at,
         updated_at=record.updated_at,
     )
@@ -40,7 +43,9 @@ def vendor_to_record(vendor: Vendor) -> VendorRecord:
         min_order_cases=vendor.min_order_cases,
         internal_contacts_json=_contacts_to_json(vendor.internal_contacts),
         ordering_json=_ordering_to_json(vendor.ordering),
-        store_ids_json=list(vendor.store_ids),
+        store_references_json=_store_references_to_json(
+            vendor.store_references
+        ),
         created_at=vendor.created_at,
         updated_at=vendor.updated_at,
     )
@@ -55,9 +60,15 @@ def update_vendor_record(record: VendorRecord, vendor: Vendor) -> None:
     record.min_order_cases = vendor.min_order_cases
     record.internal_contacts_json = _contacts_to_json(vendor.internal_contacts)
     record.ordering_json = _ordering_to_json(vendor.ordering)
-    record.store_ids_json = list(vendor.store_ids)
-    record.created_at = vendor.created_at
-    record.updated_at = vendor.updated_at
+    record.store_references_json = _store_references_to_json(
+        vendor.store_references
+    )
+
+    if vendor.created_at is not None:
+        record.created_at = vendor.created_at
+
+    if vendor.updated_at is not None:
+        record.updated_at = vendor.updated_at
 
 
 def _contacts_to_json(contacts: tuple[ContactInfo, ...]) -> list[dict[str, str]]:
@@ -127,6 +138,46 @@ def _schedule_from_json(raw: Any) -> tuple[ScheduleEntry, ...]:
             order_day=str(item.get("order_day", "")),
             delivery_days=tuple(item.get("delivery_days") or ()),
             cutoff_time=str(item.get("cutoff_time", "")),
+        )
+        for item in raw
+        if isinstance(item, dict)
+    )
+
+
+def _store_references_to_json(
+    store_references: tuple[VendorStoreReference, ...],
+) -> list[dict[str, str]]:
+    return [
+        {
+            "store_id": reference.store_id,
+            "vendor_store_reference": reference.vendor_store_reference,
+        }
+        for reference in store_references
+    ]
+
+
+def _store_references_from_json(raw: Any) -> tuple[VendorStoreReference, ...]:
+    if not raw:
+        return ()
+
+    # Backward compatibility:
+    # Old data may be a list of store ID strings:
+    # ["str_ithaca", "str_collegetown"]
+    if isinstance(raw, list) and all(isinstance(item, str) for item in raw):
+        return tuple(
+            VendorStoreReference(
+                store_id=item,
+                vendor_store_reference="",
+            )
+            for item in raw
+        )
+
+    return tuple(
+        VendorStoreReference(
+            store_id=str(item.get("store_id", "")),
+            vendor_store_reference=str(
+                item.get("vendor_store_reference", "")
+            ),
         )
         for item in raw
         if isinstance(item, dict)

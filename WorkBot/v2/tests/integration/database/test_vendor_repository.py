@@ -7,6 +7,7 @@ from workbot_core.domain.models.vendor import (
     OrderingInfo,
     ScheduleEntry,
     Vendor,
+    VendorStoreReference
 )
 from workbot_core.infrastructure.database.repositories.vendor_repository import (
     SqlVendorRepository,
@@ -44,7 +45,12 @@ def test_vendor_repository_saves_and_loads_vendor(db_session):
                 ),
             ),
         ),
-        store_ids=("str_TEST",),
+        store_references=(
+            VendorStoreReference(
+                store_id="str_TEST",
+                vendor_store_reference="RUSSO-ITHACA",
+            ),
+        )
     )
 
     vendors.save(vendor)
@@ -61,7 +67,12 @@ def test_vendor_repository_saves_and_loads_vendor(db_session):
     assert saved.min_order_cases == 3
     assert saved.internal_contacts == vendor.internal_contacts
     assert saved.ordering == vendor.ordering
-    assert saved.store_ids == ("str_TEST",)
+    assert saved.store_references == (
+        VendorStoreReference(
+            store_id="str_TEST",
+            vendor_store_reference="RUSSO-ITHACA",
+        ),
+    )
 
 
 def test_vendor_repository_lists_active_vendors(db_session):

@@ -13,6 +13,7 @@ from workbot_core.domain.models.vendor import (
     OrderingInfo,
     ScheduleEntry,
     Vendor,
+    VendorStoreReference
 )
 from workbot_core.utils.ids import IdGenerator
 
@@ -43,7 +44,9 @@ class ManageVendors:
             min_order_cases=command.min_order_cases,
             internal_contacts=self._clean_contacts(command.internal_contacts),
             ordering=self._clean_ordering(command.ordering),
-            store_ids=self._clean_store_ids(command.store_ids),
+            store_references=self._clean_store_references(
+                command.store_references
+            ),
             created_at=now,
             updated_at=now,
         )
@@ -55,23 +58,28 @@ class ManageVendors:
     def list_vendors(
         self,
         *,
-        include_inactive: bool = True,
         search: str | None = None,
+        include_inactive: bool = True,
     ) -> list[Vendor]:
-        if include_inactive:
-            vendors = self._vendors.list_all()
-        else:
-            vendors = self._vendors.list_active()
+        vendors = (
+            self._vendors.list_all()
+            if include_inactive
+            else self._vendors.list_active()
+        )
 
-        if search:
-            normalized = search.casefold().strip()
-            vendors = [
-                vendor
-                for vendor in vendors
-                if normalized in vendor.name.casefold()
-            ]
+        cleaned_search = self._clean_optional(search)
 
-        return vendors
+        if cleaned_search is None:
+            return vendors
+
+        search_lower = cleaned_search.casefold()
+
+        return [
+            vendor
+            for vendor in vendors
+            if search_lower in vendor.name.casefold()
+        ]
+
 
     def get_vendor(self, vendor_id: str) -> Vendor:
         vendor = self._vendors.get_by_id(vendor_id)
@@ -102,7 +110,9 @@ class ManageVendors:
             min_order_cases=command.min_order_cases,
             internal_contacts=self._clean_contacts(command.internal_contacts),
             ordering=self._clean_ordering(command.ordering),
-            store_ids=self._clean_store_ids(command.store_ids),
+            store_references=self._clean_store_references(
+                command.store_references
+            ),
             updated_at=self._now(),
         )
 
@@ -111,10 +121,7 @@ class ManageVendors:
         return updated
 
     def deactivate_vendor(self, vendor_id: str) -> Vendor:
-        vendor = self._vendors.get_by_id(vendor_id)
-
-        if vendor is None:
-            raise ValueError(f"Vendor not found: {vendor_id}")
+        vendor = self.get_vendor(vendor_id)
 
         updated = replace(
             vendor,
@@ -159,34 +166,42 @@ class ManageVendors:
         cls,
         contacts: tuple[ContactInfo, ...],
     ) -> tuple[ContactInfo, ...]:
-        cleaned_contacts: list[ContactInfo] = []
-
-        for contact in contacts:
-            name = cls._required_text(contact.name, "contact name")
-
-            cleaned_contacts.append(
-                ContactInfo(
-                    name=name,
-                    title=cls._clean_text(contact.title),
-                    email=cls._clean_text(contact.email),
-                    phone=cls._clean_text(contact.phone),
-                )
+        return tuple(
+            ContactInfo(
+                name=cls._required_text(contact.name, "contact name"),
+                title=cls._clean_text(contact.title),
+                email=cls._clean_text(contact.email),
+                phone=cls._clean_text(contact.phone),
             )
-
-        return tuple(cleaned_contacts)
+            for contact in contacts
+        )
 
     @classmethod
     def _clean_ordering(cls, ordering: OrderingInfo) -> OrderingInfo:
         return OrderingInfo(
             method=tuple(
-                method
-                for raw_method in ordering.method
-                if (method := raw_method.strip())
+                cleaned
+                for value in ordering.method
+                if (cleaned := cls._clean_optional(value)) is not None
             ),
             email=cls._clean_text(ordering.email),
             portal_url=cls._clean_text(ordering.portal_url),
             phone_number=cls._clean_text(ordering.phone_number),
-            schedule=cls._clean_schedule(ordering.schedule),
+            schedule=tuple(
+                ScheduleEntry(
+                    order_day=cls._required_text(
+                        entry.order_day,
+                        "order day",
+                    ),
+                    delivery_days=tuple(
+                        cleaned
+                        for value in entry.delivery_days
+                        if (cleaned := cls._clean_optional(value)) is not None
+                    ),
+                    cutoff_time=cls._clean_text(entry.cutoff_time),
+                )
+                for entry in ordering.schedule
+            ),
         )
 
     @classmethod
@@ -213,10 +228,18 @@ class ManageVendors:
 
         return tuple(cleaned_schedule)
 
-    @staticmethod
-    def _clean_store_ids(store_ids: tuple[str, ...]) -> tuple[str, ...]:
+
+    @classmethod
+    def _clean_store_references(
+        cls,
+        store_references: tuple[VendorStoreReference, ...],
+    ) -> tuple[VendorStoreReference, ...]:
         return tuple(
-            store_id
-            for raw_store_id in store_ids
-            if (store_id := raw_store_id.strip())
+            VendorStoreReference(
+                store_id=cls._required_text(reference.store_id, "store id"),
+                vendor_store_reference=cls._clean_text(
+                    reference.vendor_store_reference
+                ),
+            )
+            for reference in store_references
         )

@@ -1,12 +1,10 @@
-# workbot_core/infrastructure/database/records/vendor_record.py
-
 from __future__ import annotations
 
 from datetime import datetime
 from decimal import Decimal
 from typing import Any
 
-from sqlalchemy import DateTime, Integer, Numeric, String, Text, JSON
+from sqlalchemy import DateTime, Integer, JSON, Numeric, String, Text
 from sqlalchemy.orm import Mapped, mapped_column
 
 from workbot_core.infrastructure.database.base import Base
@@ -44,7 +42,7 @@ class VendorRecord(Base):
         default=dict,
         nullable=False,
     )
-    store_ids_json: Mapped[list[str]] = mapped_column(
+    store_references_json: Mapped[list[dict[str, str]]] = mapped_column(
         JSON,
         default=list,
         nullable=False,

@@ -29,6 +29,12 @@ class OrderingInfo:
 
 
 @dataclass(frozen=True, slots=True)
+class VendorStoreReference:
+    store_id: str
+    vendor_store_reference: str = ""
+
+
+@dataclass(frozen=True, slots=True)
 class Vendor:
     id: str
     name: str
@@ -44,7 +50,7 @@ class Vendor:
     internal_contacts: tuple[ContactInfo, ...] = ()
     ordering: OrderingInfo = OrderingInfo()
 
-    store_ids: tuple[str, ...] = ()
+    store_references: tuple[VendorStoreReference, ...] = ()
 
     created_at: datetime | None = None
     updated_at: datetime | None = None

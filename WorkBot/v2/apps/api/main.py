@@ -16,7 +16,7 @@ def create_app() -> FastAPI:
     app.include_router(stores.router, prefix="/api")
     app.include_router(vendors.router, prefix="/api")
 
-    app.mount("/static", StaticFiles(directory="apps/api/static"), name="static")
+    app.mount("/admin", StaticFiles(directory="apps/web/static", html=True), name="admin")
 
     return app
 

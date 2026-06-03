@@ -81,7 +81,16 @@ def test_create_vendor(client: TestClient) -> None:
                     }
                 ],
             },
-            "store_ids": ["sto_ithaca", "sto_collegetown"],
+            "store_references": [
+                {
+                    "store_id": "sto_ithaca",
+                    "vendor_store_reference": "ITH001"
+                },
+                {
+                    "store_id": "sto_collegetown",
+                    "vendor_store_reference": ""
+                }
+            ],
             "is_active": True,
         },
     )
@@ -117,7 +126,16 @@ def test_create_vendor(client: TestClient) -> None:
             }
         ],
     }
-    assert data["store_ids"] == ["sto_ithaca", "sto_collegetown"]
+    assert data["store_references"] == [
+        {
+            "store_id": "sto_ithaca",
+            "vendor_store_reference": "ITH001",
+        },
+        {
+            "store_id": "sto_collegetown",
+            "vendor_store_reference": "",
+        },
+    ]
     assert data["is_active"] is True
     assert data["created_at"] is not None
     assert data["updated_at"] is not None
@@ -342,7 +360,12 @@ def test_update_vendor(client: TestClient) -> None:
                     }
                 ],
             },
-            "store_ids": ["sto_ithaca"],
+            "store_references": [
+                {
+                    "store_id": "sto_ithaca",
+                    "vendor_store_reference": "ITH001",
+                },
+            ],
             "is_active": True,
         },
     )
@@ -374,7 +397,12 @@ def test_update_vendor(client: TestClient) -> None:
             "cutoff_time": "14:00",
         }
     ]
-    assert data["store_ids"] == ["sto_ithaca"]
+    assert data["store_references"] == [
+        {
+            "store_id": "sto_ithaca",
+            "vendor_store_reference": "ITH001",
+        },
+    ]
     assert data["is_active"] is True
     assert _parse_api_datetime(data["created_at"]) == _parse_api_datetime(created_at)
     assert _parse_api_datetime(data["updated_at"]) >= _parse_api_datetime(original_updated_at)

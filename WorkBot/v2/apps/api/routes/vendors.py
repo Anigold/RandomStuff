@@ -11,6 +11,7 @@ from apps.api.schemas.vendor_schema import (
     ScheduleEntrySchema,
     UpdateVendorRequest,
     VendorResponse,
+    VendorStoreReferenceSchema,
 )
 from workbot_core.application.dto.vendor_commands import (
     CreateVendorCommand,
@@ -22,6 +23,7 @@ from workbot_core.domain.models.vendor import (
     OrderingInfo,
     ScheduleEntry,
     Vendor,
+    VendorStoreReference,
 )
 from workbot_core.infrastructure.database.repositories.vendor_repository import (
     SqlVendorRepository,
@@ -80,7 +82,9 @@ def create_vendor(
                 min_order_cases=request.min_order_cases,
                 internal_contacts=_contact_info_commands(request.internal_contacts),
                 ordering=_ordering_info_command(request.ordering),
-                store_ids=tuple(request.store_ids),
+                store_references=_store_reference_commands(
+                    request.store_references
+                ),
             )
         )
 
@@ -113,7 +117,9 @@ def update_vendor(
                 min_order_cases=request.min_order_cases,
                 internal_contacts=_contact_info_commands(request.internal_contacts),
                 ordering=_ordering_info_command(request.ordering),
-                store_ids=tuple(request.store_ids),
+                store_references=_store_reference_commands(
+                    request.store_references
+                ),
             )
         )
 
@@ -185,6 +191,18 @@ def _ordering_info_command(ordering: OrderingInfoSchema) -> OrderingInfo:
     )
 
 
+def _store_reference_commands(
+    store_references: list[VendorStoreReferenceSchema],
+) -> tuple[VendorStoreReference, ...]:
+    return tuple(
+        VendorStoreReference(
+            store_id=reference.store_id,
+            vendor_store_reference=reference.vendor_store_reference,
+        )
+        for reference in store_references
+    )
+
+
 def _vendor_response(vendor: Vendor) -> VendorResponse:
     return VendorResponse(
         id=vendor.id,
@@ -217,7 +235,13 @@ def _vendor_response(vendor: Vendor) -> VendorResponse:
                 for entry in vendor.ordering.schedule
             ],
         ),
-        store_ids=list(vendor.store_ids),
+        store_references=[
+            VendorStoreReferenceSchema(
+                store_id=reference.store_id,
+                vendor_store_reference=reference.vendor_store_reference,
+            )
+            for reference in vendor.store_references
+        ],
         created_at=vendor.created_at,
         updated_at=vendor.updated_at,
     )
