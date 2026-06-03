@@ -1,10 +1,12 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <title>WorkBot Admin</title>
     <link rel="stylesheet" href="/admin/styles.css" />
 </head>
+
 <body>
     <header>
         <h1>WorkBot Admin</h1>
@@ -19,37 +21,18 @@
     </nav>
 
     <main>
-        <section id="items-panel" class="panel active">
+        <section id="items-panel" class="panel">
             <h2>Items</h2>
 
-            <form id="item-form">
-                <input name="name" placeholder="Name" required />
-                <input name="category" placeholder="Category" />
-                <input name="subcategory" placeholder="Subcategory" />
+            <div class="panel-actions">
+                <button id="open-create-item-form" type="button" data-variant="primary">
+                    Create Item
+                </button>
+                <button id="refresh-items" type="button">
+                    Refresh Items
+                </button>
+            </div>
 
-                <input name="count_unit_quantity" placeholder="Count quantity" />
-                <input name="count_unit_measure" placeholder="Count measure" />
-
-                <input name="custom_each_name" placeholder="Custom each name" />
-
-                <input name="each_quantity" placeholder="Each quantity" />
-                <input name="each_measure" placeholder="Each measure" />
-
-                <input name="weight_quantity" placeholder="Weight quantity" />
-                <input name="weight_measure" placeholder="Weight measure" />
-
-                <input name="volume_quantity" placeholder="Volume quantity" />
-                <input name="volume_measure" placeholder="Volume measure" />
-
-                <label>
-                    <input type="checkbox" name="is_active" checked />
-                    Active
-                </label>
-
-                <button type="submit">Create Item</button>
-            </form>
-
-            <button id="refresh-items">Refresh Items</button>
             <div id="items-list" class="list"></div>
         </section>
 
@@ -79,27 +62,15 @@
         <section id="vendors-panel" class="panel">
             <h2>Vendors</h2>
 
-            <form id="vendor-form">
-                <input name="name" placeholder="Name" required />
-                <input name="order_format" placeholder="Order format" />
-                <textarea name="special_notes" placeholder="Special notes"></textarea>
+            <div class="panel-actions">
+                <button id="open-create-vendor-form" type="button" data-variant="primary">
+                    Create Vendor
+                </button>
+                <button id="refresh-vendors" type="button">
+                    Refresh Vendors
+                </button>
+            </div>
 
-                <input name="min_order_value" placeholder="Minimum order value" />
-                <input name="min_order_cases" placeholder="Minimum order cases" />
-
-                <input name="ordering_email" placeholder="Ordering email" />
-                <input name="ordering_phone_number" placeholder="Ordering phone number" />
-                <input name="ordering_portal_url" placeholder="Ordering portal URL" />
-
-                <label>
-                    <input type="checkbox" name="is_active" checked />
-                    Active
-                </label>
-
-                <button type="submit">Create Vendor</button>
-            </form>
-
-            <button id="refresh-vendors">Refresh Vendors</button>
             <div id="vendors-list" class="list"></div>
         </section>
 
@@ -161,10 +132,119 @@
         </div>
     </div>
 
+    <div id="vendor-form-modal" class="modal" aria-hidden="true">
+        <div class="modal-backdrop" onclick="closeVendorFormModal()"></div>
+
+        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="vendor-form-modal-title">
+            <div class="modal-header">
+                <h2 id="vendor-form-modal-title">Create Vendor</h2>
+                <button type="button" onclick="closeVendorFormModal()">Close</button>
+            </div>
+
+            <div class="modal-body">
+                <form id="vendor-form">
+                    <h3>Basic Information</h3>
+
+                    <label>
+                        Name
+                        <input name="name" placeholder="Name" required />
+                    </label>
+
+                    <label>
+                        Order Format
+                        <input name="order_format" placeholder="Order format" />
+                    </label>
+
+                    <label>
+                        Special Notes
+                        <textarea name="special_notes" placeholder="Special notes"></textarea>
+                    </label>
+
+                    <label>
+                        Minimum Order Value
+                        <input name="min_order_value" placeholder="Minimum order value" />
+                    </label>
+
+                    <label>
+                        Minimum Order Cases
+                        <input name="min_order_cases" placeholder="Minimum order cases" />
+                    </label>
+
+                    <label>
+                        <input type="checkbox" name="is_active" checked />
+                        Active
+                    </label>
+
+                    <h3>Ordering Information</h3>
+
+                    <label>
+                        Ordering Email
+                        <input name="ordering_email" placeholder="Ordering email" />
+                    </label>
+
+                    <label>
+                        Ordering Phone Number
+                        <input name="ordering_phone_number" placeholder="Ordering phone number" />
+                    </label>
+
+                    <label>
+                        Ordering Portal URL
+                        <input name="ordering_portal_url" placeholder="Ordering portal URL" />
+                    </label>
+
+                    <label>
+                        Ordering Methods
+                        <input name="ordering_methods" placeholder="email, portal, phone" />
+                    </label>
+
+                    <h3>Internal Contacts</h3>
+                    <div id="vendor-contacts-fields" class="repeatable-fields"></div>
+                    <button id="add-vendor-contact" type="button">Add Contact</button>
+
+                    <h3>Ordering Schedule</h3>
+                    <div id="vendor-schedule-fields" class="repeatable-fields"></div>
+                    <button id="add-vendor-schedule" type="button">Add Schedule Entry</button>
+
+                    <h3>Store References</h3>
+                    <p class="form-help">
+                        Store ID is your internal WorkBot store ID. Vendor reference is how this vendor identifies that store.
+                    </p>
+                    <div id="vendor-store-reference-fields" class="repeatable-fields"></div>
+                    <button id="add-vendor-store-reference" type="button">Add Store Reference</button>
+
+                    <div class="form-actions">
+                        <button id="vendor-submit-button" type="submit" data-variant="primary">
+                            Create Vendor
+                        </button>
+                        <button id="cancel-vendor-edit" type="button">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <script src="/admin/api.js"></script>
     <script src="/admin/items.js"></script>
     <script src="/admin/stores.js"></script>
     <script src="/admin/vendors.js"></script>
     <script src="/admin/orders.js"></script>
 </body>
+
 </html>
