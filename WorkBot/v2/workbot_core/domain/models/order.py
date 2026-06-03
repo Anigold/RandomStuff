@@ -18,7 +18,6 @@ class OrderStatus(StrEnum):
 
 @dataclass(frozen=True, slots=True)
 class Order:
-
     id: str
 
     store_id: str
@@ -34,7 +33,7 @@ class Order:
 
     notes: str | None = None
 
-    lines: list[OrderLine] = field(default_factory=list)
+    lines: tuple[OrderLine, ...] = ()
 
     created_at: datetime | None = None
     updated_at: datetime | None = None

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import replace
+from datetime import UTC, datetime
 
 from workbot_core.domain.models.item import Item
 from workbot_core.domain.models.item_vendor_info import ItemVendorInfo
@@ -24,6 +25,7 @@ class OrderLineResolutionService:
             unit_price_snapshot=item_vendor_info.price,
             status=OrderLineStatus.PROCESSED,
             status_reason=None,
+            updated_at=datetime.now(UTC),
         )
 
     def errored_line(self, *, line: OrderLine, reason: str) -> OrderLine:
@@ -31,6 +33,7 @@ class OrderLineResolutionService:
             line,
             status=OrderLineStatus.ERROR,
             status_reason=reason,
+            updated_at=datetime.now(UTC),
         )
 
     def ignored_line(self, *, line: OrderLine, reason: str) -> OrderLine:
@@ -38,13 +41,20 @@ class OrderLineResolutionService:
             line,
             status=OrderLineStatus.IGNORED,
             status_reason=reason,
+            updated_at=datetime.now(UTC),
         )
 
-    def removed_line(self, *, line: OrderLine, reason: str | None = None) -> OrderLine:
+    def removed_line(
+        self,
+        *,
+        line: OrderLine,
+        reason: str | None = None,
+    ) -> OrderLine:
         return replace(
             line,
             status=OrderLineStatus.REMOVED,
             status_reason=reason,
+            updated_at=datetime.now(UTC),
         )
 
     def moved_line(
@@ -59,4 +69,5 @@ class OrderLineResolutionService:
             status=OrderLineStatus.MOVED,
             moved_to_order_id=moved_to_order_id,
             status_reason=reason,
+            updated_at=datetime.now(UTC),
         )

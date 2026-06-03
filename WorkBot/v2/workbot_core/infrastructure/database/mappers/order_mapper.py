@@ -45,6 +45,8 @@ def order_line_to_record(line: OrderLine) -> OrderLineRecord:
         status_reason=line.status_reason,
         moved_to_order_id=line.moved_to_order_id,
         notes=line.notes or "",
+        created_at=line.created_at,
+        updated_at=line.updated_at,
     )
 
 
@@ -62,6 +64,12 @@ def update_order_line_record(record: OrderLineRecord, line: OrderLine) -> None:
     record.status_reason = line.status_reason
     record.moved_to_order_id = line.moved_to_order_id
     record.notes = line.notes or ""
+
+    if line.created_at is not None:
+        record.created_at = line.created_at
+
+    if line.updated_at is not None:
+        record.updated_at = line.updated_at
 
 
 def order_record_to_domain(record: OrderRecord) -> Order:
@@ -93,6 +101,8 @@ def order_to_record(order: Order) -> OrderRecord:
         source_reference=order.source_reference,
         notes=order.notes or "",
         lines=[order_line_to_record(line) for line in order.lines],
+        created_at=order.created_at,
+        updated_at=order.updated_at,
     )
 
 
@@ -105,6 +115,12 @@ def update_order_record(record: OrderRecord, order: Order) -> None:
     record.source = order.source
     record.source_reference = order.source_reference
     record.notes = order.notes or ""
+
+    if order.created_at is not None:
+        record.created_at = order.created_at
+
+    if order.updated_at is not None:
+        record.updated_at = order.updated_at
 
     existing_lines_by_id = {line.id: line for line in record.lines}
     incoming_line_ids = {line.id for line in order.lines}

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from datetime import datetime, UTC
+
 from workbot_core.application.dto.order_import_row import (
     OrderImportRow,
     OrderLineImportRow,
@@ -19,6 +21,7 @@ class OrderImportService:
 
     def create_order(self, row: OrderImportRow) -> Order:
         order_id = IdGenerator.order_id()
+        now = datetime.now(UTC)
 
         return Order(
             id=order_id,
@@ -31,9 +34,16 @@ class OrderImportService:
             source_reference=self._clean_optional(row.source_reference),
             notes=row.notes or "",
             lines=tuple(
-                self.create_order_line(order_id=order_id, row=line_row)
+                self.create_order_line(
+                    order_id=order_id,
+                    row=line_row,
+                    created_at=now,
+                    updated_at=now,
+                )
                 for line_row in row.lines
             ),
+            created_at=now,
+            updated_at=now,
         )
 
     def create_order_line(
@@ -41,6 +51,8 @@ class OrderImportService:
         *,
         order_id: str,
         row: OrderLineImportRow,
+        created_at: datetime | None = None,
+        updated_at: datetime | None = None,
     ) -> OrderLine:
         return OrderLine(
             id=IdGenerator.order_line_id(),
@@ -55,6 +67,8 @@ class OrderImportService:
             unit_price_snapshot=row.unit_price,
             status=OrderLineStatus.PENDING,
             notes=row.notes or "",
+            created_at=created_at,
+            updated_at=updated_at,
         )
 
     @staticmethod

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import replace
+from datetime import UTC, datetime
 
 from workbot_core.application.dto.resolve_order_lines_result import (
     ResolveOrderLinesResult,
@@ -59,6 +60,7 @@ class ResolveOrderLines:
             order,
             status=new_status,
             lines=resolved_lines,
+            updated_at=datetime.now(UTC),
         )
 
         self._orders.save(updated_order)
@@ -125,7 +127,8 @@ class ResolveOrderLines:
         vendor_infos = self._item_vendor_infos.list_active_for_vendor(order.vendor_id)
 
         matching_infos = [
-            info for info in vendor_infos
+            info
+            for info in vendor_infos
             if info.item_id == item.id
         ]
 
