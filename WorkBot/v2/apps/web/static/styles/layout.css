@@ -1,0 +1,140 @@
+header {
+    background: linear-gradient(135deg, #4d3d67, #7b68a6);
+    color: white;
+    padding: 1.25rem 2rem;
+    box-shadow: var(--shadow-sm);
+}
+
+header h1 {
+    margin: 0;
+}
+
+header p {
+    margin: 0.5rem 0 0;
+}
+
+nav {
+    display: flex;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.scope-bar {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.75rem 2rem;
+    background: var(--color-surface-muted);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.scope-bar label {
+    min-width: 260px;
+}
+
+.panel {
+    display: none;
+}
+
+.panel.active {
+    display: grid;
+    grid-template-columns: minmax(320px, 460px) minmax(420px, 1fr);
+    grid-template-rows: auto 1fr;
+    gap: 1rem 1.5rem;
+    align-items: start;
+}
+
+.panel h2 {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    margin: 0;
+}
+
+.panel form {
+    grid-column: 1;
+    grid-row: 2;
+    margin-bottom: 0;
+}
+
+.panel > button:not(.card) {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: start;
+    align-self: start;
+    z-index: 1;
+}
+
+.panel .list {
+    grid-column: 2;
+    grid-row: 2;
+    margin-top: 3rem;
+}
+
+.panel-actions {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.panel-actions + .list {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    margin-top: 0;
+}
+
+.list {
+    display: grid;
+    gap: 0.75rem;
+    max-height: calc(100vh - 180px);
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+@media (max-width: 900px) {
+    .panel.active {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    .panel h2,
+    .panel form,
+    .panel > button,
+    .panel .list,
+    .panel-actions,
+    .panel-actions + .list {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    .panel .list {
+        margin-top: 0.75rem;
+    }
+
+    .panel-actions + .list {
+        margin-top: 0;
+    }
+
+    .list {
+        max-height: none;
+        overflow-y: visible;
+    }
+
+    .compact-card {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .detail-row {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+    }
+}

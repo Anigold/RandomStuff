@@ -1,14 +1,29 @@
+let allVendors = [];
 let loadedVendors = [];
 let editingVendorId = null;
 
 async function loadVendors() {
-    loadedVendors = await apiRequest("/vendors");
+    allVendors = await apiRequest("/vendors");
+
+    const scope = getSelectedStoreScope();
     const container = document.getElementById("vendors-list");
+
+    if (!container) {
+        return;
+    }
+
+    loadedVendors = scope.id
+        ? allVendors.filter((vendor) =>
+            (vendor.store_references || []).some(
+                (reference) => reference.store_id === scope.id
+            )
+        )
+        : allVendors;
 
     if (loadedVendors.length === 0) {
         container.innerHTML = `
             <div class="empty-state">
-                No vendors found.
+                No vendors found for this store view.
             </div>
         `;
         return;
@@ -47,6 +62,11 @@ function openVendorModal(vendorId) {
 
 function closeVendorModal() {
     const modal = document.getElementById("vendor-modal");
+
+    if (!modal) {
+        return;
+    }
+
     modal.classList.remove("open");
     modal.setAttribute("aria-hidden", "true");
 }
@@ -61,6 +81,11 @@ function closeVendorFormModal() {
     cancelVendorEdit();
 
     const modal = document.getElementById("vendor-form-modal");
+
+    if (!modal) {
+        return;
+    }
+
     modal.classList.remove("open");
     modal.setAttribute("aria-hidden", "true");
 }
@@ -94,15 +119,6 @@ function vendorDetailsHtml(vendor) {
         <div class="card-actions">
             <button onclick="startEditingVendor('${escapeHtml(vendor.id)}')" data-variant="primary">Edit</button>
             <button onclick="deleteVendor('${escapeHtml(vendor.id)}')" data-variant="danger">Deactivate</button>
-        </div>
-    `;
-}
-
-function detailRow(label, value) {
-    return `
-        <div class="detail-row">
-            <div class="detail-label">${escapeHtml(label)}</div>
-            <div class="detail-value">${escapeHtml(value || "")}</div>
         </div>
     `;
 }
@@ -143,7 +159,7 @@ function startEditingVendor(vendorId) {
     form.elements.ordering_portal_url.value = vendor.ordering?.portal_url || "";
     form.elements.ordering_methods.value = (vendor.ordering?.method || []).join(", ");
 
-    clearRepeatableFields();
+    clearVendorRepeatableFields();
 
     (vendor.internal_contacts || []).forEach((contact) => {
         addVendorContactRow(contact);
@@ -168,23 +184,39 @@ function cancelVendorEdit() {
     editingVendorId = null;
     resetVendorForm();
 
-    document.getElementById("vendor-form-modal-title").textContent = "Create Vendor";
-    document.getElementById("vendor-submit-button").textContent = "Create Vendor";
+    const title = document.getElementById("vendor-form-modal-title");
+    const submitButton = document.getElementById("vendor-submit-button");
+
+    if (title) {
+        title.textContent = "Create Vendor";
+    }
+
+    if (submitButton) {
+        submitButton.textContent = "Create Vendor";
+    }
 }
 
 function resetVendorForm() {
     const form = document.getElementById("vendor-form");
 
+    if (!form) {
+        return;
+    }
+
     form.reset();
     form.elements.is_active.checked = true;
 
-    clearRepeatableFields();
+    clearVendorRepeatableFields();
 }
 
-function clearRepeatableFields() {
-    document.getElementById("vendor-contacts-fields").innerHTML = "";
-    document.getElementById("vendor-schedule-fields").innerHTML = "";
-    document.getElementById("vendor-store-reference-fields").innerHTML = "";
+function clearVendorRepeatableFields() {
+    const contacts = document.getElementById("vendor-contacts-fields");
+    const schedule = document.getElementById("vendor-schedule-fields");
+    const storeReferences = document.getElementById("vendor-store-reference-fields");
+
+    if (contacts) contacts.innerHTML = "";
+    if (schedule) schedule.innerHTML = "";
+    if (storeReferences) storeReferences.innerHTML = "";
 }
 
 function addVendorContactRow(contact = {}) {
@@ -439,64 +471,69 @@ async function deleteVendor(vendorId) {
         }
     } catch (error) {
         showMessage(error.message);
+        console.error(error);
     }
 }
 
-document.getElementById("open-create-vendor-form").addEventListener("click", startCreatingVendor);
+function bindVendorEvents() {
+    document
+        .getElementById("open-create-vendor-form")
+        .addEventListener("click", startCreatingVendor);
 
-document.getElementById("vendor-form").addEventListener("submit", async (event) => {
-    event.preventDefault();
+    document.getElementById("vendor-form").addEventListener("submit", async (event) => {
+        event.preventDefault();
 
-    try {
-        const payload = buildVendorPayload(event.target);
+        try {
+            const payload = buildVendorPayload(event.target);
 
-        if (editingVendorId) {
-            await apiRequest(`/vendors/${editingVendorId}`, {
-                method: "PUT",
-                body: JSON.stringify(payload),
-            });
+            if (editingVendorId) {
+                await apiRequest(`/vendors/${editingVendorId}`, {
+                    method: "PUT",
+                    body: JSON.stringify(payload),
+                });
 
-            showMessage("Vendor updated.");
-        } else {
-            await apiRequest("/vendors", {
-                method: "POST",
-                body: JSON.stringify(payload),
-            });
+                showMessage("Vendor updated.");
+            } else {
+                await apiRequest("/vendors", {
+                    method: "POST",
+                    body: JSON.stringify(payload),
+                });
 
-            showMessage("Vendor created.");
+                showMessage("Vendor created.");
+            }
+
+            closeVendorFormModal();
+
+            await loadVendors();
+
+            if (typeof loadOrderFormOptions === "function") {
+                await loadOrderFormOptions();
+            }
+        } catch (error) {
+            showMessage(error.message);
+            console.error(error);
         }
+    });
 
-        closeVendorFormModal();
+    document
+        .getElementById("cancel-vendor-edit")
+        .addEventListener("click", closeVendorFormModal);
 
-        await loadVendors();
+    document.getElementById("add-vendor-contact").addEventListener("click", () => {
+        addVendorContactRow();
+    });
 
-        if (typeof loadOrderFormOptions === "function") {
-            await loadOrderFormOptions();
-        }
-    } catch (error) {
-        showMessage(error.message);
-    }
-});
+    document.getElementById("add-vendor-schedule").addEventListener("click", () => {
+        addVendorScheduleRow();
+    });
 
-document.getElementById("cancel-vendor-edit").addEventListener("click", closeVendorFormModal);
+    document
+        .getElementById("add-vendor-store-reference")
+        .addEventListener("click", () => {
+            addVendorStoreReferenceRow();
+        });
 
-document.getElementById("add-vendor-contact").addEventListener("click", () => {
-    addVendorContactRow();
-});
-
-document.getElementById("add-vendor-schedule").addEventListener("click", () => {
-    addVendorScheduleRow();
-});
-
-document.getElementById("add-vendor-store-reference").addEventListener("click", () => {
-    addVendorStoreReferenceRow();
-});
-
-document.getElementById("refresh-vendors").addEventListener("click", loadVendors);
-
-document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-        closeVendorModal();
-        closeVendorFormModal();
-    }
-});
+    document
+        .getElementById("refresh-vendors")
+        .addEventListener("click", loadVendors);
+}

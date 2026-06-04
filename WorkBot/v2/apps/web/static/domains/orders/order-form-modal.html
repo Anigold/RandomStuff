@@ -1,0 +1,81 @@
+<div id="order-form-modal" class="modal" aria-hidden="true">
+    <div class="modal-backdrop" onclick="closeOrderFormModal()"></div>
+
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="order-form-modal-title">
+        <div class="modal-header">
+            <h2 id="order-form-modal-title">Create Order</h2>
+            <button type="button" onclick="closeOrderFormModal()">Close</button>
+        </div>
+
+        <div class="modal-body">
+            <form id="order-form">
+                <h3>Order Information</h3>
+
+                <label>
+                    Store
+                    <select name="store_id" id="order-store-select" required>
+                        <option value="">Select a store...</option>
+                    </select>
+                </label>
+
+                <label>
+                    Vendor
+                    <select name="vendor_id" id="order-vendor-select" required>
+                        <option value="">Select a vendor...</option>
+                    </select>
+                </label>
+
+                <label>
+                    Order Date
+                    <input name="order_date" id="order-date-input" type="date" required />
+                </label>
+
+                <label>
+                    Delivery Date
+                    <input name="delivery_date" id="delivery-date-input" type="date" />
+                </label>
+
+                <label>
+                    Notes
+                    <textarea name="notes" placeholder="Notes"></textarea>
+                </label>
+
+                <h3>Line 1</h3>
+
+                <label>
+                    Source Item Name
+                    <input name="line_source_item_name" placeholder="Source item name" required />
+                </label>
+
+                <label>
+                    Source Vendor SKU
+                    <input name="line_source_vendor_sku" placeholder="Source vendor SKU" />
+                </label>
+
+                <label>
+                    Quantity
+                    <input name="line_quantity" placeholder="Quantity" required />
+                </label>
+
+                <label>
+                    Unit
+                    <input name="line_unit" placeholder="Unit" />
+                </label>
+
+                <label>
+                    Line Notes
+                    <textarea name="line_notes" placeholder="Line notes"></textarea>
+                </label>
+
+                <div class="form-actions">
+                    <button id="order-submit-button" type="submit" data-variant="primary">
+                        Create Order
+                    </button>
+                    <button id="cancel-order-create" type="button">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

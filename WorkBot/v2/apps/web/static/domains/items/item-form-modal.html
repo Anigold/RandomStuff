@@ -1,0 +1,98 @@
+<div id="item-form-modal" class="modal" aria-hidden="true">
+    <div class="modal-backdrop" onclick="closeItemFormModal()"></div>
+
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="item-form-modal-title">
+        <div class="modal-header">
+            <h2 id="item-form-modal-title">Create Item</h2>
+            <button type="button" onclick="closeItemFormModal()">Close</button>
+        </div>
+
+        <div class="modal-body">
+            <form id="item-form">
+                <h3>Basic Information</h3>
+
+                <label>
+                    Name
+                    <input name="name" placeholder="Name" required />
+                </label>
+
+                <label>
+                    Category
+                    <input name="category" placeholder="Category" />
+                </label>
+
+                <label>
+                    Subcategory
+                    <input name="subcategory" placeholder="Subcategory" />
+                </label>
+
+                <label>
+                    <input type="checkbox" name="is_active" checked />
+                    Active
+                </label>
+
+                <h3>Count Unit</h3>
+
+                <label>
+                    Count Quantity
+                    <input name="count_unit_quantity" placeholder="Count quantity" />
+                </label>
+
+                <label>
+                    Count Measure
+                    <input name="count_unit_measure" placeholder="Count measure" />
+                </label>
+
+                <label>
+                    Custom Each Name
+                    <input name="custom_each_name" placeholder="Custom each name" />
+                </label>
+
+                <h3>Each Unit</h3>
+
+                <label>
+                    Each Quantity
+                    <input name="each_quantity" placeholder="Each quantity" />
+                </label>
+
+                <label>
+                    Each Measure
+                    <input name="each_measure" placeholder="Each measure" />
+                </label>
+
+                <h3>Weight</h3>
+
+                <label>
+                    Weight Quantity
+                    <input name="weight_quantity" placeholder="Weight quantity" />
+                </label>
+
+                <label>
+                    Weight Measure
+                    <input name="weight_measure" placeholder="Weight measure" />
+                </label>
+
+                <h3>Volume</h3>
+
+                <label>
+                    Volume Quantity
+                    <input name="volume_quantity" placeholder="Volume quantity" />
+                </label>
+
+                <label>
+                    Volume Measure
+                    <input name="volume_measure" placeholder="Volume measure" />
+                </label>
+
+                <div class="form-actions">
+                    <button id="item-submit-button" type="submit" data-variant="primary">
+                        Create Item
+                    </button>
+                    <button id="cancel-item-edit" type="button">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

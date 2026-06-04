@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>WorkBot Admin</title>
+    <link rel="stylesheet" href="/admin/styles.css" />
+</head>
+
+<body>
+    <header>
+        <h1>WorkBot Admin</h1>
+        <p>Manual tools for items, stores, vendors, and orders.</p>
+    </header>
+
+    <nav>
+        <button data-panel="items-panel">Items</button>
+        <button data-panel="stores-panel">Stores</button>
+        <button data-panel="vendors-panel">Vendors</button>
+        <button data-panel="orders-panel">Orders</button>
+    </nav>
+
+    <main>
+        <section id="items-panel" class="panel">
+            <h2>Items</h2>
+
+            <div class="panel-actions">
+                <button id="open-create-item-form" type="button" data-variant="primary">
+                    Create Item
+                </button>
+                <button id="refresh-items" type="button">
+                    Refresh Items
+                </button>
+            </div>
+
+            <div id="items-list" class="list"></div>
+        </section>
+
+        <section id="stores-panel" class="panel">
+            <h2>Stores</h2>
+
+            <form id="store-form">
+                <input name="name" placeholder="Name" required />
+                <input name="general_manager" placeholder="General manager" />
+                <input name="inventory_clerk" placeholder="Inventory clerk" />
+                <input name="address" placeholder="Address" />
+                <input name="phone_number" placeholder="Phone number" />
+                <textarea name="special_notes" placeholder="Special notes"></textarea>
+
+                <label>
+                    <input type="checkbox" name="is_active" checked />
+                    Active
+                </label>
+
+                <button type="submit">Create Store</button>
+            </form>
+
+            <button id="refresh-stores">Refresh Stores</button>
+            <div id="stores-list" class="list"></div>
+        </section>
+
+        <section id="vendors-panel" class="panel">
+            <h2>Vendors</h2>
+
+            <div class="panel-actions">
+                <button id="open-create-vendor-form" type="button" data-variant="primary">
+                    Create Vendor
+                </button>
+                <button id="refresh-vendors" type="button">
+                    Refresh Vendors
+                </button>
+            </div>
+
+            <div id="vendors-list" class="list"></div>
+        </section>
+
+        <section id="orders-panel" class="panel">
+            <h2>Orders</h2>
+
+            <form id="order-form">
+                <label>
+                    Store
+                    <select name="store_id" id="order-store-select" required>
+                        <option value="">Select a store...</option>
+                    </select>
+                </label>
+
+                <label>
+                    Vendor
+                    <select name="vendor_id" id="order-vendor-select" required>
+                        <option value="">Select a vendor...</option>
+                    </select>
+                </label>
+                <label>
+                    Order Date
+                    <input name="order_date" id="order-date-input" type="date" required />
+                </label>
+
+                <label>
+                    Delivery Date
+                    <input name="delivery_date" id="delivery-date-input" type="date" />
+                </label>
+                <textarea name="notes" placeholder="Notes"></textarea>
+
+                <h3>Line 1</h3>
+                <input name="line_source_item_name" placeholder="Source item name" required />
+                <input name="line_source_vendor_sku" placeholder="Source vendor SKU" />
+                <input name="line_quantity" placeholder="Quantity" required />
+                <input name="line_unit" placeholder="Unit" />
+                <textarea name="line_notes" placeholder="Line notes"></textarea>
+
+                <button type="submit">Create Order</button>
+            </form>
+
+            <button id="refresh-orders">Refresh Orders</button>
+            <div id="orders-list" class="list"></div>
+        </section>
+    </main>
+
+    <div id="message"></div>
+
+    <div id="vendor-modal" class="modal" aria-hidden="true">
+        <div class="modal-backdrop" onclick="closeVendorModal()"></div>
+
+        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="vendor-modal-title">
+            <div class="modal-header">
+                <h2 id="vendor-modal-title">Vendor Details</h2>
+                <button type="button" onclick="closeVendorModal()">Close</button>
+            </div>
+
+            <div id="vendor-modal-body" class="modal-body"></div>
+        </div>
+    </div>
+
+    <div id="vendor-form-modal" class="modal" aria-hidden="true">
+        <div class="modal-backdrop" onclick="closeVendorFormModal()"></div>
+
+        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="vendor-form-modal-title">
+            <div class="modal-header">
+                <h2 id="vendor-form-modal-title">Create Vendor</h2>
+                <button type="button" onclick="closeVendorFormModal()">Close</button>
+            </div>
+
+            <div class="modal-body">
+                <form id="vendor-form">
+                    <h3>Basic Information</h3>
+
+                    <label>
+                        Name
+                        <input name="name" placeholder="Name" required />
+                    </label>
+
+                    <label>
+                        Order Format
+                        <input name="order_format" placeholder="Order format" />
+                    </label>
+
+                    <label>
+                        Special Notes
+                        <textarea name="special_notes" placeholder="Special notes"></textarea>
+                    </label>
+
+                    <label>
+                        Minimum Order Value
+                        <input name="min_order_value" placeholder="Minimum order value" />
+                    </label>
+
+                    <label>
+                        Minimum Order Cases
+                        <input name="min_order_cases" placeholder="Minimum order cases" />
+                    </label>
+
+                    <label>
+                        <input type="checkbox" name="is_active" checked />
+                        Active
+                    </label>
+
+                    <h3>Ordering Information</h3>
+
+                    <label>
+                        Ordering Email
+                        <input name="ordering_email" placeholder="Ordering email" />
+                    </label>
+
+                    <label>
+                        Ordering Phone Number
+                        <input name="ordering_phone_number" placeholder="Ordering phone number" />
+                    </label>
+
+                    <label>
+                        Ordering Portal URL
+                        <input name="ordering_portal_url" placeholder="Ordering portal URL" />
+                    </label>
+
+                    <label>
+                        Ordering Methods
+                        <input name="ordering_methods" placeholder="email, portal, phone" />
+                    </label>
+
+                    <h3>Internal Contacts</h3>
+                    <div id="vendor-contacts-fields" class="repeatable-fields"></div>
+                    <button id="add-vendor-contact" type="button">Add Contact</button>
+
+                    <h3>Ordering Schedule</h3>
+                    <div id="vendor-schedule-fields" class="repeatable-fields"></div>
+                    <button id="add-vendor-schedule" type="button">Add Schedule Entry</button>
+
+                    <h3>Store References</h3>
+                    <p class="form-help">
+                        Store ID is your internal WorkBot store ID. Vendor reference is how this vendor identifies that store.
+                    </p>
+                    <div id="vendor-store-reference-fields" class="repeatable-fields"></div>
+                    <button id="add-vendor-store-reference" type="button">Add Store Reference</button>
+
+                    <div class="form-actions">
+                        <button id="vendor-submit-button" type="submit" data-variant="primary">
+                            Create Vendor
+                        </button>
+                        <button id="cancel-vendor-edit" type="button">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="/admin/api.js"></script>
+    <script src="/admin/items.js"></script>
+    <script src="/admin/stores.js"></script>
+    <script src="/admin/vendors.js"></script>
+    <script src="/admin/orders.js"></script>
+</body>
+
+</html>

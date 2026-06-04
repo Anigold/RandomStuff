@@ -1,0 +1,92 @@
+<div id="vendor-form-modal" class="modal" aria-hidden="true">
+    <div class="modal-backdrop" onclick="closeVendorFormModal()"></div>
+
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="vendor-form-modal-title">
+        <div class="modal-header">
+            <h2 id="vendor-form-modal-title">Create Vendor</h2>
+            <button type="button" onclick="closeVendorFormModal()">Close</button>
+        </div>
+
+        <div class="modal-body">
+            <form id="vendor-form">
+                <h3>Basic Information</h3>
+
+                <label>
+                    Name
+                    <input name="name" placeholder="Name" required />
+                </label>
+
+                <label>
+                    Order Format
+                    <input name="order_format" placeholder="Order format" />
+                </label>
+
+                <label>
+                    Special Notes
+                    <textarea name="special_notes" placeholder="Special notes"></textarea>
+                </label>
+
+                <label>
+                    Minimum Order Value
+                    <input name="min_order_value" placeholder="Minimum order value" />
+                </label>
+
+                <label>
+                    Minimum Order Cases
+                    <input name="min_order_cases" placeholder="Minimum order cases" />
+                </label>
+
+                <label>
+                    <input type="checkbox" name="is_active" checked />
+                    Active
+                </label>
+
+                <h3>Ordering Information</h3>
+
+                <label>
+                    Ordering Email
+                    <input name="ordering_email" placeholder="Ordering email" />
+                </label>
+
+                <label>
+                    Ordering Phone Number
+                    <input name="ordering_phone_number" placeholder="Ordering phone number" />
+                </label>
+
+                <label>
+                    Ordering Portal URL
+                    <input name="ordering_portal_url" placeholder="Ordering portal URL" />
+                </label>
+
+                <label>
+                    Ordering Methods
+                    <input name="ordering_methods" placeholder="email, portal, phone" />
+                </label>
+
+                <h3>Internal Contacts</h3>
+                <div id="vendor-contacts-fields" class="repeatable-fields"></div>
+                <button id="add-vendor-contact" type="button">Add Contact</button>
+
+                <h3>Ordering Schedule</h3>
+                <div id="vendor-schedule-fields" class="repeatable-fields"></div>
+                <button id="add-vendor-schedule" type="button">Add Schedule Entry</button>
+
+                <h3>Store References</h3>
+                <p class="form-help">
+                    Store ID is your internal WorkBot store ID. Vendor reference is how this vendor identifies that store.
+                </p>
+                <div id="vendor-store-reference-fields" class="repeatable-fields"></div>
+                <button id="add-vendor-store-reference" type="button">Add Store Reference</button>
+
+                <div class="form-actions">
+                    <button id="vendor-submit-button" type="submit" data-variant="primary">
+                        Create Vendor
+                    </button>
+                    <button id="cancel-vendor-edit" type="button">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

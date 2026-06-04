@@ -1,0 +1,22 @@
+<section id="stores-panel" class="panel">
+    <h2>Stores</h2>
+
+    <form id="store-form">
+        <input name="name" placeholder="Name" required />
+        <input name="general_manager" placeholder="General manager" />
+        <input name="inventory_clerk" placeholder="Inventory clerk" />
+        <input name="address" placeholder="Address" />
+        <input name="phone_number" placeholder="Phone number" />
+        <textarea name="special_notes" placeholder="Special notes"></textarea>
+
+        <label>
+            <input type="checkbox" name="is_active" checked />
+            Active
+        </label>
+
+        <button type="submit">Create Store</button>
+    </form>
+
+    <button id="refresh-stores" type="button">Refresh Stores</button>
+    <div id="stores-list" class="list"></div>
+</section>

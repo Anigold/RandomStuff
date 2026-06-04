@@ -1,0 +1,44 @@
+:root {
+    --color-bg: #f6f3fb;
+    --color-surface: #fff;
+    --color-surface-muted: #f3edf9;
+
+    --color-border: #ddd2ea;
+    --color-border-soft: #eadff3;
+
+    --color-text: #2b2433;
+    --color-text-muted: #74667f;
+
+    --color-primary: #6d5a8d;
+    --color-primary-hover: #574673;
+
+    --color-danger: #b6537a;
+    --color-danger-hover: #974161;
+
+    --color-success-bg: #e9f4ee;
+    --color-success-text: #3b7451;
+
+    --color-warning-bg: #f7edf9;
+    --color-warning-text: #7a4d8a;
+
+    --color-danger-bg: #fae8ef;
+    --color-danger-text: #9a3f62;
+
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+
+    --shadow-sm: 0 2px 8px rgb(55 42 78 / 8%);
+    --shadow-md: 0 18px 50px rgb(55 42 78 / 18%);
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
+}
+
+main {
+    padding: 1rem 2rem;
+}
