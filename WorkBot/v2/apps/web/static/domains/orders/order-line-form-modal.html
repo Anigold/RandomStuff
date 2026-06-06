@@ -1,0 +1,52 @@
+<div id="order-line-form-modal" class="modal" aria-hidden="true">
+    <div class="modal-backdrop" onclick="closeOrderLineFormModal()"></div>
+
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="order-line-form-modal-title">
+        <div class="modal-header">
+            <h2 id="order-line-form-modal-title">Add Line Item</h2>
+            <button type="button" onclick="closeOrderLineFormModal()">Close</button>
+        </div>
+
+        <div class="modal-body">
+            <form id="order-line-form">
+                <h3>Line Item</h3>
+
+                <label>
+                    Item
+                    <select name="source_item_name" id="order-line-item-select" required>
+                        <option value="">Select an item...</option>
+                    </select>
+                </label>
+
+                <label>
+                    Source Vendor SKU
+                    <input name="source_vendor_sku" placeholder="Source vendor SKU" />
+                </label>
+
+                <label>
+                    Quantity
+                    <input name="quantity" placeholder="Quantity" required />
+                </label>
+
+                <label>
+                    Unit
+                    <input name="unit" placeholder="Unit" />
+                </label>
+
+                <label>
+                    Line Notes
+                    <textarea name="notes" placeholder="Line notes"></textarea>
+                </label>
+
+                <div class="form-actions">
+                    <button id="order-line-submit-button" type="submit" data-variant="primary">
+                        Add Line Item
+                    </button>
+                    <button id="cancel-order-line-create" type="button">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

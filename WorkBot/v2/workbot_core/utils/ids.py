@@ -30,6 +30,8 @@ class IdGenerator:
         "transfer_line":     "trl",
         "purchase_log":      "plg",
         "purchase_log_line": "pll",
+        "user":              "usr",
+        "user_store_access": "usa",
     }
 
     @classmethod
@@ -88,6 +90,14 @@ class IdGenerator:
     @classmethod
     def transfer_id(cls, *, exists: Callable[[str], bool] | None = None) -> str:
         return cls.generate("transfer", exists=exists)
+
+    @classmethod
+    def user_id(cls, *, exists: Callable[[str], bool] | None = None) -> str:
+        return cls.generate("user", exists=exists)
+    
+    @classmethod
+    def user_store_access_id(cls, *, exists: Callable[[str], bool] | None = None) -> str:
+        return cls.generate("user_store_access", exists=exists)
 
     @classmethod
     def _prefix_for(cls, entity_type: str) -> str:

@@ -3,34 +3,79 @@ let selectedStoreScope = {
     name: null,
 };
 
-async function loadStoreScopeOptions() {
+function loadStoreScopeOptions() {
     const select = document.getElementById("store-scope-select");
+    const user = getCurrentUser();
 
     if (!select) {
         return;
     }
 
-    const stores = await apiRequest("/stores");
+    if (!user) {
+        select.innerHTML = `<option value="">Unknown user</option>`;
+        select.disabled = true;
+        return;
+    }
 
-    select.innerHTML = `
-        <option value="">Supervisor</option>
-        ${stores
-            .filter((store) => store.is_active)
-            .map((store) => `
-                <option
-                    value="${escapeHtml(store.id)}"
-                    data-store-name="${escapeHtml(store.name)}"
-                >
-                    ${escapeHtml(store.name)}
-                </option>
-            `)
-            .join("")}
-    `;
+    const stores = user.stores || [];
+
+    if (user.can_use_supervisor_scope) {
+        select.disabled = false;
+
+        select.innerHTML = `
+            <option value="">Supervisor</option>
+            ${stores
+                .map((store) => `
+                    <option
+                        value="${escapeHtml(store.id)}"
+                        data-store-name="${escapeHtml(store.name)}"
+                    >
+                        ${escapeHtml(store.name)}
+                    </option>
+                `)
+                .join("")}
+        `;
+
+        selectedStoreScope = {
+            id: null,
+            name: null,
+        };
+
+        updateScopedNavigation();
+        return;
+    }
+
+    if (stores.length === 0) {
+        select.innerHTML = `<option value="">No stores assigned</option>`;
+        select.disabled = true;
+
+        selectedStoreScope = {
+            id: null,
+            name: null,
+        };
+
+        updateScopedNavigation();
+        return;
+    }
 
     selectedStoreScope = {
-        id: null,
-        name: null,
+        id: stores[0].id,
+        name: stores[0].name,
     };
+
+    select.disabled = stores.length <= 1;
+
+    select.innerHTML = stores
+        .map((store, index) => `
+            <option
+                value="${escapeHtml(store.id)}"
+                data-store-name="${escapeHtml(store.name)}"
+                ${index === 0 ? "selected" : ""}
+            >
+                ${escapeHtml(store.name)}
+            </option>
+        `)
+        .join("");
 
     updateScopedNavigation();
 }
@@ -52,7 +97,6 @@ function bindStoreScopeEvents() {
 
         try {
             updateScopedNavigation();
-
             await reloadActivePanel();
         } catch (error) {
             showMessage(error.message);
@@ -65,48 +109,31 @@ function getSelectedStoreScope() {
     return selectedStoreScope;
 }
 
-async function reloadActivePanel() {
-    let activePanel = document.querySelector(".panel.active");
+function isSupervisorScope() {
+    const user = getCurrentUser();
 
-    if (
-        activePanel &&
-        !isSupervisorScope() &&
-        ["stores-panel", "vendors-panel"].includes(activePanel.id)
-    ) {
-        activePanel.classList.remove("active");
-
-        const ordersPanel = document.getElementById("orders-panel");
-
-        if (ordersPanel) {
-            ordersPanel.classList.add("active");
-            activePanel = ordersPanel;
-        }
-    }
-
-    if (!activePanel) {
-        return;
-    }
-
-    await loadPanelData(activePanel.id);
+    return Boolean(user?.can_use_supervisor_scope) && !selectedStoreScope.id;
 }
 
-function isSupervisorScope() {
-    return !selectedStoreScope.id;
+function canUseSupervisorSections() {
+    const user = getCurrentUser();
+
+    return Boolean(user?.can_use_supervisor_scope) && isSupervisorScope();
 }
 
 function updateScopedNavigation() {
-    const supervisor = isSupervisorScope();
+    const canShowSupervisorSections = canUseSupervisorSections();
 
-    setElementHidden("nav-stores", !supervisor);
-    setElementHidden("nav-vendors", !supervisor);
-    setElementHidden("stores-panel", !supervisor);
-    setElementHidden("vendors-panel", !supervisor);
+    setElementHidden("nav-stores", !canShowSupervisorSections);
+    setElementHidden("nav-vendors", !canShowSupervisorSections);
+    setElementHidden("stores-panel", !canShowSupervisorSections);
+    setElementHidden("vendors-panel", !canShowSupervisorSections);
 
     const activePanel = document.querySelector(".panel.active");
 
     if (
         activePanel &&
-        !supervisor &&
+        !canShowSupervisorSections &&
         ["stores-panel", "vendors-panel"].includes(activePanel.id)
     ) {
         activePanel.classList.remove("active");
@@ -127,4 +154,29 @@ function setElementHidden(elementId, hidden) {
     }
 
     element.hidden = hidden;
+}
+
+async function reloadActivePanel() {
+    let activePanel = document.querySelector(".panel.active");
+
+    if (
+        activePanel &&
+        !canUseSupervisorSections() &&
+        ["stores-panel", "vendors-panel"].includes(activePanel.id)
+    ) {
+        activePanel.classList.remove("active");
+
+        const ordersPanel = document.getElementById("orders-panel");
+
+        if (ordersPanel) {
+            ordersPanel.classList.add("active");
+            activePanel = ordersPanel;
+        }
+    }
+
+    if (!activePanel) {
+        return;
+    }
+
+    await loadPanelData(activePanel.id);
 }

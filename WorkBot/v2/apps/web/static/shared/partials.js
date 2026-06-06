@@ -26,20 +26,22 @@ async function loadAdminPartials() {
 
         orderDetailModal,
         orderFormModal,
+        orderLineFormModal,
     ] = await Promise.all([
-        loadHtmlPartial("/admin/domains/items/items.html"),
-        loadHtmlPartial("/admin/domains/stores/stores.html"),
-        loadHtmlPartial("/admin/domains/vendors/vendors.html"),
-        loadHtmlPartial("/admin/domains/orders/orders.html"),
+        loadHtmlPartial("/admin/assets/domains/items/items.html"),
+        loadHtmlPartial("/admin/assets/domains/stores/stores.html"),
+        loadHtmlPartial("/admin/assets/domains/vendors/vendors.html"),
+        loadHtmlPartial("/admin/assets/domains/orders/orders.html"),
 
-        loadHtmlPartial("/admin/domains/items/item-detail-modal.html"),
-        loadHtmlPartial("/admin/domains/items/item-form-modal.html"),
+        loadHtmlPartial("/admin/assets/domains/items/item-detail-modal.html"),
+        loadHtmlPartial("/admin/assets/domains/items/item-form-modal.html"),
 
-        loadHtmlPartial("/admin/domains/vendors/vendor-detail-modal.html"),
-        loadHtmlPartial("/admin/domains/vendors/vendor-form-modal.html"),
+        loadHtmlPartial("/admin/assets/domains/vendors/vendor-detail-modal.html"),
+        loadHtmlPartial("/admin/assets/domains/vendors/vendor-form-modal.html"),
 
-        loadHtmlPartial("/admin/domains/orders/order-detail-modal.html"),
-        loadHtmlPartial("/admin/domains/orders/order-form-modal.html"),
+        loadHtmlPartial("/admin/assets/domains/orders/order-detail-modal.html"),
+        loadHtmlPartial("/admin/assets/domains/orders/order-form-modal.html"),
+        loadHtmlPartial("/admin/assets/domains/orders/order-line-form-modal.html"),
     ]);
 
     sectionsContainer.innerHTML = [
@@ -56,5 +58,6 @@ async function loadAdminPartials() {
         vendorFormModal,
         orderDetailModal,
         orderFormModal,
+        orderLineFormModal,
     ].join("");
 }

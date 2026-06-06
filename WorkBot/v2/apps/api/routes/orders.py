@@ -34,9 +34,61 @@ from workbot_core.infrastructure.database.repositories.vendor_repository import 
     SqlVendorRepository,
 )
 
+from apps.api.auth.dependencies import (
+    get_current_user,
+    get_effective_store_scope,
+    require_supervisor,
+    user_can_access_store,
+)
+from workbot_core.domain.models.user import User, UserRole
 
 router = APIRouter(prefix="/orders", tags=["orders"])
 
+
+# @router.get("", response_model=list[OrderListResponse])
+# def list_orders(
+#     store: str | None = Query(default=None),
+#     vendor: str | None = Query(default=None),
+#     start_date: date | None = Query(default=None),
+#     end_date: date | None = Query(default=None),
+#     session: Session = Depends(get_db_session),
+# ) -> list[OrderListResponse]:
+    
+
+
+#     stores = SqlStoreRepository(session)
+#     vendors = SqlVendorRepository(session)
+
+#     try:
+#         order_list = ManageOrders(
+#             orders=SqlOrderRepository(session),
+#             stores=stores,
+#             vendors=vendors,
+#         ).list_orders(
+#             store=store,
+#             vendor=vendor,
+#             start_date=start_date,
+#             end_date=end_date,
+#         )
+
+#         stores_by_id = {store.id: store for store in stores.list_all()}
+#         vendors_by_id = {vendor.id: vendor for vendor in vendors.list_all()}
+
+#         return [
+#             _order_list_response(
+#                 order,
+#                 store_name=stores_by_id.get(order.store_id).name
+#                 if order.store_id in stores_by_id
+#                 else None,
+#                 vendor_name=vendors_by_id.get(order.vendor_id).name
+#                 if order.vendor_id in vendors_by_id
+#                 else None,
+#             )
+#             for order in order_list
+#         ]
+
+#     except ValueError as exc:
+#         raise _http_error_from_value_error(exc) from exc
 
 @router.get("", response_model=list[OrderListResponse])
 def list_orders(
@@ -45,49 +97,93 @@ def list_orders(
     start_date: date | None = Query(default=None),
     end_date: date | None = Query(default=None),
     session: Session = Depends(get_db_session),
+    current_user: User = Depends(get_current_user),
 ) -> list[OrderListResponse]:
+    orders = SqlOrderRepository(session)
     stores = SqlStoreRepository(session)
     vendors = SqlVendorRepository(session)
 
-    try:
-        order_list = ManageOrders(
-            orders=SqlOrderRepository(session),
-            stores=stores,
-            vendors=vendors,
-        ).list_orders(
-            store=store,
-            vendor=vendor,
+    effective_store = get_effective_store_scope(
+        requested_store_name=store,
+        current_user=current_user,
+        session=session,
+    )
+
+    vendor_obj = vendors.get_by_name(vendor) if vendor else None
+
+    if vendor and vendor_obj is None:
+        raise HTTPException(status_code=404, detail=f"Vendor not found: {vendor}")
+
+    if effective_store and vendor_obj:
+        order_list = orders.list_by_store_and_vendor(
+            effective_store.id,
+            vendor_obj.id,
             start_date=start_date,
             end_date=end_date,
         )
+    elif effective_store:
+        order_list = orders.list_by_store(
+            effective_store.id,
+            start_date=start_date,
+            end_date=end_date,
+        )
+    elif vendor_obj:
+        order_list = orders.list_by_vendor(
+            vendor_obj.id,
+            start_date=start_date,
+            end_date=end_date,
+        )
+    else:
+        order_list = orders.list_all()
 
-        stores_by_id = {store.id: store for store in stores.list_all()}
-        vendors_by_id = {vendor.id: vendor for vendor in vendors.list_all()}
+    stores_by_id = {store.id: store for store in stores.list_all()}
+    vendors_by_id = {vendor.id: vendor for vendor in vendors.list_all()}
 
-        return [
-            _order_list_response(
-                order,
-                store_name=stores_by_id.get(order.store_id).name
-                if order.store_id in stores_by_id
-                else None,
-                vendor_name=vendors_by_id.get(order.vendor_id).name
-                if order.vendor_id in vendors_by_id
-                else None,
-            )
-            for order in order_list
-        ]
-
-    except ValueError as exc:
-        raise _http_error_from_value_error(exc) from exc
-
+    return [
+        OrderListResponse(
+            id=order.id,
+            store_id=order.store_id,
+            store_name=stores_by_id.get(order.store_id).name
+            if order.store_id in stores_by_id
+            else None,
+            vendor_id=order.vendor_id,
+            vendor_name=vendors_by_id.get(order.vendor_id).name
+            if order.vendor_id in vendors_by_id
+            else None,
+            order_date=order.order_date,
+            delivery_date=order.delivery_date,
+            status=order.status.value,
+            source=order.source,
+            source_reference=order.source_reference,
+            line_count=len(order.lines),
+        )
+        for order in order_list
+    ]
 
 @router.post("", response_model=OrderDetailResponse, status_code=201)
 def create_order(
     request: CreateOrderRequest,
     session: Session = Depends(get_db_session),
+    current_user: User = Depends(get_current_user),
 ) -> OrderDetailResponse:
     stores = SqlStoreRepository(session)
     vendors = SqlVendorRepository(session)
+
+    if current_user.role == UserRole.VIEWER:
+        raise HTTPException(
+            status_code=403,
+            detail="Viewer users cannot create orders.",
+        )
+
+    if not user_can_access_store(
+        current_user=current_user,
+        store_id=request.store_id,
+        session=session,
+    ):
+        raise HTTPException(
+            status_code=403,
+            detail="Cannot create order for this store.",
+        )
 
     try:
         order = ManageOrders(
@@ -126,11 +222,11 @@ def create_order(
         session.rollback()
         raise _http_error_from_value_error(exc) from exc
 
-
 @router.get("/{order_id}", response_model=OrderDetailResponse)
 def get_order(
     order_id: str,
     session: Session = Depends(get_db_session),
+    current_user: User = Depends(get_current_user),
 ) -> OrderDetailResponse:
     stores = SqlStoreRepository(session)
     vendors = SqlVendorRepository(session)
@@ -139,6 +235,8 @@ def get_order(
         order = ManageOrders(
             orders=SqlOrderRepository(session),
         ).get_order(order_id)
+
+        _ensure_order_access(order, current_user, session)
 
         store = stores.get_by_id(order.store_id)
         vendor = vendors.get_by_id(order.vendor_id)
@@ -158,13 +256,21 @@ def update_order_notes(
     order_id: str,
     request: UpdateOrderNotesRequest,
     session: Session = Depends(get_db_session),
+    current_user: User = Depends(get_current_user),
 ) -> OrderDetailResponse:
     stores = SqlStoreRepository(session)
     vendors = SqlVendorRepository(session)
+    orders = SqlOrderRepository(session)
 
     try:
+        existing_order = ManageOrders(
+            orders=orders,
+        ).get_order(order_id)
+
+        _ensure_order_write_access(existing_order, current_user, session)
+
         order = ManageOrders(
-            orders=SqlOrderRepository(session),
+            orders=orders,
         ).update_notes(
             UpdateOrderNotesCommand(
                 order_id=order_id,
@@ -187,19 +293,26 @@ def update_order_notes(
         session.rollback()
         raise _http_error_from_value_error(exc) from exc
 
-
 @router.post("/{order_id}/cancel", response_model=OrderDetailResponse)
 def cancel_order(
     order_id: str,
     request: CancelOrderRequest,
     session: Session = Depends(get_db_session),
+    current_user: User = Depends(get_current_user),
 ) -> OrderDetailResponse:
     stores = SqlStoreRepository(session)
     vendors = SqlVendorRepository(session)
+    orders = SqlOrderRepository(session)
 
     try:
+        existing_order = ManageOrders(
+            orders=orders,
+        ).get_order(order_id)
+
+        _ensure_order_write_access(existing_order, current_user, session)
+
         order = ManageOrders(
-            orders=SqlOrderRepository(session),
+            orders=orders,
         ).cancel_order(
             CancelOrderCommand(
                 order_id=order_id,
@@ -221,12 +334,13 @@ def cancel_order(
     except ValueError as exc:
         session.rollback()
         raise _http_error_from_value_error(exc) from exc
-
+    
 
 @router.post("/{order_id}/export", response_model=OrderDetailResponse)
 def mark_order_exported(
     order_id: str,
     session: Session = Depends(get_db_session),
+    current_user: User = Depends(require_supervisor),
 ) -> OrderDetailResponse:
     stores = SqlStoreRepository(session)
     vendors = SqlVendorRepository(session)
@@ -256,6 +370,7 @@ def mark_order_exported(
 def mark_order_fulfilled(
     order_id: str,
     session: Session = Depends(get_db_session),
+    current_user: User = Depends(require_supervisor),
 ) -> OrderDetailResponse:
     stores = SqlStoreRepository(session)
     vendors = SqlVendorRepository(session)
@@ -280,11 +395,11 @@ def mark_order_fulfilled(
         session.rollback()
         raise _http_error_from_value_error(exc) from exc
 
-
 @router.delete("/{order_id}", status_code=204)
 def delete_order(
     order_id: str,
     session: Session = Depends(get_db_session),
+    current_user: User = Depends(require_supervisor),
 ) -> None:
     try:
         ManageOrders(
@@ -379,7 +494,6 @@ def _order_line_response(line: OrderLine) -> OrderLineResponse:
         updated_at=line.updated_at,
     )
 
-
 def _http_error_from_value_error(exc: ValueError) -> HTTPException:
     message = str(exc)
 
@@ -396,3 +510,34 @@ def _http_error_from_value_error(exc: ValueError) -> HTTPException:
         return HTTPException(status_code=400, detail=message)
 
     return HTTPException(status_code=400, detail=message)
+
+def _ensure_order_access(
+    order: Order,
+    current_user: User,
+    session: Session,
+) -> None:
+    if user_can_access_store(
+        current_user=current_user,
+        store_id=order.store_id,
+        session=session,
+    ):
+        return
+
+    raise HTTPException(
+        status_code=403,
+        detail="Cannot access order for another store.",
+    )
+
+
+def _ensure_order_write_access(
+    order: Order,
+    current_user: User,
+    session: Session,
+) -> None:
+    _ensure_order_access(order, current_user, session)
+
+    if current_user.role == UserRole.VIEWER:
+        raise HTTPException(
+            status_code=403,
+            detail="Viewer users cannot modify orders.",
+        )

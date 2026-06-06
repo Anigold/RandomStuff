@@ -13,6 +13,8 @@ from workbot_core.infrastructure.database.records.vendor_record import VendorRec
 from workbot_core.infrastructure.database.records.order_record import OrderRecord
 from workbot_core.infrastructure.database.records.order_line_record import OrderLineRecord
 
+from workbot_core.infrastructure.database.records.user_record import UserRecord
+
 __all__ = [
     "ItemRecord",
     "ItemStoreInfoRecord",
@@ -20,5 +22,6 @@ __all__ = [
     "StoreRecord",
     "VendorRecord",
     "OrderRecord",
-    "OrderLineRecord"
+    "OrderLineRecord",
+    "UserRecord",
 ]

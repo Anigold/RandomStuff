@@ -3,12 +3,20 @@
 <head>
     <meta charset="utf-8" />
     <title>WorkBot Admin</title>
-    <link rel="stylesheet" href="/admin/styles.css" />
+    <link rel="stylesheet" href="/admin/assets/styles.css" />
 </head>
 <body>
     <header>
-        <h1>WorkBot Admin</h1>
-        <p>Manual tools for items, stores, vendors, and orders.</p>
+        <div class="header-content">
+            <div>
+                <h1>WorkBot Admin</h1>
+                <p>Manual tools for items, stores, vendors, and orders.</p>
+            </div>
+
+            <form id="logout-form" method="post" action="/logout">
+                <button type="submit">Log out</button>
+            </form>
+        </div>
     </header>
 
     <nav>
@@ -33,16 +41,17 @@
 
     <div id="admin-modals"></div>
 
-    <script src="/admin/shared/api.js"></script>
-    <script src="/admin/shared/ui.js"></script>
-    <script src="/admin/shared/partials.js"></script>
-    <script src="/admin/shared/scope.js"></script>
+    <script src="/admin/assets/shared/api.js"></script>
+    <script src="/admin/assets/shared/ui.js"></script>
+    <script src="/admin/assets/shared/partials.js"></script>
+    <script src="/admin/assets/shared/auth.js"></script>
+    <script src="/admin/assets/shared/scope.js"></script>
 
-    <script src="/admin/domains/items/items.js"></script>
-    <script src="/admin/domains/stores/stores.js"></script>
-    <script src="/admin/domains/vendors/vendors.js"></script>
-    <script src="/admin/domains/orders/orders.js"></script>
+    <script src="/admin/assets/domains/items/items.js"></script>
+    <script src="/admin/assets/domains/stores/stores.js"></script>
+    <script src="/admin/assets/domains/vendors/vendors.js"></script>
+    <script src="/admin/assets/domains/orders/orders.js"></script>
 
-    <script src="/admin/app.js"></script>
+    <script src="/admin/assets/app.js"></script>
 </body>
 </html>

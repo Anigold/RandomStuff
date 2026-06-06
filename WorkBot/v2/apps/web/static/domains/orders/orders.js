@@ -1,4 +1,6 @@
 let orderFormVendors = [];
+let stagedOrderLines = [];
+let orderFormItems = [];
 
 async function loadOrderFormOptions() {
     const storeSelect = document.getElementById("order-store-select");
@@ -8,29 +10,34 @@ async function loadOrderFormOptions() {
         return;
     }
 
-    const [stores, vendors] = await Promise.all([
-        apiRequest("/stores"),
-        apiRequest("/vendors"),
-    ]);
+    const user = getCurrentUser();
+    const scope = getSelectedStoreScope();
 
-    orderFormVendors = vendors;
+    const stores = user?.stores || [];
+    const vendors = await apiRequest("/vendors");
 
     storeSelect.innerHTML = `
         <option value="">Select a store...</option>
         ${stores
-            .filter((store) => store.is_active)
             .map((store) => `
-                <option value="${escapeHtml(store.id)}">
+                <option
+                    value="${escapeHtml(store.id)}"
+                    data-store-name="${escapeHtml(store.name)}"
+                >
                     ${escapeHtml(store.name)}
                 </option>
             `)
             .join("")}
     `;
 
-    const scope = getSelectedStoreScope();
-
     if (scope.id) {
         storeSelect.value = scope.id;
+    }
+
+    if (!user?.can_use_supervisor_scope || stores.length <= 1) {
+        storeSelect.disabled = true;
+    } else {
+        storeSelect.disabled = false;
     }
 
     vendorSelect.innerHTML = `
@@ -38,14 +45,17 @@ async function loadOrderFormOptions() {
         ${vendors
             .filter((vendor) => vendor.is_active)
             .map((vendor) => `
-                <option value="${escapeHtml(vendor.id)}">
+                <option
+                    value="${escapeHtml(vendor.id)}"
+                    data-standard-delivery-days="${escapeHtml(vendor.standard_delivery_days || "")}"
+                >
                     ${escapeHtml(vendor.name)}
                 </option>
             `)
             .join("")}
     `;
 
-    setDefaultOrderDate();
+    await loadOrderLineItemOptions();
 }
 
 async function loadOrders() {
@@ -288,15 +298,13 @@ function buildOrderPayload(form) {
         order_date: data.order_date,
         delivery_date: data.delivery_date || null,
         notes: data.notes || "",
-        lines: [
-            {
-                source_item_name: data.line_source_item_name,
-                source_vendor_sku: data.line_source_vendor_sku || null,
-                quantity: data.line_quantity,
-                unit: data.line_unit || null,
-                notes: data.line_notes || "",
-            },
-        ],
+        lines: stagedOrderLines.map((line) => ({
+            source_item_name: line.source_item_name,
+            source_vendor_sku: line.source_vendor_sku || null,
+            quantity: line.quantity,
+            unit: line.unit || null,
+            notes: line.notes || "",
+        })),
     };
 }
 
@@ -307,6 +315,11 @@ function bindOrderEvents() {
     const vendorSelect = document.getElementById("order-vendor-select");
     const orderDateInput = document.getElementById("order-date-input");
     const cancelButton = document.getElementById("cancel-order-create");
+    const storeSelect = document.getElementById("order-store-select");
+
+    const addLineButton = document.getElementById("open-add-order-line-form");
+    const orderLineForm = document.getElementById("order-line-form");
+    const cancelLineButton = document.getElementById("cancel-order-line-create");
 
     if (createButton) {
         createButton.addEventListener("click", async () => {
@@ -342,6 +355,31 @@ function bindOrderEvents() {
         cancelButton.addEventListener("click", closeOrderFormModal);
     }
 
+    if (addLineButton) {
+        addLineButton.addEventListener("click", async () => {
+            try {
+                await openOrderLineFormModal();
+            } catch (error) {
+                showMessage(error.message);
+                console.error(error);
+            }
+        });
+    }
+
+    if (cancelLineButton) {
+        cancelLineButton.addEventListener("click", closeOrderLineFormModal);
+    }
+
+    if (orderLineForm) {
+        orderLineForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const line = buildOrderLinePayload(event.target);
+            addStagedOrderLine(line);
+            closeOrderLineFormModal();
+        });
+    }
+
     if (orderForm) {
         orderForm.addEventListener("submit", async (event) => {
             event.preventDefault();
@@ -364,6 +402,18 @@ function bindOrderEvents() {
             }
         });
     }
+
+    if (storeSelect) {
+        storeSelect.addEventListener("change", async () => {
+            try {
+                await loadOrderLineItemOptions();
+            } catch (error) {
+                showMessage(error.message);
+                console.error(error);
+            }
+        });
+    }
+
 }
 
 function openOrderFormModal() {
@@ -395,6 +445,18 @@ async function startCreatingOrder() {
 
     await loadOrderFormOptions();
 
+    const subtitle = document.querySelector("#order-form-modal .modal-subtitle");
+    const scope = getSelectedStoreScope();
+
+    if (subtitle) {
+        subtitle.textContent = scope.name
+            ? `Creating an order for ${scope.name}.`
+            : "Enter order information and line items.";
+    }
+
+
+
+
     setDefaultOrderDate();
     updateDeliveryDateFromSelectedVendor();
 
@@ -404,11 +466,11 @@ async function startCreatingOrder() {
 function resetOrderForm() {
     const form = document.getElementById("order-form");
 
-    if (!form) {
-        return;
+    if (form) {
+        form.reset();
     }
 
-    form.reset();
+    resetStagedOrderLines();
 }
 
 function orderStatusBadge(status) {
@@ -433,7 +495,12 @@ async function openOrderModal(orderId) {
     try {
         const order = await apiRequest(`/orders/${orderId}`);
 
-        document.getElementById("order-modal-title").textContent = `Order ${order.id}`;
+        document.getElementById("order-modal-title").textContent =
+            order.vendor_name || order.vendor_id || "Order Details";
+
+        document.getElementById("order-modal-subtitle").innerHTML =
+            `${isSupervisorScope() ? `${escapeHtml(order.store_name || order.store_id)} · ` : ""}${escapeHtml(order.order_date)} · ${orderStatusBadge(order.status)}`;
+
         document.getElementById("order-modal-body").innerHTML = orderDetailsHtml(order);
 
         const modal = document.getElementById("order-modal");
@@ -457,38 +524,67 @@ function closeOrderModal() {
 }
 
 function orderDetailsHtml(order) {
+    const actionButtons = orderActionButtons(order);
+
     return `
         <div class="order-detail-layout">
             <div class="order-detail-summary">
-                <div class="detail-grid">
-                    ${isSupervisorScope() ? detailRow("Store", order.store_name || order.store_id) : ""}
-                    ${detailRow("Vendor", order.vendor_name || order.vendor_id)}
-                    ${detailRow("Order date", order.order_date)}
-                    ${detailRow("Delivery date", order.delivery_date)}
-                    ${detailRow("Status", order.status)}
-                    ${detailRow("Line count", order.line_count)}
-                    ${detailRow("Notes", order.notes)}
+                <div class="order-summary-list">
+                    ${isSupervisorScope()
+                        ? orderSummaryRow("Store", order.store_name || order.store_id)
+                        : ""
+                    }
+                    ${orderSummaryRow("Vendor", order.vendor_name || order.vendor_id)}
+                    ${orderSummaryRow("Order Date", order.order_date)}
+                    ${orderSummaryRow("Delivery Date", order.delivery_date || "Not set")}
+                    ${orderSummaryRow("Status", order.status)}
+                    ${orderSummaryRow("Line Items", order.line_count)}
+                    ${order.notes ? orderSummaryRow("Notes", order.notes) : ""}
                 </div>
             </div>
 
             <div class="order-detail-lines">
-                <h4>Line Items</h4>
+                <div class="section-heading-row">
+                    <h4>Line Items</h4>
+                    <span class="compact-card-meta">
+                        ${escapeHtml(order.line_count)} total
+                    </span>
+                </div>
+
                 ${orderLinesHtml(order.lines || [])}
             </div>
 
-            <div class="order-detail-actions">
-                <h4>Actions</h4>
-                <div class="card-actions">
-                    ${orderActionButtons(order)}
-                </div>
-            </div>
+            ${actionButtons
+                ? `
+                    <div class="order-detail-actions">
+                        <div>
+                            <h4>Actions</h4>
+                            <p class="compact-card-meta">Update the order workflow or remove this order.</p>
+                        </div>
+
+                        <div class="card-actions">
+                            ${actionButtons}
+                        </div>
+                    </div>
+                `
+                : ""
+            }
+        </div>
+    `;
+}
+
+function orderSummaryCard(label, value) {
+    return `
+        <div class="summary-card">
+            <div class="summary-label">${escapeHtml(label)}</div>
+            <div class="summary-value">${escapeHtml(value || "")}</div>
         </div>
     `;
 }
 
 function orderLinesHtml(lines) {
     if (!lines || lines.length === 0) {
-        return `<p><em>No line items saved.</em></p>`;
+        return `<div class="empty-state">No line items saved.</div>`;
     }
 
     return `
@@ -504,7 +600,7 @@ function orderLinesHtml(lines) {
 
             ${lines.map((line) => `
                 <div class="order-lines-row">
-                    <div>
+                    <div class="order-line-item-name">
                         <strong>${escapeHtml(line.item_name_snapshot || line.source_item_name || "")}</strong>
                         ${line.source_item_name && line.item_name_snapshot && line.source_item_name !== line.item_name_snapshot
                             ? `<span class="muted-text">Source: ${escapeHtml(line.source_item_name)}</span>`
@@ -526,28 +622,40 @@ function orderLinesHtml(lines) {
 function orderActionButtons(order) {
     const status = String(order.status || "").toLowerCase();
 
-    if (["fulfilled", "cancelled"].includes(status)) {
-        return `
+    if (!canModifyOrders()) {
+        return "";
+    }
+
+    const buttons = [];
+
+    if (!["fulfilled", "cancelled"].includes(status)) {
+        buttons.push(`
+            <button onclick="cancelOrderFromModal('${escapeHtml(order.id)}')">
+                Cancel
+            </button>
+        `);
+    }
+
+    if (canUseSupervisorOrderActions()) {
+        if (!["fulfilled", "cancelled"].includes(status)) {
+            buttons.push(`
+                <button onclick="markOrderExportedFromModal('${escapeHtml(order.id)}')">
+                    Export
+                </button>
+                <button onclick="markOrderFulfilledFromModal('${escapeHtml(order.id)}')">
+                    Fulfill
+                </button>
+            `);
+        }
+
+        buttons.push(`
             <button onclick="deleteOrderFromModal('${escapeHtml(order.id)}')" data-variant="danger">
                 Delete
             </button>
-        `;
+        `);
     }
 
-    return `
-        <button onclick="cancelOrderFromModal('${escapeHtml(order.id)}')">
-            Cancel
-        </button>
-        <button onclick="markOrderExportedFromModal('${escapeHtml(order.id)}')">
-            Export
-        </button>
-        <button onclick="markOrderFulfilledFromModal('${escapeHtml(order.id)}')">
-            Fulfill
-        </button>
-        <button onclick="deleteOrderFromModal('${escapeHtml(order.id)}')" data-variant="danger">
-            Delete
-        </button>
-    `;
+    return buttons.join("");
 }
 
 async function cancelOrderFromModal(orderId) {
@@ -568,4 +676,146 @@ async function markOrderFulfilledFromModal(orderId) {
 async function deleteOrderFromModal(orderId) {
     await deleteOrder(orderId);
     closeOrderModal();
+}
+
+async function openOrderLineFormModal() {
+    const modal = document.getElementById("order-line-form-modal");
+
+    if (!modal) {
+        return;
+    }
+
+    const form = document.getElementById("order-line-form");
+
+    if (form) {
+        form.reset();
+    }
+
+    await loadOrderLineItemOptions();
+
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+}
+
+function closeOrderLineFormModal() {
+    const modal = document.getElementById("order-line-form-modal");
+
+    if (!modal) {
+        return;
+    }
+
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+}
+
+function addStagedOrderLine(line) {
+    stagedOrderLines.push({
+        id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()),
+        ...line,
+    });
+
+    renderStagedOrderLines();
+}
+
+function removeStagedOrderLine(lineId) {
+    stagedOrderLines = stagedOrderLines.filter((line) => line.id !== lineId);
+    renderStagedOrderLines();
+}
+
+function renderStagedOrderLines() {
+    const container = document.getElementById("staged-order-lines-list");
+
+    if (!container) {
+        return;
+    }
+
+    if (stagedOrderLines.length === 0) {
+        container.innerHTML = `
+            <div class="empty-state">
+                No line items added yet.
+            </div>
+        `;
+        return;
+    }
+
+    container.innerHTML = stagedOrderLines.map((line, index) => `
+        <div class="staged-order-line-card">
+            <div class="staged-order-line-header">
+                <div>
+                    <h4>Line ${index + 1}</h4>
+                    <p class="compact-card-meta">${escapeHtml(line.source_item_name)}</p>
+                </div>
+
+                <button type="button" onclick="removeStagedOrderLine('${escapeHtml(line.id)}')" data-variant="danger">
+                    Remove
+                </button>
+            </div>
+
+            <div class="detail-grid">
+                ${detailRow("Vendor SKU", line.source_vendor_sku)}
+                ${detailRow("Quantity", line.quantity)}
+                ${detailRow("Unit", line.unit)}
+                ${detailRow("Notes", line.notes)}
+            </div>
+        </div>
+    `).join("");
+}
+
+function resetStagedOrderLines() {
+    stagedOrderLines = [];
+    renderStagedOrderLines();
+}
+
+function buildOrderLinePayload(form) {
+    const data = formDataToObject(form);
+
+    return {
+        source_item_name: data.source_item_name,
+        source_vendor_sku: data.source_vendor_sku || null,
+        quantity: data.quantity,
+        unit: data.unit || null,
+        notes: data.notes || "",
+    };
+}
+
+async function loadOrderLineItemOptions() {
+    const itemSelect = document.getElementById("order-line-item-select");
+    const storeSelect = document.getElementById("order-store-select");
+
+    if (!itemSelect || !storeSelect) {
+        return;
+    }
+
+    const selectedStoreOption = storeSelect.options[storeSelect.selectedIndex];
+    const storeName = selectedStoreOption?.dataset?.storeName || "";
+
+    if (!storeName) {
+        orderFormItems = [];
+        itemSelect.innerHTML = `
+            <option value="">Select a store first...</option>
+        `;
+        return;
+    }
+
+    orderFormItems = await apiRequest(
+        `/items?store=${encodeURIComponent(storeName)}&include_inactive=false`
+    );
+
+    if (orderFormItems.length === 0) {
+        itemSelect.innerHTML = `
+            <option value="">No items available for this store</option>
+        `;
+        return;
+    }
+
+    itemSelect.innerHTML = `
+        <option value="">Select an item...</option>
+        ${orderFormItems
+            .map((item) => `
+                <option value="${escapeHtml(item.name)}" data-item-id="${escapeHtml(item.id)}">
+                    ${escapeHtml(item.name)}
+                </option>
+            `)
+            .join("")}
+    `;
 }

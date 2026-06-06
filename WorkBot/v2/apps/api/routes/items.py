@@ -48,29 +48,137 @@ from workbot_core.infrastructure.database.repositories.vendor_repository import 
     SqlVendorRepository,
 )
 
+from apps.api.auth.dependencies import (
+    get_current_user,
+    get_effective_store_scope,
+    require_supervisor,
+)
+from workbot_core.domain.models.user import User, UserRole
+
+
 router = APIRouter(prefix="/items", tags=["items"])
 
+
+# @router.get("", response_model=list[ItemResponse])
+# def list_items(
+#     search: str | None = None,
+#     include_inactive: bool = True,
+#     store: str | None = None,
+#     session: Session = Depends(get_db_session),
+# ) -> list[ItemResponse]:
+#     items = SqlItemRepository(session)
+#     stores = SqlStoreRepository(session)
+#     item_store_infos = SqlItemStoreInfoRepository(session)
+
+#     if store:
+#         store_obj = stores.get_by_name(store)
+
+#         if store_obj is None:
+#             raise HTTPException(status_code=404, detail=f"Store not found: {store}")
+
+#         store_infos = item_store_infos.list_for_store(store_obj.id)
+#         store_item_ids = {info.item_id for info in store_infos}
+
+#         item_list = [
+#             item
+#             for item in items.list_all()
+#             if item.id in store_item_ids
+#         ]
+#     else:
+#         item_list = items.list_all()
+
+#     if not include_inactive:
+#         item_list = [item for item in item_list if item.is_active]
+
+#     if search:
+#         search_lower = search.casefold()
+#         item_list = [
+#             item
+#             for item in item_list
+#             if search_lower in item.name.casefold()
+#         ]
+
+#     return [_item_response(item) for item in item_list]
 
 @router.get("", response_model=list[ItemResponse])
 def list_items(
     search: str | None = None,
     include_inactive: bool = True,
+    store: str | None = None,
     session: Session = Depends(get_db_session),
+    current_user: User = Depends(get_current_user),
 ) -> list[ItemResponse]:
-    items = ManageItems(
-        items=SqlItemRepository(session),
-    ).list_items(
-        search=search,
-        include_inactive=include_inactive,
+    items = SqlItemRepository(session)
+    item_store_infos = SqlItemStoreInfoRepository(session)
+
+    effective_store = get_effective_store_scope(
+        requested_store_name=store,
+        current_user=current_user,
+        session=session,
     )
 
-    return [_item_response(item) for item in items]
+    if effective_store is not None:
+        store_infos = item_store_infos.list_for_store(effective_store.id)
+        store_item_ids = {
+            info.item_id
+            for info in store_infos
+            if info.is_active
+        }
 
+        item_list = [
+            item
+            for item in items.list_all()
+            if item.id in store_item_ids
+        ]
+    else:
+        item_list = items.list_all()
+
+    if not include_inactive:
+        item_list = [item for item in item_list if item.is_active]
+
+    if search:
+        search_lower = search.casefold()
+        item_list = [
+            item
+            for item in item_list
+            if search_lower in item.name.casefold()
+        ]
+
+    return [_item_response(item) for item in item_list]
+
+# @router.get("/{item_id}", response_model=ItemDetailResponse)
+# def get_item(
+#     item_id: str,
+#     session: Session = Depends(get_db_session),
+# ) -> ItemDetailResponse:
+#     try:
+#         item = ManageItems(
+#             items=SqlItemRepository(session),
+#         ).get_item(item_id)
+
+#     except ValueError as exc:
+#         raise HTTPException(status_code=404, detail=str(exc)) from exc
+
+#     vendor_infos = SqlItemVendorInfoRepository(session)
+#     store_infos = SqlItemStoreInfoRepository(session)
+
+#     return ItemDetailResponse(
+#         **_item_response(item).model_dump(),
+#         vendor_info=[
+#             _item_vendor_info_response(info)
+#             for info in vendor_infos.list_for_item(item.id)
+#         ],
+#         store_info=[
+#             _item_store_info_response(info)
+#             for info in store_infos.list_for_item(item.id)
+#         ],
+#     )
 
 @router.get("/{item_id}", response_model=ItemDetailResponse)
 def get_item(
     item_id: str,
     session: Session = Depends(get_db_session),
+    current_user: User = Depends(get_current_user),
 ) -> ItemDetailResponse:
     try:
         item = ManageItems(
@@ -83,6 +191,30 @@ def get_item(
     vendor_infos = SqlItemVendorInfoRepository(session)
     store_infos = SqlItemStoreInfoRepository(session)
 
+    all_store_infos = store_infos.list_for_item(item.id)
+
+    if current_user.role == UserRole.STORE:
+        matching_store_infos = [
+            info
+            for info in all_store_infos
+            if info.store_id == current_user.store_id and info.is_active
+        ]
+
+        if not matching_store_infos:
+            raise HTTPException(
+                status_code=403,
+                detail="Cannot access item for another store.",
+            )
+
+        return ItemDetailResponse(
+            **_item_response(item).model_dump(),
+            vendor_info=[],
+            store_info=[
+                _item_store_info_response(info)
+                for info in matching_store_infos
+            ],
+        )
+
     return ItemDetailResponse(
         **_item_response(item).model_dump(),
         vendor_info=[
@@ -91,15 +223,15 @@ def get_item(
         ],
         store_info=[
             _item_store_info_response(info)
-            for info in store_infos.list_for_item(item.id)
+            for info in all_store_infos
         ],
     )
-
 
 @router.post("", response_model=ItemResponse, status_code=201)
 def create_item(
     request: CreateItemRequest,
     session: Session = Depends(get_db_session),
+    current_user: User = Depends(require_supervisor),
 ) -> ItemResponse:
     try:
         item = ManageItems(
@@ -136,6 +268,7 @@ def update_item(
     item_id: str,
     request: UpdateItemRequest,
     session: Session = Depends(get_db_session),
+    current_user: User = Depends(require_supervisor),
 ) -> ItemResponse:
     try:
         item = ManageItems(
@@ -172,6 +305,7 @@ def update_item(
 def delete_item(
     item_id: str,
     session: Session = Depends(get_db_session),
+    current_user: User = Depends(require_supervisor),
 ) -> ItemResponse:
     try:
         item = ManageItems(
@@ -196,6 +330,7 @@ def add_item_vendor_info(
     item_id: str,
     request: AddItemVendorInfoRequest,
     session: Session = Depends(get_db_session),
+    current_user: User = Depends(require_supervisor),
 ) -> ItemVendorInfoResponse:
     try:
         info = ManageItemVendorInformation(
@@ -232,6 +367,7 @@ def add_item_store_info(
     item_id: str,
     request: AddItemStoreInfoRequest,
     session: Session = Depends(get_db_session),
+    current_user: User = Depends(require_supervisor),
 ) -> ItemStoreInfoResponse:
     try:
         info = ManageItemStoreInformation(
@@ -266,6 +402,7 @@ def update_item_vendor_info(
     info_id: str,
     request: UpdateItemVendorInfoRequest,
     session: Session = Depends(get_db_session),
+    current_user: User = Depends(require_supervisor),
 ) -> ItemVendorInfoResponse:
     try:
         info = ManageItemVendorInformation(
@@ -300,6 +437,7 @@ def update_item_store_info(
     info_id: str,
     request: UpdateItemStoreInfoRequest,
     session: Session = Depends(get_db_session),
+    current_user: User = Depends(require_supervisor),
 ) -> ItemStoreInfoResponse:
     try:
         info = ManageItemStoreInformation(
@@ -331,6 +469,7 @@ def delete_item_vendor_info(
     item_id: str,
     info_id: str,
     session: Session = Depends(get_db_session),
+    current_user: User = Depends(require_supervisor),
 ) -> ItemVendorInfoResponse:
     try:
         info = ManageItemVendorInformation(
@@ -356,6 +495,7 @@ def delete_item_store_info(
     item_id: str,
     info_id: str,
     session: Session = Depends(get_db_session),
+    current_user: User = Depends(require_supervisor),
 ) -> ItemStoreInfoResponse:
     try:
         info = ManageItemStoreInformation(

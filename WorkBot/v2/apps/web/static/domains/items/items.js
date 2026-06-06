@@ -1,8 +1,18 @@
 let loadedItems = [];
 let editingItemId = null;
 
+let itemFormStores = [];
+let itemFormStoreInfos = [];
+
 async function loadItems() {
-    loadedItems = await apiRequest("/items");
+    const scope = getSelectedStoreScope();
+
+    const query = scope.name
+        ? `?store=${encodeURIComponent(scope.name)}`
+        : "";
+
+    loadedItems = await apiRequest(`/items${query}`);
+
     const container = document.getElementById("items-list");
 
     if (!container) {
@@ -12,7 +22,7 @@ async function loadItems() {
     if (loadedItems.length === 0) {
         container.innerHTML = `
             <div class="empty-state">
-                No items found.
+                No items found for this store view.
             </div>
         `;
         return;
@@ -24,7 +34,7 @@ async function loadItems() {
                 <h3>${escapeHtml(item.name)}</h3>
                 <span class="compact-card-meta">
                     ${escapeHtml(item.category || "No category")}
-                    ${item.subcategory ? ` / ${escapeHtml(item.subcategory)}` : ""}
+                    ${item.subcategory ? ` · ${escapeHtml(item.subcategory)}` : ""}
                 </span>
             </span>
 
@@ -254,45 +264,165 @@ async function deleteItem(itemId) {
 }
 
 function bindItemEvents() {
-    document
-        .getElementById("open-create-item-form")
-        .addEventListener("click", startCreatingItem);
+    const createButton = document.getElementById("open-create-item-form");
+    const itemForm = document.getElementById("item-form");
+    const cancelButton = document.getElementById("cancel-item-edit");
+    const refreshButton = document.getElementById("refresh-items");
 
-    document.getElementById("item-form").addEventListener("submit", async (event) => {
-        event.preventDefault();
-
-        try {
-            const payload = buildItemPayload(event.target);
-
-            if (editingItemId) {
-                await apiRequest(`/items/${editingItemId}`, {
-                    method: "PUT",
-                    body: JSON.stringify(payload),
-                });
-
-                showMessage("Item updated.");
-            } else {
-                await apiRequest("/items", {
-                    method: "POST",
-                    body: JSON.stringify(payload),
-                });
-
-                showMessage("Item created.");
+    if (createButton) {
+        createButton.addEventListener("click", async () => {
+            try {
+                await startCreatingItem();
+            } catch (error) {
+                showMessage(error.message);
+                console.error(error);
             }
+        });
+    }
 
-            closeItemFormModal();
-            await loadItems();
-        } catch (error) {
-            showMessage(error.message);
-            console.error(error);
-        }
-    });
+    if (itemForm) {
+        itemForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
 
-    document
-        .getElementById("cancel-item-edit")
-        .addEventListener("click", closeItemFormModal);
+            try {
+                const payload = buildItemPayload(event.target);
 
-    document
-        .getElementById("refresh-items")
-        .addEventListener("click", loadItems);
+                if (editingItemId) {
+                    await apiRequest(`/items/${editingItemId}`, {
+                        method: "PUT",
+                        body: JSON.stringify(payload),
+                    });
+
+                    showMessage("Item updated.");
+                } else {
+                    await apiRequest("/items", {
+                        method: "POST",
+                        body: JSON.stringify(payload),
+                    });
+
+                    showMessage("Item created.");
+                }
+
+                closeItemFormModal();
+                await loadItems();
+            } catch (error) {
+                showMessage(error.message);
+                console.error(error);
+            }
+        });
+    }
+
+    if (cancelButton) {
+        cancelButton.addEventListener("click", closeItemFormModal);
+    }
+
+    if (refreshButton) {
+        refreshButton.addEventListener("click", async () => {
+            try {
+                await loadItems();
+            } catch (error) {
+                showMessage(error.message);
+                console.error(error);
+            }
+        });
+    }
 }
+
+async function loadItemStoreAssignmentOptions(itemId = null) {
+    const container = document.getElementById("item-store-assignment-fields");
+
+    if (!container) {
+        return;
+    }
+
+    itemFormStores = await apiRequest("/stores");
+
+    itemFormStoreInfos = itemId
+        ? await listItemStoreInfos(itemId)
+        : [];
+
+    const activeStores = itemFormStores.filter((store) => store.is_active);
+
+    if (activeStores.length === 0) {
+        container.innerHTML = `
+            <div class="empty-state">
+                No active stores found.
+            </div>
+        `;
+        return;
+    }
+
+    const assignedStoreIds = new Set(
+        itemFormStoreInfos.map((info) => info.store_id)
+    );
+
+    container.innerHTML = activeStores.map((store) => `
+        <label class="checkbox-row">
+            <input
+                type="checkbox"
+                data-item-store-assignment
+                value="${escapeHtml(store.id)}"
+                ${assignedStoreIds.has(store.id) ? "checked" : ""}
+            />
+
+            <span class="checkbox-row-label">
+                <span class="checkbox-row-title">${escapeHtml(store.name)}</span>
+                <span class="checkbox-row-meta">${escapeHtml(store.id)}</span>
+            </span>
+        </label>
+    `).join("");
+}
+
+function getSelectedItemStoreIds() {
+    return Array.from(
+        document.querySelectorAll("[data-item-store-assignment]:checked")
+    ).map((input) => input.value);
+}
+
+async function syncItemStoreAssignments(itemId) {
+    const selectedStoreIds = new Set(getSelectedItemStoreIds());
+
+    const existingInfosByStoreId = new Map(
+        itemFormStoreInfos.map((info) => [info.store_id, info])
+    );
+
+    const existingStoreIds = new Set(existingInfosByStoreId.keys());
+
+    const storeIdsToAdd = [...selectedStoreIds].filter(
+        (storeId) => !existingStoreIds.has(storeId)
+    );
+
+    const infosToDelete = [...existingStoreIds]
+        .filter((storeId) => !selectedStoreIds.has(storeId))
+        .map((storeId) => existingInfosByStoreId.get(storeId));
+
+    for (const storeId of storeIdsToAdd) {
+        await createItemStoreInfo(itemId, storeId);
+    }
+
+    for (const info of infosToDelete) {
+        await deleteItemStoreInfo(info.id);
+    }
+
+    itemFormStoreInfos = await listItemStoreInfos(itemId);
+}
+// NEED TO FINISH LOGIN AND AUTHORIZATION FOR PROPER USE
+// async function listItemStoreInfos(itemId) {
+//     return apiRequest(`/items/${itemId}/store-information`);
+// }
+
+// async function createItemStoreInfo(itemId, storeId) {
+//     return apiRequest(`/items/${itemId}/store-information`, {
+//         method: "POST",
+//         body: JSON.stringify({
+//             store_id: storeId,
+//             is_active: true,
+//         }),
+//     });
+// }
+
+// async function deleteItemStoreInfo(infoId) {
+//     return apiRequest(`/item-store-information/${infoId}`, {
+//         method: "DELETE",
+//     });
+// }

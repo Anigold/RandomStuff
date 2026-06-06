@@ -28,8 +28,14 @@ from workbot_core.domain.models.vendor import (
 from workbot_core.infrastructure.database.repositories.vendor_repository import (
     SqlVendorRepository,
 )
+from workbot_core.domain.models.user import User
+from apps.api.auth.dependencies import require_supervisor, get_current_user
 
-router = APIRouter(prefix="/vendors", tags=["vendors"])
+router = APIRouter(
+    prefix="/vendors",
+    tags=["vendors"],
+    # dependencies=[Depends(require_supervisor)]
+)
 
 
 @router.get("", response_model=list[VendorResponse])
@@ -37,6 +43,7 @@ def list_vendors(
     search: str | None = None,
     include_inactive: bool = True,
     session: Session = Depends(get_db_session),
+    current_user: User = Depends(get_current_user),
 ) -> list[VendorResponse]:
     vendors = ManageVendors(
         vendors=SqlVendorRepository(session),
@@ -52,6 +59,7 @@ def list_vendors(
 def get_vendor(
     vendor_id: str,
     session: Session = Depends(get_db_session),
+    current_user: User = Depends(get_current_user),
 ) -> VendorResponse:
     try:
         vendor = ManageVendors(
@@ -68,6 +76,7 @@ def get_vendor(
 def create_vendor(
     request: CreateVendorRequest,
     session: Session = Depends(get_db_session),
+    current_user: User = Depends(require_supervisor),
 ) -> VendorResponse:
     try:
         vendor = ManageVendors(
@@ -102,6 +111,7 @@ def update_vendor(
     vendor_id: str,
     request: UpdateVendorRequest,
     session: Session = Depends(get_db_session),
+    current_user: User = Depends(require_supervisor),
 ) -> VendorResponse:
     try:
         vendor = ManageVendors(
@@ -136,6 +146,7 @@ def update_vendor(
 def delete_vendor(
     vendor_id: str,
     session: Session = Depends(get_db_session),
+    current_user: User = Depends(require_supervisor),
 ) -> VendorResponse:
     try:
         vendor = ManageVendors(

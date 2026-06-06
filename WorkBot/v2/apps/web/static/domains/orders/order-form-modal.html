@@ -1,79 +1,94 @@
 <div id="order-form-modal" class="modal" aria-hidden="true">
     <div class="modal-backdrop" onclick="closeOrderFormModal()"></div>
 
-    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="order-form-modal-title">
-        <div class="modal-header">
-            <h2 id="order-form-modal-title">Create Order</h2>
+    <div class="modal-content modal-content-wide" role="dialog" aria-modal="true" aria-labelledby="order-form-modal-title">
+        <div class="modal-header order-modal-header">
+            <div>
+                <h2 id="order-form-modal-title">Create Order</h2>
+                <p class="modal-subtitle">
+                    Enter order information and line items.
+                </p>
+            </div>
+
             <button type="button" onclick="closeOrderFormModal()">Close</button>
         </div>
 
         <div class="modal-body">
-            <form id="order-form">
-                <h3>Order Information</h3>
+            <form id="order-form" class="order-create-form">
+                <div class="order-create-layout">
+                    <section class="order-create-section">
+                        <h3>Order Information</h3>
 
-                <label>
-                    Store
-                    <select name="store_id" id="order-store-select" required>
-                        <option value="">Select a store...</option>
-                    </select>
-                </label>
+                        <div class="order-form-grid">
+                            <label>
+                                Store
+                                <select name="store_id" id="order-store-select" required>
+                                    <option value="">Select a store...</option>
+                                </select>
+                            </label>
 
-                <label>
-                    Vendor
-                    <select name="vendor_id" id="order-vendor-select" required>
-                        <option value="">Select a vendor...</option>
-                    </select>
-                </label>
+                            <label>
+                                Vendor
+                                <select name="vendor_id" id="order-vendor-select" required>
+                                    <option value="">Select a vendor...</option>
+                                </select>
+                            </label>
 
-                <label>
-                    Order Date
-                    <input name="order_date" id="order-date-input" type="date" required />
-                </label>
+                            <label>
+                                Order Date
+                                <input name="order_date" id="order-date-input" type="date" required />
+                            </label>
 
-                <label>
-                    Delivery Date
-                    <input name="delivery_date" id="delivery-date-input" type="date" />
-                </label>
+                            <label>
+                                Delivery Date
+                                <input name="delivery_date" id="delivery-date-input" type="date" />
+                            </label>
+                        </div>
 
-                <label>
-                    Notes
-                    <textarea name="notes" placeholder="Notes"></textarea>
-                </label>
+                        <label>
+                            Notes
+                            <textarea name="notes" placeholder="Order notes"></textarea>
+                        </label>
+                    </section>
 
-                <h3>Line 1</h3>
+                    <section class="order-create-section order-create-lines-section">
+                        <div class="section-heading-row">
+                            <div>
+                                <h3>Line Items</h3>
+                                <p class="compact-card-meta">
+                                    Add line items one at a time. You can leave this blank if this order has no lines yet.
+                                </p>
+                            </div>
 
-                <label>
-                    Source Item Name
-                    <input name="line_source_item_name" placeholder="Source item name" required />
-                </label>
+                            <button id="open-add-order-line-form" type="button" data-variant="primary">
+                                Add Line Item
+                            </button>
+                        </div>
 
-                <label>
-                    Source Vendor SKU
-                    <input name="line_source_vendor_sku" placeholder="Source vendor SKU" />
-                </label>
+                        <div id="staged-order-lines-list" class="staged-order-lines-list">
+                            <div class="empty-state">
+                                No line items added yet.
+                            </div>
+                        </div>
+                    </section>
 
-                <label>
-                    Quantity
-                    <input name="line_quantity" placeholder="Quantity" required />
-                </label>
+                    <section class="order-create-actions">
+                        <div>
+                            <h3>Create Order</h3>
+                            <p class="compact-card-meta">
+                                This will create a pending manual order.
+                            </p>
+                        </div>
 
-                <label>
-                    Unit
-                    <input name="line_unit" placeholder="Unit" />
-                </label>
-
-                <label>
-                    Line Notes
-                    <textarea name="line_notes" placeholder="Line notes"></textarea>
-                </label>
-
-                <div class="form-actions">
-                    <button id="order-submit-button" type="submit" data-variant="primary">
-                        Create Order
-                    </button>
-                    <button id="cancel-order-create" type="button">
-                        Cancel
-                    </button>
+                        <div class="form-actions">
+                            <button id="order-submit-button" type="submit" data-variant="primary">
+                                Create Order
+                            </button>
+                            <button id="cancel-order-create" type="button">
+                                Cancel
+                            </button>
+                        </div>
+                    </section>
                 </div>
             </form>
         </div>

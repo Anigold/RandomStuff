@@ -476,64 +476,77 @@ async function deleteVendor(vendorId) {
 }
 
 function bindVendorEvents() {
-    document
-        .getElementById("open-create-vendor-form")
-        .addEventListener("click", startCreatingVendor);
+    const createButton = document.getElementById("open-create-vendor-form");
+    const refreshButton = document.getElementById("refresh-vendors");
+    const vendorForm = document.getElementById("vendor-form");
+    const cancelButton = document.getElementById("cancel-vendor-edit");
 
-    document.getElementById("vendor-form").addEventListener("submit", async (event) => {
-        event.preventDefault();
+    const addStoreReferenceButton = document.getElementById("add-vendor-store-reference");
+    const addDeliveryDayButton = document.getElementById("add-vendor-delivery-day");
 
-        try {
-            const payload = buildVendorPayload(event.target);
-
-            if (editingVendorId) {
-                await apiRequest(`/vendors/${editingVendorId}`, {
-                    method: "PUT",
-                    body: JSON.stringify(payload),
-                });
-
-                showMessage("Vendor updated.");
-            } else {
-                await apiRequest("/vendors", {
-                    method: "POST",
-                    body: JSON.stringify(payload),
-                });
-
-                showMessage("Vendor created.");
+    if (createButton) {
+        createButton.addEventListener("click", async () => {
+            try {
+                await startCreatingVendor();
+            } catch (error) {
+                showMessage(error.message);
+                console.error(error);
             }
-
-            closeVendorFormModal();
-
-            await loadVendors();
-
-            if (typeof loadOrderFormOptions === "function") {
-                await loadOrderFormOptions();
-            }
-        } catch (error) {
-            showMessage(error.message);
-            console.error(error);
-        }
-    });
-
-    document
-        .getElementById("cancel-vendor-edit")
-        .addEventListener("click", closeVendorFormModal);
-
-    document.getElementById("add-vendor-contact").addEventListener("click", () => {
-        addVendorContactRow();
-    });
-
-    document.getElementById("add-vendor-schedule").addEventListener("click", () => {
-        addVendorScheduleRow();
-    });
-
-    document
-        .getElementById("add-vendor-store-reference")
-        .addEventListener("click", () => {
-            addVendorStoreReferenceRow();
         });
+    }
 
-    document
-        .getElementById("refresh-vendors")
-        .addEventListener("click", loadVendors);
+    if (refreshButton) {
+        refreshButton.addEventListener("click", async () => {
+            try {
+                await loadVendors();
+            } catch (error) {
+                showMessage(error.message);
+                console.error(error);
+            }
+        });
+    }
+
+    if (cancelButton) {
+        cancelButton.addEventListener("click", closeVendorFormModal);
+    }
+
+    if (addStoreReferenceButton) {
+        addStoreReferenceButton.addEventListener("click", addVendorStoreReferenceRow);
+    }
+
+    if (addDeliveryDayButton) {
+        addDeliveryDayButton.addEventListener("click", addVendorDeliveryDayRow);
+    }
+
+    if (vendorForm) {
+        vendorForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            try {
+                const payload = buildVendorPayload(event.target);
+
+                if (editingVendorId) {
+                    await apiRequest(`/vendors/${editingVendorId}`, {
+                        method: "PUT",
+                        body: JSON.stringify(payload),
+                    });
+
+                    showMessage("Vendor updated.");
+                } else {
+                    await apiRequest("/vendors", {
+                        method: "POST",
+                        body: JSON.stringify(payload),
+                    });
+
+                    showMessage("Vendor created.");
+                }
+
+                closeVendorFormModal();
+                await loadVendors();
+            } catch (error) {
+                showMessage(error.message);
+                console.error(error);
+            }
+        });
+    }
 }

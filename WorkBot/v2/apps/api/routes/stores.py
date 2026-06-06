@@ -21,8 +21,9 @@ from workbot_core.infrastructure.database.repositories.store_repository import (
     SqlStoreRepository,
 )
 
-router = APIRouter(prefix="/stores", tags=["stores"])
+from apps.api.auth.dependencies import require_supervisor
 
+router = APIRouter(prefix="/stores", tags=["stores"], dependencies=[Depends(require_supervisor)])
 
 @router.get("", response_model=list[StoreResponse])
 def list_stores(
