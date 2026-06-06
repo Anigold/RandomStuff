@@ -1,61 +1,11 @@
 from __future__ import annotations
 
-from collections.abc import Generator
 from datetime import datetime
 
-import pytest
 from fastapi.testclient import TestClient
-from sqlalchemy import create_engine
-from sqlalchemy.orm import Session, sessionmaker
-from sqlalchemy.pool import StaticPool
 
-from apps.api.dependencies import get_db_session
-from apps.api.main import app
-from workbot_core.infrastructure.database.base import Base
-
-from apps.api.auth.dependencies import get_current_user
-from tests.helpers.auth_helpers import make_supervisor_user
 
 VENDORS_PATH = "/api/vendors"
-
-
-@pytest.fixture
-def client() -> Generator[TestClient, None, None]:
-    engine = create_engine(
-        "sqlite://",
-        connect_args={"check_same_thread": False},
-        poolclass=StaticPool,
-    )
-
-    Base.metadata.drop_all(bind=engine)
-    Base.metadata.create_all(bind=engine)
-
-    session_factory = sessionmaker(
-        autocommit=False,
-        autoflush=False,
-        bind=engine,
-    )
-
-    def override_get_db_session() -> Generator[Session, None, None]:
-        session = session_factory()
-
-        try:
-            yield session
-        finally:
-            session.close()
-
-    supervisor = make_supervisor_user()
-
-    app.dependency_overrides[get_db_session] = override_get_db_session
-    app.dependency_overrides[get_current_user] = lambda: supervisor
-
-    with TestClient(app) as test_client:
-        yield test_client
-
-    app.dependency_overrides.clear()
-    Base.metadata.drop_all(bind=engine)
-    engine.dispose()
-
 
 def test_create_vendor(client: TestClient) -> None:
     response = client.post(
