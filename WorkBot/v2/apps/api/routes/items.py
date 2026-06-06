@@ -51,7 +51,8 @@ from workbot_core.infrastructure.database.repositories.vendor_repository import 
 from apps.api.auth.dependencies import (
     get_current_user,
     get_effective_store_scope,
-    require_supervisor,
+    require_supervisor, 
+    user_can_access_store
 )
 from workbot_core.domain.models.user import User, UserRole
 
@@ -193,17 +194,22 @@ def get_item(
 
     all_store_infos = store_infos.list_for_item(item.id)
 
-    if current_user.role == UserRole.STORE:
-        matching_store_infos = [
+    if current_user.role != UserRole.SUPERVISOR:
+        accessible_store_infos = [
             info
             for info in all_store_infos
-            if info.store_id == current_user.store_id and info.is_active
+            if info.is_active
+            and user_can_access_store(
+                current_user=current_user,
+                store_id=info.store_id,
+                session=session,
+            )
         ]
 
-        if not matching_store_infos:
+        if not accessible_store_infos:
             raise HTTPException(
                 status_code=403,
-                detail="Cannot access item for another store.",
+                detail="Cannot access item for assigned stores.",
             )
 
         return ItemDetailResponse(
@@ -211,7 +217,7 @@ def get_item(
             vendor_info=[],
             store_info=[
                 _item_store_info_response(info)
-                for info in matching_store_infos
+                for info in accessible_store_infos
             ],
         )
 

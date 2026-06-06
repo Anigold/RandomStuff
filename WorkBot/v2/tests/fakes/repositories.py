@@ -176,6 +176,7 @@ class FakeItemStoreInfoRepository:
             if info.is_active
         ]
     
+
 class FakeOrderRepository:
     def __init__(self, orders: list[Order] | None = None) -> None:
         self._orders: dict[str, Order] = {}
@@ -271,6 +272,7 @@ class FakeOrderRepository:
 
     def delete(self, order_id: str) -> None:
         self._orders.pop(order_id, None)
+
 
 def _date_is_in_range(
     value: date,

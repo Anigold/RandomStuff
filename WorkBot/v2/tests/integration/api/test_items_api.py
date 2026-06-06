@@ -13,6 +13,8 @@ from apps.api.dependencies import get_db_session
 from apps.api.main import app
 from workbot_core.infrastructure.database.base import Base
 
+from apps.api.auth.dependencies import get_current_user
+from tests.helpers.auth_helpers import make_supervisor_user
 
 ITEMS_PATH = "/api/items"
 VENDORS_PATH = "/api/vendors"
@@ -45,14 +47,16 @@ def client(tmp_path: Path) -> Generator[TestClient, None, None]:
         finally:
             session.close()
 
+    supervisor = make_supervisor_user()
+
     app.dependency_overrides[get_db_session] = override_get_db_session
+    app.dependency_overrides[get_current_user] = lambda: supervisor
 
     with TestClient(app) as test_client:
         yield test_client
 
     app.dependency_overrides.clear()
     engine.dispose()
-
 
 def test_create_item(client: TestClient) -> None:
     response = client.post(

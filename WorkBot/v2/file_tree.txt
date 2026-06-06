@@ -275,6 +275,20 @@ C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\v2/
                     WHEEL
                     licenses/
                         LICENSE
+                bcrypt/
+                    py.typed
+                    _bcrypt.pyd
+                    _bcrypt.pyi
+                    __about__.py
+                    __init__.py
+                bcrypt-4.0.1.dist-info/
+                    INSTALLER
+                    LICENSE
+                    METADATA
+                    RECORD
+                    REQUESTED
+                    top_level.txt
+                    WHEEL
                 certifi/
                     cacert.pem
                     core.py
@@ -730,6 +744,23 @@ C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\v2/
                     WHEEL
                     licenses/
                         LICENSE
+                itsdangerous/
+                    encoding.py
+                    exc.py
+                    py.typed
+                    serializer.py
+                    signer.py
+                    timed.py
+                    url_safe.py
+                    _json.py
+                    __init__.py
+                itsdangerous-2.2.0.dist-info/
+                    INSTALLER
+                    LICENSE.txt
+                    METADATA
+                    RECORD
+                    REQUESTED
+                    WHEEL
                 mako/
                     ast.py
                     cache.py
@@ -792,6 +823,11 @@ C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\v2/
                     WHEEL
                     licenses/
                         LICENSE.txt
+                multipart/
+                    decoders.py
+                    exceptions.py
+                    multipart.py
+                    __init__.py
                 openpyxl/
                     _constants.py
                     __init__.py
@@ -1059,6 +1095,128 @@ C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\v2/
                         LICENSE
                         LICENSE.APACHE
                         LICENSE.BSD
+                passlib/
+                    apache.py
+                    apps.py
+                    context.py
+                    exc.py
+                    hash.py
+                    hosts.py
+                    ifc.py
+                    pwd.py
+                    registry.py
+                    totp.py
+                    win32.py
+                    __init__.py
+                    crypto/
+                        des.py
+                        digest.py
+                        _md4.py
+                        __init__.py
+                        scrypt/
+                            _builtin.py
+                            _gen_files.py
+                            _salsa.py
+                            __init__.py
+                        _blowfish/
+                            base.py
+                            unrolled.py
+                            _gen_files.py
+                            __init__.py
+                    ext/
+                        __init__.py
+                        django/
+                            models.py
+                            utils.py
+                            __init__.py
+                    handlers/
+                        argon2.py
+                        bcrypt.py
+                        cisco.py
+                        des_crypt.py
+                        digests.py
+                        django.py
+                        fshp.py
+                        ldap_digests.py
+                        md5_crypt.py
+                        misc.py
+                        mssql.py
+                        mysql.py
+                        oracle.py
+                        pbkdf2.py
+                        phpass.py
+                        postgres.py
+                        roundup.py
+                        scram.py
+                        scrypt.py
+                        sha1_crypt.py
+                        sha2_crypt.py
+                        sun_md5_crypt.py
+                        windows.py
+                        __init__.py
+                    tests/
+                        backports.py
+                        sample1.cfg
+                        sample1b.cfg
+                        sample1c.cfg
+                        sample_config_1s.cfg
+                        test_apache.py
+                        test_apps.py
+                        test_context.py
+                        test_context_deprecated.py
+                        test_crypto_builtin_md4.py
+                        test_crypto_des.py
+                        test_crypto_digest.py
+                        test_crypto_scrypt.py
+                        test_ext_django.py
+                        test_ext_django_source.py
+                        test_handlers.py
+                        test_handlers_argon2.py
+                        test_handlers_bcrypt.py
+                        test_handlers_cisco.py
+                        test_handlers_django.py
+                        test_handlers_pbkdf2.py
+                        test_handlers_scrypt.py
+                        test_hosts.py
+                        test_pwd.py
+                        test_registry.py
+                        test_totp.py
+                        test_utils.py
+                        test_utils_handlers.py
+                        test_utils_md4.py
+                        test_utils_pbkdf2.py
+                        test_win32.py
+                        tox_support.py
+                        utils.py
+                        _test_bad_register.py
+                        __init__.py
+                        __main__.py
+                    utils/
+                        binary.py
+                        decor.py
+                        des.py
+                        handlers.py
+                        md4.py
+                        pbkdf2.py
+                        __init__.py
+                        compat/
+                            _ordered_dict.py
+                            __init__.py
+                    _data/
+                        wordsets/
+                            bip39.txt
+                            eff_long.txt
+                            eff_prefixed.txt
+                            eff_short.txt
+                passlib-1.7.4.dist-info/
+                    INSTALLER
+                    LICENSE
+                    METADATA
+                    RECORD
+                    REQUESTED
+                    top_level.txt
+                    WHEEL
+                    zip-safe
                 pip/
                     py.typed
                     __init__.py
@@ -2194,6 +2352,20 @@ C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\v2/
                     WHEEL
                     licenses/
                         LICENSE
+                python_multipart/
+                    decoders.py
+                    exceptions.py
+                    multipart.py
+                    py.typed
+                    __init__.py
+                python_multipart-0.0.32.dist-info/
+                    INSTALLER
+                    METADATA
+                    RECORD
+                    REQUESTED
+                    WHEEL
+                    licenses/
+                        LICENSE.txt
                 pyyaml-6.0.3.dist-info/
                     INSTALLER
                     METADATA
@@ -3517,11 +3689,14 @@ C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\v2/
         versions/
             .gitkeep
             059804f37a25_create_core_reference_tables.py
+            185d5469fe78_add_users_table.py
             3492134fef13_expand_store_and_vendor_records.py
             6917dbafc659_updated_store_with_metadata_fields.py
             79f2797bd94f_add_item_measurement_fields.py
             9da5b205adf7_add_orders.py
             beb5a6e1ee0c_add_source_vendor_sku_to_order_lines.py
+            dda3fca2ef6d_renamed_vendor_store_ids_to_store_.py
+            e9fa9e2a49b1_replace_user_store_id_with_user_store_.py
             eea46108ad86_sync_item_store_info.py
             f934230e8f45_add_order_source_import_uniqueness.py
     apps/
@@ -3531,11 +3706,17 @@ C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\v2/
             error_handlers.py
             main.py
             __init__.py
+            auth/
+                dependencies.py
+                passwords.py
+                sessions.py
             routes/
                 audits.py
+                auth.py
                 files.py
                 health.py
                 items.py
+                me.py
                 orders.py
                 purchase_logs.py
                 stores.py
@@ -3580,6 +3761,50 @@ C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\v2/
                 __init__.py
         web/
             README.md
+            static/
+                app.js
+                index copy.html
+                index.html
+                styles copy.css
+                styles.css
+                domains/
+                    items/
+                        item-detail-modal.html
+                        item-form-modal.html
+                        items.css
+                        items.html
+                        items.js
+                    orders/
+                        order-detail-modal.html
+                        order-form-modal.html
+                        order-line-form-modal.html
+                        orders.css
+                        orders.html
+                        orders.js
+                    stores/
+                        stores.css
+                        stores.html
+                        stores.js
+                    vendors/
+                        vendor-detail-modal.html
+                        vendor-form-modal.html
+                        vendors.css
+                        vendors.html
+                        vendors.js
+                shared/
+                    api.js
+                    auth.js
+                    partials.js
+                    scope.js
+                    ui.js
+                styles/
+                    badges.css
+                    base.css
+                    buttons.css
+                    cards.css
+                    forms.css
+                    layout.css
+                    modals.css
     data/
         .gitkeep
         workbot.db
@@ -3596,7 +3821,9 @@ C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\v2/
     scripts/
         README.md
         requirements.txt
+        __init__.py
         data/
+            __init__.py
             imports/
                 import_craftable_order_file.py
                 import_items_from_legacy_json.py
@@ -3610,15 +3837,19 @@ C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\v2/
             validation/
                 validate_imported_items.py
         dev/
+            create_user.py
             install_package.py
             reset_dev_db.py
             start_dev.py
+            __init__.py
         diagnostics/
             check_items.py
             check_reference_data.py
             generate_file_tree.py
             inspect_db.py
+            __init__.py
         use_cases/
+            __init__.py
             items/
                 delete_item.py
                 show_item.py
@@ -3633,6 +3864,9 @@ C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\v2/
                 add_vendor.py
                 list_vendors.py
     tests/
+        conftest.py
+        fakes/
+            repositories.py
         fixtures/
             database/
                 .gitkeep
@@ -3641,10 +3875,15 @@ C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\v2/
                 .gitkeep
             json/
                 .gitkeep
+        helpers/
+            auth_helpers.py
         integration/
             api/
                 .gitkeep
                 test_items_api.py
+                test_orders_api.py
+                test_stores_api.py
+                test_vendors_api.py
             cli/
                 .gitkeep
             database/
@@ -3662,6 +3901,11 @@ C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\v2/
             application/
                 .gitkeep
                 test_manage_items.py
+                test_manage_item_store_information.py
+                test_manage_item_vendor_information.py
+                test_manage_orders.py
+                test_manage_stores.py
+                test_manage_vendors.py
                 test_order_resolution_service.py
             domain/
                 .gitkeep
@@ -3680,20 +3924,16 @@ C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\v2/
             transactions.py
             __init__.py
             dto/
-                craftable_audit_row.py
-                craftable_order_row.py
-                generated_file.py
                 import_order_result.py
                 import_result.py
                 item_catalog_commands.py
                 item_import_row.py
-                operation_result.py
+                order_commands.py
                 order_import_row.py
-                purchase_log_row.py
                 resolve_order_lines_result.py
                 store_commands.py
+                vendor_commands.py
                 vendor_import_row.py
-                vendor_upload_row.py
                 __init__.py
             interfaces/
                 automation.py
@@ -3707,7 +3947,6 @@ C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\v2/
                 audit_service.py
                 item_catalog_service.py
                 item_import_service.py
-                item_service.py
                 order_import_service.py
                 order_line_resolution_service.py
                 order_service.py
@@ -3717,26 +3956,19 @@ C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\v2/
                 vendor_service.py
                 __init__.py
             use_cases/
-                add_item_store_information.py
-                add_item_vendor_information.py
-                download_audits.py
-                download_orders.py
-                generate_vendor_order_emails.py
-                generate_vendor_upload_file.py
                 import_order.py
                 import_purchase_log.py
                 import_vendors.py
-                input_transfers.py
-                manage_stores.py
-                manage_vendors.py
-                migrate_existing_data.py
+                manage_item_store_information.py
+                manage_item_vendor_information.py
+                manage_orders.py
                 resolve_order_lines.py
                 __init__.py
                 items/
                     import_items.py
                     manage_items.py
                 stores/
-                    manager_stores.py
+                    manage_stores.py
                 vendors/
                     manage_vendors.py
         bootstrap/
@@ -3766,6 +3998,7 @@ C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\v2/
                 store.py
                 transfer.py
                 transfer_line.py
+                user.py
                 vendor.py
                 __init__.py
             rules/
@@ -3806,6 +4039,7 @@ C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\v2/
                     purchase_log_mapper.py
                     store_mapper.py
                     transfer_mapper.py
+                    user_mapper.py
                     vendor_mapper.py
                     __init__.py
                 records/
@@ -3821,6 +4055,7 @@ C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\v2/
                     store_record.py
                     transfer_line_record.py
                     transfer_record.py
+                    user_record.py
                     vendor_record.py
                     __init__.py
                 repositories/
@@ -3833,6 +4068,7 @@ C:\Users\andrew\Desktop\Andrew\Projects\IthacaBakery\RandomStuff\WorkBot\v2/
                     purchase_log_repository.py
                     store_repository.py
                     transfer_repository.py
+                    user_repository.py
                     vendor_repository.py
                     __init__.py
             email/
