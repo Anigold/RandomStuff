@@ -1,0 +1,128 @@
+.item-modal-header {
+    align-items: flex-start;
+}
+
+.item-create-form {
+    max-width: none;
+}
+
+.item-create-layout {
+    display: grid;
+    grid-template-rows: auto auto minmax(0, 1fr) auto;
+    gap: 1rem;
+    height: calc(97vh - 125px);
+}
+
+.item-create-section {
+    display: grid;
+    gap: 0.85rem;
+    padding: 1rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.item-create-section h3 {
+    margin: 0;
+}
+
+.item-form-grid {
+    display: grid;
+    grid-template-columns: minmax(260px, 2fr) minmax(180px, 1fr) minmax(180px, 1fr) minmax(110px, 0.5fr);
+    gap: 0.85rem;
+    align-items: end;
+}
+
+.checkbox-field {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 2.5rem;
+}
+
+.checkbox-field input {
+    width: auto;
+}
+
+.item-measurement-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(180px, 1fr));
+    gap: 0.85rem;
+}
+
+.item-unit-card {
+    display: grid;
+    gap: 0.85rem;
+    min-width: 0;
+    margin: 0;
+    padding: 1rem;
+    background: var(--color-surface-muted);
+    border: 1px solid var(--color-border-soft);
+    border-radius: var(--radius-md);
+}
+
+.item-unit-card legend {
+    padding: 0 0.35rem;
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.item-store-section {
+    min-height: 0;
+    overflow-y: auto;
+}
+
+.item-store-assignment-list {
+    min-height: 0;
+    overflow-y: auto;
+}
+
+.item-create-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.item-create-actions h3 {
+    margin: 0;
+}
+
+.item-create-actions .form-actions {
+    margin-top: 0;
+}
+
+@media (max-width: 1200px) {
+    .item-form-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .item-measurement-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+    .item-create-layout {
+        height: auto;
+    }
+
+    .item-form-grid,
+    .item-measurement-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .item-create-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+}

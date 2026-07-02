@@ -1,66 +1,24 @@
-from __future__ import annotations
-
 from fastapi import APIRouter, Depends
-from pydantic import BaseModel
-from sqlalchemy.orm import Session
 
 from apps.api.auth.dependencies import get_current_user
-from apps.api.dependencies import get_db_session
-from workbot_core.domain.models.user import User, UserRole
-from workbot_core.infrastructure.database.repositories.store_repository import (
-    SqlStoreRepository,
-)
-from workbot_core.infrastructure.database.repositories.user_repository import (
-    SqlUserStoreAccessRepository,
-)
+from apps.api.schemas.auth_schema import CurrentUserSchema
+from workbot_core.domain.models.user import User
 
 
-router = APIRouter(prefix="/me", tags=["me"])
+router = APIRouter(prefix="/api", tags=["me"])
 
 
-class CurrentUserStoreResponse(BaseModel):
-    id: str
-    name: str
-
-
-class CurrentUserResponse(BaseModel):
-    id: str
-    username: str
-    role: str
-    stores: list[CurrentUserStoreResponse]
-    can_use_supervisor_scope: bool
-
-
-@router.get("", response_model=CurrentUserResponse)
-def get_me(
-    user: User = Depends(get_current_user),
-    session: Session = Depends(get_db_session),
-) -> CurrentUserResponse:
-    stores = SqlStoreRepository(session)
-
-    if user.role == UserRole.SUPERVISOR:
-        accessible_stores = stores.list_active()
-        can_use_supervisor_scope = True
-    else:
-        user_store_accesses = SqlUserStoreAccessRepository(session)
-        store_ids = user_store_accesses.list_store_ids_for_user(user.id)
-        accessible_stores = [
-            store
-            for store in stores.list_active()
-            if store.id in set(store_ids)
-        ]
-        can_use_supervisor_scope = False
-
-    return CurrentUserResponse(
+def user_to_schema(user: User) -> CurrentUserSchema:
+    return CurrentUserSchema(
         id=user.id,
         username=user.username,
-        role=user.role.value,
-        can_use_supervisor_scope=can_use_supervisor_scope,
-        stores=[
-            CurrentUserStoreResponse(
-                id=store.id,
-                name=store.name,
-            )
-            for store in accessible_stores
-        ],
+        email=getattr(user, "email", None),
+        display_name=getattr(user, "display_name", None),
     )
+
+
+@router.get("/me", response_model=CurrentUserSchema)
+def me(
+    current_user: User = Depends(get_current_user),
+) -> CurrentUserSchema:
+    return user_to_schema(current_user)

@@ -1,182 +1,152 @@
 from __future__ import annotations
 
-from fastapi import Depends, HTTPException, Request, status
+from typing import Annotated
+
+from fastapi import Depends, HTTPException, Query, status
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlalchemy.orm import Session
 
-from apps.api.auth.sessions import SESSION_COOKIE_NAME, read_session_token
-from apps.api.dependencies import get_db_session
-from workbot_core.domain.models.store import Store
-from workbot_core.domain.models.user import User, UserRole
-from workbot_core.infrastructure.database.repositories.store_repository import (
-    SqlStoreRepository,
-)
+from apps.api.auth.tokens import AuthTokenError, decode_token
+from apps.api.dependencies import get_db_session, get_settings
+from workbot_core.config.settings import Settings
+from workbot_core.domain.models.user import User
 from workbot_core.infrastructure.database.repositories.user_repository import (
     SqlUserRepository,
     SqlUserStoreAccessRepository,
 )
 
 
+bearer_scheme = HTTPBearer(auto_error=False)
+
+
 def get_current_user(
-    request: Request,
-    session: Session = Depends(get_db_session),
+    credentials: Annotated[
+        HTTPAuthorizationCredentials | None,
+        Depends(bearer_scheme),
+    ],
+    db: Annotated[Session, Depends(get_db_session)],
+    settings: Annotated[Settings, Depends(get_settings)],
 ) -> User:
-    token = request.cookies.get(SESSION_COOKIE_NAME)
-
-    if not token:
+    if credentials is None:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Not authenticated.",
+            detail="Not authenticated",
         )
 
-    payload = read_session_token(token)
-
-    if not payload:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid session.",
+    try:
+        payload = decode_token(
+            token=credentials.credentials,
+            expected_token_type="access",
+            secret_key=settings.auth_secret_key,
+            algorithm=settings.auth_jwt_algorithm,
         )
-
-    user_id = payload.get("user_id")
-
-    if not user_id:
+    except AuthTokenError:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid session.",
-        )
+            detail="Invalid access token",
+        ) from None
 
-    user = SqlUserRepository(session).get_by_id(str(user_id))
+    user_repository = SqlUserRepository(db)
+    user = user_repository.get_by_id(payload.sub)
 
-    if user is None or not user.is_active:
+    if user is None:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="User not found or inactive.",
+            detail="User not found",
         )
 
     return user
+
+
+def _user_is_supervisor(user: User) -> bool:
+    """
+    Temporary compatibility helper.
+
+    Adjust this once the final User domain permission shape is settled.
+    Supports common field names so routes do not need to care.
+    """
+    if getattr(user, "is_supervisor", False):
+        return True
+
+    if getattr(user, "is_admin", False):
+        return True
+
+    role = getattr(user, "role", None)
+
+    if role is None:
+        return False
+
+    return str(role).lower() in {
+        "admin",
+        "supervisor",
+        "manager",
+        "owner",
+    }
 
 
 def require_supervisor(
-    user: User = Depends(get_current_user),
+    current_user: Annotated[User, Depends(get_current_user)],
 ) -> User:
-    if user.role != UserRole.SUPERVISOR:
+    if not _user_is_supervisor(current_user):
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
-            detail="Supervisor access required.",
+            detail="Supervisor access required",
         )
 
-    return user
-
-
-def require_manager_or_supervisor(
-    user: User = Depends(get_current_user),
-) -> User:
-    if user.role not in {UserRole.SUPERVISOR, UserRole.MANAGER}:
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail="Manager access required.",
-        )
-
-    return user
-
-
-def get_accessible_store_ids(
-    *,
-    current_user: User,
-    session: Session,
-) -> set[str] | None:
-    """Return None for supervisor meaning all stores are accessible."""
-
-    if current_user.role == UserRole.SUPERVISOR:
-        return None
-
-    return set(
-        SqlUserStoreAccessRepository(session).list_store_ids_for_user(
-            current_user.id
-        )
-    )
+    return current_user
 
 
 def user_can_access_store(
     *,
-    current_user: User,
+    user_id: str,
     store_id: str,
-    session: Session,
+    db: Session,
 ) -> bool:
-    accessible_store_ids = get_accessible_store_ids(
-        current_user=current_user,
-        session=session,
+    access_repository = SqlUserStoreAccessRepository(db)
+
+    return access_repository.user_has_store_access(
+        user_id=user_id,
+        store_id=store_id,
     )
 
-    if accessible_store_ids is None:
-        return True
 
-    return store_id in accessible_store_ids
+def get_accessible_store_ids_for_user(
+    *,
+    user_id: str,
+    db: Session,
+) -> list[str]:
+    access_repository = SqlUserStoreAccessRepository(db)
+
+    return access_repository.list_store_ids_for_user(user_id)
 
 
 def get_effective_store_scope(
-    *,
-    requested_store_name: str | None,
-    current_user: User,
-    session: Session,
-) -> Store | None:
-    stores = SqlStoreRepository(session)
+    current_user: Annotated[User, Depends(get_current_user)],
+    db: Annotated[Session, Depends(get_db_session)],
+    store_id: Annotated[str | None, Query()] = None,
+) -> list[str]:
+    """
+    Returns the list of store IDs the request should operate against.
 
-    if current_user.role == UserRole.SUPERVISOR:
-        if requested_store_name is None:
-            return None
+    If store_id is provided:
+        - verify the user can access that store
+        - return [store_id]
 
-        store = stores.get_by_name(requested_store_name)
+    If store_id is not provided:
+        - return all store IDs available to the user
+    """
+    accessible_store_ids = get_accessible_store_ids_for_user(
+        user_id=current_user.id,
+        db=db,
+    )
 
-        if store is None:
-            raise HTTPException(
-                status_code=status.HTTP_404_NOT_FOUND,
-                detail=f"Store not found: {requested_store_name}",
-            )
+    if store_id is None:
+        return accessible_store_ids
 
-        return store
-
-    accessible_store_ids = get_accessible_store_ids(
-        current_user=current_user,
-        session=session,
-    ) or set()
-
-    if not accessible_store_ids:
+    if store_id not in accessible_store_ids:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
-            detail="User does not have access to any stores.",
+            detail="User does not have access to this store",
         )
 
-    if requested_store_name is None:
-        if len(accessible_store_ids) == 1:
-            store_id = next(iter(accessible_store_ids))
-            store = stores.get_by_id(store_id)
-
-            if store is None:
-                raise HTTPException(
-                    status_code=status.HTTP_403_FORBIDDEN,
-                    detail="Assigned store not found.",
-                )
-
-            return store
-
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Store scope is required.",
-        )
-
-    requested_store = stores.get_by_name(requested_store_name)
-
-    if requested_store is None:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"Store not found: {requested_store_name}",
-        )
-
-    if requested_store.id not in accessible_store_ids:
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail="Cannot access this store.",
-        )
-
-    return requested_store
-
+    return [store_id]

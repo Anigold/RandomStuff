@@ -1,15 +1,16 @@
 from __future__ import annotations
 
 import os
+import signal
 import subprocess
 import sys
+import time
 from pathlib import Path
 
 
-def run(command: list[str], cwd: Path) -> int:
-    print()
-    print(" ".join(command))
-    return subprocess.call(command, cwd=cwd)
+API_HOST = "127.0.0.1"
+API_PORT = "8000"
+FRONTEND_PORT = "5173"
 
 
 def run_checked(command: list[str], cwd: Path) -> None:
@@ -43,7 +44,10 @@ def ensure_venv(project_root: Path) -> Path:
     )
 
     if not venv_python.exists():
-        raise RuntimeError(f"Virtual environment was created, but Python was not found at: {venv_python}")
+        raise RuntimeError(
+            "Virtual environment was created, but Python was not found at: "
+            f"{venv_python}"
+        )
 
     print(f"Created virtual environment: {venv_python}")
     return venv_python
@@ -111,64 +115,217 @@ def check_required_packages(venv_python: Path, project_root: Path) -> None:
     print("Startup packages look good.")
 
 
-def start_api(venv_python: Path, project_root: Path) -> int:
-    print()
-    print("Starting API server...")
+def check_frontend_present(project_root: Path) -> Path:
+    frontend_dir = project_root / "apps" / "web" / "frontend"
+    package_json = frontend_dir / "package.json"
 
-    return run(
-        [
-            str(venv_python),
-            "-m",
-            "uvicorn",
-            "apps.api.main:app",
-            "--reload",
-        ],
-        cwd=project_root,
+    if not package_json.exists():
+        raise RuntimeError(
+            "React frontend package.json was not found at:\n"
+            f"  {package_json}"
+        )
+
+    return frontend_dir
+
+
+def ensure_frontend_dependencies(frontend_dir: Path) -> None:
+    node_modules = frontend_dir / "node_modules"
+
+    if node_modules.exists():
+        print()
+        print("Frontend dependencies already installed.")
+        return
+
+    print()
+    print("Installing frontend dependencies...")
+
+    run_checked(
+        [get_npm_command(), "install"],
+        cwd=frontend_dir,
     )
 
-def start_api_in_new_terminal(venv_python: Path, project_root: Path) -> int:
+
+def get_process_creation_flags() -> int:
+    if os.name == "nt":
+        return subprocess.CREATE_NEW_PROCESS_GROUP
+
+    return 0
+
+
+def start_api(venv_python: Path, project_root: Path) -> subprocess.Popen:
     command = [
         str(venv_python),
         "-m",
         "uvicorn",
         "apps.api.main:app",
-        "--reload",
-        "--reload-dir",
-        "apps",
-        "--reload-dir",
-        "workbot_core",
+        "--host",
+        API_HOST,
+        "--port",
+        API_PORT,
     ]
 
-    if os.name == "nt":
-        powershell_command = (
-            f"cd '{project_root}'; "
-            f"& '{venv_python}' -m uvicorn apps.api.main:app "
-            f"--reload --reload-dir apps --reload-dir workbot_core"
-        )
+    print()
+    print("Starting API server...")
+    print(" ".join(command))
 
-        subprocess.Popen(
-            [
-                "powershell",
-                "-NoExit",
-                "-Command",
-                powershell_command,
-            ],
-            cwd=project_root,
-            creationflags=subprocess.CREATE_NEW_CONSOLE,
-        )
-
-        print()
-        print("Started API server in a new PowerShell window.")
-        return 0
-
-    subprocess.Popen(
+    return subprocess.Popen(
         command,
         cwd=project_root,
+        creationflags=get_process_creation_flags(),
     )
 
+
+def start_frontend(frontend_dir: Path) -> subprocess.Popen:
+    npm_command = get_npm_command()
+
+    command = [
+        npm_command,
+        "run",
+        "dev",
+        "--",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        FRONTEND_PORT,
+    ]
+
     print()
-    print("Started API server in a separate process.")
-    return 0
+    print("Starting React frontend...")
+    print(" ".join(command))
+
+    return subprocess.Popen(
+        command,
+        cwd=frontend_dir,
+        creationflags=get_process_creation_flags(),
+    )
+
+
+def terminate_process(
+    process: subprocess.Popen,
+    name: str,
+    timeout_seconds: int = 5,
+    kill_tree: bool = False,
+) -> None:
+    if process.poll() is not None:
+        print(f"{name} parent process already stopped.")
+
+        if os.name == "nt" and kill_tree:
+            print(f"Ensuring {name} child processes are stopped...")
+            kill_process_tree_windows(process.pid)
+
+        return
+
+    print(f"Stopping {name}...")
+
+    try:
+        process.terminate()
+        process.wait(timeout=timeout_seconds)
+        print(f"{name} parent process stopped.")
+
+        if os.name == "nt" and kill_tree:
+            print(f"Stopping {name} child processes...")
+            kill_process_tree_windows(process.pid)
+
+        print(f"{name} stopped cleanly.")
+        return
+
+    except subprocess.TimeoutExpired:
+        print(f"{name} did not stop cleanly.")
+
+        if os.name == "nt" and kill_tree:
+            print(f"Killing {name} process tree...")
+            kill_process_tree_windows(process.pid)
+        else:
+            process.kill()
+            process.wait()
+
+        print(f"{name} killed.")
+
+def kill_process_tree_windows(pid: int) -> None:
+    subprocess.run(
+        [
+            "taskkill",
+            "/PID",
+            str(pid),
+            "/T",
+            "/F",
+        ],
+        capture_output=True,
+        text=True,
+    )
+
+def kill_processes_on_port_windows(port: str) -> None:
+    result = subprocess.run(
+        [
+            "powershell",
+            "-NoProfile",
+            "-Command",
+            (
+                f"Get-NetTCPConnection -LocalPort {port} "
+                "-ErrorAction SilentlyContinue | "
+                "Select-Object -ExpandProperty OwningProcess"
+            ),
+        ],
+        capture_output=True,
+        text=True,
+    )
+
+    pids = {
+        line.strip()
+        for line in result.stdout.splitlines()
+        if line.strip().isdigit()
+    }
+
+    for pid in pids:
+        subprocess.run(
+            [
+                "taskkill",
+                "/PID",
+                pid,
+                "/T",
+                "/F",
+            ],
+            capture_output=True,
+            text=True,
+        )
+
+def stop_processes(processes: list[tuple[str, subprocess.Popen]]) -> None:
+    # Stop frontend first, then API.
+    for name, process in reversed(processes):
+        terminate_process(
+            process,
+            name,
+            kill_tree=name == "React frontend",
+        )
+
+    if os.name == "nt":
+        kill_processes_on_port_windows(FRONTEND_PORT)
+
+
+def wait_for_processes(processes: list[tuple[str, subprocess.Popen]]) -> int:
+    print()
+    print("Development servers are running.")
+    print(f"API:      http://{API_HOST}:{API_PORT}")
+    print(f"Frontend: http://127.0.0.1:{FRONTEND_PORT}")
+    print()
+    print("Press Ctrl+C to stop both servers.")
+
+    while True:
+        for name, process in processes:
+            return_code = process.poll()
+
+            if return_code is not None:
+                print()
+                print(f"{name} exited with code {return_code}.")
+                return return_code
+
+        time.sleep(0.5)
+
+def get_npm_command() -> str:
+    if os.name == "nt":
+        return "npm.cmd"
+
+    return "npm"
 
 def main() -> int:
     project_root = Path(__file__).resolve().parents[2]
@@ -188,7 +345,27 @@ def main() -> int:
     install_requirements_if_present(venv_python, project_root)
     check_required_packages(venv_python, project_root)
 
-    return start_api_in_new_terminal(venv_python, project_root)
+    frontend_dir = check_frontend_present(project_root)
+    ensure_frontend_dependencies(frontend_dir)
+
+    processes: list[tuple[str, subprocess.Popen]] = []
+
+    try:
+        api_process = start_api(venv_python, project_root)
+        processes.append(("API server", api_process))
+
+        frontend_process = start_frontend(frontend_dir)
+        processes.append(("React frontend", frontend_process))
+
+        return wait_for_processes(processes)
+
+    except KeyboardInterrupt:
+        print()
+        print("Shutdown requested.")
+        return 0
+
+    finally:
+        stop_processes(processes)
 
 
 if __name__ == "__main__":

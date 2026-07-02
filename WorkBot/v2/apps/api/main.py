@@ -7,6 +7,7 @@ from fastapi import FastAPI
 from fastapi import Depends
 from fastapi.responses import FileResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.cors import CORSMiddleware
 
 from apps.api.routes import auth, health, items, orders, stores, vendors, me
 from apps.api.auth.dependencies import get_current_user
@@ -18,16 +19,41 @@ BASE_DIR = Path(__file__).resolve().parents[2]
 STATIC_DIR = BASE_DIR / "apps" / "web" / "static"
 
 def create_app() -> FastAPI:
+
     app = FastAPI(title="WorkBot API", version="0.1.0")
 
-    app.include_router(auth.router)
-    app.include_router(me.router, prefix="/api")
-    app.include_router(health.router)
-    app.include_router(orders.router, prefix="/api")
-    app.include_router(items.router, prefix="/api")
-    app.include_router(stores.router, prefix="/api")
-    app.include_router(vendors.router, prefix="/api")
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=[
+            "http://localhost:5173",
+            "http://127.0.0.1:5173",
+        ],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+    
+    prefix = "/api"
+    routers = [
+        auth,
+        me,
+        health,
+        orders,
+        items,
+        stores,
+        vendors
+    ]
+    for router in routers:
+        app.include_router(router.router, prefix=prefix)
 
+
+
+    # for route in app.routes:
+    #     methods = getattr(route, "methods", None)
+    #     path = getattr(route, "path", None)
+
+    #     if path:
+    #         print(f"{methods} {path}", flush=True)
     # app.mount("/admin", StaticFiles(directory="apps/web/static", html=True), name="admin")
 
 
@@ -59,7 +85,7 @@ def main() -> None:
         "apps.api.main:app",
         host="127.0.0.1",
         port=8000,
-        reload=True,
+        reload=False,
     )
 
 

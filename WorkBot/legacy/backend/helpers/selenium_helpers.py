@@ -17,5 +17,8 @@ def create_options(downloads_path) -> uc.ChromeOptions:
 
 def create_driver(options):
     print("HERHEEHEHEHEHREHRHERHE")
-    return uc.Chrome(options=options, version_main=147, use_subprocess=True)
+    return uc.Chrome(options=options, 
+                    #  version_main=147,
+                     use_subprocess=True
+                     )
 

@@ -298,7 +298,11 @@ if __name__ == '__main__':
     
     '''Pricing Sheet Protocol'''
     options = create_options(DOWNLOAD_PATH)
-    driver  = uc.Chrome(options=options, use_subprocess=True, version_main=147)
+    driver  = uc.Chrome(
+        options=options, 
+        use_subprocess=True,
+        version_main=149
+        )
     download_pricing_sheets(driver)
     delete_all_files_without_extension(PRICING_FILES_PATH / 'VendorSheets', '.xlsx')
     input('Press ENTER to stop waiting.')

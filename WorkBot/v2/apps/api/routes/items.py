@@ -59,80 +59,40 @@ from workbot_core.domain.models.user import User, UserRole
 
 router = APIRouter(prefix="/items", tags=["items"])
 
-
-# @router.get("", response_model=list[ItemResponse])
-# def list_items(
-#     search: str | None = None,
-#     include_inactive: bool = True,
-#     store: str | None = None,
-#     session: Session = Depends(get_db_session),
-# ) -> list[ItemResponse]:
-#     items = SqlItemRepository(session)
-#     stores = SqlStoreRepository(session)
-#     item_store_infos = SqlItemStoreInfoRepository(session)
-
-#     if store:
-#         store_obj = stores.get_by_name(store)
-
-#         if store_obj is None:
-#             raise HTTPException(status_code=404, detail=f"Store not found: {store}")
-
-#         store_infos = item_store_infos.list_for_store(store_obj.id)
-#         store_item_ids = {info.item_id for info in store_infos}
-
-#         item_list = [
-#             item
-#             for item in items.list_all()
-#             if item.id in store_item_ids
-#         ]
-#     else:
-#         item_list = items.list_all()
-
-#     if not include_inactive:
-#         item_list = [item for item in item_list if item.is_active]
-
-#     if search:
-#         search_lower = search.casefold()
-#         item_list = [
-#             item
-#             for item in item_list
-#             if search_lower in item.name.casefold()
-#         ]
-
-#     return [_item_response(item) for item in item_list]
-
 @router.get("", response_model=list[ItemResponse])
 def list_items(
     search: str | None = None,
     include_inactive: bool = True,
-    store: str | None = None,
+    store_id: str | None = None,
     session: Session = Depends(get_db_session),
     current_user: User = Depends(get_current_user),
 ) -> list[ItemResponse]:
+    
     items = SqlItemRepository(session)
     item_store_infos = SqlItemStoreInfoRepository(session)
 
-    effective_store = get_effective_store_scope(
-        requested_store_name=store,
+    effective_store_ids = get_effective_store_scope(
         current_user=current_user,
-        session=session,
+        db=session,
+        store_id=store_id,
     )
 
-    if effective_store is not None:
-        store_infos = item_store_infos.list_for_store(effective_store.id)
-        store_item_ids = {
+    store_item_ids: set[str] = set()
+
+    for effective_store_id in effective_store_ids:
+        store_infos = item_store_infos.list_for_store(effective_store_id)
+
+        store_item_ids.update(
             info.item_id
             for info in store_infos
             if info.is_active
-        }
+        )
 
-        item_list = [
-            item
-            for item in items.list_all()
-            if item.id in store_item_ids
-        ]
-    else:
-        item_list = items.list_all()
+    item_list = [
+        item
+        for item in items.list_all()
+        if item.id in store_item_ids
+    ]
 
     if not include_inactive:
         item_list = [item for item in item_list if item.is_active]

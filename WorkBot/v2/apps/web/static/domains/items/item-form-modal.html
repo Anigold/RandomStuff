@@ -1,108 +1,155 @@
 <div id="item-form-modal" class="modal" aria-hidden="true">
     <div class="modal-backdrop" onclick="closeItemFormModal()"></div>
 
-    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="item-form-modal-title">
-        <div class="modal-header">
-            <h2 id="item-form-modal-title">Create Item</h2>
+    <div class="modal-content modal-content-wide" role="dialog" aria-modal="true" aria-labelledby="item-form-modal-title">
+        <div class="modal-header item-modal-header">
+            <div>
+                <h2 id="item-form-modal-title">Create Item</h2>
+                <p class="modal-subtitle">
+                    Enter item details, measurement units, and store availability.
+                </p>
+            </div>
+
             <button type="button" onclick="closeItemFormModal()">Close</button>
         </div>
 
         <div class="modal-body">
-            <form id="item-form">
-                <h3>Basic Information</h3>
+            <form id="item-form" class="item-create-form">
+                <div class="item-create-layout">
+                    <section class="item-create-section">
+                        <h3>Basic Information</h3>
 
-                <label>
-                    Name
-                    <input name="name" placeholder="Name" required />
-                </label>
+                        <div class="item-form-grid">
+                            <label>
+                                Name
+                                <input name="name" placeholder="Name" required />
+                            </label>
 
-                <label>
-                    Category
-                    <input name="category" placeholder="Category" />
-                </label>
+                            <label>
+                                Category
+                                <input name="category" placeholder="Category" />
+                            </label>
 
-                <label>
-                    Subcategory
-                    <input name="subcategory" placeholder="Subcategory" />
-                </label>
+                            <label>
+                                Subcategory
+                                <input name="subcategory" placeholder="Subcategory" />
+                            </label>
 
-                <label>
-                    <input type="checkbox" name="is_active" checked />
-                    Active
-                </label>
+                            <label class="checkbox-field">
+                                <input type="checkbox" name="is_active" checked />
+                                Active
+                            </label>
+                        </div>
+                    </section>
 
-                <h3>Count Unit</h3>
+                    <section class="item-create-section">
+                        <div class="section-heading-row">
+                            <div>
+                                <h3>Measurement Units</h3>
+                                <p class="compact-card-meta">
+                                    Define how this item is counted, weighed, or measured.
+                                </p>
+                            </div>
+                        </div>
 
-                <label>
-                    Count Quantity
-                    <input name="count_unit_quantity" placeholder="Count quantity" />
-                </label>
+                        <div class="item-measurement-grid">
+                            <fieldset class="item-unit-card">
+                                <legend>Count Unit</legend>
 
-                <label>
-                    Count Measure
-                    <input name="count_unit_measure" placeholder="Count measure" />
-                </label>
+                                <label>
+                                    Count Quantity
+                                    <input name="count_unit_quantity" placeholder="Count quantity" />
+                                </label>
 
-                <label>
-                    Custom Each Name
-                    <input name="custom_each_name" placeholder="Custom each name" />
-                </label>
+                                <label>
+                                    Count Measure
+                                    <input name="count_unit_measure" placeholder="Count measure" />
+                                </label>
 
-                <h3>Each Unit</h3>
+                                <label>
+                                    Custom Each Name
+                                    <input name="custom_each_name" placeholder="Custom each name" />
+                                </label>
+                            </fieldset>
 
-                <label>
-                    Each Quantity
-                    <input name="each_quantity" placeholder="Each quantity" />
-                </label>
+                            <fieldset class="item-unit-card">
+                                <legend>Each Unit</legend>
 
-                <label>
-                    Each Measure
-                    <input name="each_measure" placeholder="Each measure" />
-                </label>
+                                <label>
+                                    Each Quantity
+                                    <input name="each_quantity" placeholder="Each quantity" />
+                                </label>
 
-                <h3>Weight</h3>
+                                <label>
+                                    Each Measure
+                                    <input name="each_measure" placeholder="Each measure" />
+                                </label>
+                            </fieldset>
 
-                <label>
-                    Weight Quantity
-                    <input name="weight_quantity" placeholder="Weight quantity" />
-                </label>
+                            <fieldset class="item-unit-card">
+                                <legend>Weight</legend>
 
-                <label>
-                    Weight Measure
-                    <input name="weight_measure" placeholder="Weight measure" />
-                </label>
+                                <label>
+                                    Weight Quantity
+                                    <input name="weight_quantity" placeholder="Weight quantity" />
+                                </label>
 
-                <h3>Volume</h3>
+                                <label>
+                                    Weight Measure
+                                    <input name="weight_measure" placeholder="Weight measure" />
+                                </label>
+                            </fieldset>
 
-                <label>
-                    Volume Quantity
-                    <input name="volume_quantity" placeholder="Volume quantity" />
-                </label>
+                            <fieldset class="item-unit-card">
+                                <legend>Volume</legend>
 
-                <label>
-                    Volume Measure
-                    <input name="volume_measure" placeholder="Volume measure" />
-                </label>
+                                <label>
+                                    Volume Quantity
+                                    <input name="volume_quantity" placeholder="Volume quantity" />
+                                </label>
 
-                <h3>Store Availability</h3>
+                                <label>
+                                    Volume Measure
+                                    <input name="volume_measure" placeholder="Volume measure" />
+                                </label>
+                            </fieldset>
+                        </div>
+                    </section>
 
-                <p class="form-help">
-                    Choose which stores can use this item. This creates or removes the store-specific item records.
-                </p>
+                    <section class="item-create-section item-store-section">
+                        <div class="section-heading-row">
+                            <div>
+                                <h3>Store Availability</h3>
+                                <p class="compact-card-meta">
+                                    Choose which stores can use this item. This creates or removes store-specific item records.
+                                </p>
+                            </div>
+                        </div>
 
-                <div id="item-store-assignment-fields" class="checkbox-list">
-                    <div class="empty-state">
-                        Store options will load when editing an item.
-                    </div>
-                </div>
+                        <div id="item-store-assignment-fields" class="checkbox-list item-store-assignment-list">
+                            <div class="empty-state">
+                                Store options will load when editing an item.
+                            </div>
+                        </div>
+                    </section>
 
-                <div class="form-actions">
-                    <button id="item-submit-button" type="submit" data-variant="primary">
-                        Create Item
-                    </button>
-                    <button id="cancel-item-edit" type="button">
-                        Cancel
-                    </button>
+                    <section class="item-create-actions">
+                        <div>
+                            <h3>Create Item</h3>
+                            <p class="compact-card-meta">
+                                This will create a catalog item with the selected unit and store settings.
+                            </p>
+                        </div>
+
+                        <div class="form-actions">
+                            <button id="item-submit-button" type="submit" data-variant="primary">
+                                Create Item
+                            </button>
+                            <button id="cancel-item-edit" type="button">
+                                Cancel
+                            </button>
+                        </div>
+                    </section>
                 </div>
             </form>
         </div>

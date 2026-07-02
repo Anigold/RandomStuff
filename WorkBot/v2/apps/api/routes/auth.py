@@ -1,119 +1,181 @@
-from __future__ import annotations
+from datetime import timedelta
 
-from fastapi import APIRouter, Depends, Form, HTTPException, Response, status
-from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi import APIRouter, Depends, HTTPException, Request, Response, status
 from sqlalchemy.orm import Session
-from starlette import status
 
 from apps.api.auth.passwords import verify_password
-from apps.api.auth.sessions import SESSION_COOKIE_NAME, create_session_token
-from apps.api.dependencies import get_db_session
+from apps.api.auth.tokens import AuthTokenError, create_token, decode_token
+from apps.api.dependencies import get_db_session, get_settings
+from apps.api.schemas.auth_schema import (
+    AuthTokenResponseSchema,
+    CurrentUserSchema,
+    LoginRequestSchema,
+    LogoutResponseSchema,
+)
+from workbot_core.config.settings import Settings
+from workbot_core.domain.models.user import User
 from workbot_core.infrastructure.database.repositories.user_repository import (
     SqlUserRepository,
 )
 
 
-router = APIRouter(tags=["auth"])
+router = APIRouter(prefix="/auth", tags=["auth"])
 
 
-@router.get("/login", response_class=HTMLResponse)
-def login_page() -> str:
-    return """
-    <!doctype html>
-    <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>WorkBot Login</title>
-        <style>
-            body {
-                margin: 0;
-                min-height: 100vh;
-                display: grid;
-                place-items: center;
-                font-family: Arial, sans-serif;
-                background: #f6f3fb;
-                color: #2b2433;
-            }
-
-            form {
-                display: grid;
-                gap: 0.75rem;
-                width: min(360px, calc(100vw - 2rem));
-                padding: 1.5rem;
-                background: white;
-                border: 1px solid #ddd2ea;
-                border-radius: 14px;
-                box-shadow: 0 18px 50px rgb(55 42 78 / 18%);
-            }
-
-            input, button {
-                padding: 0.65rem;
-                font: inherit;
-            }
-
-            button {
-                cursor: pointer;
-                background: #6d5a8d;
-                color: white;
-                border: 0;
-                border-radius: 8px;
-            }
-        </style>
-    </head>
-    <body>
-        <form method="post" action="/login">
-            <h1>WorkBot Login</h1>
-            <input name="username" placeholder="Username" required>
-            <input name="password" placeholder="Password" type="password" required>
-            <button type="submit">Log in</button>
-        </form>
-    </body>
-    </html>
-    """
+def user_to_schema(user: User) -> CurrentUserSchema:
+    return CurrentUserSchema(
+        id=user.id,
+        username=user.username,
+        email=getattr(user, "email", None),
+        display_name=getattr(user, "display_name", None),
+    )
 
 
-@router.post("/login")
-def login(
-    username: str = Form(...),
-    password: str = Form(...),
-    session: Session = Depends(get_db_session),
-):
-    user = SqlUserRepository(session).get_by_username(username)
-
-    if user is None or not user.is_active:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid username or password.",
-        )
-
-    if not verify_password(password, user.password_hash):
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid username or password.",
-        )
-
-    response = RedirectResponse(url="/admin", status_code=status.HTTP_303_SEE_OTHER)
+def set_refresh_cookie(
+    *,
+    response: Response,
+    refresh_token: str,
+    settings: Settings,
+) -> None:
     response.set_cookie(
-        key=SESSION_COOKIE_NAME,
-        value=create_session_token(user_id=user.id),
+        key=settings.auth_refresh_cookie_name,
+        value=refresh_token,
         httponly=True,
-        samesite="lax",
-        secure=False,  # Set True when deployed behind HTTPS.
+        secure=settings.auth_cookie_secure,
+        samesite=settings.auth_cookie_samesite,
+        max_age=60 * 60 * 24 * settings.auth_refresh_token_days,
+        path="/api/auth",
     )
 
-    return response
 
-
-@router.post("/logout")
-def logout():
-    response = RedirectResponse(
-        url="/login",
-        status_code=status.HTTP_303_SEE_OTHER,
-    )
-
+def clear_refresh_cookie(
+    *,
+    response: Response,
+    settings: Settings,
+) -> None:
     response.delete_cookie(
-        key=SESSION_COOKIE_NAME,
-        path="/",
+        key=settings.auth_refresh_cookie_name,
+        path="/api/auth",
     )
 
-    return response
+
+def create_auth_response(
+    *,
+    user: User,
+    response: Response,
+    settings: Settings,
+) -> AuthTokenResponseSchema:
+    access_token = create_token(
+        user_id=user.id,
+        token_type="access",
+        secret_key=settings.auth_secret_key,
+        algorithm=settings.auth_jwt_algorithm,
+        expires_delta=timedelta(minutes=settings.auth_access_token_minutes),
+    )
+
+    refresh_token = create_token(
+        user_id=user.id,
+        token_type="refresh",
+        secret_key=settings.auth_secret_key,
+        algorithm=settings.auth_jwt_algorithm,
+        expires_delta=timedelta(days=settings.auth_refresh_token_days),
+    )
+
+    set_refresh_cookie(
+        response=response,
+        refresh_token=refresh_token,
+        settings=settings,
+    )
+
+    return AuthTokenResponseSchema(
+        access_token=access_token,
+        user=user_to_schema(user),
+    )
+
+
+@router.post("/login", response_model=AuthTokenResponseSchema)
+def login(
+    request: LoginRequestSchema,
+    response: Response,
+    db: Session = Depends(get_db_session),
+    settings: Settings = Depends(get_settings),
+) -> AuthTokenResponseSchema:
+    user_repository = SqlUserRepository(db)
+    user = user_repository.get_by_username(request.username)
+
+    if user is None:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid username or password",
+        )
+
+    if not verify_password(request.password, user.password_hash):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid username or password",
+        )
+
+    return create_auth_response(
+        user=user,
+        response=response,
+        settings=settings,
+    )
+
+
+@router.post("/refresh", response_model=AuthTokenResponseSchema)
+def refresh(
+    request: Request,
+    response: Response,
+    db: Session = Depends(get_db_session),
+    settings: Settings = Depends(get_settings),
+) -> AuthTokenResponseSchema:
+    refresh_token = request.cookies.get(settings.auth_refresh_cookie_name)
+
+    if refresh_token is None:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Missing refresh token",
+        )
+
+    try:
+        payload = decode_token(
+            token=refresh_token,
+            expected_token_type="refresh",
+            secret_key=settings.auth_secret_key,
+            algorithm=settings.auth_jwt_algorithm,
+        )
+    except AuthTokenError:
+        clear_refresh_cookie(response=response, settings=settings)
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid refresh token",
+        )
+
+    user_repository = SqlUserRepository(db)
+    user = user_repository.get_by_id(payload.sub)
+
+    if user is None:
+        clear_refresh_cookie(response=response, settings=settings)
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="User not found",
+        )
+
+    return create_auth_response(
+        user=user,
+        response=response,
+        settings=settings,
+    )
+
+
+@router.post("/logout", response_model=LogoutResponseSchema)
+def logout(
+    response: Response,
+    settings: Settings = Depends(get_settings),
+) -> LogoutResponseSchema:
+    clear_refresh_cookie(
+        response=response,
+        settings=settings,
+    )
+
+    return LogoutResponseSchema(ok=True)

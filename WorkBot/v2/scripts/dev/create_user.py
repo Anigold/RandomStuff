@@ -104,6 +104,17 @@ def main() -> None:
                     )
                 )
 
+        all_stores = stores.list_active()
+        for store in all_stores:
+            user_store_accesses.save(
+                UserStoreAccess(
+                    id=IdGenerator.user_store_access_id(),
+                    user_id=user.id,
+                    store_id=store.id,
+                    created_at=now,
+                    updated_at=now,
+                    )
+                )
         session.commit()
 
     print(f"Created {role.value} user: {username}")
