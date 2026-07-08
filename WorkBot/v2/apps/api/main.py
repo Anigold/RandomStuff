@@ -9,7 +9,7 @@ from fastapi.responses import FileResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 
-from apps.api.routes import auth, health, items, orders, stores, vendors, me, store_scopes
+from apps.api.routes import auth, health, items, orders, stores, vendors, me, store_scopes, inventory
 from apps.api.auth.dependencies import get_current_user
 from dotenv import load_dotenv
 
@@ -43,6 +43,7 @@ def create_app() -> FastAPI:
         stores,
         vendors,
         store_scopes,
+        inventory,
     ]
     for router in routers:
         app.include_router(router.router, prefix=prefix)

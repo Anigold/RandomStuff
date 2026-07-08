@@ -9,12 +9,8 @@ from workbot_core.infrastructure.database.mappers.inventory_mapper import (
     inventory_count_to_record,
     update_inventory_count_record,
 )
-from workbot_core.infrastructure.database.records.inventory_record import (
-    InventoryCountRecord,
-)
-from workbot_core.infrastructure.database.repositories.base_repository import (
-    SqlRepository,
-)
+from workbot_core.infrastructure.database.records.inventory_record import InventoryCountRecord
+from workbot_core.infrastructure.database.repositories.base_repository import SqlRepository
 
 
 class SqlInventoryCountRepository(
@@ -38,7 +34,6 @@ class SqlInventoryCountRepository(
             .options(selectinload(InventoryCountRecord.lines))
             .where(InventoryCountRecord.id == count_id)
         )
-
         return self._one_or_none(statement)
 
     def list_all(self) -> list[InventoryCount]:
@@ -51,7 +46,6 @@ class SqlInventoryCountRepository(
                 InventoryCountRecord.id.desc(),
             )
         )
-
         return self._list(statement)
 
     def list_for_store(self, store_id: str) -> list[InventoryCount]:
@@ -65,5 +59,4 @@ class SqlInventoryCountRepository(
                 InventoryCountRecord.id.desc(),
             )
         )
-
         return self._list(statement)
