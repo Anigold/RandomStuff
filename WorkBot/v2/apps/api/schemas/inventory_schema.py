@@ -50,3 +50,10 @@ class InventoryCountResponse(BaseModel):
     lines: list[InventoryCountLineResponse]
     created_at: datetime | None = None
     updated_at: datetime | None = None
+
+    
+class UpdateInventoryCountRequest(BaseModel):
+    count_date: date
+    notes: str | None = None
+    lines: list[InventoryCountLineRequest]
+

@@ -391,6 +391,304 @@ def test_manager_cannot_get_inventory_count_for_another_store(
     assert response.json()["detail"] == "Cannot access inventory count for another store."
 
 
+def test_manager_can_update_draft_inventory_count_for_assigned_store(
+    api_context: ApiTestContext,
+) -> None:
+    client = api_context.client
+
+    _authenticate_as(make_supervisor_user())
+
+    store_id = _create_store(client, name="Ithaca Bakery")
+    malt_item_id = _create_inventory_available_item(
+        client,
+        store_id=store_id,
+        name="Malt Barrel",
+    )
+    flour_item_id = _create_inventory_available_item(
+        client,
+        store_id=store_id,
+        name="Flour Bag",
+    )
+
+    manager = make_manager_user()
+    _grant_store_access(
+        api_context,
+        user_id=manager.id,
+        store_id=store_id,
+    )
+    _authenticate_as(manager)
+
+    count_id = _create_inventory_count(
+        client,
+        store_id=store_id,
+        item_id=malt_item_id,
+        count_date="2026-07-08",
+    )
+
+    response = client.put(
+        _inventory_count_detail_path(count_id),
+        params=_store_scope_params(store_id),
+        json={
+            "count_date": "2026-07-09",
+            "notes": "Updated draft count",
+            "lines": [
+                {
+                    "item_id": malt_item_id,
+                    "quantity": "3",
+                    "unit": "barrel",
+                    "notes": "Updated back room count",
+                },
+                {
+                    "item_id": flour_item_id,
+                    "quantity": "12",
+                    "unit": "bag",
+                    "notes": "Shelf count",
+                },
+            ],
+        },
+    )
+
+    assert response.status_code == 200
+
+    data = response.json()
+
+    assert data["id"] == count_id
+    assert data["store_id"] == store_id
+    assert data["count_date"] == "2026-07-09"
+    assert data["status"] == "draft"
+    assert data["notes"] == "Updated draft count"
+    assert len(data["lines"]) == 2
+
+    lines_by_item_id = {
+        line["item_id"]: line
+        for line in data["lines"]
+    }
+
+    assert Decimal(lines_by_item_id[malt_item_id]["quantity"]) == Decimal("3")
+    assert lines_by_item_id[malt_item_id]["unit"] == "barrel"
+    assert lines_by_item_id[malt_item_id]["notes"] == "Updated back room count"
+
+    assert Decimal(lines_by_item_id[flour_item_id]["quantity"]) == Decimal("12")
+    assert lines_by_item_id[flour_item_id]["unit"] == "bag"
+    assert lines_by_item_id[flour_item_id]["notes"] == "Shelf count"
+
+
+def test_update_inventory_count_rejects_submitted_count(
+    api_context: ApiTestContext,
+) -> None:
+    client = api_context.client
+
+    _authenticate_as(make_supervisor_user())
+
+    store_id = _create_store(client, name="Ithaca Bakery")
+    item_id = _create_inventory_available_item(
+        client,
+        store_id=store_id,
+        name="Malt Barrel",
+    )
+
+    manager = make_manager_user()
+    _grant_store_access(
+        api_context,
+        user_id=manager.id,
+        store_id=store_id,
+    )
+    _authenticate_as(manager)
+
+    count_id = _create_inventory_count(
+        client,
+        store_id=store_id,
+        item_id=item_id,
+        count_date="2026-07-08",
+    )
+
+    submit_response = client.post(
+        _inventory_count_submit_path(count_id),
+        params=_store_scope_params(store_id),
+    )
+
+    assert submit_response.status_code == 200
+
+    response = client.put(
+        _inventory_count_detail_path(count_id),
+        params=_store_scope_params(store_id),
+        json={
+            "count_date": "2026-07-09",
+            "notes": "Should not update",
+            "lines": [
+                {
+                    "item_id": item_id,
+                    "quantity": "3",
+                    "unit": "barrel",
+                }
+            ],
+        },
+    )
+
+    assert response.status_code == 400
+    assert response.json()["detail"] == "Submitted inventory counts cannot be updated."
+
+
+def test_update_inventory_count_rejects_item_not_available_to_store(
+    api_context: ApiTestContext,
+) -> None:
+    client = api_context.client
+
+    _authenticate_as(make_supervisor_user())
+
+    store_id = _create_store(client, name="Ithaca Bakery")
+    other_store_id = _create_store(client, name="Collegetown Bagels")
+
+    item_id = _create_inventory_available_item(
+        client,
+        store_id=store_id,
+        name="Malt Barrel",
+    )
+    other_item_id = _create_inventory_available_item(
+        client,
+        store_id=other_store_id,
+        name="Flour Bag",
+    )
+
+    manager = make_manager_user()
+    _grant_store_access(
+        api_context,
+        user_id=manager.id,
+        store_id=store_id,
+    )
+    _authenticate_as(manager)
+
+    count_id = _create_inventory_count(
+        client,
+        store_id=store_id,
+        item_id=item_id,
+        count_date="2026-07-08",
+    )
+
+    response = client.put(
+        _inventory_count_detail_path(count_id),
+        params=_store_scope_params(store_id),
+        json={
+            "count_date": "2026-07-09",
+            "notes": "Invalid item update",
+            "lines": [
+                {
+                    "item_id": other_item_id,
+                    "quantity": "3",
+                    "unit": "bag",
+                }
+            ],
+        },
+    )
+
+    assert response.status_code == 400
+    assert response.json()["detail"] == (
+        "Inventory count contains items not available to this store: "
+        f"{other_item_id}"
+    )
+
+
+def test_update_inventory_count_returns_404_for_missing_count(
+    api_context: ApiTestContext,
+) -> None:
+    client = api_context.client
+
+    _authenticate_as(make_supervisor_user())
+
+    store_id = _create_store(client, name="Ithaca Bakery")
+    item_id = _create_inventory_available_item(
+        client,
+        store_id=store_id,
+        name="Malt Barrel",
+    )
+
+    manager = make_manager_user()
+    _grant_store_access(
+        api_context,
+        user_id=manager.id,
+        store_id=store_id,
+    )
+    _authenticate_as(manager)
+
+    response = client.put(
+        _inventory_count_detail_path("inc_missing"),
+        params=_store_scope_params(store_id),
+        json={
+            "count_date": "2026-07-09",
+            "notes": "Missing count",
+            "lines": [
+                {
+                    "item_id": item_id,
+                    "quantity": "3",
+                    "unit": "barrel",
+                }
+            ],
+        },
+    )
+
+    assert response.status_code == 404
+    assert response.json()["detail"] == "Inventory count not found."
+
+
+def test_update_inventory_count_rejects_another_store_count(
+    api_context: ApiTestContext,
+) -> None:
+    client = api_context.client
+
+    _authenticate_as(make_supervisor_user())
+
+    assigned_store_id = _create_store(client, name="Ithaca Bakery")
+    other_store_id = _create_store(client, name="Collegetown Bagels")
+
+    other_item_id = _create_inventory_available_item(
+        client,
+        store_id=other_store_id,
+        name="Malt Barrel",
+    )
+
+    setup_manager = make_manager_user()
+    _grant_store_access(
+        api_context,
+        user_id=setup_manager.id,
+        store_id=other_store_id,
+    )
+    _authenticate_as(setup_manager)
+
+    count_id = _create_inventory_count(
+        client,
+        store_id=other_store_id,
+        item_id=other_item_id,
+        count_date="2026-07-08",
+    )
+
+    manager = make_manager_user()
+    _grant_store_access(
+        api_context,
+        user_id=manager.id,
+        store_id=assigned_store_id,
+    )
+    _authenticate_as(manager)
+
+    response = client.put(
+        _inventory_count_detail_path(count_id),
+        params=_store_scope_params(assigned_store_id),
+        json={
+            "count_date": "2026-07-09",
+            "notes": "Wrong store",
+            "lines": [
+                {
+                    "item_id": other_item_id,
+                    "quantity": "3",
+                    "unit": "barrel",
+                }
+            ],
+        },
+    )
+
+    assert response.status_code == 403
+    assert response.json()["detail"] == "Cannot update inventory count for another store."
+
+
 def test_manager_can_submit_inventory_count_for_assigned_store(
     api_context: ApiTestContext,
 ) -> None:

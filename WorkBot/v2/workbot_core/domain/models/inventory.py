@@ -44,3 +44,22 @@ class InventoryCount:
             self,
             status=InventoryCountStatus.SUBMITTED,
         )
+    
+    def update_draft(
+        self,
+        *,
+        count_date: date,
+        notes: str | None,
+        lines: tuple[InventoryCountLine, ...],
+        updated_at: datetime | None = None,
+    ) -> InventoryCount:
+        if self.status == InventoryCountStatus.SUBMITTED:
+            raise ValueError("Submitted inventory counts cannot be updated.")
+
+        return replace(
+            self,
+            count_date=count_date,
+            notes=notes,
+            lines=lines,
+            updated_at=updated_at,
+        )

@@ -14,8 +14,15 @@ from apps.api.schemas.inventory_schema import (
     InventoryCountLineResponse,
     InventoryCountResponse,
     InventoryItemResponse,
+    UpdateInventoryCountRequest,
 )
-from workbot_core.domain.models.inventory import InventoryCount, InventoryCountLine
+
+from workbot_core.domain.models.inventory import (
+    InventoryCount,
+    InventoryCountLine,
+    InventoryCountStatus,
+)
+
 from workbot_core.infrastructure.database.repositories.inventory_repository import (
     SqlInventoryCountRepository,
 )
@@ -161,6 +168,77 @@ def get_inventory_count(
         )
 
     return _inventory_count_response(count, session=session)
+
+
+@router.put("/counts/{count_id}", response_model=InventoryCountResponse)
+def update_inventory_count(
+    count_id: str,
+    request: UpdateInventoryCountRequest,
+    session: Session = Depends(get_db_session),
+    scope: StoreScope = Depends(get_store_scope),
+) -> InventoryCountResponse:
+    store_id = require_single_store_scope(scope)
+
+    repository = SqlInventoryCountRepository(session)
+    count = repository.get_by_id(count_id)
+
+    if count is None:
+        raise HTTPException(
+            status_code=404,
+            detail="Inventory count not found.",
+        )
+
+    if count.store_id != store_id:
+        raise HTTPException(
+            status_code=403,
+            detail="Cannot update inventory count for another store.",
+        )
+
+    if count.status == InventoryCountStatus.SUBMITTED:
+        raise HTTPException(
+            status_code=400,
+            detail="Submitted inventory counts cannot be updated.",
+        )
+
+    _validate_count_lines_belong_to_store(
+        request.lines,
+        store_id=store_id,
+        session=session,
+    )
+
+    now = datetime.now(UTC).replace(tzinfo=None)
+
+    updated_count = count.update_draft(
+        count_date=request.count_date,
+        notes=request.notes,
+        updated_at=now,
+        lines=tuple(
+            InventoryCountLine(
+                id=IdGenerator.inventory_count_line_id(),
+                inventory_count_id=count.id,
+                item_id=line.item_id,
+                quantity=line.quantity,
+                unit=line.unit,
+                notes=line.notes,
+                created_at=now,
+                updated_at=now,
+            )
+            for line in request.lines
+        ),
+    )
+
+    repository.save(updated_count)
+    session.commit()
+
+    saved_count = repository.get_by_id(count_id)
+
+    if saved_count is None:
+        raise HTTPException(
+            status_code=404,
+            detail="Inventory count not found.",
+        )
+
+    return _inventory_count_response(saved_count, session=session)
 
 
 @router.post("/counts/{count_id}/submit", response_model=InventoryCountResponse)
