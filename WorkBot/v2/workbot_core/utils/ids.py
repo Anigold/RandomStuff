@@ -32,6 +32,8 @@ class IdGenerator:
         "purchase_log_line": "pll",
         "user":              "usr",
         "user_store_access": "usa",
+        "inventory_count": "inc",
+        "inventory_count_line": "icl",
     }
 
     @classmethod
@@ -99,6 +101,18 @@ class IdGenerator:
     def user_store_access_id(cls, *, exists: Callable[[str], bool] | None = None) -> str:
         return cls.generate("user_store_access", exists=exists)
 
+    @classmethod
+    def inventory_count_id(cls, *, exists: Callable[[str], bool] | None = None) -> str:
+        return cls.generate("inventory_count", exists=exists)
+
+    @classmethod
+    def inventory_count_line_id(
+        cls,
+        *,
+        exists: Callable[[str], bool] | None = None,
+    ) -> str:
+        return cls.generate("inventory_count_line", exists=exists)
+    
     @classmethod
     def _prefix_for(cls, entity_type: str) -> str:
         try:

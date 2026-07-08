@@ -1,7 +1,9 @@
+# scripts/dev/create_user.py
+
 from __future__ import annotations
 
-import getpass
-from datetime import UTC, datetime
+import argparse
+from getpass import getpass
 
 from apps.api.auth.passwords import hash_password
 from workbot_core.domain.models.user import User, UserRole, UserStoreAccess
@@ -13,111 +15,149 @@ from workbot_core.infrastructure.database.repositories.user_repository import (
     SqlUserStoreAccessRepository,
 )
 from workbot_core.infrastructure.database.session import create_session
-from workbot_core.utils.ids import IdGenerator
 
 
 def main() -> None:
-    print("Create WorkBot user")
-    print("-------------------")
+    parser = argparse.ArgumentParser(
+        description="Create or update a WorkBot user and assign store access.",
+    )
 
-    username = input("Username: ").strip()
+    parser.add_argument("--username", required=True)
+    parser.add_argument("--email", default=None)
+    parser.add_argument("--display-name", default=None)
 
-    if not username:
-        raise SystemExit("Username is required.")
+    parser.add_argument(
+        "--role",
+        required=True,
+        choices=[role.value for role in UserRole],
+        help="User role.",
+    )
 
-    role_value = input("Role [supervisor/manager/viewer]: ").strip().lower()
+    parser.add_argument(
+        "--password",
+        default=None,
+        help="Plaintext password. If omitted, you will be prompted.",
+    )
 
-    try:
-        role = UserRole(role_value)
-    except ValueError as exc:
-        raise SystemExit(
-            "Role must be one of: supervisor, manager, viewer."
-        ) from exc
+    parser.add_argument(
+        "--store-id",
+        action="append",
+        default=[],
+        help=(
+            "Store ID to assign. Can be used multiple times. "
+            "Example: --store-id sto_abc --store-id sto_xyz"
+        ),
+    )
 
-    password = getpass.getpass("Password: ")
-    password_confirm = getpass.getpass("Confirm password: ")
+    parser.add_argument(
+        "--all-stores",
+        action="store_true",
+        help="Assign explicit access to all active stores.",
+    )
+
+    parser.add_argument(
+        "--clear-existing-store-access",
+        action="store_true",
+        help="Remove existing store access rows before assigning new ones.",
+    )
+
+    args = parser.parse_args()
+
+    password = args.password
+    if not password:
+        password = getpass("Password: ")
 
     if not password:
         raise SystemExit("Password is required.")
 
-    if password != password_confirm:
-        raise SystemExit("Passwords do not match.")
-
-    now = datetime.now(UTC)
-
-    user = User(
-        id=IdGenerator.user_id(),
-        username=username,
-        password_hash=hash_password(password),
-        role=role,
-        is_active=True,
-        created_at=now,
-        updated_at=now,
-    )
-
     with create_session() as session:
-        users = SqlUserRepository(session)
-        stores = SqlStoreRepository(session)
-        user_store_accesses = SqlUserStoreAccessRepository(session)
+        user_repository = SqlUserRepository(session)
+        store_repository = SqlStoreRepository(session)
+        access_repository = SqlUserStoreAccessRepository(session)
 
-        existing_user = users.get_by_username(username)
+        role = UserRole(args.role)
 
-        if existing_user is not None:
-            raise SystemExit(f"User already exists: {username}")
+        existing_user = user_repository.get_by_username(args.username)
 
-        users.save(user)
+        if existing_user is None:
+            user = User(
+                id=User.new_id(),
+                username=args.username,
+                password_hash=hash_password(password),
+                role=role,
+                email=args.email,
+                display_name=args.display_name,
+                is_active=True,
+            )
 
-        if role != UserRole.SUPERVISOR:
-            print()
-            print("Available stores:")
-            for store in stores.list_active():
-                print(f"- {store.name}")
+            user_repository.save(user)
+            print(f"Created user: {user.username} ({user.id})")
 
-            store_names_raw = input(
-                "Store names this user can access, comma-separated: "
-            ).strip()
+        else:
+            user = existing_user
 
-            if not store_names_raw:
+            user.password_hash = hash_password(password)
+            user.role = role
+
+            if args.email is not None:
+                user.email = args.email
+
+            if args.display_name is not None:
+                user.display_name = args.display_name
+
+            user.is_active = True
+
+            user_repository.save(user)
+            print(f"Updated user: {user.username} ({user.id})")
+
+        if args.clear_existing_store_access:
+            access_repository.delete_for_user(user.id)
+            print("Cleared existing store access.")
+
+        store_ids = set(args.store_id)
+
+        if args.all_stores:
+            store_ids.update(
+                store.id
+                for store in store_repository.list_all()
+                if getattr(store, "is_active", True)
+            )
+
+        if store_ids:
+            valid_store_ids = {
+                store.id
+                for store in store_repository.list_all()
+            }
+
+            unknown_store_ids = store_ids - valid_store_ids
+
+            if unknown_store_ids:
                 raise SystemExit(
-                    "At least one store is required for manager/viewer users."
+                    "Unknown store IDs: "
+                    + ", ".join(sorted(unknown_store_ids))
                 )
 
-            store_names = [
-                value.strip()
-                for value in store_names_raw.split(",")
-                if value.strip()
-            ]
+            existing_store_ids = set(
+                access_repository.list_store_ids_for_user(user.id)
+            )
 
-            for store_name in store_names:
-                store = stores.get_by_name(store_name)
+            for store_id in sorted(store_ids):
+                if store_id in existing_store_ids:
+                    continue
 
-                if store is None:
-                    raise SystemExit(f"Store not found: {store_name}")
-
-                user_store_accesses.save(
+                access_repository.save(
                     UserStoreAccess(
-                        id=IdGenerator.user_store_access_id(),
+                        id=UserStoreAccess.new_id(),
                         user_id=user.id,
-                        store_id=store.id,
-                        created_at=now,
-                        updated_at=now,
+                        store_id=store_id,
                     )
                 )
 
-        all_stores = stores.list_active()
-        for store in all_stores:
-            user_store_accesses.save(
-                UserStoreAccess(
-                    id=IdGenerator.user_store_access_id(),
-                    user_id=user.id,
-                    store_id=store.id,
-                    created_at=now,
-                    updated_at=now,
-                    )
-                )
+                print(f"Assigned store access: {store_id}")
+
         session.commit()
 
-    print(f"Created {role.value} user: {username}")
+    print("Done.")
 
 
 if __name__ == "__main__":

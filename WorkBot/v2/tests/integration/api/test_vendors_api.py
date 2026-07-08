@@ -4,12 +4,18 @@ from datetime import datetime
 
 from fastapi.testclient import TestClient
 
+from apps.api.auth.scopes import SUPERVISOR_SCOPE_ID
+
 
 VENDORS_PATH = "/api/vendors"
+
+SUPERVISOR_SCOPE_PARAMS = {"scope_id": SUPERVISOR_SCOPE_ID}
+
 
 def test_create_vendor(client: TestClient) -> None:
     response = client.post(
         VENDORS_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Sysco",
             "order_format": "email",
@@ -40,12 +46,12 @@ def test_create_vendor(client: TestClient) -> None:
             "store_references": [
                 {
                     "store_id": "sto_ithaca",
-                    "vendor_store_reference": "ITH001"
+                    "vendor_store_reference": "ITH001",
                 },
                 {
                     "store_id": "sto_collegetown",
-                    "vendor_store_reference": ""
-                }
+                    "vendor_store_reference": "",
+                },
             ],
             "is_active": True,
         },
@@ -103,8 +109,16 @@ def test_create_vendor_rejects_duplicate_name(client: TestClient) -> None:
         "is_active": True,
     }
 
-    first_response = client.post(VENDORS_PATH, json=payload)
-    duplicate_response = client.post(VENDORS_PATH, json=payload)
+    first_response = client.post(
+        VENDORS_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
+        json=payload,
+    )
+    duplicate_response = client.post(
+        VENDORS_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
+        json=payload,
+    )
 
     assert first_response.status_code == 201
     assert duplicate_response.status_code == 400
@@ -114,6 +128,7 @@ def test_create_vendor_rejects_duplicate_name(client: TestClient) -> None:
 def test_create_vendor_rejects_empty_name(client: TestClient) -> None:
     response = client.post(
         VENDORS_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "   ",
             "is_active": True,
@@ -127,6 +142,7 @@ def test_create_vendor_rejects_empty_name(client: TestClient) -> None:
 def test_create_vendor_rejects_empty_contact_name(client: TestClient) -> None:
     response = client.post(
         VENDORS_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Sysco",
             "internal_contacts": [
@@ -146,6 +162,7 @@ def test_create_vendor_rejects_empty_contact_name(client: TestClient) -> None:
 def test_create_vendor_rejects_empty_schedule_order_day(client: TestClient) -> None:
     response = client.post(
         VENDORS_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Sysco",
             "ordering": {
@@ -166,6 +183,7 @@ def test_create_vendor_rejects_empty_schedule_order_day(client: TestClient) -> N
 def test_list_vendors(client: TestClient) -> None:
     client.post(
         VENDORS_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Sysco",
             "is_active": True,
@@ -173,13 +191,17 @@ def test_list_vendors(client: TestClient) -> None:
     )
     client.post(
         VENDORS_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Regional Produce",
             "is_active": True,
         },
     )
 
-    response = client.get(VENDORS_PATH)
+    response = client.get(
+        VENDORS_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
+    )
 
     assert response.status_code == 200
 
@@ -193,6 +215,7 @@ def test_list_vendors(client: TestClient) -> None:
 def test_list_vendors_can_search_by_name(client: TestClient) -> None:
     client.post(
         VENDORS_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Sysco",
             "is_active": True,
@@ -200,13 +223,20 @@ def test_list_vendors_can_search_by_name(client: TestClient) -> None:
     )
     client.post(
         VENDORS_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Regional Produce",
             "is_active": True,
         },
     )
 
-    response = client.get(VENDORS_PATH, params={"search": "sys"})
+    response = client.get(
+        VENDORS_PATH,
+        params={
+            **SUPERVISOR_SCOPE_PARAMS,
+            "search": "sys",
+        },
+    )
 
     assert response.status_code == 200
 
@@ -219,6 +249,7 @@ def test_list_vendors_can_search_by_name(client: TestClient) -> None:
 def test_list_vendors_can_exclude_inactive(client: TestClient) -> None:
     client.post(
         VENDORS_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Active Vendor",
             "is_active": True,
@@ -226,13 +257,20 @@ def test_list_vendors_can_exclude_inactive(client: TestClient) -> None:
     )
     client.post(
         VENDORS_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Inactive Vendor",
             "is_active": False,
         },
     )
 
-    response = client.get(VENDORS_PATH, params={"include_inactive": False})
+    response = client.get(
+        VENDORS_PATH,
+        params={
+            **SUPERVISOR_SCOPE_PARAMS,
+            "include_inactive": False,
+        },
+    )
 
     assert response.status_code == 200
 
@@ -245,6 +283,7 @@ def test_list_vendors_can_exclude_inactive(client: TestClient) -> None:
 def test_get_vendor(client: TestClient) -> None:
     create_response = client.post(
         VENDORS_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Sysco",
             "order_format": "email",
@@ -254,7 +293,10 @@ def test_get_vendor(client: TestClient) -> None:
 
     vendor_id = create_response.json()["id"]
 
-    response = client.get(_vendor_detail_path(vendor_id))
+    response = client.get(
+        _vendor_detail_path(vendor_id),
+        params=SUPERVISOR_SCOPE_PARAMS,
+    )
 
     assert response.status_code == 200
 
@@ -266,7 +308,10 @@ def test_get_vendor(client: TestClient) -> None:
 
 
 def test_get_vendor_returns_404_for_missing_vendor(client: TestClient) -> None:
-    response = client.get(_vendor_detail_path("ven_missing"))
+    response = client.get(
+        _vendor_detail_path("ven_missing"),
+        params=SUPERVISOR_SCOPE_PARAMS,
+    )
 
     assert response.status_code == 404
     assert response.json()["detail"] == "Vendor not found: ven_missing"
@@ -275,6 +320,7 @@ def test_get_vendor_returns_404_for_missing_vendor(client: TestClient) -> None:
 def test_update_vendor(client: TestClient) -> None:
     create_response = client.post(
         VENDORS_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Sysco",
             "order_format": "old",
@@ -291,6 +337,7 @@ def test_update_vendor(client: TestClient) -> None:
 
     response = client.put(
         _vendor_detail_path(vendor_id),
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Sysco Updated",
             "order_format": "email",
@@ -367,6 +414,7 @@ def test_update_vendor(client: TestClient) -> None:
 def test_update_vendor_returns_404_for_missing_vendor(client: TestClient) -> None:
     response = client.put(
         _vendor_detail_path("ven_missing"),
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Missing Vendor",
             "is_active": True,
@@ -380,6 +428,7 @@ def test_update_vendor_returns_404_for_missing_vendor(client: TestClient) -> Non
 def test_update_vendor_rejects_duplicate_name(client: TestClient) -> None:
     first_response = client.post(
         VENDORS_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Original Vendor",
             "is_active": True,
@@ -387,6 +436,7 @@ def test_update_vendor_rejects_duplicate_name(client: TestClient) -> None:
     )
     client.post(
         VENDORS_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Duplicate Vendor",
             "is_active": True,
@@ -397,6 +447,7 @@ def test_update_vendor_rejects_duplicate_name(client: TestClient) -> None:
 
     response = client.put(
         _vendor_detail_path(vendor_id),
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Duplicate Vendor",
             "is_active": True,
@@ -410,6 +461,7 @@ def test_update_vendor_rejects_duplicate_name(client: TestClient) -> None:
 def test_delete_vendor_deactivates_vendor(client: TestClient) -> None:
     create_response = client.post(
         VENDORS_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Sysco",
             "is_active": True,
@@ -420,7 +472,10 @@ def test_delete_vendor_deactivates_vendor(client: TestClient) -> None:
     created_at = create_response.json()["created_at"]
     original_updated_at = create_response.json()["updated_at"]
 
-    delete_response = client.delete(_vendor_detail_path(vendor_id))
+    delete_response = client.delete(
+        _vendor_detail_path(vendor_id),
+        params=SUPERVISOR_SCOPE_PARAMS,
+    )
 
     assert delete_response.status_code == 200
 
@@ -432,14 +487,20 @@ def test_delete_vendor_deactivates_vendor(client: TestClient) -> None:
     assert _parse_api_datetime(deleted["created_at"]) == _parse_api_datetime(created_at)
     assert _parse_api_datetime(deleted["updated_at"]) >= _parse_api_datetime(original_updated_at)
 
-    get_response = client.get(_vendor_detail_path(vendor_id))
+    get_response = client.get(
+        _vendor_detail_path(vendor_id),
+        params=SUPERVISOR_SCOPE_PARAMS,
+    )
 
     assert get_response.status_code == 200
     assert get_response.json()["is_active"] is False
 
 
 def test_delete_vendor_returns_404_for_missing_vendor(client: TestClient) -> None:
-    response = client.delete(_vendor_detail_path("ven_missing"))
+    response = client.delete(
+        _vendor_detail_path("ven_missing"),
+        params=SUPERVISOR_SCOPE_PARAMS,
+    )
 
     assert response.status_code == 404
     assert response.json()["detail"] == "Vendor not found: ven_missing"

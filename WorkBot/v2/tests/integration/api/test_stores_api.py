@@ -4,11 +4,17 @@ from datetime import datetime
 
 from fastapi.testclient import TestClient
 
+from apps.api.auth.scopes import SUPERVISOR_SCOPE_ID
+
 STORES_PATH = "/api/stores"
+
+SUPERVISOR_SCOPE_PARAMS = {"scope_id": SUPERVISOR_SCOPE_ID}
+
 
 def test_create_store(client: TestClient) -> None:
     response = client.post(
         STORES_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Ithaca Bakery",
             "general_manager": "Andrew",
@@ -42,8 +48,16 @@ def test_create_store_rejects_duplicate_name(client: TestClient) -> None:
         "is_active": True,
     }
 
-    first_response = client.post(STORES_PATH, json=payload)
-    duplicate_response = client.post(STORES_PATH, json=payload)
+    first_response = client.post(
+        STORES_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
+        json=payload,
+    )
+    duplicate_response = client.post(
+        STORES_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
+        json=payload,
+    )
 
     assert first_response.status_code == 201
     assert duplicate_response.status_code == 400
@@ -53,6 +67,7 @@ def test_create_store_rejects_duplicate_name(client: TestClient) -> None:
 def test_create_store_rejects_empty_name(client: TestClient) -> None:
     response = client.post(
         STORES_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "   ",
             "is_active": True,
@@ -66,6 +81,7 @@ def test_create_store_rejects_empty_name(client: TestClient) -> None:
 def test_list_stores(client: TestClient) -> None:
     client.post(
         STORES_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Ithaca Bakery",
             "is_active": True,
@@ -73,13 +89,17 @@ def test_list_stores(client: TestClient) -> None:
     )
     client.post(
         STORES_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Collegetown Bagels",
             "is_active": True,
         },
     )
 
-    response = client.get(STORES_PATH)
+    response = client.get(
+        STORES_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
+    )
 
     assert response.status_code == 200
 
@@ -93,6 +113,7 @@ def test_list_stores(client: TestClient) -> None:
 def test_list_stores_can_search_by_name(client: TestClient) -> None:
     client.post(
         STORES_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Ithaca Bakery",
             "is_active": True,
@@ -100,13 +121,20 @@ def test_list_stores_can_search_by_name(client: TestClient) -> None:
     )
     client.post(
         STORES_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Collegetown Bagels",
             "is_active": True,
         },
     )
 
-    response = client.get(STORES_PATH, params={"search": "ithaca"})
+    response = client.get(
+        STORES_PATH,
+        params={
+            **SUPERVISOR_SCOPE_PARAMS,
+            "search": "ithaca",
+        },
+    )
 
     assert response.status_code == 200
 
@@ -119,6 +147,7 @@ def test_list_stores_can_search_by_name(client: TestClient) -> None:
 def test_list_stores_can_exclude_inactive(client: TestClient) -> None:
     client.post(
         STORES_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Active Store",
             "is_active": True,
@@ -126,13 +155,20 @@ def test_list_stores_can_exclude_inactive(client: TestClient) -> None:
     )
     client.post(
         STORES_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Inactive Store",
             "is_active": False,
         },
     )
 
-    response = client.get(STORES_PATH, params={"include_inactive": False})
+    response = client.get(
+        STORES_PATH,
+        params={
+            **SUPERVISOR_SCOPE_PARAMS,
+            "include_inactive": False,
+        },
+    )
 
     assert response.status_code == 200
 
@@ -145,6 +181,7 @@ def test_list_stores_can_exclude_inactive(client: TestClient) -> None:
 def test_get_store(client: TestClient) -> None:
     create_response = client.post(
         STORES_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Ithaca Bakery",
             "general_manager": "Andrew",
@@ -154,7 +191,10 @@ def test_get_store(client: TestClient) -> None:
 
     store_id = create_response.json()["id"]
 
-    response = client.get(_store_detail_path(store_id))
+    response = client.get(
+        _store_detail_path(store_id),
+        params=SUPERVISOR_SCOPE_PARAMS,
+    )
 
     assert response.status_code == 200
 
@@ -166,7 +206,10 @@ def test_get_store(client: TestClient) -> None:
 
 
 def test_get_store_returns_404_for_missing_store(client: TestClient) -> None:
-    response = client.get(_store_detail_path("sto_missing"))
+    response = client.get(
+        _store_detail_path("sto_missing"),
+        params=SUPERVISOR_SCOPE_PARAMS,
+    )
 
     assert response.status_code == 404
     assert response.json()["detail"] == "Store not found: sto_missing"
@@ -175,6 +218,7 @@ def test_get_store_returns_404_for_missing_store(client: TestClient) -> None:
 def test_update_store(client: TestClient) -> None:
     create_response = client.post(
         STORES_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Ithaca Bakery",
             "general_manager": "Old Manager",
@@ -192,6 +236,7 @@ def test_update_store(client: TestClient) -> None:
 
     response = client.put(
         _store_detail_path(store_id),
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Ithaca Bakery Updated",
             "general_manager": "Andrew",
@@ -222,6 +267,7 @@ def test_update_store(client: TestClient) -> None:
 def test_update_store_returns_404_for_missing_store(client: TestClient) -> None:
     response = client.put(
         _store_detail_path("sto_missing"),
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Missing Store",
             "is_active": True,
@@ -235,6 +281,7 @@ def test_update_store_returns_404_for_missing_store(client: TestClient) -> None:
 def test_update_store_rejects_duplicate_name(client: TestClient) -> None:
     first_response = client.post(
         STORES_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Original Store",
             "is_active": True,
@@ -242,6 +289,7 @@ def test_update_store_rejects_duplicate_name(client: TestClient) -> None:
     )
     client.post(
         STORES_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Duplicate Store",
             "is_active": True,
@@ -252,6 +300,7 @@ def test_update_store_rejects_duplicate_name(client: TestClient) -> None:
 
     response = client.put(
         _store_detail_path(store_id),
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Duplicate Store",
             "is_active": True,
@@ -265,6 +314,7 @@ def test_update_store_rejects_duplicate_name(client: TestClient) -> None:
 def test_delete_store_deactivates_store(client: TestClient) -> None:
     create_response = client.post(
         STORES_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Ithaca Bakery",
             "is_active": True,
@@ -275,7 +325,10 @@ def test_delete_store_deactivates_store(client: TestClient) -> None:
     created_at = create_response.json()["created_at"]
     original_updated_at = create_response.json()["updated_at"]
 
-    delete_response = client.delete(_store_detail_path(store_id))
+    delete_response = client.delete(
+        _store_detail_path(store_id),
+        params=SUPERVISOR_SCOPE_PARAMS,
+    )
 
     assert delete_response.status_code == 200
 
@@ -287,14 +340,20 @@ def test_delete_store_deactivates_store(client: TestClient) -> None:
     assert _parse_api_datetime(deleted["created_at"]) == _parse_api_datetime(created_at)
     assert _parse_api_datetime(deleted["updated_at"]) >= _parse_api_datetime(original_updated_at)
 
-    get_response = client.get(_store_detail_path(store_id))
+    get_response = client.get(
+        _store_detail_path(store_id),
+        params=SUPERVISOR_SCOPE_PARAMS,
+    )
 
     assert get_response.status_code == 200
     assert get_response.json()["is_active"] is False
 
 
 def test_delete_store_returns_404_for_missing_store(client: TestClient) -> None:
-    response = client.delete(_store_detail_path("sto_missing"))
+    response = client.delete(
+        _store_detail_path("sto_missing"),
+        params=SUPERVISOR_SCOPE_PARAMS,
+    )
 
     assert response.status_code == 404
     assert response.json()["detail"] == "Store not found: sto_missing"

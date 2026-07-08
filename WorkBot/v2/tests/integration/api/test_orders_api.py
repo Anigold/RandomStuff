@@ -5,9 +5,14 @@ from decimal import Decimal
 
 from fastapi.testclient import TestClient
 
-ORDERS_PATH = "/api/orders"
-STORES_PATH = "/api/stores"
+from apps.api.auth.scopes import SUPERVISOR_SCOPE_ID
+
+ORDERS_PATH  = "/api/orders"
+STORES_PATH  = "/api/stores"
 VENDORS_PATH = "/api/vendors"
+
+SUPERVISOR_SCOPE_PARAMS = {"scope_id": SUPERVISOR_SCOPE_ID}
+
 
 def test_create_order(client: TestClient) -> None:
     store_id = _create_store(client, name="Ithaca Bakery")
@@ -15,6 +20,7 @@ def test_create_order(client: TestClient) -> None:
 
     response = client.post(
         ORDERS_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "store_id": store_id,
             "vendor_id": vendor_id,
@@ -71,6 +77,7 @@ def test_create_order_rejects_missing_store(client: TestClient) -> None:
 
     response = client.post(
         ORDERS_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "store_id": "str_missing",
             "vendor_id": vendor_id,
@@ -84,8 +91,8 @@ def test_create_order_rejects_missing_store(client: TestClient) -> None:
         },
     )
 
-    assert response.status_code == 404
-    assert response.json()["detail"] == "Store not found: str_missing"
+    assert response.status_code == 403
+    assert response.json()["detail"] == "Selected scope cannot access this store."
 
 
 def test_create_order_rejects_missing_vendor(client: TestClient) -> None:
@@ -93,6 +100,7 @@ def test_create_order_rejects_missing_vendor(client: TestClient) -> None:
 
     response = client.post(
         ORDERS_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "store_id": store_id,
             "vendor_id": "ven_missing",
@@ -116,6 +124,7 @@ def test_create_order_rejects_empty_lines(client: TestClient) -> None:
 
     response = client.post(
         ORDERS_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "store_id": store_id,
             "vendor_id": vendor_id,
@@ -145,7 +154,10 @@ def test_list_orders(client: TestClient) -> None:
         order_date="2026-06-03",
     )
 
-    response = client.get(ORDERS_PATH)
+    response = client.get(
+        ORDERS_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
+    )
 
     assert response.status_code == 200
 
@@ -193,7 +205,8 @@ def test_list_orders_can_filter_by_store_vendor_and_date_range(
     response = client.get(
         ORDERS_PATH,
         params={
-            "store": "Ithaca Bakery",
+            **SUPERVISOR_SCOPE_PARAMS,
+            "store_id": ithaca_store_id,
             "vendor": "Sysco",
             "start_date": "2026-06-01",
             "end_date": "2026-06-30",
@@ -210,32 +223,33 @@ def test_list_orders_can_filter_by_store_vendor_and_date_range(
     assert data[0]["vendor_name"] == "Sysco"
 
 
-def test_list_orders_returns_404_for_missing_store_filter(
-    client: TestClient,
-) -> None:
-    response = client.get(
-        ORDERS_PATH,
-        params={
-            "store": "Missing Store",
-        },
-    )
-
-    assert response.status_code == 404
-    assert response.json()["detail"] == "Store not found: Missing Store"
-
-
 def test_list_orders_returns_404_for_missing_vendor_filter(
     client: TestClient,
 ) -> None:
     response = client.get(
         ORDERS_PATH,
         params={
+            **SUPERVISOR_SCOPE_PARAMS,
             "vendor": "Missing Vendor",
         },
     )
 
     assert response.status_code == 404
     assert response.json()["detail"] == "Vendor not found: Missing Vendor"
+
+
+def test_list_orders_rejects_inaccessible_store_scope(
+    client: TestClient,
+) -> None:
+    response = client.get(
+        ORDERS_PATH,
+        params={
+            "scope_id": "str_missing",
+        },
+    )
+
+    assert response.status_code == 403
+    assert response.json()["detail"] == "User does not have access to this store."
 
 
 def test_get_order(client: TestClient) -> None:
@@ -248,7 +262,10 @@ def test_get_order(client: TestClient) -> None:
         order_date="2026-06-02",
     )
 
-    response = client.get(_order_detail_path(order_id))
+    response = client.get(
+        _order_detail_path(order_id),
+        params=SUPERVISOR_SCOPE_PARAMS,
+    )
 
     assert response.status_code == 200
 
@@ -266,7 +283,10 @@ def test_get_order(client: TestClient) -> None:
 
 
 def test_get_order_returns_404_for_missing_order(client: TestClient) -> None:
-    response = client.get(_order_detail_path("ord_missing"))
+    response = client.get(
+        _order_detail_path("ord_missing"),
+        params=SUPERVISOR_SCOPE_PARAMS,
+    )
 
     assert response.status_code == 404
     assert response.json()["detail"] == "Order not found: ord_missing"
@@ -282,11 +302,15 @@ def test_update_order_notes(client: TestClient) -> None:
         notes="Old notes",
     )
 
-    get_response = client.get(_order_detail_path(order_id))
+    get_response = client.get(
+        _order_detail_path(order_id),
+        params=SUPERVISOR_SCOPE_PARAMS,
+    )
     original_updated_at = get_response.json()["updated_at"]
 
     response = client.patch(
         _order_notes_path(order_id),
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "notes": "Updated notes",
         },
@@ -315,6 +339,7 @@ def test_cancel_order(client: TestClient) -> None:
 
     response = client.post(
         _order_cancel_path(order_id),
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "reason": "Duplicate order",
         },
@@ -332,6 +357,7 @@ def test_cancel_order(client: TestClient) -> None:
 def test_cancel_order_returns_404_for_missing_order(client: TestClient) -> None:
     response = client.post(
         _order_cancel_path("ord_missing"),
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "reason": "Missing order",
         },
@@ -350,7 +376,10 @@ def test_mark_order_exported(client: TestClient) -> None:
         vendor_id=vendor_id,
     )
 
-    response = client.post(_order_export_path(order_id))
+    response = client.post(
+        _order_export_path(order_id),
+        params=SUPERVISOR_SCOPE_PARAMS,
+    )
 
     assert response.status_code == 200
 
@@ -371,6 +400,7 @@ def test_mark_order_exported_rejects_cancelled_order(client: TestClient) -> None
 
     cancel_response = client.post(
         _order_cancel_path(order_id),
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "reason": "Do not send",
         },
@@ -378,7 +408,10 @@ def test_mark_order_exported_rejects_cancelled_order(client: TestClient) -> None
 
     assert cancel_response.status_code == 200
 
-    response = client.post(_order_export_path(order_id))
+    response = client.post(
+        _order_export_path(order_id),
+        params=SUPERVISOR_SCOPE_PARAMS,
+    )
 
     assert response.status_code == 400
     assert response.json()["detail"] == f"Cannot export cancelled order: {order_id}"
@@ -393,7 +426,10 @@ def test_mark_order_fulfilled(client: TestClient) -> None:
         vendor_id=vendor_id,
     )
 
-    response = client.post(_order_fulfill_path(order_id))
+    response = client.post(
+        _order_fulfill_path(order_id),
+        params=SUPERVISOR_SCOPE_PARAMS,
+    )
 
     assert response.status_code == 200
 
@@ -414,6 +450,7 @@ def test_mark_order_fulfilled_rejects_cancelled_order(client: TestClient) -> Non
 
     cancel_response = client.post(
         _order_cancel_path(order_id),
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "reason": "Do not send",
         },
@@ -421,7 +458,10 @@ def test_mark_order_fulfilled_rejects_cancelled_order(client: TestClient) -> Non
 
     assert cancel_response.status_code == 200
 
-    response = client.post(_order_fulfill_path(order_id))
+    response = client.post(
+        _order_fulfill_path(order_id),
+        params=SUPERVISOR_SCOPE_PARAMS,
+    )
 
     assert response.status_code == 400
     assert response.json()["detail"] == f"Cannot fulfill cancelled order: {order_id}"
@@ -436,19 +476,28 @@ def test_delete_order(client: TestClient) -> None:
         vendor_id=vendor_id,
     )
 
-    delete_response = client.delete(_order_detail_path(order_id))
+    delete_response = client.delete(
+        _order_detail_path(order_id),
+        params=SUPERVISOR_SCOPE_PARAMS,
+    )
 
     assert delete_response.status_code == 204
     assert delete_response.content == b""
 
-    get_response = client.get(_order_detail_path(order_id))
+    get_response = client.get(
+        _order_detail_path(order_id),
+        params=SUPERVISOR_SCOPE_PARAMS,
+    )
 
     assert get_response.status_code == 404
     assert get_response.json()["detail"] == f"Order not found: {order_id}"
 
 
 def test_delete_order_returns_404_for_missing_order(client: TestClient) -> None:
-    response = client.delete(_order_detail_path("ord_missing"))
+    response = client.delete(
+        _order_detail_path("ord_missing"),
+        params=SUPERVISOR_SCOPE_PARAMS,
+    )
 
     assert response.status_code == 404
     assert response.json()["detail"] == "Order not found: ord_missing"
@@ -457,6 +506,7 @@ def test_delete_order_returns_404_for_missing_order(client: TestClient) -> None:
 def _create_store(client: TestClient, *, name: str) -> str:
     response = client.post(
         STORES_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": name,
             "is_active": True,
@@ -471,6 +521,7 @@ def _create_store(client: TestClient, *, name: str) -> str:
 def _create_vendor(client: TestClient, *, name: str) -> str:
     response = client.post(
         VENDORS_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": name,
             "is_active": True,
@@ -510,6 +561,7 @@ def _create_order(
 
     response = client.post(
         ORDERS_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json=payload,
     )
 

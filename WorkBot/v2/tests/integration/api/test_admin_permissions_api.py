@@ -3,22 +3,28 @@ from __future__ import annotations
 from fastapi.testclient import TestClient
 
 from apps.api.auth.dependencies import get_current_user
-
+from apps.api.auth.scopes import SUPERVISOR_SCOPE_ID
 from apps.api.main import app
+from tests.integration.api.conftest import ApiTestContext
 from tests.helpers.auth_helpers import (
     make_manager_user,
     make_supervisor_user,
     make_viewer_user,
 )
 
-STORES_PATH = "/api/stores"
+STORES_PATH  = "/api/stores"
 VENDORS_PATH = "/api/vendors"
+
+SUPERVISOR_SCOPE_PARAMS   = {"scope_id": SUPERVISOR_SCOPE_ID}
+SUPERVISOR_SCOPE_REQUIRED = "Supervisor scope required."
+
 
 def test_manager_can_list_vendors(
     api_context: ApiTestContext,
 ) -> None:
     client = api_context.client
 
+    _authenticate_as(make_supervisor_user())
     _create_vendor(client, name="Sysco")
 
     _authenticate_as(make_manager_user())
@@ -37,6 +43,7 @@ def test_viewer_can_list_vendors(
 ) -> None:
     client = api_context.client
 
+    _authenticate_as(make_supervisor_user())
     _create_vendor(client, name="Sysco")
 
     _authenticate_as(make_viewer_user())
@@ -55,6 +62,7 @@ def test_manager_can_get_vendor(
 ) -> None:
     client = api_context.client
 
+    _authenticate_as(make_supervisor_user())
     vendor_id = _create_vendor(client, name="Sysco")
 
     _authenticate_as(make_manager_user())
@@ -72,6 +80,7 @@ def test_manager_cannot_create_vendor(
 
     response = api_context.client.post(
         VENDORS_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Sysco",
             "is_active": True,
@@ -79,7 +88,7 @@ def test_manager_cannot_create_vendor(
     )
 
     assert response.status_code == 403
-    assert response.json()["detail"] == "Supervisor access required."
+    assert response.json()["detail"] == SUPERVISOR_SCOPE_REQUIRED
 
 
 def test_manager_cannot_update_vendor(
@@ -87,12 +96,14 @@ def test_manager_cannot_update_vendor(
 ) -> None:
     client = api_context.client
 
+    _authenticate_as(make_supervisor_user())
     vendor_id = _create_vendor(client, name="Sysco")
 
     _authenticate_as(make_manager_user())
 
     response = client.put(
         _vendor_detail_path(vendor_id),
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Updated Sysco",
             "is_active": True,
@@ -100,7 +111,7 @@ def test_manager_cannot_update_vendor(
     )
 
     assert response.status_code == 403
-    assert response.json()["detail"] == "Supervisor access required."
+    assert response.json()["detail"] == SUPERVISOR_SCOPE_REQUIRED
 
 
 def test_manager_cannot_delete_vendor(
@@ -108,14 +119,18 @@ def test_manager_cannot_delete_vendor(
 ) -> None:
     client = api_context.client
 
+    _authenticate_as(make_supervisor_user())
     vendor_id = _create_vendor(client, name="Sysco")
 
     _authenticate_as(make_manager_user())
 
-    response = client.delete(_vendor_detail_path(vendor_id))
+    response = client.delete(
+        _vendor_detail_path(vendor_id),
+        params=SUPERVISOR_SCOPE_PARAMS,
+    )
 
     assert response.status_code == 403
-    assert response.json()["detail"] == "Supervisor access required."
+    assert response.json()["detail"] == SUPERVISOR_SCOPE_REQUIRED
 
 
 def test_viewer_cannot_create_vendor(
@@ -125,6 +140,7 @@ def test_viewer_cannot_create_vendor(
 
     response = api_context.client.post(
         VENDORS_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Sysco",
             "is_active": True,
@@ -132,7 +148,7 @@ def test_viewer_cannot_create_vendor(
     )
 
     assert response.status_code == 403
-    assert response.json()["detail"] == "Supervisor access required."
+    assert response.json()["detail"] == SUPERVISOR_SCOPE_REQUIRED
 
 
 def test_supervisor_can_create_vendor(
@@ -142,6 +158,7 @@ def test_supervisor_can_create_vendor(
 
     response = api_context.client.post(
         VENDORS_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Sysco",
             "is_active": True,
@@ -157,10 +174,13 @@ def test_manager_cannot_list_stores(
 ) -> None:
     _authenticate_as(make_manager_user())
 
-    response = api_context.client.get(STORES_PATH)
+    response = api_context.client.get(
+        STORES_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
+    )
 
     assert response.status_code == 403
-    assert response.json()["detail"] == "Supervisor access required."
+    assert response.json()["detail"] == SUPERVISOR_SCOPE_REQUIRED
 
 
 def test_viewer_cannot_list_stores(
@@ -168,10 +188,13 @@ def test_viewer_cannot_list_stores(
 ) -> None:
     _authenticate_as(make_viewer_user())
 
-    response = api_context.client.get(STORES_PATH)
+    response = api_context.client.get(
+        STORES_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
+    )
 
     assert response.status_code == 403
-    assert response.json()["detail"] == "Supervisor access required."
+    assert response.json()["detail"] == SUPERVISOR_SCOPE_REQUIRED
 
 
 def test_manager_cannot_create_store(
@@ -181,6 +204,7 @@ def test_manager_cannot_create_store(
 
     response = api_context.client.post(
         STORES_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Ithaca Bakery",
             "is_active": True,
@@ -188,7 +212,7 @@ def test_manager_cannot_create_store(
     )
 
     assert response.status_code == 403
-    assert response.json()["detail"] == "Supervisor access required."
+    assert response.json()["detail"] == SUPERVISOR_SCOPE_REQUIRED
 
 
 def test_manager_cannot_update_store(
@@ -196,12 +220,14 @@ def test_manager_cannot_update_store(
 ) -> None:
     client = api_context.client
 
+    _authenticate_as(make_supervisor_user())
     store_id = _create_store(client, name="Ithaca Bakery")
 
     _authenticate_as(make_manager_user())
 
     response = client.put(
         _store_detail_path(store_id),
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Updated Ithaca Bakery",
             "is_active": True,
@@ -209,7 +235,7 @@ def test_manager_cannot_update_store(
     )
 
     assert response.status_code == 403
-    assert response.json()["detail"] == "Supervisor access required."
+    assert response.json()["detail"] == SUPERVISOR_SCOPE_REQUIRED
 
 
 def test_manager_cannot_delete_store(
@@ -217,14 +243,18 @@ def test_manager_cannot_delete_store(
 ) -> None:
     client = api_context.client
 
+    _authenticate_as(make_supervisor_user())
     store_id = _create_store(client, name="Ithaca Bakery")
 
     _authenticate_as(make_manager_user())
 
-    response = client.delete(_store_detail_path(store_id))
+    response = client.delete(
+        _store_detail_path(store_id),
+        params=SUPERVISOR_SCOPE_PARAMS,
+    )
 
     assert response.status_code == 403
-    assert response.json()["detail"] == "Supervisor access required."
+    assert response.json()["detail"] == SUPERVISOR_SCOPE_REQUIRED
 
 
 def test_supervisor_can_create_store(
@@ -234,6 +264,7 @@ def test_supervisor_can_create_store(
 
     response = api_context.client.post(
         STORES_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Ithaca Bakery",
             "is_active": True,
@@ -251,6 +282,7 @@ def _authenticate_as(user) -> None:
 def _create_store(client: TestClient, *, name: str) -> str:
     response = client.post(
         STORES_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": name,
             "is_active": True,
@@ -265,6 +297,7 @@ def _create_store(client: TestClient, *, name: str) -> str:
 def _create_vendor(client: TestClient, *, name: str) -> str:
     response = client.post(
         VENDORS_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": name,
             "is_active": True,

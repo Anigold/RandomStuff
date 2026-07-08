@@ -1,10 +1,9 @@
 from __future__ import annotations
 
-from dataclasses import replace
-
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
+from apps.api.auth.dependencies import StoreScope, get_store_scope
 from apps.api.dependencies import get_db_session
 from apps.api.schemas.item_schema import (
     AddItemStoreInfoRequest,
@@ -23,15 +22,16 @@ from workbot_core.application.dto.item_catalog_commands import (
     AddItemVendorInfoCommand,
     CreateItemCommand,
     UpdateItemCommand,
+    UpdateItemStoreInfoCommand,
     UpdateItemVendorInfoCommand,
-    UpdateItemStoreInfoCommand
 )
-
-
 from workbot_core.application.use_cases.items.manage_items import ManageItems
-from workbot_core.application.use_cases.manage_item_vendor_information import ManageItemVendorInformation
-from workbot_core.application.use_cases.manage_item_store_information import ManageItemStoreInformation
-
+from workbot_core.application.use_cases.manage_item_store_information import (
+    ManageItemStoreInformation,
+)
+from workbot_core.application.use_cases.manage_item_vendor_information import (
+    ManageItemVendorInformation,
+)
 from workbot_core.infrastructure.database.repositories.item_repository import (
     SqlItemRepository,
 )
@@ -48,54 +48,43 @@ from workbot_core.infrastructure.database.repositories.vendor_repository import 
     SqlVendorRepository,
 )
 
-from apps.api.auth.dependencies import (
-    get_current_user,
-    get_effective_store_scope,
-    require_supervisor, 
-    user_can_access_store
-)
-from workbot_core.domain.models.user import User, UserRole
-
 
 router = APIRouter(prefix="/items", tags=["items"])
+
 
 @router.get("", response_model=list[ItemResponse])
 def list_items(
     search: str | None = None,
     include_inactive: bool = True,
-    store_id: str | None = None,
     session: Session = Depends(get_db_session),
-    current_user: User = Depends(get_current_user),
+    scope: StoreScope = Depends(get_store_scope),
 ) -> list[ItemResponse]:
-    
     items = SqlItemRepository(session)
-    item_store_infos = SqlItemStoreInfoRepository(session)
+    
 
-    effective_store_ids = get_effective_store_scope(
-        current_user=current_user,
-        db=session,
-        store_id=store_id,
-    )
+    if scope.is_supervisor_scope:
+        item_list = items.list_all()
 
-    store_item_ids: set[str] = set()
-
-    for effective_store_id in effective_store_ids:
-        store_infos = item_store_infos.list_for_store(effective_store_id)
-
-        store_item_ids.update(
-            info.item_id
-            for info in store_infos
-            if info.is_active
+    else:
+        item_store_infos = SqlItemStoreInfoRepository(session)
+        store_item_ids = _item_ids_for_scope(
+            item_store_infos=item_store_infos,
+            scope=scope,
+            active_store_info_only=True,
         )
 
-    item_list = [
-        item
-        for item in items.list_all()
-        if item.id in store_item_ids
-    ]
+        item_list = [
+            item
+            for item in items.list_all()
+            if item.id in store_item_ids
+        ]
 
     if not include_inactive:
-        item_list = [item for item in item_list if item.is_active]
+        item_list = [
+            item
+            for item in item_list
+            if item.is_active
+        ]
 
     if search:
         search_lower = search.casefold()
@@ -105,41 +94,17 @@ def list_items(
             if search_lower in item.name.casefold()
         ]
 
-    return [_item_response(item) for item in item_list]
+    return [
+        _item_response(item)
+        for item in item_list
+    ]
 
-# @router.get("/{item_id}", response_model=ItemDetailResponse)
-# def get_item(
-#     item_id: str,
-#     session: Session = Depends(get_db_session),
-# ) -> ItemDetailResponse:
-#     try:
-#         item = ManageItems(
-#             items=SqlItemRepository(session),
-#         ).get_item(item_id)
-
-#     except ValueError as exc:
-#         raise HTTPException(status_code=404, detail=str(exc)) from exc
-
-#     vendor_infos = SqlItemVendorInfoRepository(session)
-#     store_infos = SqlItemStoreInfoRepository(session)
-
-#     return ItemDetailResponse(
-#         **_item_response(item).model_dump(),
-#         vendor_info=[
-#             _item_vendor_info_response(info)
-#             for info in vendor_infos.list_for_item(item.id)
-#         ],
-#         store_info=[
-#             _item_store_info_response(info)
-#             for info in store_infos.list_for_item(item.id)
-#         ],
-#     )
 
 @router.get("/{item_id}", response_model=ItemDetailResponse)
 def get_item(
     item_id: str,
     session: Session = Depends(get_db_session),
-    current_user: User = Depends(get_current_user),
+    scope: StoreScope = Depends(get_store_scope),
 ) -> ItemDetailResponse:
     try:
         item = ManageItems(
@@ -154,51 +119,50 @@ def get_item(
 
     all_store_infos = store_infos.list_for_item(item.id)
 
-    if current_user.role != UserRole.SUPERVISOR:
-        accessible_store_infos = [
-            info
-            for info in all_store_infos
-            if info.is_active
-            and user_can_access_store(
-                current_user=current_user,
-                store_id=info.store_id,
-                session=session,
-            )
-        ]
-
-        if not accessible_store_infos:
-            raise HTTPException(
-                status_code=403,
-                detail="Cannot access item for assigned stores.",
-            )
-
+    if scope.is_supervisor_scope:
         return ItemDetailResponse(
             **_item_response(item).model_dump(),
-            vendor_info=[],
+            vendor_info=[
+                _item_vendor_info_response(info)
+                for info in vendor_infos.list_for_item(item.id)
+            ],
             store_info=[
                 _item_store_info_response(info)
-                for info in accessible_store_infos
+                for info in all_store_infos
             ],
+        )
+
+    scoped_store_infos = [
+        info
+        for info in all_store_infos
+        if info.store_id in scope.real_store_ids
+        and info.is_active
+    ]
+
+    if not scoped_store_infos:
+        raise HTTPException(
+            status_code=403,
+            detail="Cannot access item for selected operating scope.",
         )
 
     return ItemDetailResponse(
         **_item_response(item).model_dump(),
-        vendor_info=[
-            _item_vendor_info_response(info)
-            for info in vendor_infos.list_for_item(item.id)
-        ],
+        vendor_info=[],
         store_info=[
             _item_store_info_response(info)
-            for info in all_store_infos
+            for info in scoped_store_infos
         ],
     )
+
 
 @router.post("", response_model=ItemResponse, status_code=201)
 def create_item(
     request: CreateItemRequest,
     session: Session = Depends(get_db_session),
-    current_user: User = Depends(require_supervisor),
+    scope: StoreScope = Depends(get_store_scope),
 ) -> ItemResponse:
+    _require_supervisor_scope(scope)
+
     try:
         item = ManageItems(
             items=SqlItemRepository(session),
@@ -234,8 +198,10 @@ def update_item(
     item_id: str,
     request: UpdateItemRequest,
     session: Session = Depends(get_db_session),
-    current_user: User = Depends(require_supervisor),
+    scope: StoreScope = Depends(get_store_scope),
 ) -> ItemResponse:
+    _require_supervisor_scope(scope)
+
     try:
         item = ManageItems(
             items=SqlItemRepository(session),
@@ -271,8 +237,10 @@ def update_item(
 def delete_item(
     item_id: str,
     session: Session = Depends(get_db_session),
-    current_user: User = Depends(require_supervisor),
+    scope: StoreScope = Depends(get_store_scope),
 ) -> ItemResponse:
+    _require_supervisor_scope(scope)
+
     try:
         item = ManageItems(
             items=SqlItemRepository(session),
@@ -296,8 +264,10 @@ def add_item_vendor_info(
     item_id: str,
     request: AddItemVendorInfoRequest,
     session: Session = Depends(get_db_session),
-    current_user: User = Depends(require_supervisor),
+    scope: StoreScope = Depends(get_store_scope),
 ) -> ItemVendorInfoResponse:
+    _require_supervisor_scope(scope)
+
     try:
         info = ManageItemVendorInformation(
             items=SqlItemRepository(session),
@@ -333,8 +303,13 @@ def add_item_store_info(
     item_id: str,
     request: AddItemStoreInfoRequest,
     session: Session = Depends(get_db_session),
-    current_user: User = Depends(require_supervisor),
+    scope: StoreScope = Depends(get_store_scope),
 ) -> ItemStoreInfoResponse:
+    _require_store_in_scope(
+        store_id=request.store_id,
+        scope=scope,
+    )
+
     try:
         info = ManageItemStoreInformation(
             items=SqlItemRepository(session),
@@ -368,8 +343,10 @@ def update_item_vendor_info(
     info_id: str,
     request: UpdateItemVendorInfoRequest,
     session: Session = Depends(get_db_session),
-    current_user: User = Depends(require_supervisor),
+    scope: StoreScope = Depends(get_store_scope),
 ) -> ItemVendorInfoResponse:
+    _require_supervisor_scope(scope)
+
     try:
         info = ManageItemVendorInformation(
             item_vendor_infos=SqlItemVendorInfoRepository(session),
@@ -403,11 +380,24 @@ def update_item_store_info(
     info_id: str,
     request: UpdateItemStoreInfoRequest,
     session: Session = Depends(get_db_session),
-    current_user: User = Depends(require_supervisor),
+    scope: StoreScope = Depends(get_store_scope),
 ) -> ItemStoreInfoResponse:
+    item_store_infos = SqlItemStoreInfoRepository(session)
+
+    existing_info = _get_item_store_info_or_404(
+        item_store_infos=item_store_infos,
+        item_id=item_id,
+        info_id=info_id,
+    )
+
+    _require_store_in_scope(
+        store_id=existing_info.store_id,
+        scope=scope,
+    )
+
     try:
         info = ManageItemStoreInformation(
-            item_store_infos=SqlItemStoreInfoRepository(session),
+            item_store_infos=item_store_infos,
         ).update_store_info(
             UpdateItemStoreInfoCommand(
                 item_id=item_id,
@@ -435,8 +425,10 @@ def delete_item_vendor_info(
     item_id: str,
     info_id: str,
     session: Session = Depends(get_db_session),
-    current_user: User = Depends(require_supervisor),
+    scope: StoreScope = Depends(get_store_scope),
 ) -> ItemVendorInfoResponse:
+    _require_supervisor_scope(scope)
+
     try:
         info = ManageItemVendorInformation(
             item_vendor_infos=SqlItemVendorInfoRepository(session),
@@ -453,6 +445,7 @@ def delete_item_vendor_info(
         session.rollback()
         raise HTTPException(status_code=404, detail=str(exc)) from exc
 
+
 @router.delete(
     "/{item_id}/store-info/{info_id}",
     response_model=ItemStoreInfoResponse,
@@ -461,11 +454,24 @@ def delete_item_store_info(
     item_id: str,
     info_id: str,
     session: Session = Depends(get_db_session),
-    current_user: User = Depends(require_supervisor),
+    scope: StoreScope = Depends(get_store_scope),
 ) -> ItemStoreInfoResponse:
+    item_store_infos = SqlItemStoreInfoRepository(session)
+
+    existing_info = _get_item_store_info_or_404(
+        item_store_infos=item_store_infos,
+        item_id=item_id,
+        info_id=info_id,
+    )
+
+    _require_store_in_scope(
+        store_id=existing_info.store_id,
+        scope=scope,
+    )
+
     try:
         info = ManageItemStoreInformation(
-            item_store_infos=SqlItemStoreInfoRepository(session),
+            item_store_infos=item_store_infos,
         ).deactivate_store_info(
             item_id=item_id,
             info_id=info_id,
@@ -478,8 +484,64 @@ def delete_item_store_info(
     except ValueError as exc:
         session.rollback()
         raise HTTPException(status_code=404, detail=str(exc)) from exc
-    
-    
+
+
+def _require_supervisor_scope(scope: StoreScope) -> None:
+    if not scope.is_supervisor_scope:
+        raise HTTPException(
+            status_code=403,
+            detail="Supervisor scope required.",
+        )
+
+
+def _require_store_in_scope(
+    *,
+    store_id: str,
+    scope: StoreScope,
+) -> None:
+    if store_id not in scope.real_store_ids:
+        raise HTTPException(
+            status_code=403,
+            detail="Selected scope cannot modify this store.",
+        )
+
+
+def _item_ids_for_scope(
+    *,
+    item_store_infos: SqlItemStoreInfoRepository,
+    scope: StoreScope,
+    active_store_info_only: bool,
+) -> set[str]:
+    item_ids: set[str] = set()
+
+    for store_id in scope.real_store_ids:
+        store_infos = item_store_infos.list_for_store(store_id)
+
+        item_ids.update(
+            info.item_id
+            for info in store_infos
+            if not active_store_info_only or info.is_active
+        )
+
+    return item_ids
+
+
+def _get_item_store_info_or_404(
+    *,
+    item_store_infos: SqlItemStoreInfoRepository,
+    item_id: str,
+    info_id: str,
+):
+    for info in item_store_infos.list_for_item(item_id):
+        if info.id == info_id:
+            return info
+
+    raise HTTPException(
+        status_code=404,
+        detail="Item store info not found.",
+    )
+
+
 def _http_error_from_value_error(exc: ValueError) -> HTTPException:
     message = str(exc)
 

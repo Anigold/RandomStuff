@@ -3,26 +3,32 @@ from __future__ import annotations
 from fastapi.testclient import TestClient
 
 from apps.api.auth.dependencies import get_current_user
-
+from apps.api.auth.scopes import SUPERVISOR_SCOPE_ID
 from apps.api.main import app
+from tests.integration.api.conftest import ApiTestContext
 from tests.helpers.auth_helpers import (
     make_manager_user,
     make_supervisor_user,
     make_user_store_access,
     make_viewer_user,
 )
-
 from workbot_core.infrastructure.database.repositories.user_repository import (
     SqlUserStoreAccessRepository,
 )
 
-ITEMS_PATH = "/api/items"
+ITEMS_PATH  = "/api/items"
 STORES_PATH = "/api/stores"
+
+SUPERVISOR_SCOPE_PARAMS   = {"scope_id": SUPERVISOR_SCOPE_ID}
+SUPERVISOR_SCOPE_REQUIRED = "Supervisor scope required."
+
 
 def test_manager_can_list_items_for_assigned_store(
     api_context: ApiTestContext,
 ) -> None:
     client = api_context.client
+
+    _authenticate_as(make_supervisor_user())
 
     assigned_store_id = _create_store(client, name="Ithaca Bakery")
     other_store_id = _create_store(client, name="Collegetown Bagels")
@@ -52,7 +58,7 @@ def test_manager_can_list_items_for_assigned_store(
     response = client.get(
         ITEMS_PATH,
         params={
-            "store": "Ithaca Bakery",
+            "scope_id": assigned_store_id,
         },
     )
 
@@ -70,8 +76,10 @@ def test_manager_cannot_list_items_for_unassigned_store(
 ) -> None:
     client = api_context.client
 
+    _authenticate_as(make_supervisor_user())
+
     assigned_store_id = _create_store(client, name="Ithaca Bakery")
-    _create_store(client, name="Collegetown Bagels")
+    other_store_id = _create_store(client, name="Collegetown Bagels")
 
     manager = make_manager_user()
     _grant_store_access(
@@ -84,18 +92,20 @@ def test_manager_cannot_list_items_for_unassigned_store(
     response = client.get(
         ITEMS_PATH,
         params={
-            "store": "Collegetown Bagels",
+            "scope_id": other_store_id,
         },
     )
 
     assert response.status_code == 403
-    assert response.json()["detail"] == "Cannot access this store."
+    assert response.json()["detail"] == "User does not have access to this store."
 
 
 def test_manager_can_get_assigned_store_item_detail(
     api_context: ApiTestContext,
 ) -> None:
     client = api_context.client
+
+    _authenticate_as(make_supervisor_user())
 
     store_id = _create_store(client, name="Ithaca Bakery")
     item_id = _create_item(client, name="Malt Barrel")
@@ -114,7 +124,12 @@ def test_manager_can_get_assigned_store_item_detail(
     )
     _authenticate_as(manager)
 
-    response = client.get(_item_detail_path(item_id))
+    response = client.get(
+        _item_detail_path(item_id),
+        params={
+            "scope_id": store_id,
+        },
+    )
 
     assert response.status_code == 200
 
@@ -131,6 +146,8 @@ def test_manager_cannot_get_unassigned_store_item_detail(
     api_context: ApiTestContext,
 ) -> None:
     client = api_context.client
+
+    _authenticate_as(make_supervisor_user())
 
     assigned_store_id = _create_store(client, name="Ithaca Bakery")
     other_store_id = _create_store(client, name="Collegetown Bagels")
@@ -151,10 +168,15 @@ def test_manager_cannot_get_unassigned_store_item_detail(
     )
     _authenticate_as(manager)
 
-    response = client.get(_item_detail_path(item_id))
+    response = client.get(
+        _item_detail_path(item_id),
+        params={
+            "scope_id": assigned_store_id,
+        },
+    )
 
     assert response.status_code == 403
-    assert response.json()["detail"] == "Cannot access item for assigned stores."
+    assert response.json()["detail"] == "Cannot access item for selected operating scope."
 
 
 def test_manager_cannot_create_item(
@@ -165,6 +187,7 @@ def test_manager_cannot_create_item(
 
     response = api_context.client.post(
         ITEMS_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Malt Barrel",
             "category": "Dry Goods",
@@ -173,7 +196,7 @@ def test_manager_cannot_create_item(
     )
 
     assert response.status_code == 403
-    assert response.json()["detail"] == "Supervisor access required."
+    assert response.json()["detail"] == SUPERVISOR_SCOPE_REQUIRED
 
 
 def test_manager_cannot_update_item(
@@ -181,6 +204,7 @@ def test_manager_cannot_update_item(
 ) -> None:
     client = api_context.client
 
+    _authenticate_as(make_supervisor_user())
     item_id = _create_item(client, name="Malt Barrel")
 
     manager = make_manager_user()
@@ -188,6 +212,7 @@ def test_manager_cannot_update_item(
 
     response = client.put(
         _item_detail_path(item_id),
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Updated Malt Barrel",
             "category": "Dry Goods",
@@ -196,7 +221,7 @@ def test_manager_cannot_update_item(
     )
 
     assert response.status_code == 403
-    assert response.json()["detail"] == "Supervisor access required."
+    assert response.json()["detail"] == SUPERVISOR_SCOPE_REQUIRED
 
 
 def test_manager_cannot_delete_item(
@@ -204,21 +229,27 @@ def test_manager_cannot_delete_item(
 ) -> None:
     client = api_context.client
 
+    _authenticate_as(make_supervisor_user())
     item_id = _create_item(client, name="Malt Barrel")
 
     manager = make_manager_user()
     _authenticate_as(manager)
 
-    response = client.delete(_item_detail_path(item_id))
+    response = client.delete(
+        _item_detail_path(item_id),
+        params=SUPERVISOR_SCOPE_PARAMS,
+    )
 
     assert response.status_code == 403
-    assert response.json()["detail"] == "Supervisor access required."
+    assert response.json()["detail"] == SUPERVISOR_SCOPE_REQUIRED
 
 
 def test_viewer_can_get_assigned_store_item_detail(
     api_context: ApiTestContext,
 ) -> None:
     client = api_context.client
+
+    _authenticate_as(make_supervisor_user())
 
     store_id = _create_store(client, name="Ithaca Bakery")
     item_id = _create_item(client, name="Malt Barrel")
@@ -237,7 +268,12 @@ def test_viewer_can_get_assigned_store_item_detail(
     )
     _authenticate_as(viewer)
 
-    response = client.get(_item_detail_path(item_id))
+    response = client.get(
+        _item_detail_path(item_id),
+        params={
+            "scope_id": store_id,
+        },
+    )
 
     assert response.status_code == 200
     assert response.json()["id"] == item_id
@@ -251,6 +287,7 @@ def test_viewer_cannot_create_item(
 
     response = api_context.client.post(
         ITEMS_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": "Malt Barrel",
             "category": "Dry Goods",
@@ -259,13 +296,15 @@ def test_viewer_cannot_create_item(
     )
 
     assert response.status_code == 403
-    assert response.json()["detail"] == "Supervisor access required."
+    assert response.json()["detail"] == SUPERVISOR_SCOPE_REQUIRED
 
 
 def test_supervisor_can_get_full_item_detail(
     api_context: ApiTestContext,
 ) -> None:
     client = api_context.client
+
+    _authenticate_as(make_supervisor_user())
 
     store_id = _create_store(client, name="Ithaca Bakery")
     item_id = _create_item(client, name="Malt Barrel")
@@ -276,9 +315,10 @@ def test_supervisor_can_get_full_item_detail(
         store_id=store_id,
     )
 
-    _authenticate_as(make_supervisor_user())
-
-    response = client.get(_item_detail_path(item_id))
+    response = client.get(
+        _item_detail_path(item_id),
+        params=SUPERVISOR_SCOPE_PARAMS,
+    )
 
     assert response.status_code == 200
 
@@ -311,6 +351,7 @@ def _grant_store_access(
 def _create_store(client: TestClient, *, name: str) -> str:
     response = client.post(
         STORES_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": name,
             "is_active": True,
@@ -325,6 +366,7 @@ def _create_store(client: TestClient, *, name: str) -> str:
 def _create_item(client: TestClient, *, name: str) -> str:
     response = client.post(
         ITEMS_PATH,
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "name": name,
             "category": "Dry Goods",
@@ -345,6 +387,7 @@ def _add_item_store_info(
 ) -> str:
     response = client.post(
         _item_store_info_collection_path(item_id),
+        params=SUPERVISOR_SCOPE_PARAMS,
         json={
             "store_id": store_id,
             "count_unit": "bag",

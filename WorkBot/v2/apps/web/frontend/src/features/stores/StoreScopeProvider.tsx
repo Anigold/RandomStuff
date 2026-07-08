@@ -7,22 +7,24 @@ import {
   type ReactNode,
 } from "react";
 
-import { listStores, type StoreDto } from "../../api/storesApi";
+import {
+  listStoreScopes,
+  type StoreScopeDto,
+} from "../../api/storeScopesApi";
 import { useAccessToken } from "../auth/hooks/useAccessTokens";
 
 type StoreScopeContextValue = {
-  stores: StoreDto[];
-  activeStoreId: string | null;
-  activeStore: StoreDto | null;
-  isLoadingStores: boolean;
-  storeErrorMessage: string | null;
-  setActiveStoreId: (storeId: string) => void;
-  reloadStores: () => Promise<void>;
+  scopes: StoreScopeDto[];
+  activeScopeId: string | null;
+  activeScope: StoreScopeDto | null;
+  isLoadingScopes: boolean;
+  scopeErrorMessage: string | null;
+  setActiveScopeId: (scopeId: string) => void;
+  reloadScopes: () => Promise<void>;
 };
 
-export const StoreScopeContext = createContext<StoreScopeContextValue | null>(
-  null,
-);
+export const StoreScopeContext =
+  createContext<StoreScopeContextValue | null>(null);
 
 type StoreScopeProviderProps = {
   children: ReactNode;
@@ -31,75 +33,74 @@ type StoreScopeProviderProps = {
 export function StoreScopeProvider({ children }: StoreScopeProviderProps) {
   const accessToken = useAccessToken();
 
-  const [stores, setStores] = useState<StoreDto[]>([]);
-  const [activeStoreId, setActiveStoreIdState] = useState<string | null>(null);
-  const [isLoadingStores, setIsLoadingStores] = useState(true);
-  const [storeErrorMessage, setStoreErrorMessage] = useState<string | null>(
+  const [scopes, setScopes] = useState<StoreScopeDto[]>([]);
+  const [activeScopeId, setActiveScopeIdState] = useState<string | null>(null);
+  const [isLoadingScopes, setIsLoadingScopes] = useState(true);
+  const [scopeErrorMessage, setScopeErrorMessage] = useState<string | null>(
     null,
   );
 
-  const reloadStores = useCallback(async () => {
-    setIsLoadingStores(true);
-    setStoreErrorMessage(null);
+  const reloadScopes = useCallback(async () => {
+    setIsLoadingScopes(true);
+    setScopeErrorMessage(null);
 
     try {
-      const loadedStores = await listStores(accessToken);
-      const activeStores = loadedStores.filter(
-        (store) => store.is_active !== false,
-      );
+      const loadedScopes = await listStoreScopes(accessToken);
 
-      setStores(activeStores);
+      setScopes(loadedScopes);
 
-      setActiveStoreIdState((currentStoreId) => {
+      setActiveScopeIdState((currentScopeId) => {
         if (
-          currentStoreId &&
-          activeStores.some((store) => store.id === currentStoreId)
+          currentScopeId &&
+          loadedScopes.some((scope) => scope.id === currentScopeId)
         ) {
-          return currentStoreId;
+          return currentScopeId;
         }
 
-        return activeStores[0]?.id ?? null;
+        return loadedScopes[0]?.id ?? null;
       });
     } catch (error) {
-      setStoreErrorMessage(
-        error instanceof Error ? error.message : "Unable to load stores.",
+      setScopeErrorMessage(
+        error instanceof Error
+          ? error.message
+          : "Unable to load store scopes.",
       );
     } finally {
-      setIsLoadingStores(false);
+      setIsLoadingScopes(false);
     }
   }, [accessToken]);
 
   useEffect(() => {
-    void reloadStores();
-  }, [reloadStores]);
+    void reloadScopes();
+  }, [reloadScopes]);
 
-  const setActiveStoreId = useCallback((storeId: string) => {
-    setActiveStoreIdState(storeId);
+  const setActiveScopeId = useCallback((scopeId: string) => {
+    setActiveScopeIdState(scopeId);
   }, []);
 
-  const activeStore = useMemo(
-    () => stores.find((store) => store.id === activeStoreId) ?? null,
-    [stores, activeStoreId],
+  const activeScope = useMemo(
+    () => scopes.find((scope) => scope.id === activeScopeId) ?? null,
+    [scopes, activeScopeId],
   );
 
   const value = useMemo<StoreScopeContextValue>(
     () => ({
-      stores,
-      activeStoreId,
-      activeStore,
-      isLoadingStores,
-      storeErrorMessage,
-      setActiveStoreId,
-      reloadStores,
+      scopes,
+      activeScopeId,
+      activeScope,
+      isLoadingScopes,
+      scopeErrorMessage,
+      setActiveScopeId,
+      reloadScopes,
     }),
     [
-      stores,
-      activeStoreId,
-      activeStore,
-      isLoadingStores,
-      storeErrorMessage,
-      setActiveStoreId,
-      reloadStores,
+      scopes,
+      activeScopeId,
+      activeScope,
+      isLoadingScopes,
+      scopeErrorMessage,
+      setActiveScopeId,
+      reloadScopes,
     ],
   );
 

@@ -13,21 +13,21 @@ type UseItemsResult = {
 
 export function useItems(): UseItemsResult {
   const accessToken = useAccessToken();
-  const { activeStoreId, isLoadingStores } = useStoreScope();
+  const { activeScopeId, isLoadingScopes } = useStoreScope();
 
   const [items, setItems] = useState<ItemDto[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   async function reloadItems() {
-    if (isLoadingStores) {
+    if (isLoadingScopes) {
       return;
     }
 
-    if (!activeStoreId) {
+    if (!activeScopeId) {
       setItems([]);
       setIsLoading(false);
-      setErrorMessage("Select a store before loading items.");
+      setErrorMessage("Select an operating scope before loading items.");
       return;
     }
 
@@ -37,7 +37,7 @@ export function useItems(): UseItemsResult {
     try {
       const loadedItems = await listItems({
         accessToken,
-        storeId: activeStoreId,
+        scopeId: activeScopeId,
       });
 
       setItems(loadedItems);
@@ -53,7 +53,7 @@ export function useItems(): UseItemsResult {
   useEffect(() => {
     void reloadItems();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [accessToken, activeStoreId, isLoadingStores]);
+  }, [accessToken, activeScopeId, isLoadingScopes]);
 
   return {
     items,

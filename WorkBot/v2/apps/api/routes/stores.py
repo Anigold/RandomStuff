@@ -5,6 +5,8 @@ from __future__ import annotations
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
+from apps.api.auth.dependencies import StoreScope, get_store_scope
+from apps.api.auth.scope_guards import require_supervisor_scope
 from apps.api.dependencies import get_db_session
 from apps.api.schemas.store_schema import (
     CreateStoreRequest,
@@ -21,16 +23,19 @@ from workbot_core.infrastructure.database.repositories.store_repository import (
     SqlStoreRepository,
 )
 
-from apps.api.auth.dependencies import require_supervisor
 
-router = APIRouter(prefix="/stores", tags=["stores"], dependencies=[Depends(require_supervisor)])
+router = APIRouter(prefix="/stores", tags=["stores"])
+
 
 @router.get("", response_model=list[StoreResponse])
 def list_stores(
     search: str | None = None,
     include_inactive: bool = True,
     session: Session = Depends(get_db_session),
+    scope: StoreScope = Depends(get_store_scope),
 ) -> list[StoreResponse]:
+    require_supervisor_scope(scope)
+
     stores = ManageStores(
         stores=SqlStoreRepository(session),
     ).list_stores(
@@ -45,7 +50,10 @@ def list_stores(
 def get_store(
     store_id: str,
     session: Session = Depends(get_db_session),
+    scope: StoreScope = Depends(get_store_scope),
 ) -> StoreResponse:
+    require_supervisor_scope(scope)
+
     try:
         store = ManageStores(
             stores=SqlStoreRepository(session),
@@ -61,7 +69,10 @@ def get_store(
 def create_store(
     request: CreateStoreRequest,
     session: Session = Depends(get_db_session),
+    scope: StoreScope = Depends(get_store_scope),
 ) -> StoreResponse:
+    require_supervisor_scope(scope)
+
     try:
         store = ManageStores(
             stores=SqlStoreRepository(session),
@@ -91,7 +102,10 @@ def update_store(
     store_id: str,
     request: UpdateStoreRequest,
     session: Session = Depends(get_db_session),
+    scope: StoreScope = Depends(get_store_scope),
 ) -> StoreResponse:
+    require_supervisor_scope(scope)
+
     try:
         store = ManageStores(
             stores=SqlStoreRepository(session),
@@ -121,7 +135,10 @@ def update_store(
 def delete_store(
     store_id: str,
     session: Session = Depends(get_db_session),
+    scope: StoreScope = Depends(get_store_scope),
 ) -> StoreResponse:
+    require_supervisor_scope(scope)
+
     try:
         store = ManageStores(
             stores=SqlStoreRepository(session),

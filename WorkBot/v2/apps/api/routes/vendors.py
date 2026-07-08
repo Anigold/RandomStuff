@@ -1,8 +1,12 @@
+# apps/api/routes/vendors.py
+
 from __future__ import annotations
 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
+from apps.api.auth.dependencies import StoreScope, get_store_scope
+from apps.api.auth.scope_guards import require_supervisor_scope
 from apps.api.dependencies import get_db_session
 from apps.api.schemas.vendor_schema import (
     ContactInfoSchema,
@@ -28,13 +32,11 @@ from workbot_core.domain.models.vendor import (
 from workbot_core.infrastructure.database.repositories.vendor_repository import (
     SqlVendorRepository,
 )
-from workbot_core.domain.models.user import User
-from apps.api.auth.dependencies import require_supervisor, get_current_user
+
 
 router = APIRouter(
     prefix="/vendors",
     tags=["vendors"],
-    # dependencies=[Depends(require_supervisor)]
 )
 
 
@@ -43,7 +45,7 @@ def list_vendors(
     search: str | None = None,
     include_inactive: bool = True,
     session: Session = Depends(get_db_session),
-    current_user: User = Depends(get_current_user),
+    scope: StoreScope = Depends(get_store_scope),
 ) -> list[VendorResponse]:
     vendors = ManageVendors(
         vendors=SqlVendorRepository(session),
@@ -52,14 +54,17 @@ def list_vendors(
         include_inactive=include_inactive,
     )
 
-    return [_vendor_response(vendor) for vendor in vendors]
+    return [
+        _vendor_response(vendor)
+        for vendor in vendors
+    ]
 
 
 @router.get("/{vendor_id}", response_model=VendorResponse)
 def get_vendor(
     vendor_id: str,
     session: Session = Depends(get_db_session),
-    current_user: User = Depends(get_current_user),
+    scope: StoreScope = Depends(get_store_scope),
 ) -> VendorResponse:
     try:
         vendor = ManageVendors(
@@ -76,8 +81,10 @@ def get_vendor(
 def create_vendor(
     request: CreateVendorRequest,
     session: Session = Depends(get_db_session),
-    current_user: User = Depends(require_supervisor),
+    scope: StoreScope = Depends(get_store_scope),
 ) -> VendorResponse:
+    require_supervisor_scope(scope)
+
     try:
         vendor = ManageVendors(
             vendors=SqlVendorRepository(session),
@@ -111,8 +118,10 @@ def update_vendor(
     vendor_id: str,
     request: UpdateVendorRequest,
     session: Session = Depends(get_db_session),
-    current_user: User = Depends(require_supervisor),
+    scope: StoreScope = Depends(get_store_scope),
 ) -> VendorResponse:
+    require_supervisor_scope(scope)
+
     try:
         vendor = ManageVendors(
             vendors=SqlVendorRepository(session),
@@ -146,8 +155,10 @@ def update_vendor(
 def delete_vendor(
     vendor_id: str,
     session: Session = Depends(get_db_session),
-    current_user: User = Depends(require_supervisor),
+    scope: StoreScope = Depends(get_store_scope),
 ) -> VendorResponse:
+    require_supervisor_scope(scope)
+
     try:
         vendor = ManageVendors(
             vendors=SqlVendorRepository(session),

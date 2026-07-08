@@ -29,23 +29,25 @@ def main() -> None:
         all_items = items.list_all()
         all_users = users.list_all()
 
-    print("Stores:")
-    print(f"  Count: {len(all_stores)}")
-    for store in all_stores:
-        print(f"  - {store.id}: {store.name} active={store.is_active}")
-
-    print()
-    print("Vendors:")
-    print(f"  Count: {len(all_vendors)}")
-    for vendor in all_vendors:
-        print(f"  - {vendor.id}: {vendor.name} active={vendor.is_active}")
+    # print("Stores:")
+    # print(f"  Count: {len(all_stores)}")
+    # for store in all_stores:
+    #     print(f"  - {store.id}: {store.name} active={store.is_active}")
 
     # print()
-    # print("Items:")
-    # print(f"  Count: {len(all_items)}")
-    # for item in all_items:
-    #     print(f"  - {item.id}: {item.name} active={item.is_active}")
+    # print("Vendors:")
+    # print(f"  Count: {len(all_vendors)}")
+    # for vendor in all_vendors:
+    #     print(f"  - {vendor.id}: {vendor.name} active={vendor.is_active}")
 
+    print()
+    print("Items:")
+    print(f"  Count: {len(all_items)}")
+    count = 10
+    for pos, item in enumerate(all_items):
+        if pos > count:
+            break
+        print(f"  - {item.id}: {item.name} active={item.is_active}")
         print()
     print("Users:")
     print(f"  Count: {len(all_items)}")

@@ -229,3 +229,151 @@ button:disabled {
   font-size: 0.875rem;
   color: #ffd2cc;
 }
+
+.form-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  background: white;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.form-grid label,
+.checkbox-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.checkbox-row {
+  flex-direction: row;
+  align-items: center;
+  margin-top: 0.75rem;
+}
+
+.button-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.info-card,
+.error-card,
+.empty-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.75rem;
+}
+
+.error-card {
+  border-color: #c33;
+}
+
+.clickable-row {
+  cursor: pointer;
+}
+
+.clickable-row:hover {
+  background: #f7f7f7;
+}
+
+.clickable-row:focus {
+  outline: 2px solid #333;
+  outline-offset: -2px;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgb(0 0 0 / 45%);
+}
+
+.modal-card {
+  width: min(720px, 100%);
+  max-height: min(720px, 90vh);
+  overflow: auto;
+  border-radius: 12px;
+  background: white;
+  padding: 1rem;
+  box-shadow: 0 20px 60px rgb(0 0 0 / 25%);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: start;
+  margin-bottom: 1rem;
+}
+
+.modal-header h3 {
+  margin: 0;
+}
+
+.modal-header p {
+  margin: 0.25rem 0 0;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.detail-grid div {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.75rem;
+}
+
+.detail-grid dt {
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.detail-grid dd {
+  margin: 0;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.form-card-stack {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-section {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  background: white;
+}
+
+.form-section h4 {
+  margin: 0;
+}
+
+.form-section p {
+  margin: 0.25rem 0 1rem;
+}
+
+.checkbox-list {
+  display: grid;
+  gap: 0.5rem;
+}
