@@ -13,6 +13,8 @@ import {
 } from "../../api/storeScopesApi";
 import { useAccessToken } from "../auth/hooks/useAccessTokens";
 
+const ACTIVE_SCOPE_STORAGE_KEY = "workbot.activeScopeId";
+
 type StoreScopeContextValue = {
   scopes: StoreScopeDto[];
   activeScopeId: string | null;
@@ -30,11 +32,37 @@ type StoreScopeProviderProps = {
   children: ReactNode;
 };
 
+function readStoredScopeId(): string | null {
+  try {
+    return window.localStorage.getItem(ACTIVE_SCOPE_STORAGE_KEY);
+  } catch {
+    return null;
+  }
+}
+
+function writeStoredScopeId(scopeId: string | null): void {
+  try {
+    if (scopeId) {
+      window.localStorage.setItem(ACTIVE_SCOPE_STORAGE_KEY, scopeId);
+    } else {
+      window.localStorage.removeItem(ACTIVE_SCOPE_STORAGE_KEY);
+    }
+  } catch {
+    // Ignore localStorage failures. React state will still work for this session.
+  }
+}
+
+function scopeExists(scopes: StoreScopeDto[], scopeId: string | null): boolean {
+  return Boolean(scopeId && scopes.some((scope) => scope.id === scopeId));
+}
+
 export function StoreScopeProvider({ children }: StoreScopeProviderProps) {
   const accessToken = useAccessToken();
 
   const [scopes, setScopes] = useState<StoreScopeDto[]>([]);
-  const [activeScopeId, setActiveScopeIdState] = useState<string | null>(null);
+  const [activeScopeId, setActiveScopeIdState] = useState<string | null>(() =>
+    readStoredScopeId(),
+  );
   const [isLoadingScopes, setIsLoadingScopes] = useState(true);
   const [scopeErrorMessage, setScopeErrorMessage] = useState<string | null>(
     null,
@@ -50,14 +78,22 @@ export function StoreScopeProvider({ children }: StoreScopeProviderProps) {
       setScopes(loadedScopes);
 
       setActiveScopeIdState((currentScopeId) => {
-        if (
-          currentScopeId &&
-          loadedScopes.some((scope) => scope.id === currentScopeId)
-        ) {
+        const storedScopeId = readStoredScopeId();
+
+        if (scopeExists(loadedScopes, currentScopeId)) {
+          writeStoredScopeId(currentScopeId);
           return currentScopeId;
         }
 
-        return loadedScopes[0]?.id ?? null;
+        if (scopeExists(loadedScopes, storedScopeId)) {
+          writeStoredScopeId(storedScopeId);
+          return storedScopeId;
+        }
+
+        const fallbackScopeId = loadedScopes[0]?.id ?? null;
+        writeStoredScopeId(fallbackScopeId);
+
+        return fallbackScopeId;
       });
     } catch (error) {
       setScopeErrorMessage(
@@ -76,6 +112,7 @@ export function StoreScopeProvider({ children }: StoreScopeProviderProps) {
 
   const setActiveScopeId = useCallback((scopeId: string) => {
     setActiveScopeIdState(scopeId);
+    writeStoredScopeId(scopeId);
   }, []);
 
   const activeScope = useMemo(

@@ -1,7 +1,7 @@
+import { NavLink } from "react-router-dom";
 import type { ReactNode } from "react";
 
-import { appRoutes } from "../../app/routes";
-import { useAuth } from "../../features/auth/hooks/useAuth";
+import { navRoutes } from "../../app/routes";
 import { StoreSelector } from "../../features/stores/components/StoreSelector";
 
 type AppLayoutProps = {
@@ -9,44 +9,41 @@ type AppLayoutProps = {
 };
 
 export function AppLayout({ children }: AppLayoutProps) {
-  const { currentUser, logout } = useAuth();
-
   return (
     <div className="app-shell">
-      <aside className="sidebar">
-        <div>
+      <aside className="app-sidebar">
+        <div className="app-brand">
+          <span className="app-brand-mark">WB</span>
+
           <div>
             <h1>WorkBot</h1>
-
-            <StoreSelector />
-
-            <nav>
-              {appRoutes.map((route) => (
-                <a key={route.path} href={route.path}>
-                  {route.label}
-                </a>
-              ))}
-            </nav>
+            <p>Operations Console</p>
           </div>
         </div>
 
-        <div className="sidebar-user">
-          {currentUser && (
-            <p>
-              Signed in as{" "}
-              <strong>
-                {currentUser.display_name ?? currentUser.username}
-              </strong>
-            </p>
-          )}
-
-          <button type="button" onClick={() => void logout()}>
-            Sign out
-          </button>
-        </div>
+        <nav className="side-nav">
+          {navRoutes.map((route) => (
+            <NavLink
+              key={route.path}
+              to={route.path}
+              end={route.path === "/"}
+              className={({ isActive }) =>
+                isActive ? "side-nav-link active" : "side-nav-link"
+              }
+            >
+              {route.label}
+            </NavLink>
+          ))}
+        </nav>
       </aside>
 
-      <main className="main-content">{children}</main>
+      <div className="app-main">
+        <header className="app-topbar">
+          <StoreSelector />
+        </header>
+
+        <main className="app-content">{children}</main>
+      </div>
     </div>
   );
 }

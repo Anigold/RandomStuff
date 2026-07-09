@@ -1,0 +1,41 @@
+.data-table,
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td,
+table th,
+table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-border-soft);
+  text-align: left;
+  vertical-align: top;
+}
+
+.data-table th,
+table th {
+  background: var(--color-surface-muted);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  font-weight: 700;
+}
+
+.data-table tr:last-child td,
+table tr:last-child td {
+  border-bottom: 0;
+}
+
+.clickable-row {
+  cursor: pointer;
+}
+
+.clickable-row:hover {
+  background: #f7f7f7;
+}
+
+.clickable-row:focus {
+  outline: 2px solid #333;
+  outline-offset: -2px;
+}

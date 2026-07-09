@@ -22,20 +22,21 @@ export function StoreSelector() {
   }
 
   return (
-    <label className="store-selector">
-      Operating Scope
-      <select
-        value={activeScopeId ?? ""}
-        onChange={(event) => setActiveScopeId(event.target.value)}
-      >
-        {scopes.map((scope) => (
-          <option key={scope.id} value={scope.id}>
-            {scope.type === "supervisor"
-              ? `${scope.name} — All Stores`
-              : scope.name}
-          </option>
-        ))}
-      </select>
-    </label>
+    <div className="store-selector">
+      <label>
+        Operating scope
+        <select
+          value={activeScopeId ?? ""}
+          disabled={isLoadingScopes || scopes.length === 0}
+          onChange={(event) => setActiveScopeId(event.target.value)}
+        >
+          {scopes.map((scope) => (
+            <option key={scope.id} value={scope.id}>
+              {scope.name}
+            </option>
+          ))}
+        </select>
+      </label>
+    </div>
   );
 }

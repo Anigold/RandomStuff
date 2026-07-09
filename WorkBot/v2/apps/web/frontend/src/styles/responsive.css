@@ -1,0 +1,60 @@
+@media (max-width: 900px) {
+  body {
+    overflow: auto;
+  }
+
+  .app-shell {
+    height: auto;
+    min-height: 100vh;
+    grid-template-columns: 1fr;
+    overflow: visible;
+  }
+
+  .app-sidebar {
+    height: auto;
+    min-height: auto;
+    overflow: visible;
+  }
+
+  .side-nav {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .side-nav-link {
+    white-space: nowrap;
+  }
+
+  .app-main {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+  }
+
+  .app-topbar {
+    justify-content: stretch;
+    padding: 1rem;
+  }
+
+  .store-selector {
+    width: 100%;
+  }
+
+  .app-content {
+    overflow: visible;
+    padding: 1rem;
+  }
+
+  .page-header {
+    flex-direction: column;
+  }
+
+  .form-grid,
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .table-card {
+    overflow-x: auto;
+  }
+}
