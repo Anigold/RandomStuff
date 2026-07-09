@@ -39,3 +39,211 @@ table tr:last-child td {
   outline: 2px solid #333;
   outline-offset: -2px;
 }
+
+
+
+
+.table-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.875rem;
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.table-toolbar-main {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.table-search-box {
+  width: clamp(16rem, 28vw, 24rem);
+  height: 2.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0 0.7rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-surface);
+}
+
+.table-search-box:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgb(49 92 140 / 12%);
+}
+
+.table-search-icon {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.table-search-box input {
+  height: 100%;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.table-search-box input:focus {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.table-result-summary {
+  color: var(--color-text-muted);
+  font-size: 0.825rem;
+  white-space: nowrap;
+}
+
+.table-filter-row {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.table-filter-control {
+  width: auto;
+  height: 2.1rem;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.35rem 0.2rem 0.6rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-surface-muted);
+  color: var(--color-text-muted);
+  font-size: 0.775rem;
+  font-weight: 700;
+}
+
+.table-filter-control span {
+  flex: 0 0 auto;
+  line-height: 1;
+}
+
+.table-filter-control select {
+  width: auto;
+  min-width: 4.75rem;
+  max-width: 11rem;
+  height: 1.55rem;
+  padding: 0 1.45rem 0 0.45rem;
+  border: 0;
+  border-left: 1px solid var(--color-border-soft);
+  border-radius: 0;
+  background-color: transparent;
+  color: var(--color-text);
+  font-size: 0.825rem;
+  box-shadow: none;
+}
+
+.table-filter-control select:focus {
+  border-color: var(--color-border-soft);
+  box-shadow: none;
+}
+
+.table-clear-button {
+  height: 2.1rem;
+  padding: 0 0.7rem;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-text-muted);
+  box-shadow: none;
+  font-size: 0.825rem;
+}
+
+.table-clear-button:hover:not(:disabled) {
+  border-color: var(--color-primary);
+  background: var(--color-surface);
+  color: var(--color-primary);
+  box-shadow: none;
+  transform: none;
+}
+
+
+
+
+
+.virtual-table-card {
+  overflow: hidden;
+}
+
+.virtual-table {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.virtual-table-header,
+.virtual-table-row {
+  display: grid;
+  grid-template-columns:
+    minmax(14rem, 2fr)
+    minmax(9rem, 1fr)
+    minmax(9rem, 1fr)
+    minmax(8rem, 0.9fr)
+    minmax(7rem, 0.7fr);
+}
+
+.virtual-table-header {
+  border-bottom: 1px solid var(--color-border-soft);
+  background: var(--color-surface-muted);
+}
+
+.virtual-table-header-cell,
+.virtual-table-cell {
+  min-width: 0;
+  padding: 0.75rem 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.virtual-table-header-cell {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.virtual-table-scroll {
+  height: min(620px, calc(100vh - 330px));
+  min-height: 240px;
+  overflow: auto;
+  position: relative;
+}
+
+.virtual-table-spacer {
+  position: relative;
+  width: 100%;
+}
+
+.virtual-table-row {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  align-items: center;
+  border-bottom: 1px solid var(--color-border-soft);
+  background: var(--color-surface);
+}
+
+.virtual-table-row:hover {
+  background: #f7f7f7;
+}
+
+.virtual-table-row:focus {
+  outline: 2px solid #333;
+  outline-offset: -2px;
+  z-index: 1;
+}

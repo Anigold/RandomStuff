@@ -17,7 +17,7 @@ class CreateStoreRequest(BaseModel):
 
     address: str | None = None
     phone_number: str | None = None
-    special_notes: str = ""
+    special_notes: str | None = None
 
 
 class UpdateStoreRequest(BaseModel):
@@ -30,7 +30,7 @@ class UpdateStoreRequest(BaseModel):
 
     address: str | None = None
     phone_number: str | None = None
-    special_notes: str = ""
+    special_notes: str | None = None
 
 
 class StoreResponse(BaseModel):

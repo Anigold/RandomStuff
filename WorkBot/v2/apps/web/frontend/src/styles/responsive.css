@@ -57,4 +57,96 @@
   .table-card {
     overflow-x: auto;
   }
+
+
+
+
+  .store-availability-summary {
+    align-items: flex-start;
+    }
+
+    .store-availability-summary-meta {
+    align-items: flex-end;
+    flex-direction: column;
+    }
+
+    .store-availability-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .item-active-row {
+    width: 100%;
+    }
+}
+
+
+
+
+.table-toolbar {
+  align-items: stretch;
+  flex-direction: column;
+}
+
+.table-toolbar-main {
+  align-items: stretch;
+  flex-direction: column;
+}
+
+.table-search-box {
+  width: 100%;
+  max-width: none;
+}
+
+.table-result-summary {
+  white-space: normal;
+}
+
+.table-filter-row {
+  justify-content: flex-start;
+}
+
+.table-filter-control {
+  width: auto;
+}
+
+.table-clear-button {
+  width: auto;
+}
+
+
+.virtual-table-header,
+.virtual-table-row {
+  grid-template-columns:
+    minmax(12rem, 2fr)
+    minmax(8rem, 1fr)
+    minmax(8rem, 1fr)
+    minmax(8rem, 1fr)
+    minmax(7rem, 0.8fr);
+}
+
+.virtual-table {
+  overflow-x: auto;
+}
+
+.virtual-table-header,
+.virtual-table-scroll {
+  min-width: 760px;
+}
+
+.virtual-table-scroll {
+  height: 520px;
+}
+
+
+
+.item-availability-header {
+  flex-direction: column;
+}
+
+.store-availability-list {
+  grid-template-columns: 1fr;
+}
+
+.item-active-row {
+  width: 100%;
 }

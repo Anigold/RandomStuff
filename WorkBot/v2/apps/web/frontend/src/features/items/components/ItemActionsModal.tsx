@@ -16,89 +16,133 @@ export function ItemActionsModal({
   onDeactivate,
 }: ItemActionsModalProps) {
   return (
-    <div
-      className="modal-backdrop"
-      role="presentation"
-      onClick={onClose}
-    >
+    <div className="modal-backdrop" role="presentation" onClick={onClose}>
       <section
-        className="modal-card"
+        className="modal-card item-detail-modal"
         role="dialog"
         aria-modal="true"
         aria-labelledby="item-actions-title"
         onClick={(event) => event.stopPropagation()}
       >
         <header className="modal-header">
-          <div>
-            <h3 id="item-actions-title">{item.name}</h3>
-            <p>{item.is_active ? "Active item" : "Inactive item"}</p>
+          <div className="modal-title-group">
+            <span className="modal-eyebrow">Item details</span>
+
+            <div className="modal-title-row">
+              <h3 id="item-actions-title">{item.name}</h3>
+
+              <span
+                className={
+                  item.is_active
+                    ? "status-badge status-badge-active"
+                    : "status-badge status-badge-inactive"
+                }
+              >
+                {item.is_active ? "Active" : "Inactive"}
+              </span>
+            </div>
+
+            <p>
+              {[item.category, item.subcategory].filter(Boolean).join(" / ") ||
+                "Uncategorized item"}
+            </p>
           </div>
 
-          <button type="button" onClick={onClose} aria-label="Close">
+          <button
+            type="button"
+            className="modal-close-button"
+            onClick={onClose}
+            aria-label="Close"
+          >
             ×
           </button>
         </header>
 
-        <dl className="detail-grid">
-          <div>
-            <dt>Category</dt>
-            <dd>{item.category ?? "—"}</dd>
-          </div>
+        <div className="modal-body">
+          <section className="modal-section">
+            <div className="modal-section-header">
+              <h4>Catalog information</h4>
+              <p>Basic item classification and counting setup.</p>
+            </div>
 
-          <div>
-            <dt>Subcategory</dt>
-            <dd>{item.subcategory ?? "—"}</dd>
-          </div>
+            <dl className="detail-grid">
+              <DetailItem label="Category" value={item.category} />
+              <DetailItem label="Subcategory" value={item.subcategory} />
+              <DetailItem
+                label="Count unit"
+                value={formatQuantity(
+                  item.count_unit_quantity,
+                  item.count_unit_measure,
+                )}
+              />
+              <DetailItem
+                label="Each"
+                value={
+                  item.custom_each_name
+                    ? item.custom_each_name
+                    : formatQuantity(item.each_quantity, item.each_measure)
+                }
+              />
+            </dl>
+          </section>
 
-          <div>
-            <dt>Count unit</dt>
-            <dd>{formatQuantity(item.count_unit_quantity, item.count_unit_measure)}</dd>
-          </div>
+          <section className="modal-section">
+            <div className="modal-section-header">
+              <h4>Measurement details</h4>
+              <p>Optional weight and volume references for this item.</p>
+            </div>
 
-          <div>
-            <dt>Each</dt>
-            <dd>
-              {item.custom_each_name
-                ? item.custom_each_name
-                : formatQuantity(item.each_quantity, item.each_measure)}
-            </dd>
-          </div>
+            <dl className="detail-grid">
+              <DetailItem
+                label="Weight"
+                value={formatQuantity(item.weight_quantity, item.weight_measure)}
+              />
+              <DetailItem
+                label="Volume"
+                value={formatQuantity(item.volume_quantity, item.volume_measure)}
+              />
+            </dl>
+          </section>
+        </div>
 
-          <div>
-            <dt>Weight</dt>
-            <dd>{formatQuantity(item.weight_quantity, item.weight_measure)}</dd>
-          </div>
+        <footer className="modal-actions">
+          <button type="button" onClick={onClose}>
+            Close
+          </button>
 
-          <div>
-            <dt>Volume</dt>
-            <dd>{formatQuantity(item.volume_quantity, item.volume_measure)}</dd>
-          </div>
-        </dl>
-
-        {canManageItems ? (
-          <footer className="modal-actions">
-            <button type="button" onClick={() => onEdit(item)}>
-              Edit item
-            </button>
-
-            {item.is_active && (
-              <button type="button" onClick={() => onDeactivate(item)}>
-                Mark inactive
+          {canManageItems && (
+            <>
+              <button type="button" onClick={() => onEdit(item)}>
+                Edit item
               </button>
-            )}
 
-            <button type="button" onClick={onClose}>
-              Close
-            </button>
-          </footer>
-        ) : (
-          <footer className="modal-actions">
-            <button type="button" onClick={onClose}>
-              Close
-            </button>
-          </footer>
-        )}
+              {item.is_active && (
+                <button
+                  type="button"
+                  className="button-danger"
+                  onClick={() => onDeactivate(item)}
+                >
+                  Mark inactive
+                </button>
+              )}
+            </>
+          )}
+        </footer>
       </section>
+    </div>
+  );
+}
+
+type DetailItemProps = {
+  label: string;
+  value?: string | null;
+};
+
+function DetailItem({ label, value }: DetailItemProps) {
+  return (
+    <div>
+      <dt>{label}</dt>
+      <dd>{value || "—"}</dd>
     </div>
   );
 }

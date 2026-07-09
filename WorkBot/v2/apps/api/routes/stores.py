@@ -171,7 +171,7 @@ def _store_response(store: Store) -> StoreResponse:
         inventory_clerk=store.inventory_clerk,
         address=store.address,
         phone_number=store.phone_number,
-        special_notes=store.special_notes,
+        special_notes=store.special_notes or "",
         created_at=store.created_at,
         updated_at=store.updated_at,
     )

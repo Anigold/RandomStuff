@@ -1,4 +1,7 @@
 import type { ItemDto } from "../../../api/itemsApi";
+import { useItemsTable } from "../hooks/useItemsTable";
+import { ItemsTableToolbar } from "./ItemsTableToolbar";
+import { ItemsVirtualTable } from "./ItemsVirtualTable";
 
 type ItemsTableProps = {
   items: ItemDto[];
@@ -6,53 +9,48 @@ type ItemsTableProps = {
 };
 
 export function ItemsTable({ items, onSelectItem }: ItemsTableProps) {
-  return (
-    <div className="table-card">
-      <table className="data-table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Subcategory</th>
-            <th>Count Unit</th>
-            <th>Status</th>
-          </tr>
-        </thead>
+  const {
+    categories,
+    visibleItems,
+    categoryFilter,
+    statusFilter,
+    sortState,
+    resetKey,
+    setSearchText,
+    setCategoryFilter,
+    setStatusFilter,
+    updateSort,
+    clearFilters,
+  } = useItemsTable(items);
 
-        <tbody>
-          {items.map((item) => (
-            <tr
-              key={item.id}
-              className="clickable-row"
-              tabIndex={0}
-              onClick={() => onSelectItem(item)}
-              onKeyDown={(event) => {
-                if (event.key === "Enter" || event.key === " ") {
-                  event.preventDefault();
-                  onSelectItem(item);
-                }
-              }}
-            >
-              <td>
-                <strong>{item.name}</strong>
-              </td>
-              <td>{item.category ?? "—"}</td>
-              <td>{item.subcategory ?? "—"}</td>
-              <td>{formatCountUnit(item)}</td>
-              <td>{item.is_active ? "Active" : "Inactive"}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+  return (
+    <div className="table-card virtual-table-card">
+      <ItemsTableToolbar
+        categories={categories}
+        itemCount={items.length}
+        visibleItemCount={visibleItems.length}
+        categoryFilter={categoryFilter}
+        statusFilter={statusFilter}
+        onSearchTextChange={setSearchText}
+        onCategoryFilterChange={setCategoryFilter}
+        onStatusFilterChange={setStatusFilter}
+        onClearFilters={clearFilters}
+      />
+
+      {visibleItems.length === 0 ? (
+        <div className="empty-card">
+          <strong>No matching items found.</strong>
+          <p>Try changing your search or filters.</p>
+        </div>
+      ) : (
+        <ItemsVirtualTable
+          items={visibleItems}
+          sortState={sortState}
+          resetKey={resetKey}
+          onUpdateSort={updateSort}
+          onSelectItem={onSelectItem}
+        />
+      )}
     </div>
   );
-}
-
-function formatCountUnit(item: ItemDto): string {
-  const parts = [
-    item.count_unit_quantity,
-    item.count_unit_measure,
-  ].filter(Boolean);
-
-  return parts.length ? parts.join(" ") : "—";
 }

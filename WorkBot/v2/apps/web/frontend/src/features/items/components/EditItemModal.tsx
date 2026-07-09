@@ -195,219 +195,345 @@ export function EditItemModal({
   return (
     <div className="modal-backdrop" role="presentation" onClick={onClose}>
       <section
-        className="modal-card"
+        className="modal-card edit-item-modal"
         role="dialog"
         aria-modal="true"
         aria-labelledby="edit-item-title"
         onClick={(event) => event.stopPropagation()}
       >
-        <form onSubmit={handleSubmit}>
+        <form className="modal-form" onSubmit={handleSubmit}>
           <header className="modal-header">
-            <div>
-              <h3 id="edit-item-title">Edit Item</h3>
-              <p>{item.name}</p>
+            <div className="modal-title-group">
+              <span className="modal-eyebrow">Edit item</span>
+
+              <div className="modal-title-row">
+                <h3 id="edit-item-title">{item.name}</h3>
+
+                <span
+                  className={
+                    form.is_active
+                      ? "status-badge status-badge-active"
+                      : "status-badge status-badge-inactive"
+                  }
+                >
+                  {form.is_active ? "Active" : "Inactive"}
+                </span>
+              </div>
+
+              <p>{formatItemPath(form.category, form.subcategory)}</p>
             </div>
 
-            <button type="button" onClick={onClose} aria-label="Close">
+            <button
+              type="button"
+              className="modal-close-button"
+              onClick={onClose}
+              aria-label="Close"
+              disabled={isSaving}
+            >
               ×
             </button>
           </header>
 
-          <div className="form-grid">
-            <label>
-              Name
-              <input
-                value={form.name}
-                onChange={(event) => updateField("name", event.target.value)}
-                required
-              />
-            </label>
-
-            <label>
-              Category
-              <input
-                value={form.category}
-                onChange={(event) =>
-                  updateField("category", event.target.value)
-                }
-              />
-            </label>
-
-            <label>
-              Subcategory
-              <input
-                value={form.subcategory}
-                onChange={(event) =>
-                  updateField("subcategory", event.target.value)
-                }
-              />
-            </label>
-
-            <label>
-              Count unit quantity
-              <input
-                value={form.count_unit_quantity}
-                onChange={(event) =>
-                  updateField("count_unit_quantity", event.target.value)
-                }
-              />
-            </label>
-
-            <label>
-              Count unit measure
-              <input
-                value={form.count_unit_measure}
-                onChange={(event) =>
-                  updateField("count_unit_measure", event.target.value)
-                }
-              />
-            </label>
-
-            <label>
-              Custom each name
-              <input
-                value={form.custom_each_name}
-                onChange={(event) =>
-                  updateField("custom_each_name", event.target.value)
-                }
-              />
-            </label>
-
-            <label>
-              Each quantity
-              <input
-                value={form.each_quantity}
-                onChange={(event) =>
-                  updateField("each_quantity", event.target.value)
-                }
-              />
-            </label>
-
-            <label>
-              Each measure
-              <input
-                value={form.each_measure}
-                onChange={(event) =>
-                  updateField("each_measure", event.target.value)
-                }
-              />
-            </label>
-
-            <label>
-              Weight quantity
-              <input
-                value={form.weight_quantity}
-                onChange={(event) =>
-                  updateField("weight_quantity", event.target.value)
-                }
-              />
-            </label>
-
-            <label>
-              Weight measure
-              <input
-                value={form.weight_measure}
-                onChange={(event) =>
-                  updateField("weight_measure", event.target.value)
-                }
-              />
-            </label>
-
-            <label>
-              Volume quantity
-              <input
-                value={form.volume_quantity}
-                onChange={(event) =>
-                  updateField("volume_quantity", event.target.value)
-                }
-              />
-            </label>
-
-            <label>
-              Volume measure
-              <input
-                value={form.volume_measure}
-                onChange={(event) =>
-                  updateField("volume_measure", event.target.value)
-                }
-              />
-            </label>
-          </div>
-
-          <label className="checkbox-row">
-            <input
-              type="checkbox"
-              checked={form.is_active}
-              onChange={(event) =>
-                updateField("is_active", event.target.checked)
-              }
-            />
-            Active
-          </label>
-
-          {canManageStoreAvailability && (
-            <section className="form-section">
-              <div>
-                <h4>Store Availability</h4>
-                <p>
-                  Choose which stores can use this item. These changes are saved
-                  together with the item.
-                </p>
+          <div className="modal-body">
+            <section className="modal-section">
+              <div className="modal-section-header">
+                <h4>Basic information</h4>
+                <p>Name, classification, and active status.</p>
               </div>
 
-              {isLoadingAvailability ? (
-                <p>Loading store availability...</p>
-              ) : (
-                <div className="checkbox-list">
-                  {stores.map((store) => {
-                    const checked = draftActiveStoreIds.has(store.id);
-                    const originalChecked = originalActiveStoreIds.has(store.id);
-                    const changed = checked !== originalChecked;
+              <div className="form-grid">
+                <TextField
+                  label="Name"
+                  value={form.name}
+                  required
+                  disabled={isSaving}
+                  onChange={(value) => updateField("name", value)}
+                />
 
-                    return (
-                      <label key={store.id} className="checkbox-row">
-                        <input
-                          type="checkbox"
-                          checked={checked}
-                          disabled={isSaving}
-                          onChange={(event) =>
-                            toggleStore(store.id, event.target.checked)
-                          }
-                        />
+                <TextField
+                  label="Category"
+                  value={form.category}
+                  disabled={isSaving}
+                  onChange={(value) => updateField("category", value)}
+                />
 
-                        <span>
-                          {store.name}
-                          {changed ? " — unsaved" : ""}
-                        </span>
-                      </label>
-                    );
-                  })}
-                </div>
-              )}
+                <TextField
+                  label="Subcategory"
+                  value={form.subcategory}
+                  disabled={isSaving}
+                  onChange={(value) => updateField("subcategory", value)}
+                />
+              </div>
+
+              <label className="checkbox-row item-active-row">
+                <input
+                  type="checkbox"
+                  checked={form.is_active}
+                  disabled={isSaving}
+                  onChange={(event) =>
+                    updateField("is_active", event.target.checked)
+                  }
+                />
+
+                <span>
+                  <strong>Active item</strong>
+                  <small>
+                    Active items are available for normal catalog workflows.
+                  </small>
+                </span>
+              </label>
             </section>
-          )}
 
-          {errorMessage && (
-            <div className="error-card" role="alert">
-              {errorMessage}
-            </div>
-          )}
+            <section className="modal-section">
+              <div className="modal-section-header">
+                <h4>Count setup</h4>
+                <p>How this item is counted, purchased, or represented.</p>
+              </div>
+
+              <div className="form-grid">
+                <TextField
+                  label="Count unit quantity"
+                  value={form.count_unit_quantity}
+                  disabled={isSaving}
+                  onChange={(value) =>
+                    updateField("count_unit_quantity", value)
+                  }
+                />
+
+                <TextField
+                  label="Count unit measure"
+                  value={form.count_unit_measure}
+                  disabled={isSaving}
+                  onChange={(value) =>
+                    updateField("count_unit_measure", value)
+                  }
+                />
+
+                <TextField
+                  label="Custom each name"
+                  value={form.custom_each_name}
+                  disabled={isSaving}
+                  onChange={(value) => updateField("custom_each_name", value)}
+                />
+
+                <TextField
+                  label="Each quantity"
+                  value={form.each_quantity}
+                  disabled={isSaving}
+                  onChange={(value) => updateField("each_quantity", value)}
+                />
+
+                <TextField
+                  label="Each measure"
+                  value={form.each_measure}
+                  disabled={isSaving}
+                  onChange={(value) => updateField("each_measure", value)}
+                />
+              </div>
+            </section>
+
+            <section className="modal-section">
+              <div className="modal-section-header">
+                <h4>Measurement references</h4>
+                <p>Optional weight and volume references for conversions.</p>
+              </div>
+
+              <div className="form-grid">
+                <TextField
+                  label="Weight quantity"
+                  value={form.weight_quantity}
+                  disabled={isSaving}
+                  onChange={(value) => updateField("weight_quantity", value)}
+                />
+
+                <TextField
+                  label="Weight measure"
+                  value={form.weight_measure}
+                  disabled={isSaving}
+                  onChange={(value) => updateField("weight_measure", value)}
+                />
+
+                <TextField
+                  label="Volume quantity"
+                  value={form.volume_quantity}
+                  disabled={isSaving}
+                  onChange={(value) => updateField("volume_quantity", value)}
+                />
+
+                <TextField
+                  label="Volume measure"
+                  value={form.volume_measure}
+                  disabled={isSaving}
+                  onChange={(value) => updateField("volume_measure", value)}
+                />
+              </div>
+            </section>
+
+            {canManageStoreAvailability && (
+              <StoreAvailabilitySection
+                stores={stores}
+                isLoading={isLoadingAvailability}
+                isSaving={isSaving}
+                draftActiveStoreIds={draftActiveStoreIds}
+                originalActiveStoreIds={originalActiveStoreIds}
+                onToggleStore={toggleStore}
+              />
+            )}
+
+            {errorMessage && (
+              <div className="error-card" role="alert">
+                {errorMessage}
+              </div>
+            )}
+          </div>
 
           <footer className="modal-actions">
-            <button
-              type="submit"
-              disabled={isSaving || isLoadingAvailability}
-            >
-              {isSaving ? "Saving..." : "Save item"}
-            </button>
-
             <button type="button" onClick={onClose} disabled={isSaving}>
               Cancel
+            </button>
+
+            <button type="submit" disabled={isSaving || isLoadingAvailability}>
+              {isSaving ? "Saving..." : "Save item"}
             </button>
           </footer>
         </form>
       </section>
     </div>
+  );
+}
+
+type TextFieldProps = {
+  label: string;
+  value: string;
+  required?: boolean;
+  disabled?: boolean;
+  onChange: (value: string) => void;
+};
+
+function TextField({
+  label,
+  value,
+  required = false,
+  disabled = false,
+  onChange,
+}: TextFieldProps) {
+  return (
+    <label className="form-field">
+      <span>{label}</span>
+
+      <input
+        value={value}
+        required={required}
+        disabled={disabled}
+        onChange={(event) => onChange(event.target.value)}
+      />
+    </label>
+  );
+}
+
+type StoreAvailabilitySectionProps = {
+  stores: StoreDto[];
+  isLoading: boolean;
+  isSaving: boolean;
+  draftActiveStoreIds: Set<string>;
+  originalActiveStoreIds: Set<string>;
+  onToggleStore: (storeId: string, checked: boolean) => void;
+};
+
+function StoreAvailabilitySection({
+  stores,
+  isLoading,
+  isSaving,
+  draftActiveStoreIds,
+  originalActiveStoreIds,
+  onToggleStore,
+}: StoreAvailabilitySectionProps) {
+  const changedStoreCount = stores.filter((store) => {
+    const checked = draftActiveStoreIds.has(store.id);
+    const originalChecked = originalActiveStoreIds.has(store.id);
+
+    return checked !== originalChecked;
+  }).length;
+
+  const activeStoreCount = stores.filter((store) =>
+    draftActiveStoreIds.has(store.id),
+  ).length;
+
+  return (
+    <section className="modal-section item-availability-section">
+      <details className="store-availability-disclosure">
+        <summary className="store-availability-summary">
+          <div>
+            <h4>Store availability</h4>
+
+            <p>
+              {isLoading
+                ? "Loading store availability..."
+                : `${activeStoreCount} of ${stores.length} stores active`}
+            </p>
+          </div>
+
+          <div className="store-availability-summary-meta">
+            {changedStoreCount > 0 && (
+              <span className="unsaved-badge">
+                {changedStoreCount} unsaved
+              </span>
+            )}
+
+            <span className="disclosure-caret" aria-hidden="true">
+              ▾
+            </span>
+          </div>
+        </summary>
+
+        <div className="store-availability-panel">
+          <p className="form-muted">
+            Choose which stores can use this item. These changes are saved
+            together with the item.
+          </p>
+
+          {isLoading ? (
+            <p className="form-muted">Loading store availability...</p>
+          ) : stores.length === 0 ? (
+            <p className="form-muted">No stores are available for this scope.</p>
+          ) : (
+            <div className="checkbox-list store-availability-list">
+              {stores.map((store) => {
+                const checked = draftActiveStoreIds.has(store.id);
+                const originalChecked = originalActiveStoreIds.has(store.id);
+                const changed = checked !== originalChecked;
+
+                return (
+                  <label
+                    key={store.id}
+                    className={
+                      changed
+                        ? "checkbox-row store-availability-row changed"
+                        : "checkbox-row store-availability-row"
+                    }
+                  >
+                    <input
+                      type="checkbox"
+                      checked={checked}
+                      disabled={isSaving}
+                      onChange={(event) =>
+                        onToggleStore(store.id, event.target.checked)
+                      }
+                    />
+
+                    <span>
+                      <strong>{store.name}</strong>
+
+                      {changed && <small>Unsaved</small>}
+                    </span>
+                  </label>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      </details>
+    </section>
   );
 }
 
@@ -520,4 +646,8 @@ function emptyToNull(value: string): string | null {
   const trimmed = value.trim();
 
   return trimmed ? trimmed : null;
+}
+
+function formatItemPath(category: string, subcategory: string): string {
+  return [category, subcategory].filter(Boolean).join(" / ") || "Uncategorized item";
 }

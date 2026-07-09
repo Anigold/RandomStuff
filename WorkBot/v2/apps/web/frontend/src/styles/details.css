@@ -8,17 +8,32 @@
 .detail-grid div {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  padding: 0.75rem;
-  background: var(--color-surface);
+  padding: 0.8rem;
+  background: var(--color-surface-muted);
 }
 
 .detail-grid dt {
-  font-size: 0.8rem;
-  font-weight: 700;
-  margin-bottom: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
   color: var(--color-text-muted);
 }
 
 .detail-grid dd {
   margin: 0;
+  color: var(--color-text);
+  font-weight: 650;
+}
+
+
+
+.detail-note-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0.8rem;
+  background: var(--color-surface-muted);
+  color: var(--color-text);
+  white-space: pre-wrap;
 }

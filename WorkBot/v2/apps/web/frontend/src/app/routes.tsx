@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import App from "../App";
 import { ItemsListPage } from "../features/items/pages/ItemsListPage";
 import { InventoryPage } from "../features/inventory/pages/InventoryPage";
+import { StoresManagementPage } from "../features/stores/pages/StoresManagementPage";
 
 function DashboardPage() {
   return (
@@ -31,11 +32,18 @@ function NotFoundPage() {
   );
 }
 
-export const navRoutes = [
+type NavRoute = {
+  path: string;
+  label: string;
+  requiredScopeType?: "supervisor";
+};
+
+export const navRoutes: NavRoute[] = [
   { path: "/", label: "Dashboard" },
   { path: "/items", label: "Items" },
   { path: "/inventory", label: "Inventory" },
   { path: "/orders", label: "Orders" },
+  { path: "/stores", label: "Stores", requiredScopeType: "supervisor" },
 ];
 
 export function AppRoutes() {
@@ -46,6 +54,7 @@ export function AppRoutes() {
         <Route path="items" element={<ItemsListPage />} />
         <Route path="inventory" element={<InventoryPage />} />
         <Route path="orders" element={<OrdersPage />} />
+        <Route path="stores" element={<StoresManagementPage />} />
         <Route path="404" element={<NotFoundPage />} />
         <Route path="*" element={<Navigate to="/404" replace />} />
       </Route>

@@ -9,35 +9,117 @@
 }
 
 .modal-card {
-  width: min(720px, 100%);
-  max-height: min(720px, 90vh);
+  width: min(760px, 100%);
+  max-height: min(760px, 92vh);
   overflow: auto;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   background: var(--color-surface);
-  padding: 1rem;
   box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-border);
+}
+
+.item-detail-modal {
+  width: min(820px, 100%);
 }
 
 .modal-header {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  align-items: start;
-  margin-bottom: 1rem;
+  align-items: flex-start;
+  padding: 1.25rem 1.25rem 1rem;
+  border-bottom: 1px solid var(--color-border-soft);
+}
+
+.modal-title-group {
+  min-width: 0;
+}
+
+.modal-eyebrow {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.modal-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
 }
 
 .modal-header h3 {
   margin: 0;
+  font-size: 1.35rem;
+  line-height: 1.2;
 }
 
 .modal-header p {
+  margin: 0.35rem 0 0;
+  color: var(--color-text-muted);
+}
+
+.modal-close-button {
+  width: 2rem;
+  height: 2rem;
+  flex: 0 0 2rem;
+  padding: 0;
+  border-radius: 999px;
+  box-shadow: none;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.modal-close-button:hover:not(:disabled) {
+  transform: none;
+  box-shadow: none;
+}
+
+.modal-body {
+  display: grid;
+  gap: 1rem;
+  padding: 1.25rem;
+}
+
+.modal-section {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.modal-section-header h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.modal-section-header p {
   margin: 0.25rem 0 0;
   color: var(--color-text-muted);
+  font-size: 0.875rem;
 }
 
 .modal-actions {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   gap: 0.5rem;
-  margin-top: 1rem;
+  padding: 1rem 1.25rem;
+  border-top: 1px solid var(--color-border-soft);
+  background: var(--color-surface-muted);
+}
+
+.edit-item-modal {
+  width: min(920px, 100%);
+}
+
+.modal-form {
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+}
+
+.modal-form .modal-body {
+  gap: 1.25rem;
 }
