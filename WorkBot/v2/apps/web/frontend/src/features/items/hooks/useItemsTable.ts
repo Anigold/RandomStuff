@@ -2,8 +2,9 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 
 import type { ItemDto } from "../../../api/itemsApi";
 import {
-  getSearchText,
+  getSearchTokens,
   getUniqueSortedValues,
+  itemMatchesSearchTokens,
   normalize,
   sortItems,
   type ItemSortKey,
@@ -48,12 +49,10 @@ export function useItemsTable(items: ItemDto[]): UseItemsTableResult {
   }, [categories, categoryFilter]);
 
   const visibleItems = useMemo(() => {
-    const normalizedSearchText = normalize(searchText);
+    const searchTokens = getSearchTokens(searchText);
 
     const filteredItems = items.filter((item) => {
-      const matchesSearch =
-        normalizedSearchText === "" ||
-        getSearchText(item).includes(normalizedSearchText);
+      const matchesSearch = itemMatchesSearchTokens(item, searchTokens);
 
       const matchesCategory =
         categoryFilter === "" || item.category === categoryFilter;

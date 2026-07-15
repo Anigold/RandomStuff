@@ -190,3 +190,42 @@
   width: 100%;
   resize: vertical;
 }
+
+
+
+
+
+
+.form-section-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.nested-form-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.nested-form-row {
+  display: grid;
+  gap: 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0.85rem;
+  background: var(--color-surface-muted);
+}
+
+.nested-form-row-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.vendor-store-reference-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}

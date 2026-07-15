@@ -29,13 +29,13 @@ export function StoreFormModal({
 }: StoreFormModalProps) {
 
   const [form, setForm] = useState<StoreFormState>(() => ({
-    name: initialStore?.name ?? "",
-    is_active: initialStore?.is_active ?? true,
+    name:            initialStore?.name ?? "",
+    is_active:       initialStore?.is_active ?? true,
     general_manager: initialStore?.general_manager ?? "",
     inventory_clerk: initialStore?.inventory_clerk ?? "",
-    address: initialStore?.address ?? "",
-    phone_number: initialStore?.phone_number ?? "",
-    special_notes: initialStore?.special_notes ?? "",
+    address:         initialStore?.address ?? "",
+    phone_number:    initialStore?.phone_number ?? "",
+    special_notes:   initialStore?.special_notes ?? "",
   }));
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -63,14 +63,15 @@ export function StoreFormModal({
     setErrorMessage(null);
 
     try {
+      console.log("Updating store payload:", form);
       await onSubmit({
-        name: form.name.trim(),
-        is_active: form.is_active,
+        name:            form.name.trim(),
+        is_active:       form.is_active,
         general_manager: emptyToNull(form.general_manager),
         inventory_clerk: emptyToNull(form.inventory_clerk),
-        address: emptyToNull(form.address),
-        phone_number: emptyToNull(form.phone_number),
-        special_notes: form.special_notes.trim() || "",
+        address:         emptyToNull(form.address),
+        phone_number:    emptyToNull(form.phone_number),
+        special_notes:   form.special_notes.trim() || "",
       });
     } catch (error) {
       setErrorMessage(

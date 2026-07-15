@@ -111,7 +111,7 @@ export function createStore({
   return apiRequest<StoreDto>(`/api/stores?${params.toString()}`, {
     method: "POST",
     accessToken,
-    body: JSON.stringify(store),
+    body: store,
   });
 }
 
@@ -129,7 +129,7 @@ export function updateStore({
     {
       method: "PUT",
       accessToken,
-      body: JSON.stringify(store),
+      body: store,
     },
   );
 }

@@ -104,9 +104,13 @@ def update_store(
     session: Session = Depends(get_db_session),
     scope: StoreScope = Depends(get_store_scope),
 ) -> StoreResponse:
+    
+    print(request, flush=True)
     require_supervisor_scope(scope)
 
+    
     try:
+        
         store = ManageStores(
             stores=SqlStoreRepository(session),
         ).update_store(

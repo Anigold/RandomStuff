@@ -4,6 +4,7 @@ import App from "../App";
 import { ItemsListPage } from "../features/items/pages/ItemsListPage";
 import { InventoryPage } from "../features/inventory/pages/InventoryPage";
 import { StoresManagementPage } from "../features/stores/pages/StoresManagementPage";
+import { VendorsManagementPage } from "../features/vendors/pages/VendorsManagementPage";
 
 function DashboardPage() {
   return (
@@ -44,6 +45,7 @@ export const navRoutes: NavRoute[] = [
   { path: "/inventory", label: "Inventory" },
   { path: "/orders", label: "Orders" },
   { path: "/stores", label: "Stores", requiredScopeType: "supervisor" },
+  { path: "/vendors", label: "Vendors", requiredScopeType: "supervisor" },
 ];
 
 export function AppRoutes() {
@@ -55,6 +57,7 @@ export function AppRoutes() {
         <Route path="inventory" element={<InventoryPage />} />
         <Route path="orders" element={<OrdersPage />} />
         <Route path="stores" element={<StoresManagementPage />} />
+        <Route path="vendors" element={<VendorsManagementPage />} />
         <Route path="404" element={<NotFoundPage />} />
         <Route path="*" element={<Navigate to="/404" replace />} />
       </Route>
