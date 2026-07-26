@@ -5,6 +5,7 @@ import { ItemsListPage } from "../features/items/pages/ItemsListPage";
 import { InventoryPage } from "../features/inventory/pages/InventoryPage";
 import { StoresManagementPage } from "../features/stores/pages/StoresManagementPage";
 import { VendorsManagementPage } from "../features/vendors/pages/VendorsManagementPage";
+import { OrdersPage } from "../features/orders/pages/OrdersPage";
 
 function DashboardPage() {
   return (
@@ -15,14 +16,7 @@ function DashboardPage() {
   );
 }
 
-function OrdersPage() {
-  return (
-    <section>
-      <h2>Orders</h2>
-      <p>Orders will be ported after items.</p>
-    </section>
-  );
-}
+
 
 function NotFoundPage() {
   return (

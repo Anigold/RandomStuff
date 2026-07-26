@@ -14,6 +14,7 @@ from apps.api.schemas.item_schema import (
     ItemResponse,
     ItemStoreInfoResponse,
     ItemVendorInfoResponse,
+    OrderItemOptionResponse,
     UpdateItemRequest,
     UpdateItemStoreInfoRequest,
     UpdateItemVendorInfoRequest,
@@ -99,6 +100,136 @@ def list_items(
         _item_response(item)
         for item in item_list
     ]
+
+
+@router.get("/order-options", response_model=list[OrderItemOptionResponse])
+def list_order_item_options(
+    store_id: str,
+    vendor_id: str,
+    include_inactive: bool = False,
+    session: Session = Depends(get_db_session),
+    scope: StoreScope = Depends(get_store_scope),
+) -> list[OrderItemOptionResponse]:
+    _require_store_in_scope(
+        store_id=store_id,
+        scope=scope,
+    )
+
+    items = SqlItemRepository(session)
+    item_store_infos = SqlItemStoreInfoRepository(session)
+    item_vendor_infos = SqlItemVendorInfoRepository(session)
+    vendors = SqlVendorRepository(session)
+
+    vendor = vendors.get_by_id(vendor_id)
+
+    if vendor is None:
+        raise HTTPException(
+            status_code=404,
+            detail=f"Vendor not found: {vendor_id}",
+        )
+
+    store_infos_by_item_id = {
+        info.item_id: info
+        for info in item_store_infos.list_for_store(store_id)
+        if include_inactive or info.is_active
+    }
+
+    options: list[OrderItemOptionResponse] = []
+
+    for item in items.list_all():
+        if not include_inactive and not item.is_active:
+            continue
+
+        store_info = store_infos_by_item_id.get(item.id)
+
+        if store_info is None:
+            continue
+
+        matching_vendor_infos = [
+            info
+            for info in item_vendor_infos.list_for_item(item.id)
+            if info.vendor_id == vendor_id
+            and (include_inactive or info.is_active)
+        ]
+
+        for vendor_info in matching_vendor_infos:
+            options.append(
+                _order_item_option_response(
+                    item=item,
+                    vendor_info=vendor_info,
+                    store_info=store_info,
+                )
+            )
+
+    return sorted(
+        options,
+        key=lambda option: option.item_name.casefold(),
+    )
+
+
+@router.get("/order-options", response_model=list[OrderItemOptionResponse])
+def list_order_item_options(
+    store_id: str,
+    vendor_id: str,
+    include_inactive: bool = False,
+    session: Session = Depends(get_db_session),
+    scope: StoreScope = Depends(get_store_scope),
+) -> list[OrderItemOptionResponse]:
+    _require_store_in_scope(
+        store_id=store_id,
+        scope=scope,
+    )
+
+    items = SqlItemRepository(session)
+    item_store_infos = SqlItemStoreInfoRepository(session)
+    item_vendor_infos = SqlItemVendorInfoRepository(session)
+    vendors = SqlVendorRepository(session)
+
+    vendor = vendors.get_by_id(vendor_id)
+
+    if vendor is None:
+        raise HTTPException(
+            status_code=404,
+            detail=f"Vendor not found: {vendor_id}",
+        )
+
+    active_store_infos_by_item_id = {
+        info.item_id: info
+        for info in item_store_infos.list_for_store(store_id)
+        if include_inactive or info.is_active
+    }
+
+    options: list[OrderItemOptionResponse] = []
+
+    for item in items.list_all():
+        if not include_inactive and not item.is_active:
+            continue
+
+        store_info = active_store_infos_by_item_id.get(item.id)
+
+        if store_info is None:
+            continue
+
+        matching_vendor_infos = [
+            info
+            for info in item_vendor_infos.list_for_item(item.id)
+            if info.vendor_id == vendor_id
+            and (include_inactive or info.is_active)
+        ]
+
+        for vendor_info in matching_vendor_infos:
+            options.append(
+                _order_item_option_response(
+                    item=item,
+                    vendor_info=vendor_info,
+                    store_info=store_info,
+                )
+            )
+
+    return sorted(
+        options,
+        key=lambda option: option.item_name.casefold(),
+    )
 
 
 @router.get("/{item_id}", response_model=ItemDetailResponse)
@@ -552,6 +683,7 @@ def _http_error_from_value_error(exc: ValueError) -> HTTPException:
     return HTTPException(status_code=400, detail=message)
 
 
+
 def _item_response(item) -> ItemResponse:
     return ItemResponse(
         id=item.id,
@@ -570,6 +702,28 @@ def _item_response(item) -> ItemResponse:
         is_active=item.is_active,
         created_at=item.created_at,
         updated_at=item.updated_at,
+    )
+
+def _order_item_option_response(
+    *,
+    item,
+    vendor_info,
+    store_info,
+) -> OrderItemOptionResponse:
+    return OrderItemOptionResponse(
+        item_id=item.id,
+        item_vendor_info_id=vendor_info.id,
+        item_name=item.name,
+        vendor_id=vendor_info.vendor_id,
+        vendor_sku=vendor_info.vendor_sku,
+        purchase_unit=vendor_info.purchase_unit,
+        pack_size=vendor_info.pack_size,
+        price=vendor_info.price,
+        store_id=store_info.store_id,
+        store_count_unit=store_info.count_unit,
+        store_par=store_info.par,
+        count_unit_quantity=item.count_unit_quantity,
+        count_unit_measure=item.count_unit_measure,
     )
 
 

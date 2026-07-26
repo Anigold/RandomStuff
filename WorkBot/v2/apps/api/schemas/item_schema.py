@@ -106,6 +106,26 @@ class ItemStoreInfoResponse(BaseModel):
 
     created_at: datetime | None = None
     updated_at: datetime | None = None
+    
+
+class OrderItemOptionResponse(BaseModel):
+    item_id: str
+    item_vendor_info_id: str
+
+    item_name: str
+    vendor_id: str
+
+    vendor_sku: str | None = None
+    purchase_unit: str | None = None
+    pack_size: Decimal | None = None
+    price: Decimal | None = None
+
+    store_id: str
+    store_count_unit: str | None = None
+    store_par: Decimal | None = None
+
+    count_unit_quantity: Decimal | None = None
+    count_unit_measure: str | None = None
 
 
 class ItemDetailResponse(ItemResponse):

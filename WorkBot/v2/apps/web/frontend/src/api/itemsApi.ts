@@ -3,35 +3,120 @@ import { apiRequest } from "./client";
 export type ItemDto = {
   id: string;
   name: string;
+
   category?: string | null;
   subcategory?: string | null;
-  count_unit_quantity?: string | null;
+
+  count_unit_quantity?: string | number | null;
   count_unit_measure?: string | null;
+
   custom_each_name?: string | null;
-  each_quantity?: string | null;
+
+  each_quantity?: string | number | null;
   each_measure?: string | null;
-  weight_quantity?: string | null;
+
+  weight_quantity?: string | number | null;
   weight_measure?: string | null;
-  volume_quantity?: string | null;
+
+  volume_quantity?: string | number | null;
   volume_measure?: string | null;
+
   is_active: boolean;
+
   created_at?: string | null;
   updated_at?: string | null;
+};
+
+export type ItemVendorInfoDto = {
+  id: string;
+
+  item_id: string;
+  vendor_id: string;
+
+  vendor_sku?: string | null;
+  purchase_unit?: string | null;
+  pack_size?: string | number | null;
+  price?: string | number | null;
+
+  last_purchase_date?: string | null;
+  is_active: boolean;
+
+  created_at?: string | null;
+  updated_at?: string | null;
+};
+
+export type StoreItemInfoDto = {
+  id: string;
+
+  item_id: string;
+  store_id: string;
+
+  count_unit?: string | null;
+  par?: string | number | null;
+
+  is_active: boolean;
+
+  created_at?: string | null;
+  updated_at?: string | null;
+};
+
+export type ItemDetailDto = ItemDto & {
+  vendor_info: ItemVendorInfoDto[];
+  store_info: StoreItemInfoDto[];
+};
+
+export type OrderItemOptionDto = {
+  item_id: string;
+  item_vendor_info_id: string;
+
+  item_name: string;
+  vendor_id: string;
+
+  vendor_sku?: string | null;
+  purchase_unit?: string | null;
+  pack_size?: string | number | null;
+  price?: string | number | null;
+
+  store_id: string;
+  store_count_unit?: string | null;
+  store_par?: string | number | null;
+
+  count_unit_quantity?: string | number | null;
+  count_unit_measure?: string | null;
 };
 
 export type ItemWriteDto = {
   name: string;
   category?: string | null;
   subcategory?: string | null;
+
   count_unit_quantity?: string | null;
   count_unit_measure?: string | null;
+
   custom_each_name?: string | null;
+
   each_quantity?: string | null;
   each_measure?: string | null;
+
   weight_quantity?: string | null;
   weight_measure?: string | null;
+
   volume_quantity?: string | null;
   volume_measure?: string | null;
+
+  is_active: boolean;
+};
+
+export type AddItemStoreInfoDto = {
+  store_id: string;
+  count_unit?: string | null;
+  par?: string | null;
+  is_active: boolean;
+};
+
+export type UpdateItemStoreInfoDto = {
+  count_unit?: string | null;
+  par?: string | null;
   is_active: boolean;
 };
 
@@ -39,6 +124,14 @@ type ListItemsOptions = {
   accessToken: string;
   scopeId: string;
   search?: string;
+  includeInactive?: boolean;
+};
+
+type ListOrderItemOptionsArgs = {
+  accessToken: string;
+  scopeId: string;
+  storeId: string;
+  vendorId: string;
   includeInactive?: boolean;
 };
 
@@ -58,13 +151,35 @@ export function listItems({
   params.set("scope_id", scopeId);
   params.set("include_inactive", String(includeInactive));
 
-  if (search) {
-    params.set("search", search);
+  if (search?.trim()) {
+    params.set("search", search.trim());
   }
 
   return apiRequest<ItemDto[]>(`/api/items?${params.toString()}`, {
     accessToken,
   });
+}
+
+export function listOrderItemOptions({
+  accessToken,
+  scopeId,
+  storeId,
+  vendorId,
+  includeInactive = false,
+}: ListOrderItemOptionsArgs): Promise<OrderItemOptionDto[]> {
+  const params = new URLSearchParams();
+
+  params.set("scope_id", scopeId);
+  params.set("store_id", storeId);
+  params.set("vendor_id", vendorId);
+  params.set("include_inactive", String(includeInactive));
+
+  return apiRequest<OrderItemOptionDto[]>(
+    `/api/items/order-options?${params.toString()}`,
+    {
+      accessToken,
+    },
+  );
 }
 
 export function getItem({
@@ -77,9 +192,12 @@ export function getItem({
   const params = new URLSearchParams();
   params.set("scope_id", scopeId);
 
-  return apiRequest<ItemDetailDto>(`/api/items/${itemId}?${params.toString()}`, {
-    accessToken,
-  });
+  return apiRequest<ItemDetailDto>(
+    `/api/items/${encodeURIComponent(itemId)}?${params.toString()}`,
+    {
+      accessToken,
+    },
+  );
 }
 
 export function createItem({
@@ -111,11 +229,14 @@ export function updateItem({
   const params = new URLSearchParams();
   params.set("scope_id", scopeId);
 
-  return apiRequest<ItemDto>(`/api/items/${itemId}?${params.toString()}`, {
-    method: "PUT",
-    accessToken,
-    body: item,
-  });
+  return apiRequest<ItemDto>(
+    `/api/items/${encodeURIComponent(itemId)}?${params.toString()}`,
+    {
+      method: "PUT",
+      accessToken,
+      body: item,
+    },
+  );
 }
 
 export function deactivateItem({
@@ -128,55 +249,14 @@ export function deactivateItem({
   const params = new URLSearchParams();
   params.set("scope_id", scopeId);
 
-  return apiRequest<ItemDto>(`/api/items/${itemId}?${params.toString()}`, {
-    method: "DELETE",
-    accessToken,
-  });
+  return apiRequest<ItemDto>(
+    `/api/items/${encodeURIComponent(itemId)}?${params.toString()}`,
+    {
+      method: "DELETE",
+      accessToken,
+    },
+  );
 }
-
-export type ItemStoreInfoDto = {
-  id: string;
-  item_id: string;
-  store_id: string;
-  count_unit?: string | null;
-  par?: string | null;
-  is_active: boolean;
-  created_at?: string | null;
-  updated_at?: string | null;
-};
-
-export type ItemVendorInfoDto = {
-  id: string;
-  item_id: string;
-  vendor_id: string;
-  vendor_sku?: string | null;
-  purchase_unit?: string | null;
-  pack_size?: string | null;
-  price?: string | null;
-  last_purchase_date?: string | null;
-  is_active: boolean;
-  created_at?: string | null;
-  updated_at?: string | null;
-};
-
-export type ItemDetailDto = ItemDto & {
-  vendor_info: ItemVendorInfoDto[];
-  store_info: ItemStoreInfoDto[];
-};
-
-export type AddItemStoreInfoDto = {
-  store_id: string;
-  count_unit?: string | null;
-  par?: string | null;
-  is_active: boolean;
-};
-
-export type UpdateItemStoreInfoDto = {
-  count_unit?: string | null;
-  par?: string | null;
-  is_active: boolean;
-};
-
 
 export function addItemStoreInfo({
   accessToken,
@@ -186,12 +266,12 @@ export function addItemStoreInfo({
 }: ItemMutationOptions & {
   itemId: string;
   storeInfo: AddItemStoreInfoDto;
-}): Promise<ItemStoreInfoDto> {
+}): Promise<StoreItemInfoDto> {
   const params = new URLSearchParams();
   params.set("scope_id", scopeId);
 
-  return apiRequest<ItemStoreInfoDto>(
-    `/api/items/${itemId}/store-info?${params.toString()}`,
+  return apiRequest<StoreItemInfoDto>(
+    `/api/items/${encodeURIComponent(itemId)}/store-info?${params.toString()}`,
     {
       method: "POST",
       accessToken,
@@ -210,12 +290,14 @@ export function updateItemStoreInfo({
   itemId: string;
   infoId: string;
   storeInfo: UpdateItemStoreInfoDto;
-}): Promise<ItemStoreInfoDto> {
+}): Promise<StoreItemInfoDto> {
   const params = new URLSearchParams();
   params.set("scope_id", scopeId);
 
-  return apiRequest<ItemStoreInfoDto>(
-    `/api/items/${itemId}/store-info/${infoId}?${params.toString()}`,
+  return apiRequest<StoreItemInfoDto>(
+    `/api/items/${encodeURIComponent(itemId)}/store-info/${encodeURIComponent(
+      infoId,
+    )}?${params.toString()}`,
     {
       method: "PUT",
       accessToken,
@@ -232,12 +314,14 @@ export function deactivateItemStoreInfo({
 }: ItemMutationOptions & {
   itemId: string;
   infoId: string;
-}): Promise<ItemStoreInfoDto> {
+}): Promise<StoreItemInfoDto> {
   const params = new URLSearchParams();
   params.set("scope_id", scopeId);
 
-  return apiRequest<ItemStoreInfoDto>(
-    `/api/items/${itemId}/store-info/${infoId}?${params.toString()}`,
+  return apiRequest<StoreItemInfoDto>(
+    `/api/items/${encodeURIComponent(itemId)}/store-info/${encodeURIComponent(
+      infoId,
+    )}?${params.toString()}`,
     {
       method: "DELETE",
       accessToken,
