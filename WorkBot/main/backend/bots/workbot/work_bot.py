@@ -363,7 +363,7 @@ class WorkBot:
                 return result_paths
 
     def split_natalies(self) -> None:
-        natalies_excel_path = Path('C:/Users/Will/Desktop/Natalies.xlsx')
+        natalies_excel_path = Path('C:/Users/andrew/Desktop/Natalies.xlsx')
         workbook = load_workbook(natalies_excel_path)
         sheet = workbook.active
 

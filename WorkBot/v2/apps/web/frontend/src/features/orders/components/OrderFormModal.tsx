@@ -242,311 +242,312 @@ export function OrderFormModal({
 
   return (
     <div className="modal-backdrop" role="presentation" onClick={onClose}>
-      <section
-        className="modal-card edit-item-modal"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="order-form-title"
-        onClick={(event) => event.stopPropagation()}
-      >
-        <form className="modal-form" onSubmit={handleSubmit}>
-          <header className="modal-header">
-            <div className="modal-title-group">
-              <span className="modal-eyebrow">Order management</span>
+  <section
+    className="modal-card edit-item-modal order-form-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="order-form-title"
+    onClick={(event) => event.stopPropagation()}
+  >
+    <form className="modal-form order-form-layout" onSubmit={handleSubmit}>
+      <header className="modal-header">
+        <div className="modal-title-group">
+          <span className="modal-eyebrow">Order management</span>
 
-              <div className="modal-title-row">
-                <h3 id="order-form-title">New order</h3>
+          <div className="modal-title-row">
+            <h3 id="order-form-title">New order</h3>
 
-                <span className="status-badge status-badge-active">
-                  Pending
-                </span>
-              </div>
-
-              <p>Create a mapped vendor order for the active operating scope.</p>
-            </div>
-
-            <button
-              type="button"
-              className="modal-close-button"
-              onClick={onClose}
-              aria-label="Close"
-              disabled={isSubmitting}
-            >
-              ×
-            </button>
-          </header>
-
-          <div className="modal-body">
-            <section className="modal-section">
-              <div className="modal-section-header">
-                <h4>Order information</h4>
-                <p>Choose the store, vendor, and order dates.</p>
-              </div>
-
-              <div className="form-grid">
-                {requireStoreSelection && (
-                  <label className="form-field">
-                    <span>Store</span>
-
-                    <select
-                      value={form.store_id}
-                      disabled={isSubmitting}
-                      required
-                      onChange={(event) =>
-                        updateField("store_id", event.target.value)
-                      }
-                    >
-                      <option value="">Select store</option>
-
-                      {stores.map((store) => (
-                        <option key={store.id} value={store.id}>
-                          {store.name}
-                        </option>
-                      ))}
-                    </select>
-                  </label>
-                )}
-
-                <label className="form-field">
-                  <span>Vendor</span>
-
-                  <select
-                    value={form.vendor_id}
-                    disabled={isSubmitting}
-                    required
-                    onChange={(event) =>
-                      updateField("vendor_id", event.target.value)
-                    }
-                  >
-                    <option value="">Select vendor</option>
-
-                    {activeVendors.map((vendor) => (
-                      <option key={vendor.id} value={vendor.id}>
-                        {vendor.name}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-
-                <label className="form-field">
-                  <span>Order date</span>
-
-                  <input
-                    type="date"
-                    value={form.order_date}
-                    disabled={isSubmitting}
-                    required
-                    onChange={(event) =>
-                      updateField("order_date", event.target.value)
-                    }
-                  />
-                </label>
-
-                <label className="form-field">
-                  <span>Delivery date</span>
-
-                  <input
-                    type="date"
-                    value={form.delivery_date}
-                    disabled={isSubmitting}
-                    onChange={(event) =>
-                      updateField("delivery_date", event.target.value)
-                    }
-                  />
-                </label>
-              </div>
-            </section>
-
-            <section className="modal-section">
-              <div className="modal-section-header form-section-header-row">
-                <div>
-                  <h4>Order lines</h4>
-                  <p>
-                    Add items available to the selected store and mapped to the
-                    selected vendor.
-                  </p>
-                </div>
-
-                <button
-                  type="button"
-                  onClick={addLine}
-                  disabled={
-                    isSubmitting ||
-                    !hasSelectedStoreAndVendor ||
-                    isLoadingItemOptions ||
-                    itemOptions.length === 0
-                  }
-                >
-                  Add line
-                </button>
-              </div>
-
-              {!hasSelectedStoreAndVendor && (
-                <div className="empty-card">
-                  <strong>Select a store and vendor.</strong>
-                  <p>
-                    Orderable items will load after both selections are made.
-                  </p>
-                </div>
-              )}
-
-              {hasSelectedStoreAndVendor && isLoadingItemOptions && (
-                <div className="empty-card">
-                  <strong>Loading orderable items...</strong>
-                  <p>Checking store availability and vendor mappings.</p>
-                </div>
-              )}
-
-              {itemOptionsErrorMessage && (
-                <div className="error-card" role="alert">
-                  <strong>Unable to load orderable items.</strong>
-                  <p>{itemOptionsErrorMessage}</p>
-                </div>
-              )}
-
-              {hasSelectedStoreAndVendor &&
-                !isLoadingItemOptions &&
-                !itemOptionsErrorMessage &&
-                itemOptions.length === 0 && (
-                  <div className="empty-card">
-                    <strong>No orderable items found.</strong>
-                    <p>
-                      This vendor has no active item mappings available to the
-                      selected store.
-                    </p>
-                  </div>
-                )}
-
-              <div className="nested-form-list">
-                {form.lines.map((line, index) => (
-                  <div key={index} className="nested-form-row">
-                    <div className="nested-form-row-header">
-                      <strong>Line {index + 1}</strong>
-
-                      <button
-                        type="button"
-                        onClick={() => removeLine(index)}
-                        disabled={isSubmitting || form.lines.length === 1}
-                      >
-                        Remove
-                      </button>
-                    </div>
-
-                    <div className="form-grid">
-                      <label className="form-field form-field-wide">
-                        <span>Item</span>
-
-                        <select
-                          value={line.item_option_key}
-                          disabled={
-                            isSubmitting ||
-                            !hasSelectedStoreAndVendor ||
-                            isLoadingItemOptions ||
-                            itemOptions.length === 0
-                          }
-                          required={index === 0}
-                          onChange={(event) =>
-                            selectLineItem(index, event.target.value)
-                          }
-                        >
-                          <option value="">
-                            {hasSelectedStoreAndVendor
-                              ? "Select item"
-                              : "Select store and vendor first"}
-                          </option>
-
-                          {itemOptions.map((option) => {
-                            const optionKey = getOrderItemOptionKey(option);
-
-                            return (
-                              <option key={optionKey} value={optionKey}>
-                                {formatOrderItemOptionLabel(option)}
-                              </option>
-                            );
-                          })}
-                        </select>
-                      </label>
-
-                      <TextField
-                        label="Vendor SKU"
-                        value={line.vendor_sku_snapshot}
-                        disabled
-                        onChange={() => undefined}
-                      />
-
-                      <TextField
-                        label="Quantity"
-                        value={line.quantity}
-                        disabled={isSubmitting}
-                        required={index === 0}
-                        onChange={(value) =>
-                          updateLine(index, "quantity", value)
-                        }
-                      />
-
-                      <TextField
-                        label="Unit"
-                        value={line.unit}
-                        disabled={isSubmitting}
-                        placeholder="case, each, lb..."
-                        onChange={(value) => updateLine(index, "unit", value)}
-                      />
-
-                      <label className="form-field form-field-wide">
-                        <span>Line notes</span>
-
-                        <textarea
-                          value={line.notes}
-                          disabled={isSubmitting}
-                          rows={2}
-                          onChange={(event) =>
-                            updateLine(index, "notes", event.target.value)
-                          }
-                        />
-                      </label>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            <section className="modal-section">
-              <div className="modal-section-header">
-                <h4>Notes</h4>
-                <p>Optional notes for the overall order.</p>
-              </div>
-
-              <label className="form-field form-field-wide">
-                <span>Order notes</span>
-
-                <textarea
-                  value={form.notes}
-                  disabled={isSubmitting}
-                  rows={4}
-                  onChange={(event) => updateField("notes", event.target.value)}
-                />
-              </label>
-            </section>
-
-            {errorMessage && (
-              <div className="error-card" role="alert">
-                {errorMessage}
-              </div>
-            )}
+            <span className="status-badge status-badge-active">
+              Pending
+            </span>
           </div>
 
-          <footer className="modal-actions">
-            <button type="button" onClick={onClose} disabled={isSubmitting}>
-              Cancel
-            </button>
+          <p>Create a mapped vendor order for the active operating scope.</p>
+        </div>
 
-            <button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? "Creating..." : "Create order"}
-            </button>
-          </footer>
-        </form>
-      </section>
-    </div>
+        <button
+          type="button"
+          className="modal-close-button"
+          onClick={onClose}
+          aria-label="Close"
+          disabled={isSubmitting}
+        >
+          ×
+        </button>
+      </header>
+
+      <div className="order-form-content">
+        {/* Fixed order metadata */}
+        <div className="order-metadata">
+          <div className="order-metadata-fields">
+            {requireStoreSelection && (
+              <label className="form-field">
+                <span>Store</span>
+
+                <select
+                  value={form.store_id}
+                  disabled={isSubmitting}
+                  required
+                  onChange={(event) =>
+                    updateField("store_id", event.target.value)
+                  }
+                >
+                  <option value="">Select store</option>
+
+                  {stores.map((store) => (
+                    <option key={store.id} value={store.id}>
+                      {store.name}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            )}
+
+            <label className="form-field">
+              <span>Vendor</span>
+
+              <select
+                value={form.vendor_id}
+                disabled={isSubmitting}
+                required
+                onChange={(event) =>
+                  updateField("vendor_id", event.target.value)
+                }
+              >
+                <option value="">Select vendor</option>
+
+                {activeVendors.map((vendor) => (
+                  <option key={vendor.id} value={vendor.id}>
+                    {vendor.name}
+                  </option>
+                ))}
+              </select>
+            </label>
+
+            <label className="form-field">
+              <span>Order date</span>
+
+              <input
+                type="date"
+                value={form.order_date}
+                disabled={isSubmitting}
+                required
+                onChange={(event) =>
+                  updateField("order_date", event.target.value)
+                }
+              />
+            </label>
+
+            <label className="form-field">
+              <span>Delivery date</span>
+
+              <input
+                type="date"
+                value={form.delivery_date}
+                disabled={isSubmitting}
+                onChange={(event) =>
+                  updateField("delivery_date", event.target.value)
+                }
+              />
+            </label>
+          </div>
+
+          <label className="form-field order-notes-field">
+            <span>Order notes</span>
+
+            <textarea
+              value={form.notes}
+              disabled={isSubmitting}
+              rows={2}
+              placeholder="Optional notes for this order..."
+              onChange={(event) =>
+                updateField("notes", event.target.value)
+              }
+            />
+          </label>
+        </div>
+
+        {/* Order lines header remains fixed */}
+        <div className="order-lines-header">
+          <div>
+            <h4>Order lines</h4>
+            <p>
+              Add items available to the selected store and mapped to the
+              selected vendor.
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onClick={addLine}
+            disabled={
+              isSubmitting ||
+              !hasSelectedStoreAndVendor ||
+              isLoadingItemOptions ||
+              itemOptions.length === 0
+            }
+          >
+            Add line
+          </button>
+        </div>
+
+        {/* Only this region scrolls */}
+        <div className="order-lines-scroll">
+          {!hasSelectedStoreAndVendor && (
+            <div className="empty-card">
+              <strong>Select a store and vendor.</strong>
+              <p>
+                Orderable items will load after both selections are made.
+              </p>
+            </div>
+          )}
+
+          {hasSelectedStoreAndVendor && isLoadingItemOptions && (
+            <div className="empty-card">
+              <strong>Loading orderable items...</strong>
+              <p>Checking store availability and vendor mappings.</p>
+            </div>
+          )}
+
+          {itemOptionsErrorMessage && (
+            <div className="error-card" role="alert">
+              <strong>Unable to load orderable items.</strong>
+              <p>{itemOptionsErrorMessage}</p>
+            </div>
+          )}
+
+          {hasSelectedStoreAndVendor &&
+            !isLoadingItemOptions &&
+            !itemOptionsErrorMessage &&
+            itemOptions.length === 0 && (
+              <div className="empty-card">
+                <strong>No orderable items found.</strong>
+                <p>
+                  This vendor has no active item mappings available to the
+                  selected store.
+                </p>
+              </div>
+            )}
+
+          <div className="nested-form-list">
+            {form.lines.map((line, index) => (
+              <div key={index} className="nested-form-row">
+                <div className="nested-form-row-header">
+                  <strong>Line {index + 1}</strong>
+
+                  <button
+                    type="button"
+                    onClick={() => removeLine(index)}
+                    disabled={isSubmitting || form.lines.length === 1}
+                  >
+                    Remove
+                  </button>
+                </div>
+
+                <div className="form-grid">
+                  <label className="form-field form-field-wide">
+                    <span>Item</span>
+
+                    <select
+                      value={line.item_option_key}
+                      disabled={
+                        isSubmitting ||
+                        !hasSelectedStoreAndVendor ||
+                        isLoadingItemOptions ||
+                        itemOptions.length === 0
+                      }
+                      required={index === 0}
+                      onChange={(event) =>
+                        selectLineItem(index, event.target.value)
+                      }
+                    >
+                      <option value="">
+                        {hasSelectedStoreAndVendor
+                          ? "Select item"
+                          : "Select store and vendor first"}
+                      </option>
+
+                      {itemOptions.map((option) => {
+                        const optionKey =
+                          getOrderItemOptionKey(option);
+
+                        return (
+                          <option key={optionKey} value={optionKey}>
+                            {formatOrderItemOptionLabel(option)}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </label>
+
+                  <TextField
+                    label="Vendor SKU"
+                    value={line.vendor_sku_snapshot}
+                    disabled
+                    onChange={() => undefined}
+                  />
+
+                  <TextField
+                    label="Quantity"
+                    value={line.quantity}
+                    disabled={isSubmitting}
+                    required={index === 0}
+                    onChange={(value) =>
+                      updateLine(index, "quantity", value)
+                    }
+                  />
+
+                  <TextField
+                    label="Unit"
+                    value={line.unit}
+                    disabled={isSubmitting}
+                    placeholder="case, each, lb..."
+                    onChange={(value) =>
+                      updateLine(index, "unit", value)
+                    }
+                  />
+
+                  <label className="form-field form-field-wide">
+                    <span>Line notes</span>
+
+                    <textarea
+                      value={line.notes}
+                      disabled={isSubmitting}
+                      rows={2}
+                      onChange={(event) =>
+                        updateLine(index, "notes", event.target.value)
+                      }
+                    />
+                  </label>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {errorMessage && (
+          <div className="error-card order-form-error" role="alert">
+            {errorMessage}
+          </div>
+        )}
+      </div>
+
+      <footer className="modal-actions">
+        <button
+          type="button"
+          onClick={onClose}
+          disabled={isSubmitting}
+        >
+          Cancel
+        </button>
+
+        <button type="submit" disabled={isSubmitting}>
+          {isSubmitting ? "Creating..." : "Create order"}
+        </button>
+      </footer>
+    </form>
+  </section>
+</div>
   );
 }
 

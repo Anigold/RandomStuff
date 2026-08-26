@@ -1,18 +1,34 @@
 {
-  "name": "Cheeky Monkey Foods LLC",
+  "name": "Bo's Bones",
   "order_format": "",
   "special_notes": "",
   "min_order_value": 0,
   "min_order_cases": 0,
   "internal_contacts": [
     {
-      "name": "Unknown Person",
-      "title": "Unknown Title",
-      "email": "",
+      "name": "Jen",
+      "title": "Sales Representative",
+      "email": "biscuitmogul@gmail.com",
       "phone": ""
     }
   ],
-  "ordering": {},
+  "ordering": {
+    "method": [
+      "email"
+    ],
+    "email": "biscuitmogul@gmail.com",
+    "portal_url": "",
+    "phone_number": "",
+    "schedule": [
+      {
+        "order_day": "Sunday",
+        "delivery_days": [
+          "Wednesday"
+        ],
+        "cutoff_time": "2:00 PM"
+      }
+    ]
+  },
   "store_ids": {
     "Bakery": "",
     "Collegetown": "",

@@ -5,7 +5,7 @@ from apps.api.schemas.auth_schema import CurrentUserSchema
 from workbot_core.domain.models.user import User
 
 
-router = APIRouter(prefix="/api", tags=["me"])
+router = APIRouter(tags=["me"])
 
 
 def user_to_schema(user: User) -> CurrentUserSchema:
