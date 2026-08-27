@@ -28,6 +28,11 @@ from .commands.command import Command
 from .commands.command_context import CommandContext
 from .commands.command_result import CommandResult
 from .commands.secret_prompt import SecretPromptRequest
+from .commands.form_prompt import (
+    FormField,
+    FormPromptRequest,
+)
+from .commands.confirmation_prompt import ConfirmationPromptRequest
 
 from .api.client import WorkBotApiClient
 from .config import CliConfig
@@ -211,17 +216,27 @@ class CLICompleter(Completer):
             )
 
 
-
 class CLI:
+
     def __init__(self) -> None:
         self.commands: dict[str, Command] = {}
         self.autocomplete_registry: dict[str, Callable[[str, str], list]] = {}
         self._parser_cache: dict[str, Any] = {}
         self.result_renderer = CLIResultRenderer()
 
+        # ==========================================================
+        # Prompt Init
+        # ==========================================================
         self._input_prompt = "WorkBot> "
         self._secret_input_handler: Callable[[str], CommandResult] | None = None
         self._secret_cancel_message = "Input cancelled."
+
+        self._form_request: FormPromptRequest | None = None
+        self._form_field_index = 0
+        self._form_values: dict[str, Any] = {}
+
+        self._confirmation_request: ConfirmationPromptRequest | None = None
+        # ==========================================================
 
         self.config = CliConfig.from_env()
         self.session = CliSession()
@@ -390,6 +405,32 @@ class CLI:
                 return
 
             # ------------------------------------------------------
+            # Form input mode
+            # ------------------------------------------------------
+            if self._form_request is not None:
+                value = self.input_field.text
+
+                self.input_field.buffer.reset(
+                    append_to_history=False,
+                )
+
+                self._submit_form_value(value)
+                return
+            
+            # ------------------------------------------------------
+            # Confirmation mode
+            # ------------------------------------------------------
+            if self._confirmation_request is not None:
+                value = self.input_field.text
+
+                self.input_field.buffer.reset(
+                    append_to_history=False,
+                )
+
+                self._submit_confirmation(value)
+                return
+            
+            # ------------------------------------------------------
             # Normal command mode
             # ------------------------------------------------------
             raw = self.input_field.text.strip()
@@ -451,16 +492,34 @@ class CLI:
 
         @kb.add("c-c")
         def _(event) -> None:
-            if self._secret_input_handler is None:
+            if self._secret_input_handler is not None:
+                message = self._secret_cancel_message
+
+                self._reset_secret_input()
+                self.append_console(message)
                 return
 
-            message = self._secret_cancel_message
+            if self._form_request is not None:
+                request = self._form_request
 
-            self._reset_secret_input()
-            self.append_console(message)
+                message = (
+                    request.cancel_message
+                    if request is not None
+                    else "Form cancelled."
+                )
+
+                self._reset_form()
+                self.append_console(message)
+            
+            if self._confirmation_request is not None:
+                request = self._confirmation_request
+                message = request.cancel_message
+
+                self._reset_confirmation()
+                self.append_console(message)
 
         return kb
-
+    
     def start(
         self,
         welcome_screen: str = '\nWelcome to your CLI. Type "help" to see available commands.\n',
@@ -834,8 +893,6 @@ class CLI:
 
         self.application.invalidate()
 
-
-
     def _submit_secret_input(
         self,
         secret: str,
@@ -857,9 +914,6 @@ class CLI:
                 exc,
             )
 
-
-
-
     def _reset_secret_input(self) -> None:
         self._secret_input_handler = None
         self._secret_cancel_message = "Input cancelled."
@@ -874,6 +928,358 @@ class CLI:
         )
 
         self.application.invalidate()
+
+    # ==========================================================
+    # Form input
+    # ==========================================================
+
+    def _begin_form(
+        self,
+        request: FormPromptRequest,
+    ) -> None:
+        if self._secret_input_handler is not None:
+            self._handle_command_result(
+                CommandResult.error(
+                    "Cannot start a form while secure input is active."
+                )
+            )
+            return
+
+        if self._form_request is not None:
+            self._handle_command_result(
+                CommandResult.error(
+                    "Another form is already active."
+                )
+            )
+            return
+
+        if not request.fields:
+            self._handle_command_result(
+                request.handler({})
+            )
+            return
+
+        self._form_request = request
+        self._form_field_index = 0
+        self._form_values = {}
+
+        self.input_field.completer = None
+        self.input_field.complete_while_typing = False
+
+        self.append_console(
+            f"[{request.title}]"
+        )
+
+        self._show_current_form_field()
+
+    def _show_current_form_field(self) -> None:
+        request = self._form_request
+
+        if request is None:
+            return
+
+        if self._form_field_index >= len(request.fields):
+            self._finish_form()
+            return
+
+        field = request.fields[
+            self._form_field_index
+        ]
+
+        self._input_prompt = self._format_form_prompt(
+            field
+        )
+
+        self.input_field.buffer.reset(
+            append_to_history=False,
+        )
+
+        self.application.layout.focus(
+            self.input_field
+        )
+
+        self.application.invalidate()
+
+    def _format_form_prompt(
+        self,
+        field: FormField,
+    ) -> str:
+        if field.default is not None:
+            if field.allow_clear:
+                return (
+                    f"{field.prompt} "
+                    f"[{field.default}] "
+                    f"({field.clear_token} to clear): "
+                )
+
+            return (
+                f"{field.prompt} "
+                f"[{field.default}]: "
+            )
+
+        return f"{field.prompt}: "
+
+    def _submit_form_value(
+        self,
+        raw_value: str,
+    ) -> None:
+        
+        request = self._form_request
+
+        if request is None:
+            return
+
+        field = request.fields[
+            self._form_field_index
+        ]
+
+        stripped = raw_value.strip()
+
+        if (
+            field.allow_clear
+            and stripped == field.clear_token
+        ):
+            value = None
+
+        elif stripped:
+            value: Any = stripped
+
+            if field.parser is not None:
+                try:
+                    value = field.parser(
+                        stripped
+                    )
+
+                except (
+                    ValueError,
+                    TypeError,
+                ) as exc:
+                    message = str(exc).strip()
+
+                    self.append_console(
+                        f"[Error] "
+                        f"{message or f'Invalid value for {field.prompt}.'}"
+                    )
+
+                    self._show_current_form_field()
+                    return
+
+        elif field.default is not None:
+            value = field.default
+
+        elif field.required:
+            self.append_console(
+                f"[Error] {field.prompt} is required."
+            )
+
+            self._show_current_form_field()
+            return
+
+        else:
+            value = None
+
+        if field.validator is not None:
+            validation_error = field.validator(
+                value
+            )
+
+            if validation_error:
+                self.append_console(
+                    f"[Error] {validation_error}"
+                )
+
+                self._show_current_form_field()
+                return
+
+        self._form_values[field.name] = value
+        self._form_field_index += 1
+
+        self._show_current_form_field()
+
+    def _finish_form(self) -> None:
+        request = self._form_request
+
+        if request is None:
+            return
+
+        values = dict(
+            self._form_values
+        )
+
+        handler = request.handler
+
+        self._reset_form()
+
+        try:
+            result = handler(values)
+            self._handle_command_result(result)
+
+        except SystemExit as exc:
+            self.append_console(
+                "[Error] Form handler exited unexpectedly."
+            )
+
+            # self.logger.warning(
+            #     "Form handler attempted to exit "
+            #     "with code %s.",
+            #     exc.code,
+            # )
+
+        except Exception as exc:
+            self._handle_error(
+                "form",
+                exc,
+            )
+
+    def _reset_form(self) -> None:
+
+        self._form_request = None
+        self._form_field_index = 0
+        self._form_values = {}
+
+        self._input_prompt = "WorkBot> "
+
+        self.input_field.completer = (
+            self.command_completer
+        )
+
+        self.input_field.complete_while_typing = True
+
+        self.input_field.buffer.reset(
+            append_to_history=False,
+        )
+
+        self.application.invalidate()
+
+    # ==========================================================
+    # Confirmation input
+    # ==========================================================
+
+    def _begin_confirmation(
+        self,
+        request: ConfirmationPromptRequest,
+    ) -> None:
+        if self._secret_input_handler is not None:
+            self._handle_command_result(
+                CommandResult.error(
+                    "Cannot request confirmation while secure input is active."
+                )
+            )
+            return
+
+        if self._form_request is not None:
+            self._handle_command_result(
+                CommandResult.error(
+                    "Cannot request confirmation while a form is active."
+                )
+            )
+            return
+
+        if self._confirmation_request is not None:
+            self._handle_command_result(
+                CommandResult.error(
+                    "Another confirmation request is already active."
+                )
+            )
+            return
+
+        self._confirmation_request = request
+
+        self.input_field.completer = None
+        self.input_field.complete_while_typing = False
+
+        default_hint = "Y/n" if request.default else "y/N"
+
+        self._input_prompt = (
+            f"{request.prompt} [{default_hint}]: "
+        )
+
+        self.input_field.buffer.reset(
+            append_to_history=False,
+        )
+
+        self.application.layout.focus(
+            self.input_field
+        )
+
+        self.application.invalidate()
+
+    def _submit_confirmation(
+        self,
+        raw_value: str,
+    ) -> None:
+        request = self._confirmation_request
+
+        if request is None:
+            return
+
+        normalized = raw_value.strip().casefold()
+
+        if not normalized:
+            confirmed = request.default
+
+        elif normalized in {
+            "y",
+            "yes",
+            "true",
+            "1",
+        }:
+            confirmed = True
+
+        elif normalized in {
+            "n",
+            "no",
+            "false",
+            "0",
+        }:
+            confirmed = False
+
+        else:
+            self.append_console(
+                "[Error] Please enter yes or no."
+            )
+
+            self.application.invalidate()
+            return
+
+        handler = request.handler
+        cancel_message = request.cancel_message
+
+        self._reset_confirmation()
+
+        if not confirmed:
+            self.append_console(
+                cancel_message
+            )
+            return
+
+        try:
+            result = handler(True)
+            self._handle_command_result(result)
+
+        except Exception as exc:
+            self._handle_error(
+                "confirmation",
+                exc,
+            )
+
+    def _reset_confirmation(self) -> None:
+        self._confirmation_request = None
+
+        self._input_prompt = "WorkBot> "
+
+        self.input_field.completer = (
+            self.command_completer
+        )
+
+        self.input_field.complete_while_typing = True
+
+        self.input_field.buffer.reset(
+            append_to_history=False,
+        )
+
+        self.application.invalidate()
+
     # ==========================================================
     # Input parsing / dispatch
     # ==========================================================
@@ -958,7 +1364,18 @@ class CLI:
         if isinstance(result, SecretPromptRequest):
             self._begin_secret_input(result)
             return
-        
+
+        if isinstance(result, FormPromptRequest):
+            self._begin_form(result)
+            return
+
+        if isinstance(
+            result,
+            ConfirmationPromptRequest,
+        ):
+            self._begin_confirmation(result)
+            return
+
         # Normalize non-CommandResult responses
         if not isinstance(result, CommandResult):
             result = CommandResult.text(str(result))

@@ -2,21 +2,32 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from typing import Any
+from decimal import Decimal
 
 import httpx
 
 from ..session import CliSession
-
+from .item_models import ItemWritePayload, ItemStoreInfoWritePayload, ItemStoreInfoUpdatePayload
+from .store_models import StoreResult
 
 # ============================================================
 # API results
 # ============================================================
+
+@dataclass(slots=True)
+class ItemResult:
+    id: str
+    name: str
+    category: str | None = None
+    subcategory: str | None = None
+    is_active: bool = True
 
 
 @dataclass(slots=True)
 class LoginResult:
     access_token: str
     user: dict[str, Any]
+
 
 @dataclass(slots=True)
 class StoreScopeResult:
@@ -36,7 +47,6 @@ class StoreScopeResult:
 # ============================================================
 # API exceptions
 # ============================================================
-
 
 class WorkBotApiError(RuntimeError):
     def __init__(
@@ -199,6 +209,8 @@ class WorkBotApiClient:
     def me(self) -> Any:
         return self.get("/api/me")
 
+
+    # ITEMS
     def list_store_scopes(
         self,
     ) -> list[StoreScopeResult]:
@@ -245,8 +257,264 @@ class WorkBotApiClient:
 
         return scopes
 
+    def list_items(
+        self,
+        *,
+        search: str | None = None,
+        include_inactive: bool = False,
+    ) -> list[ItemResult]:
+        params: dict[str, Any] = {
+            "include_inactive": include_inactive,
+        }
 
+        if search:
+            params["search"] = search
 
+        result = self.scoped_get(
+            "/api/items",
+            params=params,
+        )
+
+        if not isinstance(result, list):
+            raise WorkBotApiError(
+                "Invalid items response from WorkBot API."
+            )
+
+        items: list[ItemResult] = []
+
+        for entry in result:
+            if not isinstance(entry, dict):
+                raise WorkBotApiError(
+                    "Invalid item entry from WorkBot API."
+                )
+
+            item_id = entry.get("id")
+            name = entry.get("name")
+
+            if (
+                not isinstance(item_id, str)
+                or not item_id
+                or not isinstance(name, str)
+                or not name
+            ):
+                raise WorkBotApiError(
+                    "Invalid item entry from WorkBot API."
+                )
+
+            items.append(
+                ItemResult(
+                    id=item_id,
+                    name=name,
+                    category=entry.get("category"),
+                    subcategory=entry.get("subcategory"),
+                    is_active=bool(
+                        entry.get("is_active", True)
+                    ),
+                )
+            )
+
+        return items
+
+    def get_item(
+        self,
+        item_id: str,
+    ) -> dict[str, Any]:
+        result = self.scoped_get(
+            f"/api/items/{item_id}"
+        )
+
+        if not isinstance(result, dict):
+            raise WorkBotApiError(
+                "Invalid item detail response from WorkBot API."
+            )
+
+        return result
+
+    def find_item_by_name(
+        self,
+        name: str,
+        *,
+        include_inactive: bool = False,
+    ) -> ItemResult | None:
+        items = self.list_items(
+            search=name,
+            include_inactive=include_inactive,
+        )
+
+        normalized_name = name.casefold()
+
+        matches = [
+            item
+            for item in items
+            if item.name.casefold() == normalized_name
+        ]
+
+        if not matches:
+            return None
+
+        if len(matches) > 1:
+            raise WorkBotApiError(
+                f'Multiple items matched the name "{name}".'
+            )
+
+        return matches[0]
+
+    def create_item(
+        self,
+        payload: ItemWritePayload,
+    ) -> dict[str, Any]:
+        result = self.scoped_post(
+            "/api/items",
+            json=payload.to_dict(),
+        )
+
+        if not isinstance(result, dict):
+            raise WorkBotApiError(
+                "Invalid create item response from WorkBot API."
+            )
+
+        return result
+
+    def update_item(
+        self,
+        item_id: str,
+        payload: ItemWritePayload,
+    ) -> dict[str, Any]:
+        result = self.scoped_put(
+            f"/api/items/{item_id}",
+            json=payload.to_dict(),
+        )
+
+        if not isinstance(result, dict):
+            raise WorkBotApiError(
+                "Invalid update item response from WorkBot API."
+            )
+
+        return result
+
+    def deactivate_item(
+        self,
+        item_id: str,
+    ) -> dict[str, Any]:
+        result = self.scoped_delete(
+            f"/api/items/{item_id}"
+        )
+
+        if not isinstance(result, dict):
+            raise WorkBotApiError(
+                "Invalid deactivate item response from WorkBot API."
+            )
+
+        return result
+
+    def add_item_store_info(
+        self,
+        item_id: str,
+        payload: ItemStoreInfoWritePayload,
+    ) -> dict[str, Any]:
+        result = self.scoped_post(
+            f"/api/items/{item_id}/store-info",
+            json=payload.to_dict(),
+        )
+
+        if not isinstance(result, dict):
+            raise WorkBotApiError(
+                "Invalid item store-info response from WorkBot API."
+            )
+
+        return result
+
+    def update_item_store_info(
+        self,
+        item_id: str,
+        info_id: str,
+        payload: ItemStoreInfoUpdatePayload,
+    ) -> dict[str, Any]:
+        result = self.scoped_put(
+            f"/api/items/{item_id}/store-info/{info_id}",
+            json=payload.to_dict(),
+        )
+
+        if not isinstance(result, dict):
+            raise WorkBotApiError(
+                "Invalid item store-info update response from WorkBot API."
+            )
+
+        return result
+
+    # STORES
+    def list_stores(
+        self,
+        *,
+        search: str | None = None,
+        include_inactive: bool = False,
+    ) -> list[StoreResult]:
+        params: dict[str, Any] = {
+            "include_inactive": include_inactive,
+        }
+
+        if search:
+            params["search"] = search
+
+        result = self.scoped_get(
+            "/api/stores",
+            params=params,
+        )
+
+        if not isinstance(result, list):
+            raise WorkBotApiError(
+                "Invalid stores response from WorkBot API."
+            )
+
+        stores: list[StoreResult] = []
+
+        for entry in result:
+            if not isinstance(entry, dict):
+                raise WorkBotApiError(
+                    "Invalid store entry from WorkBot API."
+                )
+
+            try:
+                stores.append(
+                    StoreResult.from_dict(entry)
+                )
+
+            except (KeyError, TypeError) as exc:
+                raise WorkBotApiError(
+                    "Invalid store entry from WorkBot API."
+                ) from exc
+
+        return stores
+
+    def find_store_by_name(
+        self,
+        name: str,
+        *,
+        include_inactive: bool = False,
+    ) -> StoreResult | None:
+        stores = self.list_stores(
+            search=name,
+            include_inactive=include_inactive,
+        )
+
+        normalized_name = name.casefold()
+
+        matches = [
+            store
+            for store in stores
+            if store.name.casefold()
+            == normalized_name
+        ]
+
+        if not matches:
+            return None
+
+        if len(matches) > 1:
+            raise WorkBotApiError(
+                f'Multiple stores matched the name "{name}".'
+            )
+
+        return matches[0]
 
     # ========================================================
     # Authentication
@@ -360,7 +628,7 @@ class WorkBotApiClient:
                 method,
                 path,
                 params=params,
-                json=json,
+                json=self._json_compatible(json),
                 headers=self._build_headers(
                     authenticated=authenticated,
                 ),
@@ -510,6 +778,33 @@ class WorkBotApiClient:
             f"{response.status_code} "
             f"{response.reason_phrase} - {detail}"
         )
+
+    def _json_compatible(
+        self,
+        value: Any,
+    ) -> Any:
+        if isinstance(value, Decimal):
+            return str(value)
+
+        if isinstance(value, dict):
+            return {
+                key: self._json_compatible(item)
+                for key, item in value.items()
+            }
+
+        if isinstance(value, list):
+            return [
+                self._json_compatible(item)
+                for item in value
+            ]
+
+        if isinstance(value, tuple):
+            return [
+                self._json_compatible(item)
+                for item in value
+            ]
+
+        return value
 
     # ========================================================
     # Lifecycle
