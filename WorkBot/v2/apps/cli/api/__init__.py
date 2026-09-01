@@ -7,7 +7,7 @@ from .client import (
     WorkBotConnectionError,
     WorkBotUnauthorizedError,
 )
-from .item_models import ItemWritePayload, ItemStoreInfoWritePayload
+from .item_models import ItemWritePayload, ItemStoreInfoWritePayload, ItemStoreInfoUpdatePayload
 from .store_models import StoreResult
 
 __all__ = [
@@ -21,4 +21,5 @@ __all__ = [
     "WorkBotConnectionError",
     "WorkBotUnauthorizedError",
     "ItemStoreInfoWritePayload",
+    "ItemStoreInfoUpdatePayload",
 ]

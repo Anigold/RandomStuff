@@ -25211,3 +25211,37 @@ Stacktrace:
 2026-08-27 06:25:11,953 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:123) - Craftable order sync completed successfully.
 2026-08-27 06:25:11,955 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'download_orders' executed successfully.
 2026-08-27 08:03:21,697 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:876) - Exiting CLI.
+2026-08-31 16:08:04,020 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:59) - Initializing WorkBot...
+2026-08-31 16:08:04,020 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:74) - WorkBot initialized successfully.
+2026-08-31 16:08:04,213 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:256) - Initializing CLI.
+2026-08-31 16:08:04,233 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:525) - Loaded 1 commands from backend.app.cli.commands.builtin
+2026-08-31 16:08:04,248 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:261) - CLI initialized successfully with 1 commands.
+2026-08-31 16:08:04,516 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:525) - Loaded 21 commands from backend.app.cli.commands.workbot
+2026-08-31 16:08:04,516 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:448) - CLI session started.
+2026-08-31 16:10:09,233 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: archive_orders (args=['--vendors', 'Russo Produce'])
+2026-08-31 16:10:09,249 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:202) - Retrieving orders for: stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], vendors=['Russo Produce']
+2026-08-31 16:10:09,249 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:65) - Getting orders: vendors=['Russo Produce'], stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], dates=None
+2026-08-31 16:10:09,352 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:73) - Retrieved 1 orders.
+2026-08-31 16:10:09,352 - INFO - backend.app.services.order_service.ArchiveOrder - (order_service.py:107) - Archiving order Russo Produce / Triphammer / 20260826
+2026-08-31 16:10:09,356 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'archive_orders' executed successfully.
+2026-08-31 16:10:16,598 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: download_orders (args=['--stores', 'Triphammer', '--vendors', 'Russo Produce'])
+2026-08-31 16:10:20,476 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:91) - Logging into Craftable.
+2026-08-31 16:10:27,309 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:115) - Login successful.
+2026-08-31 16:10:27,309 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:248) - Beginning download protocol for: stores: ['Triphammer'], vendors: ['Russo Produce'], download_pdf: True, update: True
+2026-08-31 16:10:29,061 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:575) - Found Russo Produce in Triphammer's order list.
+2026-08-31 16:10:30,145 - INFO - backend.bots.craftable_bot.craftable_bot.CraftableBot - (craftable_bot.py:582) - Now in Russo Produce order.
+2026-08-31 16:10:30,903 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:247) - [DownloadManager] Session c9755a65-dcd9-4884-941e-4175fbbc5f17 -> C:\Users\golds\projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\c9755a65-dcd9-4884-941e-4175fbbc5f17
+2026-08-31 16:10:32,267 - INFO - backend.adapters.downloads.local_download_manager.LocalDownloadManager - (local_download_manager.py:286) - [DownloadManager] Cleaned up C:\Users\golds\projects\IthacaBakery\RandomStuff\WorkBot\main\data\downloads\sessions\c9755a65-dcd9-4884-941e-4175fbbc5f17
+2026-08-31 16:10:33,933 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:149) - [Order Update] Initiating update protocol for Triphammer / Russo Produce / 20260830.
+2026-08-31 16:10:33,950 - INFO - backend.app.services.order_service.CheckAndUpdateOrder - (order_service.py:228) - [Order Update] Changed - overwrite needed.
+2026-08-31 16:10:33,950 - INFO - backend.app.services.order_service.SaveOrder - (order_service.py:99) - Saving order Russo Produce / Triphammer / 20260830
+2026-08-31 16:10:33,971 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:107) - [PDF] Ingested: Order.pdf for Triphammer/Russo Produce
+2026-08-31 16:10:33,971 - INFO - backend.bots.workbot.work_bot.WorkBot - (work_bot.py:123) - Craftable order sync completed successfully.
+2026-08-31 16:10:33,971 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'download_orders' executed successfully.
+2026-08-31 16:11:06,761 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:819) - Dispatching command: generate_vendor_order_emails (args=['--vendors', 'Russo Produce'])
+2026-08-31 16:11:06,763 - INFO - backend.app.services.email_service.EmailServices - (email_service.py:53) - Preparing vendor order emails...
+2026-08-31 16:11:06,763 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:65) - Getting orders: vendors=['Russo Produce'], stores=['Bakery', 'Collegetown', 'Downtown', 'Easthill', 'Syracuse', 'Triphammer'], dates=None
+2026-08-31 16:11:06,857 - INFO - backend.app.services.order_service.GetOrders - (order_service.py:73) - Retrieved 1 orders.
+2026-08-31 16:11:08,931 - INFO - backend.app.services.email_service.EmailServices - (email_service.py:90) - Prepared 1 vendor email(s).
+2026-08-31 16:11:08,931 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:838) - Command 'generate_vendor_order_emails' executed successfully.
+2026-08-31 20:01:57,394 - INFO - backend.app.cli.panel_cli.CLI - (panel_cli.py:876) - Exiting CLI.

@@ -3,10 +3,11 @@ from __future__ import annotations
 import sys
 
 from apps.cli.cli import CLI
+from apps.cli.workbot_cli import create_workbot_cli
 
 def main() -> int:
     try:
-        cli = CLI()
+        cli = create_workbot_cli()
         cli.start(
             welcome_screen=(
                 "\n"
