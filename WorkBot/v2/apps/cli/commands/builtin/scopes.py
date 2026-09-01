@@ -9,7 +9,7 @@ from ...api import (
     WorkBotConnectionError,
     WorkBotUnauthorizedError,
 )
-
+from .store_scope_cache import refresh_store_scopes
 
 class ScopesCommand(Command):
     """
@@ -25,11 +25,7 @@ class ScopesCommand(Command):
             add_help=False,
         )
 
-    def autocomplete(
-        self,
-        flag: str,
-        text: str,
-    ):
+    def autocomplete(self, flag: str, text: str):
         return []
 
     def command(self, args):
@@ -44,7 +40,7 @@ class ScopesCommand(Command):
             )
 
         try:
-            scopes = self.context.api.list_store_scopes()
+            scopes = refresh_store_scopes(self.context)
 
         except WorkBotUnauthorizedError:
             self.context.session.logout()

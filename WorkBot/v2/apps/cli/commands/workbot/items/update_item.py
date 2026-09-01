@@ -19,6 +19,8 @@ from apps.cli.api.client import (
     WorkBotUnauthorizedError,
     ItemWritePayload,
 )
+from .item_cache import get_cached_items, find_cached_item_by_name
+
 
 class UpdateItemCommand(Command):
     """
@@ -43,25 +45,13 @@ class UpdateItemCommand(Command):
 
         return parser
 
-    def autocomplete(
-        self,
-        flag: str,
-        text: str,
-    ):
-        if flag not in ("--item", "-i"):
-            return []
+    def autocomplete(self, flag: str, text: str):
 
         if not self.context.session.is_authenticated:
             return []
 
-        if self.context.session.active_scope_id is None:
-            return []
-
         try:
-            items = self.context.api.list_items(
-                search=text or None,
-                include_inactive=True,
-            )
+            items = get_cached_items(self.context)
 
         except (
             WorkBotUnauthorizedError,
@@ -70,12 +60,13 @@ class UpdateItemCommand(Command):
         ):
             return []
 
+        query = text.casefold()
+
         return [
-            (
-                item.name,
-                item.category or item.id,
-            )
+            item.id
             for item in items
+            if item.id.casefold().startswith(query)
+            or item.name.casefold().startswith(query)
         ]
 
     def command(self, args):

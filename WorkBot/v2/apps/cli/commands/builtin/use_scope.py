@@ -9,7 +9,7 @@ from ...api import (
     WorkBotConnectionError,
     WorkBotUnauthorizedError,
 )
-
+from .store_scope_cache import get_cached_store_scopes
 
 class UseScopeCommand(Command):
     """
@@ -34,11 +34,7 @@ class UseScopeCommand(Command):
 
         return parser
 
-    def autocomplete(
-        self,
-        flag: str,
-        text: str,
-    ):
+    def autocomplete(self, flag: str, text: str):
         if flag not in ("--scope", "-s"):
             return []
 
@@ -46,7 +42,7 @@ class UseScopeCommand(Command):
             return []
 
         try:
-            scopes = self.context.api.list_store_scopes()
+            scopes = get_cached_store_scopes(self.context)
 
         except (
             WorkBotUnauthorizedError,

@@ -10,8 +10,7 @@ from apps.cli.api.client import (
     WorkBotConnectionError, 
     WorkBotUnauthorizedError
 )
-
-
+from .item_cache import get_cached_items
 
 class DeactivateItemCommand(Command):
     """
@@ -36,11 +35,8 @@ class DeactivateItemCommand(Command):
 
         return parser
 
-    def autocomplete(
-        self,
-        flag: str,
-        text: str,
-    ):
+    def autocomplete(self, flag: str, text: str):
+
         if flag not in ("--item", "-i"):
             return []
 
@@ -51,10 +47,14 @@ class DeactivateItemCommand(Command):
             return []
 
         try:
-            items = self.context.api.list_items(
-                search=text or None,
-                include_inactive=False,
-            )
+
+            items = get_cached_items(self.context)
+
+            items = [
+                item
+                for item in items
+                if item.is_active
+            ]
 
         except (
             WorkBotUnauthorizedError,

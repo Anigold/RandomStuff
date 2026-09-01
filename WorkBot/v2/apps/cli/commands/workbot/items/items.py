@@ -9,7 +9,7 @@ from apps.cli.api.client import (
     WorkBotConnectionError, 
     WorkBotUnauthorizedError
 )
-
+from .item_cache import refresh_items
 
 class ItemsCommand(Command):
     """
@@ -61,10 +61,7 @@ class ItemsCommand(Command):
             )
 
         try:
-            items = self.context.api.list_items(
-                search=parsed.search,
-                include_inactive=parsed.include_inactive,
-            )
+            items = refresh_items(self.context)
 
         except WorkBotUnauthorizedError:
             self.context.session.logout()

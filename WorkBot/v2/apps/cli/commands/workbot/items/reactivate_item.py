@@ -12,7 +12,7 @@ from apps.cli.api.client import (
     WorkBotUnauthorizedError,
     ItemWritePayload,
 )
-
+from .item_cache import get_cached_items
 
 class ReactivateItemCommand(Command):
     """
@@ -52,10 +52,13 @@ class ReactivateItemCommand(Command):
             return []
 
         try:
-            items = self.context.api.list_items(
-                search=text or None,
-                include_inactive=True,
-            )
+            items = get_cached_items(self.context)
+
+            items = [
+                item
+                for item in items
+                if not item.is_active
+            ]
 
         except (
             WorkBotUnauthorizedError,

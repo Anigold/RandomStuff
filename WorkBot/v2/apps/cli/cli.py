@@ -34,6 +34,7 @@ from .commands.form_prompt import (
 )
 from .commands.confirmation_prompt import ConfirmationPromptRequest
 
+
 from .api.client import WorkBotApiClient
 from .config import CliConfig
 from .session import CliSession
